@@ -43,14 +43,15 @@ local HttpService = game:GetService("HttpService")
 
 -- 1. Load Rayfield UI Library
 local Rayfield = nil
-local success, err = pcall(function()
+local success, loadedRayfieldOrErr = pcall(function()
     return loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 end)
 
-if success and Rayfield then
+if success and loadedRayfieldOrErr then
+    Rayfield = loadedRayfieldOrErr
     print("Main UI | Rayfield UI successfully loaded.")
 else
-    warn("Main UI | Failed to fetch Rayfield from remote URL, using local mockup/fallback: " .. tostring(err))
+    warn("Main UI | Failed to fetch Rayfield from remote URL, using local mockup/fallback: " .. tostring(loadedRayfieldOrErr))
     -- Fallback/Mockup in case Rayfield cannot be loaded (for Studio testing)
     Rayfield = {
         Notify = function(_, cfg)
@@ -149,6 +150,24 @@ local function applyTablessLayout()
 end
 
 applyTablessLayout()
+
+local function sendNotification(cfg)
+    if type(Rayfield) == "table" and type(Rayfield.Notify) == "function" then
+        local ok = pcall(Rayfield.Notify, Rayfield, cfg)
+        if ok then
+            return
+        end
+
+        ok = pcall(Rayfield.Notify, cfg)
+        if ok then
+            return
+        end
+    end
+
+    if type(Window) == "table" and type(Window.Notify) == "function" then
+        pcall(Window.Notify, Window, cfg)
+    end
+end
 
 -- 5. Module Loading Mechanism
 -- Create header section in UI
@@ -277,13 +296,9 @@ else
 end
 
 -- 6. Initialize UI
-if Rayfield and type(Rayfield.Notify) == "function" then
-    pcall(function()
-        Rayfield:Notify({
-            Title = "Player Modifier",
-            Content = "Main UI loaded successfully!",
-            Duration = 5,
-            Image = 4483362458,
-        })
-    end)
-end
+sendNotification({
+    Title = "Player Modifier",
+    Content = "Main UI loaded successfully!",
+    Duration = 5,
+    Image = 4483362458,
+})
