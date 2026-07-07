@@ -43,28 +43,14 @@ local function cleanupConnections()
     
     log("Disconnected " .. tostring(connCount) .. " event connections and cleared " .. tostring(drawCount) .. " drawing objects.")
 end
+
 -- Restore any hooked functions
 local function restoreHooks()
     if not _G.AimAssistOriginals then
         return
     end
     
-    -- 1. Restore FastCast.Fire hook
-    if _G.AimAssistOriginals["FastCast_Fire"] then
-        local ReplicatedStorage = game:GetService("ReplicatedStorage")
-        local modsFolder = ReplicatedStorage:WaitForChild("Mods", 5)
-        local fastCastModule = modsFolder and modsFolder:WaitForChild("FastCast", 5)
-        if fastCastModule then
-            local success, fastCastTable = pcall(require, fastCastModule)
-            if success and type(fastCastTable) == "table" then
-                fastCastTable.Fire = _G.AimAssistOriginals["FastCast_Fire"]
-                log("Restored original FastCast.Fire method successfully.")
-            end
-        end
-        _G.AimAssistOriginals["FastCast_Fire"] = nil
-    end
-
-    -- 2. Restore __namecall raycast hook
+    -- 1. Restore __namecall raycast hook
     if _G.AimAssistOriginals["Raycast_Metatable"] then
         if hookmetamethod then
             local success, err = pcall(function()
@@ -79,7 +65,7 @@ local function restoreHooks()
         _G.AimAssistOriginals["Raycast_Metatable"] = nil
     end
     
-    -- 3. Restore Workspace.Raycast direct function hook
+    -- 2. Restore Workspace.Raycast direct function hook
     if _G.AimAssistOriginals["Raycast_Function"] then
         if hookfunction then
             local success, err = pcall(function()

@@ -202,12 +202,13 @@ local function loadExecutorModules()
     local modulesLoadedCount = 0
     
     for _, folderPath in ipairs(foldersToScan) do
-        local files = listfiles(folderPath)
-        for _, filePath in ipairs(files) do
-            local isLuaFile = filePath:sub(-4) == ".lua" or filePath:sub(-5) == ".luau"
-            if isLuaFile then
-                local successRead, content = pcall(readfile, filePath)
-                if successRead and content and #content > 0 then
+        local successList, files = pcall(listfiles, folderPath)
+        if successList and type(files) == "table" then
+            for _, filePath in ipairs(files) do
+                local isLuaFile = filePath:sub(-4) == ".lua" or filePath:sub(-5) == ".luau"
+                if isLuaFile then
+                    local successRead, content = pcall(readfile, filePath)
+                    if successRead and content and #content > 0 then
                     local func, syntaxErr = loadstring(content)
                     if func then
                         local execSuccess, moduleResult = pcall(func)
@@ -226,6 +227,7 @@ local function loadExecutorModules()
             end
         end
     end
+end
     
     if modulesLoadedCount == 0 then
         Tab:CreateLabel("No modules found in executor workspace directories.")
