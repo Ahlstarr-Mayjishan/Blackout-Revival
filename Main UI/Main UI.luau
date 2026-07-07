@@ -256,6 +256,7 @@ local function loadExecutorModules()
         "Aim Assits/GC.luau",
         "Aim Assits/Aim Assist modes/Aimbot.luau",
         "Aim Assits/Aim Assist modes/SilentAim.luau",
+        "Aim Assits/Aim Assist modes/HomingBullets.luau",
     }
 
     local modulesLoadedCount = 0
