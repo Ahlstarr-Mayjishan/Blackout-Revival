@@ -32,11 +32,27 @@ end
 
 -- Restore hooked metatable and functions
 local function restoreHooks()
-    -- 1. Restore __namecall hook
-    if _G.OriginalFunctions and _G.OriginalFunctions["namecall"] then
+    -- Restore Melee Raycast __namecall hook before Player remote __namecall hook.
+    -- Hooks stack, so cleanup must unwind them in reverse install order.
+    if _G.OriginalFunctions and _G.OriginalFunctions["MeleeRaycast_Metatable"] then
         if hookmetamethod then
             local success, err = pcall(function()
-                hookmetamethod(game, "__namecall", _G.OriginalFunctions["namecall"])
+                hookmetamethod(game, "__namecall", _G.OriginalFunctions["MeleeRaycast_Metatable"])
+            end)
+            if success then
+                log("Restored original __namecall raycast method successfully.")
+            else
+                warn("Failed to restore __namecall raycast method: " .. tostring(err))
+            end
+        end
+        _G.OriginalFunctions["MeleeRaycast_Metatable"] = nil
+    end
+
+    -- 1. Restore __namecall hook
+    if _G.OriginalFunctions and (_G.OriginalFunctions["namecall"] or _G.OriginalFunctions["PlayerRemote_Namecall"]) then
+        if hookmetamethod then
+            local success, err = pcall(function()
+                hookmetamethod(game, "__namecall", _G.OriginalFunctions["PlayerRemote_Namecall"] or _G.OriginalFunctions["namecall"])
             end)
             if success then
                 log("Restored original __namecall method successfully.")
@@ -45,15 +61,30 @@ local function restoreHooks()
             end
         end
         _G.OriginalFunctions["namecall"] = nil
+        _G.OriginalFunctions["PlayerRemote_Namecall"] = nil
     end
     
     -- 2. Restore FireServer function hook
-    if _G.OriginalFunctions and _G.OriginalFunctions["FireServer"] then
+    if _G.OriginalFunctions and (_G.OriginalFunctions["FireServer"] or _G.OriginalFunctions["PlayerRemote_FireServer"]) then
         if hookfunction then
             local success, err = pcall(function()
-                local dummyRemote = Instance.new("RemoteEvent")
-                hookfunction(dummyRemote.FireServer, _G.OriginalFunctions["FireServer"])
-                dummyRemote:Destroy()
+                if _G.OriginalFunctions["PlayerRemote_FireServer"] then
+                    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+                    local playerEvents = ReplicatedStorage:FindFirstChild("Events") and ReplicatedStorage.Events:FindFirstChild("Player")
+                    local originals = _G.OriginalFunctions["PlayerRemote_FireServer"]
+
+                    if playerEvents and originals.Damage and playerEvents:FindFirstChild("Damage") then
+                        hookfunction(playerEvents.Damage.FireServer, originals.Damage)
+                    end
+
+                    if playerEvents and originals.Ragdoll and playerEvents:FindFirstChild("Ragdoll") then
+                        hookfunction(playerEvents.Ragdoll.FireServer, originals.Ragdoll)
+                    end
+                else
+                    local dummyRemote = Instance.new("RemoteEvent")
+                    hookfunction(dummyRemote.FireServer, _G.OriginalFunctions["FireServer"])
+                    dummyRemote:Destroy()
+                end
             end)
             if success then
                 log("Restored original FireServer method successfully.")
@@ -62,6 +93,7 @@ local function restoreHooks()
             end
         end
         _G.OriginalFunctions["FireServer"] = nil
+        _G.OriginalFunctions["PlayerRemote_FireServer"] = nil
     end
     
     -- 3. Restore GetAttribute hook
@@ -79,19 +111,6 @@ local function restoreHooks()
             end
         end
         _G.OriginalFunctions["GetAttribute"] = nil
-    end
-
-    -- 3.5 Restore Melee Raycast Hooks
-    if _G.OriginalFunctions and _G.OriginalFunctions["MeleeRaycast_Metatable"] then
-        if hookmetamethod then
-            local success, err = pcall(function()
-                hookmetamethod(game, "__namecall", _G.OriginalFunctions["MeleeRaycast_Metatable"])
-            end)
-            if success then
-                log("Restored original __namecall raycast method successfully.")
-            end
-        end
-        _G.OriginalFunctions["MeleeRaycast_Metatable"] = nil
     end
 
     if _G.OriginalFunctions and _G.OriginalFunctions["MeleeRaycast_Function"] then

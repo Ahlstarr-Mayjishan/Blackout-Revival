@@ -12,7 +12,6 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 
 local LocalPlayer = Players.LocalPlayer
-local Camera = Workspace.CurrentCamera
 
 local Executor = {}
 Executor.Name = "Aiming Engine"
@@ -39,7 +38,7 @@ end
 local function getTargetPosition(character, partName)
     local targetPart = character:FindFirstChild(partName)
     if not targetPart and partName == "Head" then
-        targetPart = character:FindFirstChild("Head") or character:FindFirstChild("PrimaryPart")
+        targetPart = character:FindFirstChild("Head") or character.PrimaryPart
     elseif not targetPart and partName == "Torso" then
         targetPart = character:FindFirstChild("Torso") or character:FindFirstChild("UpperTorso") or character:FindFirstChild("HumanoidRootPart")
     end
@@ -54,6 +53,11 @@ end
 
 -- Helper: Visibility (wall) check using camera viewport raycasting
 local function checkWallVisibility(targetPos, character)
+    local Camera = Workspace.CurrentCamera
+    if not Camera then
+        return false
+    end
+
     local cameraPos = Camera.CFrame.Position
     local rayDirection = targetPos - cameraPos
     
@@ -70,6 +74,11 @@ end
 
 local function getClosestTarget()
     if not _G.AimAssistStates or not _G.AimAssistStates.Enabled then
+        return nil, nil
+    end
+
+    local Camera = Workspace.CurrentCamera
+    if not Camera then
         return nil, nil
     end
 
@@ -98,7 +107,8 @@ local function getClosestTarget()
     end
     
     for _, folder in ipairs(foldersToScan) do
-        for _, child in ipairs(folder:GetChildren()) do
+        local children = folder == Workspace and folder:GetChildren() or folder:GetDescendants()
+        for _, child in ipairs(children) do
             if child:IsA("Model") and child ~= LocalPlayer.Character and isAlive(child) then
                 -- Skip if target is inside the wrong group (when Workspace fallback is active)
                 if aimType == "Player" and Workspace:FindFirstChild("NPCs") and child:IsDescendantOf(Workspace.NPCs) then

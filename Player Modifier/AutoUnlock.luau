@@ -26,8 +26,12 @@ function AutoUnlock:Init(UIRef)
             if _G.ModifierStates and _G.ModifierStates.AutoUnlock then
                 print("[Player Modifier - AutoUnlock] Auto-completing minigame: " .. tostring(minigameId))
                 task.spawn(function()
-                    task.wait(0.1) -- Emulate real delay
-                    resultEvent:FireServer(minigameId, true)
+                    for _, delayTime in ipairs({0.05, 0.2, 0.5}) do
+                        task.wait(delayTime)
+                        pcall(function()
+                            resultEvent:FireServer(minigameId, true)
+                        end)
+                    end
                 end)
             end
         end)

@@ -16,6 +16,28 @@ local Killaura = {}
 Killaura.Name = "Killaura (Melee) Logic"
 Killaura.Description = "Automates melee swings and redirects blade collision points directly to targets."
 
+local function findEquippedMelee(character)
+    if not character then
+        return nil
+    end
+
+    for _, child in ipairs(character:GetChildren()) do
+        if (child:IsA("Tool") or child:IsA("RayValue")) and child:FindFirstChild("MeleeStatus") then
+            return child
+        end
+    end
+
+    return nil
+end
+
+local function getTargetPart(target)
+    local targetPartName = _G.ModifierStates.KillauraHitAt == "head" and "Head" or "Torso"
+    return target:FindFirstChild(targetPartName)
+        or target:FindFirstChild("UpperTorso")
+        or target:FindFirstChild("HumanoidRootPart")
+        or target:FindFirstChild("Head")
+end
+
 -- Scan for closest valid target inside melee range (15 studs)
 local function getClosestMeleeTarget()
     local localChar = LocalPlayer.Character
@@ -81,8 +103,7 @@ local function setupRaycastHook()
                 if params and params.FilterDescendantsInstances and params.CollisionGroup ~= "RayCasts" then
                     local target = getClosestMeleeTarget()
                     if target then
-                        local targetPartName = _G.ModifierStates.KillauraHitAt == "head" and "Head" or "Torso"
-                        local targetPart = target:FindFirstChild(targetPartName) or target:FindFirstChild("HumanoidRootPart") or target:FindFirstChild("UpperTorso")
+                        local targetPart = getTargetPart(target)
                         if targetPart then
                             -- Redirect melee ray straight to target part
                             args[2] = (targetPart.Position - origin)
@@ -106,8 +127,7 @@ local function setupRaycastHook()
                 if params and params.FilterDescendantsInstances and params.CollisionGroup ~= "RayCasts" then
                     local target = getClosestMeleeTarget()
                     if target then
-                        local targetPartName = _G.ModifierStates.KillauraHitAt == "head" and "Head" or "Torso"
-                        local targetPart = target:FindFirstChild(targetPartName) or target:FindFirstChild("HumanoidRootPart") or target:FindFirstChild("UpperTorso")
+                        local targetPart = getTargetPart(target)
                         if targetPart then
                             direction = (targetPart.Position - origin)
                         end
@@ -143,10 +163,10 @@ function Killaura:Init(Tab)
                 local target = getClosestMeleeTarget()
                 if target then
                     local char = LocalPlayer.Character
-                    local currentTool = char and char:FindFirstChildOfClass("Tool")
+                    local currentTool = findEquippedMelee(char)
                     
                     -- Check if tool is a melee weapon
-                    if currentTool and currentTool:FindFirstChild("MeleeStatus") then
+                    if currentTool then
                         local meleeMain = nil
                         pcall(function()
                             local mods = ReplicatedStorage:FindFirstChild("MeleeStorage") and ReplicatedStorage.MeleeStorage:FindFirstChild("Mods")
@@ -162,6 +182,18 @@ function Killaura:Init(Tab)
                                 task.wait(0.05)
                                 meleeMain.Swing(false)
                             end)
+                        else
+                            local swingRemote = ReplicatedStorage:FindFirstChild("MeleeStorage")
+                                and ReplicatedStorage.MeleeStorage:FindFirstChild("Events")
+                                and ReplicatedStorage.MeleeStorage.Events:FindFirstChild("Swing")
+
+                            if swingRemote then
+                                pcall(function()
+                                    swingRemote:FireServer(true)
+                                    task.wait(0.05)
+                                    swingRemote:FireServer(false)
+                                end)
+                            end
                         end
                     end
                 end

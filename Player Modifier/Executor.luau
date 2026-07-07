@@ -28,86 +28,130 @@ local function log(msg)
     print("[Player Modifier - Executor] " .. tostring(msg))
 end
 
+local function getPlayerRemote(remoteName)
+    local events = ReplicatedStorage:FindFirstChild("Events")
+    local playerEvents = events and events:FindFirstChild("Player")
+    return playerEvents and playerEvents:FindFirstChild(remoteName)
+end
+
+local function isModifierEnabled(flagName)
+    return _G.ModifierStates and _G.ModifierStates[flagName] == true
+end
+
 -- Hook Remote Events (Damage & Ragdoll)
 local function setupRemoteHooks()
-    -- Check if hookmetamethod is available (common in exploit executors)
+    _G.OriginalFunctions = _G.OriginalFunctions or {}
+
+    local damageRemote = getPlayerRemote("Damage")
+    local ragdollRemote = getPlayerRemote("Ragdoll")
+
+    if not damageRemote and not ragdollRemote then
+        warn("[Player Modifier - Executor] Player Damage/Ragdoll remotes were not found.")
+        return
+    end
+
     if hookmetamethod then
-        if _G.OriginalFunctions["namecall"] then
+        if _G.OriginalFunctions["PlayerRemote_Namecall"] then
             log("Remote hooks already set up via hookmetamethod.")
             return
         end
         
         local oldNamecall
-        oldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
+        local callback = function(self, ...)
             local method = getnamecallmethod()
-            if method == "FireServer" and _G.ModifierStates then
-                local name = self.Name
-                local parent = self.Parent
-                
-                -- Check if it belongs to ReplicatedStorage.Events.Player
-                if parent and parent.Name == "Player" and parent.Parent and parent.Parent.Name == "Events" then
-                    -- 1. No Fall Damage & No Collision Damage
-                    if name == "Damage" and _G.ModifierStates.NoFallDamage then
-                        local args = {...}
-                        -- Fall damage / crash damage has a 3rd parameter as true in the source code
-                        if args[3] == true then
-                            return -- Block the damage request
-                        end
-                    
-                    -- 2. Anti-Ragdoll
-                    elseif name == "Ragdoll" and _G.ModifierStates.AntiRagdoll then
-                        return -- Block the ragdoll request
-                    end
+            if method == "FireServer" then
+                local args = {...}
+
+                if self == damageRemote and isModifierEnabled("NoFallDamage") and args[3] == true then
+                    return nil
+                end
+
+                if self == ragdollRemote and isModifierEnabled("AntiRagdoll") then
+                    return nil
                 end
             end
             return oldNamecall(self, ...)
-        end)
+        end
+
+        oldNamecall = hookmetamethod(game, "__namecall", newcclosure and newcclosure(callback) or callback)
         
-        _G.OriginalFunctions["namecall"] = oldNamecall
+        _G.OriginalFunctions["PlayerRemote_Namecall"] = oldNamecall
         log("Hooked __namecall successfully.")
         
     elseif hookfunction then
-        -- Fallback: Hook the FireServer method of RemoteEvents directly
-        if _G.OriginalFunctions["FireServer"] then
+        if _G.OriginalFunctions["PlayerRemote_FireServer"] then
             log("Remote hooks already set up via hookfunction.")
             return
         end
-        
-        local dummyRemote = Instance.new("RemoteEvent")
-        local oldFireServer
-        oldFireServer = hookfunction(dummyRemote.FireServer, function(self, ...)
-            if _G.ModifierStates then
-                local name = self.Name
-                local parent = self.Parent
-                
-                if parent and parent.Name == "Player" and parent.Parent and parent.Parent.Name == "Events" then
-                    -- No Fall/Collision Damage
-                    if name == "Damage" and _G.ModifierStates.NoFallDamage then
-                        local args = {...}
-                        -- With hookfunction, args[1] is the first argument after self
-                        if args[2] == true then
-                            return
-                        end
-                    
-                    -- Anti-Ragdoll
-                    elseif name == "Ragdoll" and _G.ModifierStates.AntiRagdoll then
-                        return
-                    end
+
+        local originals = {}
+
+        if damageRemote then
+            originals.Damage = hookfunction(damageRemote.FireServer, function(self, ...)
+                local args = {...}
+                if self == damageRemote and isModifierEnabled("NoFallDamage") and args[3] == true then
+                    return nil
                 end
-            end
-            return oldFireServer(self, ...)
-        end)
-        
-        _G.OriginalFunctions["FireServer"] = oldFireServer
-        dummyRemote:Destroy()
-        log("Hooked FireServer successfully.")
+                return originals.Damage(self, ...)
+            end)
+        end
+
+        if ragdollRemote then
+            originals.Ragdoll = hookfunction(ragdollRemote.FireServer, function(self, ...)
+                if self == ragdollRemote and isModifierEnabled("AntiRagdoll") then
+                    return nil
+                end
+                return originals.Ragdoll(self, ...)
+            end)
+        end
+
+        _G.OriginalFunctions["PlayerRemote_FireServer"] = originals
+        log("Hooked direct RemoteEvent.FireServer functions successfully.")
     else
         warn("[Player Modifier - Executor] Executor does not support hookmetamethod or hookfunction. Fall damage and Ragdoll hooks are disabled.")
     end
 end
+
+local function setupLocalRagdollRecovery()
+    local function recover()
+        if not isModifierEnabled("AntiRagdoll") then
+            return
+        end
+
+        local character = LocalPlayer.Character
+        local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+
+        if _G.CharacterStates then
+            _G.CharacterStates.Ragdolled = false
+            _G.CharacterStates.InPhysics = false
+        end
+
+        if character then
+            character:SetAttribute("Ragdolled", false)
+            character:SetAttribute("InPhysics", false)
+            character:SetAttribute("AutoRotate", true)
+        end
+
+        if humanoid then
+            humanoid.PlatformStand = false
+            humanoid.AutoRotate = true
+            if humanoid:GetState() == Enum.HumanoidStateType.Physics or humanoid:GetState() == Enum.HumanoidStateType.FallingDown then
+                humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+            end
+        end
+    end
+
+    local connection = RunService.Heartbeat:Connect(recover)
+    if _G.ModifierConnections then
+        table.insert(_G.ModifierConnections, connection)
+    end
+
+    log("Local anti-ragdoll recovery loop registered.")
+end
+
 function Executor:Init(UIRef)
-    -- Hook remote events
     setupRemoteHooks()
+    setupLocalRagdollRecovery()
     
     log("Executor module initialized.")
 end

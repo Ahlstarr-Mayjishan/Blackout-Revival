@@ -51,6 +51,63 @@ local function setupNoInertia()
     log("Instant direction controller registered.")
 end
 
+local function clearBrokenBoneAttributes(character)
+    if not character then
+        return
+    end
+
+    for _, descendant in ipairs(character:GetDescendants()) do
+        if descendant:GetAttribute("BrokenBone") ~= nil then
+            descendant:SetAttribute("BrokenBone", false)
+        end
+    end
+end
+
+local function setupStateSanitizer()
+    local connection = RunService.RenderStepped:Connect(function()
+        if not _G.ModifierStates or not _G.ModifierStates.BetterMovementOptions then
+            return
+        end
+
+        local opts = _G.ModifierStates.BetterMovementOptions
+        local states = _G.CharacterStates
+
+        if type(states) == "table" then
+            if opts["Better Movement"] then
+                states.NoSlide = true
+            end
+
+            if opts["No Slowdown Aim"] then
+                states.AimingMovementSpeed = nil
+            end
+
+            if opts["No Slowdown Block"] then
+                states.Blocking = false
+                states.ServerBlocking = false
+                states.UsingItem = false
+            end
+
+            if opts["No Slowdown OverWeight"] then
+                states.OverWeightCapacity = 0
+            end
+
+            if opts["No Slowdown Broken Leg/Arm"] then
+                states.Crippled = nil
+            end
+        end
+
+        if opts["No Slowdown Broken Leg/Arm"] then
+            clearBrokenBoneAttributes(LocalPlayer.Character)
+        end
+    end)
+
+    if _G.ModifierConnections then
+        table.insert(_G.ModifierConnections, connection)
+    end
+
+    log("Movement state sanitizer registered.")
+end
+
 -- Helper to wrap the CharacterStates table in a proxy metatable
 local function wrapStatesTable(originalTable)
     if not originalTable or type(originalTable) ~= "table" then
@@ -131,6 +188,7 @@ end
 function BetterMovement:Init(UIRef)
     -- Setup instant movement (No Inertia)
     setupNoInertia()
+    setupStateSanitizer()
     
     -- Setup _G.CharacterStates proxy for Aim, Block, and Overweight capacity penalties
     setupStatesProxy()

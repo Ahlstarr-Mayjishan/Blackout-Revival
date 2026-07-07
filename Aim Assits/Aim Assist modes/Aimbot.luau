@@ -12,7 +12,6 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 
 local LocalPlayer = Players.LocalPlayer
-local Camera = Workspace.CurrentCamera
 
 local Aimbot = {}
 Aimbot.Name = "Aimbot Mode"
@@ -46,6 +45,11 @@ function Aimbot:Init(Tab)
         -- Only lock when right mouse button is pressed
         local isAimingHeld = UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton2)
         if isAimingHeld then
+            local Camera = Workspace.CurrentCamera
+            if not Camera then
+                return
+            end
+
             local _, targetPos = _G.GetClosestAimTarget()
             if targetPos then
                 local currentCFrame = Camera.CFrame

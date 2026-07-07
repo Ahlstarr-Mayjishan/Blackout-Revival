@@ -21,6 +21,58 @@ local function log(msg)
     print("[Aim Assist - SilentAim] " .. tostring(msg))
 end
 
+local function getTargetBone(targetCharacter)
+    local targetPartName = _G.AimAssistStates and _G.AimAssistStates.TargetPart or "Head"
+    if targetPartName == "Head" then
+        return targetCharacter:FindFirstChild("Head")
+            or targetCharacter:FindFirstChild("HumanoidRootPart")
+            or targetCharacter:FindFirstChild("UpperTorso")
+    end
+
+    return targetCharacter:FindFirstChild("Torso")
+        or targetCharacter:FindFirstChild("UpperTorso")
+        or targetCharacter:FindFirstChild("HumanoidRootPart")
+        or targetCharacter:FindFirstChild("Head")
+end
+
+local function injectTargetInformation(activeCast)
+    if not activeCast or not activeCast.UserData then
+        return
+    end
+
+    if not (_G.AimAssistStates and _G.AimAssistStates.Enabled and _G.AimAssistStates.SilentAimActive) then
+        return
+    end
+
+    if not _G.GetClosestAimTarget then
+        return
+    end
+
+    local targetCharacter = _G.GetClosestAimTarget()
+    if not targetCharacter then
+        return
+    end
+
+    local targetBone = getTargetBone(targetCharacter)
+    if not targetBone then
+        return
+    end
+
+    activeCast.UserData.TargetInformation = {
+        Object = targetBone,
+        Distance = math.max((_G.AimAssistStates.FOVRadius or 100) * 3, 250),
+        Lerp = {
+            Min = 1,
+            Max = 1,
+        },
+        Deadzone = -1,
+        KeepVelocity = true,
+        TurningDrag = false,
+    }
+
+    log("Injected homing data for bullet: " .. tostring(targetCharacter.Name))
+end
+
 -- Hook FastCast.Fire function to inject homing data
 local function setupFastCastHook()
     local modsFolder = ReplicatedStorage:WaitForChild("Mods", 5)
@@ -43,39 +95,10 @@ local function setupFastCastHook()
         
         -- Hook the Fire constructor
         fastCastTable.Fire = function(casterInstance, origin, direction, velocity, behavior)
-            -- Call original function to get the ActiveCast object returned by the game
             local activeCast = oldFire(casterInstance, origin, direction, velocity, behavior)
-            
-            -- If Silent Aim is active, inject the TargetInformation
-            if _G.AimAssistStates and _G.AimAssistStates.Enabled and _G.AimAssistStates.SilentAimActive then
-                if _G.GetClosestAimTarget then
-                    local targetCharacter, targetPos = _G.GetClosestAimTarget()
-                    if targetCharacter and targetPos then
-                        -- Find target bone part
-                        local targetBone = targetCharacter:FindFirstChild(_G.AimAssistStates.TargetPart)
-                        if not targetBone and _G.AimAssistStates.TargetPart == "Head" then
-                            targetBone = targetCharacter:FindFirstChild("Head") or targetCharacter:FindFirstChild("PrimaryPart")
-                        elseif not targetBone and _G.AimAssistStates.TargetPart == "Torso" then
-                            targetBone = targetCharacter:FindFirstChild("Torso") or targetCharacter:FindFirstChild("UpperTorso") or targetCharacter:FindFirstChild("HumanoidRootPart")
-                        end
-                        
-                        if targetBone then
-                            -- Inject native homing target structure inside bullet UserData
-                            activeCast.UserData.TargetInformation = {
-                                Object = targetBone, -- Part instance target
-                                Distance = _G.AimAssistStates.FOVRadius * 2, -- Target attraction threshold range
-                                Lerp = {
-                                    Min = 1.0, -- Force instant trajectory snap (100% precision)
-                                    Max = 1.0
-                                },
-                                KeepVelocity = true,
-                                TurningDrag = false
-                            }
-                            log("Injected homing data for bullet: " .. tostring(targetCharacter.Name))
-                        end
-                    end
-                end
-            end
+
+            injectTargetInformation(activeCast)
+            task.defer(injectTargetInformation, activeCast)
             
             return activeCast
         end

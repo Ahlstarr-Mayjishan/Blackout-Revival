@@ -8,6 +8,7 @@
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
 
 local LocalPlayer = Players.LocalPlayer
 
@@ -17,6 +18,21 @@ DoubleJump.Description = "Handles mid-air jumping physics and notifications."
 
 function DoubleJump:Init(UIRef)
     local doubleJumpRemote = ReplicatedStorage:WaitForChild("Events", 5) and ReplicatedStorage.Events:WaitForChild("Player", 5) and ReplicatedStorage.Events.Player:WaitForChild("GearAbility", 5)
+
+    local stateConnection = RunService.RenderStepped:Connect(function()
+        if not _G.ModifierStates or not _G.ModifierStates.DoubleJump then
+            return
+        end
+
+        if _G.CharacterStates then
+            _G.CharacterStates.DoubleJump = true
+            _G.CharacterStates.DoubleJumpCD = false
+        end
+    end)
+
+    if _G.ModifierConnections then
+        table.insert(_G.ModifierConnections, stateConnection)
+    end
     
     -- Setup the JumpRequest connection
     local connection = UserInputService.JumpRequest:Connect(function()
@@ -28,13 +44,12 @@ function DoubleJump:Init(UIRef)
         local humanoid = character and character:FindFirstChildOfClass("Humanoid")
         
         if humanoid and humanoid:GetState() == Enum.HumanoidStateType.Freefall then
-            -- Force character states to bypass double jump cooldowns
             if _G.CharacterStates then
                 _G.CharacterStates.DoubleJump = true
                 _G.CharacterStates.DoubleJumpCD = false
+                _G.CharacterStates.Parkour = false
             end
             
-            -- Change humanoid state to trigger physics jump
             humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
             
             -- Notify server of the jump

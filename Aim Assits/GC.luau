@@ -81,6 +81,25 @@ local function restoreHooks()
         _G.AimAssistOriginals["Raycast_Function"] = nil
     end
 
+    if _G.AimAssistOriginals["FastCast_Fire"] then
+        local success, err = pcall(function()
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+            local fastCastModule = ReplicatedStorage:FindFirstChild("Mods") and ReplicatedStorage.Mods:FindFirstChild("FastCast")
+            if fastCastModule then
+                local fastCastTable = require(fastCastModule)
+                fastCastTable.Fire = _G.AimAssistOriginals["FastCast_Fire"]
+            end
+        end)
+
+        if success then
+            log("Restored original FastCast.Fire successfully.")
+        else
+            warn("Failed to restore FastCast.Fire: " .. tostring(err))
+        end
+
+        _G.AimAssistOriginals["FastCast_Fire"] = nil
+    end
+
     table.clear(_G.AimAssistOriginals)
 end
 
