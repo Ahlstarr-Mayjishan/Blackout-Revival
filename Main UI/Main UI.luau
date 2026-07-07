@@ -53,6 +53,9 @@ else
     warn("Main UI | Failed to fetch Rayfield from remote URL, using local mockup/fallback: " .. tostring(err))
     -- Fallback/Mockup in case Rayfield cannot be loaded (for Studio testing)
     Rayfield = {
+        Notify = function(_, cfg)
+            print("Main UI (Mockup) | Notification: " .. tostring(cfg.Content))
+        end,
         CreateWindow = function(_, cfg)
             print("Main UI (Mockup) | Window created: " .. tostring(cfg.Name))
             local WindowMock = {}
@@ -274,9 +277,13 @@ else
 end
 
 -- 6. Initialize UI
-Rayfield:Notify({
-    Title = "Player Modifier",
-    Content = "Main UI loaded successfully!",
-    Duration = 5,
-    Image = 4483362458,
-})
+if Rayfield and type(Rayfield.Notify) == "function" then
+    pcall(function()
+        Rayfield:Notify({
+            Title = "Player Modifier",
+            Content = "Main UI loaded successfully!",
+            Duration = 5,
+            Image = 4483362458,
+        })
+    end)
+end
