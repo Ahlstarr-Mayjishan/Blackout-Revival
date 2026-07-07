@@ -11,6 +11,7 @@ _G.AimAssistStates = _G.AimAssistStates or {
     Enabled = false,
     AimbotActive = false,
     SilentAimActive = false,
+    HomingBulletsActive = false,
     AimType = "Player", -- "Player" or "Zombie (Nightbounds)"
     TargetPart = "Head", -- "Head" or "Torso"
     FOVRadius = 100,
