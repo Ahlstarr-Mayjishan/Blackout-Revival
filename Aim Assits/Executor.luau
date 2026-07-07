@@ -63,12 +63,20 @@ local function checkWallVisibility(targetPos, character)
     
     local raycastParams = RaycastParams.new()
     raycastParams.FilterType = Enum.RaycastFilterType.Exclude
-    raycastParams.FilterDescendantsInstances = {LocalPlayer.Character, Camera}
+    
+    -- Exclude all players and NPCs so they don't block visibility checks for each other
+    local filterList = {LocalPlayer.Character, Camera}
+    local charsFolder = Workspace:FindFirstChild("Chars")
+    if charsFolder then table.insert(filterList, charsFolder) end
+    local npcsFolder = Workspace:FindFirstChild("NPCs")
+    if npcsFolder then table.insert(filterList, npcsFolder) end
+    
+    raycastParams.FilterDescendantsInstances = filterList
     raycastParams.IgnoreWater = true
     
     local raycastResult = Workspace:Raycast(cameraPos, rayDirection, raycastParams)
     
-    return raycastResult == nil or raycastResult.Instance:IsDescendantOf(character)
+    return raycastResult == nil
 end
 
 local function getClosestTarget()
@@ -87,67 +95,68 @@ local function getClosestTarget()
     local closestDistance = _G.AimAssistStates.FOVRadius or 100
     local targetPosition = nil
 
-    local foldersToScan = {}
+    local targetsToScan = {}
     local aimType = _G.AimAssistStates.AimType or "Player"
     
     if aimType == "Zombie (Nightbounds)" then
         local npcs = Workspace:FindFirstChild("NPCs")
         if npcs then
-            table.insert(foldersToScan, npcs)
-        else
-            table.insert(foldersToScan, Workspace)
+            -- Efficiently scan folders/models under NPCs without fetching all descendants
+            for _, group in ipairs(npcs:GetChildren()) do
+                if group:IsA("Model") then
+                    table.insert(targetsToScan, group)
+                elseif group:IsA("Folder") then
+                    for _, npc in ipairs(group:GetChildren()) do
+                        if npc:IsA("Model") then
+                            table.insert(targetsToScan, npc)
+                        end
+                    end
+                end
+            end
         end
     else -- "Player"
         local chars = Workspace:FindFirstChild("Chars")
         if chars then
-            table.insert(foldersToScan, chars)
-        else
-            table.insert(foldersToScan, Workspace)
+            for _, char in ipairs(chars:GetChildren()) do
+                if char:IsA("Model") then
+                    table.insert(targetsToScan, char)
+                end
+            end
         end
     end
     
-    for _, folder in ipairs(foldersToScan) do
-        local children = folder == Workspace and folder:GetChildren() or folder:GetDescendants()
-        for _, child in ipairs(children) do
-            if child:IsA("Model") and child ~= LocalPlayer.Character and isAlive(child) then
-                -- Skip if target is inside the wrong group (when Workspace fallback is active)
-                if aimType == "Player" and Workspace:FindFirstChild("NPCs") and child:IsDescendantOf(Workspace.NPCs) then
-                    continue
-                elseif aimType == "Zombie (Nightbounds)" and Workspace:FindFirstChild("Chars") and child:IsDescendantOf(Workspace.Chars) then
-                    continue
+    for _, child in ipairs(targetsToScan) do
+        if child ~= LocalPlayer.Character and isAlive(child) then
+            -- Team check bypass (only relevant for players)
+            local isAlly = false
+            if _G.AimAssistStates.TeamCheck then
+                local player = Players:GetPlayerFromCharacter(child)
+                if player and player.Team == LocalPlayer.Team and LocalPlayer.Team ~= nil then
+                    isAlly = true
                 end
-                
-                -- Team check bypass (only relevant for players)
-                local isAlly = false
-                if _G.AimAssistStates.TeamCheck then
-                    local player = Players:GetPlayerFromCharacter(child)
-                    if player and player.Team == LocalPlayer.Team and LocalPlayer.Team ~= nil then
-                        isAlly = true
-                    end
-                end
-                
-                if not isAlly then
-                    local pos = getTargetPosition(child, _G.AimAssistStates.TargetPart)
-                    if pos then
-                        -- Project target world location to viewport screen coordinates
-                        local screenPos, onScreen = Camera:WorldToViewportPoint(pos)
-                        if onScreen then
-                            local screenVec2 = Vector2.new(screenPos.X, screenPos.Y)
-                            local distToCenter = (screenVec2 - aimCenter).Magnitude
+            end
+            
+            if not isAlly then
+                local pos = getTargetPosition(child, _G.AimAssistStates.TargetPart)
+                if pos then
+                    -- Project target world location to viewport screen coordinates
+                    local screenPos, onScreen = Camera:WorldToViewportPoint(pos)
+                    if onScreen then
+                        local screenVec2 = Vector2.new(screenPos.X, screenPos.Y)
+                        local distToCenter = (screenVec2 - aimCenter).Magnitude
+                        
+                        -- Target within FOV radius and closer than current best candidate
+                        if distToCenter < closestDistance then
+                            -- Wall/visibility check
+                            local isVisible = true
+                            if _G.AimAssistStates.WallCheck then
+                                isVisible = checkWallVisibility(pos, child)
+                            end
                             
-                            -- Target within FOV radius and closer than current best candidate
-                            if distToCenter < closestDistance then
-                                -- Wall/visibility check
-                                local isVisible = true
-                                if _G.AimAssistStates.WallCheck then
-                                    isVisible = checkWallVisibility(pos, child)
-                                end
-                                
-                                if isVisible then
-                                    closestCharacter = child
-                                    closestDistance = distToCenter
-                                    targetPosition = pos
-                                end
+                            if isVisible then
+                                closestCharacter = child
+                                closestDistance = distToCenter
+                                targetPosition = pos
                             end
                         end
                     end

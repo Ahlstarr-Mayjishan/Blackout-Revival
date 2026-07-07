@@ -49,6 +49,48 @@ local function restoreHooks()
     if not _G.AimAssistOriginals then
         return
     end
+
+    if _G.AimAssistOriginals["HomingBullets_FastCast_Fire"] then
+        local success, err = pcall(function()
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+            local fastCastModule = ReplicatedStorage:FindFirstChild("Mods") and ReplicatedStorage.Mods:FindFirstChild("FastCast")
+            if fastCastModule then
+                local fastCastTable = require(fastCastModule)
+                fastCastTable.Fire = _G.AimAssistOriginals["HomingBullets_FastCast_Fire"]
+            end
+        end)
+
+        if success then
+            log("Restored HomingBullets FastCast.Fire successfully.")
+        else
+            warn("Failed to restore HomingBullets FastCast.Fire: " .. tostring(err))
+        end
+
+        _G.AimAssistOriginals["HomingBullets_FastCast_Fire"] = nil
+    end
+
+    if _G.AimAssistOriginals["HomingBullets_BulletHandler_Fire"] then
+        local success, err = pcall(function()
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+            local gunStorage = ReplicatedStorage:FindFirstChild("GunStorage")
+            local bulletHandlerModule = gunStorage
+                and gunStorage:FindFirstChild("Mods")
+                and gunStorage.Mods:FindFirstChild("BulletHandler")
+
+            if bulletHandlerModule then
+                local bulletHandler = require(bulletHandlerModule)
+                bulletHandler.Fire = _G.AimAssistOriginals["HomingBullets_BulletHandler_Fire"]
+            end
+        end)
+
+        if success then
+            log("Restored HomingBullets BulletHandler.Fire successfully.")
+        else
+            warn("Failed to restore HomingBullets BulletHandler.Fire: " .. tostring(err))
+        end
+
+        _G.AimAssistOriginals["HomingBullets_BulletHandler_Fire"] = nil
+    end
     
     -- 1. Restore __namecall raycast hook
     if _G.AimAssistOriginals["Raycast_Metatable"] then
