@@ -100,6 +100,29 @@ local function restoreHooks()
         _G.AimAssistOriginals["FastCast_Fire"] = nil
     end
 
+    if _G.AimAssistOriginals["BulletHandler_Fire"] then
+        local success, err = pcall(function()
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+            local gunStorage = ReplicatedStorage:FindFirstChild("GunStorage")
+            local bulletHandlerModule = gunStorage
+                and gunStorage:FindFirstChild("Mods")
+                and gunStorage.Mods:FindFirstChild("BulletHandler")
+
+            if bulletHandlerModule then
+                local bulletHandler = require(bulletHandlerModule)
+                bulletHandler.Fire = _G.AimAssistOriginals["BulletHandler_Fire"]
+            end
+        end)
+
+        if success then
+            log("Restored original BulletHandler.Fire successfully.")
+        else
+            warn("Failed to restore BulletHandler.Fire: " .. tostring(err))
+        end
+
+        _G.AimAssistOriginals["BulletHandler_Fire"] = nil
+    end
+
     table.clear(_G.AimAssistOriginals)
 end
 

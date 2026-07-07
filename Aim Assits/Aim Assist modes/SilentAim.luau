@@ -35,30 +35,26 @@ local function getTargetBone(targetCharacter)
         or targetCharacter:FindFirstChild("Head")
 end
 
-local function injectTargetInformation(activeCast)
-    if not activeCast or not activeCast.UserData then
-        return
-    end
-
+local function buildTargetInformation()
     if not (_G.AimAssistStates and _G.AimAssistStates.Enabled and _G.AimAssistStates.SilentAimActive) then
-        return
+        return nil
     end
 
     if not _G.GetClosestAimTarget then
-        return
+        return nil
     end
 
     local targetCharacter = _G.GetClosestAimTarget()
     if not targetCharacter then
-        return
+        return nil
     end
 
     local targetBone = getTargetBone(targetCharacter)
     if not targetBone then
-        return
+        return nil
     end
 
-    activeCast.UserData.TargetInformation = {
+    return {
         Object = targetBone,
         Distance = math.max((_G.AimAssistStates.FOVRadius or 100) * 3, 250),
         Lerp = {
@@ -68,9 +64,63 @@ local function injectTargetInformation(activeCast)
         Deadzone = -1,
         KeepVelocity = true,
         TurningDrag = false,
-    }
+    }, targetCharacter
+end
+
+local function injectTargetInformation(activeCast)
+    if not activeCast or not activeCast.UserData then
+        return
+    end
+
+    local targetInformation, targetCharacter = buildTargetInformation()
+    if not targetInformation then
+        return
+    end
+
+    activeCast.UserData.TargetInformation = targetInformation
 
     log("Injected homing data for bullet: " .. tostring(targetCharacter.Name))
+end
+
+local function setupBulletHandlerHook()
+    local gunStorage = ReplicatedStorage:WaitForChild("GunStorage", 5)
+    local modsFolder = gunStorage and gunStorage:WaitForChild("Mods", 5)
+    local bulletHandlerModule = modsFolder and modsFolder:WaitForChild("BulletHandler", 5)
+
+    if not bulletHandlerModule then
+        warn("BulletHandler module not found. Falling back to FastCast hook.")
+        return false
+    end
+
+    local success, bulletHandler = pcall(require, bulletHandlerModule)
+    if not (success and type(bulletHandler) == "table" and type(bulletHandler.Fire) == "function") then
+        warn("Failed to require or hook BulletHandler.Fire.")
+        return false
+    end
+
+    if _G.AimAssistOriginals["BulletHandler_Fire"] then
+        log("BulletHandler.Fire hook already setup.")
+        return true
+    end
+
+    local oldFire = bulletHandler.Fire
+    _G.AimAssistOriginals["BulletHandler_Fire"] = oldFire
+
+    bulletHandler.Fire = function(...)
+        local args = {...}
+        local bulletData = args[6]
+        local targetInformation, targetCharacter = buildTargetInformation()
+
+        if targetInformation and type(bulletData) == "table" then
+            bulletData.TargetInformation = targetInformation
+            log("Queued homing data for BulletHandler: " .. tostring(targetCharacter.Name))
+        end
+
+        return oldFire(unpack(args))
+    end
+
+    log("Hooked BulletHandler.Fire successfully.")
+    return true
 end
 
 -- Hook FastCast.Fire function to inject homing data
@@ -124,7 +174,9 @@ function SilentAim:Init(Tab)
     })
 
     -- Establish native weapon hook
-    setupFastCastHook()
+    if not setupBulletHandlerHook() then
+        setupFastCastHook()
+    end
 end
 
 return SilentAim
