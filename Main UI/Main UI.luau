@@ -169,6 +169,60 @@ local function sendNotification(cfg)
     end
 end
 
+local function normalizePath(path)
+    return tostring(path):gsub("\\", "/")
+end
+
+local function getFileName(path)
+    return normalizePath(path):match("[^/]+$") or tostring(path)
+end
+
+local function readModuleFile(folderPath, filePath)
+    local normalizedFilePath = normalizePath(filePath)
+    local candidates = {
+        filePath,
+        normalizedFilePath,
+        normalizePath(folderPath) .. "/" .. getFileName(filePath),
+    }
+
+    local seen = {}
+    local lastErr = nil
+
+    for _, candidate in ipairs(candidates) do
+        if not seen[candidate] then
+            seen[candidate] = true
+
+            local successRead, contentOrErr = pcall(readfile, candidate)
+            if successRead and type(contentOrErr) == "string" and #contentOrErr > 0 then
+                return contentOrErr, candidate
+            end
+
+            lastErr = contentOrErr
+        end
+    end
+
+    return nil, nil, lastErr
+end
+
+local REMOTE_MODULE_BASE = "https://raw.githubusercontent.com/Ahlstarr-Mayjishan/Blackout-Revival/main/"
+
+local function encodeModulePath(path)
+    return normalizePath(path):gsub(" ", "%%20")
+end
+
+local function fetchRemoteModuleFile(modulePath)
+    local url = REMOTE_MODULE_BASE .. encodeModulePath(modulePath)
+    local successFetch, contentOrErr = pcall(function()
+        return game:HttpGet(url, true)
+    end)
+
+    if successFetch and type(contentOrErr) == "string" and #contentOrErr > 0 and contentOrErr ~= "404: Not Found" then
+        return contentOrErr, url
+    end
+
+    return nil, url, contentOrErr
+end
+
 -- 5. Module Loading Mechanism
 -- Create header section in UI
 local ModulesSection = Tab:CreateSection("Loaded Modules")
@@ -203,58 +257,63 @@ end
 
 -- Loader: Client Executor Environment (Workspace filesystem)
 local function loadExecutorModules()
-    if not isfolder or not makefolder or not listfiles or not readfile then
-        return false
-    end
-    
-    local foldersToScan = {
-        "Player Modifier",
-        "Aim Assits",
-        "Aim Assits/Aim Assist modes"
+    local modulePaths = {
+        "Player Modifier/Tab.luau",
+        "Player Modifier/DoubleJump.luau",
+        "Player Modifier/NoFallDamage.luau",
+        "Player Modifier/AntiRagdoll.luau",
+        "Player Modifier/AutoUnlock.luau",
+        "Player Modifier/BetterMovement.luau",
+        "Player Modifier/Killaura.luau",
+        "Player Modifier/Control.luau",
+        "Player Modifier/Executor.luau",
+        "Player Modifier/GC.luau",
+        "Aim Assits/Tab.luau",
+        "Aim Assits/Control.luau",
+        "Aim Assits/Executor.luau",
+        "Aim Assits/GC.luau",
+        "Aim Assits/Aim Assist modes/Aimbot.luau",
+        "Aim Assits/Aim Assist modes/SilentAim.luau",
     }
-    
-    -- Ensure folders exist
-    for _, folder in ipairs(foldersToScan) do
-        if not isfolder(folder) then
-            makefolder(folder)
-            print("Main UI | Created '" .. folder .. "' directory in executor workspace.")
-        end
-    end
-    
+
     local modulesLoadedCount = 0
-    
-    for _, folderPath in ipairs(foldersToScan) do
-        local successList, files = pcall(listfiles, folderPath)
-        if successList and type(files) == "table" then
-            for _, filePath in ipairs(files) do
-                local isLuaFile = filePath:sub(-4) == ".lua" or filePath:sub(-5) == ".luau"
-                if isLuaFile then
-                    local successRead, content = pcall(readfile, filePath)
-                    if successRead and content and #content > 0 then
-                    local func, syntaxErr = loadstring(content)
-                    if func then
-                        local execSuccess, moduleResult = pcall(func)
-                        if execSuccess then
-                            initModuleTable(moduleResult, filePath)
-                            modulesLoadedCount = modulesLoadedCount + 1
-                        else
-                            warn("Main UI | Runtime error in module '" .. filePath .. "': " .. tostring(moduleResult))
-                        end
-                    else
-                        warn("Main UI | Syntax error in module '" .. filePath .. "': " .. tostring(syntaxErr))
-                    end
+
+    for _, modulePath in ipairs(modulePaths) do
+        local folderPath = modulePath:match("^(.*)/[^/]+$") or ""
+        local content = nil
+        local sourcePath = nil
+        local readErr = nil
+
+        if type(readfile) == "function" then
+            content, sourcePath, readErr = readModuleFile(folderPath, modulePath)
+        end
+
+        if not content then
+            content, sourcePath, readErr = fetchRemoteModuleFile(modulePath)
+        end
+
+        if content then
+            local func, syntaxErr = loadstring(content)
+            if func then
+                local execSuccess, moduleResult = pcall(func)
+                if execSuccess then
+                    initModuleTable(moduleResult, sourcePath or modulePath)
+                    modulesLoadedCount = modulesLoadedCount + 1
                 else
-                    warn("Main UI | Failed to read module file or file is empty: " .. filePath)
+                    warn("Main UI | Runtime error in module '" .. tostring(sourcePath or modulePath) .. "': " .. tostring(moduleResult))
                 end
+            else
+                warn("Main UI | Syntax error in module '" .. tostring(sourcePath or modulePath) .. "': " .. tostring(syntaxErr))
             end
+        else
+            warn("Main UI | Failed to load module file: " .. tostring(modulePath) .. " | " .. tostring(readErr))
         end
     end
-end
-    
+
     if modulesLoadedCount == 0 then
-        Tab:CreateLabel("No modules found in executor workspace directories.")
+        Tab:CreateLabel("No modules loaded from local workspace or GitHub.")
     end
-    
+
     return true
 end
 
@@ -286,9 +345,9 @@ local function loadStudioModules()
 end
 
 -- Start loading modules based on environment
-local isExecutor = pcall(function() return isfolder("Player Modifier") end)
+local isExecutor = type(loadstring) == "function"
 if isExecutor then
-    print("Main UI | Executor environment detected. Loading from workspace/Player Modifier.")
+    print("Main UI | Executor environment detected. Loading modules from local workspace or GitHub.")
     loadExecutorModules()
 else
     print("Main UI | Non-executor / Studio environment detected. Checking ReplicatedStorage / Workspace for PlayerModifierModules.")
