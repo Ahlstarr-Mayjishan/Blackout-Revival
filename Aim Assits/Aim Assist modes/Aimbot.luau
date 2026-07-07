@@ -42,8 +42,11 @@ function Aimbot:Init(Tab)
             return
         end
 
-        -- Only lock when right mouse button is pressed
+        local character = LocalPlayer.Character
         local isAimingHeld = UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton2)
+            or (_G.CharacterStates and _G.CharacterStates.Aiming == true)
+            or (character and character:GetAttribute("InFirstPerson") == true and LocalPlayer:GetAttribute("MouseLocked") == true)
+
         if isAimingHeld then
             local Camera = Workspace.CurrentCamera
             if not Camera then

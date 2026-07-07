@@ -63,13 +63,12 @@ local function checkWallVisibility(targetPos, character)
     
     local raycastParams = RaycastParams.new()
     raycastParams.FilterType = Enum.RaycastFilterType.Exclude
-    raycastParams.FilterDescendantsInstances = {LocalPlayer.Character, character, Camera}
+    raycastParams.FilterDescendantsInstances = {LocalPlayer.Character, Camera}
     raycastParams.IgnoreWater = true
     
     local raycastResult = Workspace:Raycast(cameraPos, rayDirection, raycastParams)
     
-    -- If nothing solid intersects the ray, the target is visible
-    return raycastResult == nil
+    return raycastResult == nil or raycastResult.Instance:IsDescendantOf(character)
 end
 
 local function getClosestTarget()
@@ -82,7 +81,8 @@ local function getClosestTarget()
         return nil, nil
     end
 
-    local mousePos = UserInputService:GetMouseLocation()
+    local viewportSize = Camera.ViewportSize
+    local aimCenter = Vector2.new(viewportSize.X / 2, viewportSize.Y / 2)
     local closestCharacter = nil
     local closestDistance = _G.AimAssistStates.FOVRadius or 100
     local targetPosition = nil
@@ -133,10 +133,10 @@ local function getClosestTarget()
                         local screenPos, onScreen = Camera:WorldToViewportPoint(pos)
                         if onScreen then
                             local screenVec2 = Vector2.new(screenPos.X, screenPos.Y)
-                            local distToMouse = (screenVec2 - mousePos).Magnitude
+                            local distToCenter = (screenVec2 - aimCenter).Magnitude
                             
                             -- Target within FOV radius and closer than current best candidate
-                            if distToMouse < closestDistance then
+                            if distToCenter < closestDistance then
                                 -- Wall/visibility check
                                 local isVisible = true
                                 if _G.AimAssistStates.WallCheck then
@@ -145,7 +145,7 @@ local function getClosestTarget()
                                 
                                 if isVisible then
                                     closestCharacter = child
-                                    closestDistance = distToMouse
+                                    closestDistance = distToCenter
                                     targetPosition = pos
                                 end
                             end
@@ -168,8 +168,9 @@ function Executor:Init(UIRef)
     local fovConnection = RunService.RenderStepped:Connect(function()
         if FOVCircle then
             if _G.AimAssistStates and _G.AimAssistStates.Enabled and _G.AimAssistStates.ShowFOV then
-                local mouseLocation = UserInputService:GetMouseLocation()
-                FOVCircle.Position = mouseLocation
+                local camera = Workspace.CurrentCamera
+                local viewportSize = camera and camera.ViewportSize or Vector2.new(0, 0)
+                FOVCircle.Position = Vector2.new(viewportSize.X / 2, viewportSize.Y / 2)
                 FOVCircle.Radius = _G.AimAssistStates.FOVRadius or 100
                 FOVCircle.Visible = true
             else
