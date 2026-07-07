@@ -9,8 +9,11 @@
     game code, making the redirection completely legitimate to the server.
 ]]
 
+local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
+
+local LocalPlayer = Players.LocalPlayer
 
 local SilentAim = {}
 SilentAim.Name = "Silent Aim Mode"
@@ -21,20 +24,25 @@ local function log(msg)
     print("[Aim Assist - SilentAim] " .. tostring(msg))
 end
 
--- Get target bone based on configuration
+-- Get target bone based on configuration with safety fallbacks
 local function getTargetBone(targetCharacter)
     local targetPartName = _G.AimAssistStates and _G.AimAssistStates.TargetPart or "Head"
     if targetPartName == "Head" then
         return targetCharacter:FindFirstChild("Head")
             or targetCharacter:FindFirstChild("HumanoidRootPart")
-            or targetCharacter:FindFirstChild("UpperTorso")
+            or targetCharacter.PrimaryPart
     end
 
     return targetCharacter:FindFirstChild("Torso")
         or targetCharacter:FindFirstChild("UpperTorso")
         or targetCharacter:FindFirstChild("HumanoidRootPart")
-        or targetCharacter:FindFirstChild("Head")
+        or targetCharacter.PrimaryPart
 end
+
+-- Target Memory / Stickiness variables to maintain lock during high recoil or wall flickers
+local lastTargetChar = nil
+local lastTargetBone = nil
+local lastTargetTime = 0
 
 -- Build target information table for FastCast homing
 local function buildTargetInformation()
@@ -47,18 +55,39 @@ local function buildTargetInformation()
     end
 
     local targetCharacter, targetPos = _G.GetClosestAimTarget()
-    if not targetCharacter then
-        return nil
+    local targetBone = nil
+
+    if targetCharacter then
+        targetBone = getTargetBone(targetCharacter)
+        if targetBone then
+            lastTargetChar = targetCharacter
+            lastTargetBone = targetBone
+            lastTargetTime = os.clock()
+        end
+    else
+        -- Target Memory Fallback: Reuse last target if within 0.3 seconds and target is still alive and nearby
+        if lastTargetChar and lastTargetBone and (os.clock() - lastTargetTime < 0.3) then
+            local localChar = LocalPlayer.Character
+            if lastTargetChar.Parent and lastTargetChar:FindFirstChild("Humanoid") and lastTargetChar.Humanoid.Health > 0 then
+                if localChar and localChar:FindFirstChild("HumanoidRootPart") and lastTargetChar:FindFirstChild("HumanoidRootPart") then
+                    local dist = (lastTargetChar.HumanoidRootPart.Position - localChar.HumanoidRootPart.Position).Magnitude
+                    -- Ensure they are still within a reasonable targeting distance
+                    if dist <= 300 then
+                        targetCharacter = lastTargetChar
+                        targetBone = lastTargetBone
+                    end
+                end
+            end
+        end
     end
 
-    local targetBone = getTargetBone(targetCharacter)
-    if not targetBone then
+    if not targetCharacter or not targetBone then
         return nil
     end
 
     return {
         Object = targetBone,
-        Distance = math.max((_G.AimAssistStates.FOVRadius or 100) * 3, 250), -- Homing activation distance threshold
+        Distance = 9999, -- Maximize check radius to ensure homing math never fails distance clamps
         Lerp = {
             Min = 1.0, -- Force instant snap
             Max = 1.0,

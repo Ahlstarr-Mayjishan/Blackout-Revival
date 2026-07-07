@@ -40,7 +40,7 @@ local function getTargetPosition(character, partName)
     if not targetPart and partName == "Head" then
         targetPart = character:FindFirstChild("Head") or character.PrimaryPart
     elseif not targetPart and partName == "Torso" then
-        targetPart = character:FindFirstChild("Torso") or character:FindFirstChild("UpperTorso") or character:FindFirstChild("HumanoidRootPart")
+        targetPart = character:FindFirstChild("Torso") or character:FindFirstChild("UpperTorso") or character:FindFirstChild("HumanoidRootPart") or character.PrimaryPart
     end
     return targetPart and targetPart.Position
 end
