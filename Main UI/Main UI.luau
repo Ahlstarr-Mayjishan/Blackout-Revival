@@ -97,6 +97,8 @@ local Tab = Window:CreateTab("Main Settings", 4483362458)
 
 -- 4. Programmatic Tab-less Override
 -- This routine hides the tab bar (sidebar) and stretches the elements page to fill the UI
+local ENABLE_TABLESS_LAYOUT = false
+
 local function applyTablessLayout()
     task.spawn(function()
         local LocalPlayer = Players.LocalPlayer
@@ -149,7 +151,9 @@ local function applyTablessLayout()
     end)
 end
 
-applyTablessLayout()
+if ENABLE_TABLESS_LAYOUT then
+    applyTablessLayout()
+end
 
 local function sendNotification(cfg)
     if type(Rayfield) == "table" and type(Rayfield.Notify) == "function" then
