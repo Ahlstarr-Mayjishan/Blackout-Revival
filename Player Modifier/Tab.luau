@@ -29,7 +29,17 @@ _G.ModifierStates = _G.ModifierStates or {
         ["No Slowdown Block"] = false,
         ["No Slowdown OverWeight"] = false,
         ["No Slowdown Broken Leg/Arm"] = false
-    }
+    },
+    InfiniteStamina = false,
+    SpeedHackEnabled = false,
+    CustomWalkSpeed = 16,
+    ReviveAura = false,
+    ReviveAuraRange = 20,
+    FinisherAura = false,
+    FinisherAuraRange = 15,
+    AutoBash = false,
+    AutoBashEnemies = true,
+    AntiFlashbang = false
 }
 
 -- Store connections here so they can be cleaned up by GC.luau
@@ -47,6 +57,47 @@ function Tab:Init(UIRef)
     
     -- Create Section for Movement & Physics
     UIRef:CreateSection("Movement & Physics")
+
+    -- Toggle: Infinite Stamina
+    UIRef:CreateToggle({
+        Name = "Infinite Stamina",
+        CurrentValue = _G.ModifierStates.InfiniteStamina,
+        Flag = "InfiniteStamina_Toggle",
+        Callback = function(Value)
+            if _G.ModifierStates then
+                _G.ModifierStates.InfiniteStamina = Value
+            end
+            print("[Player Modifier - Tab] Infinite Stamina state: " .. tostring(Value))
+        end,
+    })
+
+    -- Toggle: Speed Hack
+    UIRef:CreateToggle({
+        Name = "Enable Speed Hack",
+        CurrentValue = _G.ModifierStates.SpeedHackEnabled,
+        Flag = "SpeedHackEnabled_Toggle",
+        Callback = function(Value)
+            if _G.ModifierStates then
+                _G.ModifierStates.SpeedHackEnabled = Value
+            end
+            print("[Player Modifier - Tab] Speed Hack state: " .. tostring(Value))
+        end,
+    })
+
+    -- Slider: Custom WalkSpeed
+    UIRef:CreateSlider({
+        Name = "Custom WalkSpeed",
+        Range = {16, 120},
+        Increment = 1,
+        CurrentValue = _G.ModifierStates.CustomWalkSpeed or 16,
+        Flag = "CustomWalkSpeed_Slider",
+        Callback = function(Value)
+            if _G.ModifierStates then
+                _G.ModifierStates.CustomWalkSpeed = Value
+            end
+            print("[Player Modifier - Tab] Custom WalkSpeed set to: " .. tostring(Value))
+        end,
+    })
 
     -- 1. Toggle: Infinite Double Jump
     UIRef:CreateToggle({
@@ -131,6 +182,129 @@ function Tab:Init(UIRef)
                 _G.ModifierStates.AutoUnlock = Value
             end
             print("[Player Modifier - Tab] Auto-Unlock state: " .. tostring(Value))
+        end,
+    })
+
+    -- Create Section for Aura Actions
+    UIRef:CreateSection("Aura Actions")
+
+    -- Toggle: Revive Aura
+    UIRef:CreateToggle({
+        Name = "Revive Aura (Auto Revive Teammates)",
+        CurrentValue = _G.ModifierStates.ReviveAura,
+        Flag = "ReviveAura_Toggle",
+        Callback = function(Value)
+            if _G.ModifierStates then
+                _G.ModifierStates.ReviveAura = Value
+            end
+            print("[Player Modifier - Tab] Revive Aura state: " .. tostring(Value))
+        end,
+    })
+
+    -- Slider: Revive Aura Range
+    UIRef:CreateSlider({
+        Name = "Revive Aura Range (Studs)",
+        Range = {5, 50},
+        Increment = 1,
+        CurrentValue = _G.ModifierStates.ReviveAuraRange or 20,
+        Flag = "ReviveAuraRange_Slider",
+        Callback = function(Value)
+            if _G.ModifierStates then
+                _G.ModifierStates.ReviveAuraRange = Value
+            end
+            print("[Player Modifier - Tab] Revive Aura Range set to: " .. tostring(Value))
+        end,
+    })
+
+    -- Button: Self Revive
+    UIRef:CreateButton({
+        Name = "Self-Revive (Instant Self Rescue)",
+        Callback = function()
+            local character = game.Players.LocalPlayer.Character
+            local reviveRemote = game.ReplicatedStorage:FindFirstChild("Events")
+                and game.ReplicatedStorage.Events:FindFirstChild("Actions")
+                and game.ReplicatedStorage.Events.Actions:FindFirstChild("Revive")
+            if character and reviveRemote then
+                pcall(function()
+                    reviveRemote:FireServer(character)
+                end)
+                print("[Player Modifier - Tab] Dispatched self-revive RemoteEvent call.")
+            else
+                warn("[Player Modifier - Tab] Failed to execute self-revive (Remote or Character missing).")
+            end
+        end,
+    })
+
+    -- Toggle: Finisher Aura
+    UIRef:CreateToggle({
+        Name = "Finisher Aura (Auto Execute Enemies)",
+        CurrentValue = _G.ModifierStates.FinisherAura,
+        Flag = "FinisherAura_Toggle",
+        Callback = function(Value)
+            if _G.ModifierStates then
+                _G.ModifierStates.FinisherAura = Value
+            end
+            print("[Player Modifier - Tab] Finisher Aura state: " .. tostring(Value))
+        end,
+    })
+
+    -- Slider: Finisher Aura Range
+    UIRef:CreateSlider({
+        Name = "Finisher Aura Range (Studs)",
+        Range = {5, 30},
+        Increment = 1,
+        CurrentValue = _G.ModifierStates.FinisherAuraRange or 15,
+        Flag = "FinisherAuraRange_Slider",
+        Callback = function(Value)
+            if _G.ModifierStates then
+                _G.ModifierStates.FinisherAuraRange = Value
+            end
+            print("[Player Modifier - Tab] Finisher Aura Range set to: " .. tostring(Value))
+        end,
+    })
+
+    -- Create Section for Bashing
+    UIRef:CreateSection("Auto-Bash")
+
+    -- Toggle: Auto-Bash Doors/Enemies
+    UIRef:CreateToggle({
+        Name = "Auto-Bash (Doors & Melee Push)",
+        CurrentValue = _G.ModifierStates.AutoBash,
+        Flag = "AutoBash_Toggle",
+        Callback = function(Value)
+            if _G.ModifierStates then
+                _G.ModifierStates.AutoBash = Value
+            end
+            print("[Player Modifier - Tab] Auto-Bash state: " .. tostring(Value))
+        end,
+    })
+
+    -- Toggle: Auto-Bash Enemies
+    UIRef:CreateToggle({
+        Name = "Bash Nearby Enemies",
+        CurrentValue = _G.ModifierStates.AutoBashEnemies,
+        Flag = "AutoBashEnemies_Toggle",
+        Callback = function(Value)
+            if _G.ModifierStates then
+                _G.ModifierStates.AutoBashEnemies = Value
+            end
+            print("[Player Modifier - Tab] Auto-Bash Enemies state: " .. tostring(Value))
+        end,
+    })
+
+    -- Create Section for Immunity
+    UIRef:CreateSection("Immunity")
+
+    -- Toggle: Anti-Flashbang
+    UIRef:CreateToggle({
+        Name = "Anti-Flashbang & Anti-Concussion",
+        CurrentValue = _G.ModifierStates.AntiFlashbang,
+        Flag = "AntiFlashbang_Toggle",
+        Callback = function(Value)
+            if _G.ModifierStates then
+                _G.ModifierStates.AntiFlashbang = Value
+            end
+            print("[Player Modifier - Tab] Anti-Flashbang state: " .. tostring(Value))
         end,
     })
 

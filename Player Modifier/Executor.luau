@@ -38,6 +38,32 @@ local function isModifierEnabled(flagName)
     return _G.ModifierStates and _G.ModifierStates[flagName] == true
 end
 
+local function isDamagePayloadBlocked(args)
+    if not isModifierEnabled("NoFallDamage") then
+        return false
+    end
+
+    -- Manual reset/give-up uses Damage(1000, { Head = 1000 }, nil, true).
+    -- Keep that path intact so the reset button still works.
+    if args[4] == true then
+        return false
+    end
+
+    -- Landed fall damage in RagdollClient:
+    -- Damage(v22, limbDamage, true)
+    if args[3] == true then
+        return true
+    end
+
+    -- High-speed ragdoll/impact damage in RagdollClient:
+    -- Damage(v32 * v62, limbDamage)
+    return type(args[1]) == "number" and type(args[2]) == "table"
+end
+
+local function shouldBlockRagdoll()
+    return isModifierEnabled("AntiRagdoll") or isModifierEnabled("NoFallDamage")
+end
+
 -- Hook Remote Events (Damage & Ragdoll)
 local function setupRemoteHooks()
     _G.OriginalFunctions = _G.OriginalFunctions or {}
@@ -62,11 +88,11 @@ local function setupRemoteHooks()
             if method == "FireServer" then
                 local args = {...}
 
-                if self == damageRemote and isModifierEnabled("NoFallDamage") and args[3] == true then
+                if self == damageRemote and isDamagePayloadBlocked(args) then
                     return nil
                 end
 
-                if self == ragdollRemote and isModifierEnabled("AntiRagdoll") then
+                if self == ragdollRemote and shouldBlockRagdoll() then
                     return nil
                 end
             end
@@ -89,7 +115,7 @@ local function setupRemoteHooks()
         if damageRemote then
             originals.Damage = hookfunction(damageRemote.FireServer, function(self, ...)
                 local args = {...}
-                if self == damageRemote and isModifierEnabled("NoFallDamage") and args[3] == true then
+                if self == damageRemote and isDamagePayloadBlocked(args) then
                     return nil
                 end
                 return originals.Damage(self, ...)
@@ -98,7 +124,7 @@ local function setupRemoteHooks()
 
         if ragdollRemote then
             originals.Ragdoll = hookfunction(ragdollRemote.FireServer, function(self, ...)
-                if self == ragdollRemote and isModifierEnabled("AntiRagdoll") then
+                if self == ragdollRemote and shouldBlockRagdoll() then
                     return nil
                 end
                 return originals.Ragdoll(self, ...)
@@ -114,22 +140,30 @@ end
 
 local function setupLocalRagdollRecovery()
     local function recover()
-        if not isModifierEnabled("AntiRagdoll") then
+        if not (isModifierEnabled("AntiRagdoll") or isModifierEnabled("NoFallDamage")) then
             return
         end
 
         local character = LocalPlayer.Character
         local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+        local root = character and character:FindFirstChild("HumanoidRootPart")
 
         if _G.CharacterStates then
             _G.CharacterStates.Ragdolled = false
             _G.CharacterStates.InPhysics = false
+            if isModifierEnabled("NoFallDamage") then
+                _G.CharacterStates.Falling = false
+            end
         end
 
         if character then
             character:SetAttribute("Ragdolled", false)
             character:SetAttribute("InPhysics", false)
             character:SetAttribute("AutoRotate", true)
+            if isModifierEnabled("NoFallDamage") then
+                character:SetAttribute("Falling", false)
+                character:SetAttribute("CS", false)
+            end
         end
 
         if humanoid then
@@ -138,6 +172,12 @@ local function setupLocalRagdollRecovery()
             if humanoid:GetState() == Enum.HumanoidStateType.Physics or humanoid:GetState() == Enum.HumanoidStateType.FallingDown then
                 humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
             end
+        end
+
+        if root and isModifierEnabled("NoFallDamage") and root.AssemblyLinearVelocity.Y < -120 then
+            local velocity = root.AssemblyLinearVelocity
+            root.AssemblyLinearVelocity = Vector3.new(velocity.X, -80, velocity.Z)
+            root.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
         end
     end
 

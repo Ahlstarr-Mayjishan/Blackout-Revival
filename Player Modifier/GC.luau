@@ -18,16 +18,22 @@ end
 -- Disconnect all event listeners
 local function cleanupConnections()
     local count = 0
+    local threadCount = 0
     if _G.ModifierConnections then
         for _, connection in ipairs(_G.ModifierConnections) do
             if typeof(connection) == "RBXScriptConnection" and connection.Connected then
                 connection:Disconnect()
                 count = count + 1
+            elseif typeof(connection) == "thread" then
+                pcall(function()
+                    task.cancel(connection)
+                end)
+                threadCount = threadCount + 1
             end
         end
         table.clear(_G.ModifierConnections)
     end
-    log("Disconnected " .. tostring(count) .. " active event connections.")
+    log("Disconnected " .. tostring(count) .. " active event connections and cancelled " .. tostring(threadCount) .. " threads.")
 end
 
 -- Restore hooked metatable and functions
@@ -111,6 +117,51 @@ local function restoreHooks()
             end
         end
         _G.OriginalFunctions["GetAttribute"] = nil
+    end
+
+    -- Restore Stamina FireServer hook
+    if _G.OriginalFunctions and _G.OriginalFunctions["Stamina_FireServer"] then
+        if hookfunction then
+            pcall(function()
+                local ReplicatedStorage = game:GetService("ReplicatedStorage")
+                local staminaRemote = ReplicatedStorage:FindFirstChild("Events")
+                    and ReplicatedStorage.Events:FindFirstChild("Player")
+                    and ReplicatedStorage.Events.Player:FindFirstChild("Stamina")
+                if staminaRemote then
+                    hookfunction(staminaRemote.FireServer, _G.OriginalFunctions["Stamina_FireServer"])
+                    log("Restored original Stamina.FireServer successfully.")
+                end
+            end)
+        end
+        _G.OriginalFunctions["Stamina_FireServer"] = nil
+    end
+
+    -- Restore WalkSpeed NewIndex hook
+    if _G.OriginalFunctions and _G.OriginalFunctions["WalkSpeed_NewIndex"] then
+        if hookmetamethod then
+            pcall(function()
+                hookmetamethod(game, "__newindex", _G.OriginalFunctions["WalkSpeed_NewIndex"])
+                log("Restored original __newindex WalkSpeed handler successfully.")
+            end)
+        end
+        _G.OriginalFunctions["WalkSpeed_NewIndex"] = nil
+    end
+
+    -- Restore Flashbang Connect hook
+    if _G.OriginalFunctions and _G.OriginalFunctions["Flashbang_Connect"] then
+        if hookfunction then
+            pcall(function()
+                local ReplicatedStorage = game:GetService("ReplicatedStorage")
+                local flashbangRemote = ReplicatedStorage:FindFirstChild("Events")
+                    and ReplicatedStorage.Events:FindFirstChild("Player")
+                    and ReplicatedStorage.Events.Player:FindFirstChild("Flashbang")
+                if flashbangRemote then
+                    hookfunction(flashbangRemote.OnClientEvent.Connect, _G.OriginalFunctions["Flashbang_Connect"])
+                    log("Restored original Flashbang.OnClientEvent.Connect successfully.")
+                end
+            end)
+        end
+        _G.OriginalFunctions["Flashbang_Connect"] = nil
     end
 
     if _G.OriginalFunctions and _G.OriginalFunctions["MeleeRaycast_Function"] then
