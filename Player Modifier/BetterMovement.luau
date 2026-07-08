@@ -353,8 +353,10 @@ function BetterMovement:Init(UIRef)
     _G.ModifierConnections = _G.ModifierConnections or {}
     getOptions()
 
-    setupStatesProxy()
-    restoreOldBrokenProxyIfNeeded()
+    -- Avoid proxying _G.CharacterStates during live gameplay. The inventory and
+    -- equip pipeline reads many transient states from this table; a proxy can
+    -- leave the client seeing stale or sanitized values and block equip.
+    BetterMovement.RestoreGlobalProxy()
     setupStateSanitizer()
     setupNoInertia()
 

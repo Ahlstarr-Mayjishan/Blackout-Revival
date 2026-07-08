@@ -209,11 +209,33 @@ local function restoreHooks()
         _G.OriginalFunctions["MeleeRaycast_Function"] = nil
     end
     
-    -- 4. Restore _G Proxy Metatable if exists
+    -- 4. Restore _G proxy metatable if BetterMovement installed one. Older
+    -- builds removed _G's metatable without restoring the raw CharacterStates
+    -- table, which can leave inventory/equip code reading nil or stale states.
     local mt = getmetatable(_G)
-    if mt and mt.__isProxy then
+    local movementRuntime = _G.ModifierRuntime and _G.ModifierRuntime.BetterMovement
+
+    if mt and mt.__betterMovementProxy and movementRuntime then
+        mt.__index = movementRuntime.OldGlobalIndex
+        mt.__newindex = movementRuntime.OldGlobalNewIndex
+        mt.__betterMovementProxy = nil
+        mt.__isProxy = nil
+
+        if movementRuntime.RawCharacterStates then
+            rawset(_G, "CharacterStates", movementRuntime.RawCharacterStates)
+        end
+
+        if next(mt) == nil then
+            setmetatable(_G, nil)
+        else
+            setmetatable(_G, mt)
+        end
+
+        movementRuntime.ProxyInstalled = false
+        log("Restored BetterMovement _G proxy and CharacterStates.")
+    elseif mt and mt.__isProxy then
         setmetatable(_G, nil)
-        log("Restored original _G metatable.")
+        log("Removed legacy _G proxy metatable.")
     end
 end
 
