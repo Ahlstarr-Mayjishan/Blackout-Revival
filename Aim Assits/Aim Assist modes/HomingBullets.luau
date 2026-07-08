@@ -12,6 +12,7 @@
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
+local Debris = game:GetService("Debris")
 
 local LocalPlayer = Players.LocalPlayer
 local tableUnpack = table.unpack or unpack
@@ -43,6 +44,64 @@ end
 local function isAlive(character)
     local humanoid = character and character:FindFirstChildOfClass("Humanoid")
     return humanoid and humanoid.Health > 0
+end
+
+local function hasClearLine(fromPos, toPos, targetCharacter)
+    if typeof(fromPos) ~= "Vector3" or typeof(toPos) ~= "Vector3" then
+        return false
+    end
+
+    local delta = toPos - fromPos
+    if delta.Magnitude <= 0 then
+        return true
+    end
+
+    local raycastParams = RaycastParams.new()
+    raycastParams.FilterType = Enum.RaycastFilterType.Exclude
+    raycastParams.FilterDescendantsInstances = { LocalPlayer.Character }
+    raycastParams.IgnoreWater = true
+
+    pcall(function()
+        raycastParams.CollisionGroup = "RayCasts"
+    end)
+
+    local result = Workspace:Raycast(fromPos, delta, raycastParams)
+    if not result then
+        return true
+    end
+
+    return targetCharacter ~= nil and result.Instance:IsDescendantOf(targetCharacter)
+end
+
+local function hasClearLineToTargetPart(fromPos, toPos, targetPart, targetCharacter)
+    if typeof(fromPos) ~= "Vector3" or typeof(toPos) ~= "Vector3" then
+        return false
+    end
+
+    local delta = toPos - fromPos
+    if delta.Magnitude <= 0 then
+        return true
+    end
+
+    local raycastParams = RaycastParams.new()
+    raycastParams.FilterType = Enum.RaycastFilterType.Exclude
+    raycastParams.FilterDescendantsInstances = { LocalPlayer.Character }
+    raycastParams.IgnoreWater = true
+
+    pcall(function()
+        raycastParams.CollisionGroup = "RayCasts"
+    end)
+
+    local result = Workspace:Raycast(fromPos, delta, raycastParams)
+    if not result then
+        return false
+    end
+
+    if targetPart and (result.Instance == targetPart or result.Instance:IsDescendantOf(targetPart)) then
+        return true
+    end
+
+    return targetCharacter ~= nil and result.Instance:IsDescendantOf(targetCharacter)
 end
 
 -- Get target bone based on configuration with safety fallbacks
@@ -117,8 +176,164 @@ local lastTargetChar = nil
 local lastTargetBone = nil
 local lastTargetTime = 0
 
+local function getPathDistance(points)
+    local total = 0
+    for i = 1, #points - 1 do
+        total = total + (points[i + 1] - points[i]).Magnitude
+    end
+    return total
+end
+
+local function isClearPath(points, targetCharacter, targetPart)
+    for i = 1, #points - 1 do
+        local isFinalSegment = i == #points - 1
+        local clear = if isFinalSegment
+            then hasClearLineToTargetPart(points[i], points[i + 1], targetPart, targetCharacter)
+            else hasClearLine(points[i], points[i + 1], nil)
+
+        if not clear then
+            return false
+        end
+    end
+
+    return true
+end
+
+local function pickCurvePath(origin, targetBone, targetCharacter)
+    if typeof(origin) ~= "Vector3" or not targetBone then
+        return nil
+    end
+
+    local targetPos = targetBone.Position
+    if hasClearLine(origin, targetPos, targetCharacter) then
+        return nil
+    end
+
+    local distance = (targetPos - origin).Magnitude
+    local lift = math.clamp(distance * 0.35, 28, 110)
+    local side = math.clamp(distance * 0.24, 18, 85)
+    local midpoint = origin:Lerp(targetPos, 0.5)
+    local camera = Workspace.CurrentCamera
+    local right = camera and camera.CFrame.RightVector or Vector3.new(1, 0, 0)
+    local forward = camera and camera.CFrame.LookVector or (targetPos - origin).Unit
+    local up = Vector3.new(0, 1, 0)
+
+    local candidates = {
+        midpoint + Vector3.new(0, lift, 0),
+        midpoint + Vector3.new(0, lift * 0.65, 0) + right * side,
+        midpoint + Vector3.new(0, lift * 0.65, 0) - right * side,
+        origin:Lerp(targetPos, 0.35) + Vector3.new(0, lift, 0) + right * (side * 0.65),
+        origin:Lerp(targetPos, 0.35) + Vector3.new(0, lift, 0) - right * (side * 0.65),
+        origin:Lerp(targetPos, 0.65) + Vector3.new(0, lift, 0) + right * (side * 0.65),
+        origin:Lerp(targetPos, 0.65) + Vector3.new(0, lift, 0) - right * (side * 0.65),
+        midpoint + Vector3.new(0, lift * 0.5, 0) + forward * (side * 0.75),
+        midpoint + Vector3.new(0, lift * 0.5, 0) - forward * (side * 0.75),
+    }
+
+    local approachDistance = math.clamp(distance * 0.14, 8, 32)
+    local targetApproaches = {
+        targetPos + up * approachDistance,
+        targetPos + right * approachDistance,
+        targetPos - right * approachDistance,
+        targetPos + forward * approachDistance,
+        targetPos - forward * approachDistance,
+        targetPos + up * (approachDistance * 0.7) + right * (approachDistance * 0.7),
+        targetPos + up * (approachDistance * 0.7) - right * (approachDistance * 0.7),
+    }
+
+    local bestPath = nil
+    local bestDistance = math.huge
+
+    for _, waypoint in ipairs(candidates) do
+        local path = { origin, waypoint, targetPos }
+        if isClearPath(path, targetCharacter, targetBone) then
+            local pathDistance = getPathDistance(path)
+            if pathDistance < bestDistance then
+                bestDistance = pathDistance
+                bestPath = { waypoint }
+            end
+        end
+    end
+
+    for _, approach in ipairs(targetApproaches) do
+        local path = { origin, approach, targetPos }
+        if isClearPath(path, targetCharacter, targetBone) then
+            local pathDistance = getPathDistance(path)
+            if pathDistance < bestDistance then
+                bestDistance = pathDistance
+                bestPath = { approach }
+            end
+        end
+    end
+
+    for i = 1, #candidates do
+        for j = 1, #candidates do
+            if i ~= j then
+                local path = { origin, candidates[i], candidates[j], targetPos }
+                if isClearPath(path, targetCharacter, targetBone) then
+                    local pathDistance = getPathDistance(path)
+                    if pathDistance < bestDistance then
+                        bestDistance = pathDistance
+                        bestPath = { candidates[i], candidates[j] }
+                    end
+                end
+            end
+        end
+    end
+
+    for _, waypoint in ipairs(candidates) do
+        for _, approach in ipairs(targetApproaches) do
+            local path = { origin, waypoint, approach, targetPos }
+            if isClearPath(path, targetCharacter, targetBone) then
+                local pathDistance = getPathDistance(path)
+                if pathDistance < bestDistance then
+                    bestDistance = pathDistance
+                    bestPath = { waypoint, approach }
+                end
+            end
+        end
+    end
+
+    -- Helps over low cover. A fully sealed route still needs piercing/ignore-collision.
+    return bestPath or { candidates[1] }
+end
+
+local function createCurveProxy(origin, targetBone, targetCharacter)
+    local path = pickCurvePath(origin, targetBone, targetCharacter)
+    if not path or not path[1] then
+        return nil
+    end
+
+    local proxy = Instance.new("Part")
+    proxy.Name = "HomingCurveProxy"
+    proxy.Anchored = true
+    proxy.CanCollide = false
+    proxy.CanTouch = false
+    proxy.Transparency = 1
+    proxy.Size = Vector3.new(0.25, 0.25, 0.25)
+    proxy.Position = path[1]
+
+    pcall(function()
+        proxy.CanQuery = false
+    end)
+
+    proxy.Parent = Workspace
+    Debris:AddItem(proxy, 3)
+
+    return {
+        Proxy = proxy,
+        TargetBone = targetBone,
+        TargetCharacter = targetCharacter,
+        Path = path,
+        PathIndex = 1,
+        Waypoint = path[1],
+        Phase = "Waypoint",
+        CreatedAt = os.clock(),
+    }
+end
+
 -- Build target information table for FastCast homing
-local function buildTargetInformation()
+local function buildTargetInformation(origin)
     if not isHomingEnabled() then
         return nil
     end
@@ -164,8 +379,10 @@ local function buildTargetInformation()
         return nil
     end
 
+    local curveProxyData = createCurveProxy(origin, targetBone, targetCharacter)
+
     return {
-        Object = targetBone,
+        Object = curveProxyData and curveProxyData.Proxy or targetBone,
         Distance = 9999, -- Keeps native homing lerp at full strength.
         Lerp = {
             Min = 1.0, -- Force instant snap
@@ -174,6 +391,7 @@ local function buildTargetInformation()
         Deadzone = -1, -- Disable angle restrictions
         KeepVelocity = true,
         TurningDrag = false,
+        CurveProxyData = curveProxyData,
     }, targetCharacter
 end
 
@@ -215,7 +433,8 @@ local function injectTargetInformation(activeCast)
         return
     end
 
-    local targetInformation, targetCharacter = buildTargetInformation()
+    local origin = activeCast.UserData and activeCast.UserData.Origin
+    local targetInformation, targetCharacter = buildTargetInformation(origin)
     if not targetInformation then
         return
     end
@@ -223,6 +442,95 @@ local function injectTargetInformation(activeCast)
     activeCast.UserData.TargetInformation = targetInformation
 
     log("Injected native homing data: " .. tostring(targetCharacter.Name))
+end
+
+local function cleanupCurveProxy(proxyData, lengthConnection, hitConnection, terminateConnection)
+    if lengthConnection then
+        lengthConnection:Disconnect()
+    end
+    if hitConnection then
+        hitConnection:Disconnect()
+    end
+    if terminateConnection then
+        terminateConnection:Disconnect()
+    end
+    if proxyData and proxyData.Proxy then
+        proxyData.Proxy:Destroy()
+    end
+end
+
+local function attachCurveController(casterInstance, activeCast)
+    if not casterInstance or not activeCast or not activeCast.UserData then
+        return
+    end
+
+    local targetInformation = activeCast.UserData.TargetInformation
+    local proxyData = targetInformation and targetInformation.CurveProxyData
+    if not proxyData or not proxyData.Proxy or not proxyData.TargetBone then
+        return
+    end
+
+    local lengthConnection = nil
+    local hitConnection = nil
+    local terminateConnection = nil
+
+    lengthConnection = casterInstance.LengthChanged:Connect(function(cast, lastPoint)
+        if cast ~= activeCast then
+            return
+        end
+
+        local proxy = proxyData.Proxy
+        local targetBone = proxyData.TargetBone
+        if not proxy or not proxy.Parent or not targetBone or not targetBone.Parent then
+            cleanupCurveProxy(proxyData, lengthConnection, hitConnection, terminateConnection)
+            return
+        end
+
+        local currentPos = lastPoint
+        pcall(function()
+            currentPos = cast:GetPosition()
+        end)
+
+        local targetPos = targetBone.Position
+        if proxyData.Phase == "Waypoint" then
+            local reachedWaypoint = (currentPos - proxyData.Waypoint).Magnitude <= 32
+            local targetVisible = hasClearLine(currentPos, targetPos, proxyData.TargetCharacter)
+            local timedOut = os.clock() - proxyData.CreatedAt > 0.45
+
+            if reachedWaypoint and proxyData.Path and proxyData.PathIndex < #proxyData.Path then
+                proxyData.PathIndex = proxyData.PathIndex + 1
+                proxyData.Waypoint = proxyData.Path[proxyData.PathIndex]
+            elseif reachedWaypoint or targetVisible or timedOut then
+                proxyData.Phase = "Target"
+            end
+        end
+
+        if proxyData.Phase == "Target" then
+            proxy.Position = targetPos
+        else
+            proxy.Position = proxyData.Waypoint
+        end
+    end)
+
+    hitConnection = casterInstance.RayHit:Connect(function(cast)
+        if cast == activeCast then
+            cleanupCurveProxy(proxyData, lengthConnection, hitConnection, terminateConnection)
+        end
+    end)
+
+    if casterInstance.CastTerminating then
+        terminateConnection = casterInstance.CastTerminating:Connect(function(cast)
+            if cast == activeCast then
+                cleanupCurveProxy(proxyData, lengthConnection, hitConnection, terminateConnection)
+            end
+        end)
+    end
+
+    task.delay(3, function()
+        if proxyData.Proxy and proxyData.Proxy.Parent then
+            cleanupCurveProxy(proxyData, lengthConnection, hitConnection, terminateConnection)
+        end
+    end)
 end
 
 -- Hook BulletHandler.Fire. Decompiled signature:
@@ -259,7 +567,7 @@ local function setupBulletHandlerHook()
         
         if isHomingEnabled() then
             local bulletData = findBulletData(args)
-            local targetInformation, targetCharacter = buildTargetInformation()
+            local targetInformation, targetCharacter = buildTargetInformation(args[2])
             if bulletData and targetCharacter and targetInformation then
                 if bulletData then
                     bulletData.TargetInformation = targetInformation
@@ -300,7 +608,7 @@ local function setupFastCastHook()
         -- Hook the Fire constructor as a fallback layer for casts created outside BulletHandler.
         fastCastTable.Fire = function(casterInstance, origin, direction, velocity, behavior)
             if isHomingEnabled() then
-                local targetInformation, targetCharacter = buildTargetInformation()
+                local targetInformation, targetCharacter = buildTargetInformation(origin)
                 if targetCharacter and targetInformation and targetInformation.Object then
                     local targetPos = targetInformation.Object.Position
                     local delta = targetPos - origin
@@ -322,6 +630,7 @@ local function setupFastCastHook()
             if isHomingEnabled() then
                 injectTargetInformation(activeCast)
                 task.defer(injectTargetInformation, activeCast)
+                task.defer(attachCurveController, casterInstance, activeCast)
             end
             
             return activeCast
