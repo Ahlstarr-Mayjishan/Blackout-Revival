@@ -375,14 +375,25 @@ local function setupRaycastHook()
 end
 
 function Killaura:Init(Tab)
+    _G.ModifierRuntime = _G.ModifierRuntime or {}
+
     -- Activate Raycast hooks
     setupRaycastHook()
 
+    if _G.ModifierRuntime.KillauraThread and coroutine.status(_G.ModifierRuntime.KillauraThread) ~= "dead" then
+        print("[Player Modifier - Killaura] Worker already running.")
+        return
+    end
+
     -- Start loop for auto-swinging Melee weapons
-    task.spawn(function()
+    local workerThread = task.spawn(function()
         print("[Player Modifier - Killaura] Melee auto-swing worker thread started.")
         while true do
             local delayTime = getModifierState("KillauraDelay", 0.2)
+            if _G.PerformanceGuard and type(_G.PerformanceGuard.GetDelay) == "function" then
+                delayTime = _G.PerformanceGuard.GetDelay(delayTime, "heavy")
+            end
+
             task.wait(delayTime)
             
             -- Break if manager global is cleared (Unloaded)
@@ -411,6 +422,11 @@ function Killaura:Init(Tab)
             end
         end
     end)
+
+    _G.ModifierRuntime.KillauraThread = workerThread
+    if _G.ModifierConnections then
+        table.insert(_G.ModifierConnections, workerThread)
+    end
 end
 
 return Killaura

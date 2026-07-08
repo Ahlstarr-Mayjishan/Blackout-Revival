@@ -7,11 +7,46 @@
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local CollectionService = game:GetService("CollectionService")
 local LocalPlayer = Players.LocalPlayer
 
 local AutoBash = {}
 AutoBash.Name = "Auto-Bash Logic"
 AutoBash.Description = "Automatically bashes locked doors and close targets using weapons."
+
+local cachedDoors = {}
+local lastDoorScanAt = 0
+local DOOR_SCAN_INTERVAL = 5
+
+local function refreshDoorCache()
+    local now = os.clock()
+    if now - lastDoorScanAt < DOOR_SCAN_INTERVAL and #cachedDoors > 0 then
+        return cachedDoors
+    end
+
+    lastDoorScanAt = now
+    table.clear(cachedDoors)
+
+    pcall(function()
+        for _, door in ipairs(CollectionService:GetTagged("Doors")) do
+            if door:IsA("Model") then
+                table.insert(cachedDoors, door)
+            end
+        end
+    end)
+
+    if #cachedDoors == 0 then
+        pcall(function()
+            for _, descendant in ipairs(workspace:GetDescendants()) do
+                if descendant:IsA("Model") and descendant:HasTag("Doors") then
+                    table.insert(cachedDoors, descendant)
+                end
+            end
+        end)
+    end
+
+    return cachedDoors
+end
 
 -- Helper to find the closest door or enemy in range
 local function getClosestBashTarget(range)
@@ -23,17 +58,7 @@ local function getClosestBashTarget(range)
     local targetType = nil
     
     -- 1. Scan for locked doors
-    local doors = {}
-    pcall(function()
-        doors = game:GetService("CollectionService"):GetTagged("Doors")
-    end)
-    if #doors == 0 then
-        for _, descendant in ipairs(workspace:GetDescendants()) do
-            if descendant:IsA("Model") and descendant:HasTag("Doors") then
-                table.insert(doors, descendant)
-            end
-        end
-    end
+    local doors = refreshDoorCache()
     
     for _, door in ipairs(doors) do
         if door:GetAttribute("Locked") == true and not door:GetAttribute("Broken") then
@@ -85,6 +110,12 @@ local function getClosestBashTarget(range)
 end
 
 function AutoBash:Init(UIRef)
+    _G.ModifierRuntime = _G.ModifierRuntime or {}
+    if _G.ModifierRuntime.AutoBashThread and coroutine.status(_G.ModifierRuntime.AutoBashThread) ~= "dead" then
+        print("[Player Modifier - AutoBash] Worker already running.")
+        return
+    end
+
     local bashRemote = ReplicatedStorage:WaitForChild("Events", 5) 
         and ReplicatedStorage.Events:WaitForChild("Player", 5) 
         and ReplicatedStorage.Events.Player:WaitForChild("Bash", 5)
@@ -92,7 +123,12 @@ function AutoBash:Init(UIRef)
     local isBashing = false
     local loopThread = task.spawn(function()
         while true do
-            task.wait(0.2)
+            local delayTime = 0.2
+            if _G.PerformanceGuard and type(_G.PerformanceGuard.GetDelay) == "function" then
+                delayTime = _G.PerformanceGuard.GetDelay(delayTime, "heavy")
+            end
+
+            task.wait(delayTime)
             if not _G.ModifierStates then break end
 
             if _G.ModifierStates.AutoBash and bashRemote and not isBashing then
@@ -116,6 +152,8 @@ function AutoBash:Init(UIRef)
             end
         end
     end)
+
+    _G.ModifierRuntime.AutoBashThread = loopThread
 
     if _G.ModifierConnections then
         table.insert(_G.ModifierConnections, loopThread)

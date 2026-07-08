@@ -133,6 +133,10 @@ local function stopBlackoutUI()
         _G.AutoParryActive = false
         _G.AttackProbeActive = false
         _G.AttackTargetProbeActive = false
+
+        if _G.PerformanceGuard and type(_G.PerformanceGuard.Cleanup) == "function" then
+            _G.PerformanceGuard.Cleanup()
+        end
     end)
 
     local playerGc = loadLocalGc("Player Modifier/GC.luau")
@@ -144,6 +148,8 @@ local function stopBlackoutUI()
         _G.ModifierConnections = nil
         _G.ModifierRuntime = nil
         _G.OriginalFunctions = nil
+        _G.PerformanceGuard = nil
+        _G.PerformanceGuardState = nil
     end
 
     local aimGc = loadLocalGc("Aim Assits/GC.luau")
@@ -353,7 +359,9 @@ local function getModuleTab(moduleIdentifier)
         return Tabs.Aim
     end
 
-    if normalizedIdentifier:find("Player Modifier/Control.luau", 1, true) or normalizedIdentifier:find("Player Modifier/GC.luau", 1, true) then
+    if normalizedIdentifier:find("Player Modifier/Control.luau", 1, true)
+        or normalizedIdentifier:find("Player Modifier/GC.luau", 1, true)
+        or normalizedIdentifier:find("Player Modifier/PerformanceGuard.luau", 1, true) then
         return Tabs.System
     end
 
@@ -398,6 +406,7 @@ end
 local function loadExecutorModules()
     local modulePaths = {
         "Player Modifier/Tab.luau",
+        "Player Modifier/PerformanceGuard.luau",
         "Player Modifier/DoubleJump.luau",
         "Player Modifier/NoFallDamage.luau",
         "Player Modifier/AntiRagdoll.luau",

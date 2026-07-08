@@ -285,7 +285,13 @@ local function setupStateSanitizer()
     local sanitizerThread = task.spawn(function()
         while _G.ModifierStates do
             sanitizeCurrentStates()
-            task.wait(UPDATE_INTERVAL)
+
+            local delayTime = UPDATE_INTERVAL
+            if _G.PerformanceGuard and type(_G.PerformanceGuard.GetDelay) == "function" then
+                delayTime = _G.PerformanceGuard.GetDelay(delayTime, "light")
+            end
+
+            task.wait(delayTime)
         end
     end)
 

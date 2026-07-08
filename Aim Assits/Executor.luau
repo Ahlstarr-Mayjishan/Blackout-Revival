@@ -199,8 +199,20 @@ _G.GetClosestAimTarget = getClosestTarget
 
 -- Initialize background update loop
 function Executor:Init(UIRef)
+    _G.AimAssistRuntime = _G.AimAssistRuntime or {}
+    if _G.AimAssistRuntime.FOVConnection and _G.AimAssistRuntime.FOVConnection.Connected then
+        print("[Aim Assist - Executor] Aim FOV loop already established.")
+        return
+    end
+
     -- 1. FOV Circle Renderer (Update size and position relative to viewport)
     local fovConnection = RunService.RenderStepped:Connect(function()
+        if _G.PerformanceGuard
+            and type(_G.PerformanceGuard.ShouldRun) == "function"
+            and not _G.PerformanceGuard.ShouldRun("AimAssistFOV", 1 / 30, "light") then
+            return
+        end
+
         if FOVCircle then
             if _G.AimAssistStates and _G.AimAssistStates.Enabled and _G.AimAssistStates.ShowFOV then
                 local camera = Workspace.CurrentCamera
@@ -213,6 +225,8 @@ function Executor:Init(UIRef)
             end
         end
     end)
+
+    _G.AimAssistRuntime.FOVConnection = fovConnection
 
     -- Register connections for GC clean up
     if _G.AimAssistConnections then

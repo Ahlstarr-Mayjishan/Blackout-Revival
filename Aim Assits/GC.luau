@@ -18,6 +18,8 @@ end
 local function cleanupConnections()
     local connCount = 0
     local drawCount = 0
+    local threadCount = 0
+    local objectCount = 0
     
     if _G.AimAssistConnections then
         for _, item in ipairs(_G.AimAssistConnections) do
@@ -26,6 +28,11 @@ local function cleanupConnections()
                     item:Disconnect()
                     connCount = connCount + 1
                 end
+            elseif typeof(item) == "thread" then
+                pcall(function()
+                    task.cancel(item)
+                end)
+                threadCount = threadCount + 1
             elseif type(item) == "table" and type(item.Remove) == "function" then
                 -- Drawing API objects (like Circle) are removed via Remove method
                 local success, err = pcall(function()
@@ -36,12 +43,17 @@ local function cleanupConnections()
                 else
                     warn("Failed to remove drawing item: " .. tostring(err))
                 end
+            elseif type(item) == "table" and type(item.Destroy) == "function" then
+                pcall(function()
+                    item:Destroy()
+                end)
+                objectCount = objectCount + 1
             end
         end
         table.clear(_G.AimAssistConnections)
     end
     
-    log("Disconnected " .. tostring(connCount) .. " event connections and cleared " .. tostring(drawCount) .. " drawing objects.")
+    log("Disconnected " .. tostring(connCount) .. " event connections, cancelled " .. tostring(threadCount) .. " threads, cleared " .. tostring(drawCount) .. " drawing objects, and destroyed " .. tostring(objectCount) .. " cleanup handles.")
 end
 
 -- Restore any hooked functions
@@ -186,6 +198,7 @@ function GC.cleanup()
     _G.AimAssistStates = nil
     _G.AimAssistConnections = nil
     _G.AimAssistOriginals = nil
+    _G.AimAssistRuntime = nil
     
     log("Clean up finished successfully.")
 end

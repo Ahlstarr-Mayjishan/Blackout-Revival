@@ -6,7 +6,6 @@
 ]]
 
 local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
 
 local SpeedHack = {}
@@ -16,6 +15,7 @@ SpeedHack.Description = "Hooks humanoid WalkSpeed adjustments to enforce custom 
 function SpeedHack:Init(UIRef)
     _G.OriginalFunctions = _G.OriginalFunctions or {}
     _G.ModifierConnections = _G.ModifierConnections or {}
+    _G.ModifierRuntime = _G.ModifierRuntime or {}
 
     -- 1. Hook __newindex for WalkSpeed adjustments via Metatable Hooking
     local hookSuccess, err = pcall(function()
@@ -44,24 +44,37 @@ function SpeedHack:Init(UIRef)
         warn("[Player Modifier - SpeedHack] Failed to establish __newindex hook: " .. tostring(err))
     end
 
-    -- 2. Setup a RenderStepped fallback loop (forces WalkSpeed physically in case of bypass failure)
-    local speedLoopConnection = RunService.RenderStepped:Connect(function()
-        if not _G.ModifierStates or not _G.ModifierStates.SpeedHackEnabled then
-            return
-        end
+    if _G.ModifierRuntime.SpeedHackThread and coroutine.status(_G.ModifierRuntime.SpeedHackThread) ~= "dead" then
+        print("[Player Modifier - SpeedHack] Speed fallback worker already running.")
+        return
+    end
 
-        pcall(function()
-            local character = LocalPlayer.Character
-            local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-            local targetSpeed = _G.ModifierStates.CustomWalkSpeed or 16
-
-            if humanoid and humanoid.WalkSpeed ~= targetSpeed then
-                humanoid.WalkSpeed = targetSpeed
+    -- 2. Timed fallback loop. RenderStepped is unnecessary here and stacks badly after reloads.
+    local speedLoopThread = task.spawn(function()
+        while _G.ModifierStates do
+            local delayTime = 0.05
+            if _G.PerformanceGuard and type(_G.PerformanceGuard.GetDelay) == "function" then
+                delayTime = _G.PerformanceGuard.GetDelay(delayTime, "medium")
             end
-        end)
+
+            if _G.ModifierStates.SpeedHackEnabled then
+                pcall(function()
+                    local character = LocalPlayer.Character
+                    local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+                    local targetSpeed = _G.ModifierStates.CustomWalkSpeed or 16
+
+                    if humanoid and humanoid.WalkSpeed ~= targetSpeed then
+                        humanoid.WalkSpeed = targetSpeed
+                    end
+                end)
+            end
+
+            task.wait(delayTime)
+        end
     end)
 
-    table.insert(_G.ModifierConnections, speedLoopConnection)
+    _G.ModifierRuntime.SpeedHackThread = speedLoopThread
+    table.insert(_G.ModifierConnections, speedLoopThread)
     print("[Player Modifier - SpeedHack] Initialized.")
 end
 

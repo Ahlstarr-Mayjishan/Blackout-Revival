@@ -220,6 +220,12 @@ end
 -- Full cleanup routine
 function GC.cleanup()
     log("Starting clean up...")
+
+    if _G.PerformanceGuard and type(_G.PerformanceGuard.Cleanup) == "function" then
+        pcall(function()
+            _G.PerformanceGuard.Cleanup()
+        end)
+    end
     
     -- Set all states to false to stop loop executions
     if _G.ModifierStates then
@@ -236,6 +242,8 @@ function GC.cleanup()
     _G.ModifierConnections = nil
     _G.ModifierRuntime = nil
     _G.OriginalFunctions = nil
+    _G.PerformanceGuard = nil
+    _G.PerformanceGuardState = nil
     
     log("Cleanup completed successfully.")
 end

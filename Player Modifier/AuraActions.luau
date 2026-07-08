@@ -117,6 +117,12 @@ local function getClosestDownedEnemy(range)
 end
 
 function AuraActions:Init(UIRef)
+    _G.ModifierRuntime = _G.ModifierRuntime or {}
+    if _G.ModifierRuntime.AuraActionsThread and coroutine.status(_G.ModifierRuntime.AuraActionsThread) ~= "dead" then
+        print("[Player Modifier - AuraActions] Worker already running.")
+        return
+    end
+
     local reviveRemote = ReplicatedStorage:WaitForChild("Events", 5) 
         and ReplicatedStorage.Events:WaitForChild("Actions", 5) 
         and ReplicatedStorage.Events.Actions:WaitForChild("Revive", 5)
@@ -128,7 +134,12 @@ function AuraActions:Init(UIRef)
     -- Background Thread for Aura Scanning
     local loopThread = task.spawn(function()
         while true do
-            task.wait(0.3)
+            local delayTime = 0.3
+            if _G.PerformanceGuard and type(_G.PerformanceGuard.GetDelay) == "function" then
+                delayTime = _G.PerformanceGuard.GetDelay(delayTime, "heavy")
+            end
+
+            task.wait(delayTime)
             
             -- Exit loop if ModifierStates has been destroyed/cleaned
             if not _G.ModifierStates then break end
@@ -154,6 +165,8 @@ function AuraActions:Init(UIRef)
             end
         end
     end)
+
+    _G.ModifierRuntime.AuraActionsThread = loopThread
 
     -- Register thread for GC cleanup (handled by stopping conditions or thread cancel)
     if _G.ModifierConnections then

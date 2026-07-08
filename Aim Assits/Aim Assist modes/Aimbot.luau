@@ -18,6 +18,8 @@ Aimbot.Name = "Aimbot Mode"
 Aimbot.Description = "Locks and smoothly lerps the camera to targets inside the FOV circle when holding Right-Click."
 
 function Aimbot:Init(Tab)
+    _G.AimAssistRuntime = _G.AimAssistRuntime or {}
+
     -- Add the toggle to the UI
     Tab:CreateToggle({
         Name = "Enable Aimbot (Camera Lock)",
@@ -31,8 +33,19 @@ function Aimbot:Init(Tab)
         end,
     })
 
+    if _G.AimAssistRuntime.AimbotConnection and _G.AimAssistRuntime.AimbotConnection.Connected then
+        print("[Aim Assist - Aimbot] Camera lock listener already connected.")
+        return
+    end
+
     -- Background targeting and lock connection
     local connection = RunService.RenderStepped:Connect(function()
+        if _G.PerformanceGuard
+            and type(_G.PerformanceGuard.ShouldRun) == "function"
+            and not _G.PerformanceGuard.ShouldRun("AimAssistAimbot", 1 / 60, "medium") then
+            return
+        end
+
         if not _G.AimAssistStates or not _G.AimAssistStates.Enabled or not _G.AimAssistStates.AimbotActive then
             return
         end
@@ -65,6 +78,8 @@ function Aimbot:Init(Tab)
             end
         end
     end)
+
+    _G.AimAssistRuntime.AimbotConnection = connection
 
     -- Register connection for GC cleanup
     if _G.AimAssistConnections then

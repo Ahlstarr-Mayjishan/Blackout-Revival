@@ -8,7 +8,6 @@
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local RunService = game:GetService("RunService")
 
 local LocalPlayer = Players.LocalPlayer
 
@@ -17,23 +16,39 @@ DoubleJump.Name = "Infinite Double Jump Logic"
 DoubleJump.Description = "Handles mid-air jumping physics and notifications."
 
 function DoubleJump:Init(UIRef)
+    _G.ModifierRuntime = _G.ModifierRuntime or {}
+
     local doubleJumpRemote = ReplicatedStorage:WaitForChild("Events", 5) and ReplicatedStorage.Events:WaitForChild("Player", 5) and ReplicatedStorage.Events.Player:WaitForChild("GearAbility", 5)
 
-    local stateConnection = RunService.RenderStepped:Connect(function()
-        if not _G.ModifierStates or not _G.ModifierStates.DoubleJump then
-            return
-        end
+    if not _G.ModifierRuntime.DoubleJumpStateThread
+        or coroutine.status(_G.ModifierRuntime.DoubleJumpStateThread) == "dead" then
+        local stateThread = task.spawn(function()
+            while _G.ModifierStates do
+                if _G.ModifierStates.DoubleJump and _G.CharacterStates then
+                    _G.CharacterStates.DoubleJump = true
+                    _G.CharacterStates.DoubleJumpCD = false
+                end
 
-        if _G.CharacterStates then
-            _G.CharacterStates.DoubleJump = true
-            _G.CharacterStates.DoubleJumpCD = false
-        end
-    end)
+                local delayTime = 0.08
+                if _G.PerformanceGuard and type(_G.PerformanceGuard.GetDelay) == "function" then
+                    delayTime = _G.PerformanceGuard.GetDelay(delayTime, "light")
+                end
 
-    if _G.ModifierConnections then
-        table.insert(_G.ModifierConnections, stateConnection)
+                task.wait(delayTime)
+            end
+        end)
+
+        _G.ModifierRuntime.DoubleJumpStateThread = stateThread
+        if _G.ModifierConnections then
+            table.insert(_G.ModifierConnections, stateThread)
+        end
     end
     
+    if _G.ModifierRuntime.DoubleJumpInputConnection and _G.ModifierRuntime.DoubleJumpInputConnection.Connected then
+        print("[Player Modifier - DoubleJump] Double Jump event handler already connected.")
+        return
+    end
+
     -- Setup the JumpRequest connection
     local connection = UserInputService.JumpRequest:Connect(function()
         if not _G.ModifierStates or not _G.ModifierStates.DoubleJump then
@@ -66,6 +81,7 @@ function DoubleJump:Init(UIRef)
     end)
     
     -- Register connection for GC cleanup
+    _G.ModifierRuntime.DoubleJumpInputConnection = connection
     if _G.ModifierConnections then
         table.insert(_G.ModifierConnections, connection)
     end
