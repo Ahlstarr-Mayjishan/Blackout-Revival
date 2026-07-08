@@ -9,7 +9,6 @@
 ]]
 
 local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local LocalPlayer = Players.LocalPlayer
 
@@ -48,40 +47,6 @@ local function rememberOriginal(container, key, value)
 
     if originals[container][key] == nil then
         originals[container][key] = value
-    end
-end
-
-local function patchStatsTable(stats)
-    if type(stats) ~= "table" then
-        return
-    end
-
-    for fieldName, stateKey in pairs(PATCH_FIELDS) do
-        local originalValue = stats[fieldName]
-        if type(originalValue) == "number" then
-            rememberOriginal(stats, fieldName, originalValue)
-            stats[fieldName] = originalValue * getMultiplier(stateKey)
-        end
-    end
-end
-
-local function patchItemDatabase()
-    local mods = ReplicatedStorage:FindFirstChild("Mods")
-    local itemDatabaseModule = mods and mods:FindFirstChild("ItemDatabase")
-    if not itemDatabaseModule then
-        return
-    end
-
-    local ok, itemDatabase = pcall(require, itemDatabaseModule)
-    if not ok or type(itemDatabase) ~= "table" then
-        return
-    end
-
-    for _, itemData in pairs(itemDatabase) do
-        if type(itemData) == "table" then
-            patchStatsTable(itemData.Stats)
-            patchStatsTable(itemData)
-        end
     end
 end
 
@@ -143,7 +108,6 @@ local function applyRecoilControl()
         return
     end
 
-    patchItemDatabase()
     patchCharacterTools()
 end
 

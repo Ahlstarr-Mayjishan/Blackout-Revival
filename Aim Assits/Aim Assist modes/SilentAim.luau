@@ -14,6 +14,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 
 local LocalPlayer = Players.LocalPlayer
+local tableUnpack = table.unpack or unpack
 
 local SilentAim = {}
 SilentAim.Name = "Silent Aim"
@@ -58,8 +59,71 @@ local function getTargetPosition()
     return targetBone and targetBone.Position
 end
 
+local function isDescendantOfLocalCharacter(instance)
+    local character = LocalPlayer.Character
+    return instance ~= nil
+        and character ~= nil
+        and typeof(instance) == "Instance"
+        and (instance == character or instance:IsDescendantOf(character))
+end
+
+local function isLocalBulletData(bulletData)
+    if type(bulletData) ~= "table" then
+        return false
+    end
+
+    if bulletData.Character == LocalPlayer.Character then
+        return true
+    end
+
+    if isDescendantOfLocalCharacter(bulletData.Tool)
+        or isDescendantOfLocalCharacter(bulletData.GunModel)
+        or isDescendantOfLocalCharacter(bulletData.Model)
+        or isDescendantOfLocalCharacter(bulletData.Weapon) then
+        return true
+    end
+
+    local owner = bulletData.Owner or bulletData.Player or bulletData.User
+    return owner == LocalPlayer
+end
+
+local function findBulletData(args)
+    local arg6 = args[6]
+    if type(arg6) == "table" and arg6.Settings then
+        return arg6
+    end
+
+    for _, arg in ipairs(args) do
+        if type(arg) == "table" and arg.Settings then
+            return arg
+        end
+    end
+
+    return nil
+end
+
+local function shouldProcessBulletHandlerShot(args)
+    return isLocalBulletData(findBulletData(args))
+end
+
+local function shouldProcessFastCastShot(casterInstance, behavior)
+    if isDescendantOfLocalCharacter(casterInstance) then
+        return true
+    end
+
+    if type(behavior) == "table" then
+        return isLocalBulletData(behavior.UserData)
+            or isLocalBulletData(behavior.Data)
+            or isLocalBulletData(behavior.BulletData)
+    end
+
+    return false
+end
+
 -- Hook Melee/BulletHandler Fire
 local function setupBulletHandlerHook()
+    _G.AimAssistOriginals = _G.AimAssistOriginals or {}
+
     local gunStorage = ReplicatedStorage:WaitForChild("GunStorage", 5)
     local modsFolder = gunStorage and gunStorage:WaitForChild("Mods", 5)
     local bulletHandlerModule = modsFolder and modsFolder:WaitForChild("BulletHandler", 5)
@@ -87,18 +151,21 @@ local function setupBulletHandlerHook()
         local args = {...}
         
         -- Override initial direction (arg 3) if target is visible
-        if _G.AimAssistStates and _G.AimAssistStates.Enabled and _G.AimAssistStates.SilentAimActive then
+        if _G.AimAssistStates
+            and _G.AimAssistStates.Enabled
+            and _G.AimAssistStates.SilentAimActive
+            and shouldProcessBulletHandlerShot(args) then
             local targetPos = getTargetPosition()
             if targetPos then
                 local origin = args[2] -- arg 2 is origin
-                if origin then
+                if typeof(origin) == "Vector3" then
                     args[3] = (targetPos - origin).Unit -- Redirect direction vector
                     log("Redirected BulletHandler firing direction towards target.")
                 end
             end
         end
 
-        return oldFire(unpack(args))
+        return oldFire(tableUnpack(args))
     end
 
     log("Hooked BulletHandler.Fire successfully.")
@@ -106,6 +173,8 @@ end
 
 -- Hook FastCast.Fire function
 local function setupFastCastHook()
+    _G.AimAssistOriginals = _G.AimAssistOriginals or {}
+
     local modsFolder = ReplicatedStorage:WaitForChild("Mods", 5)
     local fastCastModule = modsFolder and modsFolder:WaitForChild("FastCast", 5)
     
@@ -126,11 +195,16 @@ local function setupFastCastHook()
         
         -- Hook the Fire constructor to override direction and velocity vectors
         fastCastTable.Fire = function(casterInstance, origin, direction, velocity, behavior)
-            if _G.AimAssistStates and _G.AimAssistStates.Enabled and _G.AimAssistStates.SilentAimActive then
+            if _G.AimAssistStates
+                and _G.AimAssistStates.Enabled
+                and _G.AimAssistStates.SilentAimActive
+                and shouldProcessFastCastShot(casterInstance, behavior) then
                 local targetPos = getTargetPosition()
-                if targetPos then
+                if targetPos and typeof(origin) == "Vector3" then
                     direction = (targetPos - origin).Unit
-                    velocity = direction * velocity.Magnitude
+                    if typeof(velocity) == "Vector3" then
+                        velocity = direction * velocity.Magnitude
+                    end
                     log("Redirected FastCast velocity and direction vectors towards target.")
                 end
             end

@@ -298,17 +298,35 @@ local function normalizePath(path)
     return tostring(path):gsub("\\", "/")
 end
 
+local LOCAL_MODULE_ROOTS = {
+    "",
+    "D:/Scripting/blackout revival/",
+    "D:\\Scripting\\blackout revival\\",
+}
+
 local function getFileName(path)
     return normalizePath(path):match("[^/]+$") or tostring(path)
 end
 
 local function readModuleFile(folderPath, filePath)
     local normalizedFilePath = normalizePath(filePath)
-    local candidates = {
-        filePath,
-        normalizedFilePath,
-        normalizePath(folderPath) .. "/" .. getFileName(filePath),
-    }
+    local backslashFilePath = normalizedFilePath:gsub("/", "\\")
+    local normalizedFolderPath = normalizePath(folderPath)
+    local fileName = getFileName(filePath)
+    local candidates = {}
+
+    for _, root in ipairs(LOCAL_MODULE_ROOTS) do
+        local normalizedRoot = normalizePath(root)
+        local backslashRoot = normalizedRoot:gsub("/", "\\")
+
+        table.insert(candidates, normalizedRoot .. normalizedFilePath)
+        table.insert(candidates, backslashRoot .. backslashFilePath)
+
+        if normalizedFolderPath ~= "" then
+            table.insert(candidates, normalizedRoot .. normalizedFolderPath .. "/" .. fileName)
+            table.insert(candidates, backslashRoot .. normalizedFolderPath:gsub("/", "\\") .. "\\" .. fileName)
+        end
+    end
 
     local seen = {}
     local lastErr = nil
@@ -326,16 +344,21 @@ local function readModuleFile(folderPath, filePath)
         end
     end
 
-    return nil, nil, lastErr
+    return nil, nil, lastErr or "local readfile failed for all candidates"
 end
 
 local REMOTE_MODULE_BASE = "https://raw.githubusercontent.com/Ahlstarr-Mayjishan/Blackout-Revival/main/"
+local ALLOW_REMOTE_MODULE_FALLBACK = false
 
 local function encodeModulePath(path)
     return normalizePath(path):gsub(" ", "%%20")
 end
 
 local function fetchRemoteModuleFile(modulePath)
+    if not ALLOW_REMOTE_MODULE_FALLBACK then
+        return nil, nil, "remote fallback disabled; local file not found/readable"
+    end
+
     local url = REMOTE_MODULE_BASE .. encodeModulePath(modulePath)
     local successFetch, contentOrErr = pcall(function()
         return game:HttpGet(url, true)
