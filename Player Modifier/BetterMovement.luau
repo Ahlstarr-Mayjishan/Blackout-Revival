@@ -71,7 +71,7 @@ local function sanitizeStateRead(source, key)
     end
 
     if optionEnabled("No Slowdown Block")
-        and (key == "Blocking" or key == "ServerBlocking" or key == "UsingItem") then
+        and (key == "Blocking" or key == "ServerBlocking") then
         return false
     end
 
@@ -98,7 +98,7 @@ local function sanitizeStateWrite(source, key, value)
     end
 
     if optionEnabled("No Slowdown Block")
-        and (key == "Blocking" or key == "ServerBlocking" or key == "UsingItem") then
+        and (key == "Blocking" or key == "ServerBlocking") then
         source[key] = false
         return
     end
@@ -183,7 +183,6 @@ local function sanitizeCurrentStates()
     if optionEnabled("No Slowdown Block") then
         setStateValue(states, "Blocking", false)
         setStateValue(states, "ServerBlocking", false)
-        setStateValue(states, "UsingItem", false)
     end
 
     if optionEnabled("No Slowdown OverWeight") then
