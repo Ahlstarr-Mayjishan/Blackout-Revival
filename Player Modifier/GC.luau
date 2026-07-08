@@ -19,6 +19,7 @@ end
 local function cleanupConnections()
     local count = 0
     local threadCount = 0
+    local objectCount = 0
     if _G.ModifierConnections then
         for _, connection in ipairs(_G.ModifierConnections) do
             if typeof(connection) == "RBXScriptConnection" and connection.Connected then
@@ -29,11 +30,21 @@ local function cleanupConnections()
                     task.cancel(connection)
                 end)
                 threadCount = threadCount + 1
+            elseif type(connection) == "table" and type(connection.Destroy) == "function" then
+                pcall(function()
+                    connection:Destroy()
+                end)
+                objectCount = objectCount + 1
+            elseif type(connection) == "table" and type(connection.Remove) == "function" then
+                pcall(function()
+                    connection:Remove()
+                end)
+                objectCount = objectCount + 1
             end
         end
         table.clear(_G.ModifierConnections)
     end
-    log("Disconnected " .. tostring(count) .. " active event connections and cancelled " .. tostring(threadCount) .. " threads.")
+    log("Disconnected " .. tostring(count) .. " active event connections, cancelled " .. tostring(threadCount) .. " threads, and destroyed " .. tostring(objectCount) .. " cleanup handles.")
 end
 
 -- Restore hooked metatable and functions

@@ -12,8 +12,7 @@
         4. Auto-Unlock Safes & Doors (connected to _G.ModifierStates.AutoUnlock)
 ]]
 
--- Initialize global state tables if they do not exist
-_G.ModifierStates = _G.ModifierStates or {
+local DEFAULT_MODIFIER_STATES = {
     DoubleJump = false,
     NoFallDamage = false,
     AntiRagdoll = false,
@@ -41,6 +40,53 @@ _G.ModifierStates = _G.ModifierStates or {
     AutoBashEnemies = true,
     AntiFlashbang = false
 }
+
+local function mergeDefaults(target, defaults)
+    for key, value in pairs(defaults) do
+        if type(value) == "table" then
+            if type(target[key]) ~= "table" then
+                target[key] = {}
+            end
+            mergeDefaults(target[key], value)
+        elseif target[key] == nil then
+            target[key] = value
+        end
+    end
+end
+
+local function normalizeSelectedOptions(selectedOptions)
+    if type(selectedOptions) == "string" then
+        return { selectedOptions }
+    end
+
+    if type(selectedOptions) ~= "table" then
+        return {}
+    end
+
+    local normalized = {}
+    for _, option in ipairs(selectedOptions) do
+        if type(option) == "string" then
+            table.insert(normalized, option)
+        end
+    end
+
+    if #normalized == 0 then
+        for option, selected in pairs(selectedOptions) do
+            if type(option) == "string" and selected == true then
+                table.insert(normalized, option)
+            elseif type(selected) == "string" then
+                table.insert(normalized, selected)
+            end
+        end
+    end
+
+    return normalized
+end
+
+-- Initialize global state tables if they do not exist, and merge newly added defaults
+-- when the UI is reloaded over an older in-memory state table.
+_G.ModifierStates = _G.ModifierStates or {}
+mergeDefaults(_G.ModifierStates, DEFAULT_MODIFIER_STATES)
 
 -- Store connections here so they can be cleaned up by GC.luau
 _G.ModifierConnections = _G.ModifierConnections or {}
@@ -153,13 +199,15 @@ function Tab:Init(UIRef)
         Flag = "BetterMovement_Dropdown",
         Callback = function(SelectedOptions)
             if _G.ModifierStates and _G.ModifierStates.BetterMovementOptions then
+                local normalizedOptions = normalizeSelectedOptions(SelectedOptions)
+
                 -- Clear previous selections
                 for key, _ in pairs(_G.ModifierStates.BetterMovementOptions) do
                     _G.ModifierStates.BetterMovementOptions[key] = false
                 end
                 
                 -- Update based on new selections
-                for _, option in ipairs(SelectedOptions) do
+                for _, option in ipairs(normalizedOptions) do
                     if _G.ModifierStates.BetterMovementOptions[option] ~= nil then
                         _G.ModifierStates.BetterMovementOptions[option] = true
                     end

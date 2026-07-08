@@ -14,6 +14,8 @@ local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 
 local LocalPlayer = Players.LocalPlayer
+local UPDATE_INTERVAL = 0.05
+local NO_INERTIA_BIND_NAME = "BlackoutBetterMovementNoInertia"
 
 local BetterMovement = {}
 BetterMovement.Name = "Better Movement Logic"
@@ -24,30 +26,134 @@ local function log(msg)
     print("[Player Modifier - BetterMovement] " .. tostring(msg))
 end
 
+local function getRuntime()
+    _G.ModifierRuntime = _G.ModifierRuntime or {}
+    _G.ModifierRuntime.BetterMovement = _G.ModifierRuntime.BetterMovement or {}
+    return _G.ModifierRuntime.BetterMovement
+end
+
+local function getOptions()
+    if not _G.ModifierStates then
+        return nil
+    end
+
+    _G.ModifierStates.BetterMovementOptions = _G.ModifierStates.BetterMovementOptions or {}
+    return _G.ModifierStates.BetterMovementOptions
+end
+
+local function optionEnabled(optionName)
+    local options = getOptions()
+    return options and options[optionName] == true
+end
+
+local function getRawCharacterStates()
+    local runtime = getRuntime()
+    return runtime.RawCharacterStates or rawget(_G, "CharacterStates")
+end
+
+local function setStateValue(states, key, value)
+    if type(states) ~= "table" then
+        return
+    end
+
+    pcall(function()
+        states[key] = value
+    end)
+end
+
+local function sanitizeStateRead(source, key)
+    if optionEnabled("Better Movement") and key == "NoSlide" then
+        return true
+    end
+
+    if optionEnabled("No Slowdown Aim") and key == "AimingMovementSpeed" then
+        return nil
+    end
+
+    if optionEnabled("No Slowdown Block")
+        and (key == "Blocking" or key == "ServerBlocking" or key == "UsingItem") then
+        return false
+    end
+
+    if optionEnabled("No Slowdown OverWeight") and key == "OverWeightCapacity" then
+        return 0
+    end
+
+    if optionEnabled("No Slowdown Broken Leg/Arm") and key == "Crippled" then
+        return nil
+    end
+
+    return source and source[key]
+end
+
+local function sanitizeStateWrite(source, key, value)
+    if optionEnabled("Better Movement") and key == "NoSlide" then
+        source[key] = true
+        return
+    end
+
+    if optionEnabled("No Slowdown Aim") and key == "AimingMovementSpeed" then
+        source[key] = nil
+        return
+    end
+
+    if optionEnabled("No Slowdown Block")
+        and (key == "Blocking" or key == "ServerBlocking" or key == "UsingItem") then
+        source[key] = false
+        return
+    end
+
+    if optionEnabled("No Slowdown OverWeight") and key == "OverWeightCapacity" then
+        source[key] = 0
+        return
+    end
+
+    if optionEnabled("No Slowdown Broken Leg/Arm") and key == "Crippled" then
+        source[key] = nil
+        return
+    end
+
+    source[key] = value
+end
+
 -- 1. No Inertia (Bypasses MovementHandler direction interpolation)
 local function setupNoInertia()
-    local connection = RunService.RenderStepped:Connect(function()
-        if not _G.ModifierStates or not _G.ModifierStates.BetterMovementOptions then
+    local runtime = getRuntime()
+    if runtime.NoInertiaBound then
+        return
+    end
+
+    runtime.NoInertiaBound = true
+
+    pcall(function()
+        RunService:UnbindFromRenderStep(NO_INERTIA_BIND_NAME)
+    end)
+
+    RunService:BindToRenderStep(NO_INERTIA_BIND_NAME, Enum.RenderPriority.Character.Value + 100, function()
+        if not optionEnabled("Better Movement") then
             return
         end
-        
-        -- Check if "Better Movement" is checked in dropdown options
-        if not _G.ModifierStates.BetterMovementOptions["Better Movement"] then
-            return
-        end
-        
+
         local character = LocalPlayer.Character
         local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-        
+
         -- If character is moving, force input direction to bypass inertia lerp
         if humanoid and humanoid.MoveDirection.Magnitude > 0 then
             humanoid:Move(humanoid.MoveDirection)
         end
     end)
-    
+
     if _G.ModifierConnections then
-        table.insert(_G.ModifierConnections, connection)
+        table.insert(_G.ModifierConnections, {
+            Destroy = function()
+                pcall(function()
+                    RunService:UnbindFromRenderStep(NO_INERTIA_BIND_NAME)
+                end)
+                runtime.NoInertiaBound = false
+            end
+        })
     end
+
     log("Instant direction controller registered.")
 end
 
@@ -63,136 +169,200 @@ local function clearBrokenBoneAttributes(character)
     end
 end
 
-local function setupStateSanitizer()
-    local connection = RunService.RenderStepped:Connect(function()
-        if not _G.ModifierStates or not _G.ModifierStates.BetterMovementOptions then
-            return
-        end
+local function sanitizeCurrentStates()
+    local states = getRawCharacterStates()
 
-        local opts = _G.ModifierStates.BetterMovementOptions
-        local states = _G.CharacterStates
-
-        if type(states) == "table" then
-            if opts["Better Movement"] then
-                states.NoSlide = true
-            end
-
-            if opts["No Slowdown Aim"] then
-                states.AimingMovementSpeed = nil
-            end
-
-            if opts["No Slowdown Block"] then
-                states.Blocking = false
-                states.ServerBlocking = false
-                states.UsingItem = false
-            end
-
-            if opts["No Slowdown OverWeight"] then
-                states.OverWeightCapacity = 0
-            end
-
-            if opts["No Slowdown Broken Leg/Arm"] then
-                states.Crippled = nil
-            end
-        end
-
-        if opts["No Slowdown Broken Leg/Arm"] then
-            clearBrokenBoneAttributes(LocalPlayer.Character)
-        end
-    end)
-
-    if _G.ModifierConnections then
-        table.insert(_G.ModifierConnections, connection)
+    if optionEnabled("Better Movement") then
+        setStateValue(states, "NoSlide", true)
     end
 
-    log("Movement state sanitizer registered.")
+    if optionEnabled("No Slowdown Aim") then
+        setStateValue(states, "AimingMovementSpeed", nil)
+    end
+
+    if optionEnabled("No Slowdown Block") then
+        setStateValue(states, "Blocking", false)
+        setStateValue(states, "ServerBlocking", false)
+        setStateValue(states, "UsingItem", false)
+    end
+
+    if optionEnabled("No Slowdown OverWeight") then
+        setStateValue(states, "OverWeightCapacity", 0)
+    end
+
+    if optionEnabled("No Slowdown Broken Leg/Arm") then
+        setStateValue(states, "Crippled", nil)
+        clearBrokenBoneAttributes(LocalPlayer.Character)
+    end
 end
 
--- Helper to wrap the CharacterStates table in a proxy metatable
-local function wrapStatesTable(originalTable)
-    if not originalTable or type(originalTable) ~= "table" then
-        return originalTable
-    end
-    
-    -- Check if it is already wrapped
-    if getmetatable(originalTable) and getmetatable(originalTable).__isProxy then
-        return originalTable
-    end
-    
+local function createStatesProxy(source)
     local proxy = setmetatable({}, {
-        __isProxy = true,
+        __isBetterMovementStatesProxy = true,
         __index = function(_, k)
-            if _G.ModifierStates and _G.ModifierStates.BetterMovementOptions then
-                local opts = _G.ModifierStates.BetterMovementOptions
-                
-                -- 2. No Slowdown Aim
-                if k == "AimingMovementSpeed" and opts["No Slowdown Aim"] then
-                    return nil -- Returns nil so multiplier isn't applied
-                end
-                
-                -- 3. No Slowdown Block
-                if (k == "Blocking" or k == "ServerBlocking" or k == "UsingItem") and opts["No Slowdown Block"] then
-                    -- Returning false prevents blocking slowdown states from triggering
-                    return false
-                end
-                
-                -- 4. No Slowdown OverWeight
-                if k == "OverWeightCapacity" and opts["No Slowdown OverWeight"] then
-                    return nil -- Returns nil so weight sum subtraction is bypassed
-                end
-            end
-            return originalTable[k]
+            return sanitizeStateRead(source, k)
         end,
         __newindex = function(_, k, v)
-            originalTable[k] = v
+            sanitizeStateWrite(source, k, v)
+        end,
+        __pairs = function()
+            return pairs(source)
         end
     })
-    
+
     return proxy
 end
 
 -- Intercept and proxy _G.CharacterStates assignments
 local function setupStatesProxy()
-    -- Wrap current if exists
-    if _G.CharacterStates then
-        _G.CharacterStates = wrapStatesTable(_G.CharacterStates)
-        log("Proxy wrapped around existing _G.CharacterStates.")
+    local runtime = getRuntime()
+    if runtime.ProxyInstalled then
+        return
     end
-    
-    -- Metatable hook on _G to wrap any future assignments to CharacterStates
+
+    runtime.ProxyInstalled = true
+    runtime.RawCharacterStates = rawget(_G, "CharacterStates") or {}
+    runtime.StatesProxy = createStatesProxy(runtime.RawCharacterStates)
+
     local mt = getmetatable(_G) or {}
+    if mt.__isProxy and not mt.__betterMovementProxy then
+        -- Older BetterMovement builds installed a partial _G.__newindex proxy that
+        -- never saw CharacterStates updates once the raw key already existed.
+        mt = {}
+    end
+
+    runtime.OldGlobalMetatable = mt
+    runtime.OldGlobalIndex = mt.__index
+    runtime.OldGlobalNewIndex = mt.__newindex
+
     mt.__isProxy = true
+    mt.__betterMovementProxy = true
+
+    local oldIndex = mt.__index
     local oldNewIndex = mt.__newindex
-    
+
+    mt.__index = function(t, key)
+        if key == "CharacterStates" then
+            return runtime.StatesProxy
+        end
+
+        if type(oldIndex) == "function" then
+            return oldIndex(t, key)
+        elseif type(oldIndex) == "table" then
+            return oldIndex[key]
+        end
+
+        return nil
+    end
+
     mt.__newindex = function(t, key, val)
         if key == "CharacterStates" and type(val) == "table" then
-            local wrapped = wrapStatesTable(val)
-            if oldNewIndex then
-                oldNewIndex(t, key, wrapped)
-            else
-                rawset(t, key, wrapped)
-            end
+            runtime.RawCharacterStates = val
+            runtime.StatesProxy = createStatesProxy(val)
+            return
+        end
+
+        if type(oldNewIndex) == "function" then
+            oldNewIndex(t, key, val)
+        elseif type(oldNewIndex) == "table" then
+            oldNewIndex[key] = val
         else
-            if oldNewIndex then
-                oldNewIndex(t, key, val)
-            else
-                rawset(t, key, val)
-            end
+            rawset(t, key, val)
         end
     end
-    
+
+    rawset(_G, "CharacterStates", nil)
     setmetatable(_G, mt)
-    log("Hooked _G.__newindex to intercept CharacterStates tables.")
+    log("Installed live _G.CharacterStates proxy.")
+end
+
+local function setupStateSanitizer()
+    local runtime = getRuntime()
+    if runtime.StateSanitizerThread then
+        return
+    end
+
+    local sanitizerThread = task.spawn(function()
+        while _G.ModifierStates do
+            sanitizeCurrentStates()
+            task.wait(UPDATE_INTERVAL)
+        end
+    end)
+
+    runtime.StateSanitizerThread = sanitizerThread
+
+    if _G.ModifierConnections then
+        table.insert(_G.ModifierConnections, sanitizerThread)
+    end
+
+    log("Movement state sanitizer registered.")
+end
+
+local function restoreOldBrokenProxyIfNeeded()
+    local runtime = getRuntime()
+    local mt = getmetatable(_G)
+
+    if mt and mt.__betterMovementProxy and runtime.OldGlobalIndex == nil and runtime.OldGlobalNewIndex == nil then
+        return
+    end
+
+    -- Older versions left CharacterStates as a raw key, which prevents __newindex
+    -- from seeing the game's per-frame CharacterStates assignments.
+    if rawget(_G, "CharacterStates") ~= nil and runtime.ProxyInstalled then
+        rawset(_G, "CharacterStates", nil)
+    end
+end
+
+function BetterMovement.RestoreGlobalProxy()
+    local runtime = _G.ModifierRuntime and _G.ModifierRuntime.BetterMovement
+    if not runtime or not runtime.ProxyInstalled then
+        return
+    end
+
+    pcall(function()
+        RunService:UnbindFromRenderStep(NO_INERTIA_BIND_NAME)
+    end)
+
+    local mt = getmetatable(_G)
+    if mt and mt.__betterMovementProxy then
+        mt.__index = runtime.OldGlobalIndex
+        mt.__newindex = runtime.OldGlobalNewIndex
+        mt.__betterMovementProxy = nil
+        mt.__isProxy = nil
+
+        if next(mt) == nil then
+            setmetatable(_G, nil)
+        else
+            setmetatable(_G, mt)
+        end
+    end
+
+    if runtime.RawCharacterStates then
+        rawset(_G, "CharacterStates", runtime.RawCharacterStates)
+    end
+
+    runtime.ProxyInstalled = false
 end
 
 function BetterMovement:Init(UIRef)
-    -- Setup instant movement (No Inertia)
-    setupNoInertia()
-    setupStateSanitizer()
-    
-    -- Setup _G.CharacterStates proxy for Aim, Block, and Overweight capacity penalties
+    _G.ModifierConnections = _G.ModifierConnections or {}
+    getOptions()
+
     setupStatesProxy()
-    
+    restoreOldBrokenProxyIfNeeded()
+    setupStateSanitizer()
+    setupNoInertia()
+
+    local runtime = getRuntime()
+    if not runtime.CleanupHandleAdded then
+        runtime.CleanupHandleAdded = true
+        table.insert(_G.ModifierConnections, {
+            Destroy = function()
+                BetterMovement.RestoreGlobalProxy()
+            end
+        })
+    end
+
     log("Better Movement module initialized.")
 end
 
