@@ -30,6 +30,22 @@ _G.AimAssistStates.IgnoredTargetNames = _G.AimAssistStates.IgnoredTargetNames or
     ["Military Guard"] = true,
 }
 
+if _G.AimAssistStates.RecoilControlActive == nil then
+    _G.AimAssistStates.RecoilControlActive = false
+end
+
+if _G.AimAssistStates.RecoilMultiplier == nil then
+    _G.AimAssistStates.RecoilMultiplier = 0
+end
+
+if _G.AimAssistStates.KickbackMultiplier == nil then
+    _G.AimAssistStates.KickbackMultiplier = 0
+end
+
+if _G.AimAssistStates.SpreadMultiplier == nil then
+    _G.AimAssistStates.SpreadMultiplier = 100
+end
+
 -- Connections register for GC cleanup
 _G.AimAssistConnections = _G.AimAssistConnections or {}
 
@@ -163,6 +179,62 @@ function Tab:Init(UIRef)
                 _G.AimAssistStates.WallCheck = Value
             end
             print("[Aim Assist - Tab] Wall Check state: " .. tostring(Value))
+        end,
+    })
+
+    UIRef:CreateSection("Weapon Control")
+
+    UIRef:CreateToggle({
+        Name = "Enable Recoil Control",
+        CurrentValue = _G.AimAssistStates.RecoilControlActive,
+        Flag = "AimAssist_RecoilControlActive",
+        Callback = function(Value)
+            if _G.AimAssistStates then
+                _G.AimAssistStates.RecoilControlActive = Value
+            end
+            print("[Aim Assist - Tab] Recoil Control: " .. tostring(Value))
+        end,
+    })
+
+    UIRef:CreateSlider({
+        Name = "Recoil %",
+        Range = {0, 100},
+        Increment = 5,
+        CurrentValue = _G.AimAssistStates.RecoilMultiplier,
+        Flag = "AimAssist_RecoilMultiplier",
+        Callback = function(Value)
+            if _G.AimAssistStates then
+                _G.AimAssistStates.RecoilMultiplier = Value
+            end
+            print("[Aim Assist - Tab] Recoil multiplier: " .. tostring(Value) .. "%")
+        end,
+    })
+
+    UIRef:CreateSlider({
+        Name = "Kickback %",
+        Range = {0, 100},
+        Increment = 5,
+        CurrentValue = _G.AimAssistStates.KickbackMultiplier,
+        Flag = "AimAssist_KickbackMultiplier",
+        Callback = function(Value)
+            if _G.AimAssistStates then
+                _G.AimAssistStates.KickbackMultiplier = Value
+            end
+            print("[Aim Assist - Tab] Kickback multiplier: " .. tostring(Value) .. "%")
+        end,
+    })
+
+    UIRef:CreateSlider({
+        Name = "Spread %",
+        Range = {0, 100},
+        Increment = 5,
+        CurrentValue = _G.AimAssistStates.SpreadMultiplier,
+        Flag = "AimAssist_SpreadMultiplier",
+        Callback = function(Value)
+            if _G.AimAssistStates then
+                _G.AimAssistStates.SpreadMultiplier = Value
+            end
+            print("[Aim Assist - Tab] Spread multiplier: " .. tostring(Value) .. "%")
         end,
     })
 

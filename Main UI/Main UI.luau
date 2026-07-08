@@ -163,6 +163,16 @@ local function stopBlackoutUI()
         _G.GetClosestAimTarget = nil
     end
 
+    local lootsGc = loadLocalGc("Loots/GC.luau")
+    if lootsGc then
+        pcall(lootsGc.cleanup)
+    else
+        disconnectItems(_G.LootConnections)
+        _G.LootStates = nil
+        _G.LootConnections = nil
+        _G.LootRuntime = nil
+    end
+
     pcall(function()
         if type(_G.StopAutoParry) == "function" then
             _G.StopAutoParry()
@@ -241,6 +251,7 @@ local Tabs = {
     Player = Window:CreateTab("Player", 4483362458),
     Aim = Window:CreateTab("Aim Assist", 4483362458),
     AimModes = Window:CreateTab("Aim Modes", 4483362458),
+    Loots = Window:CreateTab("Loots", 4483362458),
     System = Window:CreateTab("System", 4483362458),
 }
 
@@ -359,6 +370,10 @@ local function getModuleTab(moduleIdentifier)
         return Tabs.Aim
     end
 
+    if normalizedIdentifier:find("Loots/", 1, true) then
+        return Tabs.Loots
+    end
+
     if normalizedIdentifier:find("Player Modifier/Control.luau", 1, true)
         or normalizedIdentifier:find("Player Modifier/GC.luau", 1, true)
         or normalizedIdentifier:find("Player Modifier/PerformanceGuard.luau", 1, true) then
@@ -421,6 +436,12 @@ local function loadExecutorModules()
         "Player Modifier/Control.luau",
         "Player Modifier/Executor.luau",
         "Player Modifier/GC.luau",
+        "Loots/Tab.luau",
+        "Loots/AutoLockpick.luau",
+        "Loots/AutoCollect.luau",
+        "Loots/Executor.luau",
+        "Loots/Control.luau",
+        "Loots/GC.luau",
         "Aim Assits/Tab.luau",
         "Aim Assits/Control.luau",
         "Aim Assits/Executor.luau",
@@ -428,6 +449,7 @@ local function loadExecutorModules()
         "Aim Assits/Aim Assist modes/Aimbot.luau",
         "Aim Assits/Aim Assist modes/SilentAim.luau",
         "Aim Assits/Aim Assist modes/HomingBullets.luau",
+        "Aim Assits/Aim Assist modes/RecoilControl.luau",
     }
 
     local modulesLoadedCount = 0

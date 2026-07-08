@@ -62,6 +62,30 @@ local function restoreHooks()
         return
     end
 
+    if _G.AimAssistOriginals.RecoilControlStats then
+        local success, err = pcall(function()
+            for container, values in pairs(_G.AimAssistOriginals.RecoilControlStats) do
+                if type(container) == "table" then
+                    for key, value in pairs(values) do
+                        container[key] = value
+                    end
+                elseif typeof(container) == "Instance" and container.Parent then
+                    for key, value in pairs(values) do
+                        container:SetAttribute(key, value)
+                    end
+                end
+            end
+        end)
+
+        if success then
+            log("Restored RecoilControl weapon stats successfully.")
+        else
+            warn("Failed to restore RecoilControl weapon stats: " .. tostring(err))
+        end
+
+        _G.AimAssistOriginals.RecoilControlStats = nil
+    end
+
     if _G.AimAssistOriginals["HomingBullets_FastCast_Fire"] then
         local success, err = pcall(function()
             local ReplicatedStorage = game:GetService("ReplicatedStorage")

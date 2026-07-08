@@ -20,6 +20,12 @@ local BULLET_HANDLER_HOOK_KEY = "HomingBullets_BulletHandler_Fire"
 local FASTCAST_HOOK_KEY = "HomingBullets_FastCast_Fire"
 local ENABLE_FASTCAST_FALLBACK_HOOK = false
 local ENABLE_CURVE_PROXY = false
+local ALLOW_LOCAL_ORIGIN_FALLBACK = false
+local DEFAULT_MAX_HOMING_RANGE = 280
+local DEFAULT_MAX_HOMING_ANGLE = 28
+local DEFAULT_MEMORY_WINDOW = 0.45
+local DEFAULT_LOS_REQUIRED = true
+local DEFAULT_AUTO_WEAPON_RANGE = true
 
 local HomingBullets = {}
 HomingBullets.Name = "Homing Bullets"
@@ -40,6 +46,24 @@ local function isHomingEnabled()
     return _G.AimAssistStates
         and _G.AimAssistStates.Enabled
         and _G.AimAssistStates.HomingBulletsActive
+end
+
+local function getStateNumber(key, fallback)
+    local value = _G.AimAssistStates and _G.AimAssistStates[key]
+    if type(value) == "number" then
+        return value
+    end
+
+    return fallback
+end
+
+local function getStateBool(key, fallback)
+    local value = _G.AimAssistStates and _G.AimAssistStates[key]
+    if type(value) == "boolean" then
+        return value
+    end
+
+    return fallback
 end
 
 -- Helper: Check if character is alive
@@ -112,6 +136,83 @@ local function hasClearLine(fromPos, toPos, targetCharacter)
     return targetCharacter ~= nil and result.Instance:IsDescendantOf(targetCharacter)
 end
 
+local function getMaxRangeFromBulletData(bulletData)
+    local settings = bulletData and bulletData.Settings
+    local firing = settings and settings.Firing
+    local maxRange = firing and firing.MaxRange
+
+    if type(maxRange) == "number" then
+        if getStateBool("HomingAutoWeaponRange", DEFAULT_AUTO_WEAPON_RANGE) then
+            return maxRange
+        end
+
+        return math.min(maxRange, getStateNumber("HomingMaxRange", DEFAULT_MAX_HOMING_RANGE))
+    end
+
+    return getStateNumber("HomingMaxRange", DEFAULT_MAX_HOMING_RANGE)
+end
+
+local function getBulletVelocityFromBulletData(bulletData)
+    local settings = bulletData and bulletData.Settings
+    local firing = settings and settings.Firing
+    local velocity = firing and firing.Velocity
+
+    if type(velocity) == "number" and velocity > 0 then
+        return velocity
+    end
+
+    return 1600
+end
+
+local function getAngleDegrees(direction, delta)
+    if typeof(direction) ~= "Vector3" or typeof(delta) ~= "Vector3" then
+        return 0
+    end
+
+    if direction.Magnitude <= 0 or delta.Magnitude <= 0 then
+        return 0
+    end
+
+    local dot = math.clamp(direction.Unit:Dot(delta.Unit), -1, 1)
+    return math.deg(math.acos(dot))
+end
+
+local function isShotPlausible(origin, direction, targetPos, bulletData)
+    if typeof(origin) ~= "Vector3" or typeof(targetPos) ~= "Vector3" then
+        return false
+    end
+
+    local delta = targetPos - origin
+    if delta.Magnitude <= 0 then
+        return false
+    end
+
+    if delta.Magnitude > getMaxRangeFromBulletData(bulletData) then
+        return false
+    end
+
+    local maxAngle = getStateNumber("HomingMaxAngle", DEFAULT_MAX_HOMING_ANGLE)
+    return getAngleDegrees(direction, delta) <= maxAngle
+end
+
+local function predictTargetPosition(origin, targetPart, bulletData)
+    if typeof(origin) ~= "Vector3" or not targetPart then
+        return nil
+    end
+
+    local targetPos = targetPart.Position
+    local velocity = Vector3.new()
+
+    pcall(function()
+        velocity = targetPart.AssemblyLinearVelocity or Vector3.new()
+    end)
+
+    local bulletVelocity = getBulletVelocityFromBulletData(bulletData)
+    local travelTime = math.clamp((targetPos - origin).Magnitude / bulletVelocity, 0, 0.25)
+
+    return targetPos + velocity * travelTime
+end
+
 local function hasClearLineToTargetPart(fromPos, toPos, targetPart, targetCharacter)
     if typeof(fromPos) ~= "Vector3" or typeof(toPos) ~= "Vector3" then
         return false
@@ -158,16 +259,53 @@ local function getTargetBone(targetCharacter)
         or targetCharacter.PrimaryPart
 end
 
--- Get closest target in 3D space (regardless of screen FOV)
-local function getClosestTarget3D()
+local function getTargetScore(origin, direction, targetCharacter, targetPart, bulletData)
+    if not targetPart then
+        return nil
+    end
+
+    local predictedPos = predictTargetPosition(origin, targetPart, bulletData) or targetPart.Position
+    local delta = predictedPos - origin
+    local distance = delta.Magnitude
+
+    if not isShotPlausible(origin, direction, predictedPos, bulletData) then
+        return nil
+    end
+
+    local clearLine = hasClearLine(origin, predictedPos, targetCharacter)
+    if getStateBool("HomingRequireLineOfSight", DEFAULT_LOS_REQUIRED) and not clearLine then
+        return nil
+    end
+
+    local angle = getAngleDegrees(direction, delta)
+    local score = distance + angle * 7
+
+    if not clearLine then
+        score += 450
+    end
+
+    return score, predictedPos, clearLine
+end
+
+-- Get best target in 3D space while staying within plausible server validation.
+local function getBestTarget3D(origin, direction, bulletData)
     local localChar = LocalPlayer.Character
     if not localChar or not localChar:FindFirstChild("HumanoidRootPart") then
         return nil
     end
-    
-    local localPos = localChar.HumanoidRootPart.Position
-    local closestChar = nil
-    local closestDist = 99999 -- Maximum range buffer
+
+    if typeof(origin) ~= "Vector3" then
+        origin = localChar.HumanoidRootPart.Position
+    end
+
+    if typeof(direction) ~= "Vector3" or direction.Magnitude <= 0 then
+        local camera = Workspace.CurrentCamera
+        direction = camera and camera.CFrame.LookVector or localChar.HumanoidRootPart.CFrame.LookVector
+    end
+
+    local bestChar = nil
+    local bestBone = nil
+    local bestScore = math.huge
     
     local npcs = Workspace:FindFirstChild("NPCs")
     local chars = Workspace:FindFirstChild("Chars")
@@ -182,18 +320,17 @@ local function getClosestTarget3D()
     
     for _, child in ipairs(targets) do
         if child ~= localChar and isAlive(child) and not isIgnoredTarget(child) then
-            local targetRoot = child:FindFirstChild("HumanoidRootPart") or child.PrimaryPart
-            if targetRoot then
-                local dist = (targetRoot.Position - localPos).Magnitude
-                if dist < closestDist then
-                    closestChar = child
-                    closestDist = dist
-                end
+            local targetBone = getTargetBone(child)
+            local score = getTargetScore(origin, direction, child, targetBone, bulletData)
+            if score and score < bestScore then
+                bestChar = child
+                bestBone = targetBone
+                bestScore = score
             end
         end
     end
     
-    return closestChar
+    return bestChar, bestBone
 end
 
 -- Target Memory / Stickiness variables to maintain lock during high recoil or wall flickers
@@ -362,12 +499,13 @@ local function createCurveProxy(origin, targetBone, targetCharacter)
 end
 
 -- Build target information table for FastCast homing
-local function buildTargetInformation(origin)
+local function buildTargetInformation(origin, direction, bulletData)
     if not isHomingEnabled() then
         return nil
     end
 
     local targetCharacter = nil
+    local targetBone = nil
     
     -- 1. Try to fetch standard screen FOV target first
     if _G.GetClosestAimTarget then
@@ -375,25 +513,37 @@ local function buildTargetInformation(origin)
         if isIgnoredTarget(targetCharacter) then
             targetCharacter = nil
         end
+
+        if targetCharacter then
+            targetBone = getTargetBone(targetCharacter)
+            local predictedPos = targetBone and predictTargetPosition(origin, targetBone, bulletData)
+            if not targetBone or not isShotPlausible(origin, direction, predictedPos or targetBone.Position, bulletData) then
+                targetCharacter = nil
+                targetBone = nil
+            elseif getStateBool("HomingRequireLineOfSight", DEFAULT_LOS_REQUIRED)
+                and not hasClearLine(origin, predictedPos or targetBone.Position, targetCharacter) then
+                targetCharacter = nil
+                targetBone = nil
+            end
+        end
     end
     
-    -- 2. Fallback: Fetch closest target in 3D space (allows sky-shot homing)
+    -- 2. Fallback: Fetch best target in 3D space within plausible angle/range.
     if not targetCharacter then
-        targetCharacter = getClosestTarget3D()
+        targetCharacter, targetBone = getBestTarget3D(origin, direction, bulletData)
     end
-    
-    local targetBone = nil
 
     if targetCharacter then
-        targetBone = getTargetBone(targetCharacter)
+        targetBone = targetBone or getTargetBone(targetCharacter)
         if targetBone then
             lastTargetChar = targetCharacter
             lastTargetBone = targetBone
             lastTargetTime = os.clock()
         end
     else
-        -- 3. Memory Fallback: Reuse last target if within 0.3 seconds and target is still alive and nearby
-        if lastTargetChar and lastTargetBone and (os.clock() - lastTargetTime < 0.3) then
+        -- 3. Memory Fallback: Reuse last target briefly to survive recoil/FOV flicker.
+        local memoryWindow = getStateNumber("HomingMemoryWindow", DEFAULT_MEMORY_WINDOW)
+        if memoryWindow > 0 and lastTargetChar and lastTargetBone and (os.clock() - lastTargetTime < memoryWindow) then
             local localChar = LocalPlayer.Character
             if lastTargetChar.Parent
                 and not isIgnoredTarget(lastTargetChar)
@@ -401,7 +551,11 @@ local function buildTargetInformation(origin)
                 and lastTargetChar.Humanoid.Health > 0 then
                 if localChar and localChar:FindFirstChild("HumanoidRootPart") and lastTargetChar:FindFirstChild("HumanoidRootPart") then
                     local dist = (lastTargetChar.HumanoidRootPart.Position - localChar.HumanoidRootPart.Position).Magnitude
-                    if dist <= 300 then
+                    local predictedPos = predictTargetPosition(origin, lastTargetBone, bulletData) or lastTargetBone.Position
+                    if dist <= getMaxRangeFromBulletData(bulletData)
+                        and isShotPlausible(origin, direction, predictedPos, bulletData)
+                        and (not getStateBool("HomingRequireLineOfSight", DEFAULT_LOS_REQUIRED)
+                            or hasClearLine(origin, predictedPos, lastTargetChar)) then
                         targetCharacter = lastTargetChar
                         targetBone = lastTargetBone
                     end
@@ -446,6 +600,92 @@ local function findBulletData(args)
     return nil
 end
 
+local function isDescendantOfLocalCharacter(instance)
+    local character = LocalPlayer.Character
+    return instance ~= nil
+        and character ~= nil
+        and typeof(instance) == "Instance"
+        and (instance == character or instance:IsDescendantOf(character))
+end
+
+local function isLocalCharacterModel(instance)
+    return instance ~= nil
+        and LocalPlayer.Character ~= nil
+        and typeof(instance) == "Instance"
+        and instance == LocalPlayer.Character
+end
+
+local function bulletDataBelongsToLocalPlayer(bulletData)
+    if type(bulletData) ~= "table" then
+        return false
+    end
+
+    if isLocalCharacterModel(bulletData.Character) then
+        return true
+    end
+
+    if isDescendantOfLocalCharacter(bulletData.Tool)
+        or isDescendantOfLocalCharacter(bulletData.GunModel)
+        or isDescendantOfLocalCharacter(bulletData.Model)
+        or isDescendantOfLocalCharacter(bulletData.Weapon) then
+        return true
+    end
+
+    local owner = bulletData.Owner or bulletData.Player or bulletData.User
+    if owner == LocalPlayer then
+        return true
+    end
+
+    return false
+end
+
+local function originBelongsToLocalPlayer(origin)
+    local character = LocalPlayer.Character
+    local root = character and (character:FindFirstChild("HumanoidRootPart") or character.PrimaryPart)
+    local head = character and character:FindFirstChild("Head")
+
+    if typeof(origin) ~= "Vector3" then
+        return false
+    end
+
+    if head and (origin - head.Position).Magnitude <= 12 then
+        return true
+    end
+
+    if root and (origin - root.Position).Magnitude <= 14 then
+        return true
+    end
+
+    return false
+end
+
+local function shouldProcessBulletHandlerShot(args, bulletData)
+    if bulletDataBelongsToLocalPlayer(bulletData) then
+        return true
+    end
+
+    -- Some game call paths do not include Character/Tool metadata. Only allow
+    -- those when the shot origin is near the local character; this prevents NPC
+    -- and teammate casts from being bent by the local homing hook.
+    return ALLOW_LOCAL_ORIGIN_FALLBACK and originBelongsToLocalPlayer(args[2])
+end
+
+local function shouldProcessFastCastShot(casterInstance, origin, behavior)
+    if isDescendantOfLocalCharacter(casterInstance) then
+        return true
+    end
+
+    if type(behavior) == "table" then
+        if bulletDataBelongsToLocalPlayer(behavior.UserData)
+            or bulletDataBelongsToLocalPlayer(behavior.Data)
+            or bulletDataBelongsToLocalPlayer(behavior.BulletData) then
+            return true
+        end
+    end
+
+    return ALLOW_LOCAL_ORIGIN_FALLBACK and originBelongsToLocalPlayer(origin)
+end
+
 local function redirectInitialDirection(args, targetInformation)
     local origin = args[2]
     local targetObject = targetInformation and targetInformation.Object
@@ -469,7 +709,8 @@ local function injectTargetInformation(activeCast)
     end
 
     local origin = activeCast.UserData and activeCast.UserData.Origin
-    local targetInformation, targetCharacter = buildTargetInformation(origin)
+    local direction = activeCast.UserData and activeCast.UserData.Direction
+    local targetInformation, targetCharacter = buildTargetInformation(origin, direction, activeCast.UserData)
     if not targetInformation then
         return
     end
@@ -602,13 +843,13 @@ local function setupBulletHandlerHook()
         
         if isHomingEnabled() then
             local bulletData = findBulletData(args)
-            local targetInformation, targetCharacter = buildTargetInformation(args[2])
-            if bulletData and targetCharacter and targetInformation then
-                if bulletData then
+            if shouldProcessBulletHandlerShot(args, bulletData) then
+                local targetInformation, targetCharacter = buildTargetInformation(args[2], args[3], bulletData)
+                if bulletData and targetCharacter and targetInformation then
                     bulletData.TargetInformation = targetInformation
+                    redirectInitialDirection(args, targetInformation)
+                    log("Queued native BulletHandler homing: " .. tostring(targetCharacter.Name))
                 end
-                redirectInitialDirection(args, targetInformation)
-                log("Queued native BulletHandler homing: " .. tostring(targetCharacter.Name))
             end
         end
 
@@ -662,8 +903,10 @@ local function setupFastCastHook()
         
         -- Hook the Fire constructor as a fallback layer for casts created outside BulletHandler.
         fastCastTable.Fire = function(casterInstance, origin, direction, velocity, behavior)
-            if isHomingEnabled() then
-                local targetInformation, targetCharacter = buildTargetInformation(origin)
+            local isLocalShot = shouldProcessFastCastShot(casterInstance, origin, behavior)
+
+            if isHomingEnabled() and isLocalShot then
+                local targetInformation, targetCharacter = buildTargetInformation(origin, direction, nil)
                 if targetCharacter and targetInformation and targetInformation.Object then
                     local targetPos = targetInformation.Object.Position
                     local delta = targetPos - origin
@@ -682,7 +925,7 @@ local function setupFastCastHook()
 
             local activeCast = oldFire(casterInstance, origin, direction, velocity, behavior)
 
-            if isHomingEnabled() then
+            if isHomingEnabled() and isLocalShot then
                 injectTargetInformation(activeCast)
                 task.defer(injectTargetInformation, activeCast)
 
@@ -703,6 +946,15 @@ end
 function HomingBullets:Init(Tab)
     -- Initialize state
     _G.AimAssistStates.HomingBulletsActive = _G.AimAssistStates.HomingBulletsActive or false
+    _G.AimAssistStates.HomingMaxRange = _G.AimAssistStates.HomingMaxRange or DEFAULT_MAX_HOMING_RANGE
+    _G.AimAssistStates.HomingMaxAngle = _G.AimAssistStates.HomingMaxAngle or DEFAULT_MAX_HOMING_ANGLE
+    _G.AimAssistStates.HomingMemoryWindow = _G.AimAssistStates.HomingMemoryWindow or DEFAULT_MEMORY_WINDOW
+    if _G.AimAssistStates.HomingAutoWeaponRange == nil then
+        _G.AimAssistStates.HomingAutoWeaponRange = DEFAULT_AUTO_WEAPON_RANGE
+    end
+    if _G.AimAssistStates.HomingRequireLineOfSight == nil then
+        _G.AimAssistStates.HomingRequireLineOfSight = DEFAULT_LOS_REQUIRED
+    end
 
     -- Add the toggle to the UI
     Tab:CreateToggle({
@@ -714,6 +966,69 @@ function HomingBullets:Init(Tab)
                 _G.AimAssistStates.HomingBulletsActive = Value
             end
             print("[Aim Assist - HomingBullets] Homing Bullets active state: " .. tostring(Value))
+        end,
+    })
+
+    Tab:CreateToggle({
+        Name = "Homing Require Line of Sight",
+        CurrentValue = _G.AimAssistStates.HomingRequireLineOfSight,
+        Flag = "AimAssist_HomingRequireLineOfSight",
+        Callback = function(Value)
+            if _G.AimAssistStates then
+                _G.AimAssistStates.HomingRequireLineOfSight = Value
+            end
+            print("[Aim Assist - HomingBullets] Require LOS: " .. tostring(Value))
+        end,
+    })
+
+    Tab:CreateToggle({
+        Name = "Auto Weapon Homing Range",
+        CurrentValue = _G.AimAssistStates.HomingAutoWeaponRange,
+        Flag = "AimAssist_HomingAutoWeaponRange",
+        Callback = function(Value)
+            if _G.AimAssistStates then
+                _G.AimAssistStates.HomingAutoWeaponRange = Value
+            end
+            print("[Aim Assist - HomingBullets] Auto weapon range: " .. tostring(Value))
+        end,
+    })
+
+    Tab:CreateSlider({
+        Name = "Manual Homing Range",
+        Range = {80, 600},
+        Increment = 10,
+        CurrentValue = _G.AimAssistStates.HomingMaxRange,
+        Flag = "AimAssist_HomingMaxRange",
+        Callback = function(Value)
+            if _G.AimAssistStates then
+                _G.AimAssistStates.HomingMaxRange = Value
+            end
+        end,
+    })
+
+    Tab:CreateSlider({
+        Name = "Homing Max Angle",
+        Range = {5, 60},
+        Increment = 1,
+        CurrentValue = _G.AimAssistStates.HomingMaxAngle,
+        Flag = "AimAssist_HomingMaxAngle",
+        Callback = function(Value)
+            if _G.AimAssistStates then
+                _G.AimAssistStates.HomingMaxAngle = Value
+            end
+        end,
+    })
+
+    Tab:CreateSlider({
+        Name = "Homing Target Memory",
+        Range = {0, 100},
+        Increment = 5,
+        CurrentValue = math.floor((_G.AimAssistStates.HomingMemoryWindow or DEFAULT_MEMORY_WINDOW) * 100),
+        Flag = "AimAssist_HomingMemoryWindow",
+        Callback = function(Value)
+            if _G.AimAssistStates then
+                _G.AimAssistStates.HomingMemoryWindow = Value / 100
+            end
         end,
     })
 
