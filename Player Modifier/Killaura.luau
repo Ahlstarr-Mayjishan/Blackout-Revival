@@ -13,6 +13,7 @@ local Workspace = game:GetService("Workspace")
 local LocalPlayer = Players.LocalPlayer
 local tableUnpack = table.unpack or unpack
 local cachedMeleeMain = nil
+local cachedInputHandler = nil
 local virtualInputManager = nil
 
 local Killaura = {}
@@ -30,6 +31,21 @@ local function getModifierState(name, fallback)
     end
 
     return value
+end
+
+local lastDebugAt = 0
+local function debugLog(message)
+    if not getModifierState("KillauraDebug", false) then
+        return
+    end
+
+    local now = os.clock()
+    if now - lastDebugAt < 1 then
+        return
+    end
+
+    lastDebugAt = now
+    print("[Player Modifier - Killaura] " .. tostring(message))
 end
 
 local function findEquippedMelee(character)
@@ -86,6 +102,27 @@ local function isValidTarget(model, localChar)
     return true
 end
 
+local function scanTargets(folder, localChar, localPos, maxRange, bestTarget, bestDistance)
+    if not folder then
+        return bestTarget, bestDistance
+    end
+
+    for _, child in ipairs(folder:GetChildren()) do
+        if child:IsA("Model") and isValidTarget(child, localChar) then
+            local root = child:FindFirstChild("HumanoidRootPart") or getTargetPart(child)
+            local dist = (root.Position - localPos).Magnitude
+            if dist < bestDistance and dist <= maxRange then
+                bestTarget = child
+                bestDistance = dist
+            end
+        elseif child:IsA("Folder") then
+            bestTarget, bestDistance = scanTargets(child, localChar, localPos, maxRange, bestTarget, bestDistance)
+        end
+    end
+
+    return bestTarget, bestDistance
+end
+
 -- Scan for closest valid target inside melee range (15 studs)
 local function getClosestMeleeTarget()
     local localChar = LocalPlayer.Character
@@ -95,7 +132,8 @@ local function getClosestMeleeTarget()
 
     local localPos = localChar.HumanoidRootPart.Position
     local closestTarget = nil
-    local closestDist = getModifierState("KillauraRange", 30)
+    local maxRange = getModifierState("KillauraRange", 30)
+    local closestDist = maxRange
 
     local folders = {}
     local chars = Workspace:FindFirstChild("Chars")
@@ -105,16 +143,7 @@ local function getClosestMeleeTarget()
     if #folders == 0 then table.insert(folders, Workspace) end
 
     for _, folder in ipairs(folders) do
-        for _, child in ipairs(folder:GetChildren()) do
-            if isValidTarget(child, localChar) then
-                local root = child:FindFirstChild("HumanoidRootPart") or getTargetPart(child)
-                local dist = (root.Position - localPos).Magnitude
-                if dist < closestDist then
-                    closestTarget = child
-                    closestDist = dist
-                end
-            end
-        end
+        closestTarget, closestDist = scanTargets(folder, localChar, localPos, maxRange, closestTarget, closestDist)
     end
 
     return closestTarget
@@ -137,6 +166,26 @@ local function getMeleeMain()
     return cachedMeleeMain
 end
 
+local function getInputHandler()
+    if cachedInputHandler ~= nil then
+        return cachedInputHandler
+    end
+
+    pcall(function()
+        local mods = ReplicatedStorage:FindFirstChild("Mods")
+        local inputModule = mods and mods:FindFirstChild("InputHandler")
+        if inputModule then
+            cachedInputHandler = require(inputModule)
+        end
+    end)
+
+    if cachedInputHandler == nil then
+        cachedInputHandler = false
+    end
+
+    return cachedInputHandler
+end
+
 local function getVirtualInputManager()
     if virtualInputManager ~= nil then
         return virtualInputManager
@@ -148,6 +197,21 @@ local function getVirtualInputManager()
 
     virtualInputManager = ok and service or false
     return virtualInputManager
+end
+
+local function sendInputHandlerSwing(holdTime)
+    local inputHandler = getInputHandler()
+    if not inputHandler or type(inputHandler.HandleInput) ~= "function" then
+        return false
+    end
+
+    local ok = pcall(function()
+        inputHandler.HandleInput(nil, nil, "Began", "M1")
+        task.wait(holdTime or 0.05)
+        inputHandler.HandleInput(nil, nil, "Ended", "M1")
+    end)
+
+    return ok
 end
 
 local function sendMouseSwing(holdTime)
@@ -201,6 +265,10 @@ local function performSwing()
     local holdTime = math.clamp(getModifierState("KillauraSwingHold", 0.05), 0.03, 0.15)
     local meleeMain = getMeleeMain()
 
+    if sendInputHandlerSwing(holdTime) then
+        return true
+    end
+
     if meleeMain and type(meleeMain.Swing) == "function" then
         local ok = pcall(function()
             meleeMain.Swing(true)
@@ -251,6 +319,8 @@ end
 
 -- Establish Raycast redirection hook for Blatant Mode
 local function setupRaycastHook()
+    _G.OriginalFunctions = _G.OriginalFunctions or {}
+
     if hookmetamethod then
         if _G.OriginalFunctions["MeleeRaycast_Metatable"] then return end
         
@@ -329,8 +399,14 @@ function Killaura:Init(Tab)
                     
                     -- Check if tool is a melee weapon
                     if currentTool then
-                        performSwing()
+                        if not performSwing() then
+                            debugLog("Swing failed for target=" .. tostring(target.Name))
+                        end
+                    else
+                        debugLog("Target found but no equipped melee tool: " .. tostring(target.Name))
                     end
+                else
+                    debugLog("No target in range.")
                 end
             end
         end

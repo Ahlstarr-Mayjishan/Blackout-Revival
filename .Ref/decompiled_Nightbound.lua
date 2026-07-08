@@ -6,7 +6,7 @@
    \ \_______\ \_______\ \_______\ \_______\ \__\    \ \__\ \__\    \ \__\ \_______\ \_______\ \__\\ _\ 
     \|_______|\|_______|\|_______|\|_______|\|__|     \|__|\|__|     \|__|\|_______|\|_______|\|__|\|__|
 
-Decompiled (187) scripts, failed (0), skipped (228), references found (143)
+Decompiled (189) scripts, failed (0), skipped (242), references found (143)
 -- Anticheats, None
 
 ---- Remotes ----
@@ -151,15 +151,6 @@ ReplicatedStorage.UpdateItemDatabase
 ReplicatedStorage.GetPerms
 
 ---- Remote References ----
--- Source: Workspace.Chars.Noriko_Ellen.Bash
-   Call: Events.Player.Bash:FireServer(v22, v4)
-
--- Source: Workspace.Chars.Noriko_Ellen.Throwables
-   Call: Events.Throwables.Arm:FireServer()
-
--- Source: Workspace.Chars.Noriko_Ellen.Throwables
-   Call: Events.Throwables.Throw:FireServer(Character.Head.Position, LookVector)
-
 -- Source: Workspace.Chars.Noriko_Ellen.Consumables
    Call: Events.Items.Use:FireServer(true, v5.Parent)
 
@@ -168,6 +159,15 @@ ReplicatedStorage.GetPerms
 
 -- Source: Workspace.Chars.Noriko_Ellen.Consumables
    Call: Events.Items.Use:FireServer(false)
+
+-- Source: Workspace.Chars.Noriko_Ellen.Throwables
+   Call: Events.Throwables.Arm:FireServer()
+
+-- Source: Workspace.Chars.Noriko_Ellen.Throwables
+   Call: Events.Throwables.Throw:FireServer(Character.Head.Position, LookVector)
+
+-- Source: Workspace.Chars.Noriko_Ellen.Bash
+   Call: Events.Player.Bash:FireServer(v22, v4)
 
 -- Source: Workspace.Chars.Noriko_Ellen.RagdollClient
    Call: Events.Player.Negate:FireServer(p1)
@@ -190,18 +190,6 @@ ReplicatedStorage.GetPerms
 -- Source: Workspace.Chars.Noriko_Ellen.RagdollClient
    Call: Events.Player.Ragdoll:FireServer()
 
--- Source: StarterGui.ClimbDebug.Zipline
-   Call: Parkour:FireServer("Detach", v9.Parent)
-
--- Source: StarterGui.ClimbDebug.Zipline
-   Call: Parkour:FireServer("Zipline", v9.Parent, true)
-
--- Source: StarterGui.ClimbDebug.Zipline
-   Call: Parkour:FireServer("Attach", p1.Zip)
-
--- Source: StarterGui.ClimbDebug.Zipline
-   Call: Parkour:FireServer("Zipline", p1.Zip)
-
 -- Source: StarterGui.Minigames.MinigameHandler.Minigames
    Call: Events.Loot.MinigameResult:FireServer(p2, p1)
 
@@ -211,20 +199,26 @@ ReplicatedStorage.GetPerms
 -- Source: StarterGui.Minigames.MinigameHandler.Minigames
    Call: Events.Loot.MinigameMistake:FireServer()
 
--- Source: StarterGui.ClimbDebug.ParkourCore
-   Call: Parkour:FireServer("Move", v19)
+-- Source: StarterGui.ExtraUI.ContextProducts.ContextProductsCore
+   Call: local v1 = Purchase:WaitForChild("GetAvailable"):InvokeServer()
 
--- Source: StarterGui.ClimbDebug.ParkourCore
-   Call: Parkour:FireServer("LetGo", v19)
+-- Source: StarterGui.ExtraUI.ContextProducts.ContextProductsCore
+   Call: Purchase.GiftTarget:FireServer()
 
--- Source: StarterGui.ClimbDebug.ParkourCore
-   Call: Parkour:FireServer("Jump", v19)
+-- Source: StarterGui.ClimbDebug.Zipline
+   Call: Parkour:FireServer("Detach", v10.Parent)
 
--- Source: StarterGui.ClimbDebug.ParkourCore
-   Call: Parkour:FireServer("Grab", v72)
+-- Source: StarterGui.ClimbDebug.Zipline
+   Call: Parkour:FireServer("Zipline", v10.Parent, true)
 
--- Source: StarterGui.ClimbDebug.ParkourCore
-   Call: Parkour:FireServer("MetalSwing", v72)
+-- Source: StarterGui.ClimbDebug.Zipline
+   Call: Parkour:FireServer("Attach", p1.Zip)
+
+-- Source: StarterGui.ClimbDebug.Zipline
+   Call: Parkour:FireServer("Zipline", p1.Zip)
+
+-- Source: StarterGui.ExtraUI.Rewards.MainFrame.LocalScript
+   Call: Rewards:WaitForChild("ClaimDaily"):FireServer()
 
 -- Source: StarterGui.InventoryGui.InventoryCore
    Call: Items.Equip:FireServer(p1)
@@ -277,11 +271,20 @@ ReplicatedStorage.GetPerms
 -- Source: StarterGui.InventoryGui.InventoryCore
    Call: Items.Equip:FireServer(Item2)
 
--- Source: StarterGui.ExtraUI.ContextProducts.ContextProductsCore
-   Call: local v1 = Purchase:WaitForChild("GetAvailable"):InvokeServer()
+-- Source: StarterGui.ClimbDebug.ParkourCore
+   Call: Parkour:FireServer("Move", v19)
 
--- Source: StarterGui.ExtraUI.ContextProducts.ContextProductsCore
-   Call: Purchase.GiftTarget:FireServer()
+-- Source: StarterGui.ClimbDebug.ParkourCore
+   Call: Parkour:FireServer("LetGo", v19)
+
+-- Source: StarterGui.ClimbDebug.ParkourCore
+   Call: Parkour:FireServer("Jump", v19)
+
+-- Source: StarterGui.ClimbDebug.ParkourCore
+   Call: Parkour:FireServer("Grab", v72)
+
+-- Source: StarterGui.ClimbDebug.ParkourCore
+   Call: Parkour:FireServer("MetalSwing", v72)
 
 -- Source: StarterGui.MainStaticGui.StaticCore
    Call: Events.Player.Damage:FireServer(1000, {
@@ -300,9 +303,6 @@ ReplicatedStorage.GetPerms
 
 -- Source: StarterGui.MainStaticGui.StaticCore
    Call: Events.Party.Invite:FireServer(v17)
-
--- Source: StarterGui.ExtraUI.Rewards.MainFrame.LocalScript
-   Call: Rewards:WaitForChild("ClaimDaily"):FireServer()
 
 -- Source: StarterGui.MainGui.Stash.StashCore
    Call: Events.Stash.ClaimPaycheck:FireServer()
@@ -331,6 +331,18 @@ ReplicatedStorage.GetPerms
 -- Source: StarterGui.MainGui.Stash.StashCore
    Call: Events.Stations.StopInteracting:FireServer()
 
+-- Source: StarterGui.MainGui.Station.ShopCore
+   Call: local v1, v2 = Stations.Buy:InvokeServer(v8)
+
+-- Source: StarterGui.MainGui.Station.ShopCore
+   Call: Stations.Refill:InvokeServer(v8)
+
+-- Source: StarterGui.MainGui.Station.ShopCore
+   Call: Stations.Sell:InvokeServer(v8)
+
+-- Source: StarterGui.MainGui.Station.ShopCore
+   Call: Stations.StopInteracting:FireServer()
+
 -- Source: StarterGui.MainGui.LootFrame.LootCore
    Call: Events.Party.Ping:FireServer(v)
 
@@ -349,29 +361,17 @@ ReplicatedStorage.GetPerms
 -- Source: StarterGui.MainGui.LootFrame.LootCore
    Call: Events.Loot.LootObject:FireServer(v7, "Valuables")
 
--- Source: StarterGui.MainGui.Station.ShopCore
-   Call: local v1, v2 = Stations.Buy:InvokeServer(v8)
+-- Source: StarterGui.MainGui.Station.AttachmentsCore
+   Call: local v13, v22 = Stations.GetModel:InvokeServer(p1)
 
--- Source: StarterGui.MainGui.Station.ShopCore
-   Call: Stations.Refill:InvokeServer(v8)
-
--- Source: StarterGui.MainGui.Station.ShopCore
-   Call: Stations.Sell:InvokeServer(v8)
-
--- Source: StarterGui.MainGui.Station.ShopCore
-   Call: Stations.StopInteracting:FireServer()
+-- Source: StarterGui.MainGui.Station.AttachmentsCore
+   Call: if not Stations.Attachment:InvokeServer(v6, v7 and v7.Name) then
 
 -- Source: StarterGui.MainGui.Tasks.TasksCore
    Call: ReplicatedStorage.Events.Stations.StartTask:FireServer(v3, v2)
 
 -- Source: StarterGui.MainGui.Tasks.TasksCore
    Call: Stations.StopInteracting:FireServer()
-
--- Source: StarterGui.MainGui.Station.AttachmentsCore
-   Call: local v13, v22 = Stations.GetModel:InvokeServer(p1)
-
--- Source: StarterGui.MainGui.Station.AttachmentsCore
-   Call: if not Stations.Attachment:InvokeServer(v6, v7 and v7.Name) then
 
 -- Source: StarterGui.MainGui.MainGuiCore
    Call: Events.Player.Stamina:FireServer(5)
@@ -406,6 +406,12 @@ ReplicatedStorage.GetPerms
 -- Source: StarterGui.MainGui.MainGuiCore
    Call: Events.Items.Unequip:FireServer()
 
+-- Source: StarterGui.MainPersistentGui.SpeechBox.SpeechCore
+   Call: Dialogue.Event:FireServer(v)
+
+-- Source: StarterGui.MainPersistentGui.SpeechBox.SpeechCore
+   Call: Dialogue.Event:FireServer(nil, true)
+
 -- Source: StarterGui.MainGui.Minimap.MinimapCore
    Call: Events.Party.Ping:FireServer(p1, p2.Custom)
 
@@ -424,12 +430,6 @@ ReplicatedStorage.GetPerms
 -- Source: StarterGui.MobileGui.MobileCore
    Call: Settings.Update:InvokeServer("MobileButtons", k .. "_Size", v.UIScale.Scale)
 
--- Source: StarterGui.MainPersistentGui.SpeechBox.SpeechCore
-   Call: Dialogue.Event:FireServer(v)
-
--- Source: StarterGui.MainPersistentGui.SpeechBox.SpeechCore
-   Call: Dialogue.Event:FireServer(nil, true)
-
 -- Source: StarterPlayer.StarterPlayerScripts.CharacterHandler
    Call: UpdateStates:FireServer(v1.Origin.Position, v1.Hit.Position, CurrentCamera.CFrame.LookVector, t)
 
@@ -438,6 +438,9 @@ ReplicatedStorage.GetPerms
 
 -- Source: StarterPlayer.StarterCharacterScripts.Throwables
    Call: Events.Throwables.Throw:FireServer(Character.Head.Position, LookVector)
+
+-- Source: StarterPlayer.StarterCharacterScripts.Bash
+   Call: Events.Player.Bash:FireServer(v22, v4)
 
 -- Source: StarterPlayer.StarterCharacterScripts.Consumables
    Call: Events.Items.Use:FireServer(true, v5.Parent)
@@ -469,11 +472,38 @@ ReplicatedStorage.GetPerms
 -- Source: StarterPlayer.StarterCharacterScripts.RagdollClient
    Call: Events.Player.Ragdoll:FireServer()
 
--- Source: StarterPlayer.StarterCharacterScripts.Bash
-   Call: Events.Player.Bash:FireServer(v22, v4)
-
 -- Source: Players.Noriko_Ellen.PlayerScripts.CharacterHandler
    Call: UpdateStates:FireServer(v1.Origin.Position, v1.Hit.Position, CurrentCamera.CFrame.LookVector, t)
+
+-- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
+   Call: if Purchase.CanPurchase:InvokeServer(p1) then
+
+-- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
+   Call: t = Purchase:WaitForChild("GetAvailable"):InvokeServer()
+
+-- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
+   Call: Purchase.GiftTarget:FireServer(p1)
+
+-- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
+   Call: Purchase.UseToken:FireServer(v32.ID)
+
+-- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
+   Call: Purchase.GiftTarget:FireServer()
+
+-- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
+   Call: Purchase.GiftTarget:FireServer()
+
+-- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
+   Call: Purchase.GiftTarget:FireServer()
+
+-- Source: Players.Noriko_Ellen.PlayerGui.DeathGui.DeathLogic
+   Call: Events.Player.Respawn:FireServer()
+
+-- Source: Players.Noriko_Ellen.PlayerGui.DeathGui.DeathLogic
+   Call: local v1, v2 = Events.Player.SaveDS:InvokeServer()
+
+-- Source: Players.Noriko_Ellen.PlayerGui.DeathGui.DeathLogic
+   Call: Events.Player.SpectateReturn:FireServer()
 
 -- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Items.LockerCore
    Call: Cosmetics.UpdateLocker:FireServer()
@@ -502,54 +532,6 @@ ReplicatedStorage.GetPerms
 -- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Store.RotatingShopCore
    Call: Cosmetics.Buy:FireServer(v7, v6.Type, v5, v4)
 
--- Source: Players.Noriko_Ellen.PlayerGui.DeathGui.DeathLogic
-   Call: Events.Player.Respawn:FireServer()
-
--- Source: Players.Noriko_Ellen.PlayerGui.DeathGui.DeathLogic
-   Call: local v1, v2 = Events.Player.SaveDS:InvokeServer()
-
--- Source: Players.Noriko_Ellen.PlayerGui.DeathGui.DeathLogic
-   Call: Events.Player.SpectateReturn:FireServer()
-
--- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
-   Call: if Purchase.CanPurchase:InvokeServer(p1) then
-
--- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
-   Call: t = Purchase:WaitForChild("GetAvailable"):InvokeServer()
-
--- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
-   Call: Purchase.GiftTarget:FireServer(p1)
-
--- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
-   Call: Purchase.UseToken:FireServer(v32.ID)
-
--- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
-   Call: Purchase.GiftTarget:FireServer()
-
--- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
-   Call: Purchase.GiftTarget:FireServer()
-
--- Source: Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
-   Call: Purchase.GiftTarget:FireServer()
-
--- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
-   Call: local v3, v4, v5 = Settings:WaitForChild("Get"):InvokeServer()
-
--- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
-   Call: local v1 = Settings.Update:InvokeServer(p2, p3, p1.Value)
-
--- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
-   Call: local v22 = Settings.Update:InvokeServer(p2, p3, not v3[p2][p3])
-
--- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
-   Call: local v32 = Settings.Update:InvokeServer(p2, p3, v22)
-
--- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
-   Call: local v4 = Settings.Update:InvokeServer(p2, p3, v1.KeyCode)
-
--- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
-   Call: local v1 = Settings.Reset:InvokeServer(v13)
-
 -- Source: Players.Noriko_Ellen.PlayerGui.GunGui.Actions.ActionsCore.Prompts
    Call: Events.Actions.Revive:FireServer(p1)
 
@@ -574,11 +556,29 @@ ReplicatedStorage.GetPerms
 -- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.OverlayCore
    Call: Events.Teleport.BackToMenu:FireServer()
 
--- Source: Players.Noriko_Ellen.PlayerGui.MainStaticGui.RightTab.Perks.TabCore
-   Call: Events.NB.SkipShop:FireServer(true)
+-- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
+   Call: local v3, v4, v5 = Settings:WaitForChild("Get"):InvokeServer()
+
+-- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
+   Call: local v1 = Settings.Update:InvokeServer(p2, p3, p1.Value)
+
+-- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
+   Call: local v22 = Settings.Update:InvokeServer(p2, p3, not v3[p2][p3])
+
+-- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
+   Call: local v32 = Settings.Update:InvokeServer(p2, p3, v22)
+
+-- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
+   Call: local v4 = Settings.Update:InvokeServer(p2, p3, v1.KeyCode)
+
+-- Source: Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore
+   Call: local v1 = Settings.Reset:InvokeServer(v13)
 
 -- Source: Players.Noriko_Ellen.PlayerGui.MainStaticGui.RightTab.Modifiers.TabCore
    Call: Events.NB.UpdateActiveModifiers:FireServer()
+
+-- Source: Players.Noriko_Ellen.PlayerGui.MainStaticGui.RightTab.Perks.TabCore
+   Call: Events.NB.SkipShop:FireServer(true)
 
 
 ---- Nil Instances (Hidden Connections) ----
@@ -592,9 +592,9 @@ ReplicatedStorage.GetPerms
 -- [NIL] BindableEvent: Event
 -- [NIL] BindableEvent: Event
 -- [NIL] BindableEvent: Event
--- [NIL] ModuleScript: Main
--- [NIL] ModuleScript: Main
 -- [NIL] ModuleScript: t
+-- [NIL] ModuleScript: Main
+-- [NIL] ModuleScript: Main
 
 
 ---- Attributes ----
@@ -4319,31 +4319,29 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Debris.Guns.Rpg7.ArmedParticle (ParticleEmitter)
    [Attr] EmitCount = 15
 
--- Target: Workspace.Debris.Misc.Default (Part)
-   [Attr] TransparencySpeed = 0.5
-   [Attr] Transparency = 0.75
-   [Attr] Position = -294.82501220703125, -39.77499771118164, -533.5499877929688
-   [Attr] Height = 40
-   [Attr] ScaleSpeed = 0.5
-   [Attr] HeightSpeed = 0.5
-   [Attr] Scale = 25
-
 -- Target: Workspace.Chars.Noriko_Ellen (Model)
-   [Attr] NB_Vulnerability = 0.500999987, 0.5
    [Attr] Crouching = false
    [Attr] OverrideReloadingMovementSpeed = 1
-   [Attr] ServerCrouching = false
-   [Attr] DisplayName = Noriko_Ellen
+   [Attr] BlockingCooldown = false
+   [Attr] Reviving = false
+   [Attr] InDanger = true
+   [Attr] Blocking = false
+   [Attr] RushPVE = true
+   [Attr] Ragdolled = false
+   [Attr] GearPrepared = true
+   [Attr] Downed = true
+   [Attr] AppearanceLoaded = true
+   [Attr] HealthPackCooldown = true
    [Attr] PauseBounty = true
    [Attr] CanSprintReload = true
    [Attr] Falling = false
-   [Attr] InDanger = true
+   [Attr] InPhysics = false
    [Attr] OverWeightCapacity = 0
    [Attr] CanParkourMove = true
-   [Attr] AppearanceLoaded = true
-   [Attr] RushPVE = true
+   [Attr] ServerBlocking = false
+   [Attr] ServerCrouching = false
    [Attr] AutoRotate = true
-   [Attr] GearPrepared = true
+   [Attr] DisplayName = Noriko_Ellen
 
 -- Target: Workspace.Chars.Noriko_Ellen.Head (Part)
    [Attr] Health = 100
@@ -4353,15 +4351,19 @@ ReplicatedStorage.GetPerms
 
 -- Target: Workspace.Chars.Noriko_Ellen.Left Arm (Part)
    [Attr] Health = 100
+   [Attr] MaxHealth = 100
 
 -- Target: Workspace.Chars.Noriko_Ellen.Right Arm (Part)
    [Attr] Health = 100
+   [Attr] MaxHealth = 100
 
 -- Target: Workspace.Chars.Noriko_Ellen.Left Leg (Part)
    [Attr] Health = 100
+   [Attr] MaxHealth = 100
 
 -- Target: Workspace.Chars.Noriko_Ellen.Right Leg (Part)
    [Attr] Health = 100
+   [Attr] MaxHealth = 100
 
 -- Target: Workspace.Chars.Noriko_Ellen.Humanoid (Humanoid)
    [Attr] Name = Noriko_Ellen
@@ -4384,11 +4386,31 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Chars.Noriko_Ellen.Holsters.Model.Sheath (MeshPart)
    [Attr] PreviewOffset = 0, 0.5, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
 
+-- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (mentalAccessory).Handle (Part)
+   [Attr] RBXRefinementScale = 1, 1, 1
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (bracelet set left).Handle (Part)
+   [Attr] RBXRefinementScale = 1, 1, 1
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (GreatAnimal).Handle (Part)
+   [Attr] RBXRefinementScale = 1, 1, 1
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (coin scarf belt 1.0).Handle (Part)
+   [Attr] RBXRefinementScale = 1, 1, 1
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (Headress).Handle (Part)
+   [Attr] RBXRefinementScale = 1, 1, 1
+   [Attr] OriginalTransparency = 0
+
 -- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (MeshPartAccessory).Handle (Part)
    [Attr] RBXRefinementScale = 1, 1, 1
    [Attr] OriginalTransparency = 0
 
--- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (X).Handle (Part)
+-- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (MeshPartAccessory).Handle (Part)
    [Attr] RBXRefinementScale = 1, 1, 1
    [Attr] OriginalTransparency = 0
 
@@ -4400,29 +4422,442 @@ ReplicatedStorage.GetPerms
    [Attr] RBXRefinementScale = 1, 1, 1
    [Attr] OriginalTransparency = 0
 
--- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (MeshPartAccessory).Handle (Part)
+-- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (X).Handle (Part)
    [Attr] RBXRefinementScale = 1, 1, 1
    [Attr] OriginalTransparency = 0
 
--- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (coin scarf belt 1.0).Handle (Part)
-   [Attr] RBXRefinementScale = 1, 1, 1
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith (Model)
+   [Attr] ServerSprinting = false
+   [Attr] HairColor = 0, 0, 0
+   [Attr] PrimaryColor = 1, 0.34902, 0.34902
+   [Attr] CantGetDowned = true
+   [Attr] AnimationPack = Nightbound
+   [Attr] Faction = Nightbound
+   [Attr] WeakSwingPriority = true
+   [Attr] Focus = -277.86700439453125, -6.376482009887695, -458.8410339355469
+   [Attr] NL = false
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Head (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Torso (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Scarf.Handle (Part)
    [Attr] OriginalTransparency = 0
 
--- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (GreatAnimal).Handle (Part)
-   [Attr] RBXRefinementScale = 1, 1, 1
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Mask.Handle (Part)
    [Attr] OriginalTransparency = 0
 
--- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (bracelet set left).Handle (Part)
-   [Attr] RBXRefinementScale = 1, 1, 1
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Hair4.Handle (Part)
    [Attr] OriginalTransparency = 0
 
--- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (Headress).Handle (Part)
-   [Attr] RBXRefinementScale = 1, 1, 1
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith (RayValue)
+   [Attr] Durability = 99.5
+   [Attr] VmOffset = 0, 0.150000006, -0.25, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] Tool = true
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith.MeleeStatus (Configuration)
+   [Attr] Durability = 100
+   [Attr] Swing = 2
+   [Attr] LastSwing = 1783493057.9070587
+   [Attr] Combo = 1
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith (Model)
+   [Attr] ServerSprinting = false
+   [Attr] HairColor = 0, 0, 0
+   [Attr] PrimaryColor = 1, 0.34902, 0.34902
+   [Attr] CantGetDowned = true
+   [Attr] AnimationPack = Nightbound
+   [Attr] Faction = Nightbound
+   [Attr] WeakSwingPriority = true
+   [Attr] Focus = -297.5969543457031, -7.376000881195068, -472.3329162597656
+   [Attr] NL = false
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Head (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Torso (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.CowboyHat.Handle (Part)
    [Attr] OriginalTransparency = 0
 
--- Target: Workspace.Chars.Noriko_Ellen.Accessory_Accessory (mentalAccessory).Handle (Part)
-   [Attr] RBXRefinementScale = 1, 1, 1
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith (RayValue)
+   [Attr] Durability = 98.5
+   [Attr] VmOffset = 0, 0.150000006, -0.25, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] Tool = true
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith.MeleeStatus (Configuration)
+   [Attr] Durability = 100
+   [Attr] Swing = 2
+   [Attr] LastSwing = 1783493057.780333
+   [Attr] Combo = 2
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith (Model)
+   [Attr] ServerSprinting = false
+   [Attr] HairColor = 0, 0, 0
+   [Attr] PrimaryColor = 1, 0.34902, 0.34902
+   [Attr] CantGetDowned = true
+   [Attr] AnimationPack = Nightbound
+   [Attr] Faction = Nightbound
+   [Attr] WeakSwingPriority = true
+   [Attr] Focus = -270.5606689453125, -37.3740119934082, -504.3829650878906
+   [Attr] NL = false
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Head (Part)
+   [Attr] Protected = true
+   [Attr] LimbProtection = 0.25
+   [Attr] Health = 15
+   [Attr] DamageReduction = 0.35
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Torso (Part)
+   [Attr] RagdollReduction = 0.7
+   [Attr] Protected = true
+   [Attr] Health = 15
+   [Attr] LimbProtection = 0.5
+   [Attr] DamageReduction = 0.6
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Arm (Part)
+   [Attr] RagdollReduction = 0.7
+   [Attr] Protected = true
+   [Attr] Health = 15
+   [Attr] LimbProtection = 0.5
+   [Attr] DamageReduction = 0.6
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Arm (Part)
+   [Attr] RagdollReduction = 0.7
+   [Attr] Protected = true
+   [Attr] Health = 15
+   [Attr] LimbProtection = 0.5
+   [Attr] DamageReduction = 0.6
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Leg (Part)
+   [Attr] Protected = true
+   [Attr] LimbProtection = 0.35
+   [Attr] Health = 15
+   [Attr] DamageReduction = 0.45
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Leg (Part)
+   [Attr] Protected = true
+   [Attr] LimbProtection = 0.35
+   [Attr] Health = 15
+   [Attr] DamageReduction = 0.45
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.HumanoidRootPart (Part)
+   [Attr] RagdollReduction = 0.7
+   [Attr] Protected = true
+   [Attr] RespiratoryProtection = true
+   [Attr] LimbProtection = 0.35
+   [Attr] DamageReduction = 0.45
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Mask.Handle (Part)
    [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith (RayValue)
+   [Attr] Durability = 97
+   [Attr] VmOffset = 0, 0.150000006, -0.25, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] Tool = true
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith.MeleeStatus (Configuration)
+   [Attr] Durability = 100
+   [Attr] Swing = 3
+   [Attr] LastSwing = 1783493055.1627831
+   [Attr] Combo = 3
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith (Model)
+   [Attr] ServerSprinting = false
+   [Attr] HairColor = 0, 0, 0
+   [Attr] PrimaryColor = 1, 0.34902, 0.34902
+   [Attr] CantGetDowned = true
+   [Attr] AnimationPack = Nightbound
+   [Attr] Faction = Nightbound
+   [Attr] WeakSwingPriority = true
+   [Attr] Focus = -227.11289978027344, -0.1263737678527832, -408.518310546875
+   [Attr] NL = false
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Head (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Torso (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Scarf.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Hair3.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith (RayValue)
+   [Attr] Durability = 99.5
+   [Attr] VmOffset = 0, 0.150000006, -0.25, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] Tool = true
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith.MeleeStatus (Configuration)
+   [Attr] Durability = 100
+   [Attr] Swing = 3
+   [Attr] LastSwing = 1783493057.3960686
+   [Attr] Combo = 2
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith (Model)
+   [Attr] ServerSprinting = false
+   [Attr] HairColor = 0, 0, 0
+   [Attr] PrimaryColor = 1, 0.34902, 0.34902
+   [Attr] CantGetDowned = true
+   [Attr] AnimationPack = Nightbound
+   [Attr] Faction = Nightbound
+   [Attr] WeakSwingPriority = true
+   [Attr] Focus = -351.3382873535156, -15.856502532958984, -484.73602294921875
+   [Attr] NL = false
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Head (Part)
+   [Attr] Protected = true
+   [Attr] LimbProtection = 0.25
+   [Attr] Health = 15
+   [Attr] DamageReduction = 0.35
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Torso (Part)
+   [Attr] RagdollReduction = 0.7
+   [Attr] Protected = true
+   [Attr] Health = 15
+   [Attr] LimbProtection = 0.5
+   [Attr] DamageReduction = 0.6
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Arm (Part)
+   [Attr] RagdollReduction = 0.7
+   [Attr] Protected = true
+   [Attr] Health = 15
+   [Attr] LimbProtection = 0.5
+   [Attr] DamageReduction = 0.6
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Arm (Part)
+   [Attr] RagdollReduction = 0.7
+   [Attr] Protected = true
+   [Attr] Health = 15
+   [Attr] LimbProtection = 0.5
+   [Attr] DamageReduction = 0.6
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Leg (Part)
+   [Attr] Protected = true
+   [Attr] LimbProtection = 0.35
+   [Attr] Health = 15
+   [Attr] DamageReduction = 0.45
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Leg (Part)
+   [Attr] Protected = true
+   [Attr] LimbProtection = 0.35
+   [Attr] Health = 15
+   [Attr] DamageReduction = 0.45
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.HumanoidRootPart (Part)
+   [Attr] RagdollReduction = 0.7
+   [Attr] Protected = true
+   [Attr] RespiratoryProtection = true
+   [Attr] LimbProtection = 0.35
+   [Attr] DamageReduction = 0.45
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.TopHat.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Bandana.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Shades.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith (RayValue)
+   [Attr] Durability = 98
+   [Attr] VmOffset = 0, 0.150000006, -0.25, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] Tool = true
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith.MeleeStatus (Configuration)
+   [Attr] Durability = 100
+   [Attr] Swing = 3
+   [Attr] LastSwing = 1783493056.9804752
+   [Attr] Combo = 3
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith (Model)
+   [Attr] ServerSprinting = false
+   [Attr] HairColor = 0, 0, 0
+   [Attr] PrimaryColor = 1, 0.34902, 0.34902
+   [Attr] CantGetDowned = true
+   [Attr] AnimationPack = Nightbound
+   [Attr] Faction = Nightbound
+   [Attr] WeakSwingPriority = true
+   [Attr] Focus = -184, -3.160750389099121, -531
+   [Attr] NL = false
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Head (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Torso (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Bandana.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Shades.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Hair3.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith (RayValue)
+   [Attr] Durability = 99
+   [Attr] VmOffset = 0, 0.150000006, -0.25, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] Tool = true
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith.MeleeStatus (Configuration)
+   [Attr] Durability = 100
+   [Attr] Swing = 3
+   [Attr] LastSwing = 1783493056.962487
+   [Attr] Combo = 3
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith (Model)
+   [Attr] ServerSprinting = false
+   [Attr] HairColor = 0, 0, 0
+   [Attr] PrimaryColor = 1, 0.34902, 0.34902
+   [Attr] CantGetDowned = true
+   [Attr] AnimationPack = Nightbound
+   [Attr] Faction = Nightbound
+   [Attr] WeakSwingPriority = true
+   [Attr] Focus = -353.93133544921875, -27.19457244873047, -502.7981872558594
+   [Attr] NL = false
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Head (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Torso (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.WizardHat.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Bandana.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Shades.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith (RayValue)
+   [Attr] Durability = 98.5
+   [Attr] VmOffset = 0, 0.150000006, -0.25, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] Tool = true
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith.MeleeStatus (Configuration)
+   [Attr] Durability = 100
+   [Attr] Swing = 2
+   [Attr] LastSwing = 1783493056.8793695
+   [Attr] Combo = 2
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith (Model)
+   [Attr] ServerSprinting = false
+   [Attr] HairColor = 0, 0, 0
+   [Attr] PrimaryColor = 1, 0.34902, 0.34902
+   [Attr] CantGetDowned = true
+   [Attr] AnimationPack = Nightbound
+   [Attr] Faction = Nightbound
+   [Attr] WeakSwingPriority = true
+   [Attr] Focus = -144.93777465820312, -4.526125431060791, -437.2098388671875
+   [Attr] NL = false
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Head (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Torso (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Arm (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Left Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Right Leg (Part)
+   [Attr] Health = 15
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Fedora.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Bandana.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Shades.Handle (Part)
+   [Attr] OriginalTransparency = 0
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith (RayValue)
+   [Attr] Durability = 99
+   [Attr] VmOffset = 0, 0.150000006, -0.25, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] Tool = true
+
+-- Target: Workspace.NPCs.Custom.Nightbound Wraith.Nightbound Wraith.MeleeStatus (Configuration)
+   [Attr] Durability = 100
+   [Attr] Swing = 3
+   [Attr] LastSwing = 1783493056.1302543
+   [Attr] Combo = 3
 
 -- Target: Workspace.Shops.Machine.Shops.Machine.Shop.OpenShop (ProximityPrompt)
    [Attr] Disabled = true
@@ -5072,12 +5507,12 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
    [Attr] WaypointScale = 0.75
    [Attr] Name = Vending Machine
-   [Attr] WaypointColor = 0.9, 0.627, 0.489353
+   [Attr] WaypointColor = 0.546706, 0.9, 0.507706
 
 -- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
-   [Attr] Type = WeaponBooster
+   [Attr] Type = CharacterBooster
    [Attr] Stock = 10
-   [Attr] Cost = 5000
+   [Attr] Cost = 2000
 
 -- Target: Workspace.Nightbound.Vending.Upgrader.Base (MeshPart)
    [Attr] WaypointScale = 0.75
@@ -5092,42 +5527,12 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
    [Attr] WaypointScale = 0.75
    [Attr] Name = Vending Machine
-   [Attr] WaypointColor = 0.9, 0.746294, 0.482471
-
--- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
-   [Attr] Type = WeaponAP
-   [Attr] Stock = 10
-   [Attr] Cost = 3000
-
--- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
-   [Attr] WaypointScale = 0.75
-   [Attr] Name = Vending Machine
    [Attr] WaypointColor = 0.546706, 0.9, 0.507706
 
 -- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
    [Attr] Type = CharacterBooster
    [Attr] Stock = 10
    [Attr] Cost = 2000
-
--- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
-   [Attr] WaypointScale = 0.75
-   [Attr] Name = Vending Machine
-   [Attr] WaypointColor = 0.546706, 0.9, 0.507706
-
--- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
-   [Attr] Type = CharacterBooster
-   [Attr] Stock = 10
-   [Attr] Cost = 2000
-
--- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
-   [Attr] WaypointScale = 0.75
-   [Attr] Name = Vending Machine
-   [Attr] WaypointColor = 0.9, 0.746294, 0.482471
-
--- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
-   [Attr] Type = WeaponAP
-   [Attr] Stock = 10
-   [Attr] Cost = 3000
 
 -- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
    [Attr] WaypointScale = 0.75
@@ -5138,26 +5543,6 @@ ReplicatedStorage.GetPerms
    [Attr] Type = WeaponBooster
    [Attr] Stock = 10
    [Attr] Cost = 5000
-
--- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
-   [Attr] WaypointScale = 0.75
-   [Attr] Name = Vending Machine
-   [Attr] WaypointColor = 0.9, 0.627, 0.489353
-
--- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
-   [Attr] Type = WeaponBooster
-   [Attr] Stock = 10
-   [Attr] Cost = 5000
-
--- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
-   [Attr] WaypointScale = 0.75
-   [Attr] Name = Vending Machine
-   [Attr] WaypointColor = 0.546706, 0.9, 0.507706
-
--- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
-   [Attr] Type = CharacterBooster
-   [Attr] Stock = 10
-   [Attr] Cost = 2000
 
 -- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
    [Attr] WaypointScale = 0.75
@@ -5198,6 +5583,56 @@ ReplicatedStorage.GetPerms
    [Attr] Type = WeaponBooster
    [Attr] Stock = 10
    [Attr] Cost = 5000
+
+-- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
+   [Attr] WaypointScale = 0.75
+   [Attr] Name = Vending Machine
+   [Attr] WaypointColor = 0.9, 0.627, 0.489353
+
+-- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
+   [Attr] Type = WeaponBooster
+   [Attr] Stock = 10
+   [Attr] Cost = 5000
+
+-- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
+   [Attr] WaypointScale = 0.75
+   [Attr] Name = Vending Machine
+   [Attr] WaypointColor = 0.9, 0.746294, 0.482471
+
+-- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
+   [Attr] Type = WeaponAP
+   [Attr] Stock = 10
+   [Attr] Cost = 3000
+
+-- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
+   [Attr] WaypointScale = 0.75
+   [Attr] Name = Vending Machine
+   [Attr] WaypointColor = 0.546706, 0.9, 0.507706
+
+-- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
+   [Attr] Type = CharacterBooster
+   [Attr] Stock = 10
+   [Attr] Cost = 2000
+
+-- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
+   [Attr] WaypointScale = 0.75
+   [Attr] Name = Vending Machine
+   [Attr] WaypointColor = 0.9, 0.627, 0.489353
+
+-- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
+   [Attr] Type = WeaponBooster
+   [Attr] Stock = 10
+   [Attr] Cost = 5000
+
+-- Target: Workspace.Nightbound.Vending.Random.Base (MeshPart)
+   [Attr] WaypointScale = 0.75
+   [Attr] Name = Vending Machine
+   [Attr] WaypointColor = 0.9, 0.746294, 0.482471
+
+-- Target: Workspace.Nightbound.Vending.Random.Base.VendingStore (ProximityPrompt)
+   [Attr] Type = WeaponAP
+   [Attr] Stock = 10
+   [Attr] Cost = 3000
 
 -- Target: Workspace.Nightbound.Gates.Hatch (Model)
    [Attr] PartyMessage = A door opens.
@@ -17321,6 +17756,60 @@ ReplicatedStorage.GetPerms
    [Attr] New = true
    [Attr] Breakable = 15
 
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
 -- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
    [Attr] LootName = Locker
    [Attr] LootPool = Tier2
@@ -17330,6 +17819,938 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
    [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
    [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
+   [Attr] LootName = Case
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
+   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
+   [Attr] ContainerName = BigBag
+   [Attr] DoNotRegen = true
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
+   [Attr] LootName = Military Crate
+   [Attr] LootPool = NB_KeycardCrate
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
+   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
+   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
+   [Attr] ContainerName = BigBag
+   [Attr] DoNotRegen = true
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
+   [Attr] LootName = Military Crate
+   [Attr] LootPool = NB_KeycardCrate
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
+   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
+   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
+   [Attr] ContainerName = BigBag
+   [Attr] DoNotRegen = true
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
+   [Attr] LootName = Military Crate
+   [Attr] LootPool = NB_KeycardCrate
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
+   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
+   [Attr] LootName = Case
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
+   [Attr] LootName = Case
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.SpecialCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.SpecialCrate.Straps (MeshPart)
+   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
+
+-- Target: Workspace.Map.Loot.SpecialCrate.LootBase (MeshPart)
+   [Attr] ContainerName = BigBag
+   [Attr] DoNotRegen = true
+
+-- Target: Workspace.Map.Loot.SpecialCrate.LootBase.LootTable (Folder)
+   [Attr] LootName = Military Crate
+   [Attr] LootPool = NB_SpecialDrop
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.SpecialCrate.Lid (MeshPart)
+   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.MedBox.LootBase.LootTable (Folder)
+   [Attr] LootName = First Aid Box
+   [Attr] LootPool = FirstAidBox
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.MedBox.LootBase.Welds.Weld (Weld)
+   [Attr] OpenLootOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.965925872, 0, -0.258818924, 0, 1, -0, 0.258818924, -0, -0.965925872
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
+   [Attr] LootName = Case
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
+   [Attr] LootName = Case
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
+   [Attr] LootName = Case
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
+   [Attr] LootName = Case
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
+   [Attr] LootName = Case
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
+   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
+   [Attr] ContainerName = BigBag
+   [Attr] DoNotRegen = true
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
+   [Attr] LootName = Military Crate
+   [Attr] LootPool = NB_KeycardCrate
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
+   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
+   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
+   [Attr] ContainerName = BigBag
+   [Attr] DoNotRegen = true
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
+   [Attr] LootName = Military Crate
+   [Attr] LootPool = NB_KeycardCrate
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
+   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
+   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
+   [Attr] ContainerName = BigBag
+   [Attr] DoNotRegen = true
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
+   [Attr] LootName = Military Crate
+   [Attr] LootPool = NB_KeycardCrate
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
+   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
+   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
+   [Attr] ContainerName = BigBag
+   [Attr] DoNotRegen = true
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
+   [Attr] LootName = Military Crate
+   [Attr] LootPool = NB_KeycardCrate
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
+   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
+   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
+   [Attr] ContainerName = BigBag
+   [Attr] DoNotRegen = true
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
+   [Attr] LootName = Military Crate
+   [Attr] LootPool = NB_KeycardCrate
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
+   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
+   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.CashRegister.Drawer.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
+   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.CashRegister.Drawer.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
+   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.CashRegister.Drawer.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
+   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
 
 -- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
    [Attr] ContainerName = DuffelBag
@@ -17359,24 +18780,6 @@ ReplicatedStorage.GetPerms
    [Attr] OpenLootOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
    [Attr] EmptyLootOffset = 0, 0, 0, -0.965925872, 0, -0.258818924, 0, 1, -0, 0.258818924, -0, -0.965925872
 
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
 -- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
    [Attr] LootName = Locker
    [Attr] LootPool = Tier2
@@ -17386,6 +18789,15 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
    [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
    [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
 
 -- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
    [Attr] LootName = Locker
@@ -17400,6 +18812,26 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
    [Attr] Unlocked = true
 
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.MedBox.LootBase.LootTable (Folder)
+   [Attr] LootName = First Aid Box
+   [Attr] LootPool = FirstAidBox
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.MedBox.LootBase.Welds.Weld (Weld)
+   [Attr] OpenLootOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.965925872, 0, -0.258818924, 0, 1, -0, 0.258818924, -0, -0.965925872
+
 -- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
    [Attr] Difficulty = 0.75
 
@@ -17449,46 +18881,6 @@ ReplicatedStorage.GetPerms
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
 -- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
    [Attr] ContainerName = DuffelBag
 
@@ -17498,65 +18890,15 @@ ReplicatedStorage.GetPerms
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
-   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
-   [Attr] ContainerName = BigBag
-   [Attr] DoNotRegen = true
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
-   [Attr] LootName = Military Crate
-   [Attr] LootPool = NB_KeycardCrate
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
-   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
-   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
-   [Attr] ContainerName = BigBag
-   [Attr] DoNotRegen = true
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
-   [Attr] LootName = Military Crate
-   [Attr] LootPool = NB_KeycardCrate
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
-   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
-   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
-   [Attr] ContainerName = BigBag
-   [Attr] DoNotRegen = true
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
-   [Attr] LootName = Military Crate
-   [Attr] LootPool = NB_KeycardCrate
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
-   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
 
 -- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
    [Attr] Difficulty = 0.75
@@ -17569,6 +18911,65 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
    [Attr] LootName = Case
    [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
+   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.SpecialCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.SpecialCrate.Straps (MeshPart)
+   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
+
+-- Target: Workspace.Map.Loot.SpecialCrate.LootBase (MeshPart)
+   [Attr] ContainerName = BigBag
+   [Attr] DoNotRegen = true
+
+-- Target: Workspace.Map.Loot.SpecialCrate.LootBase.LootTable (Folder)
+   [Attr] LootName = Military Crate
+   [Attr] LootPool = NB_SpecialDrop
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.SpecialCrate.Lid (MeshPart)
+   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
@@ -17601,29 +19002,6 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Map.Loot.SpecialCrate.Lid (MeshPart)
    [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
 
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
 -- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
    [Attr] ContainerName = DuffelBag
 
@@ -17632,222 +19010,6 @@ ReplicatedStorage.GetPerms
    [Attr] LootPool = Tier1
    [Attr] Valuables = 0
    [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
 
 -- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
    [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
@@ -17859,105 +19021,43 @@ ReplicatedStorage.GetPerms
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
 
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
 
--- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
-   [Attr] LootName = Case
-   [Attr] LootPool = Tier1
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
 
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
-   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
@@ -17971,933 +19071,6 @@ ReplicatedStorage.GetPerms
 
 -- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
    [Attr] LootName = Case
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
-   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
-   [Attr] ContainerName = BigBag
-   [Attr] DoNotRegen = true
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
-   [Attr] LootName = Military Crate
-   [Attr] LootPool = NB_KeycardCrate
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
-   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
-   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
-   [Attr] ContainerName = BigBag
-   [Attr] DoNotRegen = true
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
-   [Attr] LootName = Military Crate
-   [Attr] LootPool = NB_KeycardCrate
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
-   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
-   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
-   [Attr] ContainerName = BigBag
-   [Attr] DoNotRegen = true
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
-   [Attr] LootName = Military Crate
-   [Attr] LootPool = NB_KeycardCrate
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
-   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
-   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
-   [Attr] ContainerName = BigBag
-   [Attr] DoNotRegen = true
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
-   [Attr] LootName = Military Crate
-   [Attr] LootPool = NB_KeycardCrate
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
-   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
-   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
-   [Attr] ContainerName = BigBag
-   [Attr] DoNotRegen = true
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
-   [Attr] LootName = Military Crate
-   [Attr] LootPool = NB_KeycardCrate
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
-   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
-   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
-   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
-   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
-   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
-   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
-   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
-   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
-   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
-   [Attr] LootName = Case
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
-   [Attr] LootName = Case
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
-   [Attr] LootName = Case
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.SpecialCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.SpecialCrate.Straps (MeshPart)
-   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
-
--- Target: Workspace.Map.Loot.SpecialCrate.LootBase (MeshPart)
-   [Attr] ContainerName = BigBag
-   [Attr] DoNotRegen = true
-
--- Target: Workspace.Map.Loot.SpecialCrate.LootBase.LootTable (Folder)
-   [Attr] LootName = Military Crate
-   [Attr] LootPool = NB_SpecialDrop
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.SpecialCrate.Lid (MeshPart)
-   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
    [Attr] LootPool = Tier1
    [Attr] Valuables = 0
    [Attr] Cash = 0
@@ -18922,15 +19095,97 @@ ReplicatedStorage.GetPerms
    [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
    [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
 
--- Target: Workspace.Map.Loot.MedBox.LootBase.LootTable (Folder)
-   [Attr] LootName = First Aid Box
-   [Attr] LootPool = FirstAidBox
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.MedBox.LootBase.Welds.Weld (Weld)
-   [Attr] OpenLootOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.965925872, 0, -0.258818924, 0, 1, -0, 0.258818924, -0, -0.965925872
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
 
 -- Target: Workspace.Map.Loot.MedBox.LootBase.LootTable (Folder)
    [Attr] LootName = First Aid Box
@@ -18951,6 +19206,441 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
    [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
    [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
 
 -- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
    [Attr] Difficulty = 0.75
@@ -18965,294 +19655,6 @@ ReplicatedStorage.GetPerms
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
 -- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
    [Attr] ContainerName = DuffelBag
 
@@ -19275,25 +19677,32 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
    [Attr] Unlocked = true
 
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
 
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
 
 -- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
    [Attr] LootName = Locker
@@ -19348,6 +19757,22 @@ ReplicatedStorage.GetPerms
    [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
    [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
 
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
 -- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
    [Attr] LootName = Locker
    [Attr] LootPool = Tier2
@@ -19377,15 +19802,14 @@ ReplicatedStorage.GetPerms
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
    [Attr] Valuables = 0
    [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
 
 -- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
    [Attr] ContainerName = DuffelBag
@@ -19395,6 +19819,10 @@ ReplicatedStorage.GetPerms
    [Attr] LootPool = Tier1
    [Attr] Valuables = 0
    [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
+   [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
 
 -- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
    [Attr] LootName = Cash Register
@@ -19411,14 +19839,15 @@ ReplicatedStorage.GetPerms
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
    [Attr] Valuables = 0
    [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
 
 -- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
    [Attr] ContainerName = DuffelBag
@@ -19491,9 +19920,6 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Map.Loot.CashRegister.Drawer (MeshPart)
    [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
    [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.CashRegister.Drawer.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
 
 -- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
    [Attr] LootName = Cash Register
@@ -19570,6 +19996,15 @@ ReplicatedStorage.GetPerms
    [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
    [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
 
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
 -- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
    [Attr] LootName = Locker
    [Attr] LootPool = Tier2
@@ -19580,25 +20015,14 @@ ReplicatedStorage.GetPerms
    [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
    [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
 
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
    [Attr] Valuables = 0
    [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
 
 -- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
    [Attr] LootName = Locker
@@ -19614,9 +20038,6 @@ ReplicatedStorage.GetPerms
    [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
    [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
 
--- Target: Workspace.Map.Loot.CashRegister.Drawer.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
 -- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
    [Attr] LootName = Cash Register
    [Attr] LootPool = CashRegister
@@ -19627,8 +20048,200 @@ ReplicatedStorage.GetPerms
    [Attr] OpenOffset = -0.200000003, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
    [Attr] EmptyLootOffset = -1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
 
--- Target: Workspace.Map.Loot.CashRegister.Drawer.Lockpick.LockMinigame (ProximityPrompt)
+-- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
+   [Attr] LootName = Cash Register
+   [Attr] LootPool = CashRegister
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
    [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
+
+-- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
+   [Attr] LootName = Safe
+   [Attr] LootPool = Tier3
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
+   [Attr] LootName = Locker
+   [Attr] LootPool = Tier2
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
+   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
 
 -- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
    [Attr] LootName = Cash Register
@@ -19636,120 +20249,6 @@ ReplicatedStorage.GetPerms
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.SpecialCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.SpecialCrate.Straps (MeshPart)
-   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
-
--- Target: Workspace.Map.Loot.SpecialCrate.LootBase (MeshPart)
-   [Attr] ContainerName = BigBag
-   [Attr] DoNotRegen = true
-
--- Target: Workspace.Map.Loot.SpecialCrate.LootBase.LootTable (Folder)
-   [Attr] LootName = Military Crate
-   [Attr] LootPool = NB_SpecialDrop
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.SpecialCrate.Lid (MeshPart)
-   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
 -- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
    [Attr] LootName = Locker
    [Attr] LootPool = Tier2
@@ -19773,6 +20272,24 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
    [Attr] Unlocked = true
 
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
 -- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
    [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
    [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
@@ -19780,55 +20297,6 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
    [Attr] LootName = Safe
    [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.CashRegister.LootBase.LootTable (Folder)
-   [Attr] LootName = Cash Register
-   [Attr] LootPool = CashRegister
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
@@ -19855,53 +20323,8 @@ ReplicatedStorage.GetPerms
    [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
    [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
 
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
+-- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Unlocked = true
 
 -- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
    [Attr] Difficulty = 0.75
@@ -19936,14 +20359,15 @@ ReplicatedStorage.GetPerms
    [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
    [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
 
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
+-- Target: Workspace.Map.Loot.MedBox.LootBase.LootTable (Folder)
+   [Attr] LootName = First Aid Box
+   [Attr] LootPool = FirstAidBox
    [Attr] Valuables = 0
    [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.MedBox.LootBase.Welds.Weld (Weld)
+   [Attr] OpenLootOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
+   [Attr] EmptyLootOffset = 0, 0, 0, -0.965925872, 0, -0.258818924, 0, 1, -0, 0.258818924, -0, -0.965925872
 
 -- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
    [Attr] LootName = Locker
@@ -19954,181 +20378,6 @@ ReplicatedStorage.GetPerms
 -- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
    [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
    [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
-   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
-   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
-   [Attr] ContainerName = BigBag
-   [Attr] DoNotRegen = true
-
--- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
-   [Attr] LootName = Military Crate
-   [Attr] LootPool = NB_KeycardCrate
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
-   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Safe.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.906307757, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.906307757
-
--- Target: Workspace.Map.Loot.Safe.LootBase.LootTable (Folder)
-   [Attr] LootName = Safe
-   [Attr] LootPool = Tier3
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-   [Attr] Unlocked = true
-
--- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
-   [Attr] LootName = Case
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Case.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Difficulty = 0.75
-
--- Target: Workspace.Map.Loot.Case.LootBase.Welds.Lid (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, 0.173648193, 0, -0.173648193, 0.98480773, -0, -0, 0, 1
-   [Attr] EmptyLootOffset = 0, 0, 0, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1
-
--- Target: Workspace.Map.Loot.Case.LootBase.LootTable (Folder)
-   [Attr] LootName = Case
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
-   [Attr] ContainerName = DuffelBag
-
--- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
-   [Attr] LootName = Duffel Bag
-   [Attr] LootPool = Tier1
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
-   [Attr] LootName = Locker
-   [Attr] LootPool = Tier2
-   [Attr] Valuables = 0
-   [Attr] Cash = 0
-
--- Target: Workspace.Map.Loot.Locker.LootBase.Welds.Hinge (Weld)
-   [Attr] OpenOffset = 0, 0, 0, 0.98480773, -0, -0.173648193, 0, 1, -0, 0.173648193, 0, 0.98480773
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.866025388, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.866025388
-
--- Target: Workspace.Map.Loot.Locker.Lid.Lockpick.LockMinigame (ProximityPrompt)
-   [Attr] Unlocked = true
 
 -- Target: Workspace.Map.Loot.Locker.LootBase.LootTable (Folder)
    [Attr] LootName = Locker
@@ -20159,15 +20408,43 @@ ReplicatedStorage.GetPerms
    [Attr] OpenLootOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
    [Attr] EmptyLootOffset = 0, 0, 0, -0.965925872, 0, -0.258818924, 0, 1, -0, 0.258818924, -0, -0.965925872
 
--- Target: Workspace.Map.Loot.MedBox.LootBase.LootTable (Folder)
-   [Attr] LootName = First Aid Box
-   [Attr] LootPool = FirstAidBox
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
    [Attr] Valuables = 0
    [Attr] Cash = 0
 
--- Target: Workspace.Map.Loot.MedBox.LootBase.Welds.Weld (Weld)
-   [Attr] OpenLootOffset = 0, 0, 0, 0.99619472, -0, -0.0871557444, 0, 1, -0, 0.0871557444, 0, 0.99619472
-   [Attr] EmptyLootOffset = 0, 0, 0, -0.965925872, 0, -0.258818924, 0, 1, -0, 0.258818924, -0, -0.965925872
+-- Target: Workspace.Map.Loot.BunkerCrate.Base.Lockpick.LockMinigame (ProximityPrompt)
+   [Attr] Difficulty = 0.75
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Straps (MeshPart)
+   [Attr] OpenOffset = -0.400000006, -1.36300004, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1
+   [Attr] OpenSize = 5.965000152587891, 0.10100000351667404, 4.892000198364258
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase (MeshPart)
+   [Attr] ContainerName = BigBag
+   [Attr] DoNotRegen = true
+
+-- Target: Workspace.Map.Loot.BunkerCrate.LootBase.LootTable (Folder)
+   [Attr] LootName = Military Crate
+   [Attr] LootPool = NB_KeycardCrate
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
+
+-- Target: Workspace.Map.Loot.BunkerCrate.Lid (MeshPart)
+   [Attr] OpenOffset = 2.2750001, -0.850000024, -0.400000006, 0.087155804, 0.99619472, 0, -0.99619472, 0.087155804, 0, 0, 0, 1
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase (MeshPart)
+   [Attr] ContainerName = DuffelBag
+
+-- Target: Workspace.Map.Loot.DuffelBag.LootBase.LootTable (Folder)
+   [Attr] LootName = Duffel Bag
+   [Attr] LootPool = Tier1
+   [Attr] Valuables = 0
+   [Attr] Cash = 0
 
 -- Target: Workspace.Map.Vehicles.Trucks.TrashTruck.FirePart.Fire (ParticleEmitter)
    [Attr] EmitCount = 15
@@ -21583,8 +21860,8 @@ local t2 = {}
 local t3 = {}
 local v7 = nil
 local v8 = false
-local v9 = false
-local v10 = 1
+local v9 = 1
+local v10 = false
 local v11 = false
 
 for k, v in pairs(tbl) do
@@ -21624,14 +21901,14 @@ local function ClearItems() --[[ ClearItems | Line: 100 | Upvalues: t2 (ref), t3
 	end
 end
 
-local function PlayPickUpAnimation(p1) --[[ PlayPickUpAnimation | Line: 117 | Upvalues: v10 (ref), tbl (copy), TweenService (copy), v4 (copy) ]]
-	v10 = v10 + 1
+local function PlayPickUpAnimation(p1) --[[ PlayPickUpAnimation | Line: 117 | Upvalues: v9 (ref), tbl (copy), TweenService (copy), v4 (copy) ]]
+	v9 = v9 + 1
 
-	if not tbl.PickUp[v10] then
-		v10 = 1
+	if not tbl.PickUp[v9] then
+		v9 = 1
 	end
 
-	tbl.PickUp[v10]:Play(0.25)
+	tbl.PickUp[v9]:Play(0.25)
 	TweenService:Create(p1.Bar, v4, {
 		Offset = Vector2.new(0, 0)
 	}):Play()
@@ -21644,10 +21921,10 @@ local function PlayPickUpAnimation(p1) --[[ PlayPickUpAnimation | Line: 117 | Up
 	p1.Bar.Offset = Vector2.new(-1, 0)
 end
 
-local function DisplayPreview(p1) --[[ DisplayPreview | Line: 137 | Upvalues: v11 (ref), PreviewContainer (copy), Preview (copy), LocalPlayer (copy), v2 (copy), TweenService (copy) ]]
+local function DisplayPreview(p1) --[[ DisplayPreview | Line: 137 | Upvalues: v10 (ref), PreviewContainer (copy), Preview (copy), LocalPlayer (copy), v2 (copy), TweenService (copy) ]]
 	local v1 = math.random(0, 9999)
 
-	v11 = v1
+	v10 = v1
 	task.wait(0.25)
 
 	if v1 ~= v1 then
@@ -21673,8 +21950,8 @@ local function DisplayPreview(p1) --[[ DisplayPreview | Line: 137 | Upvalues: v1
 	}):Play()
 end
 
-local function HidePreview() --[[ HidePreview | Line: 155 | Upvalues: v11 (ref), TweenService (copy), PreviewContainer (copy) ]]
-	v11 = false
+local function HidePreview() --[[ HidePreview | Line: 155 | Upvalues: v10 (ref), TweenService (copy), PreviewContainer (copy) ]]
+	v10 = false
 	TweenService:Create(PreviewContainer.NoSelection, TweenInfo.new(0.025, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 		BackgroundTransparency = 0
 	}):Play()
@@ -21684,7 +21961,7 @@ local function HidePreview() --[[ HidePreview | Line: 155 | Upvalues: v11 (ref),
 	}):Play()
 end
 
-local function DisplayItems(p1, p2) --[[ DisplayItems | Line: 164 | Upvalues: ClearItems (copy), ItemDatabase (copy), Shared (copy), TypeDatabase (copy), t3 (ref), Frames (copy), HidePreview (copy), TweenService (copy), v5 (copy), t2 (ref), t (copy), v11 (ref), Sounds (copy), v6 (copy), DisplayPreview (copy), Events (copy), ReplicatedStorage (copy), v8 (ref), PlayPickUpAnimation (copy), v7 (ref), UserInputService (copy), Items (copy) ]]
+local function DisplayItems(p1, p2) --[[ DisplayItems | Line: 164 | Upvalues: ClearItems (copy), ItemDatabase (copy), Shared (copy), TypeDatabase (copy), t3 (ref), Frames (copy), HidePreview (copy), TweenService (copy), v5 (copy), t2 (ref), t (copy), v10 (ref), Sounds (copy), v6 (copy), DisplayPreview (copy), Events (copy), ReplicatedStorage (copy), v11 (ref), PlayPickUpAnimation (copy), v7 (ref), UserInputService (copy), Items (copy) ]]
 	ClearItems()
 	table.sort(p1, function(p1, p2) --[[ Line: 168 ]]
 		return (p1:GetAttribute("LayoutOrder") or 0) < (p2:GetAttribute("LayoutOrder") or 0)
@@ -21707,7 +21984,7 @@ local function DisplayItems(p1, p2) --[[ DisplayItems | Line: 164 | Upvalues: Cl
 			v72.IconFrame.StackText.Text = "x" .. t3[v.Name].Stacks
 		end
 
-		local v10 = v:GetPropertyChangedSignal("Parent"):Connect(function() --[[ Line: 190 | Upvalues: v (copy), t3 (ref), v72 (copy), v1 (ref), HidePreview (ref), TweenService (ref), v5 (ref) ]]
+		local v102 = v:GetPropertyChangedSignal("Parent"):Connect(function() --[[ Line: 190 | Upvalues: v (copy), t3 (ref), v72 (copy), v1 (ref), HidePreview (ref), TweenService (ref), v5 (ref) ]]
 			if v and v.Parent then
 				return
 			end
@@ -21735,7 +22012,7 @@ local function DisplayItems(p1, p2) --[[ DisplayItems | Line: 164 | Upvalues: Cl
 			v72:Destroy()
 		end)
 
-		table.insert(t2, v10)
+		table.insert(t2, v102)
 
 		if t3[v.Name] then
 			local v12 = t3[v.Name]
@@ -21772,8 +22049,8 @@ local function DisplayItems(p1, p2) --[[ DisplayItems | Line: 164 | Upvalues: Cl
 			v72.InfoText.Visible = false
 		end
 
-		v72.MouseMoved:Connect(function() --[[ Line: 253 | Upvalues: v11 (ref), Sounds (ref), TweenService (ref), v72 (copy), v6 (ref), DisplayPreview (ref), v (copy) ]]
-			if v11 then
+		v72.MouseMoved:Connect(function() --[[ Line: 253 | Upvalues: v10 (ref), Sounds (ref), TweenService (ref), v72 (copy), v6 (ref), DisplayPreview (ref), v (copy) ]]
+			if v10 then
 				return
 			end
 
@@ -21784,8 +22061,8 @@ local function DisplayItems(p1, p2) --[[ DisplayItems | Line: 164 | Upvalues: Cl
 			}):Play()
 			DisplayPreview(v)
 		end)
-		v72.MouseLeave:Connect(function() --[[ Line: 262 | Upvalues: v11 (ref), TweenService (ref), v72 (copy), v6 (ref), HidePreview (ref) ]]
-			if not v11 then
+		v72.MouseLeave:Connect(function() --[[ Line: 262 | Upvalues: v10 (ref), TweenService (ref), v72 (copy), v6 (ref), HidePreview (ref) ]]
+			if not v10 then
 				return
 			end
 
@@ -21812,14 +22089,14 @@ local function DisplayItems(p1, p2) --[[ DisplayItems | Line: 164 | Upvalues: Cl
 				Item = v.Name
 			})
 		end)
-		v72.MouseButton1Click:Connect(function() --[[ Line: 293 | Upvalues: Sounds (ref), v8 (ref), v1 (ref), PlayPickUpAnimation (ref), v72 (copy), t3 (ref), v (copy), Events (ref), v7 (ref), p2 (copy), UserInputService (ref) ]]
+		v72.MouseButton1Click:Connect(function() --[[ Line: 293 | Upvalues: Sounds (ref), v11 (ref), v1 (ref), PlayPickUpAnimation (ref), v72 (copy), t3 (ref), v (copy), Events (ref), v7 (ref), p2 (copy), UserInputService (ref) ]]
 			Sounds.Click:Play()
 
-			if v8 or v1 then
+			if v11 or v1 then
 				return
 			end
 
-			v8 = true
+			v11 = true
 			PlayPickUpAnimation(v72)
 
 			if t3[v.Name] then
@@ -21828,42 +22105,42 @@ local function DisplayItems(p1, p2) --[[ DisplayItems | Line: 164 | Upvalues: Cl
 				Events.Loot.LootObject:FireServer(v7, v)
 			end
 
-			v8 = false
+			v11 = false
 		end)
 		v72.Parent = Items.List
 	end
 end
 
-local function ToggleUI(p1) --[[ ToggleUI | Line: 318 | Upvalues: v7 (ref), ReplicatedStorage (copy), v9 (ref), DisplayItems (copy), v3 (copy), v1 (copy), ClearItems (copy), HidePreview (copy) ]]
+local function ToggleUI(p1) --[[ ToggleUI | Line: 318 | Upvalues: v7 (ref), ReplicatedStorage (copy), v8 (ref), DisplayItems (copy), v3 (copy), v1 (copy), ClearItems (copy), HidePreview (copy) ]]
 	if not v7 then
 		return
 	end
 
 	ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("Loot", p1)
 
-	if p1 and not v9 then
+	if p1 and not v8 then
 		DisplayItems(v7:GetChildren(), v7)
 		v3.Visible = true
-		v9 = true
+		v8 = true
 		v1:SetAttribute("DP", true)
 		v1:SetAttribute("NL", true)
 
 		return
 	end
 
-	if p1 or not v9 then
+	if p1 or not v8 then
 		return
 	end
 
 	ClearItems()
 	HidePreview()
 	v3.Visible = false
-	v9 = false
+	v8 = false
 	v1:SetAttribute("DP", false)
 	v1:SetAttribute("NL", false)
 end
 
-Events:WaitForChild("Loot"):WaitForChild("LootObject").OnClientEvent:Connect(function(p1, p2) --[[ Line: 347 | Upvalues: v7 (ref), v3 (copy), ReplicatedStorage (copy), v9 (ref), DisplayItems (copy), v1 (copy), tbl (copy), ClearItems (copy), HidePreview (copy), Cash (copy), Valuables (copy), FormatNumber (copy), Currency (copy), Items (copy), ItemDatabase (copy), Shared (copy), LocalPlayer (copy), v2 (copy), Events (copy) ]]
+Events:WaitForChild("Loot"):WaitForChild("LootObject").OnClientEvent:Connect(function(p1, p2) --[[ Line: 347 | Upvalues: v7 (ref), v3 (copy), ReplicatedStorage (copy), v8 (ref), DisplayItems (copy), v1 (copy), tbl (copy), ClearItems (copy), HidePreview (copy), Cash (copy), Valuables (copy), FormatNumber (copy), Currency (copy), Items (copy), ItemDatabase (copy), Shared (copy), LocalPlayer (copy), v2 (copy), Events (copy) ]]
 	v7 = p1
 
 	local v12 = p1.Parent
@@ -21874,10 +22151,10 @@ Events:WaitForChild("Loot"):WaitForChild("LootObject").OnClientEvent:Connect(fun
 	if p1 then
 		ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("Loot", true)
 
-		if not v9 then
+		if not v8 then
 			DisplayItems(p1:GetChildren(), p1)
 			v3.Visible = true
-			v9 = true
+			v8 = true
 			v1:SetAttribute("DP", true)
 			v1:SetAttribute("NL", true)
 		end
@@ -21885,7 +22162,7 @@ Events:WaitForChild("Loot"):WaitForChild("LootObject").OnClientEvent:Connect(fun
 
 	tbl.Idle:Play(0.5)
 
-	while v9 do
+	while v8 do
 		if v12 and (v12.Parent and (p1 and (p1.Parent and not ((v1.Torso.Position - v12.Position).Magnitude > 10)))) then
 			local v22 = p1:GetAttribute("Cash")
 			local v32 = p1:GetAttribute("Valuables")
@@ -21910,9 +22187,9 @@ Events:WaitForChild("Loot"):WaitForChild("LootObject").OnClientEvent:Connect(fun
 
 			for k, v in pairs(Items.List:GetChildren()) do
 				if v:IsA("TextButton") then
-					local v8 = ItemDatabase[v.Name]
+					local v82 = ItemDatabase[v.Name]
 
-					v.LockedFrame.Visible = if v8 then not Shared.CheckRequirements(LocalPlayer, v2, v8.Requirements, v.Name) else v8
+					v.LockedFrame.Visible = if v82 then not Shared.CheckRequirements(LocalPlayer, v2, v82.Requirements, v.Name) else v82
 				end
 			end
 
@@ -21921,11 +22198,11 @@ Events:WaitForChild("Loot"):WaitForChild("LootObject").OnClientEvent:Connect(fun
 			if p1 then
 				ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("Loot", false)
 
-				if v9 then
+				if v8 then
 					ClearItems()
 					HidePreview()
 					v3.Visible = false
-					v9 = false
+					v8 = false
 					v1:SetAttribute("DP", false)
 					v1:SetAttribute("NL", false)
 				end
@@ -21943,10 +22220,10 @@ Events:WaitForChild("Loot"):WaitForChild("LootObject").OnClientEvent:Connect(fun
 
 	tbl.Idle:Stop(0.5)
 end)
-Cash:WaitForChild("Take").MouseButton1Click:Connect(function() --[[ Line: 423 | Upvalues: Sounds (copy), v8 (ref), v7 (ref), PlayPickUpAnimation (copy), Cash (copy), Events (copy) ]]
+Cash:WaitForChild("Take").MouseButton1Click:Connect(function() --[[ Line: 423 | Upvalues: Sounds (copy), v11 (ref), v7 (ref), PlayPickUpAnimation (copy), Cash (copy), Events (copy) ]]
 	Sounds.Click:Play()
 
-	if v8 then
+	if v11 then
 		return
 	end
 
@@ -21954,18 +22231,18 @@ Cash:WaitForChild("Take").MouseButton1Click:Connect(function() --[[ Line: 423 | 
 		return
 	end
 
-	v8 = true
+	v11 = true
 	PlayPickUpAnimation(Cash.Take)
 	Events.Loot.LootObject:FireServer(v7, "Cash")
-	v8 = false
+	v11 = false
 end)
 Cash.Take.MouseEnter:Connect(function() --[[ Line: 438 | Upvalues: Sounds (copy) ]]
 	Sounds.Hover:Play()
 end)
-Valuables:WaitForChild("Take").MouseButton1Click:Connect(function() --[[ Line: 440 | Upvalues: Sounds (copy), v8 (ref), v7 (ref), PlayPickUpAnimation (copy), Valuables (copy), Events (copy) ]]
+Valuables:WaitForChild("Take").MouseButton1Click:Connect(function() --[[ Line: 440 | Upvalues: Sounds (copy), v11 (ref), v7 (ref), PlayPickUpAnimation (copy), Valuables (copy), Events (copy) ]]
 	Sounds.Click:Play()
 
-	if v8 then
+	if v11 then
 		return
 	end
 
@@ -21973,15 +22250,15 @@ Valuables:WaitForChild("Take").MouseButton1Click:Connect(function() --[[ Line: 4
 		return
 	end
 
-	v8 = true
+	v11 = true
 	PlayPickUpAnimation(Valuables.Take)
 	Events.Loot.LootObject:FireServer(v7, "Valuables")
-	v8 = false
+	v11 = false
 end)
 Valuables.Take.MouseEnter:Connect(function() --[[ Line: 455 | Upvalues: Sounds (copy) ]]
 	Sounds.Hover:Play()
 end)
-TopBar:WaitForChild("Close").MouseButton1Click:Connect(function() --[[ Line: 460 | Upvalues: Sounds (copy), v7 (ref), ReplicatedStorage (copy), v9 (ref), ClearItems (copy), HidePreview (copy), v3 (copy), v1 (copy) ]]
+TopBar:WaitForChild("Close").MouseButton1Click:Connect(function() --[[ Line: 460 | Upvalues: Sounds (copy), v7 (ref), ReplicatedStorage (copy), v8 (ref), ClearItems (copy), HidePreview (copy), v3 (copy), v1 (copy) ]]
 	Sounds.Click:Play()
 
 	if not v7 then
@@ -21990,19 +22267,19 @@ TopBar:WaitForChild("Close").MouseButton1Click:Connect(function() --[[ Line: 460
 
 	ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("Loot", false)
 
-	if not v9 then
+	if not v8 then
 		return
 	end
 
 	ClearItems()
 	HidePreview()
 	v3.Visible = false
-	v9 = false
+	v8 = false
 	v1:SetAttribute("DP", false)
 	v1:SetAttribute("NL", false)
 end)
-ReplicatedStorage:WaitForChild("DA").Event:Connect(function() --[[ Line: 468 | Upvalues: v9 (ref), v7 (ref), ReplicatedStorage (copy), ClearItems (copy), HidePreview (copy), v3 (copy), v1 (copy) ]]
-	if not v9 then
+ReplicatedStorage:WaitForChild("DA").Event:Connect(function() --[[ Line: 468 | Upvalues: v8 (ref), v7 (ref), ReplicatedStorage (copy), ClearItems (copy), HidePreview (copy), v3 (copy), v1 (copy) ]]
+	if not v8 then
 		return
 	end
 
@@ -22012,14 +22289,14 @@ ReplicatedStorage:WaitForChild("DA").Event:Connect(function() --[[ Line: 468 | U
 
 	ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("Loot", false)
 
-	if not v9 then
+	if not v8 then
 		return
 	end
 
 	ClearItems()
 	HidePreview()
 	v3.Visible = false
-	v9 = false
+	v8 = false
 	v1:SetAttribute("DP", false)
 	v1:SetAttribute("NL", false)
 end)
@@ -22102,9 +22379,9 @@ local function AddZipline(p1) --[[ AddZipline | Line: 54 | Upvalues: t (copy) ]]
 end
 
 local v8 = false
+local v9 = false
 local t2 = {}
-local v9 = nil
-local v10 = false
+local v10 = nil
 local v11 = false
 
 for k, v in pairs(CollectionService:GetTagged("Zipline")) do
@@ -22122,13 +22399,13 @@ CollectionService:GetInstanceRemovedSignal("Zipline"):Connect(function(p1) --[[ 
 	end
 end)
 
-local function DetachToZip(p1) --[[ DetachToZip | Line: 96 | Upvalues: v9 (ref), v10 (ref), Parkour (copy), v6 (copy), v7 (copy), Humanoid (copy), v2 (copy) ]]
-	if not v9 or v10 and not p1 then
+local function DetachToZip(p1) --[[ DetachToZip | Line: 96 | Upvalues: v10 (ref), v11 (ref), Parkour (copy), v6 (copy), v7 (copy), Humanoid (copy), v2 (copy) ]]
+	if not v10 or v11 and not p1 then
 		return
 	end
 
-	Parkour:FireServer("Detach", v9.Parent)
-	Parkour:FireServer("Zipline", v9.Parent, true)
+	Parkour:FireServer("Detach", v10.Parent)
+	Parkour:FireServer("Zipline", v10.Parent, true)
 	script.Attach:Stop()
 	script.Zipline:Stop()
 	script.Detach:Play()
@@ -22136,14 +22413,14 @@ local function DetachToZip(p1) --[[ DetachToZip | Line: 96 | Upvalues: v9 (ref),
 	v7:Stop()
 	Humanoid.PlatformStand = false
 	v2:SetAttribute("ZL", false)
-	v9.Attachment1 = nil
-	v9 = nil
+	v10.Attachment1 = nil
+	v10 = nil
 end
 
-local function AttachToZip(p1) --[[ AttachToZip | Line: 114 | Upvalues: DetachToZip (copy), v11 (ref), t2 (copy), v3 (ref), v2 (copy), v10 (ref), v6 (copy), v7 (copy), TweenService (copy), v4 (copy), Parkour (copy), Attachment (copy), Humanoid (copy), v9 (ref), CurrentCamera (copy), HumanoidRootPart (copy) ]]
+local function AttachToZip(p1) --[[ AttachToZip | Line: 114 | Upvalues: DetachToZip (copy), v8 (ref), t2 (copy), v3 (ref), v2 (copy), v11 (ref), v6 (copy), v7 (copy), TweenService (copy), v4 (copy), Parkour (copy), Attachment (copy), Humanoid (copy), v10 (ref), CurrentCamera (copy), HumanoidRootPart (copy) ]]
 	DetachToZip()
 
-	if not p1 or (v11 or (_G.CharacterStates.Downed or t2[p1.Cons])) then
+	if not p1 or (v8 or (_G.CharacterStates.Downed or t2[p1.Cons])) then
 		return
 	end
 
@@ -22155,8 +22432,8 @@ local function AttachToZip(p1) --[[ AttachToZip | Line: 114 | Upvalues: DetachTo
 		return
 	end
 
+	v8 = true
 	v11 = true
-	v10 = true
 	t2[p1.Cons] = true
 	v6:Play()
 	v7:Play()
@@ -22172,17 +22449,17 @@ local function AttachToZip(p1) --[[ AttachToZip | Line: 114 | Upvalues: DetachTo
 	Attachment.Orientation = Vector3.new(0, 90, p1.Orientation.Z)
 	Humanoid.PlatformStand = true
 	v2:SetAttribute("ZL", true)
-	v9 = p1.Cons
-	CurrentCamera.CFrame = CFrame.new(CurrentCamera.CFrame.Position, (p1.CFrame * CFrame.new(v9.UpperLimit, -3, 0)).Position)
-	HumanoidRootPart.CFrame = CFrame.new(HumanoidRootPart.CFrame.Position, (p1.CFrame * CFrame.new(v9.UpperLimit, -3, 0)).Position)
-	v9.Attachment1 = Attachment
+	v10 = p1.Cons
+	CurrentCamera.CFrame = CFrame.new(CurrentCamera.CFrame.Position, (p1.CFrame * CFrame.new(v10.UpperLimit, -3, 0)).Position)
+	HumanoidRootPart.CFrame = CFrame.new(HumanoidRootPart.CFrame.Position, (p1.CFrame * CFrame.new(v10.UpperLimit, -3, 0)).Position)
+	v10.Attachment1 = Attachment
 	task.wait(0.5)
-	v10 = false
 	v11 = false
+	v8 = false
 end
 
-local function Interact(p1) --[[ Interact | Line: 157 | Upvalues: v9 (ref), AttachToZip (copy), DetachToZip (copy) ]]
-	if v9 then
+local function Interact(p1) --[[ Interact | Line: 157 | Upvalues: v10 (ref), AttachToZip (copy), DetachToZip (copy) ]]
+	if v10 then
 		DetachToZip()
 	else
 		AttachToZip(p1)
@@ -22206,52 +22483,52 @@ local function GetClosestZip() --[[ GetClosestZip | Line: 166 | Upvalues: Humano
 	return v2
 end
 
-InputHandler.RegisterKeybind(nil, "Zipline_jump", { "Jump" }, false, { "Began" }, function() --[[ Line: 184 | Upvalues: v9 (ref), DetachToZip (copy), HumanoidRootPart (copy) ]]
-	if not v9 then
+InputHandler.RegisterKeybind(nil, "Zipline_jump", { "Jump" }, false, { "Began" }, function() --[[ Line: 184 | Upvalues: v10 (ref), DetachToZip (copy), HumanoidRootPart (copy) ]]
+	if not v10 then
 		return
 	end
 
 	DetachToZip()
 	HumanoidRootPart:ApplyImpulse((Vector3.new(0, 55 * HumanoidRootPart.AssemblyMass, 0)))
 end)
-InputHandler.RegisterKeybind(nil, "Zipline_detach", { "Crouch" }, false, { "Began" }, function() --[[ Line: 185 | Upvalues: v9 (ref), DetachToZip (copy) ]]
-	if not v9 then
+InputHandler.RegisterKeybind(nil, "Zipline_detach", { "Crouch" }, false, { "Began" }, function() --[[ Line: 185 | Upvalues: v10 (ref), DetachToZip (copy) ]]
+	if not v10 then
 		return
 	end
 
 	DetachToZip()
 end)
-InputHandler.RegisterKeybind(nil, "Zipline_interact", { "Interact" }, false, { "Began" }, function() --[[ Line: 186 | Upvalues: GetClosestZip (copy), v9 (ref), AttachToZip (copy), DetachToZip (copy) ]]
+InputHandler.RegisterKeybind(nil, "Zipline_interact", { "Interact" }, false, { "Began" }, function() --[[ Line: 186 | Upvalues: GetClosestZip (copy), v10 (ref), AttachToZip (copy), DetachToZip (copy) ]]
 	local v1 = GetClosestZip()
 
-	if v9 then
+	if v10 then
 		DetachToZip()
 	else
 		AttachToZip(v1)
 	end
 end)
-Prompt:WaitForChild("Key"):WaitForChild("Button").MouseButton1Click:Connect(function() --[[ Line: 187 | Upvalues: GetClosestZip (copy), v9 (ref), AttachToZip (copy), DetachToZip (copy) ]]
+Prompt:WaitForChild("Key"):WaitForChild("Button").MouseButton1Click:Connect(function() --[[ Line: 187 | Upvalues: GetClosestZip (copy), v10 (ref), AttachToZip (copy), DetachToZip (copy) ]]
 	local v1 = GetClosestZip()
 
-	if v9 then
+	if v10 then
 		DetachToZip()
 	else
 		AttachToZip(v1)
 	end
 end)
-RunService.Heartbeat:Connect(function() --[[ Line: 191 | Upvalues: v9 (ref), v11 (ref), Humanoid (copy), t2 (copy), v3 (ref), DetachToZip (copy), v1 (copy), HumanoidRootPart (copy), Attachment (copy), GetClosestZip (copy), Prompt (copy), v8 (ref), Key (copy), TweenService (copy), v5 (copy), CurrentCamera (copy), t (copy) ]]
-	if not v9 and (not v11 and Humanoid.FloorMaterial ~= Enum.Material.Air) then
+RunService.Heartbeat:Connect(function() --[[ Line: 191 | Upvalues: v10 (ref), v8 (ref), Humanoid (copy), t2 (copy), v3 (ref), DetachToZip (copy), v1 (copy), HumanoidRootPart (copy), Attachment (copy), GetClosestZip (copy), Prompt (copy), v9 (ref), Key (copy), TweenService (copy), v5 (copy), CurrentCamera (copy), t (copy) ]]
+	if not v10 and (not v8 and Humanoid.FloorMaterial ~= Enum.Material.Air) then
 		for k, v in pairs(t2) do
 			t2[k] = nil
 		end
 	end
 
-	if v9 and (v9.CurrentPosition >= v9.UpperLimit - 5 or (_G.CharacterStates.Ragdolled or (_G.CharacterStates.Downed or (not v3 or (not v3.Parent or v3:GetAttribute("BrokenBone")))))) then
+	if v10 and (v10.CurrentPosition >= v10.UpperLimit - 5 or (_G.CharacterStates.Ragdolled or (_G.CharacterStates.Downed or (not v3 or (not v3.Parent or v3:GetAttribute("BrokenBone")))))) then
 		DetachToZip(true)
 	end
 
-	if v9 then
-		local v12 = v9.Parent
+	if v10 then
+		local v12 = v10.Parent
 		local v2 = v1.Hit.Position * Vector3.new(1, 0, 1)
 		local v32 = v12.CFrame.LookVector:Dot((v2 - HumanoidRootPart.Position * Vector3.new(1, 0, 1)).unit) * 90
 
@@ -22268,9 +22545,9 @@ RunService.Heartbeat:Connect(function() --[[ Line: 191 | Upvalues: v9 (ref), v11
 		Prompt.Enabled = true
 		Prompt.Adornee = v52.PromptAt
 
-		if v8 == false then
+		if v9 == false then
 			_G.UpdatePromptVisuals(Key, _G.Settings.Keybinds.Interact, Enum.KeyCode.ButtonX)
-			v8 = true
+			v9 = true
 			Prompt.Size = UDim2.new(0, 0, 0, 0)
 			TweenService:Create(Prompt, v5, {
 				Size = UDim2.new(0, 150, 0, 150)
@@ -22284,8 +22561,8 @@ RunService.Heartbeat:Connect(function() --[[ Line: 191 | Upvalues: v9 (ref), v11
 		end
 
 		Prompt.StudsOffsetWorldSpace = Vector3.new(X, 0, 0)
-	elseif not v52 and v8 then
-		v8 = false
+	elseif not v52 and v9 then
+		v9 = false
 		TweenService:Create(Prompt, v5, {
 			Size = UDim2.new(0, 0, 0, 0)
 		}):Play()
@@ -24057,6 +24334,10 @@ return {
 		Price = {}
 	}
 }
+
+-- Workspace.NPCs.Custom.Nightbound Wraith.Health
+--
+-- empty bytecode
 
 -- Players.Noriko_Ellen.PlayerScripts.KeycardReaderDisplayHandler
 --
@@ -27520,127 +27801,103 @@ return {
 	}
 }
 
--- ReplicatedStorage.AnimationPacks.Nightbound
+-- ReplicatedFirst.GunHandler
 --
-return {
-	idle = {
-		{
-			id = "rbxassetid://116136537494315",
-			weight = 10
-		}
-	},
-	hurtIdle = {
-		{
-			id = "rbxassetid://116136537494315",
-			weight = 10
-		}
-	},
-	walk = {
-		{
-			id = "rbxassetid://116584806196974",
-			weight = 10
-		}
-	},
-	walkRight = {
-		{
-			id = "rbxassetid://116584806196974",
-			weight = 10
-		}
-	},
-	walkLeft = {
-		{
-			id = "rbxassetid://116584806196974",
-			weight = 10
-		}
-	},
-	walkBackLeft = {
-		{
-			id = "rbxassetid://116584806196974",
-			weight = 10
-		}
-	},
-	walkBackRight = {
-		{
-			id = "rbxassetid://116584806196974",
-			weight = 10
-		}
-	},
-	hurtWalk = {
-		{
-			id = "rbxassetid://116584806196974",
-			weight = 10
-		}
-	},
-	downedWalk = {
-		{
-			id = "rbxassetid://9926697043",
-			weight = 10
-		}
-	},
-	downedIdle = {
-		{
-			id = "rbxassetid://9926686454",
-			weight = 10
-		}
-	},
-	crouchIdle = {
-		{
-			id = "rbxassetid://7893249719",
-			weight = 10
-		}
-	},
-	crouchWalk = {
-		{
-			id = "rbxassetid://7893257456",
-			weight = 10
-		}
-	},
-	sprint = {
-		{
-			id = "rbxassetid://109549484850921",
-			weight = 10,
-			speedModifier = 25
-		}
-	},
-	hurtSprint = {
-		{
-			id = "rbxassetid://109549484850921",
-			weight = 10,
-			speedModifier = 25
-		}
-	},
-	run = {
-		{
-			id = "rbxassetid://109549484850921",
-			weight = 10,
-			speedModifier = 25
-		}
-	},
-	jump = {
-		{
-			id = "rbxassetid://7335941064",
-			weight = 10
-		}
-	},
-	fall = {
-		{
-			id = "rbxassetid://9297638145",
-			weight = 10
-		}
-	},
-	climb = {
-		{
-			id = "rbxassetid://180436334",
-			weight = 10
-		}
-	},
-	sit = {
-		{
-			id = "rbxassetid://178130996",
-			weight = 10
-		}
-	}
-}
+game:GetService("ReplicatedFirst")
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+game:GetService("UserInputService")
+
+local RunService = game:GetService("RunService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+LocalPlayer:GetMouse()
+
+local Mods = ReplicatedStorage:WaitForChild("GunStorage"):WaitForChild("Mods")
+local InputHandler = require(ReplicatedStorage:WaitForChild("Mods"):WaitForChild("InputHandler"))
+local Main = require(Mods:WaitForChild("Main"))
+
+Mods.Main:Destroy()
+
+repeat
+	task.wait(0.1)
+until _G.Settings
+
+local function Equipped(p1) --[[ Equipped | Line: 27 | Upvalues: Main (copy) ]]
+	if not (p1:GetAttribute("Tool") and p1:FindFirstChild("GunStatus")) then
+		return
+	end
+
+	Main.Equip(p1)
+end
+
+local function Unequipped(p1) --[[ Unequipped | Line: 33 | Upvalues: Main (copy) ]]
+	if not (p1:GetAttribute("Tool") and p1:FindFirstChild("GunStatus")) then
+		return
+	end
+
+	Main.Unequip()
+end
+
+InputHandler.RegisterKeybind(nil, "Gun_reload", { "Reload" }, false, { "Began" }, function() --[[ Line: 42 | Upvalues: Main (copy) ]]
+	Main.Reload(true)
+end)
+InputHandler.RegisterKeybind(nil, "Gun_inspect", { "Inspect" }, false, { "Began" }, function() --[[ Line: 43 | Upvalues: Main (copy) ]]
+	Main.Inspect(true)
+end)
+InputHandler.RegisterKeybind(nil, "Gun_switch_sight", { "Switch_sight" }, false, { "Began" }, function() --[[ Line: 44 | Upvalues: Main (copy) ]]
+	Main.ChangeSight()
+end)
+InputHandler.RegisterKeybind(nil, "Gun_change_alt_firing_mode", { "Change_alt_firing_mode" }, false, { "Began" }, function() --[[ Line: 45 | Upvalues: Main (copy) ]]
+	Main.ChangeProjectileMode()
+end)
+InputHandler.RegisterKeybind(nil, "Gun_change_firing_mode", { "Change_firing_mode" }, false, { "Began" }, function() --[[ Line: 46 | Upvalues: Main (copy) ]]
+	Main.ChangeMode()
+end)
+InputHandler.RegisterKeybind(nil, "Gun_fire_start", { "M1" }, false, { "Began" }, function() --[[ Line: 48 | Upvalues: Main (copy) ]]
+	Main.Fire(true)
+end)
+InputHandler.RegisterKeybind(nil, "Gun_fire_stop", { "M1" }, true, { "Ended" }, function() --[[ Line: 49 | Upvalues: Main (copy) ]]
+	Main.Fire(false)
+end)
+InputHandler.RegisterKeybind(nil, "Gun_aim_stop", { "M2", "Aim" }, true, { "Ended" }, function() --[[ Line: 51 | Upvalues: Main (copy) ]]
+	if _G.ToggleAim then
+		return
+	end
+
+	Main.Aim(false, false)
+end)
+InputHandler.RegisterKeybind(nil, "Gun_aim_start", { "M2", "Aim" }, false, { "Began" }, function() --[[ Line: 52 | Upvalues: Main (copy) ]]
+	local ToggleAim = _G.ToggleAim
+
+	if ToggleAim and not (Main.Equipped or Main.HoldingAim) then
+		return
+	end
+
+	local v1 = if ToggleAim then not Main.HoldingAim else true
+
+	Main.Aim(v1, v1)
+end)
+
+local function CharacterAdded(p1) --[[ CharacterAdded | Line: 70 | Upvalues: Equipped (copy), Unequipped (copy) ]]
+	if p1 then
+		p1.ChildAdded:Connect(Equipped)
+		p1.ChildRemoved:Connect(Unequipped)
+	end
+end
+
+LocalPlayer.CharacterAdded:Connect(CharacterAdded)
+
+local Character = LocalPlayer.Character
+
+if Character then
+	Character.ChildAdded:Connect(Equipped)
+	Character.ChildRemoved:Connect(Unequipped)
+end
+
+RunService.RenderStepped:Connect(Main.RenderSteppedUpdate)
+RunService.Stepped:Connect(Main.SteppedUpdate)
 
 -- StarterGui.InventoryGui.InventoryCore
 --
@@ -27728,10 +27985,7 @@ local t3 = {
 	[Enum.KeyCode.DPadUp] = { 7, 8 },
 	[Enum.KeyCode.DPadDown] = { 9, 10 }
 }
-local t4 = {}
-local t5 = {}
-local t6 = {}
-local t7 = {
+local t4 = {
 	One = 1,
 	Two = 2,
 	Three = 3,
@@ -27743,12 +27997,15 @@ local t7 = {
 	Nine = 9,
 	Zero = 10
 }
-local t8 = {
+local t5 = {
 	{ 1, 2, 3 },
 	{ 4, 5, 6 },
 	{ 7, 8 },
 	{ 9, 10 }
 }
+local t6 = {}
+local t7 = {}
+local t8 = {}
 
 for k, v in pairs(GamepadHotbar:GetChildren()) do
 	if v.Name ~= "Middle" and v.Name ~= "UIAspectRatioConstraint" then
@@ -27775,8 +28032,8 @@ local function IsAnItem(p1) --[[ IsAnItem | Line: 144 ]]
 	return p1:GetAttribute("Tool") == true
 end
 
-local function v21(p1, p2) --[[ GetItemInfo | Line: 148 | Upvalues: t4 (copy), t5 (copy), v21 (copy) ]]
-	for k, v in pairs(t4) do
+local function v21(p1, p2) --[[ GetItemInfo | Line: 148 | Upvalues: t6 (copy), t7 (copy), v21 (copy) ]]
+	for k, v in pairs(t6) do
 		if typeof(p1) == "number" and v.Key == p1 then
 			return v, k
 		end
@@ -27786,7 +28043,7 @@ local function v21(p1, p2) --[[ GetItemInfo | Line: 148 | Upvalues: t4 (copy), t
 		end
 	end
 
-	local v3 = t5[if typeof(p1) == "number" then false else p1.Name]
+	local v3 = t7[if typeof(p1) == "number" then false else p1.Name]
 
 	if p2 or not v3 then
 		return
@@ -27795,10 +28052,10 @@ local function v21(p1, p2) --[[ GetItemInfo | Line: 148 | Upvalues: t4 (copy), t
 	return v21(v3.ItemInfo.Item, true)
 end
 
-local function GetObjectFromPosition(p1) --[[ GetObjectFromPosition | Line: 167 | Upvalues: PlayerGui (copy), v5 (copy), Inventory (copy), t6 (copy), v21 (copy), List (copy) ]]
+local function GetObjectFromPosition(p1) --[[ GetObjectFromPosition | Line: 167 | Upvalues: PlayerGui (copy), v5 (copy), Inventory (copy), t8 (copy), v21 (copy), List (copy) ]]
 	for k, v in pairs(PlayerGui:GetGuiObjectsAtPosition(p1.X, p1.Y)) do
 		if v.Parent ~= v5 or v == Inventory then
-			if table.find(t6, v) then
+			if table.find(t8, v) then
 				return v
 			end
 
@@ -27966,7 +28223,7 @@ local function UpdateStatDisplay(p1, p2, p3) --[[ UpdateStatDisplay | Line: 337 
 	p1.Shine.ImageColor3 = v1
 end
 
-local function UpdateHotbar() --[[ UpdateHotbar | Line: 351 | Upvalues: Space (copy), Shared (copy), LocalPlayer (copy), t (copy), Preview2 (copy), v1 (ref), CurrentCamera (copy), v7 (ref), Weight (copy), t6 (copy), v21 (copy), v11 (ref), TweenService (copy), Hotbar (copy), v2 (copy), v12 (ref) ]]
+local function UpdateHotbar() --[[ UpdateHotbar | Line: 351 | Upvalues: Space (copy), Shared (copy), LocalPlayer (copy), t (copy), Preview2 (copy), v1 (ref), CurrentCamera (copy), v7 (ref), Weight (copy), t8 (copy), v21 (copy), v11 (ref), TweenService (copy), Hotbar (copy), v2 (copy), v12 (ref) ]]
 	local v13 = Space
 	local v22, v3 = Shared.GetInventorySpace(LocalPlayer)
 	local v4 = v3 <= v22 and t.OverLimit or t.Default
@@ -27998,7 +28255,7 @@ local function UpdateHotbar() --[[ UpdateHotbar | Line: 351 | Upvalues: Space (c
 		Weight.Visible = true
 	end
 
-	for k, v in pairs(t6) do
+	for k, v in pairs(t8) do
 		if v21(k) then
 			v.Visible = false
 			sum = sum + 1
@@ -28022,7 +28279,7 @@ local function UpdateHotbar() --[[ UpdateHotbar | Line: 351 | Upvalues: Space (c
 	TweenService:Create(Hotbar, v2, t2):Play()
 end
 
-local function UpdateItemButton(p1) --[[ UpdateItemButton | Line: 389 | Upvalues: v21 (copy), t5 (copy), Shared (copy), Hotbar (copy), Inventory (copy), Items (copy), UpdateHotbar (copy) ]]
+local function UpdateItemButton(p1) --[[ UpdateItemButton | Line: 389 | Upvalues: v21 (copy), t7 (copy), Shared (copy), Hotbar (copy), Inventory (copy), Items (copy), UpdateHotbar (copy) ]]
 	local v1 = v21(p1)
 
 	if not v1 then
@@ -28031,7 +28288,7 @@ local function UpdateItemButton(p1) --[[ UpdateItemButton | Line: 389 | Upvalues
 		return
 	end
 
-	local v2 = t5[v1.Item.Name]
+	local v2 = t7[v1.Item.Name]
 
 	v1.Button.Keybind.Text = if v1.Key and v1.Key == 10 then 0 else v1.Key or ""
 	v1.Button.Stack.Text = if v2 and v2.Stacks > 1 then "x" .. v2.Stacks or "" else ""
@@ -28057,7 +28314,7 @@ local function UpdateItemButton(p1) --[[ UpdateItemButton | Line: 389 | Upvalues
 	UpdateHotbar()
 end
 
-local function DragButton(p1) --[[ DragButton | Line: 419 | Upvalues: v21 (copy), ItemDatabase (copy), v8 (ref), v5 (copy), UpdateHotbar (copy), UpdateGearContainers (copy), UserInputService (copy), v10 (ref), v18 (ref), GetObjectFromPosition (copy), t6 (copy), UpdateItemButton (copy), List (copy), Items (copy), t5 (copy), ReplicatedStorage (copy) ]]
+local function DragButton(p1) --[[ DragButton | Line: 419 | Upvalues: v21 (copy), ItemDatabase (copy), v8 (ref), v5 (copy), UpdateHotbar (copy), UpdateGearContainers (copy), UserInputService (copy), v10 (ref), v18 (ref), GetObjectFromPosition (copy), t8 (copy), UpdateItemButton (copy), List (copy), Items (copy), t7 (copy), ReplicatedStorage (copy) ]]
 	local v1 = v21(p1)
 
 	if not v1 then
@@ -28086,7 +28343,7 @@ local function DragButton(p1) --[[ DragButton | Line: 419 | Upvalues: v21 (copy)
 
 	local v52 = GetObjectFromPosition(zero)
 	local v6 = if v52 then v21(v52) else v52
-	local v7 = v6 and v6.Key or table.find(t6, v52)
+	local v7 = v6 and v6.Key or table.find(t8, v52)
 
 	if v6 then
 		v6.Key = Key
@@ -28109,8 +28366,8 @@ local function DragButton(p1) --[[ DragButton | Line: 419 | Upvalues: v21 (copy)
 		return
 	end
 
-	task.spawn(function() --[[ Line: 471 | Upvalues: t5 (ref), v1 (copy), ReplicatedStorage (ref), Items (ref) ]]
-		local v12 = t5[v1.Item.Name]
+	task.spawn(function() --[[ Line: 471 | Upvalues: t7 (ref), v1 (copy), ReplicatedStorage (ref), Items (ref) ]]
+		local v12 = t7[v1.Item.Name]
 		local v2 = if v12 then ReplicatedStorage.Prompt:Invoke("DROPPING " .. v1.Item.Name:upper(), "How many would you like to drop?", NumberRange.new(1, v12.Stacks)) or "No" else ReplicatedStorage.Prompt:Invoke("ARE YOU SURE?", ("You are about to <b>DROP</b> your <b>%s</b>"):format(v1.Item.Name:upper()), { "No", "Yes" })
 
 		if v2 ~= "Yes" and typeof(v2) ~= "number" then
@@ -28158,14 +28415,14 @@ local function EquipFromIndex(p1) --[[ EquipFromIndex | Line: 495 | Upvalues: v2
 	end
 end
 
-local function AddItem(p1) --[[ AddItem | Line: 510 | Upvalues: v21 (copy), ItemDatabase (copy), t5 (copy), UpdateItemButton (copy), CreateButton (copy), t4 (copy), v7 (ref), Preview2 (copy), DragButton (copy), v9 (ref), Items (copy), v3 (copy), v13 (ref), v6 (ref), v1 (ref), UpdateHotbar (copy) ]]
+local function AddItem(p1) --[[ AddItem | Line: 510 | Upvalues: v21 (copy), ItemDatabase (copy), t7 (copy), UpdateItemButton (copy), CreateButton (copy), t6 (copy), v7 (ref), Preview2 (copy), DragButton (copy), v9 (ref), Items (copy), v3 (copy), v13 (ref), v6 (ref), v1 (ref), UpdateHotbar (copy) ]]
 	if not (p1:GetAttribute("Tool") == true) then
 		return
 	end
 
 	if not v21(p1, true) then
 		local v2 = ItemDatabase[p1.Name]
-		local v32 = t5[p1.Name]
+		local v32 = t7[p1.Name]
 		local v4 = if v2 then v2.Stackable else v2
 		local v5 = v2 and (v2.Compatibility and v2.Compatibility.Type)
 		local v62 = false
@@ -28182,10 +28439,10 @@ local function AddItem(p1) --[[ AddItem | Line: 510 | Upvalues: v21 (copy), Item
 				Connections = {}
 			}
 
-			table.insert(t4, t)
+			table.insert(t6, t)
 
 			if v4 then
-				t5[p1.Name] = {
+				t7[p1.Name] = {
 					Stacks = 1,
 					ItemInfo = t
 				}
@@ -28307,7 +28564,7 @@ local function AddItem(p1) --[[ AddItem | Line: 510 | Upvalues: v21 (copy), Item
 	end
 end
 
-local function RemoveItem(p1) --[[ RemoveItem | Line: 631 | Upvalues: v3 (copy), v21 (copy), t5 (copy), Backpack (copy), v14 (ref), Items (copy), UpdateItemButton (copy), t4 (copy), UpdateHotbar (copy) ]]
+local function RemoveItem(p1) --[[ RemoveItem | Line: 631 | Upvalues: v3 (copy), v21 (copy), t7 (copy), Backpack (copy), v14 (ref), Items (copy), UpdateItemButton (copy), t6 (copy), UpdateHotbar (copy) ]]
 	if not (p1:GetAttribute("Tool") == true) then
 		return
 	end
@@ -28324,7 +28581,7 @@ local function RemoveItem(p1) --[[ RemoveItem | Line: 631 | Upvalues: v3 (copy),
 		return
 	end
 
-	local v5 = t5[p1.Name]
+	local v5 = t7[p1.Name]
 	local v6 = Backpack:FindFirstChild(p1.Name)
 
 	if v5 and v6 then
@@ -28341,7 +28598,7 @@ local function RemoveItem(p1) --[[ RemoveItem | Line: 631 | Upvalues: v3 (copy),
 		UpdateItemButton(p1)
 	else
 		if v5 and not v6 then
-			t5[p1.Name] = nil
+			t7[p1.Name] = nil
 		end
 
 		if v32.Connections then
@@ -28351,7 +28608,7 @@ local function RemoveItem(p1) --[[ RemoveItem | Line: 631 | Upvalues: v3 (copy),
 		end
 
 		v32.Button:Destroy()
-		table.remove(t4, v4)
+		table.remove(t6, v4)
 		UpdateHotbar()
 	end
 end
@@ -28505,15 +28762,15 @@ ReplicatedStorage:WaitForChild("SI").Event:Connect(function(p1, p2) --[[ Line: 8
 	v5.Enabled = not p2
 end)
 
-local function ToggleGamepadHotbar(p1) --[[ ToggleGamepadHotbar | Line: 859 | Upvalues: t7 (copy), v21 (copy), t8 (copy), GamepadHotbar (copy), UpdateHotbar (copy), t2 (copy) ]]
+local function ToggleGamepadHotbar(p1) --[[ ToggleGamepadHotbar | Line: 859 | Upvalues: t4 (copy), v21 (copy), t5 (copy), GamepadHotbar (copy), UpdateHotbar (copy), t2 (copy) ]]
 	if p1 then
-		for k, v in pairs(t7) do
+		for k, v in pairs(t4) do
 			local v1 = v21(v)
 
 			if v1 then
 				local v2 = nil
 
-				for k2, v3 in pairs(t8) do
+				for k2, v3 in pairs(t5) do
 					if table.find(v3, v) then
 						v2 = k2
 					end
@@ -28558,7 +28815,7 @@ end)
 InputHandler.RegisterKeybind(nil, "Inventory_quick_action", { "Quick_purchase" }, true, { "Began", "Ended" }, function(p1) --[[ Line: 918 | Upvalues: v9 (ref) ]]
 	v9 = p1 == "Began"
 end)
-UserInputService.InputBegan:Connect(function(p1, p2) --[[ Line: 924 | Upvalues: v10 (ref), t3 (copy), v7 (ref), v15 (ref), v11 (ref), Hotbar (copy), ToggleGamepadHotbar (copy), v16 (ref), v17 (ref), v21 (copy), v3 (copy), v13 (ref), v6 (ref), Items (copy), t2 (copy), t7 (copy) ]]
+UserInputService.InputBegan:Connect(function(p1, p2) --[[ Line: 924 | Upvalues: v10 (ref), t3 (copy), v7 (ref), v15 (ref), v11 (ref), Hotbar (copy), ToggleGamepadHotbar (copy), v16 (ref), v17 (ref), v21 (copy), v3 (copy), v13 (ref), v6 (ref), Items (copy), t2 (copy), t4 (copy) ]]
 	if p1.KeyCode == Enum.KeyCode.ButtonA then
 		v10 = true
 	end
@@ -28613,11 +28870,11 @@ UserInputService.InputBegan:Connect(function(p1, p2) --[[ Line: 924 | Upvalues: 
 		end
 	end
 
-	if not t7[p1.KeyCode.Name] then
+	if not t4[p1.KeyCode.Name] then
 		return
 	end
 
-	local v8 = v21(t7[p1.KeyCode.Name])
+	local v8 = v21(t4[p1.KeyCode.Name])
 
 	if not v8 then
 		return
@@ -28670,7 +28927,7 @@ for i = 1, v1 do
 	v22.LayoutOrder = i
 	v22.Visible = false
 	v22.Parent = Hotbar.List
-	t6[i] = v22
+	t8[i] = v22
 end
 
 for k, v in pairs(Backpack:GetChildren()) do
@@ -30350,460 +30607,101 @@ return function(p1) --[[ typeof | Line: 5 | Upvalues: v1 (copy) ]]
 	return __type
 end
 
--- StarterPlayer.StarterPlayerScripts.ProximityPrompts
+-- StarterPlayer.StarterPlayerScripts.RegionCulling
 --
-game:GetService("UserInputService")
+workspace:WaitForChild("Map")
+task.wait(5)
 
-local ProximityPromptService = game:GetService("ProximityPromptService")
-local TweenService = game:GetService("TweenService")
-local LocalPlayer = game:GetService("Players").LocalPlayer
-local v1 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
-local Prompt = script:WaitForChild("Prompt")
+local LocalPlayer = game.Players.LocalPlayer
+local ReplicatedStorage = game.ReplicatedStorage
+local Camera = workspace.Camera
+local StreamingInformation = require(ReplicatedStorage:WaitForChild("StreamingInformation", 9000000000))
+local v1 = 500
 
-task.wait()
-
-local v2 = v1:WaitForChild("Humanoid"):WaitForChild("Animator"):LoadAnimation(script:WaitForChild("Anims"):WaitForChild("Use"))
-local v3 = v1.Humanoid:WaitForChild("Animator"):LoadAnimation(script.Anims:WaitForChild("PickingUp"))
-local v4 = v1.Humanoid:WaitForChild("Animator"):LoadAnimation(script.Anims:WaitForChild("PickUp"))
-
-LocalPlayer.CharacterAdded:Connect(function(p1) --[[ Line: 18 | Upvalues: v1 (ref), v2 (ref), v3 (ref), v4 (ref) ]]
-	v1 = p1
-	task.delay(0.15, function() --[[ Line: 20 | Upvalues: v2 (ref), v1 (ref), v3 (ref), v4 (ref) ]]
-		v2 = v1:WaitForChild("Humanoid"):WaitForChild("Animator"):LoadAnimation(script:WaitForChild("Anims"):WaitForChild("Use"))
-		v3 = v1.Humanoid:WaitForChild("Animator"):LoadAnimation(script.Anims:WaitForChild("PickingUp"))
-		v4 = v1.Humanoid:WaitForChild("Animator"):LoadAnimation(script.Anims:WaitForChild("PickUp"))
-	end)
-end)
-
-local tbl = {}
-local t = { workspace.Terrain, workspace.Debris, workspace.CurrentCamera }
-local v5 = RaycastParams.new()
-
-v5.FilterType = Enum.RaycastFilterType.Exclude
-v5.CollisionGroup = "RayCasts"
-v5.FilterDescendantsInstances = t
-
-local function v6(p1, p2) --[[ CastRay | Line: 35 | Upvalues: v5 (copy), t (copy), v6 (copy) ]]
-	local v1 = workspace:Raycast(p1, p2, v5)
-
-	if not v1 then
-		return nil
+for k, v in pairs(game.CollectionService:GetTagged("DynamicModels")) do
+	if v:IsA("Model") then
+		table.insert(StreamingInformation, {
+			Shown = true,
+			Targets = { v },
+			Objects = table.create(1),
+			Position = v:GetBoundingBox().Position,
+			LoadDistance = v:GetAttribute("Distance") or 150,
+			Areas = {}
+		})
 	end
-
-	local v2 = v1.Instance
-
-	if v2.CanCollide ~= false and not v2.Parent:FindFirstChild("Humanoid") then
-		return v1
-	end
-
-	table.insert(t, v2)
-	v5.FilterDescendantsInstances = t
-
-	return v6(p1, p2)
 end
 
-local function GetPosition(p1) --[[ GetPosition | Line: 54 | Upvalues: tbl (copy) ]]
-	if p1 and p1.Parent then
-		if p1.Parent:IsA("BasePart") then
-			return p1.Parent.Position
-		end
-
-		if p1.Parent:IsA("Attachment") then
-			return p1.Parent.WorldPosition
-		end
-	else
-		for k, v in pairs(tbl) do
-			if v == p1 then
-				table.remove(tbl, k)
+for k, v in pairs(StreamingInformation) do
+	for k2, v2 in pairs(v.Targets) do
+		for k3, v3 in pairs(v2:GetDescendants()) do
+			if (v3:IsA("BasePart") or (v3:IsA("Decal") or v3:IsA("Texture"))) and not v3:HasTag("DynamicIgnore") then
+				table.insert(v.Objects, v3)
 			end
 		end
 	end
 end
 
-local function CustomUpdate(p1, p2) --[[ CustomUpdate | Line: 72 ]]
-	local Frame = p2:WaitForChild("Frame")
-	local IsHold = Frame:WaitForChild("IsHold")
-	local ActionText = Frame:WaitForChild("ActionText")
-	local KeyText = Frame:WaitForChild("KeyText")
-	local KeyImage = Frame:WaitForChild("KeyImage")
-	local Bar = Frame:WaitForChild("Bar")
-	local Shine = Frame:WaitForChild("Shine")
-	local Highlight = p2:WaitForChild("Highlight")
-	local Edge = Frame:WaitForChild("Edge")
-	local Edge2 = Frame:WaitForChild("Edge2")
+local function ToggleVisiblity(p1, p2) --[[ ToggleVisiblity | Line: 47 | Upvalues: v1 (ref) ]]
+	local count = 0
 
-	if p1.Name == "LockDoor" and p1.Parent.Parent.Parent:GetAttribute("Locked") then
-		KeyText.TextColor3 = Color3.fromRGB(255, 195, 74)
-		IsHold.TextColor3 = Color3.fromRGB(255, 195, 74)
-		ActionText.TextColor3 = Color3.fromRGB(255, 195, 74)
-		Bar.BackgroundColor3 = Color3.fromRGB(170, 113, 32)
-		Shine.ImageColor3 = Color3.fromRGB(255, 184, 16)
-		Edge.ImageColor3 = Color3.fromRGB(255, 195, 74)
-		Edge2.ImageColor3 = Color3.fromRGB(255, 195, 74)
-		KeyImage.ImageColor3 = Color3.fromRGB(255, 195, 74)
-		Highlight.FillColor = Color3.fromRGB(255, 195, 74)
-		Highlight.OutlineColor = Color3.fromRGB(255, 195, 74)
+	for k, v in pairs(p1) do
+		if v1 <= count then
+			task.wait()
+			count = 0
+		end
 
-		return
+		count = count + 1
+		v.LocalTransparencyModifier = if p2 then 0 else 1
 	end
-
-	if p1.Name ~= "LockDoor" then
-		return
-	end
-
-	KeyText.TextColor3 = Color3.fromRGB(101, 255, 84)
-	IsHold.TextColor3 = Color3.fromRGB(101, 255, 84)
-	ActionText.TextColor3 = Color3.fromRGB(101, 255, 84)
-	Bar.BackgroundColor3 = Color3.fromRGB(63, 158, 50)
-	Shine.ImageColor3 = Color3.fromRGB(75, 255, 44)
-	Edge.ImageColor3 = Color3.fromRGB(101, 255, 84)
-	Edge2.ImageColor3 = Color3.fromRGB(101, 255, 84)
-	KeyImage.ImageColor3 = Color3.fromRGB(101, 255, 84)
-	Highlight.FillColor = Color3.fromRGB(101, 255, 84)
-	Highlight.OutlineColor = Color3.fromRGB(101, 255, 84)
 end
 
-local function getScreenGui() --[[ getScreenGui | Line: 115 | Upvalues: PlayerGui (copy) ]]
-	local ProximityPrompts = PlayerGui:FindFirstChild("ProximityPrompts")
-
-	if ProximityPrompts == nil then
-		local ProximityPrompts2 = Instance.new("ScreenGui")
-
-		ProximityPrompts2.Name = "ProximityPrompts"
-		ProximityPrompts2.ResetOnSpawn = false
-		ProximityPrompts2.Parent = PlayerGui
-		ProximityPrompts = ProximityPrompts2
-	end
-
-	return ProximityPrompts
-end
-
-local t2 = {
-	OpenDoor = true,
-	OpenShop = true,
-	OpenAtm = true,
-	OpenFloorLoot = true,
-	PickUpMoney = true,
-	OpenAttachments = true,
-	AirdropSupply = true
-}
-
-local function handleKeyBinds(p1) --[[ handleKeyBinds | Line: 128 | Upvalues: t2 (copy) ]]
-	if t2[p1.Name] then
-		p1.KeyboardKeyCode = _G.Settings.Keybinds.Interact
-
-		return
-	end
-
-	if p1.Name ~= "LockDoor" then
-		return
-	end
-
-	p1.KeyboardKeyCode = _G.Settings.Keybinds.Lock_door
-end
-
-local function createPrompt(p1, p2, p3) --[[ createPrompt | Line: 137 | Upvalues: t2 (copy), Prompt (copy), TweenService (copy), CustomUpdate (copy), v3 (ref), v4 (ref), v2 (ref), v1 (ref), tbl (copy), GetPosition (copy), v6 (copy) ]]
-	if t2[p1.Name] then
-		p1.KeyboardKeyCode = _G.Settings.Keybinds.Interact
-	elseif p1.Name == "LockDoor" then
-		p1.KeyboardKeyCode = _G.Settings.Keybinds.Lock_door
-	end
-
-	local v12 = Prompt:Clone()
-	local Frame = v12:WaitForChild("Frame")
-	local IsHold = Frame:WaitForChild("IsHold")
-	local ActionText = Frame:WaitForChild("ActionText")
-	local KeyText = Frame:WaitForChild("KeyText")
-	local KeyImage = Frame:WaitForChild("KeyImage")
-	local Bar = Frame:WaitForChild("Bar")
-
-	Frame:WaitForChild("Shine")
-
-	local Highlight = Instance.new("Highlight")
-
-	Highlight.FillColor = Color3.fromRGB(101, 255, 84)
-	Highlight.OutlineColor = Color3.fromRGB(101, 255, 84)
-	Highlight.FillTransparency = 1
-	Highlight.OutlineTransparency = 1
-	Highlight.Parent = v12
-
-	local Edge = Frame:WaitForChild("Edge")
-	local Edge2 = Frame:WaitForChild("Edge2")
-	local v22 = nil
-
-	if p1.Parent:IsA("Attachment") then
-		v22 = p1.Parent.WorldPosition
-		Highlight.Adornee = p1.Parent.Parent
-	elseif p1.Parent:IsA("BasePart") then
-		v22 = p1.Parent.Position
-		Highlight.Adornee = p1.Parent
-	end
-
-	_G.UpdatePromptVisuals(Frame, p1.KeyboardKeyCode, p1.GamepadKeyCode, p1.ActionText)
-
-	local v32 = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-	local v42 = TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.In)
-	local v5 = TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.In)
-	local v62 = TweenInfo.new(p1.HoldDuration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-	local v7 = TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-	local t = {}
-	local list2 = {}
-	local t3 = {}
-	local t4 = {}
-
-	for i, v in ipairs({ KeyText, ActionText, IsHold }) do
-		table.insert(t, TweenService:Create(v, v42, {
-			TextTransparency = 1
-		}))
-		table.insert(list2, TweenService:Create(v, v5, {
-			TextTransparency = 0
-		}))
-	end
-
-	table.insert(t, TweenService:Create(KeyImage, v42, {
-		ImageTransparency = 1,
-		Visible = false
-	}))
-	table.insert(list2, TweenService:Create(KeyImage, v32, {
-		ImageTransparency = 0,
-		Visible = true
-	}))
-	table.insert(t, TweenService:Create(Frame, v42, {
-		BackgroundTransparency = 1,
-		Visible = false,
-		Size = UDim2.fromScale(0, 0)
-	}))
-	table.insert(list2, TweenService:Create(Frame, v42, {
-		BackgroundTransparency = 0.5,
-		Visible = true,
-		Size = UDim2.fromScale(0.8, 0.8)
-	}))
-	table.insert(list2, TweenService:Create(Highlight, v5, {
-		OutlineTransparency = 0.6,
-		FillTransparency = 0.825
-	}))
-	table.insert(t, TweenService:Create(Highlight, v5, {
-		OutlineTransparency = 1,
-		FillTransparency = 1
-	}))
-	table.insert(t, TweenService:Create(Edge, v42, {
-		ImageTransparency = 1,
-		Visible = false
-	}))
-	table.insert(list2, TweenService:Create(Edge, v32, {
-		ImageTransparency = 0.15,
-		Visible = true
-	}))
-	table.insert(t, TweenService:Create(Edge2, v42, {
-		ImageTransparency = 1,
-		Visible = false
-	}))
-	table.insert(list2, TweenService:Create(Edge2, v32, {
-		ImageTransparency = 0.15,
-		Visible = true
-	}))
-
-	if p2 == Enum.ProximityPromptInputType.Touch or _G.Settings.Gameplay.ClickablePrompts then
-		local v20 = false
-
-		v12.Active = true
-		Frame.InputBegan:Connect(function(p12) --[[ Line: 219 | Upvalues: p1 (copy), v20 (ref) ]]
-			if p12.UserInputType ~= Enum.UserInputType.Touch and p12.UserInputType ~= Enum.UserInputType.MouseButton1 then
-				return
-			end
-
-			if p12.UserInputState == Enum.UserInputState.Change then
-				return
-			end
-
-			p1:InputHoldBegin()
-			v20 = true
-		end)
-		Frame.InputEnded:Connect(function(p12) --[[ Line: 226 | Upvalues: v20 (ref), p1 (copy) ]]
-			if p12.UserInputType ~= Enum.UserInputType.Touch and p12.UserInputType ~= Enum.UserInputType.MouseButton1 or not v20 then
-				return
-			end
-
-			v20 = false
-			p1:InputHoldEnd()
-		end)
-		v12.Active = true
-	end
-
-	CustomUpdate(p1, v12)
-
-	local v21 = p1.Triggered:Connect(function() --[[ Line: 247 | Upvalues: t (copy), v3 (ref), p1 (copy), v4 (ref), v2 (ref), CustomUpdate (ref), v12 (copy) ]]
-		for i, v in ipairs(t) do
-			v:Play()
-		end
-
-		v3:Stop()
-
-		if _G.CharacterStates.Downed then
-			task.wait(0.1)
-			CustomUpdate(p1, v12)
-
-			return
-		end
-
-		if p1:GetAttribute("PickUpAnim") then
-			v4:Play(0.1, 1, 1.5)
-		else
-			v2:Play()
-		end
-
-		task.wait(0.1)
-		CustomUpdate(p1, v12)
-	end)
-	local v222 = p1.TriggerEnded:Connect(function() --[[ Line: 265 | Upvalues: CustomUpdate (ref), p1 (copy), v12 (copy), list2 (copy), v3 (ref) ]]
-		CustomUpdate(p1, v12)
-
-		for i, v in ipairs(list2) do
-			v:Play()
-		end
-
-		v3:Stop()
+while task.wait(0.25) do
+	local Position = Camera.CFrame.Position
+	local ok, result = pcall(function() --[[ Line: 72 | Upvalues: ReplicatedStorage (copy), Position (copy) ]]
+		return ReplicatedStorage.GetArea:Invoke(Position)
 	end)
 
-	if p1.HoldDuration > 0 then
-		IsHold.Visible = true
-		table.insert(t3, TweenService:Create(Bar, v62, {
-			Size = UDim2.fromScale(1, 1)
-		}))
-		table.insert(t4, TweenService:Create(Bar, v7, {
-			Size = UDim2.fromScale(1, 0)
-		}))
-		table.insert(t3, TweenService:Create(Frame, v7, {
-			Size = UDim2.fromScale(0.7, 0.7)
-		}))
-		table.insert(t4, TweenService:Create(Frame, v7, {
-			Size = UDim2.fromScale(0.8, 0.8)
-		}))
-		p1.PromptButtonHoldBegan:Connect(function() --[[ Line: 282 | Upvalues: t3 (copy), v3 (ref), v1 (ref), v22 (ref) ]]
-			for i, v in ipairs(t3) do
-				v:Play()
+	if ok then
+		local v2 = if result then result.Name else result
+
+		for k, v in pairs(StreamingInformation) do
+			local v3 = table.find(v.Areas, v2)
+
+			if v.Position and (Position - v.Position).Magnitude <= v.LoadDistance then
+				v3 = true
 			end
 
-			if not _G.CharacterStates.Downed then
-				v3:Play()
-			end
-
-			v1:SetAttribute("Interacting", true)
-
-			if not v22 then
-				return
-			end
-
-			v1:SetAttribute("LookAtPosition", v22)
-		end)
-		p1.PromptButtonHoldEnded:Connect(function() --[[ Line: 294 | Upvalues: t4 (copy), v3 (ref), v1 (ref) ]]
-			for i, v in ipairs(t4) do
-				v:Play()
-			end
-
-			v3:Stop()
-			v1:SetAttribute("Interacting", nil)
-			v1:SetAttribute("LookAtPosition", nil)
-		end)
-	end
-
-	if not table.find(tbl, p1) then
-		table.insert(tbl, p1)
-
-		local v28 = GetPosition(p1)
-
-		if v28 and (v1:FindFirstChild("Torso") and (v1.Torso.Position - v28).Magnitude < 15) then
-			if v6(v28, v1.Torso.Position - v28) then
-				p1.Enabled = false
+			if _G.Settings.Video.EXPERIMENTAL_Region_Culling and (LocalPlayer.Character and not LocalPlayer.Character:GetAttribute("Died")) then
+				_ = 500
 			else
-				p1.Enabled = true
+				v3 = not v.Reverse
+				_ = 2000
 			end
-		end
-	end
 
-	v12.Adornee = p1.Parent
-	v12.Parent = p3
-
-	for i, v in ipairs(list2) do
-		v:Play()
-	end
-
-	return function() --[[ cleanupFunction | Line: 327 | Upvalues: v21 (ref), v222 (ref), t (copy), v3 (ref), v1 (ref), v12 (copy) ]]
-		v21:Disconnect()
-		v222:Disconnect()
-
-		for i, v in ipairs(t) do
-			v:Play()
-		end
-
-		v3:Stop()
-		v1:SetAttribute("Interacting", nil)
-		v1:SetAttribute("LookAtPosition", nil)
-		task.wait(0.2)
-		v12:Destroy()
-	end
-end
-
-ProximityPromptService.PromptShown:Connect(function(p1, p2) --[[ Line: 347 | Upvalues: PlayerGui (copy), createPrompt (copy) ]]
-	if p1.Style == Enum.ProximityPromptStyle.Default then
-		return
-	end
-
-	local v1 = false
-	local tbl = { p1.PromptHidden:Once(function() --[[ Line: 355 | Upvalues: v1 (ref) ]]
-			v1 = true
-		end), p1.Destroying:Once(function() --[[ Line: 356 | Upvalues: v1 (ref) ]]
-			v1 = true
-		end) }
-	local ProximityPrompts = PlayerGui:FindFirstChild("ProximityPrompts")
-
-	if ProximityPrompts == nil then
-		local ProximityPrompts2 = Instance.new("ScreenGui")
-
-		ProximityPrompts2.Name = "ProximityPrompts"
-		ProximityPrompts2.ResetOnSpawn = false
-		ProximityPrompts2.Parent = PlayerGui
-		ProximityPrompts = ProximityPrompts2
-	end
-
-	local v2 = createPrompt(p1, p2, ProximityPrompts)
-
-	repeat
-		task.wait()
-	until v1
-
-	for k, v in pairs(tbl) do
-		v:Disconnect()
-	end
-
-	v2()
-end)
-
-local t3 = {}
-
-while task.wait(0.025) do
-	for k, v in pairs(tbl) do
-		local _ = not t3[v]
-		local v7 = GetPosition(v)
-
-		if v7 and v1:FindFirstChild("Torso") then
-			local Magnitude = (v1.Torso.Position - v7).Magnitude
-
-			if Magnitude < 15 then
-				local v8 = v6(v7, v1.Torso.Position - v7)
-
-				if _G.CharacterStates.DP or (v8 or (_G.CharacterStates.Downed or (_G.CharacterStates.Died or v:GetAttribute("Disabled")))) then
-					v.Enabled = false
-				else
-					v.Enabled = true
+			if (not v.Reverse or v3) and (v.Reverse or not v3) then
+				if v.Shown ~= false then
+					v.Shown = false
+					ToggleVisiblity(v.Objects, false)
 				end
-			else
-				v.Enabled = false
+
+				continue
 			end
 
-			local _ = Magnitude < v.MaxActivationDistance or not (Magnitude > 25)
+			if v.Shown ~= true then
+				v.Shown = true
+				ToggleVisiblity(v.Objects, true)
+
+				if v.Reset then
+					for k2, v4 in pairs(StreamingInformation) do
+						if not v4.Reset then
+							v4.Shown = nil
+						end
+					end
+				end
+			end
 		end
+
+		continue
 	end
 end
 
@@ -33164,55 +33062,9 @@ return {
 	}
 }
 
--- StarterGui.Minigames.MinigameHandler.Minigames.Spring
+-- Workspace.NPCs.Custom.Nightbound Wraith.Animate
 --
-return {
-	create = function(p1, p2, p3, p4, p5) --[[ create | Line: 11 ]]
-		return {
-			Target = Vector3.new(),
-			Position = Vector3.new(),
-			Velocity = Vector3.new(),
-			Mass = p2 or 5,
-			Force = p3 or 50,
-			Damping = p4 or 4,
-			Speed = p5 or 4,
-			shove = function(p1, p2) --[[ shove | Line: 24 ]]
-				local X = p2.X
-				local Y = p2.Y
-				local Z = p2.Z
-
-				if X ~= X or (X == (1 / 0) or X == (-1 / 0)) then
-					X = 0
-				end
-
-				if Y ~= Y or (Y == (1 / 0) or Y == (-1 / 0)) then
-					Y = 0
-				end
-
-				if Z ~= Z or (Z == (1 / 0) or Z == (-1 / 0)) then
-					Z = 0
-				end
-
-				p1.Velocity = p1.Velocity + Vector3.new(X, Y, Z)
-			end,
-			update = function(p1, p2) --[[ update | Line: 38 ]]
-				local v1 = math.min(p2, 1) * p1.Speed / 8
-
-				if p1.Velocity.Magnitude > 25 then
-					p1.Velocity = Vector3.new(0, 0, 0)
-					p1.Position = Vector3.new(0, 0, 0)
-				end
-
-				for i = 1, 8 do
-					p1.Velocity = p1.Velocity + ((p1.Target - p1.Position) * p1.Force / p1.Mass - p1.Velocity * p1.Damping) * v1
-					p1.Position = p1.Position + p1.Velocity * v1
-				end
-
-				return p1.Position
-			end
-		}
-	end
-}
+-- empty bytecode
 
 -- StarterGui.HeartbeatSensor.HeartbeatSensorCore
 --
@@ -33484,15 +33336,15 @@ local v5 = TweenInfo.new(0.48, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
 local v6 = TweenInfo.new(0.09999999999999999, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
 local v7 = TweenInfo.new(0.4666666666666666, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 local v8 = TweenInfo.new(0.3333333333333333, Enum.EasingStyle.Sine)
-local v9 = Vector3.new(0, 0, 0)
-local v10 = nil
-local v11 = false
+local v9 = false
 local tbl2 = {}
-local v12 = false
-local v13 = false
+local v10 = false
+local v11 = false
+local v12 = nil
+local v13 = nil
 local v14 = nil
 local v15 = nil
-local v16 = nil
+local v16 = Vector3.new(0, 0, 0)
 local v17 = nil
 
 for k, v in pairs(CurrentCamera:GetChildren()) do
@@ -33572,12 +33424,12 @@ local function GetLimbFromName(p1) --[[ GetLimbFromName | Line: 138 | Upvalues: 
 	end
 end
 
-local function UpdateLimbTransparency(p1, p2) --[[ UpdateLimbTransparency | Line: 148 | Upvalues: tbl2 (copy), v11 (ref) ]]
+local function UpdateLimbTransparency(p1, p2) --[[ UpdateLimbTransparency | Line: 148 | Upvalues: tbl2 (copy), v9 (ref) ]]
 	for k, v in pairs(tbl2) do
 		if not p2 or v.Limb.Name == p2 then
 			if v.Limb.LocalTransparencyModifier ~= p1 then
 				v.Limb.LocalTransparencyModifier = p1
-				v.Limb.CastShadow = not v11
+				v.Limb.CastShadow = not v9
 			end
 
 			for k2, v2 in pairs(v.Gear) do
@@ -33597,12 +33449,12 @@ local function UpdateLimbTransparency(p1, p2) --[[ UpdateLimbTransparency | Line
 	end
 end
 
-local function UpdateLimbs(p1) --[[ UpdateLimbs | Line: 170 | Upvalues: tbl2 (copy), v12 (ref) ]]
+local function UpdateLimbs(p1) --[[ UpdateLimbs | Line: 170 | Upvalues: tbl2 (copy), v10 (ref) ]]
 	local InPhysics = _G.CharacterStates.InPhysics
 
 	for k, v in pairs(tbl2) do
 		local v1
-		local v2 = v12 and v12.Torso:FindFirstChild(v.Motor.Name)
+		local v2 = v10 and v10.Torso:FindFirstChild(v.Motor.Name)
 
 		v1 = if v.Limb:FindFirstChild("RagdollBallSocket") then "Neither" elseif p1 and not (v.Limb:GetAttribute("Disconnected") or InPhysics) then "Fake" else "Real"
 
@@ -33637,13 +33489,13 @@ local function UpdateLimbs(p1) --[[ UpdateLimbs | Line: 170 | Upvalues: tbl2 (co
 	end
 end
 
-local function EnableViewModel() --[[ EnableViewModel | Line: 220 | Upvalues: v11 (ref), GeneralViewModel (copy) ]]
-	v11 = true
+local function EnableViewModel() --[[ EnableViewModel | Line: 220 | Upvalues: v9 (ref), GeneralViewModel (copy) ]]
+	v9 = true
 	GeneralViewModel.Parent = workspace.CurrentCamera
 end
 
-local function DisableViewmodel() --[[ DisableViewmodel | Line: 227 | Upvalues: v11 (ref), GeneralViewModel (copy) ]]
-	v11 = false
+local function DisableViewmodel() --[[ DisableViewmodel | Line: 227 | Upvalues: v9 (ref), GeneralViewModel (copy) ]]
+	v9 = false
 	GeneralViewModel.Parent = nil
 end
 
@@ -33651,37 +33503,37 @@ local function EnableChecks() --[[ EnableChecks | Line: 234 | Upvalues: Humanoid
 	return not (Humanoid.Health <= 0 or (v1:FindFirstChild("CarryingPlr") or _G.CharacterStates.Ragdolled))
 end
 
-local function UpdateViewmodelState() --[[ UpdateViewmodelState | Line: 244 | Upvalues: v12 (ref), CurrentCamera (copy), v13 (ref), v1 (copy), Humanoid (copy), v11 (ref), GeneralViewModel (copy) ]]
-	v12 = CurrentCamera:FindFirstChild("ViewModel")
-	v13 = v1 and _G.CharacterStates.InFirstPerson
+local function UpdateViewmodelState() --[[ UpdateViewmodelState | Line: 244 | Upvalues: v10 (ref), CurrentCamera (copy), v11 (ref), v1 (copy), Humanoid (copy), v9 (ref), GeneralViewModel (copy) ]]
+	v10 = CurrentCamera:FindFirstChild("ViewModel")
+	v11 = v1 and _G.CharacterStates.InFirstPerson
 
 	local v2 = not (Humanoid.Health <= 0 or (v1:FindFirstChild("CarryingPlr") or _G.CharacterStates.Ragdolled))
 
-	if v13 and (not v11 and v2) then
-		v11 = true
+	if v11 and (not v9 and v2) then
+		v9 = true
 		GeneralViewModel.Parent = workspace.CurrentCamera
 
 		return
 	end
 
-	if v13 and v2 or not v11 then
+	if v11 and v2 or not v9 then
 		return
 	end
 
-	v11 = false
+	v9 = false
 	GeneralViewModel.Parent = nil
 end
 
-local function UpdateCustomMotors() --[[ UpdateCustomMotors | Line: 263 | Upvalues: v1 (copy), v13 (ref), Torso2 (copy), Torso (copy) ]]
+local function UpdateCustomMotors() --[[ UpdateCustomMotors | Line: 263 | Upvalues: v1 (copy), v11 (ref), Torso2 (copy), Torso (copy) ]]
 	for k, v in pairs(v1:GetDescendants()) do
 		if v:IsA("Motor6D") and v:GetAttribute("TargetLimb") == "Torso" then
-			if v13 and v.Part0 ~= Torso2 then
+			if v11 and v.Part0 ~= Torso2 then
 				v.Part0 = Torso2
 
 				continue
 			end
 
-			if not v13 and v.Part0 ~= Torso then
+			if not v11 and v.Part0 ~= Torso then
 				v.Part0 = Torso
 			end
 		end
@@ -33716,8 +33568,8 @@ v21.Completed:Connect(function() --[[ Line: 311 | Upvalues: TweenService (copy),
 		Value = CFrame.new(0, 0, 0)
 	}):Play()
 end)
-Humanoid.StateChanged:Connect(function(p1, p2) --[[ Line: 324 | Upvalues: v13 (ref), CFrameValue2 (copy), v20 (copy), v21 (copy), TweenService (copy), CFrameValue (copy), v8 (copy) ]]
-	if not v13 then
+Humanoid.StateChanged:Connect(function(p1, p2) --[[ Line: 324 | Upvalues: v11 (ref), CFrameValue2 (copy), v20 (copy), v21 (copy), TweenService (copy), CFrameValue (copy), v8 (copy) ]]
+	if not v11 then
 		return
 	end
 
@@ -33740,7 +33592,7 @@ end)
 
 local v22 = nil
 
-v22 = game:GetService("RunService").RenderStepped:connect(function() --[[ Line: 343 | Upvalues: Humanoid (copy), GeneralViewModel (copy), v22 (ref), v12 (ref), CurrentCamera (copy), v13 (ref), v1 (copy), v11 (ref), UpdateLimbs (copy), UpdateLimbTransparency (copy), CFrameValue2 (copy), UserInputService (copy), v9 (ref), tbl2 (copy), TweenService (copy), v3 (copy), Torso (copy), v19 (copy), v18 (copy), CFrameValue (copy), HumanoidRootPart (copy), v10 (ref), v14 (ref), v15 (ref), v16 (ref), v17 (ref), v2 (ref), HumanoidRootPart2 (copy) ]]
+v22 = game:GetService("RunService").RenderStepped:connect(function() --[[ Line: 343 | Upvalues: Humanoid (copy), GeneralViewModel (copy), v22 (ref), v10 (ref), CurrentCamera (copy), v11 (ref), v1 (copy), v9 (ref), UpdateLimbs (copy), UpdateLimbTransparency (copy), CFrameValue2 (copy), UserInputService (copy), v16 (ref), tbl2 (copy), TweenService (copy), v3 (copy), Torso (copy), v19 (copy), v18 (copy), CFrameValue (copy), HumanoidRootPart (copy), v12 (ref), v13 (ref), v14 (ref), v15 (ref), v17 (ref), v2 (ref), HumanoidRootPart2 (copy) ]]
 	if not Humanoid or (not Humanoid.Parent or Humanoid.Health <= 0) then
 		GeneralViewModel:Destroy()
 		v22:Disconnect()
@@ -33748,23 +33600,23 @@ v22 = game:GetService("RunService").RenderStepped:connect(function() --[[ Line: 
 		return
 	end
 
-	v12 = CurrentCamera:FindFirstChild("ViewModel")
-	v13 = v1 and _G.CharacterStates.InFirstPerson
+	v10 = CurrentCamera:FindFirstChild("ViewModel")
+	v11 = v1 and _G.CharacterStates.InFirstPerson
 
 	local v23 = not (Humanoid.Health <= 0 or (v1:FindFirstChild("CarryingPlr") or _G.CharacterStates.Ragdolled))
 
-	if v13 and (not v11 and v23) then
-		v11 = true
+	if v11 and (not v9 and v23) then
+		v9 = true
 		GeneralViewModel.Parent = workspace.CurrentCamera
-	elseif not (v13 and v23) and v11 then
-		v11 = false
+	elseif not (v11 and v23) and v9 then
+		v9 = false
 		GeneralViewModel.Parent = nil
 	end
 
-	UpdateLimbs(v11)
+	UpdateLimbs(v9)
 	UpdateLimbTransparency(0)
 
-	if v13 then
+	if v11 then
 		local v32 = CurrentCamera
 
 		v32.CFrame = v32.CFrame * CFrameValue2.Value
@@ -33773,13 +33625,13 @@ v22 = game:GetService("RunService").RenderStepped:connect(function() --[[ Line: 
 			UpdateLimbTransparency(1, "Left Arm")
 		end
 
-		if not v11 then
+		if not v9 then
 			return
 		end
 
 		local v4 = UserInputService:GetMouseDelta()
 
-		v9 = v9:Lerp(Vector3.new(v4.X, v4.Y, v4.X / 2) / 8, 0.15000000000000002)
+		v16 = v16:Lerp(Vector3.new(v4.X, v4.Y, v4.X / 2) / 8, 0.15000000000000002)
 
 		local FpLockPos = _G.CharacterStates.FpLockPos
 		local v7 = nil
@@ -33850,7 +33702,7 @@ v22 = game:GetService("RunService").RenderStepped:connect(function() --[[ Line: 
 
 		v19.Transform = v18.Transform
 
-		local v172 = CurrentCamera.CFrame * CFrameValue.Value * CFrame.Angles(math.rad(v9.Y * 1), math.rad(v9.X * 1) / 10, math.rad(v9.Z * 1) / 2) + CurrentCamera.CFrame.UpVector * -1.7 + CurrentCamera.CFrame.RightVector * -(v9.X * 1) / 75
+		local v172 = CurrentCamera.CFrame * CFrameValue.Value * CFrame.Angles(math.rad(v16.Y * 1), math.rad(v16.X * 1) / 10, math.rad(v16.Z * 1) / 2) + CurrentCamera.CFrame.UpVector * -1.7 + CurrentCamera.CFrame.RightVector * -(v16.X * 1) / 75
 
 		if FpLockPos then
 			v172 = CFrame.new(HumanoidRootPart.Position, FpLockPos + HumanoidRootPart.CFrame.LookVector * 5)
@@ -33865,26 +33717,26 @@ v22 = game:GetService("RunService").RenderStepped:connect(function() --[[ Line: 
 
 		local v21 = v1.CamPart.CFrame:ToObjectSpace(v1.CamRoot.CFrame)
 
-		if v10 and not v12 then
+		if v12 and not v10 then
 			local _, _2, v222 = v21:ToOrientation()
-			local v232, v24, _3 = v21:ToObjectSpace(v10):ToEulerAnglesXYZ()
+			local v232, v24, _3 = v21:ToObjectSpace(v12):ToEulerAnglesXYZ()
 
 			CurrentCamera.CFrame = CurrentCamera.CFrame:Lerp(CurrentCamera.CFrame * CFrame.Angles(v232, v24, -v222), _G.Settings.Gameplay.Camera_animations)
 		end
 
-		v10 = v21
-		v14 = HumanoidRootPart.AssemblyLinearVelocity * Vector3.new(1, 0, 1)
+		v12 = v21
+		v13 = HumanoidRootPart.AssemblyLinearVelocity * Vector3.new(1, 0, 1)
 
-		if v14.Magnitude > 2 and not FpLockPos then
-			v15 = v14.Unit
-			v16 = HumanoidRootPart.CFrame.RightVector:Dot(v15)
-			v17 = HumanoidRootPart.CFrame.LookVector:Dot(v15)
+		if v13.Magnitude > 2 and not FpLockPos then
+			v14 = v13.Unit
+			v15 = HumanoidRootPart.CFrame.RightVector:Dot(v14)
+			v17 = HumanoidRootPart.CFrame.LookVector:Dot(v14)
 		else
-			v16 = 0
+			v15 = 0
 			v17 = 0
 		end
 
-		v2 = v2:Lerp(CFrame.Angles(math.rad(v17 * 3.5), math.rad(-v16 * 3.5), 0), 0.1)
+		v2 = v2:Lerp(CFrame.Angles(math.rad(v17 * 3.5), math.rad(-v15 * 3.5), 0), 0.1)
 		HumanoidRootPart2.CFrame = v172 * v21.Rotation * v2
 	else
 		local v27 = v1
@@ -34940,68 +34792,828 @@ while v1.Parent ~= nil do
 	move(task.wait(0.1))
 end
 
--- ReplicatedStorage.Mods.MedalClipper
+-- Players.Noriko_Ellen.PlayerGui.OverlayGui.Prompts.PromptCore
 --
-local HttpService = game:GetService("HttpService")
-local t = {
-	TriggerClip = function(p1, p2, p3, p4) --[[ TriggerClip | Line: 11 | Upvalues: HttpService (copy) ]]
-		local v1 = if p4 then p4 else {}
-		local t = {
-			eventId = p2,
-			eventName = p3,
-			triggerActions = { "SaveClip" },
-			clipOptions = {
-				duration = v1.duration or 30,
-				captureDelayMs = v1.captureDelayMs
-			}
-		}
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local v1 = game.Players.LocalPlayer:GetMouse()
+local ReplicatedStorage = game.ReplicatedStorage
+local Mods = ReplicatedStorage:WaitForChild("Mods")
+local Events = ReplicatedStorage:WaitForChild("Events")
+local FormatText = require(Mods:WaitForChild("FormatText"))
+local Prompt = Events:WaitForChild("Player"):WaitForChild("Prompt")
+local Sounds = script:WaitForChild("Sounds")
+local Frames = script:WaitForChild("Frames")
+local Extras = script:WaitForChild("Extras")
+local v2 = script.Parent
 
-		if v1.contextTags and next(v1.contextTags) then
-			t.contextTags = v1.contextTags
-		end
-
-		print("[_MAPIEvent][v1/event/invoke]", base64Encode(HttpService:JSONEncode({
-			gameEvent = t,
-			universeId = game.GameId
-		})))
-	end
-}
-
-function base64Encode(p1) --[[ base64Encode | Line: 40 ]]
-	local sum = 1
-	local v1 = #p1
-	local t = {}
-
-	while sum <= v1 do
-		local v2 = (p1:byte(sum) or 0) * 65536 + (p1:byte(sum + 1) or 0) * 256 + (p1:byte(sum + 2) or 0)
-		local v3 = math.floor(v2 / 262144) % 64 + 1
-		local v4 = math.floor(v2 / 4096) % 64 + 1
-		local v5 = math.floor(v2 / 64) % 64 + 1
-		local v6 = v2 % 64 + 1
-
-		t[#t + 1] = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"):sub(v3, v3)
-		t[#t + 1] = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"):sub(v4, v4)
-
-		if v1 < sum + 1 then
-			t[#t + 1] = "=="
-
-			break
-		end
-
-		if v1 < sum + 2 then
-			t[#t + 1] = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"):sub(v5, v5) .. "="
-
-			break
-		end
-
-		t[#t + 1] = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"):sub(v5, v5) .. ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"):sub(v6, v6)
-		sum = sum + 3
-	end
-
-	return table.concat(t)
+local function Lerp(p1, p2, p3) --[[ Lerp | Line: 23 ]]
+	return p1 + (p2 - p1) * p3
 end
 
-return t
+local function TextPrompt(p1, p2, p3) --[[ TextPrompt | Line: 29 | Upvalues: Frames (copy), Sounds (copy), v2 (copy), Extras (copy), UserInputService (copy) ]]
+	local v1 = Frames:WaitForChild("Prompt"):Clone()
+	local MainFrame = v1:WaitForChild("MainFrame")
+	local TitleText = MainFrame:WaitForChild("TopBar"):WaitForChild("TitleText")
+	local InfoText = MainFrame:WaitForChild("InfoText")
+	local Options = MainFrame:WaitForChild("BottomBar"):WaitForChild("Options")
+
+	Sounds.Notification:Play()
+	TitleText.Text = tostring(p1):upper()
+	InfoText.Text = p2
+	InfoText.TextSize = v2.AbsoluteSize.Magnitude * 0.0115
+
+	local v22 = nil
+
+	for k, v in pairs(p3) do
+		local v3 = Extras:WaitForChild("Option"):Clone()
+
+		v3.TextLabel.Text = tostring(v):upper()
+		v3.Name = v
+
+		if v == "No" then
+			v3.BackgroundTransparency = 0.9
+			v3.UIStroke.Enabled = true
+			v3.TextLabel.TextColor3 = v3.BackgroundColor3
+			v3.TextLabel.TextTransparency = 0
+		end
+
+		v3.Parent = Options
+		v3.MouseButton1Click:Connect(function() --[[ Line: 73 | Upvalues: v22 (ref), v (copy) ]]
+			v22 = v
+		end)
+	end
+
+	Options.Grid.CellSize = UDim2.new(1 / #p3 - 0.015, 0, 1, 0)
+	v1.Parent = v2
+	v1.Visible = true
+
+	local v4 = UserInputService.InputBegan:Connect(function(p1, p2) --[[ Line: 85 | Upvalues: p3 (copy), v22 (ref) ]]
+		if p2 then
+			return
+		end
+
+		if p1.KeyCode ~= Enum.KeyCode.Return and p1.KeyCode ~= Enum.KeyCode.ButtonY or not table.find(p3, "Yes") then
+			return
+		end
+
+		v22 = "Yes"
+	end)
+
+	repeat
+		task.wait(0.05)
+	until v22 ~= nil
+
+	v4:Disconnect()
+	v1:Destroy()
+
+	return v22
+end
+
+local function ColorPrompt(p1) --[[ ColorPrompt | Line: 107 | Upvalues: Frames (copy), UserInputService (copy), v1 (copy), v2 (copy) ]]
+	local v12 = Frames:WaitForChild("ColorPrompt"):Clone()
+	local MainFrame = v12:WaitForChild("MainFrame")
+
+	MainFrame:WaitForChild("Buttons")
+
+	local Canvas = MainFrame:WaitForChild("Canvas")
+
+	MainFrame:WaitForChild("TopBar")
+
+	local ColorDisplay = Canvas:WaitForChild("ColorDisplay")
+	local ColorValue = Canvas:WaitForChild("ColorValue")
+	local ColorWheel = Canvas:WaitForChild("ColorWheel")
+	local HexCode = ColorDisplay:WaitForChild("HexCode")
+	local RGB = Canvas:WaitForChild("RGB")
+	local Picker = ColorValue:WaitForChild("Picker")
+	local Picker2 = ColorWheel:WaitForChild("Picker")
+	local v22 = nil
+	local v3
+
+	if p1 then
+		local v4 = Color3.new
+		local v5 = math.clamp(p1.R, 0, 1)
+		local v6 = math.clamp(p1.G, 0, 1)
+
+		v3 = v4(v5, v6, (math.clamp(p1.B, 0, 1))) or Color3.new(255/255, 255/255, 255/255)
+	else
+		v3 = Color3.new(255/255, 255/255, 255/255)
+	end
+
+	local function UpdateColorDisplay() --[[ UpdateColorDisplay | Line: 136 | Upvalues: v3 (ref), ColorDisplay (copy), HexCode (copy) ]]
+		local _, _2, v1 = v3:ToHSV()
+
+		ColorDisplay.BackgroundColor3 = v3
+		HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v1)
+	end
+
+	local function UpdateColorInputs() --[[ UpdateColorInputs | Line: 143 | Upvalues: HexCode (copy), v3 (ref), RGB (copy) ]]
+		local v1, v2, v32, v4, v5, v6
+
+		if pcall(function() --[[ Line: 144 | Upvalues: HexCode (ref), v3 (ref) ]]
+			HexCode.Text = "#" .. v3:ToHex()
+		end) then
+			v1 = RGB.R
+			v2 = v3.R * 255
+			v1.Text = math.floor(v2)
+			v32 = RGB.G
+			v4 = v3.G * 255
+			v32.Text = math.floor(v4)
+			v5 = RGB.B
+			v6 = v3.B * 255
+			v5.Text = math.floor(v6)
+
+			return
+		end
+
+		HexCode.Text = "N/A"
+		v1 = RGB.R
+		v2 = v3.R * 255
+		v1.Text = math.floor(v2)
+		v32 = RGB.G
+		v4 = v3.G * 255
+		v32.Text = math.floor(v4)
+		v5 = RGB.B
+		v6 = v3.B * 255
+		v5.Text = math.floor(v6)
+	end
+
+	local function UpdateColorValue() --[[ UpdateColorValue | Line: 150 | Upvalues: v3 (ref), ColorValue (copy), Picker (copy) ]]
+		local _, _2, v1 = v3:ToHSV()
+
+		ColorValue.BackgroundColor3 = v3
+		Picker.Position = UDim2.new(0.5, 0, 1 - v1, 0)
+	end
+
+	local function UpdateColorPicker() --[[ UpdateColorPicker | Line: 157 | Upvalues: v3 (ref), Picker2 (copy) ]]
+		local v1, v2, _ = v3:ToHSV()
+		local v32 = CFrame.Angles(0, math.rad((180 + -v1 * 360) % 360), 0) * CFrame.new(0, 0, v2 / 2)
+
+		Picker2.Position = UDim2.new(0.5 + v32.Z, 0, 0.5 + v32.X, 0)
+	end
+
+	local function UpdateColor() --[[ UpdateColor | Line: 166 | Upvalues: UpdateColorPicker (copy), UpdateColorInputs (copy), v3 (ref), ColorDisplay (copy), HexCode (copy), ColorValue (copy), Picker (copy) ]]
+		UpdateColorPicker()
+		UpdateColorInputs()
+
+		local _, _2, v1 = v3:ToHSV()
+
+		ColorDisplay.BackgroundColor3 = v3
+		HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v1)
+
+		local _3, _4, v2 = v3:ToHSV()
+
+		ColorValue.BackgroundColor3 = v3
+		Picker.Position = UDim2.new(0.5, 0, 1 - v2, 0)
+	end
+
+	for k, v in pairs(RGB:GetChildren()) do
+		if v:IsA("TextBox") then
+			v:GetPropertyChangedSignal("Text"):Connect(function() --[[ Line: 180 | Upvalues: v (copy) ]]
+				v.Text = math.clamp(tonumber((string.split(string.gsub(v.Text, "%D", ""), " ")[1]:sub(1, 6))) or 0, 0, 255)
+			end)
+			v.FocusLost:Connect(function(p1) --[[ Line: 186 | Upvalues: v3 (ref), RGB (copy), UpdateColorPicker (copy), UpdateColorInputs (copy), ColorDisplay (copy), HexCode (copy), ColorValue (copy), Picker (copy) ]]
+				local _, _2, v1, _3, _4, v2
+
+				if p1 then
+					v3 = Color3.fromRGB(if tonumber(RGB.R.Text) then RGB.R.Text or 0 else 0, tonumber(RGB.G.Text) and RGB.G.Text or 0, tonumber(RGB.B.Text) and RGB.B.Text or 0)
+				end
+
+				UpdateColorPicker()
+				UpdateColorInputs()
+				_, _2, v1 = v3:ToHSV()
+				ColorDisplay.BackgroundColor3 = v3
+				HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v1)
+				_3, _4, v2 = v3:ToHSV()
+				ColorValue.BackgroundColor3 = v3
+				Picker.Position = UDim2.new(0.5, 0, 1 - v2, 0)
+			end)
+		end
+	end
+
+	HexCode:GetPropertyChangedSignal("Text"):Connect(function() --[[ Line: 204 | Upvalues: HexCode (copy) ]]
+		HexCode.Text = string.sub("#" .. string.gsub(HexCode.Text, "#", ""), 1, 7)
+	end)
+	HexCode.FocusLost:Connect(function(p1) --[[ Line: 210 | Upvalues: HexCode (copy), v3 (ref), UpdateColorPicker (copy), UpdateColorInputs (copy), ColorDisplay (copy), ColorValue (copy), Picker (copy) ]]
+		local v1 = string.gsub(HexCode.Text, "#", "")
+		local _, _2, v2, _3, _4, v32
+
+		if p1 then
+			local ok, result = pcall(Color3.fromHex, v1)
+
+			if ok then
+				v3 = result
+			end
+		end
+
+		UpdateColorPicker()
+		UpdateColorInputs()
+		_, _2, v2 = v3:ToHSV()
+		ColorDisplay.BackgroundColor3 = v3
+		HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v2)
+		_3, _4, v32 = v3:ToHSV()
+		ColorValue.BackgroundColor3 = v3
+		Picker.Position = UDim2.new(0.5, 0, 1 - v32, 0)
+	end)
+	ColorValue.MouseButton1Down:Connect(function() --[[ Line: 226 | Upvalues: UserInputService (ref), v1 (ref), ColorValue (copy), v3 (ref), Picker (copy), UpdateColorPicker (copy), UpdateColorInputs (copy), ColorDisplay (copy), HexCode (copy) ]]
+		while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsGamepadButtonDown(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonA) do
+			local v2 = math.clamp((v1.Y - ColorValue.AbsolutePosition.Y) / ColorValue.AbsoluteSize.Y, 0, 1)
+			local v32, v4, _ = v3:ToHSV()
+
+			Picker.Position = UDim2.new(0.5, 0, v2, 0)
+			v3 = Color3.fromHSV(v32, v4, 1 - v2)
+			UpdateColorPicker()
+			UpdateColorInputs()
+
+			local _2, _3, v5 = v3:ToHSV()
+
+			ColorDisplay.BackgroundColor3 = v3
+			HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v5)
+
+			local _4, _5, v6 = v3:ToHSV()
+
+			ColorValue.BackgroundColor3 = v3
+			Picker.Position = UDim2.new(0.5, 0, 1 - v6, 0)
+			task.wait()
+		end
+	end)
+	ColorWheel.MouseButton1Down:Connect(function() --[[ Line: 245 | Upvalues: UserInputService (ref), v1 (ref), ColorWheel (copy), v3 (ref), UpdateColorPicker (copy), UpdateColorInputs (copy), ColorDisplay (copy), HexCode (copy), ColorValue (copy), Picker (copy) ]]
+		while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsGamepadButtonDown(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonA) do
+			local v12 = Vector2.new(v1.X, v1.Y) - (ColorWheel.AbsolutePosition + ColorWheel.AbsoluteSize / 2)
+			local Magnitude = (ColorWheel.AbsoluteSize / 2.85).Magnitude
+			local v2 = math.clamp(v12.Magnitude, -Magnitude, Magnitude)
+			local v5 = (360 - math.abs(math.deg((math.atan2(v12.Y, v12.X))) + 180)) / 360
+			local _, _2, v7 = v3:ToHSV()
+
+			v3 = Color3.fromHSV(v5, v2 / (ColorWheel.AbsoluteSize.X / 2), (math.clamp(v7, 0.01, 1)))
+			UpdateColorPicker()
+			UpdateColorInputs()
+
+			local _3, _4, v8 = v3:ToHSV()
+
+			ColorDisplay.BackgroundColor3 = v3
+			HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v8)
+
+			local _5, _6, v9 = v3:ToHSV()
+
+			ColorValue.BackgroundColor3 = v3
+			Picker.Position = UDim2.new(0.5, 0, 1 - v9, 0)
+			task.wait()
+		end
+	end)
+	v12.Parent = v2
+	v12.Visible = true
+	MainFrame.Buttons.Confirm.MouseButton1Click:Connect(function() --[[ Line: 275 | Upvalues: v22 (ref), v3 (ref) ]]
+		v22 = v3
+	end)
+	MainFrame.Buttons.Cancel.MouseButton1Click:Connect(function() --[[ Line: 276 | Upvalues: v22 (ref) ]]
+		v22 = false
+	end)
+	UpdateColorPicker()
+	UpdateColorInputs()
+
+	local _, _2, v7 = v3:ToHSV()
+
+	ColorDisplay.BackgroundColor3 = v3
+	HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v7)
+
+	local _3, _4, v8 = v3:ToHSV()
+
+	ColorValue.BackgroundColor3 = v3
+	Picker.Position = UDim2.new(0.5, 0, 1 - v8, 0)
+
+	repeat
+		task.wait(0.05)
+	until v22 ~= nil
+
+	v12:Destroy()
+
+	return v22
+end
+
+local function SliderPrompt(p1, p2, p3) --[[ SliderPrompt | Line: 294 | Upvalues: Frames (copy), Sounds (copy), v2 (copy), UserInputService (copy), v1 (copy), Extras (copy) ]]
+	local v12 = Frames:WaitForChild("SliderPrompt"):Clone()
+	local MainFrame = v12:WaitForChild("MainFrame")
+
+	MainFrame:WaitForChild("Buttons")
+	MainFrame:WaitForChild("TopBar")
+
+	local Slider = MainFrame:WaitForChild("Slider")
+	local Picker = Slider:WaitForChild("Picker")
+	local Line = Slider:WaitForChild("Line")
+	local MinText = Slider:WaitForChild("MinText")
+	local MaxText = Slider:WaitForChild("MaxText")
+	local CurrentText = Picker:WaitForChild("CurrentText")
+	local TitleText = MainFrame:WaitForChild("TopBar"):WaitForChild("TitleText")
+	local InfoText = MainFrame:WaitForChild("InfoText")
+	local v22 = nil
+	local Min = p3.Min
+
+	Sounds.Notification:Play()
+	TitleText.Text = tostring(p1):upper()
+	InfoText.Text = p2
+	MinText.Text = p3.Min
+	MaxText.Text = p3.Max
+	InfoText.TextSize = v2.AbsoluteSize.Magnitude * 0.0115
+
+	local function UpdateValue() --[[ UpdateValue | Line: 333 | Upvalues: Min (ref), p3 (copy), Picker (copy), CurrentText (copy) ]]
+		Picker.Position = UDim2.new(math.clamp((Min - p3.Min) / (p3.Max - p3.Min), 0, 1), 0, 0.5, 0)
+		CurrentText.Text = Min
+	end
+
+	Slider.MouseButton1Down:Connect(function() --[[ Line: 341 | Upvalues: UserInputService (ref), v1 (ref), Slider (copy), Min (ref), p3 (copy), Picker (copy), CurrentText (copy) ]]
+		while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsGamepadButtonDown(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonA) do
+			local v2 = math.clamp((v1.X - Slider.AbsolutePosition.X) / Slider.AbsoluteSize.X, 0, 1)
+			local Min2 = p3.Min
+
+			Min = math.floor(Min2 + (p3.Max - Min2) * v2)
+			Picker.Position = UDim2.new(math.clamp((Min - p3.Min) / (p3.Max - p3.Min), 0, 1), 0, 0.5, 0)
+			CurrentText.Text = Min
+			task.wait()
+		end
+	end)
+
+	if p3.Max <= 25 then
+		Line.Visible = false
+
+		for i = p3.Min, p3.Max do
+			local v3 = Extras.Separator:Clone()
+
+			v3.Position = UDim2.new(math.clamp((i - p3.Min) / (p3.Max - p3.Min), 0, 1), 0, 0.5, 0)
+			v3.Parent = Slider
+		end
+	end
+
+	v12.Parent = v2
+	v12.Visible = true
+	MainFrame.Buttons.Confirm.MouseButton1Click:Connect(function() --[[ Line: 377 | Upvalues: v22 (ref), Min (ref) ]]
+		v22 = Min
+	end)
+	MainFrame.Buttons.Cancel.MouseButton1Click:Connect(function() --[[ Line: 378 | Upvalues: v22 (ref) ]]
+		v22 = false
+	end)
+
+	local v6 = (Min - p3.Min) / (p3.Max - p3.Min)
+
+	Picker.Position = UDim2.new(math.clamp(v6, 0, 1), 0, 0.5, 0)
+	CurrentText.Text = Min
+
+	repeat
+		task.wait(0.05)
+	until v22 ~= nil
+
+	v12:Destroy()
+
+	return v22
+end
+
+local function ChoicePrompt(p1, p2, p3) --[[ ChoicePrompt | Line: 396 | Upvalues: Frames (copy), Extras (copy), Sounds (copy), v2 (copy), TweenService (copy), FormatText (copy) ]]
+	local v1 = Frames:WaitForChild("ChoicePrompt"):Clone()
+	local Container = v1:WaitForChild("Container")
+	local TitleText = v1:WaitForChild("TitleText")
+	local DescriptionText = v1:WaitForChild("DescriptionText")
+	local ChoiceCard = Extras:WaitForChild("ChoiceCard")
+	local Choice = Sounds:WaitForChild("Choice")
+
+	TitleText.Text = p1 or ""
+	DescriptionText.Text = p2 or ""
+	v1.Parent = v2
+	v1.Visible = true
+	TweenService:Create(v1, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+		BackgroundTransparency = 0.5
+	}):Play()
+	TweenService:Create(TitleText, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+		TextTransparency = 0
+	}):Play()
+	TweenService:Create(DescriptionText, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+		TextTransparency = 0
+	}):Play()
+
+	local function CreateCard(p1) --[[ CreateCard | Line: 427 | Upvalues: ChoiceCard (copy), TweenService (ref), Choice (copy), FormatText (ref) ]]
+		local v1 = ChoiceCard:Clone()
+		local Button = v1:WaitForChild("Button")
+		local v2 = p1.Color or Color3.fromRGB(101, 255, 84)
+
+		Button:WaitForChild("Title").Text = p1.Title or ""
+		Button:WaitForChild("Description").Text = p1.Description or ""
+		Button:WaitForChild("TypeText").Text = p1.Type or ""
+		Button:WaitForChild("TagText").Text = p1.Tag or ""
+		Button:WaitForChild("AltText").Text = p1.Alt or ""
+		Button:WaitForChild("Icon").Image = p1.Icon or "rbxasset://textures/DarkThemeLoadingCircle.png"
+		Button:WaitForChild("Flash"):WaitForChild("Icon").Image = p1.Icon or "rbxasset://textures/DarkThemeLoadingCircle.png"
+
+		local function UpdateColor(p1, p2) --[[ UpdateColor | Line: 450 | Upvalues: TweenService (ref), Button (copy) ]]
+			local v1 = TweenInfo.new(p2 or 0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+
+			TweenService:Create(Button.Flash, v1, {
+				BackgroundColor3 = p1
+			}):Play()
+			TweenService:Create(Button.Title, v1, {
+				TextColor3 = p1
+			}):Play()
+			TweenService:Create(Button.Description, v1, {
+				TextColor3 = p1
+			}):Play()
+			TweenService:Create(Button.TypeText, v1, {
+				TextColor3 = p1
+			}):Play()
+			TweenService:Create(Button.TagText, v1, {
+				TextColor3 = p1
+			}):Play()
+			TweenService:Create(Button.AltText, v1, {
+				TextColor3 = p1
+			}):Play()
+			TweenService:Create(Button.Edge, v1, {
+				ImageColor3 = p1
+			}):Play()
+			TweenService:Create(Button.Edge2, v1, {
+				ImageColor3 = p1
+			}):Play()
+			TweenService:Create(Button.Shine, v1, {
+				ImageColor3 = p1
+			}):Play()
+			TweenService:Create(Button.Flash.Shine, v1, {
+				ImageColor3 = p1
+			}):Play()
+		end
+
+		UpdateColor(v2, 0.01)
+
+		local function DrawCard() --[[ DrawCard | Line: 470 | Upvalues: Choice (ref), TweenService (ref), Button (copy), p1 (copy) ]]
+			Choice.Appear:Play()
+			TweenService:Create(Button, TweenInfo.new(1, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+				Position = UDim2.new(0.5, 0, 0.5, 0)
+			}):Play()
+			task.wait(0.75)
+			TweenService:Create(Button, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+				Size = UDim2.new(1, 0, 1, 0)
+			}):Play()
+			TweenService:Create(Button.Flash, TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+				BackgroundTransparency = 1
+			}):Play()
+			TweenService:Create(Button.Flash.Icon, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+				ImageTransparency = 1
+			}):Play()
+			TweenService:Create(Button.Flash.Shine, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+				ImageTransparency = 1
+			}):Play()
+			Choice.Reveal:Play()
+			p1.Drawn = true
+		end
+
+		local function HideCard() --[[ HideCard | Line: 494 | Upvalues: p1 (copy), Choice (ref), TweenService (ref), Button (copy) ]]
+			p1.Drawn = false
+			Choice.Disgard:Play()
+			TweenService:Create(Button, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+				Size = UDim2.new(1, 0, 0.2, 0)
+			}):Play()
+			TweenService:Create(Button.Flash, TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+				BackgroundTransparency = 0
+			}):Play()
+			TweenService:Create(Button.Flash.Icon, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+				ImageTransparency = 0
+			}):Play()
+			TweenService:Create(Button.Flash.Shine, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+				ImageTransparency = 0.25
+			}):Play()
+			TweenService:Create(Button, TweenInfo.new(1, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+				Position = UDim2.new(0.5, 0, 6, 0)
+			}):Play()
+		end
+
+		Button.MouseEnter:Connect(function() --[[ Line: 514 | Upvalues: p1 (copy), Choice (ref), TweenService (ref), Button (copy) ]]
+			if p1.Drawn then
+				Choice.Hover:Play()
+				TweenService:Create(Button, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+					Size = UDim2.new(1, 0, 1.15, 0)
+				}):Play()
+			end
+		end)
+		Button.MouseLeave:Connect(function() --[[ Line: 525 | Upvalues: p1 (copy), TweenService (ref), Button (copy) ]]
+			if p1.Drawn then
+				TweenService:Create(Button, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+					Size = UDim2.new(1, 0, 1, 0)
+				}):Play()
+			end
+		end)
+
+		if p1.DistortText then
+			task.spawn(function() --[[ Line: 535 | Upvalues: Button (copy), FormatText (ref), p1 (copy) ]]
+				while task.wait(0.01) and Button.Parent do
+					Button.Title.Text = FormatText.DistortText("???", 3)
+					Button.Description.Text = FormatText.DistortText("------- ------- ------- ------- ------- -------", 3)
+
+					if not p1.Tag then
+						continue
+					end
+
+					Button.TagText.Text = FormatText.DistortText("???", 2)
+				end
+			end)
+		end
+
+		return {
+			Info = p1,
+			Frame = v1,
+			UpdateColor = UpdateColor,
+			DrawCard = DrawCard,
+			HideCard = HideCard
+		}
+	end
+
+	local tbl = {}
+	local v22 = nil
+
+	for k, v in pairs(p3) do
+		local v3 = CreateCard(v)
+
+		v3.Frame.Parent = Container
+		table.insert(tbl, v3)
+	end
+
+	for k, v in pairs(tbl) do
+		task.spawn(v.DrawCard)
+		v.Frame.Button.MouseButton1Click:Connect(function() --[[ Line: 572 | Upvalues: v22 (ref), v (copy), Choice (copy) ]]
+			if not v22 and v.Info.Drawn then
+				v22 = v.Info.Title
+				Choice.Pick:Play()
+			end
+		end)
+		task.wait(0.1)
+	end
+
+	repeat
+		task.wait(0.05)
+	until v22 ~= nil
+
+	task.spawn(function() --[[ Line: 591 | Upvalues: TweenService (ref), v1 (copy), TitleText (copy), DescriptionText (copy), tbl (copy), v22 (ref) ]]
+		TweenService:Create(v1, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+			BackgroundTransparency = 1
+		}):Play()
+		TweenService:Create(TitleText, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+			TextTransparency = 1
+		}):Play()
+		TweenService:Create(DescriptionText, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+			TextTransparency = 1
+		}):Play()
+
+		for k, v in pairs(tbl) do
+			if v.Info.Title ~= v22 then
+				v.UpdateColor(Color3.fromRGB(150, 150, 150))
+			end
+
+			task.spawn(v.HideCard)
+			task.wait(0.1)
+		end
+
+		task.wait(1)
+		v1:Destroy()
+	end)
+
+	return v22
+end
+
+local function DisplayPrompt(p1, p2, p3) --[[ DisplayPrompt | Line: 626 | Upvalues: ReplicatedStorage (copy), ColorPrompt (copy), SliderPrompt (copy), ChoicePrompt (copy), TextPrompt (copy) ]]
+	ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("Prompt", true)
+
+	local v1
+
+	if p3 == "Color" then
+		v1 = ColorPrompt(if typeof(p2) == "Color3" then p2 else false)
+	elseif typeof(p3) == "NumberRange" then
+		v1 = SliderPrompt(p1, p2, p3)
+	elseif typeof(p3) == "table" and typeof(p3[1]) == "table" then
+		v1 = ChoicePrompt(p1, p2, p3)
+	else
+		local v6
+
+		v6 = TextPrompt(p1, p2, p3)
+		v1 = v6
+	end
+
+	ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("Prompt", false)
+
+	return v1
+end
+
+Prompt.OnClientInvoke = DisplayPrompt
+ReplicatedStorage:WaitForChild("Prompt").OnInvoke = DisplayPrompt
+
+-- Players.Noriko_Ellen.PlayerGui.MainStaticGui.RightTab.Challenges.TabCore
+--
+task.wait(0.5)
+
+local t = { "Bank", "Cash" }
+local t2 = {
+	Reputation = "REP"
+}
+local t3 = {
+	Default = Color3.fromRGB(101, 255, 84),
+	Weekly = Color3.fromRGB(94, 255, 167),
+	Negative = Color3.fromRGB(255, 55, 55),
+	Positive = Color3.fromRGB(88, 155, 255)
+}
+local TweenService = game:GetService("TweenService")
+local ReplicatedStorage = game.ReplicatedStorage
+local Mods = ReplicatedStorage:WaitForChild("Mods")
+local Events = ReplicatedStorage:WaitForChild("Events")
+local FormatNumber = require(Mods:WaitForChild("FormatNumber"))
+local v1 = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+
+local t4 = {}
+local v2 = table.clone(t4)
+local v3 = false
+local Frames = script:WaitForChild("Frames")
+local v4 = script.Parent
+local ChallengeList = v4:WaitForChild("ChallengeList")
+local v5 = ReplicatedStorage:WaitForChild("AddSideTab"):Invoke("rbxassetid://10239703628", -0.025, v4)
+local Notification = v5:WaitForChild("Notification")
+local ChallengeProgress = Frames:WaitForChild("ChallengeProgress")
+local Title = ChallengeProgress:WaitForChild("MainFrame"):WaitForChild("Title")
+local Goal = ChallengeProgress.MainFrame:WaitForChild("Goal")
+local Bar = ChallengeProgress.MainFrame:WaitForChild("Bar")
+
+ChallengeProgress.Parent = v5.Parent
+
+local function MakeChallengeUi(p1) --[[ MakeChallengeUi | Line: 58 | Upvalues: Frames (copy), t3 (copy), TweenService (copy), v1 (copy), ChallengeList (copy) ]]
+	local v12 = Frames:WaitForChild("Challenge"):Clone()
+	local v4 = t3[p1.Theme or p1.Type] or t3.Default
+
+	v12.Title.Text = p1.Title:upper()
+	v12.Desc.Text = p1.Desc:upper()
+	v12.DescLong.Text = (p1.LongDesc or p1.Desc):upper()
+	v12.Goal.Text = p1.Progress .. " / " .. p1.Goal
+	v12.Bar.Size = UDim2.new(p1.Progress / p1.Goal, 0, 1, 0)
+	v12.Name = p1.Type .. p1.Title
+	v12.Edge.ImageColor3 = v4
+	v12.Goal.TextColor3 = v4
+	v12.Title.TextColor3 = v4
+	v12.Reward.TextColor3 = v4
+	v12.DescLong.TextColor3 = v4
+	v12.Desc.TextColor3 = v4
+	v12.Bar.BackgroundColor3 = v4
+	v12.MouseEnter:Connect(function() --[[ Line: 87 | Upvalues: TweenService (ref), v12 (copy), v1 (ref) ]]
+		TweenService:Create(v12.Goal, v1, {
+			TextTransparency = 1
+		}):Play()
+		TweenService:Create(v12.Title, v1, {
+			TextTransparency = 1
+		}):Play()
+		TweenService:Create(v12.Desc, v1, {
+			TextTransparency = 1
+		}):Play()
+		TweenService:Create(v12.Reward, v1, {
+			TextTransparency = 0
+		}):Play()
+		TweenService:Create(v12.DescLong, v1, {
+			TextTransparency = 0
+		}):Play()
+	end)
+	v12.MouseLeave:Connect(function() --[[ Line: 96 | Upvalues: TweenService (ref), v12 (copy), v1 (ref) ]]
+		TweenService:Create(v12.Goal, v1, {
+			TextTransparency = 0
+		}):Play()
+		TweenService:Create(v12.Title, v1, {
+			TextTransparency = 0
+		}):Play()
+		TweenService:Create(v12.Desc, v1, {
+			TextTransparency = 0
+		}):Play()
+		TweenService:Create(v12.Reward, v1, {
+			TextTransparency = 1
+		}):Play()
+		TweenService:Create(v12.DescLong, v1, {
+			TextTransparency = 1
+		}):Play()
+	end)
+	v12.Parent = ChallengeList
+end
+
+local function ChallengeProgressPopUp(p1, p2, p3, p4) --[[ ChallengeProgressPopUp | Line: 110 | Upvalues: v4 (copy), v3 (ref), Notification (copy), Title (copy), Goal (copy), Bar (copy), TweenService (copy), ChallengeProgress (copy), v1 (copy) ]]
+	if v4:GetAttribute("Active") then
+		return
+	end
+
+	repeat
+		task.wait()
+	until not v3
+
+	v3 = true
+	Notification.Visible = true
+	Title.Text = p1:upper()
+	Goal.Text = p2 .. " / " .. p4
+	Bar.Size = UDim2.new(p2 / p4, 0, 1, 0)
+	TweenService:Create(ChallengeProgress, v1, {
+		GroupTransparency = 0
+	}):Play()
+	task.wait(0.25)
+	TweenService:Create(Bar, v1, {
+		Size = UDim2.new(p3 / p4, 0, 1, 0)
+	}):Play()
+	Goal.Text = p3 .. " / " .. p4
+	task.wait(1.5)
+	TweenService:Create(ChallengeProgress, v1, {
+		GroupTransparency = 1
+	}):Play()
+	task.wait(0.5)
+	v3 = false
+end
+
+local function CheckChallengeProgress() --[[ CheckChallengeProgress | Line: 134 | Upvalues: t4 (ref), v2 (ref), ChallengeProgressPopUp (copy) ]]
+	for k, v in pairs(t4) do
+		if typeof(v) == "table" then
+			for k2, v3 in pairs(v) do
+				local v1 = v2[k] and v2[k][k2]
+
+				if v1 and v1.Progress < v3.Progress then
+					task.spawn(ChallengeProgressPopUp, v3.Title, v1.Progress, v3.Progress, v3.Goal)
+				end
+			end
+		end
+	end
+end
+
+local function CheckChallenges() --[[ CheckChallenges | Line: 150 | Upvalues: t4 (ref), ChallengeList (copy), MakeChallengeUi (copy), t (copy), t2 (copy), FormatNumber (copy) ]]
+	for k, v in pairs({ t4.Weekly, t4.Daily, t4.Custom }) do
+		for k2, v2 in pairs(v) do
+			if not ChallengeList:FindFirstChild(v2.Type .. v2.Title) then
+				MakeChallengeUi(v2)
+			end
+		end
+	end
+
+	for k, v in pairs(ChallengeList:GetChildren()) do
+		if v:IsA("TextButton") then
+			local v1 = false
+
+			for k2, v2 in pairs({ t4.Weekly, t4.Daily, t4.Custom }) do
+				for k3, v3 in pairs(v2) do
+					if v3.Type .. tostring(v3.Title) == v.Name then
+						v.Reward.Text = ""
+						v1 = true
+
+						for k4, v4 in pairs(v3.Reward) do
+							local v22
+							local v32 = if table.find(t, k4) then "$" else ""
+
+							v22 = v32 == "" and " " .. (t2[k4] or k4:upper()) or ""
+							v.Reward.Text = v.Reward.Text .. v32 .. FormatNumber.Separate(v4) .. v22 .. "\n"
+						end
+
+						v.Reward.Text = string.sub(v.Reward.Text, 1, -2)
+					end
+				end
+			end
+
+			if not v1 then
+				v:Destroy()
+			end
+		end
+	end
+end
+
+local function UpdateChallenges() --[[ UpdateChallenges | Line: 200 | Upvalues: CheckChallenges (copy), CheckChallengeProgress (copy), t4 (ref), v4 (copy), Notification (copy), ChallengeList (copy), TweenService (copy), v1 (copy), v2 (ref) ]]
+	CheckChallenges()
+	CheckChallengeProgress()
+
+	local v12 = t4
+
+	if v4:GetAttribute("Active") then
+		Notification.Visible = false
+		task.delay(0.5, function() --[[ Line: 211 | Upvalues: v12 (copy), ChallengeList (ref), TweenService (ref), v1 (ref) ]]
+			for k, v in pairs({ v12.Weekly, v12.Daily, v12.Custom }) do
+				for k2, v2 in pairs(v) do
+					if ChallengeList:FindFirstChild(v2.Type .. tostring(v2.Title)) then
+						local v3 = ChallengeList[v2.Type .. tostring(v2.Title)]
+
+						v3.Goal.Text = v2.Progress .. " / " .. v2.Goal
+						TweenService:Create(v3.Bar, v1, {
+							Size = UDim2.new(v2.Progress / v2.Goal, 0, 1, 0)
+						}):Play()
+
+						if v2.Completed then
+							v3.Goal.Text = "COMPLETED"
+							TweenService:Create(v3.Bar, v1, {
+								BackgroundTransparency = 0.8,
+								Size = UDim2.new(1, 0, 1, 0)
+							}):Play()
+						end
+					end
+				end
+			end
+		end)
+	end
+
+	v2 = v12
+end
+
+v4.AttributeChanged:Connect(UpdateChallenges)
+Events:WaitForChild("Challenges"):WaitForChild("Update").OnClientEvent:Connect(function(p1) --[[ Line: 242 | Upvalues: t4 (ref), UpdateChallenges (copy) ]]
+	t4 = p1
+	UpdateChallenges()
+end)
 
 -- Players.Noriko_Ellen.PlayerGui.MainStaticGui.RightTab.Perks.TabCore
 --
@@ -35669,1136 +36281,6 @@ return {
 	}
 }
 
--- ReplicatedStorage.Mods.ReportPlayer
---
-return {
-	Enabled = true,
-	Cooldown = 900,
-	CharacterLimit = 30,
-	LevelRequirement = 3,
-	Subjects = { "Suspicious Aim", "Suspicious Movement", "Cheater Association", "Mass Teaming", "Other (Specify)" }
-}
-
--- Players.Noriko_Ellen.PlayerGui.MainStaticGui.RightTab.Challenges.TabCore
---
-task.wait(0.5)
-
-local t = { "Bank", "Cash" }
-local t2 = {
-	Reputation = "REP"
-}
-local t3 = {
-	Default = Color3.fromRGB(101, 255, 84),
-	Weekly = Color3.fromRGB(94, 255, 167),
-	Negative = Color3.fromRGB(255, 55, 55),
-	Positive = Color3.fromRGB(88, 155, 255)
-}
-local TweenService = game:GetService("TweenService")
-local ReplicatedStorage = game.ReplicatedStorage
-local Mods = ReplicatedStorage:WaitForChild("Mods")
-local Events = ReplicatedStorage:WaitForChild("Events")
-local FormatNumber = require(Mods:WaitForChild("FormatNumber"))
-local v1 = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
-TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-
-local t4 = {}
-local v2 = table.clone(t4)
-local v3 = false
-local Frames = script:WaitForChild("Frames")
-local v4 = script.Parent
-local ChallengeList = v4:WaitForChild("ChallengeList")
-local v5 = ReplicatedStorage:WaitForChild("AddSideTab"):Invoke("rbxassetid://10239703628", -0.025, v4)
-local Notification = v5:WaitForChild("Notification")
-local ChallengeProgress = Frames:WaitForChild("ChallengeProgress")
-local Title = ChallengeProgress:WaitForChild("MainFrame"):WaitForChild("Title")
-local Goal = ChallengeProgress.MainFrame:WaitForChild("Goal")
-local Bar = ChallengeProgress.MainFrame:WaitForChild("Bar")
-
-ChallengeProgress.Parent = v5.Parent
-
-local function MakeChallengeUi(p1) --[[ MakeChallengeUi | Line: 58 | Upvalues: Frames (copy), t3 (copy), TweenService (copy), v1 (copy), ChallengeList (copy) ]]
-	local v12 = Frames:WaitForChild("Challenge"):Clone()
-	local v4 = t3[p1.Theme or p1.Type] or t3.Default
-
-	v12.Title.Text = p1.Title:upper()
-	v12.Desc.Text = p1.Desc:upper()
-	v12.DescLong.Text = (p1.LongDesc or p1.Desc):upper()
-	v12.Goal.Text = p1.Progress .. " / " .. p1.Goal
-	v12.Bar.Size = UDim2.new(p1.Progress / p1.Goal, 0, 1, 0)
-	v12.Name = p1.Type .. p1.Title
-	v12.Edge.ImageColor3 = v4
-	v12.Goal.TextColor3 = v4
-	v12.Title.TextColor3 = v4
-	v12.Reward.TextColor3 = v4
-	v12.DescLong.TextColor3 = v4
-	v12.Desc.TextColor3 = v4
-	v12.Bar.BackgroundColor3 = v4
-	v12.MouseEnter:Connect(function() --[[ Line: 87 | Upvalues: TweenService (ref), v12 (copy), v1 (ref) ]]
-		TweenService:Create(v12.Goal, v1, {
-			TextTransparency = 1
-		}):Play()
-		TweenService:Create(v12.Title, v1, {
-			TextTransparency = 1
-		}):Play()
-		TweenService:Create(v12.Desc, v1, {
-			TextTransparency = 1
-		}):Play()
-		TweenService:Create(v12.Reward, v1, {
-			TextTransparency = 0
-		}):Play()
-		TweenService:Create(v12.DescLong, v1, {
-			TextTransparency = 0
-		}):Play()
-	end)
-	v12.MouseLeave:Connect(function() --[[ Line: 96 | Upvalues: TweenService (ref), v12 (copy), v1 (ref) ]]
-		TweenService:Create(v12.Goal, v1, {
-			TextTransparency = 0
-		}):Play()
-		TweenService:Create(v12.Title, v1, {
-			TextTransparency = 0
-		}):Play()
-		TweenService:Create(v12.Desc, v1, {
-			TextTransparency = 0
-		}):Play()
-		TweenService:Create(v12.Reward, v1, {
-			TextTransparency = 1
-		}):Play()
-		TweenService:Create(v12.DescLong, v1, {
-			TextTransparency = 1
-		}):Play()
-	end)
-	v12.Parent = ChallengeList
-end
-
-local function ChallengeProgressPopUp(p1, p2, p3, p4) --[[ ChallengeProgressPopUp | Line: 110 | Upvalues: v4 (copy), v3 (ref), Notification (copy), Title (copy), Goal (copy), Bar (copy), TweenService (copy), ChallengeProgress (copy), v1 (copy) ]]
-	if v4:GetAttribute("Active") then
-		return
-	end
-
-	repeat
-		task.wait()
-	until not v3
-
-	v3 = true
-	Notification.Visible = true
-	Title.Text = p1:upper()
-	Goal.Text = p2 .. " / " .. p4
-	Bar.Size = UDim2.new(p2 / p4, 0, 1, 0)
-	TweenService:Create(ChallengeProgress, v1, {
-		GroupTransparency = 0
-	}):Play()
-	task.wait(0.25)
-	TweenService:Create(Bar, v1, {
-		Size = UDim2.new(p3 / p4, 0, 1, 0)
-	}):Play()
-	Goal.Text = p3 .. " / " .. p4
-	task.wait(1.5)
-	TweenService:Create(ChallengeProgress, v1, {
-		GroupTransparency = 1
-	}):Play()
-	task.wait(0.5)
-	v3 = false
-end
-
-local function CheckChallengeProgress() --[[ CheckChallengeProgress | Line: 134 | Upvalues: t4 (ref), v2 (ref), ChallengeProgressPopUp (copy) ]]
-	for k, v in pairs(t4) do
-		if typeof(v) == "table" then
-			for k2, v3 in pairs(v) do
-				local v1 = v2[k] and v2[k][k2]
-
-				if v1 and v1.Progress < v3.Progress then
-					task.spawn(ChallengeProgressPopUp, v3.Title, v1.Progress, v3.Progress, v3.Goal)
-				end
-			end
-		end
-	end
-end
-
-local function CheckChallenges() --[[ CheckChallenges | Line: 150 | Upvalues: t4 (ref), ChallengeList (copy), MakeChallengeUi (copy), t (copy), t2 (copy), FormatNumber (copy) ]]
-	for k, v in pairs({ t4.Weekly, t4.Daily, t4.Custom }) do
-		for k2, v2 in pairs(v) do
-			if not ChallengeList:FindFirstChild(v2.Type .. v2.Title) then
-				MakeChallengeUi(v2)
-			end
-		end
-	end
-
-	for k, v in pairs(ChallengeList:GetChildren()) do
-		if v:IsA("TextButton") then
-			local v1 = false
-
-			for k2, v2 in pairs({ t4.Weekly, t4.Daily, t4.Custom }) do
-				for k3, v3 in pairs(v2) do
-					if v3.Type .. tostring(v3.Title) == v.Name then
-						v.Reward.Text = ""
-						v1 = true
-
-						for k4, v4 in pairs(v3.Reward) do
-							local v22
-							local v32 = if table.find(t, k4) then "$" else ""
-
-							v22 = v32 == "" and " " .. (t2[k4] or k4:upper()) or ""
-							v.Reward.Text = v.Reward.Text .. v32 .. FormatNumber.Separate(v4) .. v22 .. "\n"
-						end
-
-						v.Reward.Text = string.sub(v.Reward.Text, 1, -2)
-					end
-				end
-			end
-
-			if not v1 then
-				v:Destroy()
-			end
-		end
-	end
-end
-
-local function UpdateChallenges() --[[ UpdateChallenges | Line: 200 | Upvalues: CheckChallenges (copy), CheckChallengeProgress (copy), t4 (ref), v4 (copy), Notification (copy), ChallengeList (copy), TweenService (copy), v1 (copy), v2 (ref) ]]
-	CheckChallenges()
-	CheckChallengeProgress()
-
-	local v12 = t4
-
-	if v4:GetAttribute("Active") then
-		Notification.Visible = false
-		task.delay(0.5, function() --[[ Line: 211 | Upvalues: v12 (copy), ChallengeList (ref), TweenService (ref), v1 (ref) ]]
-			for k, v in pairs({ v12.Weekly, v12.Daily, v12.Custom }) do
-				for k2, v2 in pairs(v) do
-					if ChallengeList:FindFirstChild(v2.Type .. tostring(v2.Title)) then
-						local v3 = ChallengeList[v2.Type .. tostring(v2.Title)]
-
-						v3.Goal.Text = v2.Progress .. " / " .. v2.Goal
-						TweenService:Create(v3.Bar, v1, {
-							Size = UDim2.new(v2.Progress / v2.Goal, 0, 1, 0)
-						}):Play()
-
-						if v2.Completed then
-							v3.Goal.Text = "COMPLETED"
-							TweenService:Create(v3.Bar, v1, {
-								BackgroundTransparency = 0.8,
-								Size = UDim2.new(1, 0, 1, 0)
-							}):Play()
-						end
-					end
-				end
-			end
-		end)
-	end
-
-	v2 = v12
-end
-
-v4.AttributeChanged:Connect(UpdateChallenges)
-Events:WaitForChild("Challenges"):WaitForChild("Update").OnClientEvent:Connect(function(p1) --[[ Line: 242 | Upvalues: t4 (ref), UpdateChallenges (copy) ]]
-	t4 = p1
-	UpdateChallenges()
-end)
-
--- Players.Noriko_Ellen.PlayerGui.GunGui.GunGuiLogic.ToolTip
---
-local t = {
-	ActiveTip = nil,
-	Cache = {}
-}
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local TweenService = game:GetService("TweenService")
-local CollectionService = game:GetService("CollectionService")
-
-game:GetService("StarterGui")
-
-local CurrentCamera = workspace.CurrentCamera
-local Tip = script.Parent.Parent:WaitForChild("FollowMouse"):WaitForChild("Tip")
-local MainFrame = Tip:WaitForChild("MainFrame")
-local Title = MainFrame:WaitForChild("Title")
-local Description = MainFrame:WaitForChild("Description")
-local SubTitle = MainFrame:WaitForChild("SubTitle")
-local OnlyTitle = MainFrame:WaitForChild("OnlyTitle")
-local Symbol = MainFrame:WaitForChild("Symbol")
-local SubFrames = MainFrame:WaitForChild("SubFrames")
-local SubFrame = script:WaitForChild("SubFrame")
-local UIPadding = SubFrames:WaitForChild("UIPadding")
-local RecolorUI = require(ReplicatedStorage:WaitForChild("Mods"):WaitForChild("RecolorUI"))
-local v1 = TweenInfo.new(0.15, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
-
-local function CacheToolTip(p1) --[[ CacheToolTip | Line: 57 | Upvalues: t (copy) ]]
-	local t2 = {}
-
-	for k, v in pairs(p1:GetAttributes()) do
-		local v1
-
-		if k:find("ToolTip_") then
-			local v2 = k:gsub("ToolTip_", "")
-			local v3, v4 = v2:match("^Embed(%d+)_(.+)$")
-
-			if v3 then
-				v1 = v2
-			else
-				local v5, v6 = v2:match("^Embed_(%d+)_(.+)$")
-
-				v3 = v5
-				v4 = v6
-				v1 = v2
-			end
-
-			if v3 and v4 then
-				local v7 = tonumber(v3)
-
-				t2.SubFrames = t2.SubFrames or {}
-				t2.SubFrames[v7] = t2.SubFrames[v7] or {}
-				t2.SubFrames[v7][v4] = v
-
-				continue
-			end
-
-			t2[v1] = v
-		end
-	end
-
-	t.Cache[p1] = t2
-end
-
-for k, v in pairs(CollectionService:GetTagged("HoverableFrame")) do
-	CacheToolTip(v)
-end
-
-CollectionService:GetInstanceAddedSignal("HoverableFrame"):Connect(function(p1) --[[ Line: 102 | Upvalues: CacheToolTip (copy) ]]
-	CacheToolTip(p1)
-end)
-CollectionService:GetInstanceRemovedSignal("HoverableFrame"):Connect(function(p1) --[[ Line: 105 | Upvalues: t (copy) ]]
-	t.Cache[p1] = nil
-end)
-
-local function UpdateTipInformation(p1) --[[ UpdateTipInformation | Line: 109 | Upvalues: Title (copy), SubTitle (copy), OnlyTitle (copy), Description (copy), Symbol (copy), RecolorUI (copy), MainFrame (copy), SubFrames (copy), UIPadding (copy), SubFrame (copy) ]]
-	if p1.SubTitle then
-		Title.Text = p1.Title or ""
-		SubTitle.Text = p1.SubTitle or ""
-		OnlyTitle.Text = ""
-	else
-		OnlyTitle.Text = p1.Title or ""
-		Title.Text = ""
-		SubTitle.Text = ""
-	end
-
-	Description.Text = p1.Description or ""
-	Symbol.Text = p1.Symbol or ""
-
-	local v1 = RecolorUI
-
-	v1(MainFrame, p1.Color or Color3.fromRGB(101, 255, 84), 0)
-
-	if p1.SubFrames then
-		SubFrames.Visible = true
-		task.delay(0, function() --[[ Line: 141 | Upvalues: UIPadding (ref), Description (ref), SubFrames (ref), p1 (copy), SubFrame (ref), RecolorUI (ref) ]]
-			UIPadding.PaddingTop = UDim.new(0, 40 + Description.TextBounds.Y)
-
-			for k, v in pairs(SubFrames:GetChildren()) do
-				if v:IsA("Frame") then
-					v:Destroy()
-				end
-			end
-
-			for k, v in pairs(p1.SubFrames) do
-				local v1 = SubFrame:Clone()
-
-				v1.Parent = SubFrames
-
-				if v.Description then
-					v1.Title.Text = v.Title or ""
-					v1.Description.Text = v.Description or ""
-				else
-					v1.OnlyTitle.Text = v.Title or ""
-				end
-
-				if v.Color then
-					RecolorUI(v1, v.Color, 0)
-				end
-			end
-		end)
-	else
-		SubFrames.Visible = false
-	end
-end
-
-function t.UpdateHover(p1, p2, p3) --[[ UpdateHover | Line: 177 | Upvalues: t (copy), CurrentCamera (copy), MainFrame (copy), UpdateTipInformation (copy), TweenService (copy), Tip (copy), v1 (copy) ]]
-	local v12 = nil
-
-	for k, v in pairs(p1) do
-		if t.Cache[v] then
-			v12 = t.Cache[v]
-
-			break
-		end
-	end
-
-	local ViewportSize = CurrentCamera.ViewportSize
-	local v2 = if ViewportSize.X / 2 < p2 then 1 else 0
-	local v3 = if ViewportSize.Y / 2 < p3 then 1 else 0
-
-	MainFrame.AnchorPoint = Vector2.new(v2, v3)
-	MainFrame.Position = UDim2.new(0.5, if v2 == 1 then -10 else 10, 0.5, if v3 == 1 then -10 else 10)
-
-	if v12 and t.ActiveTip ~= v12 then
-		t.ActiveTip = v12
-		UpdateTipInformation(v12)
-		TweenService:Create(Tip, v1, {
-			GroupTransparency = 0,
-			Visible = true
-		}):Play()
-
-		return
-	end
-
-	if v12 or not t.ActiveTip then
-		return
-	end
-
-	t.ActiveTip = nil
-	TweenService:Create(Tip, v1, {
-		GroupTransparency = 1,
-		Visible = false
-	}):Play()
-end
-
-return t
-
--- Players.Noriko_Ellen.PlayerGui.OverlayGui.Prompts.PromptCore
---
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
-local v1 = game.Players.LocalPlayer:GetMouse()
-local ReplicatedStorage = game.ReplicatedStorage
-local Mods = ReplicatedStorage:WaitForChild("Mods")
-local Events = ReplicatedStorage:WaitForChild("Events")
-local FormatText = require(Mods:WaitForChild("FormatText"))
-local Prompt = Events:WaitForChild("Player"):WaitForChild("Prompt")
-local Sounds = script:WaitForChild("Sounds")
-local Frames = script:WaitForChild("Frames")
-local Extras = script:WaitForChild("Extras")
-local v2 = script.Parent
-
-local function Lerp(p1, p2, p3) --[[ Lerp | Line: 23 ]]
-	return p1 + (p2 - p1) * p3
-end
-
-local function TextPrompt(p1, p2, p3) --[[ TextPrompt | Line: 29 | Upvalues: Frames (copy), Sounds (copy), v2 (copy), Extras (copy), UserInputService (copy) ]]
-	local v1 = Frames:WaitForChild("Prompt"):Clone()
-	local MainFrame = v1:WaitForChild("MainFrame")
-	local TitleText = MainFrame:WaitForChild("TopBar"):WaitForChild("TitleText")
-	local InfoText = MainFrame:WaitForChild("InfoText")
-	local Options = MainFrame:WaitForChild("BottomBar"):WaitForChild("Options")
-
-	Sounds.Notification:Play()
-	TitleText.Text = tostring(p1):upper()
-	InfoText.Text = p2
-	InfoText.TextSize = v2.AbsoluteSize.Magnitude * 0.0115
-
-	local v22 = nil
-
-	for k, v in pairs(p3) do
-		local v3 = Extras:WaitForChild("Option"):Clone()
-
-		v3.TextLabel.Text = tostring(v):upper()
-		v3.Name = v
-
-		if v == "No" then
-			v3.BackgroundTransparency = 0.9
-			v3.UIStroke.Enabled = true
-			v3.TextLabel.TextColor3 = v3.BackgroundColor3
-			v3.TextLabel.TextTransparency = 0
-		end
-
-		v3.Parent = Options
-		v3.MouseButton1Click:Connect(function() --[[ Line: 73 | Upvalues: v22 (ref), v (copy) ]]
-			v22 = v
-		end)
-	end
-
-	Options.Grid.CellSize = UDim2.new(1 / #p3 - 0.015, 0, 1, 0)
-	v1.Parent = v2
-	v1.Visible = true
-
-	local v4 = UserInputService.InputBegan:Connect(function(p1, p2) --[[ Line: 85 | Upvalues: p3 (copy), v22 (ref) ]]
-		if p2 then
-			return
-		end
-
-		if p1.KeyCode ~= Enum.KeyCode.Return and p1.KeyCode ~= Enum.KeyCode.ButtonY or not table.find(p3, "Yes") then
-			return
-		end
-
-		v22 = "Yes"
-	end)
-
-	repeat
-		task.wait(0.05)
-	until v22 ~= nil
-
-	v4:Disconnect()
-	v1:Destroy()
-
-	return v22
-end
-
-local function ColorPrompt(p1) --[[ ColorPrompt | Line: 107 | Upvalues: Frames (copy), UserInputService (copy), v1 (copy), v2 (copy) ]]
-	local v12 = Frames:WaitForChild("ColorPrompt"):Clone()
-	local MainFrame = v12:WaitForChild("MainFrame")
-
-	MainFrame:WaitForChild("Buttons")
-
-	local Canvas = MainFrame:WaitForChild("Canvas")
-
-	MainFrame:WaitForChild("TopBar")
-
-	local ColorDisplay = Canvas:WaitForChild("ColorDisplay")
-	local ColorValue = Canvas:WaitForChild("ColorValue")
-	local ColorWheel = Canvas:WaitForChild("ColorWheel")
-	local HexCode = ColorDisplay:WaitForChild("HexCode")
-	local RGB = Canvas:WaitForChild("RGB")
-	local Picker = ColorValue:WaitForChild("Picker")
-	local Picker2 = ColorWheel:WaitForChild("Picker")
-	local v22 = nil
-	local v3
-
-	if p1 then
-		local v4 = Color3.new
-		local v5 = math.clamp(p1.R, 0, 1)
-		local v6 = math.clamp(p1.G, 0, 1)
-
-		v3 = v4(v5, v6, (math.clamp(p1.B, 0, 1))) or Color3.new(255/255, 255/255, 255/255)
-	else
-		v3 = Color3.new(255/255, 255/255, 255/255)
-	end
-
-	local function UpdateColorDisplay() --[[ UpdateColorDisplay | Line: 136 | Upvalues: v3 (ref), ColorDisplay (copy), HexCode (copy) ]]
-		local _, _2, v1 = v3:ToHSV()
-
-		ColorDisplay.BackgroundColor3 = v3
-		HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v1)
-	end
-
-	local function UpdateColorInputs() --[[ UpdateColorInputs | Line: 143 | Upvalues: HexCode (copy), v3 (ref), RGB (copy) ]]
-		local v1, v2, v32, v4, v5, v6
-
-		if pcall(function() --[[ Line: 144 | Upvalues: HexCode (ref), v3 (ref) ]]
-			HexCode.Text = "#" .. v3:ToHex()
-		end) then
-			v1 = RGB.R
-			v2 = v3.R * 255
-			v1.Text = math.floor(v2)
-			v32 = RGB.G
-			v4 = v3.G * 255
-			v32.Text = math.floor(v4)
-			v5 = RGB.B
-			v6 = v3.B * 255
-			v5.Text = math.floor(v6)
-
-			return
-		end
-
-		HexCode.Text = "N/A"
-		v1 = RGB.R
-		v2 = v3.R * 255
-		v1.Text = math.floor(v2)
-		v32 = RGB.G
-		v4 = v3.G * 255
-		v32.Text = math.floor(v4)
-		v5 = RGB.B
-		v6 = v3.B * 255
-		v5.Text = math.floor(v6)
-	end
-
-	local function UpdateColorValue() --[[ UpdateColorValue | Line: 150 | Upvalues: v3 (ref), ColorValue (copy), Picker (copy) ]]
-		local _, _2, v1 = v3:ToHSV()
-
-		ColorValue.BackgroundColor3 = v3
-		Picker.Position = UDim2.new(0.5, 0, 1 - v1, 0)
-	end
-
-	local function UpdateColorPicker() --[[ UpdateColorPicker | Line: 157 | Upvalues: v3 (ref), Picker2 (copy) ]]
-		local v1, v2, _ = v3:ToHSV()
-		local v32 = CFrame.Angles(0, math.rad((180 + -v1 * 360) % 360), 0) * CFrame.new(0, 0, v2 / 2)
-
-		Picker2.Position = UDim2.new(0.5 + v32.Z, 0, 0.5 + v32.X, 0)
-	end
-
-	local function UpdateColor() --[[ UpdateColor | Line: 166 | Upvalues: UpdateColorPicker (copy), UpdateColorInputs (copy), v3 (ref), ColorDisplay (copy), HexCode (copy), ColorValue (copy), Picker (copy) ]]
-		UpdateColorPicker()
-		UpdateColorInputs()
-
-		local _, _2, v1 = v3:ToHSV()
-
-		ColorDisplay.BackgroundColor3 = v3
-		HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v1)
-
-		local _3, _4, v2 = v3:ToHSV()
-
-		ColorValue.BackgroundColor3 = v3
-		Picker.Position = UDim2.new(0.5, 0, 1 - v2, 0)
-	end
-
-	for k, v in pairs(RGB:GetChildren()) do
-		if v:IsA("TextBox") then
-			v:GetPropertyChangedSignal("Text"):Connect(function() --[[ Line: 180 | Upvalues: v (copy) ]]
-				v.Text = math.clamp(tonumber((string.split(string.gsub(v.Text, "%D", ""), " ")[1]:sub(1, 6))) or 0, 0, 255)
-			end)
-			v.FocusLost:Connect(function(p1) --[[ Line: 186 | Upvalues: v3 (ref), RGB (copy), UpdateColorPicker (copy), UpdateColorInputs (copy), ColorDisplay (copy), HexCode (copy), ColorValue (copy), Picker (copy) ]]
-				local _, _2, v1, _3, _4, v2
-
-				if p1 then
-					v3 = Color3.fromRGB(if tonumber(RGB.R.Text) then RGB.R.Text or 0 else 0, tonumber(RGB.G.Text) and RGB.G.Text or 0, tonumber(RGB.B.Text) and RGB.B.Text or 0)
-				end
-
-				UpdateColorPicker()
-				UpdateColorInputs()
-				_, _2, v1 = v3:ToHSV()
-				ColorDisplay.BackgroundColor3 = v3
-				HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v1)
-				_3, _4, v2 = v3:ToHSV()
-				ColorValue.BackgroundColor3 = v3
-				Picker.Position = UDim2.new(0.5, 0, 1 - v2, 0)
-			end)
-		end
-	end
-
-	HexCode:GetPropertyChangedSignal("Text"):Connect(function() --[[ Line: 204 | Upvalues: HexCode (copy) ]]
-		HexCode.Text = string.sub("#" .. string.gsub(HexCode.Text, "#", ""), 1, 7)
-	end)
-	HexCode.FocusLost:Connect(function(p1) --[[ Line: 210 | Upvalues: HexCode (copy), v3 (ref), UpdateColorPicker (copy), UpdateColorInputs (copy), ColorDisplay (copy), ColorValue (copy), Picker (copy) ]]
-		local v1 = string.gsub(HexCode.Text, "#", "")
-		local _, _2, v2, _3, _4, v32
-
-		if p1 then
-			local ok, result = pcall(Color3.fromHex, v1)
-
-			if ok then
-				v3 = result
-			end
-		end
-
-		UpdateColorPicker()
-		UpdateColorInputs()
-		_, _2, v2 = v3:ToHSV()
-		ColorDisplay.BackgroundColor3 = v3
-		HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v2)
-		_3, _4, v32 = v3:ToHSV()
-		ColorValue.BackgroundColor3 = v3
-		Picker.Position = UDim2.new(0.5, 0, 1 - v32, 0)
-	end)
-	ColorValue.MouseButton1Down:Connect(function() --[[ Line: 226 | Upvalues: UserInputService (ref), v1 (ref), ColorValue (copy), v3 (ref), Picker (copy), UpdateColorPicker (copy), UpdateColorInputs (copy), ColorDisplay (copy), HexCode (copy) ]]
-		while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsGamepadButtonDown(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonA) do
-			local v2 = math.clamp((v1.Y - ColorValue.AbsolutePosition.Y) / ColorValue.AbsoluteSize.Y, 0, 1)
-			local v32, v4, _ = v3:ToHSV()
-
-			Picker.Position = UDim2.new(0.5, 0, v2, 0)
-			v3 = Color3.fromHSV(v32, v4, 1 - v2)
-			UpdateColorPicker()
-			UpdateColorInputs()
-
-			local _2, _3, v5 = v3:ToHSV()
-
-			ColorDisplay.BackgroundColor3 = v3
-			HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v5)
-
-			local _4, _5, v6 = v3:ToHSV()
-
-			ColorValue.BackgroundColor3 = v3
-			Picker.Position = UDim2.new(0.5, 0, 1 - v6, 0)
-			task.wait()
-		end
-	end)
-	ColorWheel.MouseButton1Down:Connect(function() --[[ Line: 245 | Upvalues: UserInputService (ref), v1 (ref), ColorWheel (copy), v3 (ref), UpdateColorPicker (copy), UpdateColorInputs (copy), ColorDisplay (copy), HexCode (copy), ColorValue (copy), Picker (copy) ]]
-		while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsGamepadButtonDown(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonA) do
-			local v12 = Vector2.new(v1.X, v1.Y) - (ColorWheel.AbsolutePosition + ColorWheel.AbsoluteSize / 2)
-			local Magnitude = (ColorWheel.AbsoluteSize / 2.85).Magnitude
-			local v2 = math.clamp(v12.Magnitude, -Magnitude, Magnitude)
-			local v5 = (360 - math.abs(math.deg((math.atan2(v12.Y, v12.X))) + 180)) / 360
-			local _, _2, v7 = v3:ToHSV()
-
-			v3 = Color3.fromHSV(v5, v2 / (ColorWheel.AbsoluteSize.X / 2), (math.clamp(v7, 0.01, 1)))
-			UpdateColorPicker()
-			UpdateColorInputs()
-
-			local _3, _4, v8 = v3:ToHSV()
-
-			ColorDisplay.BackgroundColor3 = v3
-			HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v8)
-
-			local _5, _6, v9 = v3:ToHSV()
-
-			ColorValue.BackgroundColor3 = v3
-			Picker.Position = UDim2.new(0.5, 0, 1 - v9, 0)
-			task.wait()
-		end
-	end)
-	v12.Parent = v2
-	v12.Visible = true
-	MainFrame.Buttons.Confirm.MouseButton1Click:Connect(function() --[[ Line: 275 | Upvalues: v22 (ref), v3 (ref) ]]
-		v22 = v3
-	end)
-	MainFrame.Buttons.Cancel.MouseButton1Click:Connect(function() --[[ Line: 276 | Upvalues: v22 (ref) ]]
-		v22 = false
-	end)
-	UpdateColorPicker()
-	UpdateColorInputs()
-
-	local _, _2, v7 = v3:ToHSV()
-
-	ColorDisplay.BackgroundColor3 = v3
-	HexCode.TextColor3 = Color3.fromHSV(0, 0, 1 - v7)
-
-	local _3, _4, v8 = v3:ToHSV()
-
-	ColorValue.BackgroundColor3 = v3
-	Picker.Position = UDim2.new(0.5, 0, 1 - v8, 0)
-
-	repeat
-		task.wait(0.05)
-	until v22 ~= nil
-
-	v12:Destroy()
-
-	return v22
-end
-
-local function SliderPrompt(p1, p2, p3) --[[ SliderPrompt | Line: 294 | Upvalues: Frames (copy), Sounds (copy), v2 (copy), UserInputService (copy), v1 (copy), Extras (copy) ]]
-	local v12 = Frames:WaitForChild("SliderPrompt"):Clone()
-	local MainFrame = v12:WaitForChild("MainFrame")
-
-	MainFrame:WaitForChild("Buttons")
-	MainFrame:WaitForChild("TopBar")
-
-	local Slider = MainFrame:WaitForChild("Slider")
-	local Picker = Slider:WaitForChild("Picker")
-	local Line = Slider:WaitForChild("Line")
-	local MinText = Slider:WaitForChild("MinText")
-	local MaxText = Slider:WaitForChild("MaxText")
-	local CurrentText = Picker:WaitForChild("CurrentText")
-	local TitleText = MainFrame:WaitForChild("TopBar"):WaitForChild("TitleText")
-	local InfoText = MainFrame:WaitForChild("InfoText")
-	local v22 = nil
-	local Min = p3.Min
-
-	Sounds.Notification:Play()
-	TitleText.Text = tostring(p1):upper()
-	InfoText.Text = p2
-	MinText.Text = p3.Min
-	MaxText.Text = p3.Max
-	InfoText.TextSize = v2.AbsoluteSize.Magnitude * 0.0115
-
-	local function UpdateValue() --[[ UpdateValue | Line: 333 | Upvalues: Min (ref), p3 (copy), Picker (copy), CurrentText (copy) ]]
-		Picker.Position = UDim2.new(math.clamp((Min - p3.Min) / (p3.Max - p3.Min), 0, 1), 0, 0.5, 0)
-		CurrentText.Text = Min
-	end
-
-	Slider.MouseButton1Down:Connect(function() --[[ Line: 341 | Upvalues: UserInputService (ref), v1 (ref), Slider (copy), Min (ref), p3 (copy), Picker (copy), CurrentText (copy) ]]
-		while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsGamepadButtonDown(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonA) do
-			local v2 = math.clamp((v1.X - Slider.AbsolutePosition.X) / Slider.AbsoluteSize.X, 0, 1)
-			local Min2 = p3.Min
-
-			Min = math.floor(Min2 + (p3.Max - Min2) * v2)
-			Picker.Position = UDim2.new(math.clamp((Min - p3.Min) / (p3.Max - p3.Min), 0, 1), 0, 0.5, 0)
-			CurrentText.Text = Min
-			task.wait()
-		end
-	end)
-
-	if p3.Max <= 25 then
-		Line.Visible = false
-
-		for i = p3.Min, p3.Max do
-			local v3 = Extras.Separator:Clone()
-
-			v3.Position = UDim2.new(math.clamp((i - p3.Min) / (p3.Max - p3.Min), 0, 1), 0, 0.5, 0)
-			v3.Parent = Slider
-		end
-	end
-
-	v12.Parent = v2
-	v12.Visible = true
-	MainFrame.Buttons.Confirm.MouseButton1Click:Connect(function() --[[ Line: 377 | Upvalues: v22 (ref), Min (ref) ]]
-		v22 = Min
-	end)
-	MainFrame.Buttons.Cancel.MouseButton1Click:Connect(function() --[[ Line: 378 | Upvalues: v22 (ref) ]]
-		v22 = false
-	end)
-
-	local v6 = (Min - p3.Min) / (p3.Max - p3.Min)
-
-	Picker.Position = UDim2.new(math.clamp(v6, 0, 1), 0, 0.5, 0)
-	CurrentText.Text = Min
-
-	repeat
-		task.wait(0.05)
-	until v22 ~= nil
-
-	v12:Destroy()
-
-	return v22
-end
-
-local function ChoicePrompt(p1, p2, p3) --[[ ChoicePrompt | Line: 396 | Upvalues: Frames (copy), Extras (copy), Sounds (copy), v2 (copy), TweenService (copy), FormatText (copy) ]]
-	local v1 = Frames:WaitForChild("ChoicePrompt"):Clone()
-	local Container = v1:WaitForChild("Container")
-	local TitleText = v1:WaitForChild("TitleText")
-	local DescriptionText = v1:WaitForChild("DescriptionText")
-	local ChoiceCard = Extras:WaitForChild("ChoiceCard")
-	local Choice = Sounds:WaitForChild("Choice")
-
-	TitleText.Text = p1 or ""
-	DescriptionText.Text = p2 or ""
-	v1.Parent = v2
-	v1.Visible = true
-	TweenService:Create(v1, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-		BackgroundTransparency = 0.5
-	}):Play()
-	TweenService:Create(TitleText, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-		TextTransparency = 0
-	}):Play()
-	TweenService:Create(DescriptionText, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-		TextTransparency = 0
-	}):Play()
-
-	local function CreateCard(p1) --[[ CreateCard | Line: 427 | Upvalues: ChoiceCard (copy), TweenService (ref), Choice (copy), FormatText (ref) ]]
-		local v1 = ChoiceCard:Clone()
-		local Button = v1:WaitForChild("Button")
-		local v2 = p1.Color or Color3.fromRGB(101, 255, 84)
-
-		Button:WaitForChild("Title").Text = p1.Title or ""
-		Button:WaitForChild("Description").Text = p1.Description or ""
-		Button:WaitForChild("TypeText").Text = p1.Type or ""
-		Button:WaitForChild("TagText").Text = p1.Tag or ""
-		Button:WaitForChild("AltText").Text = p1.Alt or ""
-		Button:WaitForChild("Icon").Image = p1.Icon or "rbxasset://textures/DarkThemeLoadingCircle.png"
-		Button:WaitForChild("Flash"):WaitForChild("Icon").Image = p1.Icon or "rbxasset://textures/DarkThemeLoadingCircle.png"
-
-		local function UpdateColor(p1, p2) --[[ UpdateColor | Line: 450 | Upvalues: TweenService (ref), Button (copy) ]]
-			local v1 = TweenInfo.new(p2 or 0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-
-			TweenService:Create(Button.Flash, v1, {
-				BackgroundColor3 = p1
-			}):Play()
-			TweenService:Create(Button.Title, v1, {
-				TextColor3 = p1
-			}):Play()
-			TweenService:Create(Button.Description, v1, {
-				TextColor3 = p1
-			}):Play()
-			TweenService:Create(Button.TypeText, v1, {
-				TextColor3 = p1
-			}):Play()
-			TweenService:Create(Button.TagText, v1, {
-				TextColor3 = p1
-			}):Play()
-			TweenService:Create(Button.AltText, v1, {
-				TextColor3 = p1
-			}):Play()
-			TweenService:Create(Button.Edge, v1, {
-				ImageColor3 = p1
-			}):Play()
-			TweenService:Create(Button.Edge2, v1, {
-				ImageColor3 = p1
-			}):Play()
-			TweenService:Create(Button.Shine, v1, {
-				ImageColor3 = p1
-			}):Play()
-			TweenService:Create(Button.Flash.Shine, v1, {
-				ImageColor3 = p1
-			}):Play()
-		end
-
-		UpdateColor(v2, 0.01)
-
-		local function DrawCard() --[[ DrawCard | Line: 470 | Upvalues: Choice (ref), TweenService (ref), Button (copy), p1 (copy) ]]
-			Choice.Appear:Play()
-			TweenService:Create(Button, TweenInfo.new(1, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
-				Position = UDim2.new(0.5, 0, 0.5, 0)
-			}):Play()
-			task.wait(0.75)
-			TweenService:Create(Button, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-				Size = UDim2.new(1, 0, 1, 0)
-			}):Play()
-			TweenService:Create(Button.Flash, TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-				BackgroundTransparency = 1
-			}):Play()
-			TweenService:Create(Button.Flash.Icon, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-				ImageTransparency = 1
-			}):Play()
-			TweenService:Create(Button.Flash.Shine, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-				ImageTransparency = 1
-			}):Play()
-			Choice.Reveal:Play()
-			p1.Drawn = true
-		end
-
-		local function HideCard() --[[ HideCard | Line: 494 | Upvalues: p1 (copy), Choice (ref), TweenService (ref), Button (copy) ]]
-			p1.Drawn = false
-			Choice.Disgard:Play()
-			TweenService:Create(Button, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-				Size = UDim2.new(1, 0, 0.2, 0)
-			}):Play()
-			TweenService:Create(Button.Flash, TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-				BackgroundTransparency = 0
-			}):Play()
-			TweenService:Create(Button.Flash.Icon, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-				ImageTransparency = 0
-			}):Play()
-			TweenService:Create(Button.Flash.Shine, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-				ImageTransparency = 0.25
-			}):Play()
-			TweenService:Create(Button, TweenInfo.new(1, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
-				Position = UDim2.new(0.5, 0, 6, 0)
-			}):Play()
-		end
-
-		Button.MouseEnter:Connect(function() --[[ Line: 514 | Upvalues: p1 (copy), Choice (ref), TweenService (ref), Button (copy) ]]
-			if p1.Drawn then
-				Choice.Hover:Play()
-				TweenService:Create(Button, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-					Size = UDim2.new(1, 0, 1.15, 0)
-				}):Play()
-			end
-		end)
-		Button.MouseLeave:Connect(function() --[[ Line: 525 | Upvalues: p1 (copy), TweenService (ref), Button (copy) ]]
-			if p1.Drawn then
-				TweenService:Create(Button, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-					Size = UDim2.new(1, 0, 1, 0)
-				}):Play()
-			end
-		end)
-
-		if p1.DistortText then
-			task.spawn(function() --[[ Line: 535 | Upvalues: Button (copy), FormatText (ref), p1 (copy) ]]
-				while task.wait(0.01) and Button.Parent do
-					Button.Title.Text = FormatText.DistortText("???", 3)
-					Button.Description.Text = FormatText.DistortText("------- ------- ------- ------- ------- -------", 3)
-
-					if not p1.Tag then
-						continue
-					end
-
-					Button.TagText.Text = FormatText.DistortText("???", 2)
-				end
-			end)
-		end
-
-		return {
-			Info = p1,
-			Frame = v1,
-			UpdateColor = UpdateColor,
-			DrawCard = DrawCard,
-			HideCard = HideCard
-		}
-	end
-
-	local tbl = {}
-	local v22 = nil
-
-	for k, v in pairs(p3) do
-		local v3 = CreateCard(v)
-
-		v3.Frame.Parent = Container
-		table.insert(tbl, v3)
-	end
-
-	for k, v in pairs(tbl) do
-		task.spawn(v.DrawCard)
-		v.Frame.Button.MouseButton1Click:Connect(function() --[[ Line: 572 | Upvalues: v22 (ref), v (copy), Choice (copy) ]]
-			if not v22 and v.Info.Drawn then
-				v22 = v.Info.Title
-				Choice.Pick:Play()
-			end
-		end)
-		task.wait(0.1)
-	end
-
-	repeat
-		task.wait(0.05)
-	until v22 ~= nil
-
-	task.spawn(function() --[[ Line: 591 | Upvalues: TweenService (ref), v1 (copy), TitleText (copy), DescriptionText (copy), tbl (copy), v22 (ref) ]]
-		TweenService:Create(v1, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-			BackgroundTransparency = 1
-		}):Play()
-		TweenService:Create(TitleText, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-			TextTransparency = 1
-		}):Play()
-		TweenService:Create(DescriptionText, TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-			TextTransparency = 1
-		}):Play()
-
-		for k, v in pairs(tbl) do
-			if v.Info.Title ~= v22 then
-				v.UpdateColor(Color3.fromRGB(150, 150, 150))
-			end
-
-			task.spawn(v.HideCard)
-			task.wait(0.1)
-		end
-
-		task.wait(1)
-		v1:Destroy()
-	end)
-
-	return v22
-end
-
-local function DisplayPrompt(p1, p2, p3) --[[ DisplayPrompt | Line: 626 | Upvalues: ReplicatedStorage (copy), ColorPrompt (copy), SliderPrompt (copy), ChoicePrompt (copy), TextPrompt (copy) ]]
-	ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("Prompt", true)
-
-	local v1
-
-	if p3 == "Color" then
-		v1 = ColorPrompt(if typeof(p2) == "Color3" then p2 else false)
-	elseif typeof(p3) == "NumberRange" then
-		v1 = SliderPrompt(p1, p2, p3)
-	elseif typeof(p3) == "table" and typeof(p3[1]) == "table" then
-		v1 = ChoicePrompt(p1, p2, p3)
-	else
-		local v6
-
-		v6 = TextPrompt(p1, p2, p3)
-		v1 = v6
-	end
-
-	ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("Prompt", false)
-
-	return v1
-end
-
-Prompt.OnClientInvoke = DisplayPrompt
-ReplicatedStorage:WaitForChild("Prompt").OnInvoke = DisplayPrompt
-
--- StarterGui.Hint.HintScript
---
-game:GetService("Players")
-
-local TweenService = game:GetService("TweenService")
-local HintFrame = script.Parent:WaitForChild("HintFrame")
-local v1 = TweenInfo.new(0.2, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
-local Hints = require(script:WaitForChild("Hints"))
-local v2 = false
-local t = {}
-local v3 = nil
-
-repeat
-	task.wait(0.1)
-until _G.Settings
-
-local function ToggleHint(p1) --[[ ToggleHint | Line: 24 | Upvalues: v2 (ref), HintFrame (copy), TweenService (copy) ]]
-	if v2 == p1 then
-		return
-	end
-
-	v2 = p1
-
-	local v1 = TweenInfo.new(1)
-
-	for k, v in pairs(HintFrame:GetChildren()) do
-		if v.Name ~= "Center" and (v.Name ~= "Shade" and v:IsA("Frame")) then
-			local t = {}
-
-			t.BackgroundTransparency = if p1 then 0.25 else 1
-			TweenService:Create(v, v1, t):Play()
-		end
-	end
-
-	TweenService:Create(HintFrame, v1, {
-		Visible = p1
-	}):Play()
-
-	local t = {}
-
-	t.Transparency = if p1 then 0.8 else 1
-	TweenService:Create(HintFrame.Shade.UIStroke, v1, t):Play()
-
-	local t2 = {}
-
-	t2.Transparency = if p1 then 0 else 1
-	TweenService:Create(HintFrame.Center.UIStroke, v1, t2):Play()
-
-	local t3 = {}
-
-	t3.TextTransparency = if p1 then 0 else 1
-	TweenService:Create(HintFrame.Title, v1, t3):Play()
-
-	local t4 = {}
-
-	t4.TextTransparency = if p1 then 0 else 1
-	TweenService:Create(HintFrame.Description, v1, t4):Play()
-end
-
-local function ShowHint(p1, p2, p3) --[[ ShowHint | Line: 45 | Upvalues: ToggleHint (copy), HintFrame (copy), TweenService (copy), v1 (copy) ]]
-	if not p1 then
-		ToggleHint(false)
-
-		return
-	end
-
-	ToggleHint(true)
-
-	local v12 = p1.AbsolutePosition + Vector2.new(-5, -5)
-	local v2 = p1.AbsoluteSize + Vector2.new(10, 10)
-
-	HintFrame.Title.Text = p2 or ""
-	HintFrame.Description.Text = p3 or ""
-	print(v12.X)
-
-	if v12.X <= 250 then
-		HintFrame.Title.AnchorPoint = Vector2.new(0, 1)
-		HintFrame.Description.AnchorPoint = Vector2.new(0, 0)
-		HintFrame.Title.Position = UDim2.new(1, 15, 0.5, 0)
-		HintFrame.Description.Position = UDim2.new(1, 15, 0.5, 0)
-		HintFrame.Title.TextXAlignment = Enum.TextXAlignment.Left
-		HintFrame.Description.TextXAlignment = Enum.TextXAlignment.Left
-	else
-		HintFrame.Title.AnchorPoint = Vector2.new(1, 1)
-		HintFrame.Description.AnchorPoint = Vector2.new(1, 0)
-		HintFrame.Title.Position = UDim2.new(0, -15, 0.5, 0)
-		HintFrame.Description.Position = UDim2.new(0, -15, 0.5, 0)
-		HintFrame.Title.TextXAlignment = Enum.TextXAlignment.Right
-		HintFrame.Description.TextXAlignment = Enum.TextXAlignment.Right
-	end
-
-	TweenService:Create(HintFrame, v1, {
-		Position = UDim2.new(0, v12.X, 0, v12.Y),
-		Size = UDim2.new(0, v2.X, 0, v2.Y)
-	}):Play()
-end
-
-while task.wait(0.25) do
-	if _G.Settings.Gameplay.Hints then
-		local v4 = false
-
-		for k, v in pairs(Hints) do
-			if not t[k] then
-				local v5, v6, v7 = v()
-
-				if v5 then
-					ShowHint(v5, v6, v7)
-					v4 = true
-					v3 = k
-
-					break
-				end
-			end
-		end
-
-		if v4 then
-			continue
-		end
-
-		if v3 then
-			t[v3] = true
-			task.delay(60, function() --[[ Line: 122 | Upvalues: t (copy), v3 (ref) ]]
-				t[v3] = false
-			end)
-		end
-
-		ShowHint()
-	end
-end
-
 -- Players.Noriko_Ellen.PlayerGui.GunGui.Actions.ActionsCore
 --
 local CollectionService = game:GetService("CollectionService")
@@ -37162,6 +36644,3097 @@ game:GetService("RunService").Heartbeat:Connect(function() --[[ Line: 296 | Upva
 	end
 end)
 
+-- StarterGui.MainGui.MainGuiCore
+--
+local Players, Lighting, UserInputService, CollectionService, ReplicatedStorage, CurrentCamera, Sounds, LocalPlayer, v6, v7, Humanoid, HumanoidRootPart, Torso, Events, Highlight, random, InputHandler, FormatNumber, v8, v9, v13, v14, v15, v16, v17, v18, v21, v22, OverlayGui, Background, Stamina, v23, UnderScreenEffects, TweenService, v24, v25, v33, t2, ShakeCamera, PlayAnimation, v39, ToggleCinematicMode, UpdateDowned, Shared, v40, v44, v45, v46, JumpCooldown, v49, v50, Slide, tbl, UpdateCurrency, UpdateLevel, LevelUp2, Hunger, Thirst, UpdateNourishment, v66, MakeBlood, t8, t9, GiveHurtFeedback, v67, v70, UpdateCamPartState, UpdateStamina
+
+do
+	local v1 = game.Players:GetAttribute("MAX_LEVEL")
+	local v2 = game.Players:GetAttribute("XP_MODIFIER")
+	local v3 = game.Players:GetAttribute("LEVEL_UP_CASH_MODIFIER")
+	local v4 = game.Players:GetAttribute("START_XP")
+
+	game.Players:GetAttribute("MAX_BOUNTY")
+
+	local v5 = NumberRange.new(10, 50)
+
+	Players = game:GetService("Players")
+	Lighting = game:GetService("Lighting")
+
+	local RunService = game:GetService("RunService")
+	local SoundService = game:GetService("SoundService")
+	local Debris = game:GetService("Debris")
+
+	UserInputService = game:GetService("UserInputService")
+	CollectionService = game:GetService("CollectionService")
+	ReplicatedStorage = game.ReplicatedStorage
+	CurrentCamera = workspace.CurrentCamera
+	Sounds = script:WaitForChild("Sounds")
+	LocalPlayer = Players.LocalPlayer
+	v6 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+	v7 = LocalPlayer:WaitForChild(Players:GetAttribute("PLAYER_STORAGE"))
+	Humanoid = v6:WaitForChild("Humanoid")
+	HumanoidRootPart = v6:WaitForChild("HumanoidRootPart")
+	Torso = v6:WaitForChild("Torso")
+	Events = ReplicatedStorage:WaitForChild("Events")
+
+	local Mods = ReplicatedStorage:WaitForChild("Mods")
+	local SI = ReplicatedStorage:WaitForChild("SI")
+
+	Highlight = Instance.new("Highlight")
+	Highlight.FillTransparency = 1
+	Highlight.OutlineTransparency = 0.8
+	Highlight.OutlineColor = Color3.new(255/255, 255/255, 255/255)
+
+	local clamp = math.clamp
+	local abs = math.abs
+	local floor = math.floor
+
+	random = math.random
+
+	local ceil = math.ceil
+	local MedalClipper = require(Mods:WaitForChild("MedalClipper"))
+
+	InputHandler = require(Mods:WaitForChild("InputHandler"))
+
+	local ItemDatabase = require(Mods:WaitForChild("ItemDatabase"))
+
+	FormatNumber = require(Mods:WaitForChild("FormatNumber"))
+
+	local Raycast = require(Mods:WaitForChild("Raycast"))
+	local Spring = require(Mods:WaitForChild("Spring"))
+	local WorldToGui = require(Mods:WaitForChild("WorldToGui"))
+
+	v8 = nil
+	v9 = false
+
+	local v10 = 100
+	local v11 = 0
+	local v12 = 0
+
+	v13 = false
+	v14 = false
+	v15 = false
+	v16 = false
+	v17 = false
+	v18 = false
+
+	local v19 = false
+	local v20 = false
+
+	v21 = nil
+
+	local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+	v22 = script.Parent
+
+	local MainStaticGui = PlayerGui:WaitForChild("MainStaticGui")
+
+	OverlayGui = PlayerGui:WaitForChild("OverlayGui")
+
+	local PlayerStatus = v22:WaitForChild("PlayerStatus")
+
+	Background = PlayerStatus:WaitForChild("Background")
+
+	local Health = Background:WaitForChild("Health"):WaitForChild("Health")
+
+	Stamina = Background:WaitForChild("Stamina"):WaitForChild("Stamina")
+
+	local LimbStatus = PlayerStatus:WaitForChild("LimbStatus")
+
+	v23 = LimbStatus:GetChildren()
+
+	local ProgressBars = v22:WaitForChild("ProgressBars")
+	local DownedFrame = v22:WaitForChild("DownedFrame")
+
+	UnderScreenEffects = v22:WaitForChild("UnderScreenEffects")
+
+	local OverScreenEffects = v22:WaitForChild("OverScreenEffects")
+	local Hurt = UnderScreenEffects:WaitForChild("Hurt")
+	local HurtEdges = UnderScreenEffects:WaitForChild("HurtEdges")
+	local StatModifiers = v22:WaitForChild("StatModifiers")
+
+	TweenService = game:GetService("TweenService")
+	v24 = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+	v25 = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+	local v26 = TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+	local v27 = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+	local v28 = TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+	local v29 = TweenInfo.new(2, Enum.EasingStyle.Cubic, Enum.EasingDirection.InOut)
+	local v30 = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+
+	TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+
+	local v31 = TweenInfo.new(10, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+	local v32 = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+
+	_G.CharacterStates = {}
+	ReplicatedStorage:WaitForChild("ToggledMenu"):Fire(nil)
+	SI:Fire(true)
+	Highlight.Parent = v6
+	v6:SetAttribute("AutoRotate", true)
+	Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing, false)
+	Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming, false)
+	LocalPlayer:GetMouse().Icon = "rbxassetid://8990979480"
+	CurrentCamera.CameraSubject = Humanoid
+	CurrentCamera.CameraType = Enum.CameraType.Custom
+	SoundService.RolloffScale = 1
+	v33 = ReplicatedStorage:WaitForChild("Particles"):WaitForChild("ColdSmoke"):Clone()
+	v33.Parent = v6:WaitForChild("Head", 1)
+	TweenService:Create(CurrentCamera, v28, {
+		CFrame = HumanoidRootPart.CFrame
+	}):Play()
+	TweenService:Create(Lighting.CC2, v24, {
+		Saturation = 0,
+		Contrast = 0,
+		TintColor = Color3.new(255/255, 255/255, 255/255)
+	}):Play()
+	TweenService:Create(Lighting.ShopBlur, v24, {
+		Size = 0
+	}):Play()
+	TweenService:Create(Lighting.Blur, v24, {
+		Size = 0
+	}):Play()
+	TweenService:Create(Lighting.CC, v24, {
+		Saturation = -0.3,
+		Contrast = 0,
+		Brightness = 0,
+		TintColor = Color3.fromRGB(255, 236, 226)
+	}):Play()
+	TweenService:Create(Lighting.DoF, v24, {
+		FarIntensity = 0
+	}):Play()
+	TweenService:Create(Lighting.LowHealthCC, v24, {
+		Saturation = 0,
+		Contrast = 0,
+		Brightness = 0,
+		Enabled = false,
+		TintColor = Color3.new(255/255, 255/255, 255/255)
+	}):Play()
+	TweenService:Create(SoundService.GeneralSoundGroup.DownedEq, v24, {
+		HighGain = 0,
+		MidGain = 0,
+		LowGain = 0,
+		Enabled = false
+	}):Play()
+	TweenService:Create(SoundService.GeneralSoundGroup.LowHealthEq, v24, {
+		HighGain = 0,
+		MidGain = 0,
+		LowGain = 0,
+		Enabled = false
+	}):Play()
+	TweenService:Create(SoundService.GeneralSoundGroup.Eq, v24, {
+		HighGain = 0,
+		MidGain = 0,
+		LowGain = 0,
+		Enabled = false
+	}):Play()
+	TweenService:Create(SoundService.GeneralSoundGroup, v24, {
+		Volume = 1
+	}):Play()
+
+	local function UpdateSettings() --[[ UpdateSettings | Line: 158 | Upvalues: Health (copy), Stamina (copy), StatModifiers (copy) ]]
+		Health.Parent.GroupTransparency = _G.Settings.Interface.Status_transparency
+		Stamina.Parent.GroupTransparency = _G.Settings.Interface.Status_transparency
+		Health.Amount.Visible = _G.Settings.Interface.Display_health_percentage
+		Stamina.Amount.Visible = _G.Settings.Interface.Display_stamina_percentage
+		StatModifiers.Visible = _G.Settings.Interface.Display_stat_modifiers
+	end
+
+	ReplicatedStorage:WaitForChild("UpdatedSettings").Event:Connect(UpdateSettings)
+	UpdateSettings()
+
+	local t = {
+		{
+			Tilt = Spring.new(),
+			Offset = Spring.new(Vector3.new(0, 0, 0))
+		},
+		{
+			Tilt = Spring.new(),
+			Offset = Spring.new(Vector3.new(0, 0, 0))
+		}
+	}
+
+	t2 = {}
+	ShakeCamera = function(p1, p2, p3, p4, p5, p6, p7) --[[ ShakeCamera | Line: 181 | Upvalues: t (copy), CurrentCamera (copy), OverScreenEffects (copy), TweenService (copy), Lighting (copy), SoundService (copy) ]]
+		local v1 = t[p7 or 1]
+
+		if not v1 then
+			warn("[CAMERA SHAKE]: Target spring not found!")
+
+			return
+		end
+
+		v1.Tilt.Damper = 0.1 * p3
+		v1.Tilt.Speed = 50 * p4
+		v1.Offset.Damper = 0.1 * p3
+		v1.Offset.Speed = 25 * p4
+
+		if typeof(p1) == "Vector3" then
+			v1.Tilt:Impulse(p2)
+			v1.Offset:Impulse(p1)
+
+			return
+		end
+
+		local v2 = CurrentCamera.CFrame.Position - p1.Position
+		local v4 = math.clamp((v2.Magnitude - p1.Min) / (p1.Max - p1.Min), 0, 1)
+		local v5 = (1 - v4) * p2
+
+		if p6 then
+			v1.Tilt:Impulse(v5 / 2)
+			v1.Offset:Impulse(v2.Unit * v5)
+
+			return
+		end
+
+		local v6 = TweenInfo.new(p5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+		OverScreenEffects.Flash.BackgroundTransparency = v4 * 1.5
+		TweenService:Create(OverScreenEffects.Flash, v6, {
+			BackgroundTransparency = 1
+		}):Play()
+		Lighting.Blur2.Size = (1 - v4) * 30
+		TweenService:Create(Lighting.Blur2, v6, {
+			Size = 0
+		}):Play()
+		SoundService.GeneralSoundGroup.Eq.Enabled = true
+		SoundService.GeneralSoundGroup.Eq.HighGain = (1 - v4) * -50
+		SoundService.GeneralSoundGroup.Eq.MidGain = (1 - v4) * -25
+		SoundService.GeneralSoundGroup.Eq.LowGain = 0
+		TweenService:Create(SoundService.GeneralSoundGroup.Eq, v6, {
+			HighGain = 0,
+			MidGain = 0,
+			LowGain = 0,
+			Enabled = false
+		}):Play()
+		v1.Tilt:Impulse(v5 / 2)
+		v1.Offset:Impulse(v2.Unit * v5)
+	end
+	ReplicatedStorage:WaitForChild("SH").Event:Connect(ShakeCamera)
+	Events:WaitForChild("Player"):WaitForChild("CamShake").OnClientEvent:Connect(ShakeCamera)
+
+	local function TiltShakeCamera(p1, p2, p3, p4) --[[ TiltShakeCamera | Line: 230 | Upvalues: t (copy) ]]
+		local v1 = t[p4 or 1]
+
+		if v1 then
+			v1.Tilt.Damper = 0.25 * p2
+			v1.Tilt.Speed = 50 * p3
+			v1.Tilt:Impulse(p1)
+		else
+			warn("[CAMERA SHAKE]: Target spring not found!")
+		end
+	end
+
+	ReplicatedStorage:WaitForChild("TSH").Event:Connect(TiltShakeCamera)
+	CollectionService:GetInstanceAddedSignal("ShakeOrigin"):Connect(function(p1) --[[ Line: 244 | Upvalues: t2 (copy) ]]
+		table.insert(t2, p1)
+	end)
+	CollectionService:GetInstanceRemovedSignal("ShakeOrigin"):Connect(function(p1) --[[ Line: 248 | Upvalues: t2 (copy) ]]
+		table.remove(t2, table.find(t2, p1))
+	end)
+
+	local t3 = {}
+	local t4 = { "downedIdle", "downedWalk", "crouchIdle", "crouchWalk", "sprint", "hurtSprint" }
+	local v34 = v6:GetAttribute("AnimationPack") or ""
+
+	for k, v in pairs((require(ReplicatedStorage:WaitForChild("AnimationPacks"):FindFirstChild(v34) or ReplicatedStorage.AnimationPacks.Default))) do
+		if table.find(t4, k) then
+			local v38 = v[1]
+			local Animation = Instance.new("Animation")
+
+			Animation.AnimationId = v38.id
+			t3[k] = {
+				Animation = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation),
+				Speed = v38.speedModifier
+			}
+			t3[k].Animation.Priority = Enum.AnimationPriority.Idle
+		end
+	end
+
+	PlayAnimation = function(p1, p2, p3, p4) --[[ PlayAnimation | Line: 277 | Upvalues: t3 (copy), v9 (ref) ]]
+		for k, v in pairs(t3) do
+			local v1 = v.Speed or (if p3 then p3 else 16)
+
+			if k == p1 then
+				if p2 then
+					v.Animation:AdjustSpeed(p2 / v1)
+				end
+
+				if v.Animation.IsPlaying == false then
+					v.Animation:Play(p4 or 0.15)
+				end
+
+				continue
+			end
+
+			if v.Animation.IsPlaying == true then
+				if k == "hurtSprint" or k == "sprint" then
+					v.Animation:Stop(0.35)
+
+					continue
+				end
+
+				if k == "crouchWalk" or k == "crouchIdle" then
+					v.Animation:Stop(0.25)
+
+					continue
+				end
+
+				if k == "downedIdle" and v9 == false then
+					v.Animation:Stop(0.05)
+
+					continue
+				end
+
+				v.Animation:Stop(p4 or 0.75)
+			end
+		end
+	end
+	v39 = 0
+
+	local function DisableBackpack(p1, p2) --[[ DisableBackpack | Line: 316 | Upvalues: v39 (ref) ]]
+		if p2 then
+			v39 = p1
+
+			return
+		end
+
+		if not (v39 < p1) then
+			return
+		end
+
+		v39 = p1
+	end
+
+	ReplicatedStorage:WaitForChild("SIT").Event:Connect(DisableBackpack)
+
+	local function LerpNumber(p1, p2, p3) --[[ LerpNumber | Line: 325 ]]
+		return p1 + (p2 - p1) * p3
+	end
+
+	local function UpdateSprinting(p1) --[[ UpdateSprinting | Line: 330 | Upvalues: v17 (ref), v6 (copy) ]]
+		if p1 == true then
+			if v17 == false then
+				v17 = true
+				v6:SetAttribute("Sprinting", v17)
+			end
+		else
+			if p1 ~= false or v17 ~= true then
+				return
+			end
+
+			v17 = false
+			v6:SetAttribute("Sprinting", v17)
+		end
+	end
+
+	ToggleCinematicMode = function(p1, p2, p3) --[[ ToggleCinematicMode | Line: 345 | Upvalues: v19 (ref), v20 (ref), ReplicatedStorage (copy), PlayerGui (copy), MainStaticGui (copy), v22 (copy), PlayerStatus (copy) ]]
+		if v19 and p1 then
+			return
+		end
+
+		if v20 and not p3 then
+			return
+		end
+
+		local v1 = ReplicatedStorage:GetAttribute("DisableUI")
+
+		v20 = p3
+
+		if v1 then
+			p1 = false
+		end
+
+		PlayerGui:FindFirstChild("GunGui")
+
+		local InventoryGui = PlayerGui:FindFirstChild("InventoryGui")
+
+		if not (p1 or (p2 or v1)) then
+			ReplicatedStorage.Notify:Fire("CINEMATIC MODE ENABLED | PRESS J TO DISABLE")
+		end
+
+		if InventoryGui then
+			InventoryGui.Enabled = p1
+		end
+
+		MainStaticGui.Enabled = p1
+		v22.Enabled = p1
+
+		if not ReplicatedStorage:GetAttribute("HideNonEssentialUI") then
+			return
+		end
+
+		v22.Minimap.Visible = false
+		v22.LevelFrame.Visible = false
+		PlayerStatus.Position = UDim2.new(3, 0, 3, 0)
+	end
+	ToggleCinematicMode(true)
+	ReplicatedStorage:WaitForChild("CinematicMode").Event:Connect(ToggleCinematicMode)
+	UpdateDowned = function(p1) --[[ UpdateDowned | Line: 384 | Upvalues: v9 (ref), TweenService (copy), Lighting (copy), v24 (copy), DownedFrame (copy), SoundService (copy), v29 (copy), Sounds (copy), v31 (copy), Background (copy) ]]
+		if p1 and not v9 then
+			v9 = true
+			TweenService:Create(Lighting.CC, v24, {
+				Saturation = -0.85,
+				Contrast = 0.035,
+				Brightness = -0.1,
+				TintColor = Color3.fromRGB(255, 100, 100)
+			}):Play()
+			TweenService:Create(Lighting.DoF, v24, {
+				FarIntensity = 0.5
+			}):Play()
+			DownedFrame.Visible = true
+			TweenService:Create(SoundService.GeneralSoundGroup.DownedEq, v29, {
+				Enabled = true,
+				HighGain = -80,
+				MidGain = -80,
+				LowGain = 0
+			}):Play()
+			Sounds.Downed:Play()
+			Sounds.HeartbeatFast:Play()
+			Sounds.HeartbeatFast.Volume = 0.75
+			TweenService:Create(Sounds.HeartbeatFast, v31, {
+				Volume = 0,
+				Playing = false
+			}):Play()
+			TweenService:Create(Background.Health, v24, {
+				GroupColor3 = Color3.fromRGB(255, 0, 0)
+			}):Play()
+			Background.Health.TopBar.HealthTitle.TextLabel.Text = "DOWNED"
+
+			return
+		end
+
+		if p1 or not v9 then
+			return
+		end
+
+		v9 = false
+		Sounds.Downed:Stop()
+		Sounds.HeartbeatFast:Stop()
+		TweenService:Create(Lighting.CC, v24, {
+			Saturation = -0.3,
+			Contrast = 0.025,
+			Brightness = 0,
+			TintColor = Color3.fromRGB(255, 236, 226)
+		}):Play()
+		TweenService:Create(Lighting.DoF, v24, {
+			FarIntensity = 0
+		}):Play()
+		DownedFrame.Visible = false
+		TweenService:Create(SoundService.GeneralSoundGroup.DownedEq, v29, {
+			HighGain = 0,
+			MidGain = 0,
+			LowGain = 0,
+			Enabled = false
+		}):Play()
+		TweenService:Create(Background.Health, v24, {
+			GroupColor3 = Color3.fromRGB(101, 255, 84)
+		}):Play()
+		Background.Health.TopBar.HealthTitle.TextLabel.Text = "HEALTH"
+	end
+
+	local function UpdateHealth(p1) --[[ UpdateHealth | Line: 428 | Upvalues: v15 (ref), v5 (copy), TweenService (copy), UnderScreenEffects (copy), v29 (copy), Lighting (copy), v24 (copy), SoundService (copy), v9 (ref), Sounds (copy), v10 (ref), HurtEdges (copy), Hurt (copy), Humanoid (copy), clamp (copy), Health (copy), v30 (copy), ceil (copy) ]]
+		v15 = p1 <= 25
+
+		local v3 = 1 - math.clamp((p1 - v5.Min) / (v5.Max - v5.Min), 0, 1)
+
+		if not _G.CharacterStates.Died then
+			TweenService:Create(UnderScreenEffects.LowHealth, v29, {
+				ImageTransparency = 1 - v3
+			}):Play()
+
+			local t = {
+				Contrast = 0,
+				Brightness = 0,
+				TintColor = Color3.new(255/255, 255/255, 255/255):Lerp(Color3.new(1, 0.5, 0.5), v3),
+				Saturation = 0 + -0.5 * v3
+			}
+
+			t.Enabled = v3 > 0
+			TweenService:Create(Lighting.LowHealthCC, v24, t):Play()
+
+			local t2 = {
+				MidGain = 0,
+				HighGain = 0 + -15 * v3,
+				LowGain = 0 + 5 * v3
+			}
+
+			t2.Enabled = if v3 > 0 then true else false
+			TweenService:Create(SoundService.GeneralSoundGroup.LowHealthEq, v24, t2):Play()
+		end
+
+		local v102 = if v15 then not _G.CharacterStates.Died else v9 and not _G.CharacterStates.Died
+
+		if v102 and not Sounds.LowHealth.Playing then
+			Sounds.LowHealth:Play()
+		elseif not v102 and Sounds.LowHealth.Playing then
+			Sounds.LowHealth:Stop()
+		end
+
+		if p1 < v10 then
+			local v12 = math.min(v10 - p1, 20) / 20
+
+			HurtEdges.ImageTransparency = 1 - v12
+			HurtEdges.BackgroundTransparency = math.max(1 - v12, 0.5)
+			TweenService:Create(HurtEdges, TweenInfo.new(math.clamp(v12, 0.5, 1), Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				ImageTransparency = 1,
+				BackgroundTransparency = 1
+			}):Play()
+			Hurt.ImageTransparency = 1 - v12
+			Hurt.BackgroundTransparency = math.max(1 - v12, 0.75)
+			TweenService:Create(Hurt, TweenInfo.new(math.clamp(v12, 0.5, 1), Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				ImageTransparency = 1,
+				BackgroundTransparency = 1
+			}):Play()
+		end
+
+		v10 = p1
+
+		local v13 = UDim2.new(clamp(p1 / Humanoid.MaxHealth, 0, 1), 0, 1, 0)
+
+		TweenService:Create(Health.Bar, v24, {
+			Size = v13
+		}):Play()
+		TweenService:Create(Health.Bar2, v30, {
+			Size = v13
+		}):Play()
+		TweenService:Create(Health.Amount.Bar, v24, {
+			Offset = Vector2.new(v13.X.Scale, 0)
+		}):Play()
+		Health.Amount.Text = ceil(p1) .. "%"
+
+		if not (Humanoid.MaxHealth >= 1000000000) then
+			return
+		end
+
+		Health.Amount.Text = "INF"
+	end
+
+	Humanoid.HealthChanged:Connect(UpdateHealth)
+	UpdateHealth(Humanoid.Health)
+
+	local function LoadAnimation(p1) --[[ LoadAnimation | Line: 510 | Upvalues: Humanoid (copy) ]]
+		local Animation = Instance.new("Animation")
+
+		Animation.AnimationId = p1
+
+		return Humanoid:WaitForChild("Animator"):LoadAnimation(Animation)
+	end
+
+	local EffectStatuses = v22:WaitForChild("EffectStatuses")
+	local StatusEffectDatabase = require(Mods:WaitForChild("StatusEffectDatabase"))
+
+	Shared = require(Mods:WaitForChild("StatusEffectDatabase"):WaitForChild("Shared"))
+
+	local ClientEffects = require(Mods.StatusEffectDatabase:WaitForChild("ClientEffects"))
+	local Themes = require(Mods.StatusEffectDatabase:WaitForChild("Themes"))
+	local t5 = {}
+
+	v40 = true
+
+	for k, v in pairs(StatusEffectDatabase) do
+		local v41 = Themes[v.Theme]
+
+		if v41 then
+			local v42 = script.Frames.Effect:Clone()
+
+			v42.Name = k
+			v42.Visible = false
+
+			if v.Icon then
+				v42.Icon.Image = v.Icon
+			else
+				v42.Icon.Visible = false
+				v42.NoIcon.Visible = true
+			end
+
+			if v.Description then
+				v42.Info.Title.Text = v.Title
+				v42.Info.Desc.Text = v.Description
+			else
+				v42.Info.OnlyTitle.Text = v.Title
+				v42.Info.OnlyTitle.Visible = true
+				v42.Info.Title.Visible = false
+				v42.Info.Desc.Visible = false
+			end
+
+			v42.Edge.ImageColor3 = v41.BackgroundColor
+			v42.Edge2.ImageColor3 = v41.BackgroundColor
+			v42.Shine.ImageColor3 = v41.BackgroundColor
+			v42.Bar.BackgroundColor3 = v41.BackgroundColor
+			v42.Bar.Extend.BackgroundColor3 = v41.BackgroundColor
+			v42.Info.Shine.ImageColor3 = v41.BackgroundColor
+			v42.Info.OnlyTitle.TextColor3 = v41.IconColor
+			v42.Info.Title.TextColor3 = v41.IconColor
+			v42.Info.Desc.TextColor3 = v41.IconColor
+			v42.NoIcon.TextColor3 = v41.IconColor
+			v42.Icon.ImageColor3 = v41.IconColor
+			v42.ValueText.TextColor3 = v41.IconColor
+			v42.MouseEnter:Connect(function() --[[ Line: 576 | Upvalues: TweenService (copy), v42 (copy), v28 (copy), Sounds (copy) ]]
+				TweenService:Create(v42, v28, {
+					BackgroundTransparency = 0,
+					ZIndex = 25
+				}):Play()
+				TweenService:Create(v42.Info, v28, {
+					BackgroundTransparency = 0,
+					Visible = true,
+					Size = UDim2.new(2.5, 0, 1, 0)
+				}):Play()
+				TweenService:Create(v42.Edge2, v28, {
+					Position = UDim2.new(3.5, 1, 0.5, 0)
+				}):Play()
+				TweenService:Create(v42.Bar.Extend, v28, {
+					Size = UDim2.new(2.5, 0, 1, 0)
+				}):Play()
+				Sounds.Hover:Play()
+			end)
+			v42.MouseLeave:Connect(function() --[[ Line: 584 | Upvalues: TweenService (copy), v42 (copy), v28 (copy) ]]
+				TweenService:Create(v42, v28, {
+					BackgroundTransparency = 0.7,
+					ZIndex = 1
+				}):Play()
+				TweenService:Create(v42.Info, v28, {
+					BackgroundTransparency = 0.7,
+					Visible = false,
+					Size = UDim2.new(0, 0, 1, 0)
+				}):Play()
+				TweenService:Create(v42.Edge2, v28, {
+					Position = UDim2.new(1, 1, 0.5, 0)
+				}):Play()
+				TweenService:Create(v42.Bar.Extend, v28, {
+					Size = UDim2.new(0, 0, 1, 0)
+				}):Play()
+			end)
+
+			local v43 = TweenService:Create(v42.Icon.Gradient, v24, {
+				Offset = Vector2.new(0, -1)
+			})
+
+			v43:Play()
+			v43.Completed:Connect(function() --[[ Line: 595 | Upvalues: v42 (copy), v43 (copy) ]]
+				v42.Icon.Gradient.Offset = Vector2.new(0, 1)
+				v43:Play()
+			end)
+			t5[k] = {
+				Highest = 0,
+				Value = 0,
+				Icon = v42,
+				Animations = {},
+				Stats = v.Stats,
+				Settings = v.Settings,
+				Priority = v.Priority,
+				CustomEffects = ClientEffects[k]
+			}
+
+			for k2, v38 in pairs(v.Animations) do
+				local Animation = Instance.new("Animation")
+
+				Animation.AnimationId = v38
+				t5[k].Animations[k2] = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation)
+			end
+
+			if t5[k].CustomEffects then
+				t5[k].CustomEffects(nil, t5[k], true)
+			end
+
+			v42.Parent = EffectStatuses
+
+			continue
+		end
+
+		warn("[STATUS EFFECTS]: Effect theme is not found!", v.Theme)
+	end
+
+	v6.AttributeChanged:Connect(function(p1) --[[ Line: 627 | Upvalues: t5 (copy), v6 (copy), FormatNumber (copy) ]]
+		local v1 = t5[p1]
+
+		if not v1 then
+			return
+		end
+
+		local v2 = v6:GetAttribute(p1)
+
+		if v2 then
+			if v1.Animations.Idle and not v1.Animations.Idle.IsPlaying then
+				v1.Animations.Idle:Play()
+			end
+
+			v1.Active = true
+			v1.Icon.Visible = not v1.Settings.Hidden
+			v1.Icon.ValueText.Text = v1.MaxValue and FormatNumber.Round(v2.Y / v1.MaxValue * 100) .. "%" or FormatNumber.Round(v2.Y, 2)
+
+			if typeof(v2) ~= "Vector2" then
+				return
+			end
+
+			if v1.Highest < v2.X then
+				v1.Highest = v2.X
+			end
+
+			v1.Value = v2.Y
+			v1.Icon.Bar.Size = UDim2.new(1, 0, v2.X / v1.Highest, 0)
+
+			if v1.CustomEffects then
+				v1.CustomEffects(v2, v1)
+			end
+		else
+			v1.Active = false
+			v1.Icon.Visible = false
+			v1.Highest = 0
+			v1.Value = 0
+
+			if v1.CustomEffects then
+				v1.CustomEffects(nil, v1, true)
+			end
+
+			if not (v1.Animations.Idle and v1.Animations.Idle.IsPlaying) then
+				return
+			end
+
+			v1.Animations.Idle:Stop()
+		end
+	end)
+	v44 = true
+	v45 = false
+	v46 = false
+
+	local v47 = nil
+
+	JumpCooldown = LimbStatus:WaitForChild("Extra"):WaitForChild("JumpCooldown")
+
+	local v48 = 0.35
+
+	v49 = tick()
+	v50 = 0
+
+	local function StartJumpCooldown() --[[ StartJumpCooldown | Line: 691 | Upvalues: v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), Humanoid (copy), JumpCooldown (copy), TweenService (copy) ]]
+		task.spawn(function() --[[ Line: 692 | Upvalues: v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), Humanoid (ref), JumpCooldown (ref), TweenService (ref) ]]
+			v44 = false
+			v21 = nil
+			v45 = false
+			task.delay(0.1, function() --[[ Line: 696 | Upvalues: v45 (ref) ]]
+				v45 = true
+			end)
+
+			local v1 = math.random(999)
+
+			v47 = v1
+			v48 = if tick() - v49 < 2 then v48 + 0.35 or 0.35 else 0.35
+			v49 = tick()
+			Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
+			JumpCooldown.Bar.Offset = Vector2.new(0, 1)
+			TweenService:Create(JumpCooldown.Bar, TweenInfo.new(v48, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+				Offset = Vector2.new(0, 0)
+			}):Play()
+			task.wait(v48)
+
+			if v1 == v1 then
+				Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
+				v44 = true
+			end
+		end)
+	end
+
+	Humanoid.Jumping:Connect(function(p1) --[[ Line: 724 | Upvalues: v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), Humanoid (copy), JumpCooldown (copy), TweenService (copy), v17 (ref), HumanoidRootPart (copy), Events (copy) ]]
+		if not (v44 and p1) then
+			return
+		end
+
+		task.spawn(function() --[[ Line: 692 | Upvalues: v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), Humanoid (ref), JumpCooldown (ref), TweenService (ref) ]]
+			v44 = false
+			v21 = nil
+			v45 = false
+			task.delay(0.1, function() --[[ Line: 696 | Upvalues: v45 (ref) ]]
+				v45 = true
+			end)
+
+			local v1 = math.random(999)
+
+			v47 = v1
+			v48 = if tick() - v49 < 2 then v48 + 0.35 or 0.35 else 0.35
+			v49 = tick()
+			Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
+			JumpCooldown.Bar.Offset = Vector2.new(0, 1)
+			TweenService:Create(JumpCooldown.Bar, TweenInfo.new(v48, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+				Offset = Vector2.new(0, 0)
+			}):Play()
+			task.wait(v48)
+
+			if v1 == v1 then
+				Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
+				v44 = true
+			end
+		end)
+
+		if v17 then
+			HumanoidRootPart:ApplyImpulse(Humanoid.MoveDirection * 75)
+		end
+
+		Events.Player.Stamina:FireServer(5)
+	end)
+
+	local Animation = Instance.new("Animation")
+
+	Animation.AnimationId = "rbxassetid://14498993498"
+
+	local v51 = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation)
+	local v52 = Sounds.Slide:GetChildren()
+	local v53 = nil
+	local v54 = false
+	local v55 = false
+
+	local function ClampMagnitude(p1, p2) --[[ ClampMagnitude | Line: 750 ]]
+		if p1.magnitude == 0 then
+			return Vector3.new(0, 0, 0)
+		end
+
+		return p1.Unit * math.min(p1.Magnitude, p2)
+	end
+
+	Slide = function() --[[ Slide | Line: 755 | Upvalues: v54 (ref), v13 (ref), v17 (ref), v18 (ref), v6 (copy), Sounds (copy), Events (copy), v55 (ref), ReplicatedStorage (copy), HumanoidRootPart (copy), Humanoid (copy), v51 (copy), v52 (copy), v53 (ref), Raycast (copy), Debris (copy), v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), JumpCooldown (copy), TweenService (copy) ]]
+		if v54 then
+			return
+		end
+
+		if _G.CharacterStates.NoSlide then
+			return
+		end
+
+		if v13 ~= false or (v17 ~= true or (not v18 or (_G.CharacterStates.PreparingSwing or (_G.CharacterStates.Falling or (not _G.CharacterStates.AutoRotate or (_G.CharacterStates.Reloading or (v6:FindFirstChild("CarryWeld") or (v6:FindFirstChild("CarryingPlr") or (_G.CharacterStates.Finishing or _G.CharacterStates.Ragdolled))))))))) then
+			return
+		end
+
+		v54 = true
+		v13 = true
+		v6:SetAttribute("Sliding", true)
+
+		local v1 = _G.CharacterStates.PowerSlide and not _G.CharacterStates.PowerSlideCD
+		local v2 = if v1 then 0.995 else 0.97
+
+		if v1 then
+			Sounds.Booster:Play()
+			Events.Player.GearAbility:FireServer("Slide", true)
+		end
+
+		v55 = true
+		Events.Player.Stamina:FireServer(5)
+
+		local v4 = ReplicatedStorage.Particles.Slide:Clone()
+
+		v4.Parent = HumanoidRootPart
+
+		local ActionVelocity = Instance.new("BodyVelocity")
+
+		ActionVelocity.Name = "ActionVelocity"
+		ActionVelocity.MaxForce = Vector3.new(15000, 0, 15000)
+
+		local v5 = Humanoid.MoveDirection * (20 + (if v1 then 25 else 4))
+		local v62 = Humanoid.WalkSpeed / 25
+
+		ActionVelocity.Velocity = v5 * math.clamp(v62, 1, 2)
+		ActionVelocity.Parent = HumanoidRootPart
+		v51:Play(0.25)
+		Sounds.SlideLoop:Play()
+
+		local v7 = nil
+
+		for i = 1, 10 do
+			v7 = v52[math.random(#v52)]
+
+			if v7.Name ~= v53 then
+				break
+			end
+		end
+
+		v53 = v7.Name
+		v7:Play()
+
+		local Position = HumanoidRootPart.Position
+		local Position2 = HumanoidRootPart.Position
+
+		while task.wait(0.025) do
+			local v8
+
+			ActionVelocity.Velocity = ActionVelocity.Velocity * v2
+
+			if v1 then
+				v8 = true
+			else
+				v8 = if Humanoid.FloorMaterial == Enum.Material.Air then Raycast.CastRay(HumanoidRootPart.Position, Vector3.new(0, -4, 0), {
+	CanCollide = false
+}) else true
+
+				if Position2.Y + 1 < HumanoidRootPart.Position.Y then
+					break
+				end
+			end
+
+			if ActionVelocity.Velocity.Magnitude < 3 or (not v8 or (v13 == false or (not _G.CharacterStates.AutoRotate or ((Position - HumanoidRootPart.Position).Magnitude < 0.25 or _G.CharacterStates.NoSlide)))) then
+				break
+			end
+
+			if Position.Y - HumanoidRootPart.Position.Y > 0.25 then
+				local v11 = ActionVelocity.Velocity * ((Position.Y - HumanoidRootPart.Position.Y) * 15)
+				local v12 = v11.Unit * math.min(v11.Magnitude, 20)
+
+				if ActionVelocity.Velocity.Magnitude < v12.Magnitude then
+					ActionVelocity.Velocity = v12
+				end
+			end
+
+			Position = HumanoidRootPart.Position
+		end
+
+		v7:Stop()
+		Sounds.SlideLoop:Stop()
+		v4.Smoke.Enabled = false
+		Debris:AddItem(v4, 2)
+		v51:Stop(0.25)
+		ActionVelocity:Destroy()
+
+		if v1 then
+			Events.Player.GearAbility:FireServer("Slide", false)
+		end
+
+		task.spawn(function() --[[ Line: 692 | Upvalues: v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), Humanoid (ref), JumpCooldown (ref), TweenService (ref) ]]
+			v44 = false
+			v21 = nil
+			v45 = false
+			task.delay(0.1, function() --[[ Line: 696 | Upvalues: v45 (ref) ]]
+				v45 = true
+			end)
+
+			local v1 = math.random(999)
+
+			v47 = v1
+			v48 = if tick() - v49 < 2 then v48 + 0.35 or 0.35 else 0.35
+			v49 = tick()
+			Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
+			JumpCooldown.Bar.Offset = Vector2.new(0, 1)
+			TweenService:Create(JumpCooldown.Bar, TweenInfo.new(v48, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+				Offset = Vector2.new(0, 0)
+			}):Play()
+			task.wait(v48)
+
+			if v1 == v1 then
+				Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
+				v44 = true
+			end
+		end)
+		v6:SetAttribute("Sliding", false)
+		v13 = false
+		task.delay(0.5, function() --[[ Line: 865 | Upvalues: v54 (ref), v55 (ref) ]]
+			v54 = false
+			task.wait(1)
+			v55 = false
+		end)
+	end
+	tbl = { "Cash", "Bank", "Valuables", "Bounty" }
+
+	local Stats = v22:WaitForChild("Minimap"):WaitForChild("Stats")
+
+	UpdateCurrency = function(p1, p2) --[[ UpdateCurrency | Line: 880 | Upvalues: Stats (copy), TweenService (copy), v24 (copy), v28 (copy), FormatNumber (copy) ]]
+		if not (p1 and p2) then
+			return
+		end
+
+		local v1 = Stats:FindFirstChild(p1)
+
+		if not v1 then
+			return
+		end
+
+		local v2 = v1:GetAttribute("LastValue") or 0
+		local v3 = math.abs(p2 - v2)
+
+		if v1:GetAttribute("LastValue") and (v1:FindFirstChild("AddedText") and (v2 < p2 or p2 < v2)) then
+			TweenService:Create(v1.AddedText, v24, {
+				TextTransparency = 0
+			}):Play()
+			TweenService:Create(v1.ValueText, v28, {
+				TextTransparency = 1
+			}):Play()
+			TweenService:Create(v1.FullValueText, v28, {
+				TextTransparency = 1
+			}):Play()
+
+			if not v1.AddedText:GetAttribute("DefaultColor") then
+				v1.AddedText:SetAttribute("DefaultColor", v1.AddedText.TextColor3)
+			end
+
+			if v2 < p2 then
+				v1.AddedText.TextColor3 = v1.AddedText:GetAttribute("DefaultColor")
+				v1.AddedText.Text = "+$" .. FormatNumber.Separate(v3)
+			elseif p2 < v2 then
+				v1.AddedText.TextColor3 = Color3.fromRGB(255, 155, 155)
+				v1.AddedText.Text = "-$" .. FormatNumber.Separate(v3)
+			end
+
+			task.delay(1, function() --[[ Line: 912 | Upvalues: TweenService (ref), v1 (copy), v24 (ref), v28 (ref) ]]
+				TweenService:Create(v1.AddedText, v24, {
+					TextTransparency = 1
+				}):Play()
+				TweenService:Create(v1.ValueText, v28, {
+					TextTransparency = 0
+				}):Play()
+				TweenService:Create(v1.FullValueText, v28, {
+					TextTransparency = 1
+				}):Play()
+			end)
+		end
+
+		v1.FullValueText.Text = "$" .. FormatNumber.Separate(p2)
+		v1.ValueText.Text = "$" .. FormatNumber.Abbreviate(p2)
+		v1:SetAttribute("LastValue", p2)
+	end
+
+	for k, v in pairs(tbl) do
+		UpdateCurrency(v, v7:GetAttribute(v))
+
+		local v56 = Stats:FindFirstChild(v)
+
+		if v56 then
+			v56.MouseEnter:Connect(function() --[[ Line: 934 | Upvalues: TweenService (copy), v56 (copy), v28 (copy) ]]
+				TweenService:Create(v56.ValueText, v28, {
+					TextTransparency = 1
+				}):Play()
+				TweenService:Create(v56.FullValueText, v28, {
+					TextTransparency = 0
+				}):Play()
+
+				if not v56:FindFirstChild("AddedText") then
+					return
+				end
+
+				TweenService:Create(v56.AddedText, v28, {
+					TextTransparency = 1
+				}):Play()
+			end)
+			v56.MouseLeave:Connect(function() --[[ Line: 940 | Upvalues: TweenService (copy), v56 (copy), v28 (copy) ]]
+				TweenService:Create(v56.ValueText, v28, {
+					TextTransparency = 0
+				}):Play()
+				TweenService:Create(v56.FullValueText, v28, {
+					TextTransparency = 1
+				}):Play()
+
+				if not v56:FindFirstChild("AddedText") then
+					return
+				end
+
+				TweenService:Create(v56.AddedText, v28, {
+					TextTransparency = 1
+				}):Play()
+			end)
+		end
+	end
+
+	Stats:WaitForChild("Cash"):WaitForChild("DropCash").MouseButton1Click:Connect(function() --[[ Line: 951 | Upvalues: Players (copy), v7 (copy), ReplicatedStorage (copy), Events (copy) ]]
+		local v1 = Players:GetAttribute("CASH_DROP_RANGE")
+
+		if v7:GetAttribute("Cash") < 1 then
+			ReplicatedStorage.Notify:Fire("Not enough cash to drop", "Warning")
+
+			return
+		end
+
+		local v4 = ReplicatedStorage.Prompt:Invoke("DROPPING CASH", "How much cash would you like to drop?", NumberRange.new(v1.Min, (math.clamp(v7:GetAttribute("Cash"), v1.Min, v1.Max))))
+
+		if not v4 then
+			return
+		end
+
+		Events.Player.DropMoney:FireServer(v4)
+	end)
+
+	local LevelFrame = v22:WaitForChild("LevelFrame")
+	local Level = LevelFrame:WaitForChild("Level")
+	local LevelUp = LevelFrame:WaitForChild("LevelUp")
+	local MaxLevel = LevelFrame:WaitForChild("MaxLevel")
+	local XpFrame = LevelFrame:WaitForChild("XpFrame")
+	local v57 = TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+	local v58 = TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.In)
+	local v59 = TweenInfo.new(0.6, Enum.EasingStyle.Sine, Enum.EasingDirection.In)
+	local v60 = true
+	local v61 = 0
+	local v62 = 0
+	local v63 = false
+	local v64 = false
+	local v65 = 0
+	local t6 = require(script.t)
+
+	script.t:Destroy()
+	UpdateLevel = function(p1, p2, p3) --[[ UpdateLevel | Line: 989 | Upvalues: v4 (copy), v2 (copy), Level (copy), TweenService (copy), v57 (copy), v62 (ref), v61 (ref), v63 (ref), v64 (ref), v60 (ref), Sounds (copy), v7 (copy), v59 (copy), v58 (copy), v1 (copy), MaxLevel (copy) ]]
+		local v22 = math.floor(v4 * v2 ^ p1)
+		local v3 = math.floor(p2)
+
+		Level.LevelBox.LevelText.Text = p1
+		Level.XpBar.XpText.Text = v3 .. "/" .. v22 .. " XP"
+		TweenService:Create(Level.XpBar.CountingBar, v57, {
+			Size = UDim2.new(v3 / v22, 0, 1, 0)
+		}):Play()
+		v62 = p1
+
+		if v61 < v3 then
+			v61 = v3
+
+			if not v63 then
+				v63 = true
+
+				local sum = 1
+
+				repeat
+					if not task.wait(0.1) then
+						break
+					end
+
+					if v3 < v61 then
+						v3 = v61
+						sum = 1
+					end
+
+					if p1 ~= p1 then
+						break
+					end
+
+					sum = sum - 0.1
+				until sum <= 0 and not v64
+
+				if v60 then
+					v60 = false
+				else
+					Sounds.XpAdd:Play()
+					Sounds.XpCount:Play()
+				end
+
+				local v5 = math.floor(v4 * v2 ^ v7:GetAttribute("Level"))
+
+				v61 = v7:GetAttribute("Xp")
+				TweenService:Create(Level.XpBar.Bar, v59, {
+					Size = UDim2.new(v61 / v5, 0, 1, 0)
+				}):Play()
+				TweenService:Create(Level.XpBar.XpText.Bar, v59, {
+					Offset = Vector2.new(v61 / v5, 0)
+				}):Play()
+				v63 = false
+				v22 = v5
+			end
+		else
+			v61 = v3
+		end
+
+		if p3 then
+			TweenService:Create(Level.XpBar.Bar, v58, {
+				Size = UDim2.new(v61 / v22, 0, 1, 0)
+			}):Play()
+			TweenService:Create(Level.XpBar.XpText.Bar, v58, {
+				Offset = Vector2.new(v61 / v22, 0)
+			}):Play()
+		end
+
+		if not (v1 <= p1) then
+			return
+		end
+
+		Level.Visible = false
+		MaxLevel.Visible = true
+	end
+	UpdateLevel(v7:GetAttribute("Level"), v7:GetAttribute("Xp"), true)
+	MaxLevel.LevelBox.TextLabel.Text = v1
+
+	local function AddXpFrame(p1, p2, p3) --[[ AddXpFrame | Line: 1058 | Upvalues: XpFrame (copy), TweenService (copy), v57 (copy) ]]
+		local v1 = XpFrame.XpList:GetChildren()
+
+		if #v1 > 4 then
+			for k, v in pairs(v1) do
+				if v.Name == "Xp" then
+					table.remove(v1, k)
+					v:Destroy()
+				end
+
+				if #v1 <= 4 then
+					break
+				end
+			end
+		end
+
+		local v2 = script.Frames.Xp:Clone()
+
+		v2.Title.Text = p2
+		v2.Amount.Text = "+" .. p1 .. " XP"
+
+		if p3 then
+			v2.Shine.ImageColor3 = p3
+			v2.Title.TextColor3 = p3
+			v2.Amount.TextColor3 = p3
+		end
+
+		v2.Parent = XpFrame.XpList
+		TweenService:Create(v2.Shine, v57, {
+			ImageTransparency = 0
+		}):Play()
+		TweenService:Create(v2.Title, v57, {
+			TextTransparency = 0.15
+		}):Play()
+		TweenService:Create(v2.Amount, v57, {
+			TextTransparency = 0.15
+		}):Play()
+		task.delay(0.1, function() --[[ Line: 1090 | Upvalues: v2 (copy), TweenService (ref), v57 (ref) ]]
+			if not (v2 and v2:FindFirstChild("Shine")) then
+				return
+			end
+
+			TweenService:Create(v2.Shine, v57, {
+				ImageTransparency = 0.9
+			}):Play()
+		end)
+	end
+
+	local function CleanupXpFrames() --[[ CleanupXpFrames | Line: 1096 | Upvalues: XpFrame (copy), TweenService (copy), v57 (copy) ]]
+		for k, v in pairs(XpFrame.XpList:GetChildren()) do
+			if v.Name == "Xp" then
+				TweenService:Create(v, v57, {
+					Size = UDim2.new(1, 0, 0, 0)
+				}):Play()
+				TweenService:Create(v.Shine, v57, {
+					ImageTransparency = 1
+				}):Play()
+				TweenService:Create(v.Title, v57, {
+					TextTransparency = 1
+				}):Play()
+				TweenService:Create(v.Amount, v57, {
+					TextTransparency = 1
+				}):Play()
+				task.delay(0.5, function() --[[ Line: 1105 | Upvalues: v (copy) ]]
+					v:Destroy()
+				end)
+			end
+		end
+	end
+
+	LevelUp2 = function(p1, p2) --[[ LevelUp | Line: 1112 | Upvalues: UpdateLevel (copy), Sounds (copy), LevelUp (copy), FormatNumber (copy), v3 (copy), ItemDatabase (copy), ReplicatedStorage (copy), t6 (copy), Level (copy), MaxLevel (copy), XpFrame (copy) ]]
+		UpdateLevel(p1, p2, true)
+		Sounds.Level:Play()
+		LevelUp.LevelLabel.Text = p1
+		LevelUp.MoneyLabel.Text = "+$" .. FormatNumber.Separate(p1 * v3)
+
+		for k, v in pairs(LevelUp.UnlockedFrame:GetChildren()) do
+			if v:IsA("Frame") then
+				v:Destroy()
+			end
+		end
+
+		local v1 = false
+
+		for k, v in pairs(ItemDatabase) do
+			if v.Requirements.Level == p1 and v.Price.Buy then
+				v1 = true
+
+				local v2 = script.Frames.UnlockedItem:Clone()
+
+				v2.TextLabel.Text = k:upper()
+				v2.ItemIcon.Image = v.Icon or ItemDatabase.Default.Icon
+				v2.Parent = LevelUp.UnlockedFrame
+			end
+		end
+
+		if ReplicatedStorage:GetAttribute("NoLevelUpRewards") then
+			LevelUp.TextLabel.Position = UDim2.new(0.667, 0, 0.3, 0)
+			LevelUp.MoneyLabel.Text = ""
+			v1 = false
+		else
+			LevelUp.TextLabel.Position = UDim2.new(0.667, 0, 0.086, 0)
+		end
+
+		t6.Level(LevelUp, Level, MaxLevel, XpFrame, v1)
+	end
+	Events.Player.Xp.OnClientEvent:Connect(function(p1, p2, p3, p4) --[[ Line: 1153 | Upvalues: AddXpFrame (copy), Sounds (copy), MedalClipper (copy), v64 (ref), TweenService (copy), XpFrame (copy), v57 (copy), v65 (ref), CleanupXpFrames (copy) ]]
+		AddXpFrame(p2, p1, p3)
+		Sounds.Xp:Play()
+
+		if p4 == "PlayerKill" then
+			MedalClipper:TriggerClip("KZ_player_kill", "Recorded kill in Killzone", {
+				duration = 30,
+				captureDelayMs = 5000
+			})
+		elseif p4 == "PlayerAssist" then
+			MedalClipper:TriggerClip("KZ_player_assist", "Recorded assist in Killzone", {
+				duration = 30,
+				captureDelayMs = 5000
+			})
+		end
+
+		if p3 == Color3.fromRGB(255, 55, 55) then
+			Sounds.KillFeed.Kill:Play()
+			Sounds.KillFeed.Kill2:Play()
+			Sounds.KillFeed.Killed:Play()
+		elseif p3 == Color3.fromRGB(255, 174, 61) then
+			Sounds.KillFeed.Kill:Play()
+			Sounds.KillFeed.Kill2:Play()
+			Sounds.KillFeed.Assisted:Play()
+		end
+
+		if v64 then
+			v65 = v65 + p2
+
+			return
+		end
+
+		v64 = true
+		TweenService:Create(XpFrame.Total.Shine, v57, {
+			ImageTransparency = 0
+		}):Play()
+		TweenService:Create(XpFrame.Total.Title, v57, {
+			TextTransparency = 0
+		}):Play()
+		TweenService:Create(XpFrame.Total.XpText, v57, {
+			TextTransparency = 0
+		}):Play()
+		task.delay(0.1, function() --[[ Line: 1188 | Upvalues: TweenService (ref), XpFrame (ref), v57 (ref) ]]
+			TweenService:Create(XpFrame.Total.Shine, v57, {
+				ImageTransparency = 0.9
+			}):Play()
+		end)
+		v65 = p2
+		XpFrame.Total.XpText.Text = "+" .. p2 .. " XP"
+
+		local v1 = p2
+		local sum = 3
+
+		repeat
+			if not task.wait(0.1) then
+				break
+			end
+
+			XpFrame.Total.XpText.Text = "+" .. p2 .. " XP"
+
+			if v1 < p2 then
+				v1 = p2
+				sum = 3
+			end
+
+			sum = sum - 0.1
+		until sum <= 0
+
+		TweenService:Create(XpFrame.Total.Shine, v57, {
+			ImageTransparency = 1
+		}):Play()
+		TweenService:Create(XpFrame.Total.Title, v57, {
+			TextTransparency = 1
+		}):Play()
+		TweenService:Create(XpFrame.Total.XpText, v57, {
+			TextTransparency = 1
+		}):Play()
+		CleanupXpFrames()
+		v64 = false
+	end)
+	Hunger = LimbStatus:WaitForChild("Extra"):WaitForChild("Hunger")
+	Thirst = LimbStatus:WaitForChild("Extra"):WaitForChild("Thirst")
+
+	local _ = {
+		Hunger = Color3.fromRGB(255, 174, 61),
+		Thirst = Color3.fromRGB(71, 145, 255),
+		Critical = Color3.fromRGB(255, 55, 55)
+	}
+
+	UpdateNourishment = function(p1, p2) --[[ UpdateNourishment | Line: 1239 | Upvalues: clamp (copy), TweenService (copy), Hunger (copy), v24 (copy), Thirst (copy) ]]
+		TweenService:Create(Hunger.Bar, v24, {
+			Size = UDim2.new(1, 0, clamp(p1 / 100, 0, 1), 0)
+		}):Play()
+		TweenService:Create(Thirst.Bar, v24, {
+			Size = UDim2.new(1, 0, clamp(p2 / 100, 0, 1), 0)
+		}):Play()
+	end
+	UpdateNourishment(v7:GetAttribute("Hunger"), v7:GetAttribute("Thirst"))
+	v66 = 0
+
+	local function TweenHipHeight(p1) --[[ TweenHipHeight | Line: 1255 | Upvalues: v66 (ref), TweenService (copy), Humanoid (copy), v25 (copy) ]]
+		if v66 == p1 then
+			return
+		end
+
+		v66 = p1
+		TweenService:Create(Humanoid, v25, {
+			HipHeight = p1
+		}):Play()
+	end
+
+	TweenInfo.new(0.75, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+
+	local Blood = workspace:WaitForChild("Debris"):WaitForChild("Blood")
+
+	Blood:ClearAllChildren()
+
+	local t7 = {
+		"rbxassetid://10545730058",
+		"rbxassetid://10545730466",
+		"rbxassetid://10545729090",
+		"rbxassetid://10545729411",
+		"rbxassetid://10545643017",
+		"rbxassetid://10545741009",
+		"rbxassetid://10545729090",
+		"rbxassetid://10545729411",
+		"rbxassetid://10545643017",
+		"rbxassetid://10545741009"
+	}
+
+	MakeBlood = function(p1, p2, p3, p4) --[[ MakeBlood | Line: 1270 | Upvalues: ReplicatedStorage (copy), Debris (copy), Raycast (copy), WorldToGui (copy), t7 (copy), Blood (copy) ]]
+		if _G.Settings and _G.Settings.Video.Max_blood <= 0 then
+			return
+		end
+
+		if not p3 then
+			p3 = 1
+		end
+
+		local v1 = if p4 then p4 else "LookVector"
+		local v2 = ReplicatedStorage.BloodStuff.BloodDrop:Clone()
+
+		v2.CollisionGroup = "DontCollideWithPlayers"
+		v2.Position = p1.Position
+		Debris:AddItem(v2, 5)
+		v2.Touched:Connect(function(p12) --[[ Line: 1284 | Upvalues: v2 (copy), Raycast (ref), p1 (copy), v1 (ref), WorldToGui (ref), t7 (ref) ]]
+			if v2.Anchored ~= false or (p12.CanCollide ~= true or (p12.Anchored ~= true or (p12.Transparency == 1 or not p12:IsA("Part")))) then
+				return
+			end
+
+			local v12 = Raycast.CastRay(v2.Position, v2.AssemblyLinearVelocity.Unit * 2, {
+				CanCollide = false
+			})
+
+			if not v12 then
+				local v22 = Raycast.CastRay(v2.Position, p1[v1] / 2, {
+					CanCollide = false
+				})
+
+				v12 = v22 or Raycast.CastRay(v2.Position, Vector3.new(0, -5, 0), {
+					CanCollide = false
+				})
+			end
+
+			if v12 and v12.Instance.Anchored then
+				local v4 = math.random(200, 225)
+				local v5 = math.random(130, 150)
+
+				WorldToGui:MakeGui(v12.Instance, v12.Position, t7[math.random(#t7)], Color3.fromRGB(v4, v4, v4), math.random(50, 80) / 10, math.random(50, 80) / 10, true, Color3.fromRGB(v5, v5, v5))
+			end
+
+			if v2.Parent then
+				v2.PE:Emit(5)
+				v2.Trail.Enabled = false
+				v2.Anchored = true
+				v2.Transparency = 1
+				task.wait(0.5)
+			end
+
+			v2:Destroy()
+		end)
+		v2.Parent = Blood
+
+		if p2 then
+			local v3 = math.random(-10, 10) / 100
+			local v4 = math.random(50, 150) / 1000
+
+			v2:ApplyImpulse(Vector3.new(v3, v4, math.random(-10, 10) / 100) * p3)
+		else
+			local v6 = p1[v1] * math.random(15, 35) / 100
+			local v7 = math.random(-10, 10) / 100
+			local v8 = math.random(-20, 20) / 100
+
+			v2:ApplyImpulse(v6 + Vector3.new(v7, v8, math.random(-10, 10) / 100) * p3)
+		end
+	end
+	t8 = {}
+	t9 = {}
+	GiveHurtFeedback = function(p1) --[[ GiveHurtFeedback | Line: 1325 | Upvalues: UnderScreenEffects (copy), TweenService (copy), v24 (copy), Sounds (copy), Lighting (copy), SoundService (copy), v27 (copy), v26 (copy), v32 (copy) ]]
+		if p1 == "BrokenBone" then
+			UnderScreenEffects.LostLimb.BackgroundTransparency = 0
+			TweenService:Create(UnderScreenEffects.LostLimb, v24, {
+				ImageTransparency = 0.25,
+				BackgroundTransparency = 1
+			}):Play()
+			Sounds.BoneBreak:Play()
+			Lighting.Blur.Size = 54
+			TweenService:Create(Lighting.Blur, v24, {
+				Size = 0
+			}):Play()
+			SoundService.GeneralSoundGroup.Eq.Enabled = true
+			SoundService.GeneralSoundGroup.Eq.HighGain = -30
+			SoundService.GeneralSoundGroup.Eq.MidGain = -5
+			TweenService:Create(SoundService.GeneralSoundGroup.Eq, v27, {
+				HighGain = 0,
+				MidGain = 0,
+				LowGain = 0,
+				Enabled = false
+			}):Play()
+			Sounds.HeartbeatFast:Play()
+			Sounds.HeartbeatFast.Volume = 0.75
+			Lighting.CC2.TintColor = Color3.new(1, 0.5, 0.5)
+			Lighting.CC2.Contrast = 0.5
+			TweenService:Create(Lighting.CC2, v26, {
+				Contrast = 0,
+				TintColor = Color3.new(255/255, 255/255, 255/255)
+			}):Play()
+			TweenService:Create(Sounds.HeartbeatFast, v27, {
+				Volume = 0,
+				Playing = false
+			}):Play()
+			task.delay(0.5, function() --[[ Line: 1350 | Upvalues: TweenService (ref), UnderScreenEffects (ref), v27 (ref) ]]
+				TweenService:Create(UnderScreenEffects.LostLimb, v27, {
+					ImageTransparency = 1
+				}):Play()
+			end)
+
+			return
+		end
+
+		if p1 ~= "LimbMissing" then
+			return
+		end
+
+		UnderScreenEffects.LostLimb.BackgroundTransparency = 0
+		TweenService:Create(UnderScreenEffects.LostLimb, v32, {
+			ImageTransparency = 0,
+			BackgroundTransparency = 1
+		}):Play()
+		Sounds.BoneBreak:Play()
+		Sounds.Dismember:Play()
+		Lighting.Blur.Size = 54
+		TweenService:Create(Lighting.Blur, v32, {
+			Size = 0
+		}):Play()
+		SoundService.GeneralSoundGroup.Eq.Enabled = true
+		SoundService.GeneralSoundGroup.Eq.HighGain = -30
+		SoundService.GeneralSoundGroup.Eq.MidGain = -5
+		TweenService:Create(SoundService.GeneralSoundGroup.Eq, v27, {
+			HighGain = 0,
+			MidGain = 0,
+			LowGain = 0,
+			Enabled = false
+		}):Play()
+		Sounds.HeartbeatFast:Play()
+		Sounds.HeartbeatFast.Volume = 1.25
+		Lighting.CC2.TintColor = Color3.new(1, 0.35, 0.35)
+		Lighting.CC2.Contrast = 0.5
+		TweenService:Create(Lighting.CC2, v26, {
+			Contrast = 0,
+			TintColor = Color3.new(255/255, 255/255, 255/255)
+		}):Play()
+		TweenService:Create(Sounds.HeartbeatFast, v27, {
+			Volume = 0,
+			Playing = false
+		}):Play()
+		task.delay(0.5, function() --[[ Line: 1378 | Upvalues: TweenService (ref), UnderScreenEffects (ref), v27 (ref) ]]
+			TweenService:Create(UnderScreenEffects.LostLimb, v27, {
+				ImageTransparency = 1
+			}):Play()
+		end)
+	end
+	v67 = nil
+	Humanoid.Running:Connect(function(p1) --[[ Line: 1390 | Upvalues: v67 (ref) ]]
+		v67 = p1
+	end)
+
+	local t10 = {}
+
+	task.spawn(function() --[[ Line: 1399 | Upvalues: t10 (copy), Events (copy) ]]
+		while task.wait(10) do
+			for k, v in pairs(game.Players:GetPlayers()) do
+				if v.Character and v.Character:FindFirstChild("Head") then
+					if t10[v.Name] and not (t10[v.Name][1] and (t10[v.Name][2] and t10[v.Name][1].Parent)) then
+						t10[v.Name][2]:Disconnect()
+						t10[v.Name] = nil
+					end
+
+					if not t10[v.Name] then
+						t10[v.Name] = { v.Character.Head, v.Character.Head:GetPropertyChangedSignal("Size"):Connect(function() --[[ Line: 1408 | Upvalues: Events (ref) ]]
+								Events.Player.WalkSpeed:FireServer(20)
+							end) }
+					end
+				end
+			end
+
+			for k, v in pairs(t10) do
+				if not game.Players:FindFirstChild(k) then
+					v[2]:Disconnect()
+					t10[k] = nil
+				end
+			end
+		end
+	end)
+
+	local v68 = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
+	local v69 = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
+
+	v70 = nil
+
+	local CutscenePart = v6:WaitForChild("CutscenePart")
+	local v71 = Instance.new("NumberValue")
+	local v72 = nil
+	local v73 = RaycastParams.new()
+
+	v73.FilterType = Enum.RaycastFilterType.Exclude
+	v73.FilterDescendantsInstances = { workspace.Terrain, workspace.Chars, workspace.NPCs }
+	v73.CollisionGroup = "DontCollideWithPlayers"
+	RunService.RenderStepped:Connect(function() --[[ Line: 1443 | Upvalues: v70 (ref), CutscenePart (copy), v72 (ref), CurrentCamera (copy), v71 (copy), v19 (ref), Torso (copy), v73 (copy), v11 (ref), v12 (ref), t (copy) ]]
+		local v1 = v70 and v70.CFrame or CutscenePart.CFrame
+
+		if v72 then
+			CurrentCamera.CFrame = v72:Lerp(v1, v71.Value)
+		else
+			CurrentCamera.CFrame = CurrentCamera.CFrame:Lerp(v1, v71.Value)
+		end
+
+		if v19 and not v70 then
+			local v2 = workspace:Blockcast(CFrame.new(Torso.Position, CurrentCamera.CFrame.Position) * CFrame.new(0, 0, 3), Vector3.new(5, 3, 0), CurrentCamera.CFrame.Position - Torso.Position, v73)
+
+			if v2 and v2.Instance:IsA("BasePart") then
+				v2.Instance.LocalTransparencyModifier = 0.8
+
+				local FilterDescendantsInstances = v73.FilterDescendantsInstances
+
+				table.insert(FilterDescendantsInstances, v2.Instance)
+				v73.FilterDescendantsInstances = FilterDescendantsInstances
+			end
+		end
+
+		if v11 >= 0.01 then
+			local v4 = tick() * 1.25
+			local v5 = math.sin(v4)
+			local v6 = math.cos(v4)
+			local v7 = math.sin(v4)
+			local v8 = CFrame.new(v5 / 8, v6 / 6, v7 / 8) * CFrame.Angles(0, 0, v7 / 35)
+			local v9 = tick() * 10
+			local v10 = math.sin(v9)
+			local v112 = math.cos(v9)
+			local v122 = math.sin(v9)
+			local v13 = v8 * (CFrame.new(v10 / 24, v112 / 28, v122 / 24) * CFrame.Angles(0, 0, v122 / 100))
+			local v14 = CurrentCamera
+
+			v14.CFrame = v14.CFrame * CFrame.new():Lerp(v13, v11)
+		end
+
+		local v15 = v11
+
+		v11 = v15 + (v12 - v15) * 0.01
+
+		for k, v in pairs(t) do
+			local v16 = CurrentCamera.CFrame * CFrame.Angles(0, 0, v.Tilt.Position) * CFrame.Angles(0, 0, v.Offset.Position.X / 5) * CFrame.new(v.Offset.Position)
+
+			if v16 == v16 then
+				CurrentCamera.CFrame = v16
+			end
+		end
+	end)
+	UpdateCamPartState = function(p1) --[[ UpdateCamPartState | Line: 1490 | Upvalues: v19 (ref), v72 (ref), CurrentCamera (copy), TweenService (copy), v71 (copy), v68 (copy), ToggleCinematicMode (copy), v22 (copy), v69 (copy), v73 (copy) ]]
+		if p1 and not v19 then
+			v19 = true
+			v72 = CurrentCamera.CFrame
+			TweenService:Create(v71, v68, {
+				Value = 1
+			}):Play()
+			ToggleCinematicMode(false, true)
+			v22.Parent.Cutscene.Enabled = true
+
+			return
+		end
+
+		if p1 or not v19 then
+			return
+		end
+
+		v19 = false
+		ToggleCinematicMode(true, true)
+		v22.Parent.Cutscene.Enabled = false
+		v72 = nil
+		TweenService:Create(v71, v69, {
+			Value = 0
+		}):Play()
+
+		for k, v in pairs(v73.FilterDescendantsInstances) do
+			if v and v:IsA("BasePart") then
+				v.LocalTransparencyModifier = 0
+			end
+		end
+
+		v73.FilterDescendantsInstances = { workspace.Terrain }
+	end
+	Events:WaitForChild("Player"):WaitForChild("SetCutscenePart").OnClientEvent:Connect(function(p1) --[[ Line: 1521 | Upvalues: v70 (ref), v19 (ref), v72 (ref), CurrentCamera (copy), TweenService (copy), v71 (copy), v68 (copy), ToggleCinematicMode (copy), v22 (copy) ]]
+		v70 = p1
+
+		if p1 and not v19 then
+			v19 = true
+			v72 = CurrentCamera.CFrame
+			TweenService:Create(v71, v68, {
+				Value = 1
+			}):Play()
+			ToggleCinematicMode(false, true)
+			v22.Parent.Cutscene.Enabled = true
+		end
+	end)
+	ReplicatedStorage:WaitForChild("Wind").Event:Connect(function(p1) --[[ Line: 1531 | Upvalues: v12 (ref) ]]
+		v12 = p1
+	end)
+	UpdateStamina = function(p1) --[[ UpdateStamina | Line: 1536 | Upvalues: TweenService (copy), Stamina (copy), v24 (copy), v30 (copy), ceil (copy) ]]
+		TweenService:Create(Stamina.Bar, v24, {
+			Size = UDim2.new(p1 / 100, 0, 1, 0)
+		}):Play()
+		TweenService:Create(Stamina.Bar2, v30, {
+			Size = UDim2.new(p1 / 100, 0, 1, 0)
+		}):Play()
+		TweenService:Create(Stamina.Amount.Bar, v24, {
+			Offset = Vector2.new(p1 / 100, 0)
+		}):Play()
+		Stamina.Amount.Text = ceil(p1) .. "%"
+	end
+	UpdateStamina(100)
+	Events.Player.KB.OnClientEvent:Connect(function(p1, p2) --[[ Line: 1544 | Upvalues: v6 (copy) ]]
+		if not (p1 and (p1:IsDescendantOf(v6) and p2)) then
+			return
+		end
+
+		v6.HumanoidRootPart:ApplyImpulse((p2 + Vector3.new(0, 1, 0)) * 25 * 0.25 * v6.HumanoidRootPart.AssemblyMass)
+	end)
+
+	local t11 = {}
+
+	local function RemoveProgressBar(p1, p2) --[[ RemoveProgressBar | Line: 1553 | Upvalues: TweenService (copy), v28 (copy), v25 (copy) ]]
+		if p2 then
+			p1.Flash.BackgroundColor3 = Color3.new(204/255, 51/255, 51/255)
+			p1.TitleText.TextColor3 = Color3.new(204/255, 51/255, 51/255)
+			TweenService:Create(p1.Bar, v28, {
+				Size = p1.Bar.Size
+			}):Play()
+		end
+
+		TweenService:Create(p1.TitleText, v25, {
+			TextTransparency = 1,
+			Position = UDim2.new(0, 0, 0.75, 0)
+		}):Play()
+		TweenService:Create(p1.Flash, v25, {
+			BackgroundTransparency = 0
+		}):Play()
+		task.wait(0.15)
+		TweenService:Create(p1, v25, {
+			Size = UDim2.new(0, 0, 0.17, 0)
+		}):Play()
+		task.wait(0.25)
+		p1:Destroy()
+	end
+
+	local function MakeProgressBar(p1, p2) --[[ MakeProgressBar | Line: 1571 | Upvalues: t11 (copy), RemoveProgressBar (copy), ProgressBars (copy), TweenService (copy), v25 (copy) ]]
+		if not p2 then
+			return
+		end
+
+		if p1 then
+			if t11[p2] then
+				task.spawn(RemoveProgressBar, t11[p2])
+			end
+
+			local v1 = script.Frames.ProgressBar:Clone()
+
+			v1.TitleText.Text = p2:upper()
+			v1.Parent = ProgressBars
+			t11[p2] = v1
+			TweenService:Create(v1, v25, {
+				Size = UDim2.new(0.99, 0, 0.17, 0)
+			}):Play()
+			task.delay(0.15, function() --[[ Line: 1593 | Upvalues: t11 (ref), p2 (copy), RemoveProgressBar (ref), v1 (copy), TweenService (ref), v25 (ref) ]]
+				if t11[p2] then
+					TweenService:Create(v1.TitleText, v25, {
+						TextTransparency = 0.15,
+						Position = UDim2.new(0, 0, -0.1, 0)
+					}):Play()
+					TweenService:Create(v1.Flash, v25, {
+						BackgroundTransparency = 1
+					}):Play()
+				else
+					task.spawn(RemoveProgressBar, v1, true)
+				end
+			end)
+			TweenService:Create(v1.Bar, TweenInfo.new(p1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+				Size = UDim2.new(1, 0, 1, 0)
+			}):Play()
+			task.wait(p1)
+
+			if v1 and v1.Parent then
+				t11[p2] = nil
+				RemoveProgressBar(v1)
+			end
+		else
+			if not t11[p2] then
+				return
+			end
+
+			task.spawn(RemoveProgressBar, t11[p2], true)
+			t11[p2] = nil
+		end
+	end
+
+	ReplicatedStorage:WaitForChild("Bar").Event:Connect(MakeProgressBar)
+	Events.Player.ProgressGui.OnClientEvent:Connect(MakeProgressBar)
+end
+
+local v74 = nil
+local Popup = v22:WaitForChild("Popup")
+local v75 = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+local v76 = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+Events.Player.Popup.OnClientEvent:Connect(function(p1, p2, p3) --[[ Line: 1630 | Upvalues: random (copy), v74 (ref), Popup (copy), TweenService (copy), v76 (copy), v75 (copy) ]]
+	if p1 then
+		local v1 = random(100, 999)
+
+		v74 = v1
+		Popup.Title.Text = p1:upper()
+		Popup.Size = UDim2.new(0, 0, 0.047, 0)
+		Popup.Flash.BackgroundTransparency = 0
+
+		if not p3 then
+			p3 = Color3.fromRGB(101, 255, 84)
+		end
+
+		Popup.Flash.BackgroundColor3 = p3
+		Popup.Edge.ImageColor3 = p3
+		Popup.Edge2.ImageColor3 = p3
+		Popup.Shine.ImageColor3 = p3
+		Popup.Title.TextColor3 = p3
+		TweenService:Create(Popup, v76, {
+			Visible = true,
+			Size = UDim2.new(0.25, 0, 0.047, 0)
+		}):Play()
+		TweenService:Create(Popup.Flash, v75, {
+			BackgroundTransparency = 1
+		}):Play()
+
+		if not p2 then
+			return
+		end
+
+		task.wait(p2)
+
+		if v1 == v1 or v1 == nil then
+			TweenService:Create(Popup, v76, {
+				Visible = false,
+				Size = UDim2.new(0, 0, 0.047, 0)
+			}):Play()
+			TweenService:Create(Popup.Flash, v76, {
+				BackgroundTransparency = 0
+			}):Play()
+		end
+	else
+		TweenService:Create(Popup, v76, {
+			Visible = false,
+			Size = UDim2.new(0, 0, 0.047, 0)
+		}):Play()
+		TweenService:Create(Popup.Flash, v76, {
+			BackgroundTransparency = 0
+		}):Play()
+	end
+end)
+Humanoid.StateChanged:Connect(function(p1, p2) --[[ Line: 1664 | Upvalues: v6 (copy), v14 (ref), v50 (ref), HumanoidRootPart (copy), v21 (ref) ]]
+	if p2 == Enum.HumanoidStateType.Freefall or p2 == Enum.HumanoidStateType.Jumping then
+		v6:SetAttribute("Falling", true)
+		v14 = false
+		v50 = HumanoidRootPart.Position.Y
+	elseif p2 == Enum.HumanoidStateType.Landed then
+		local _ = math.abs(HumanoidRootPart.Position.Y - v50) >= 1
+
+		v6:SetAttribute("Falling", false)
+		v14 = false
+	elseif p2 == Enum.HumanoidStateType.Climbing then
+		v6:SetAttribute("Falling", false)
+		v14 = true
+	else
+		v6:SetAttribute("Falling", false)
+		v14 = false
+	end
+
+	if p1 == Enum.HumanoidStateType.Jumping or p2 ~= Enum.HumanoidStateType.Freefall then
+		return
+	end
+
+	v21 = tick()
+end)
+Events.Player.StaminaNeeded.OnClientEvent:Connect(function(p1) --[[ Line: 1696 | Upvalues: Stamina (copy), TweenService (copy), v25 (copy) ]]
+	local v1 = Stamina.StaminaNeeded:Clone()
+
+	v1.Parent = Stamina
+	v1.Size = UDim2.new(p1 / 100, 0, 1, 0)
+	TweenService:Create(v1, v25, {
+		BackgroundTransparency = 0.5
+	}):Play()
+	task.wait(0.25)
+	TweenService:Create(v1, v25, {
+		BackgroundTransparency = 1
+	}):Play()
+	task.wait(0.25)
+	v1:Destroy()
+end)
+ReplicatedStorage:WaitForChild("UI").Event:Connect(function(p1) --[[ Line: 1708 ]] end)
+ReplicatedStorage:WaitForChild("Blood").Event:Connect(function(p1, p2, p3, p4) --[[ Line: 1714 | Upvalues: MakeBlood (copy) ]]
+	for i = 1, p3 or 1 do
+		MakeBlood(p1, p2, p4)
+	end
+end)
+InputHandler.RegisterKeybind(nil, "Core_quick_exit", { "Quick_Exit" }, false, { "Began" }, function() --[[ Line: 1722 | Upvalues: ReplicatedStorage (copy) ]]
+	ReplicatedStorage.DA:Fire()
+end)
+InputHandler.RegisterKeybind(nil, "Core_controls_began", { "Sprint", "Crouch" }, false, { "Began" }, function(p1, p2) --[[ Line: 1723 | Upvalues: v18 (ref), v6 (copy), v16 (ref), v13 (ref), v17 (ref), Slide (copy) ]]
+	if p2 == "Sprint" then
+		v18 = if v18 == true and _G.ToggleSprint then false else true
+		v6:SetAttribute("RotateChar", false)
+	else
+		if p2 ~= "Crouch" then
+			return
+		end
+
+		if v16 == true and _G.ToggleCrouch then
+			v16 = false
+			v13 = false
+
+			return
+		end
+
+		if _G.CharacterStates.NoCrouch then
+			return
+		end
+
+		v16 = true
+
+		if v17 ~= true then
+			return
+		end
+
+		Slide()
+	end
+end)
+InputHandler.RegisterKeybind(nil, "Core_controls_ended", { "Sprint", "Crouch" }, true, { "Ended" }, function(p1, p2) --[[ Line: 1745 | Upvalues: v18 (ref), v9 (ref), v16 (ref), v13 (ref) ]]
+	if p2 == "Sprint" and not _G.ToggleSprint then
+		v18 = false
+
+		return
+	end
+
+	if p2 ~= "Crouch" or (v9 ~= false or _G.ToggleCrouch) then
+		return
+	end
+
+	v16 = false
+	v13 = false
+end)
+UserInputService.InputBegan:Connect(function(p1, p2) --[[ Line: 1756 | Upvalues: ToggleCinematicMode (copy), v22 (copy) ]]
+	if p2 or p1.KeyCode ~= Enum.KeyCode.J then
+		return
+	end
+
+	ToggleCinematicMode(not v22.Enabled)
+end)
+Events:WaitForChild("Player"):WaitForChild("DisableActions").OnClientEvent:Connect(function(...) --[[ Line: 1762 | Upvalues: ReplicatedStorage (copy) ]]
+	ReplicatedStorage.DA:Fire(...)
+end)
+
+local v77 = false
+
+local function JumpRequest() --[[ JumpRequest | Line: 1767 | Upvalues: Humanoid (copy), v45 (ref), v46 (ref), Events (copy), ShakeCamera (copy), Sounds (copy), v21 (ref), v44 (ref), v17 (ref), v49 (ref), HumanoidRootPart (copy), v77 (ref) ]]
+	if Humanoid:GetState() == Enum.HumanoidStateType.Freefall and (v45 and (not v46 and (not _G.CharacterStates.Parkour and (_G.CharacterStates.DoubleJump and not _G.CharacterStates.DoubleJumpCD)))) then
+		v45 = false
+		v46 = true
+		task.delay(2, function() --[[ Line: 1771 | Upvalues: v46 (ref) ]]
+			v46 = false
+		end)
+		Events.Player.GearAbility:FireServer("DoubleJump")
+		Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+		ShakeCamera(Vector3.new(0, -10, 5), 2, 3, 0.25)
+		Sounds.Booster:Play()
+	end
+
+	if not v21 then
+		return
+	end
+
+	if Humanoid:GetState() ~= Enum.HumanoidStateType.Freefall or (not (tick() - v21 <= 0.05) or (not v44 or _G.CharacterStates.Parkour)) then
+		return
+	end
+
+	if v17 and _G.CharacterStates.OverWeightCapacity <= 0 then
+		v21 = nil
+		v49 = 0
+		HumanoidRootPart:ApplyImpulse((Humanoid.MoveDirection + Vector3.new(0, 0.25, 0)) * 50)
+		ShakeCamera(Vector3.new(0, -5, 5), 1.5, 2, 0.25)
+		Sounds.CoyoteLeap:Play()
+		v77 = true
+		task.delay(0.5, function() --[[ Line: 1803 | Upvalues: v77 (ref) ]]
+			v77 = false
+		end)
+	end
+
+	Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+	v21 = nil
+end
+
+UserInputService.JumpRequest:Connect(JumpRequest)
+ReplicatedStorage:WaitForChild("RequestJump").Event:Connect(JumpRequest)
+v7.AttributeChanged:Connect(function(p1) --[[ Line: 1815 | Upvalues: LevelUp2 (copy), v7 (copy), UpdateLevel (copy), UpdateNourishment (copy), UpdateStamina (copy), Background (copy), FormatNumber (copy), tbl (copy), UpdateCurrency (copy) ]]
+	if p1 == "Level" then
+		LevelUp2(v7:GetAttribute("Level"), v7:GetAttribute("Xp"))
+
+		return
+	end
+
+	if p1 == "Xp" then
+		UpdateLevel(v7:GetAttribute("Level"), v7:GetAttribute("Xp"))
+
+		return
+	end
+
+	if p1 == "Hunger" or p1 == "Thirst" then
+		UpdateNourishment(v7:GetAttribute("Hunger"), v7:GetAttribute("Thirst"))
+
+		return
+	end
+
+	if p1 == "Stamina" then
+		UpdateStamina(v7:GetAttribute("Stamina"))
+
+		return
+	end
+
+	if p1 == "CombatTimer" or p1 == "InDanger" then
+		local v1 = v7:GetAttribute("CombatTimer")
+
+		if not (v1 > 0) then
+			Background.Combat.Visible = false
+
+			return
+		end
+
+		Background.Combat.Visible = true
+		Background.Combat.TextLabel.Text = if v7:GetAttribute("InDanger") then "DANGER" else FormatNumber.Time(v1)
+	else
+		if not table.find(tbl, p1) then
+			return
+		end
+
+		UpdateCurrency(p1, v7:GetAttribute(p1))
+	end
+end)
+
+local v78 = CollectionService:GetTagged("OneWayBarrier")
+
+local function UpdateBarriers() --[[ UpdateBarriers | Line: 1854 | Upvalues: v78 (copy), HumanoidRootPart (copy) ]]
+	for k, v in pairs(v78) do
+		local Position = (v.CFrame * CFrame.new(v.Size.X / 2, 0, 0)).Position
+
+		v.CanCollide = v.CFrame.RightVector:Dot((HumanoidRootPart.Position - Position).Unit) > 0
+	end
+end
+
+ReplicatedStorage:WaitForChild("ToggledInventory").Event:Connect(function(p1) --[[ Line: 1866 | Upvalues: Background (copy), Hunger (copy), Thirst (copy), Stamina (copy) ]]
+	Background.Position = p1 and UDim2.new(0.5, 0, 1, -515) or UDim2.new(0.5, 0, 1, -70)
+	Hunger.TitleText.Visible = p1
+	Thirst.TitleText.Visible = p1
+	Stamina.TitleText.Visible = p1
+end)
+
+local v79 = 0
+local v80 = nil
+local ok, result = pcall(function() --[[ Line: 1882 | Upvalues: UpdateBarriers (copy), t2 (copy), ShakeCamera (copy), v6 (copy), v39 (ref), v40 (ref), ReplicatedStorage (copy), v80 (ref), Torso (copy), Events (copy), v7 (copy), HumanoidRootPart (copy), Highlight (copy), v79 (ref), Lighting (copy), v33 (copy), Background (copy), FormatNumber (copy), v8 (ref), UpdateDowned (copy), Shared (copy), v16 (ref), v21 (ref), v49 (ref), v77 (ref), UpdateCamPartState (copy), v70 (ref), OverlayGui (copy), v13 (ref), TweenService (copy), CurrentCamera (copy), v24 (copy), Humanoid (copy), UnderScreenEffects (copy), Sounds (copy), v18 (ref), v17 (ref), v9 (ref), JumpCooldown (copy), v66 (ref), v25 (copy), PlayAnimation (copy), v67 (ref), v15 (ref), v14 (ref), v23 (copy), t9 (copy), t8 (copy), GiveHurtFeedback (copy), Players (copy), MakeBlood (copy) ]]
+	while task.wait(0.1) do
+		UpdateBarriers()
+
+		for k, v in pairs(t2) do
+			local v1 = v:GetAttribute("Range") or NumberRange.new(10, 25)
+			local v2 = v:GetAttribute("Intensity") or 5
+			local v3 = v:GetAttribute("Scale")
+
+			pcall(ShakeCamera, {
+				Position = v.Position,
+				Min = v1.Min,
+				Max = v1.Max
+			}, v2, v3, v3, nil, true, 2)
+		end
+
+		local v4 = v6:FindFirstChildWhichIsA("RayValue")
+		local ForceEquip = _G.CharacterStates.ForceEquip
+
+		if _G.CharacterStates.DisableInventory then
+			v39 = 1
+		end
+
+		if v39 > 0 then
+			v39 = v39 - 0.1
+
+			if v40 == true then
+				ReplicatedStorage.SI:Fire(false, _G.CharacterStates.DisableInventory)
+				v40 = false
+			end
+		elseif v40 == false then
+			ReplicatedStorage.SI:Fire(true)
+			v40 = true
+
+			if v80 and (v80.Parent and not Torso:FindFirstChild("ForceField")) then
+				_G.FastEquipping = v80
+				Events.Items.Equip:FireServer(v80, true)
+				v80 = nil
+			end
+		end
+
+		if ForceEquip and (not v4 or v4.Name ~= ForceEquip) then
+			local v5 = v7.Backpack:FindFirstChild(ForceEquip)
+
+			if v5 then
+				Events.Items.Equip:FireServer(v5, true)
+			end
+		end
+
+		if not v6:FindFirstChild("Right Arm") then
+			v39 = 0.25
+
+			if v4 then
+				Events.Items.Unequip:FireServer()
+			end
+		end
+
+		if _G.CharacterStates.PlayingActionCutscene or (_G.CharacterStates.Ragdolled or (_G.CharacterStates.Downed or (_G.CharacterStates.NT or (_G.CharacterStates.E or (_G.CharacterStates.Carrying or HumanoidRootPart and HumanoidRootPart.Anchored))))) then
+			v39 = 0.25
+
+			if v4 then
+				v80 = v4
+				Events.Items.Unequip:FireServer()
+			end
+		end
+
+		if _G.CharacterStates.InFirstPerson then
+			Highlight.Enabled = false
+		else
+			Highlight.Enabled = true
+		end
+
+		v79 = v79 + 0.1
+
+		if v79 >= 2 then
+			v79 = 0
+
+			if Lighting:GetAttribute("Season") == "Winter" and not _G.CharacterStates.Aiming then
+				v33.Smoke.Enabled = true
+				task.delay(0.5, function() --[[ Line: 1966 | Upvalues: v33 (ref) ]]
+					v33.Smoke.Enabled = false
+				end)
+			end
+		end
+
+		local ForceField = Torso:FindFirstChild("ForceField")
+		local v62 = if ForceField then ForceField:GetAttribute("Duration") else ForceField
+
+		if ForceField then
+			Background.Protection.Visible = true
+			Background.Protection.TextLabel.Text = v62 and FormatNumber.Time(v62) or "\226\136\158"
+		else
+			Background.Protection.Visible = false
+		end
+
+		v8 = _G.CharacterStates.Crippled and _G.CharacterStates.Crippled.Y or (_G.CharacterStates.Endlag or _G.CharacterStates.DashSpeed)
+
+		local v92 = v6:FindFirstChild("Left Leg")
+		local v10 = v6:FindFirstChild("Right Leg")
+		local v11 = not v92 or v92:GetAttribute("BrokenBone")
+		local v12 = not v10 or v10:GetAttribute("BrokenBone")
+
+		UpdateDowned(_G.CharacterStates.Downed and not _G.CharacterStates.Died)
+
+		local sum = 16
+		local v162 = 50
+		local sum2 = 0
+		local v172 = false
+		local v182 = false
+		local v19 = nil
+		local v20 = Shared.GetScaledStats(_G.CharacterStates)
+
+		if v20.Walkspeed then
+			sum = sum * v20.Walkspeed
+		end
+
+		if v20.Jumppower then
+			v162 = v162 * v20.Jumppower
+		end
+
+		if v20.FieldOfView then
+			sum2 = sum2 * v20.FieldOfView
+		end
+
+		if v4 and v4:GetAttribute("Walkspeed") then
+			sum = sum + v4:GetAttribute("Walkspeed")
+		end
+
+		local OverWeightCapacity = _G.CharacterStates.OverWeightCapacity
+
+		if OverWeightCapacity then
+			sum = sum - math.abs(OverWeightCapacity)
+		end
+
+		if _G.CharacterStates.Reviving then
+			v16 = false
+		end
+
+		if _G.CharacterStates.Parkour then
+			v21 = nil
+			v49 = 0
+		end
+
+		if (v12 or v11) and sum > 11 then
+			sum = 11
+		end
+
+		if v11 and v12 then
+			v162 = 40
+			sum = 5
+			v16 = false
+			v182 = true
+		end
+
+		if v4 and (v4:GetAttribute("Armed") and (not v4:GetAttribute("NS") and sum > 11)) then
+			sum = 11
+			v182 = true
+		end
+
+		if _G.CharacterStates.Swinging then
+			v182 = true
+		end
+
+		if _G.CharacterStates.AimingMovementSpeed then
+			sum = sum * _G.CharacterStates.AimingMovementSpeed
+			v182 = true
+			v162 = 30
+		end
+
+		if _G.CharacterStates.ReloadingMovementSpeed then
+			if not _G.CharacterStates.CanSprintReload then
+				v182 = true
+			end
+
+			sum = sum * (_G.CharacterStates.OverrideReloadingMovementSpeed or _G.CharacterStates.ReloadingMovementSpeed)
+		end
+
+		if _G.CharacterStates.GunPreparing then
+			v172 = true
+			v182 = true
+		end
+
+		if _G.CharacterStates.Blocking or (_G.CharacterStates.ServerBlocking or _G.CharacterStates.UsingItem) then
+			v172 = true
+			v182 = true
+
+			if sum > 7 then
+				sum = 7
+			end
+		end
+
+		if _G.CharacterStates.Reloading or (_G.CharacterStates.UsingItem or (_G.CharacterStates.Blocking or _G.CharacterStates.Parkour)) then
+			v162 = 0
+		end
+
+		if _G.CharacterStates.ES and _G.CharacterStates.ES < sum then
+			sum = _G.CharacterStates.ES
+		end
+
+		if _G.CharacterStates.E then
+			v172 = true
+
+			if sum > 5 then
+				sum = 5
+			end
+		end
+
+		if _G.CharacterStates.RestrictedMovement then
+			sum = 0
+			v19 = true
+			v162 = 0
+		end
+
+		if _G.CharacterStates.ZL then
+			sum2 = 20
+		end
+
+		if v77 then
+			sum2 = sum2 + 25
+		end
+
+		local PlayingCameraAnim = _G.CharacterStates.PlayingCameraAnim
+
+		UpdateCamPartState(if PlayingCameraAnim then PlayingCameraAnim else v70)
+
+		if not _G.CharacterStates.Aiming and OverlayGui.Enabled then
+			if v13 then
+				sum2 = sum2 + 25
+			end
+
+			if _G.Settings.Gameplay.Walkspeed_affects_FOV and not PlayingCameraAnim then
+				TweenService:Create(CurrentCamera, v24, {
+					FieldOfView = sum2 + _G.Settings.Gameplay.FOV + (Humanoid.WalkSpeed - 16) / 1.5
+				}):Play()
+			else
+				TweenService:Create(CurrentCamera, v24, {
+					FieldOfView = sum2 + _G.Settings.Gameplay.FOV
+				}):Play()
+			end
+		end
+
+		if _G.CharacterStates.CutsceneFieldOfView then
+			TweenService:Create(CurrentCamera, v24, {
+				FieldOfView = _G.CharacterStates.CutsceneFieldOfView
+			}):Play()
+		end
+
+		local v242 = v7:GetAttribute("Stamina")
+
+		if v242 < 35 then
+			local v252 = 1 - v242 / 2 / 35
+
+			TweenService:Create(UnderScreenEffects.Stamina, v24, {
+				ImageTransparency = 1 - v252
+			}):Play()
+			TweenService:Create(Sounds.OutOfStamina, v24, {
+				Volume = v252 / 4
+			}):Play()
+		elseif UnderScreenEffects.Stamina.ImageTransparency ~= 1 then
+			TweenService:Create(UnderScreenEffects.Stamina, v24, {
+				ImageTransparency = 1
+			}):Play()
+			TweenService:Create(Sounds.OutOfStamina, v24, {
+				Volume = 0
+			}):Play()
+		end
+
+		if (v18 and (not v182 and (HumanoidRootPart.Anchored == false and (v16 == false and (v13 == false and not (_G.CharacterStates.CS or (_G.CharacterStates.ZL or _G.CharacterStates.Aiming)))))) or v8 and v8 >= 20) and ((Humanoid.MoveDirection:Dot(HumanoidRootPart.CFrame.LookVector) > 0.5 or _G.CharacterStates.Parkour) and not v8 or (Humanoid.MoveDirection:Dot(HumanoidRootPart.CFrame.LookVector) > 0.5 or _G.CharacterStates.Parkour) and (v8 > 16 and (v16 == false and v13 == false))) then
+			if v17 == false then
+				v17 = true
+				v6:SetAttribute("Sprinting", v17)
+			end
+		elseif v17 == true then
+			v17 = false
+			v6:SetAttribute("Sprinting", v17)
+		end
+
+		if v9 then
+			if v8 and not (v8 > 3) then
+				Humanoid.WalkSpeed = v8
+			elseif sum - 14 > 2 then
+				Humanoid.WalkSpeed = sum - 14
+			else
+				Humanoid.WalkSpeed = 1.5
+			end
+
+			JumpCooldown.BackgroundColor3 = Color3.new(255/255, 0/255, 0/255)
+			Humanoid.JumpPower = 0
+
+			if v66 ~= -1.75 then
+				v66 = -1.75
+				TweenService:Create(Humanoid, v25, {
+					HipHeight = -1.75
+				}):Play()
+			end
+
+			if v17 == true then
+				v17 = false
+				v6:SetAttribute("Sprinting", v17)
+			end
+
+			v16 = false
+
+			if v6:FindFirstChild("CarryWeld") then
+				PlayAnimation("")
+			elseif Humanoid.MoveDirection == Vector3.new(0, 0, 0) then
+				PlayAnimation("downedIdle", nil, nil, 0.5)
+			else
+				PlayAnimation("downedWalk", v67, 2.5, 0.5)
+			end
+		elseif v16 == true and HumanoidRootPart.Anchored == false or v19 then
+			if v17 == true then
+				v17 = false
+				v6:SetAttribute("Sprinting", v17)
+			end
+
+			if v13 == false then
+				if Humanoid.MoveDirection == Vector3.new(0, 0, 0) then
+					PlayAnimation("crouchIdle", nil, nil, 0.25)
+				else
+					PlayAnimation("crouchWalk", v67, 6, 0.15)
+				end
+
+				if v242 < 10 then
+					JumpCooldown.BackgroundColor3 = Color3.new(255/255, 0/255, 0/255)
+					Humanoid.JumpPower = 0
+				else
+					JumpCooldown.BackgroundColor3 = Color3.new(255/255, 255/255, 255/255)
+					Humanoid.JumpPower = v162
+				end
+
+				if v66 ~= -1.35 then
+					v66 = -1.35
+					TweenService:Create(Humanoid, v25, {
+						HipHeight = -1.35
+					}):Play()
+				end
+			else
+				JumpCooldown.BackgroundColor3 = Color3.new(255/255, 0/255, 0/255)
+				Humanoid.JumpPower = 0
+
+				if v66 ~= -1.75 then
+					v66 = -1.75
+					TweenService:Create(Humanoid, v25, {
+						HipHeight = -1.75
+					}):Play()
+				end
+			end
+
+			if v8 and not (v8 > 6) then
+				Humanoid.WalkSpeed = v8
+			elseif sum - 10 > 5 then
+				Humanoid.WalkSpeed = sum - 10
+			elseif sum > 6 then
+				Humanoid.WalkSpeed = 5
+			else
+				Humanoid.WalkSpeed = sum
+			end
+		else
+			if v66 ~= 0.1 then
+				v66 = 0.1
+				TweenService:Create(Humanoid, v25, {
+					HipHeight = 0.1
+				}):Play()
+			end
+
+			if v242 < 10 then
+				JumpCooldown.BackgroundColor3 = Color3.new(255/255, 0/255, 0/255)
+				Humanoid.JumpPower = 0
+			else
+				JumpCooldown.BackgroundColor3 = Color3.new(255/255, 255/255, 255/255)
+				Humanoid.JumpPower = v162
+			end
+
+			if v17 == true and (v242 > 0 and (Humanoid.MoveDirection ~= Vector3.new(0, 0, 0) and not v172)) then
+				if not _G.CharacterStates.Falling then
+					if v15 then
+						PlayAnimation("hurtSprint", v67, 17, 0.35)
+					else
+						PlayAnimation("sprint", v67, 17, 0.35)
+					end
+				end
+
+				if v8 then
+					v16 = false
+					Humanoid.WalkSpeed = v8
+				else
+					Humanoid.WalkSpeed = sum + 9
+				end
+			else
+				if v17 == true then
+					v17 = false
+					v6:SetAttribute("Sprinting", v17)
+				end
+
+				if v8 and v8 < 16 then
+					Humanoid.WalkSpeed = v8
+				else
+					Humanoid.WalkSpeed = sum
+				end
+			end
+		end
+
+		if not (v17 or (v9 or v16)) or (v14 or _G.CharacterStates.Falling) then
+			PlayAnimation("")
+
+			if v14 then
+				v16 = false
+			end
+		end
+
+		if _G.CharacterStates.Crouching ~= v16 then
+			v6:SetAttribute("Crouching", v16)
+		end
+
+		for k, v in pairs(v23) do
+			if v:IsA("Frame") and v.Name ~= "Extra" then
+				if v6:FindFirstChild(v.Name) and (v6[v.Name]:GetAttribute("Health") and not v6[v.Name]:GetAttribute("Disconnected")) then
+					local v26 = v6[v.Name]:GetAttribute("Health")
+					local v27 = table.find(t9, v.Name)
+
+					if v27 then
+						table.remove(t9, v27)
+					end
+
+					if v6[v.Name]:GetAttribute("BrokenBone") and v:FindFirstChild("Broken") then
+						v.Broken.Visible = true
+						v.Broken.Bar.Offset = Vector2.new(0, -(v26 / 100))
+
+						if not table.find(t8, v.Name) then
+							table.insert(t8, v.Name)
+							GiveHurtFeedback("BrokenBone")
+						end
+
+						continue
+					end
+
+					if v:FindFirstChild("Broken") then
+						v.Broken.Visible = false
+					end
+
+					local v30 = table.find(t8, v.Name)
+
+					if v30 then
+						table.remove(t8, v30)
+					end
+
+					v.BackgroundColor3 = Color3.fromRGB(255, 55, 55):Lerp(Color3.fromRGB(101, 255, 84), v26 / 100)
+
+					continue
+				end
+
+				if not v6:FindFirstChild(v.Name) or v6[v.Name]:GetAttribute("Disconnected") then
+					if v:FindFirstChild("Broken") then
+						v.Broken.Visible = false
+					end
+
+					if not table.find(t9, v.Name) then
+						table.insert(t9, v.Name)
+						GiveHurtFeedback("LimbMissing")
+					end
+
+					v.BackgroundColor3 = Color3.new(0.25, 0.25, 0.25)
+				end
+			end
+		end
+
+		if _G.Settings.Video.Blood == false then
+			for k, v in pairs(Players:GetPlayers()) do
+				if v.Character and v.Character:FindFirstChild("Torso") then
+					for k2, v2 in pairs(v.Character.Torso:GetChildren()) do
+						if v2.Name == "Blood" then
+							v2:Destroy()
+						end
+					end
+				end
+			end
+
+			workspace.Debris.Blood:ClearAllChildren()
+
+			continue
+		end
+
+		for k, v in pairs(workspace.Chars:GetChildren()) do
+			if v and (v:FindFirstChild("Torso") and (HumanoidRootPart and (HumanoidRootPart.Position - v.Torso.Position).Magnitude <= 30)) then
+				for k2, v2 in pairs(v.Torso:GetChildren()) do
+					if v2.Name == "Blood" and (v2:FindFirstChild("At") and (v2.At:FindFirstChild("PE") and v2.At.PE.Enabled)) then
+						MakeBlood(v2.CFrame, nil, nil, "UpVector")
+					end
+				end
+
+				local v332 = v:GetAttribute("Bleeding")
+
+				if v332 and math.random(0, 5) < v332.Y then
+					MakeBlood(v.Torso.CFrame, true)
+				end
+			end
+		end
+	end
+end)
+
+if ok or not (result and (script and script.Parent)) then
+	return
+end
+
+LocalPlayer:Kick(result .. " Code: 140")
+error(result)
+
+-- Workspace.Chars.Noriko_Ellen.ScreenShake
+--
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local CurrentCamera = workspace.CurrentCamera
+local LocalPlayer = Players.LocalPlayer
+local v1 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local Humanoid = v1:WaitForChild("Humanoid")
+
+v1:WaitForChild("HumanoidRootPart")
+
+local v2 = 0
+local v3 = 0
+local v4 = 0
+
+local function LerpNumber(p1, p2, p3) --[[ LerpNumber | Line: 27 ]]
+	return p1 + (p2 - p1) * p3
+end
+
+Humanoid.Running:Connect(function(p1) --[[ Line: 33 | Upvalues: v2 (ref) ]]
+	v2 = p1
+end)
+RunService.RenderStepped:Connect(function(p1) --[[ Line: 34 | Upvalues: Humanoid (copy), CurrentCamera (copy), v3 (ref), v2 (ref), v4 (ref) ]]
+	if _G.CharacterStates.Downed or (_G.CharacterStates.Ragdolled or Humanoid.Health <= 0) then
+		return
+	end
+
+	local v1 = tick()
+	local InFirstPerson = _G.CharacterStates.InFirstPerson
+
+	if _G.CharacterStates.ZL then
+		local v22 = math.sin(v1 * 15) / 50
+		local v32 = math.cos(v1 * 10) / 50
+
+		if _G.CharacterStates.Aiming then
+			v22 = v22 / 50
+			v32 = v32 / 50
+		end
+
+		local v42 = CurrentCamera
+
+		v42.CFrame = v42.CFrame * (CFrame.new(v22, v32, 0) * CFrame.Angles(0, 0, v22))
+	else
+		local v5 = v3
+
+		v3 = v5 + (v2 - v5) * 0.1
+
+		local v7 = math.clamp(v3 / 75, 0, 0.5)
+		local v8 = v4
+
+		v4 = v8 + ((InFirstPerson and CurrentCamera.CFrame:VectorToObjectSpace(Humanoid.MoveDirection).X * v7 * 1.5 or 0) - v8) * 0.1
+
+		local v10 = CurrentCamera
+		local Angles = CFrame.Angles
+		local v12 = math.sin(v1 * 12) * v7
+
+		v10.CFrame = v10.CFrame * (Angles(0, 0, (math.rad(v12))) * CFrame.Angles(0, 0, -v4 / 15))
+	end
+end)
+
+-- StarterPlayer.StarterPlayerScripts.WindShake.WindShake
+--
+local CollectionService = game:GetService("CollectionService")
+local RunService = game:GetService("RunService")
+local Settings = require(script.Settings)
+local VectorMap = require(script.VectorMap)
+local v1 = Instance.new("BindableEvent")
+local v2 = Instance.new("BindableEvent")
+local v3 = Instance.new("BindableEvent")
+local v4 = Instance.new("BindableEvent")
+local v5 = Instance.new("BindableEvent")
+
+return {
+	RenderDistance = 150,
+	MaxRefreshRate = 1 / 60,
+	Handled = 0,
+	Active = 0,
+	SharedSettings = Settings.new(script),
+	ObjectMetadata = {},
+	VectorMap = VectorMap.new(),
+	_partList = table.create(500),
+	_cframeList = table.create(500),
+	ObjectShakeAdded = v1.Event,
+	ObjectShakeRemoved = v2.Event,
+	ObjectShakeUpdated = v3.Event,
+	Paused = v4.Event,
+	Resumed = v5.Event,
+	Connect = function(p1, p2, p3) --[[ Connect | Line: 62 ]]
+		local v1 = p1[p2]
+
+		assert(if typeof(v1) == "function" then true else false, "Unknown function: " .. p2)
+
+		return p3:Connect(function(...) --[[ Line: 66 | Upvalues: v1 (copy), p1 (copy) ]]
+			return v1(p1, ...)
+		end)
+	end,
+	AddObjectShake = function(p1, p2, p3) --[[ AddObjectShake | Line: 71 | Upvalues: Settings (copy), v1 (copy) ]]
+		if typeof(p2) ~= "Instance" then
+			return
+		end
+
+		if not (p2:IsA("BasePart") or p2:IsA("Bone")) then
+			return
+		end
+
+		local ObjectMetadata = p1.ObjectMetadata
+
+		if ObjectMetadata[p2] then
+			return
+		end
+
+		p1.Handled = p1.Handled + 1
+
+		local t = {}
+
+		t.ChunkKey = p1.VectorMap:AddObject(if p2:IsA("Bone") then p2.WorldPosition else p2.Position, p2)
+		t.Settings = Settings.new(p2)
+		t.Seed = math.random(5000) * 0.32
+		t.Origin = if p2:IsA("Bone") then p2.WorldCFrame else p2.CFrame
+		t.LastUpdate = os.clock()
+		ObjectMetadata[p2] = t
+
+		if p3 then
+			p1:UpdateObjectSettings(p2, p3)
+		end
+
+		v1:Fire(p2)
+	end,
+	RemoveObjectShake = function(p1, p2) --[[ RemoveObjectShake | Line: 107 | Upvalues: v2 (copy) ]]
+		if typeof(p2) ~= "Instance" then
+			return
+		end
+
+		local ObjectMetadata = p1.ObjectMetadata
+		local v1 = ObjectMetadata[p2]
+
+		if v1 then
+			p1.Handled = p1.Handled - 1
+			ObjectMetadata[p2] = nil
+			v1.Settings:Destroy()
+			p1.VectorMap:RemoveObject(v1.ChunkKey, p2)
+
+			if p2:IsA("BasePart") then
+				p2.CFrame = v1.Origin
+			elseif p2:IsA("Bone") then
+				p2.WorldCFrame = v1.Origin
+			end
+		end
+
+		v2:Fire(p2)
+	end,
+	Update = function(p1, p2) --[[ Update | Line: 131 ]]
+		debug.profilebegin("WindShake")
+
+		local v1 = 0
+
+		debug.profilebegin("Update")
+
+		local v2 = os.clock()
+		local v3 = p2 * 3
+		local v4 = math.min(1, p2 * 5)
+		local v5 = 0
+		local _partList = p1._partList
+		local _cframeList = p1._cframeList
+
+		table.clear(_partList)
+		table.clear(_cframeList)
+
+		local ObjectMetadata = p1.ObjectMetadata
+		local CurrentCamera = workspace.CurrentCamera
+		local Position = CurrentCamera.CFrame.Position
+		local RenderDistance = p1.RenderDistance
+		local MaxRefreshRate = p1.MaxRefreshRate
+		local SharedSettings = p1.SharedSettings
+		local WindPower = SharedSettings.WindPower
+		local WindSpeed = SharedSettings.WindSpeed
+		local WindDirection = SharedSettings.WindDirection
+
+		p1.VectorMap:ForEachObjectInView(CurrentCamera, RenderDistance, function(p1, p2) --[[ Line: 161 | Upvalues: ObjectMetadata (copy), Position (copy), RenderDistance (copy), v3 (copy), MaxRefreshRate (copy), v2 (copy), v1 (ref), WindDirection (copy), WindPower (copy), WindSpeed (copy), v4 (copy), v5 (ref), _partList (copy), _cframeList (copy) ]]
+			local v12 = ObjectMetadata[p2]
+			local v32 = p1 == "Bone"
+			local v42 = if v32 then p2.WorldCFrame else p2.CFrame
+			local v52 = (Position - v42.Position).Magnitude / RenderDistance
+			local v6 = v52 * v52
+
+			if v3 * v6 + MaxRefreshRate >= v2 - (v12.LastUpdate or 0) + 1 / math.random(60, 120) then
+				return
+			end
+
+			v12.LastUpdate = v2
+			v1 = v1 + 1
+
+			local Settings = v12.Settings
+			local v7 = Settings.WindDirection or WindDirection
+
+			if v7.Magnitude < 0.00001 then
+				return
+			end
+
+			local v9 = (Settings.WindPower or WindPower) * 0.2
+
+			if v9 < 0.00001 then
+				return
+			end
+
+			local v122 = v2 * ((Settings.WindSpeed or WindSpeed) * 0.08)
+
+			if v122 < 0.00001 then
+				return
+			end
+
+			local Seed = v12.Seed
+			local v13 = (math.noise(v122, 0, Seed) + 0.4) * v9
+			local v15 = math.clamp(v4 + v6, 0.1, 0.5)
+			local v16 = v9 / 3
+			local v18 = v12.Origin * (Settings.PivotOffset or CFrame.identity)
+			local v19 = v18:VectorToObjectSpace(v7)
+
+			if v32 then
+				p2.Transform = p2.Transform:Lerp(CFrame.fromAxisAngle(v19:Cross(Vector3.new(0, 1, 0)), -v13) * CFrame.Angles(math.noise(Seed, 0, v122) * v16, math.noise(Seed, v122, 0) * v16, math.noise(v122, Seed, 0) * v16) + v19 * v13 * v9, v15)
+
+				return
+			end
+
+			v5 = v5 + 1
+			_partList[v5] = p2
+			_cframeList[v5] = v42:Lerp(v18 * CFrame.fromAxisAngle(v19:Cross(Vector3.new(0, 1, 0)), -v13) * CFrame.Angles(math.noise(Seed, 0, v122) * v16, math.noise(Seed, v122, 0) * v16, math.noise(v122, Seed, 0) * v16) * (Settings.PivotOffsetInverse or CFrame.identity) + v7 * v13 * (v9 * 2), v15)
+		end)
+		p1.Active = v1
+		debug.profileend()
+		workspace:BulkMoveTo(_partList, _cframeList, Enum.BulkMoveMode.FireCFrameChanged)
+		debug.profileend()
+	end,
+	Pause = function(p1) --[[ Pause | Line: 247 | Upvalues: v4 (copy) ]]
+		if p1.UpdateConnection then
+			p1.UpdateConnection:Disconnect()
+			p1.UpdateConnection = nil
+		end
+
+		p1.Active = 0
+		p1.Running = false
+		v4:Fire()
+	end,
+	Resume = function(p1) --[[ Resume | Line: 259 | Upvalues: RunService (copy), v5 (copy) ]]
+		if not p1.Running then
+			p1.Running = true
+			p1.UpdateConnection = p1:Connect("Update", RunService.Heartbeat)
+			v5:Fire()
+		end
+	end,
+	Init = function(p1, p2) --[[ Init | Line: 272 | Upvalues: CollectionService (copy) ]]
+		if p1.Initialized then
+			return
+		end
+
+		local v1 = script:GetAttribute("WindPower")
+		local v2 = script:GetAttribute("WindSpeed")
+		local v3 = script:GetAttribute("WindDirection")
+
+		if typeof(v1) ~= "number" then
+			script:SetAttribute("WindPower", 0.5)
+		end
+
+		if typeof(v2) ~= "number" then
+			script:SetAttribute("WindSpeed", 20)
+		end
+
+		if typeof(v3) ~= "Vector3" then
+			script:SetAttribute("WindDirection", Vector3.new(0.5, 0, 0.5))
+		end
+
+		p1:Cleanup()
+		p1.Initialized = true
+		p1.AddedConnection = p1:Connect("AddObjectShake", (CollectionService:GetInstanceAddedSignal("WindShake")))
+		p1.RemovedConnection = p1:Connect("RemoveObjectShake", (CollectionService:GetInstanceRemovedSignal("WindShake")))
+
+		for v4, v5 in CollectionService:GetTagged("WindShake") do
+			p1:AddObjectShake(v5)
+		end
+
+		if p2 and p2.MatchWorkspaceWind then
+			p1:MatchWorkspaceWind()
+			p1.WorkspaceWindConnection = workspace:GetPropertyChangedSignal("GlobalWind"):Connect(function() --[[ Line: 312 | Upvalues: p1 (copy) ]]
+				p1:MatchWorkspaceWind()
+			end)
+		end
+
+		p1:Resume()
+	end,
+	Cleanup = function(p1) --[[ Cleanup | Line: 321 ]]
+		if not p1.Initialized then
+			return
+		end
+
+		p1:Pause()
+
+		if p1.AddedConnection then
+			p1.AddedConnection:Disconnect()
+			p1.AddedConnection = nil
+		end
+
+		if p1.RemovedConnection then
+			p1.RemovedConnection:Disconnect()
+			p1.RemovedConnection = nil
+		end
+
+		if p1.WorkspaceWindConnection then
+			p1.WorkspaceWindConnection:Disconnect()
+			p1.WorkspaceWindConnection = nil
+		end
+
+		table.clear(p1.ObjectMetadata)
+		p1.VectorMap:ClearAll()
+		p1.Handled = 0
+		p1.Active = 0
+		p1.Initialized = false
+	end,
+	UpdateObjectSettings = function(p1, p2, p3) --[[ UpdateObjectSettings | Line: 351 | Upvalues: v3 (copy) ]]
+		if typeof(p2) ~= "Instance" then
+			return
+		end
+
+		if typeof(p3) ~= "table" then
+			return
+		end
+
+		if not p1.ObjectMetadata[p2] and p2 ~= script then
+			return
+		end
+
+		for v1, v2 in p3 do
+			p2:SetAttribute(v1, v2)
+		end
+
+		v3:Fire(p2)
+	end,
+	UpdateAllObjectSettings = function(p1, p2) --[[ UpdateAllObjectSettings | Line: 371 | Upvalues: v3 (copy) ]]
+		if typeof(p2) ~= "table" then
+			return
+		end
+
+		for v1, v2 in p1.ObjectMetadata do
+			for v32, v4 in p2 do
+				v1:SetAttribute(v32, v4)
+			end
+
+			v3:Fire(v1)
+		end
+	end,
+	SetDefaultSettings = function(p1, p2) --[[ SetDefaultSettings | Line: 384 ]]
+		p1:UpdateObjectSettings(script, p2)
+	end,
+	MatchWorkspaceWind = function(p1) --[[ MatchWorkspaceWind | Line: 388 ]]
+		local GlobalWind = workspace.GlobalWind
+		local Magnitude = GlobalWind.Magnitude
+		local v1, v2
+
+		if Magnitude > 0 then
+			v1 = if Magnitude > 1 then math.log10(Magnitude) + 0.2 else 0.3
+			v2 = if Magnitude < 100 then Magnitude * 1.2 + 5 else 125
+		else
+			v2 = 0
+			v1 = 0
+		end
+
+		p1:SetDefaultSettings({
+			WindDirection = GlobalWind.Unit,
+			WindSpeed = v2,
+			WindPower = v1
+		})
+	end
+}
+
+-- ReplicatedStorage.Mods.MedalClipper
+--
+local HttpService = game:GetService("HttpService")
+local t = {
+	TriggerClip = function(p1, p2, p3, p4) --[[ TriggerClip | Line: 11 | Upvalues: HttpService (copy) ]]
+		local v1 = if p4 then p4 else {}
+		local t = {
+			eventId = p2,
+			eventName = p3,
+			triggerActions = { "SaveClip" },
+			clipOptions = {
+				duration = v1.duration or 30,
+				captureDelayMs = v1.captureDelayMs
+			}
+		}
+
+		if v1.contextTags and next(v1.contextTags) then
+			t.contextTags = v1.contextTags
+		end
+
+		print("[_MAPIEvent][v1/event/invoke]", base64Encode(HttpService:JSONEncode({
+			gameEvent = t,
+			universeId = game.GameId
+		})))
+	end
+}
+
+function base64Encode(p1) --[[ base64Encode | Line: 40 ]]
+	local sum = 1
+	local v1 = #p1
+	local t = {}
+
+	while sum <= v1 do
+		local v2 = (p1:byte(sum) or 0) * 65536 + (p1:byte(sum + 1) or 0) * 256 + (p1:byte(sum + 2) or 0)
+		local v3 = math.floor(v2 / 262144) % 64 + 1
+		local v4 = math.floor(v2 / 4096) % 64 + 1
+		local v5 = math.floor(v2 / 64) % 64 + 1
+		local v6 = v2 % 64 + 1
+
+		t[#t + 1] = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"):sub(v3, v3)
+		t[#t + 1] = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"):sub(v4, v4)
+
+		if v1 < sum + 1 then
+			t[#t + 1] = "=="
+
+			break
+		end
+
+		if v1 < sum + 2 then
+			t[#t + 1] = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"):sub(v5, v5) .. "="
+
+			break
+		end
+
+		t[#t + 1] = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"):sub(v5, v5) .. ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"):sub(v6, v6)
+		sum = sum + 3
+	end
+
+	return table.concat(t)
+end
+
+return t
+
+-- StarterGui.Minigames.MinigameHandler.Minigames.Spring
+--
+return {
+	create = function(p1, p2, p3, p4, p5) --[[ create | Line: 11 ]]
+		return {
+			Target = Vector3.new(),
+			Position = Vector3.new(),
+			Velocity = Vector3.new(),
+			Mass = p2 or 5,
+			Force = p3 or 50,
+			Damping = p4 or 4,
+			Speed = p5 or 4,
+			shove = function(p1, p2) --[[ shove | Line: 24 ]]
+				local X = p2.X
+				local Y = p2.Y
+				local Z = p2.Z
+
+				if X ~= X or (X == (1 / 0) or X == (-1 / 0)) then
+					X = 0
+				end
+
+				if Y ~= Y or (Y == (1 / 0) or Y == (-1 / 0)) then
+					Y = 0
+				end
+
+				if Z ~= Z or (Z == (1 / 0) or Z == (-1 / 0)) then
+					Z = 0
+				end
+
+				p1.Velocity = p1.Velocity + Vector3.new(X, Y, Z)
+			end,
+			update = function(p1, p2) --[[ update | Line: 38 ]]
+				local v1 = math.min(p2, 1) * p1.Speed / 8
+
+				if p1.Velocity.Magnitude > 25 then
+					p1.Velocity = Vector3.new(0, 0, 0)
+					p1.Position = Vector3.new(0, 0, 0)
+				end
+
+				for i = 1, 8 do
+					p1.Velocity = p1.Velocity + ((p1.Target - p1.Position) * p1.Force / p1.Mass - p1.Velocity * p1.Damping) * v1
+					p1.Position = p1.Position + p1.Velocity * v1
+				end
+
+				return p1.Position
+			end
+		}
+	end
+}
+
 -- Players.Noriko_Ellen.PlayerGui.OverlayGui.Journal.MainFrame.Tabs.Badges.BadgeCore
 --
 local t = {
@@ -37467,224 +40040,41 @@ v1:WaitForChild("Player"):WaitForChild("UpdateBadges").OnClientEvent:Connect(fun
 	v10(p13, p23)
 end)
 
--- Players.Noriko_Ellen.PlayerGui.GunGui.Actions.ActionsCore.Prompts
+-- Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore.Mods.KeyMapping
 --
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local LocalPlayer = Players.LocalPlayer
-local Character = LocalPlayer.Character
-
-LocalPlayer.CharacterAdded:Connect(function(p1) --[[ Line: 7 | Upvalues: Character (ref) ]]
-	Character = p1
-end)
-
-local Events = ReplicatedStorage:WaitForChild("Events")
-
-local function IsCharacter(p1) --[[ IsCharacter | Line: 12 | Upvalues: Character (ref) ]]
-	return p1:FindFirstChild("Humanoid") and p1 ~= Character
-end
-
-return {
-	Revive = {
-		Key = "E",
-		Title = "REVIVE",
-		Desc = "REVIVE THEM WITH %30 HEALTH",
-		LayoutOrder = 1,
-		CancelOutOfView = false,
-		KeyCode = Enum.KeyCode.E,
-		GamepadKeyCode = Enum.KeyCode.ButtonB,
-		DownFunction = function(p1) --[[ DownFunction | Line: 31 | Upvalues: Events (copy) ]]
-			Events.Actions.Revive:FireServer(p1)
-		end,
-		UpFunction = function(p1) --[[ UpFunction | Line: 36 | Upvalues: Events (copy) ]]
-			Events.Actions.Revive:FireServer(false)
-		end,
-		Checks = function(p1) --[[ Checks | Line: 41 | Upvalues: Character (ref) ]]
-			if not (p1:FindFirstChild("Humanoid") and (if p1 == Character then false else true)) then
-				return
-			end
-
-			if _G.CharacterStates.DisableAdvancedActions then
-				return
-			end
-
-			if p1:GetAttribute("Downed") and not (p1:GetAttribute("DisableRevive") or (p1:GetAttribute("PlayingActionCutscene") or (p1:GetAttribute("CutsceneCooldown") or p1:GetAttribute("Carrying")))) then
-				return true
-			end
-		end
-	},
-	Carry = {
-		Key = "X",
-		Title = "CARRY",
-		Desc = "CARRY THEM ON YOUR BACK",
-		LayoutOrder = 2,
-		CancelOutOfView = true,
-		HoldDuration = 0.25,
-		KeyCode = Enum.KeyCode.X,
-		GamepadKeyCode = Enum.KeyCode.ButtonY,
-		Triggered = function(p1) --[[ Triggered | Line: 66 | Upvalues: Events (copy) ]]
-			Events.Player.CarryCharacter:FireServer(p1)
-		end,
-		Checks = function(p1) --[[ Checks | Line: 71 | Upvalues: Character (ref) ]]
-			if not (p1:FindFirstChild("Humanoid") and (if p1 == Character then false else true)) then
-				return
-			end
-
-			if _G.CharacterStates.DisableAdvancedActions then
-				return
-			end
-
-			if p1:GetAttribute("Downed") and not (p1:GetAttribute("DisableCarry") or (p1:GetAttribute("PlayingActionCutscene") or p1:GetAttribute("Carrying"))) then
-				return true
-			end
-		end
-	},
-	Finisher = {
-		Key = "F",
-		Title = "FINISHER",
-		Desc = "PERFORM A DEADLY FINISHER",
-		LayoutOrder = 3,
-		CancelOutOfView = false,
-		KeyCode = Enum.KeyCode.F,
-		GamepadKeyCode = Enum.KeyCode.ButtonX,
-		Color = Color3.fromRGB(255, 55, 55),
-		DownFunction = function(p1) --[[ DownFunction | Line: 94 | Upvalues: Events (copy) ]]
-			Events.Actions.Finish:FireServer(p1)
-		end,
-		UpFunction = function(p1) --[[ UpFunction | Line: 99 | Upvalues: Events (copy) ]]
-			Events.Actions.Finish:FireServer(false)
-		end,
-		Checks = function(p1) --[[ Checks | Line: 104 | Upvalues: Character (ref) ]]
-			if not (p1:FindFirstChild("Humanoid") and (if p1 == Character then false else true)) then
-				return
-			end
-
-			if _G.CharacterStates.DisableAdvancedActions then
-				return
-			end
-
-			if p1:GetAttribute("Downed") and not (p1:GetAttribute("DisableFinish") or (p1:GetAttribute("CutsceneCooldown") or (p1:GetAttribute("PlayingActionCutscene") or p1:GetAttribute("Carrying")))) then
-				return true
-			end
-		end
-	},
-	Drop = {
-		Key = "X",
-		Title = "DROP",
-		Desc = "DROP THEM FROM YOUR BACK",
-		LayoutOrder = 3,
-		CancelOutOfView = false,
-		KeyCode = Enum.KeyCode.X,
-		GamepadKeyCode = Enum.KeyCode.ButtonY,
-		Color = Color3.fromRGB(255, 174, 61),
-		DownFunction = function(p1) --[[ DownFunction | Line: 128 | Upvalues: Events (copy) ]]
-			Events.Player.CarryCharacter:FireServer()
-		end,
-		Checks = function(p1) --[[ Checks | Line: 133 | Upvalues: Character (ref) ]]
-			if not (p1:FindFirstChild("Humanoid") and (if p1 == Character then false else true)) then
-				return
-			end
-
-			if p1:GetAttribute("Downed") and (not p1:GetAttribute("PlayingActionCutscene") and (p1:FindFirstChild("CarryObject") and p1.CarryObject.Value.Parent == Character)) then
-				return true
-			end
-		end
-	},
-	Throw = {
-		Key = "Z",
-		Title = "THROW",
-		Desc = "THROW THEM FROM YOUR BACK",
-		LayoutOrder = 4,
-		CancelOutOfView = false,
-		KeyCode = Enum.KeyCode.Z,
-		GamepadKeyCode = Enum.KeyCode.ButtonX,
-		Color = Color3.fromRGB(255, 174, 61),
-		DownFunction = function(p1) --[[ DownFunction | Line: 158 | Upvalues: Events (copy) ]]
-			Events.Player.ThrowCharacter:FireServer()
-		end,
-		Checks = function(p1) --[[ Checks | Line: 163 | Upvalues: Character (ref) ]]
-			if not (p1:FindFirstChild("Humanoid") and (if p1 == Character then false else true)) then
-				return
-			end
-
-			if p1:GetAttribute("Downed") and (not p1:GetAttribute("PlayingActionCutscene") and (p1:FindFirstChild("CarryObject") and p1.CarryObject.Value.Parent == Character)) then
-				return true
-			end
-		end
-	},
-	LockpickRotateRight = {
-		Key = "D",
-		Title = "ROTATE RIGHT",
-		Desc = "MOVE THE PICK",
-		LayoutOrder = 1,
-		CancelOutOfView = true,
-		KeyCode = Enum.KeyCode.D,
-		GamepadKeyCode = Enum.KeyCode.Thumbstick1,
-		Checks = function(p1) --[[ Checks | Line: 187 ]]
-			return p1:GetAttribute("Lockpick")
-		end,
-		DownFunction = function(p1) --[[ DownFunction | Line: 192 | Upvalues: ReplicatedStorage (copy) ]]
-			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.D, "Began")
-		end,
-		UpFunction = function(p1) --[[ UpFunction | Line: 197 | Upvalues: ReplicatedStorage (copy) ]]
-			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.D, "Ended")
-		end
-	},
-	LockpickRotateLeft = {
-		Key = "A",
-		Title = "ROTATE LEFT",
-		Desc = "MOVE THE PICK",
-		LayoutOrder = 2,
-		CancelOutOfView = true,
-		KeyCode = Enum.KeyCode.A,
-		GamepadKeyCode = Enum.KeyCode.Thumbstick1,
-		Checks = function(p1) --[[ Checks | Line: 212 ]]
-			return p1:GetAttribute("Lockpick")
-		end,
-		DownFunction = function(p1) --[[ DownFunction | Line: 217 | Upvalues: ReplicatedStorage (copy) ]]
-			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.A, "Began")
-		end,
-		UpFunction = function(p1) --[[ UpFunction | Line: 222 | Upvalues: ReplicatedStorage (copy) ]]
-			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.A, "Ended")
-		end
-	},
-	LockpickTry = {
-		Key = "F",
-		Title = "TRY PICKING",
-		Desc = "TRY PICKING THE LOCK",
-		LayoutOrder = 3,
-		CancelOutOfView = true,
-		KeyCode = Enum.KeyCode.F,
-		GamepadKeyCode = Enum.KeyCode.ButtonX,
-		Checks = function(p1) --[[ Checks | Line: 237 ]]
-			return p1:GetAttribute("Lockpick")
-		end,
-		DownFunction = function(p1) --[[ DownFunction | Line: 242 | Upvalues: ReplicatedStorage (copy) ]]
-			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.F, "Began")
-		end,
-		UpFunction = function(p1) --[[ UpFunction | Line: 247 | Upvalues: ReplicatedStorage (copy) ]]
-			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.F, "Ended")
-		end
-	},
-	LockpickCancel = {
-		Key = "E",
-		Title = "CANCEL",
-		Desc = "CANCEL LOCK PICKING",
-		LayoutOrder = 4,
-		CancelOutOfView = true,
-		KeyCode = Enum.KeyCode.E,
-		GamepadKeyCode = Enum.KeyCode.ButtonB,
-		Checks = function(p1) --[[ Checks | Line: 262 ]]
-			return p1:GetAttribute("Lockpick")
-		end,
-		DownFunction = function(p1) --[[ DownFunction | Line: 267 | Upvalues: ReplicatedStorage (copy) ]]
-			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.E, "Began")
-		end,
-		UpFunction = function(p1) --[[ UpFunction | Line: 272 | Upvalues: ReplicatedStorage (copy) ]]
-			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.E, "Ended")
-		end
-	}
+local t = {
+	[Enum.KeyCode.Backspace] = "rbxasset://textures/ui/Controls/backspace.png",
+	[Enum.KeyCode.Return] = "rbxasset://textures/ui/Controls/return.png",
+	[Enum.KeyCode.LeftShift] = "rbxasset://textures/ui/Controls/shift.png",
+	[Enum.KeyCode.RightShift] = "rbxasset://textures/ui/Controls/shift.png",
+	[Enum.KeyCode.Tab] = "rbxasset://textures/ui/Controls/tab.png",
+	[Enum.KeyCode.Quote] = "rbxasset://textures/ui/Controls/apostrophe.png",
+	[Enum.KeyCode.Comma] = "rbxasset://textures/ui/Controls/comma.png",
+	[Enum.KeyCode.Backquote] = "rbxasset://textures/ui/Controls/graveaccent.png",
+	[Enum.KeyCode.Period] = "rbxasset://textures/ui/Controls/period.png",
+	[Enum.KeyCode.Space] = "rbxasset://textures/ui/Controls/spacebar.png"
 }
+local t2 = {
+	[Enum.KeyCode.LeftControl] = "CTRL",
+	[Enum.KeyCode.RightControl] = "CTRL",
+	[Enum.KeyCode.LeftAlt] = "ALT",
+	[Enum.KeyCode.RightAlt] = "ALT",
+	[Enum.KeyCode.CapsLock] = "CAPS",
+	[Enum.KeyCode.Zero] = "0",
+	[Enum.KeyCode.One] = "1",
+	[Enum.KeyCode.Two] = "2",
+	[Enum.KeyCode.Three] = "3",
+	[Enum.KeyCode.Four] = "4",
+	[Enum.KeyCode.Five] = "5",
+	[Enum.KeyCode.Six] = "6",
+	[Enum.KeyCode.Seven] = "7",
+	[Enum.KeyCode.Eight] = "8",
+	[Enum.KeyCode.Nine] = "9"
+}
+
+return function(p1) --[[ Line: 34 | Upvalues: t (copy), t2 (copy) ]]
+	return t[p1] or (t2[p1] or p1.Name), if t[p1] == nil then false else true
+end
 
 -- Workspace.Chars.Noriko_Ellen.RagdollClient
 --
@@ -38009,271 +40399,169 @@ while task.wait(0.025) do
 	end
 end
 
--- Workspace.Chars.Noriko_Ellen.ScreenShake
+-- Players.Noriko_Ellen.PlayerGui.GunGui.GunGuiLogic.ToolTip
 --
-local RunService = game:GetService("RunService")
-local Players = game:GetService("Players")
+local t = {
+	ActiveTip = nil,
+	Cache = {}
+}
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TweenService = game:GetService("TweenService")
+local CollectionService = game:GetService("CollectionService")
+
+game:GetService("StarterGui")
+
 local CurrentCamera = workspace.CurrentCamera
-local LocalPlayer = Players.LocalPlayer
-local v1 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-local Humanoid = v1:WaitForChild("Humanoid")
+local Tip = script.Parent.Parent:WaitForChild("FollowMouse"):WaitForChild("Tip")
+local MainFrame = Tip:WaitForChild("MainFrame")
+local Title = MainFrame:WaitForChild("Title")
+local Description = MainFrame:WaitForChild("Description")
+local SubTitle = MainFrame:WaitForChild("SubTitle")
+local OnlyTitle = MainFrame:WaitForChild("OnlyTitle")
+local Symbol = MainFrame:WaitForChild("Symbol")
+local SubFrames = MainFrame:WaitForChild("SubFrames")
+local SubFrame = script:WaitForChild("SubFrame")
+local UIPadding = SubFrames:WaitForChild("UIPadding")
+local RecolorUI = require(ReplicatedStorage:WaitForChild("Mods"):WaitForChild("RecolorUI"))
+local v1 = TweenInfo.new(0.15, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 
-v1:WaitForChild("HumanoidRootPart")
+local function CacheToolTip(p1) --[[ CacheToolTip | Line: 57 | Upvalues: t (copy) ]]
+	local t2 = {}
 
-local v2 = 0
-local v3 = 0
-local v4 = 0
+	for k, v in pairs(p1:GetAttributes()) do
+		local v1
 
-local function LerpNumber(p1, p2, p3) --[[ LerpNumber | Line: 27 ]]
-	return p1 + (p2 - p1) * p3
-end
+		if k:find("ToolTip_") then
+			local v2 = k:gsub("ToolTip_", "")
+			local v3, v4 = v2:match("^Embed(%d+)_(.+)$")
 
-Humanoid.Running:Connect(function(p1) --[[ Line: 33 | Upvalues: v2 (ref) ]]
-	v2 = p1
-end)
-RunService.RenderStepped:Connect(function(p1) --[[ Line: 34 | Upvalues: Humanoid (copy), CurrentCamera (copy), v3 (ref), v2 (ref), v4 (ref) ]]
-	if _G.CharacterStates.Downed or (_G.CharacterStates.Ragdolled or Humanoid.Health <= 0) then
-		return
-	end
+			if v3 then
+				v1 = v2
+			else
+				local v5, v6 = v2:match("^Embed_(%d+)_(.+)$")
 
-	local v1 = tick()
-	local InFirstPerson = _G.CharacterStates.InFirstPerson
+				v3 = v5
+				v4 = v6
+				v1 = v2
+			end
 
-	if _G.CharacterStates.ZL then
-		local v22 = math.sin(v1 * 15) / 50
-		local v32 = math.cos(v1 * 10) / 50
+			if v3 and v4 then
+				local v7 = tonumber(v3)
 
-		if _G.CharacterStates.Aiming then
-			v22 = v22 / 50
-			v32 = v32 / 50
+				t2.SubFrames = t2.SubFrames or {}
+				t2.SubFrames[v7] = t2.SubFrames[v7] or {}
+				t2.SubFrames[v7][v4] = v
+
+				continue
+			end
+
+			t2[v1] = v
 		end
-
-		local v42 = CurrentCamera
-
-		v42.CFrame = v42.CFrame * (CFrame.new(v22, v32, 0) * CFrame.Angles(0, 0, v22))
-	else
-		local v5 = v3
-
-		v3 = v5 + (v2 - v5) * 0.1
-
-		local v7 = math.clamp(v3 / 75, 0, 0.5)
-		local v8 = v4
-
-		v4 = v8 + ((InFirstPerson and CurrentCamera.CFrame:VectorToObjectSpace(Humanoid.MoveDirection).X * v7 * 1.5 or 0) - v8) * 0.1
-
-		local v10 = CurrentCamera
-		local Angles = CFrame.Angles
-		local v12 = math.sin(v1 * 12) * v7
-
-		v10.CFrame = v10.CFrame * (Angles(0, 0, (math.rad(v12))) * CFrame.Angles(0, 0, -v4 / 15))
 	end
+
+	t.Cache[p1] = t2
+end
+
+for k, v in pairs(CollectionService:GetTagged("HoverableFrame")) do
+	CacheToolTip(v)
+end
+
+CollectionService:GetInstanceAddedSignal("HoverableFrame"):Connect(function(p1) --[[ Line: 102 | Upvalues: CacheToolTip (copy) ]]
+	CacheToolTip(p1)
+end)
+CollectionService:GetInstanceRemovedSignal("HoverableFrame"):Connect(function(p1) --[[ Line: 105 | Upvalues: t (copy) ]]
+	t.Cache[p1] = nil
 end)
 
--- StarterPlayer.StarterPlayerScripts.WindShake.WindShake.VectorMap
---
-local t = {}
-
-t.__index = t
-function t.new(p1) --[[ new | Line: 6 | Upvalues: t (copy) ]]
-	return setmetatable({
-		_voxelSize = p1 or 50,
-		_voxels = {}
-	}, t)
-end
-function t._debugDrawVoxel(p1, p2) --[[ _debugDrawVoxel | Line: 13 ]]
-	local Part = Instance.new("Part")
-
-	Part.Name = tostring(p2)
-	Part.Anchored = true
-	Part.CanCollide = false
-	Part.Transparency = 1
-	Part.Size = Vector3.new(1, 1, 1) * p1._voxelSize
-	Part.Position = p2 * p1._voxelSize + Vector3.new(1, 1, 1) * (p1._voxelSize / 2)
-	Part.Parent = workspace
-
-	local SelectionBox = Instance.new("SelectionBox")
-
-	SelectionBox.Color3 = Color3.new(0/255, 0/255, 255/255)
-	SelectionBox.Adornee = Part
-	SelectionBox.Parent = Part
-	task.delay(0.03333333333333333, Part.Destroy, Part)
-end
-function t.AddObject(p1, p2, p3) --[[ AddObject | Line: 31 ]]
-	local ClassName = p3.ClassName
-	local _voxelSize = p1._voxelSize
-	local v7 = Vector3.new(math.floor(p2.X / _voxelSize), math.floor(p2.Y / _voxelSize), (math.floor(p2.Z / _voxelSize)))
-	local v8 = p1._voxels[v7]
-
-	if v8 == nil then
-		p1._voxels[v7] = {
-			[ClassName] = { p3 }
-		}
-
-		return v7
-	end
-
-	if v8[ClassName] == nil then
-		v8[ClassName] = { p3 }
+local function UpdateTipInformation(p1) --[[ UpdateTipInformation | Line: 109 | Upvalues: Title (copy), SubTitle (copy), OnlyTitle (copy), Description (copy), Symbol (copy), RecolorUI (copy), MainFrame (copy), SubFrames (copy), UIPadding (copy), SubFrame (copy) ]]
+	if p1.SubTitle then
+		Title.Text = p1.Title or ""
+		SubTitle.Text = p1.SubTitle or ""
+		OnlyTitle.Text = ""
 	else
-		table.insert(v8[ClassName], p3)
+		OnlyTitle.Text = p1.Title or ""
+		Title.Text = ""
+		SubTitle.Text = ""
 	end
 
-	return v7
+	Description.Text = p1.Description or ""
+	Symbol.Text = p1.Symbol or ""
+
+	local v1 = RecolorUI
+
+	v1(MainFrame, p1.Color or Color3.fromRGB(101, 255, 84), 0)
+
+	if p1.SubFrames then
+		SubFrames.Visible = true
+		task.delay(0, function() --[[ Line: 141 | Upvalues: UIPadding (ref), Description (ref), SubFrames (ref), p1 (copy), SubFrame (ref), RecolorUI (ref) ]]
+			UIPadding.PaddingTop = UDim.new(0, 40 + Description.TextBounds.Y)
+
+			for k, v in pairs(SubFrames:GetChildren()) do
+				if v:IsA("Frame") then
+					v:Destroy()
+				end
+			end
+
+			for k, v in pairs(p1.SubFrames) do
+				local v1 = SubFrame:Clone()
+
+				v1.Parent = SubFrames
+
+				if v.Description then
+					v1.Title.Text = v.Title or ""
+					v1.Description.Text = v.Description or ""
+				else
+					v1.OnlyTitle.Text = v.Title or ""
+				end
+
+				if v.Color then
+					RecolorUI(v1, v.Color, 0)
+				end
+			end
+		end)
+	else
+		SubFrames.Visible = false
+	end
 end
-function t.RemoveObject(p1, p2, p3) --[[ RemoveObject | Line: 56 ]]
-	local v1 = p1._voxels[p2]
 
-	if v1 == nil then
-		return
-	end
+function t.UpdateHover(p1, p2, p3) --[[ UpdateHover | Line: 177 | Upvalues: t (copy), CurrentCamera (copy), MainFrame (copy), UpdateTipInformation (copy), TweenService (copy), Tip (copy), v1 (copy) ]]
+	local v12 = nil
 
-	local ClassName = p3.ClassName
-
-	if v1[ClassName] == nil then
-		return
-	end
-
-	local v2 = v1[ClassName]
-
-	for v3, v4 in v2 do
-		if v4 == p3 then
-			local v5 = #v2
-
-			v2[v3] = v2[v5]
-			v2[v5] = nil
+	for k, v in pairs(p1) do
+		if t.Cache[v] then
+			v12 = t.Cache[v]
 
 			break
 		end
 	end
 
-	if #v2 ~= 0 then
+	local ViewportSize = CurrentCamera.ViewportSize
+	local v2 = if ViewportSize.X / 2 < p2 then 1 else 0
+	local v3 = if ViewportSize.Y / 2 < p3 then 1 else 0
+
+	MainFrame.AnchorPoint = Vector2.new(v2, v3)
+	MainFrame.Position = UDim2.new(0.5, if v2 == 1 then -10 else 10, 0.5, if v3 == 1 then -10 else 10)
+
+	if v12 and t.ActiveTip ~= v12 then
+		t.ActiveTip = v12
+		UpdateTipInformation(v12)
+		TweenService:Create(Tip, v1, {
+			GroupTransparency = 0,
+			Visible = true
+		}):Play()
+
 		return
 	end
 
-	v1[ClassName] = nil
-
-	if next(v1) ~= nil then
+	if v12 or not t.ActiveTip then
 		return
 	end
 
-	p1._voxels[p2] = nil
-end
-function t.GetVoxel(p1, p2) --[[ GetVoxel | Line: 90 ]]
-	return p1._voxels[p2]
-end
-function t.ForEachObjectInRegion(p1, p2, p3, p4) --[[ ForEachObjectInRegion | Line: 94 ]]
-	local _voxelSize = p1._voxelSize
-	local v1 = math.min(p3.X, p2.X)
-	local v2 = math.min(p3.Y, p2.Y)
-	local v3 = math.min(p3.Z, p2.Z)
-	local v4 = math.max(p3.X, p2.X)
-	local v5 = math.max(p3.Y, p2.Y)
-	local v6 = math.max(p3.Z, p2.Z)
-	local v7, v8 = v2, v5
-
-	for i = math.floor(v1 / _voxelSize), math.floor(v4 / _voxelSize) do
-		for j = math.floor(v3 / _voxelSize), math.floor(v6 / _voxelSize) do
-			for k = math.floor(v7 / _voxelSize), math.floor(v8 / _voxelSize) do
-				local v9 = p1._voxels[Vector3.new(i, k, j)]
-
-				if v9 then
-					for v10, v11 in v9 do
-						for v12, v13 in v11 do
-							p4(v10, v13)
-						end
-					end
-				end
-			end
-		end
-	end
-end
-function t.ForEachObjectInView(p1, p2, p3, p4) --[[ ForEachObjectInView | Line: 117 ]]
-	local _voxelSize = p1._voxelSize
-	local v1 = p2.CFrame
-	local Position = v1.Position
-	local RightVector = v1.RightVector
-	local UpVector = v1.UpVector
-	local v2 = p3 / 2
-	local v5 = math.tan((math.rad((p2.FieldOfView + 5) / 2))) * p3
-	local v6 = v5 * (p2.ViewportSize.X / p2.ViewportSize.Y)
-	local v7 = v1 * CFrame.new(0, 0, -p3)
-	local v8 = v7 * Vector3.new(-v6, v5, 0)
-	local v9 = v7 * Vector3.new(v6, v5, 0)
-	local v10 = v7 * Vector3.new(-v6, -v5, 0)
-	local v11 = v7 * Vector3.new(v6, -v5, 0)
-	local v12 = (v1 * CFrame.new(0, 0, -v2)):Inverse()
-	local Unit = UpVector:Cross(v11 - Position).Unit
-	local Unit2 = UpVector:Cross(v10 - Position).Unit
-	local Unit3 = RightVector:Cross(Position - v9).Unit
-	local Unit4 = RightVector:Cross(Position - v11).Unit
-	local v13 = Position:Min(v8):Min(v9):Min(v10):Min(v11)
-	local v14 = Position:Max(v8):Max(v9):Max(v10):Max(v11)
-	local v21 = Vector3.new(math.floor(v13.X / _voxelSize), math.floor(v13.Y / _voxelSize), (math.floor(v13.Z / _voxelSize)))
-	local v28 = Vector3.new(math.floor(v14.X / _voxelSize), math.floor(v14.Y / _voxelSize), (math.floor(v14.Z / _voxelSize)))
-
-	local function isPointInView(p1) --[[ isPointInView | Line: 155 | Upvalues: v12 (copy), v6 (copy), v5 (copy), v2 (copy), Position (copy), Unit (copy), Unit2 (copy), Unit3 (copy), Unit4 (copy) ]]
-		local v1 = v12 * p1
-
-		if v6 < v1.X or (v1.X < -v6 or (v5 < v1.Y or (v1.Y < -v5 or (v2 < v1.Z or v1.Z < -v2)))) then
-			return false
-		end
-
-		local v22 = p1 - Position
-
-		return not (Unit:Dot(v22) < 0 or (Unit2:Dot(v22) > 0 or (Unit3:Dot(v22) < 0 or Unit4:Dot(v22) > 0)))
-	end
-
-	local v29, v30 = v21, v28
-
-	for i = v21.X, v28.X do
-		local v31 = i * _voxelSize
-		local v32 = math.clamp(v7.X, v31, v31 + _voxelSize)
-
-		for j = v29.Y, v30.Y do
-			local v33 = j * _voxelSize
-			local v34 = math.clamp(v7.Y, v33, v33 + _voxelSize)
-
-			for k = v29.Z, v30.Z do
-				local v35 = k * _voxelSize
-
-				if isPointInView((Vector3.new(v32, v34, (math.clamp(v7.Z, v35, v35 + _voxelSize))))) then
-					local v37 = v29.Z - 1
-					local Z2 = v30.Z
-
-					v38 = k
-					v39 = k
-
-					while v38 <= Z2 do
-						local v40 = math.floor((v38 + Z2) / 2)
-
-						if isPointInView((Vector3.new(v32, v34, (math.clamp(v7.Z, v40 * _voxelSize, v40 * _voxelSize + _voxelSize))))) then
-							v38 = v40 + 1
-							v37 = v40
-						else
-							Z2 = v40 - 1
-						end
-					end
-
-					for n = v39, v37 do
-						local v42 = p1._voxels[Vector3.new(i, j, n)]
-
-						if v42 then
-							for v43, v44 in v42 do
-								for v45, v46 in v44 do
-									p4(v43, v46)
-								end
-							end
-						end
-					end
-
-					break
-				end
-			end
-		end
-	end
-end
-function t.ClearAll(p1) --[[ ClearAll | Line: 238 ]]
-	p1._voxels = {}
+	t.ActiveTip = nil
+	TweenService:Create(Tip, v1, {
+		GroupTransparency = 1,
+		Visible = false
+	}):Play()
 end
 
 return t
@@ -39012,6 +41300,225 @@ while task.wait(0.1) do
 	end
 end
 
+-- Players.Noriko_Ellen.PlayerGui.GunGui.Actions.ActionsCore.Prompts
+--
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character
+
+LocalPlayer.CharacterAdded:Connect(function(p1) --[[ Line: 7 | Upvalues: Character (ref) ]]
+	Character = p1
+end)
+
+local Events = ReplicatedStorage:WaitForChild("Events")
+
+local function IsCharacter(p1) --[[ IsCharacter | Line: 12 | Upvalues: Character (ref) ]]
+	return p1:FindFirstChild("Humanoid") and p1 ~= Character
+end
+
+return {
+	Revive = {
+		Key = "E",
+		Title = "REVIVE",
+		Desc = "REVIVE THEM WITH %30 HEALTH",
+		LayoutOrder = 1,
+		CancelOutOfView = false,
+		KeyCode = Enum.KeyCode.E,
+		GamepadKeyCode = Enum.KeyCode.ButtonB,
+		DownFunction = function(p1) --[[ DownFunction | Line: 31 | Upvalues: Events (copy) ]]
+			Events.Actions.Revive:FireServer(p1)
+		end,
+		UpFunction = function(p1) --[[ UpFunction | Line: 36 | Upvalues: Events (copy) ]]
+			Events.Actions.Revive:FireServer(false)
+		end,
+		Checks = function(p1) --[[ Checks | Line: 41 | Upvalues: Character (ref) ]]
+			if not (p1:FindFirstChild("Humanoid") and (if p1 == Character then false else true)) then
+				return
+			end
+
+			if _G.CharacterStates.DisableAdvancedActions then
+				return
+			end
+
+			if p1:GetAttribute("Downed") and not (p1:GetAttribute("DisableRevive") or (p1:GetAttribute("PlayingActionCutscene") or (p1:GetAttribute("CutsceneCooldown") or p1:GetAttribute("Carrying")))) then
+				return true
+			end
+		end
+	},
+	Carry = {
+		Key = "X",
+		Title = "CARRY",
+		Desc = "CARRY THEM ON YOUR BACK",
+		LayoutOrder = 2,
+		CancelOutOfView = true,
+		HoldDuration = 0.25,
+		KeyCode = Enum.KeyCode.X,
+		GamepadKeyCode = Enum.KeyCode.ButtonY,
+		Triggered = function(p1) --[[ Triggered | Line: 66 | Upvalues: Events (copy) ]]
+			Events.Player.CarryCharacter:FireServer(p1)
+		end,
+		Checks = function(p1) --[[ Checks | Line: 71 | Upvalues: Character (ref) ]]
+			if not (p1:FindFirstChild("Humanoid") and (if p1 == Character then false else true)) then
+				return
+			end
+
+			if _G.CharacterStates.DisableAdvancedActions then
+				return
+			end
+
+			if p1:GetAttribute("Downed") and not (p1:GetAttribute("DisableCarry") or (p1:GetAttribute("PlayingActionCutscene") or p1:GetAttribute("Carrying"))) then
+				return true
+			end
+		end
+	},
+	Finisher = {
+		Key = "F",
+		Title = "FINISHER",
+		Desc = "PERFORM A DEADLY FINISHER",
+		LayoutOrder = 3,
+		CancelOutOfView = false,
+		KeyCode = Enum.KeyCode.F,
+		GamepadKeyCode = Enum.KeyCode.ButtonX,
+		Color = Color3.fromRGB(255, 55, 55),
+		DownFunction = function(p1) --[[ DownFunction | Line: 94 | Upvalues: Events (copy) ]]
+			Events.Actions.Finish:FireServer(p1)
+		end,
+		UpFunction = function(p1) --[[ UpFunction | Line: 99 | Upvalues: Events (copy) ]]
+			Events.Actions.Finish:FireServer(false)
+		end,
+		Checks = function(p1) --[[ Checks | Line: 104 | Upvalues: Character (ref) ]]
+			if not (p1:FindFirstChild("Humanoid") and (if p1 == Character then false else true)) then
+				return
+			end
+
+			if _G.CharacterStates.DisableAdvancedActions then
+				return
+			end
+
+			if p1:GetAttribute("Downed") and not (p1:GetAttribute("DisableFinish") or (p1:GetAttribute("CutsceneCooldown") or (p1:GetAttribute("PlayingActionCutscene") or p1:GetAttribute("Carrying")))) then
+				return true
+			end
+		end
+	},
+	Drop = {
+		Key = "X",
+		Title = "DROP",
+		Desc = "DROP THEM FROM YOUR BACK",
+		LayoutOrder = 3,
+		CancelOutOfView = false,
+		KeyCode = Enum.KeyCode.X,
+		GamepadKeyCode = Enum.KeyCode.ButtonY,
+		Color = Color3.fromRGB(255, 174, 61),
+		DownFunction = function(p1) --[[ DownFunction | Line: 128 | Upvalues: Events (copy) ]]
+			Events.Player.CarryCharacter:FireServer()
+		end,
+		Checks = function(p1) --[[ Checks | Line: 133 | Upvalues: Character (ref) ]]
+			if not (p1:FindFirstChild("Humanoid") and (if p1 == Character then false else true)) then
+				return
+			end
+
+			if p1:GetAttribute("Downed") and (not p1:GetAttribute("PlayingActionCutscene") and (p1:FindFirstChild("CarryObject") and p1.CarryObject.Value.Parent == Character)) then
+				return true
+			end
+		end
+	},
+	Throw = {
+		Key = "Z",
+		Title = "THROW",
+		Desc = "THROW THEM FROM YOUR BACK",
+		LayoutOrder = 4,
+		CancelOutOfView = false,
+		KeyCode = Enum.KeyCode.Z,
+		GamepadKeyCode = Enum.KeyCode.ButtonX,
+		Color = Color3.fromRGB(255, 174, 61),
+		DownFunction = function(p1) --[[ DownFunction | Line: 158 | Upvalues: Events (copy) ]]
+			Events.Player.ThrowCharacter:FireServer()
+		end,
+		Checks = function(p1) --[[ Checks | Line: 163 | Upvalues: Character (ref) ]]
+			if not (p1:FindFirstChild("Humanoid") and (if p1 == Character then false else true)) then
+				return
+			end
+
+			if p1:GetAttribute("Downed") and (not p1:GetAttribute("PlayingActionCutscene") and (p1:FindFirstChild("CarryObject") and p1.CarryObject.Value.Parent == Character)) then
+				return true
+			end
+		end
+	},
+	LockpickRotateRight = {
+		Key = "D",
+		Title = "ROTATE RIGHT",
+		Desc = "MOVE THE PICK",
+		LayoutOrder = 1,
+		CancelOutOfView = true,
+		KeyCode = Enum.KeyCode.D,
+		GamepadKeyCode = Enum.KeyCode.Thumbstick1,
+		Checks = function(p1) --[[ Checks | Line: 187 ]]
+			return p1:GetAttribute("Lockpick")
+		end,
+		DownFunction = function(p1) --[[ DownFunction | Line: 192 | Upvalues: ReplicatedStorage (copy) ]]
+			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.D, "Began")
+		end,
+		UpFunction = function(p1) --[[ UpFunction | Line: 197 | Upvalues: ReplicatedStorage (copy) ]]
+			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.D, "Ended")
+		end
+	},
+	LockpickRotateLeft = {
+		Key = "A",
+		Title = "ROTATE LEFT",
+		Desc = "MOVE THE PICK",
+		LayoutOrder = 2,
+		CancelOutOfView = true,
+		KeyCode = Enum.KeyCode.A,
+		GamepadKeyCode = Enum.KeyCode.Thumbstick1,
+		Checks = function(p1) --[[ Checks | Line: 212 ]]
+			return p1:GetAttribute("Lockpick")
+		end,
+		DownFunction = function(p1) --[[ DownFunction | Line: 217 | Upvalues: ReplicatedStorage (copy) ]]
+			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.A, "Began")
+		end,
+		UpFunction = function(p1) --[[ UpFunction | Line: 222 | Upvalues: ReplicatedStorage (copy) ]]
+			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.A, "Ended")
+		end
+	},
+	LockpickTry = {
+		Key = "F",
+		Title = "TRY PICKING",
+		Desc = "TRY PICKING THE LOCK",
+		LayoutOrder = 3,
+		CancelOutOfView = true,
+		KeyCode = Enum.KeyCode.F,
+		GamepadKeyCode = Enum.KeyCode.ButtonX,
+		Checks = function(p1) --[[ Checks | Line: 237 ]]
+			return p1:GetAttribute("Lockpick")
+		end,
+		DownFunction = function(p1) --[[ DownFunction | Line: 242 | Upvalues: ReplicatedStorage (copy) ]]
+			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.F, "Began")
+		end,
+		UpFunction = function(p1) --[[ UpFunction | Line: 247 | Upvalues: ReplicatedStorage (copy) ]]
+			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.F, "Ended")
+		end
+	},
+	LockpickCancel = {
+		Key = "E",
+		Title = "CANCEL",
+		Desc = "CANCEL LOCK PICKING",
+		LayoutOrder = 4,
+		CancelOutOfView = true,
+		KeyCode = Enum.KeyCode.E,
+		GamepadKeyCode = Enum.KeyCode.ButtonB,
+		Checks = function(p1) --[[ Checks | Line: 262 ]]
+			return p1:GetAttribute("Lockpick")
+		end,
+		DownFunction = function(p1) --[[ DownFunction | Line: 267 | Upvalues: ReplicatedStorage (copy) ]]
+			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.E, "Began")
+		end,
+		UpFunction = function(p1) --[[ UpFunction | Line: 272 | Upvalues: ReplicatedStorage (copy) ]]
+			ReplicatedStorage.MinigameControls:Fire(Enum.KeyCode.E, "Ended")
+		end
+	}
+}
+
 -- ReplicatedStorage.MeleeStorage.Mods.Hitbox.GoodSignal
 --
 local v1 = nil
@@ -39204,374 +41711,526 @@ Events:WaitForChild("NB"):WaitForChild("UpdateActiveModifiers").OnClientEvent:Co
 end)
 Events.NB.UpdateActiveModifiers:FireServer()
 
--- Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
+-- Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Store.RotatingShopCore
 --
+local t = { "LootBoxes" }
+
 repeat
 	task.wait(0.1)
 until game.ReplicatedFirst:GetAttribute("GameLoaded")
 
-local MarketplaceService = game:GetService("MarketplaceService")
-
-game:GetService("Players")
-
-local Players = game.Players
-local ReplicatedStorage = game.ReplicatedStorage
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local PolicyService = game:GetService("PolicyService")
 local Mods = ReplicatedStorage:WaitForChild("Mods")
-local Purchase = ReplicatedStorage:WaitForChild("Events"):WaitForChild("Purchase")
+local Cosmetics = ReplicatedStorage:WaitForChild("Events"):WaitForChild("Cosmetics")
 local LocalPlayer = Players.LocalPlayer
-local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
-
-LocalPlayer:WaitForChild(Players:GetAttribute("PLAYER_STORAGE"))
-
+local v1 = LocalPlayer:WaitForChild(Players:GetAttribute("PLAYER_STORAGE"))
 local Sounds = script:WaitForChild("Sounds")
 local Frames = script:WaitForChild("Frames")
-local v1 = script.Parent
-local List = v1:WaitForChild("Passes"):WaitForChild("List")
-local List2 = v1:WaitForChild("Products"):WaitForChild("List")
-local PurchaseFrame = v1:WaitForChild("PurchaseFrame")
-local PlayerList = PurchaseFrame:WaitForChild("PlayerList")
-local Buttons = PurchaseFrame:WaitForChild("Buttons")
-local SelectedFrame = Buttons:WaitForChild("SelectedFrame")
-local PurchaseProcessing = PlayerGui:WaitForChild("ExtraUI", 9000000000):WaitForChild("PurchaseProcessing")
-local v2 = nil
-local v3 = false
-local v4 = false
-local t = {
-	Products = {},
-	Passes = {}
-}
+
+require(Mods:WaitForChild("ItemDatabase"))
+
 local FormatNumber = require(Mods:WaitForChild("FormatNumber"))
-local ProductShared = require(Mods:WaitForChild("ProductShared"))
 
-local function GetProductInformation(p1) --[[ GetProductInformation | Line: 54 | Upvalues: t (ref) ]]
-	for k, v in pairs(t) do
-		if v[p1] then
-			return v[p1]
-		end
-	end
-end
+require(Mods.ItemDatabase:WaitForChild("Shared"))
+require(Mods.ItemDatabase:WaitForChild("Preview"))
 
-ReplicatedStorage:WaitForChild("GetPurchaseInformation").OnInvoke = GetProductInformation
+local CosmeticDatabase = require(Mods:WaitForChild("CosmeticDatabase"))
+local Shared = require(Mods.CosmeticDatabase:WaitForChild("Shared"))
+local Rarity = require(Mods.CosmeticDatabase:WaitForChild("Rarity"))
+local v2 = script.Parent
+local PreviewFrame = v2:WaitForChild("PreviewFrame")
+local IconFrame = PreviewFrame:WaitForChild("IconFrame")
+local Canvas = IconFrame:WaitForChild("Canvas")
+local Information = PreviewFrame:WaitForChild("Information")
+local Buttons = PreviewFrame:WaitForChild("Buttons")
+local ScrollingFrame = IconFrame:WaitForChild("DescriptionFrame"):WaitForChild("Canvas"):WaitForChild("ScrollingFrame")
+local TextLabel = ScrollingFrame:WaitForChild("TextLabel")
+local OddsFrame = IconFrame:WaitForChild("OddsFrame")
+local ListFrame = v2:WaitForChild("ListFrame")
+local TabButtons = ListFrame:WaitForChild("TabButtons")
+local Tabs = ListFrame:WaitForChild("Tabs")
+local v3 = v2.Parent.Parent
+local Tabs2 = v3:WaitForChild("Tabs")
+local TabButtons2 = v3:WaitForChild("TopBar"):WaitForChild("TabButtons")
+local t2 = {}
+local t3 = {}
+local v4 = nil
+local v5 = nil
+local v6 = nil
+local v7 = nil
+local v8 = false
+local v9 = false
+local v10 = false
+local t4 = { IconFrame:WaitForChild("OddsFrame"), IconFrame:WaitForChild("DescriptionFrame") }
+local v11 = PolicyService:GetPolicyInfoForPlayerAsync(LocalPlayer)
 
-local function CanPurchase(p1, p2) --[[ CanPurchase | Line: 65 | Upvalues: LocalPlayer (copy), t (ref), ProductShared (copy), ReplicatedStorage (copy), Purchase (copy) ]]
-	local v1 = LocalPlayer:GetAttribute("GiftTarget")
-	local v2
-
-	do
-		local __inline_returned = false
-
-		for k, v in pairs(t) do
-			if v[p1] then
-				v2 = v[p1]
-				__inline_returned = true
-
-				break
-			end
-		end
-
-		if not __inline_returned then
-			v2 = nil
-		end
-	end
-
-	if not v2 then
-		warn("Purchase information not found")
-
-		return
-	end
-
-	if ProductShared[v2.Context] then
-		local ok, result = pcall(ProductShared[v2.Context], LocalPlayer)
-
-		if not ok then
-			warn("[CONTEXT PRODUCT ERROR]:", result)
-
-			return
-		end
-
-		if not result then
-			return
-		end
-	end
-
-	if v2.Owned and not v1 then
-		if p2 then
-			return
-		end
-
-		ReplicatedStorage.Notify:Fire("ALREADY OWNED", "Warning")
-	else
-		if Purchase.CanPurchase:InvokeServer(p1) then
-			return true
-		end
-
-		if p2 then
-			return
-		end
-
-		ReplicatedStorage.Notify:Fire("THAT PASS IS ALREADY OWNED BY THE RECIPIENT", "Warning")
-	end
-end
-
-ReplicatedStorage:WaitForChild("CanPurchase").OnInvoke = CanPurchase
-
-local function SelectOption(p1, p2, p3, p4) --[[ SelectOption | Line: 107 | Upvalues: v3 (ref), v2 (ref), SelectedFrame (copy), Buttons (copy), FormatNumber (copy) ]]
-	if v3 then
-		return
-	end
-
-	if v2 and v2.Button.Parent then
-		v2.Button.SelectedFrame.Visible = false
-	end
-
-	local v1 = if p3 == nil then false else true
-
-	v2 = if v1 then {
-	Name = p2,
-	Info = p3,
-	ProductInfo = p4,
-	Button = p1
-} else v1
-	SelectedFrame.Visible = v1
-	Buttons.PurchaseButton.Visible = v1
-
-	if not v1 then
-		return
-	end
-
-	p1.SelectedFrame.Visible = true
-	SelectedFrame.NameText.Text = p4.Name
-	SelectedFrame.PriceText.Text = if p3.Tokens > 0 then "FREE" else FormatNumber.Separate(p4.PriceInRobux) .. " R$"
-end
-
-local function CreateButton(p1, p2, p3, p4) --[[ CreateButton | Line: 133 | Upvalues: MarketplaceService (copy), Frames (copy), FormatNumber (copy), Sounds (copy), SelectOption (copy) ]]
-	if p2.Context then
-		return
-	end
-
-	local ok, result = pcall(MarketplaceService.GetProductInfo, MarketplaceService, p2.ID, p3)
-
-	if not ok then
-		warn("UNABLE TO GET PRODUCT DATA!")
-
-		return
-	end
-
-	local v1 = Frames:WaitForChild("ProductButton"):Clone()
-
-	v1.IconFrame.Title.Text = result.Name
-	v1.IconFrame.Description.Text = result.Description or "NO DESCRIPTION"
-	v1.IconFrame.Icon.Image = "rbxassetid://" .. (result.IconImageAssetId ~= 0 and result.IconImageAssetId or 8681682276)
-	v1.Price.Text = p2.Tokens > 0 and p2.Tokens .. " TOKEN(s)" or FormatNumber.Separate(result.PriceInRobux) .. " R$"
-	v1.Info.Text = if p2.Owned then "OWNED" else "BUY"
-	v1.LayoutOrder = p2.Order or result.PriceInRobux
-
-	if p2.Color then
-		v1.BackgroundColor3 = p2.Color
-		v1.IconFrame.Icon.ImageColor3 = p2.Color
-		v1.IconFrame.Title.TextColor3 = p2.Color
-		v1.IconFrame.Description.TextColor3 = p2.Color
-		v1.SelectedFrame.BackgroundColor3 = p2.Color
-		v1.SelectedFrame.Title.TextColor3 = p2.Color
-		v1.SelectedFrame.UIStroke.Color = p2.Color
-	end
-
-	v1.Parent = p4
-	v1.MouseButton1Click:Connect(function() --[[ Line: 174 | Upvalues: Sounds (ref), SelectOption (ref), v1 (copy), p1 (copy), p2 (copy), result (copy) ]]
-		Sounds.Select:Play()
-		SelectOption(v1, p1, p2, result)
-	end)
-end
-
-local function ClearButtons(p1, p2) --[[ ClearButtons | Line: 180 ]]
+local function LoadCosmeticPreview(p1, p2, p3, p4) --[[ LoadCosmeticPreview | Line: 65 | Upvalues: Shared (copy) ]]
 	for k, v in pairs(p1:GetChildren()) do
-		if v:IsA("TextButton") and (not p2 or v.Name == p2) then
-			v:Destroy()
+		v:Destroy()
+	end
+
+	local v1 = Shared.PreviewCosmetic(p2, p3, p4 or 0.5, true)
+
+	v1.Parent = p1
+
+	return v1
+end
+
+local function UpdateIconFrameState(p1) --[[ UpdateIconFrameState | Line: 79 | Upvalues: t4 (copy), IconFrame (copy) ]]
+	for k, v in pairs(t4) do
+		local v1 = if p1 == v.Name then not v.Visible else false
+
+		v.Visible = v1
+		v.BackgroundTransparency = if v1 then 0.25 else 1
+		IconFrame.Buttons[v.Name].BackgroundTransparency = if v1 then 0.5 else 0
+	end
+end
+
+local function PreviewCosmetic(p1, p2, p3, p4) --[[ PreviewCosmetic | Line: 89 | Upvalues: t3 (ref), Shared (copy), v1 (copy), v5 (ref), v4 (ref), v6 (ref), v7 (ref), v9 (ref), v10 (ref), Canvas (copy), LoadCosmeticPreview (copy), Information (copy), Rarity (copy), Buttons (copy), TextLabel (copy), ScrollingFrame (copy), IconFrame (copy), CosmeticDatabase (copy), OddsFrame (copy), Frames (copy), FormatNumber (copy), ReplicatedStorage (copy), UpdateIconFrameState (copy) ]]
+	local v12 = t3[p2] and table.find(t3[p2], p3)
+	local v2 = if p1 then Shared.GetPrice(p1, p2) else p1
+	local v3 = if p1 then if v2 <= v1:GetAttribute("Credits") then true else false else p1
+
+	v5 = p2
+	v4 = p3
+	v6 = p1
+	v7 = p4
+	v9 = v12
+	v10 = v3
+
+	for k, v in pairs(Canvas:GetChildren()) do
+		v:Destroy()
+	end
+
+	if p1 then
+		LoadCosmeticPreview(Canvas, p1, p2, 0)
+		Information.TitleText.Text = p1.Title:upper()
+
+		local v42 = p1.Weapon and p1.Weapon:upper() .. " " or ""
+
+		Information.TypeText.Text = v42 .. p2:upper()
+		Information.RarityText.Text = p1.Type:upper()
+		Information.RarityText.TextColor3 = Rarity[p1.Type].Color
+		Buttons.ActionButton.OnlyTitle.Text = if v12 then "OWNED" elseif v3 then "BUY" else "PURCHASE V\198\182"
+		Buttons.ActionButton.BackgroundTransparency = if v12 then 0.25 else 0
+		Buttons.EquippedButton.Visible = false
+		Buttons.SelectedFrame.NameText.Text = "PRICE"
+		Buttons.SelectedFrame.PriceText.Text = v2 .. " V\198\182"
+
+		if p1.Description then
+			TextLabel.Text = p1.Description
+			task.defer(function() --[[ Line: 136 | Upvalues: TextLabel (ref), ScrollingFrame (ref) ]]
+				TextLabel.TextSize = ScrollingFrame.AbsoluteSize.Y * 0.11
+			end)
+			TextLabel.Position = UDim2.new(0.5, 0, 0, TextLabel.TextSize / 4)
 		end
-	end
-end
 
-local function UpdateButtons() --[[ UpdateButtons | Line: 188 | Upvalues: t (ref), Purchase (copy), v2 (ref), SelectOption (copy), ClearButtons (copy), List (copy), CreateButton (copy), List2 (copy) ]]
-	t = Purchase:WaitForChild("GetAvailable"):InvokeServer()
-	v2 = nil
-	SelectOption()
-	ClearButtons(List)
+		IconFrame.Buttons.DescriptionFrame.Visible = p1.Description and true or false
 
-	for k, v in pairs(t.Passes) do
-		CreateButton(k, v, Enum.InfoType.Product, List)
-	end
+		if p1.Pool then
+			local sum = 0
+			local tbl = {}
+			local t = {}
 
-	ClearButtons(List2)
+			for k, v in pairs(p1.Pool) do
+				for i, v8 in ipairs(v) do
+					local v82 = CosmeticDatabase[k] and CosmeticDatabase[k][v8]
+					local v92 = if v82 then v82.Type else v82
+					local v102 = v92 and Rarity[v92].Weight or 0
 
-	for k, v in pairs(t.Products) do
-		CreateButton(k, v, Enum.InfoType.Product, List2)
-	end
-end
+					if v82 then
+						table.insert(tbl, {
+							Category = k,
+							Name = v8,
+							Title = v82.Title,
+							Weight = v102
+						})
+						sum = sum + v102
 
-UpdateButtons()
+						continue
+					end
 
-local function UpdateGiftTarget() --[[ UpdateGiftTarget | Line: 210 | Upvalues: LocalPlayer (copy), Buttons (copy), PurchaseProcessing (copy), PlayerList (copy) ]]
-	local v1 = LocalPlayer:GetAttribute("GiftTarget")
-
-	Buttons.PurchaseButton.Subtext.Text = "FOR " .. (v1 and v1:upper() or "YOURSELF")
-	Buttons.CancelButton.Visible = v1 and true or false
-	PurchaseProcessing.IsGift.Visible = v1 and true or false
-
-	for k, v in pairs(PlayerList:GetChildren()) do
-		if v:IsA("TextButton") then
-			v.BackgroundTransparency = if v.Name == v1 then 0 else 0.25
-		end
-	end
-
-	if not v1 then
-		return
-	end
-
-	PurchaseProcessing.IsGift.TextLabel.Text = ("<font size=\"20\"><b>WARNING!</b>\n</font>You are currently buying this as a gift for %s!"):format(v1)
-end
-
-UpdateGiftTarget()
-
-local function FindAmountNeeded(p1) --[[ FindAmountNeeded | Line: 236 | Upvalues: t (ref) ]]
-	if not p1 then
-		return
-	end
-
-	local v1 = nil
-	local v2 = pairs
-
-	for v4, v5 in v2(t.Products or {}) do
-		if v5.Credits and (not (v5.Credits < p1) and (not v1 or v5.Credits < v1.Credits)) then
-			v1 = {
-				Name = v4,
-				Credits = v5.Credits
-			}
-		end
-	end
-
-	return if v1 then v1.Name or nil else nil
-end
-
-local function AddPlayer(p1) --[[ AddPlayer | Line: 259 | Upvalues: LocalPlayer (copy), Frames (copy), Players (copy), PlayerList (copy), v3 (ref), Sounds (copy), Purchase (copy) ]]
-	if p1 ~= LocalPlayer then
-		local v1 = Frames:WaitForChild("PlayerButton"):Clone()
-		local ok, result = pcall(LocalPlayer.IsFriendsWith, LocalPlayer, p1.UserId)
-		local v2 = Players:GetUserThumbnailAsync(p1.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
-
-		v1.Name = p1.Name
-		v1.DisplayName.Text = p1.DisplayName
-		v1.Username.Text = p1.Name
-		v1.IconFrame.ImageLabel.Image = v2
-		v1.IsFriends.Visible = ok and result
-		v1.Parent = PlayerList
-		v1.MouseButton1Click:Connect(function() --[[ Line: 281 | Upvalues: v3 (ref), Sounds (ref), Purchase (ref), p1 (copy) ]]
-			if not v3 then
-				Sounds.Click:Play()
-				Purchase.GiftTarget:FireServer(p1)
+					warn("[COSMETIC ROLL]: Missing cosmetic data for: " .. v8 .. " in category: " .. k)
+				end
 			end
+
+			for k, v in pairs(OddsFrame.Canvas:GetChildren()) do
+				if v:IsA("TextLabel") or v:IsA("TextButton") then
+					v:Destroy()
+				end
+			end
+
+			for k, v in pairs(tbl) do
+				local v11 = table.find(t, v.Category)
+				local v122 = CosmeticDatabase[v.Category][v.Name]
+
+				if not v11 then
+					table.insert(t, v.Category)
+					v11 = #t
+
+					local v13 = Frames:WaitForChild("OddCategoryText"):Clone()
+
+					v13.Text = v.Category:upper()
+					v13.LayoutOrder = v11 * 100
+					v13.Parent = OddsFrame.Canvas
+				end
+
+				local v14 = Frames:WaitForChild("OddText"):Clone()
+
+				v14.Text = v.Title:upper() .. " " .. FormatNumber.Round(v.Weight / sum * 100, 2) .. "%"
+				v14.BackgroundColor3 = Rarity[v122.Type].Color
+				v14.LayoutOrder = v11 * 100 + v.Weight
+				v14.Parent = OddsFrame.Canvas
+				v14.MouseButton1Click:Connect(function() --[[ Line: 216 | Upvalues: ReplicatedStorage (ref), v122 (copy), v (copy) ]]
+					ReplicatedStorage:WaitForChild("PreviewCosmetic"):Fire(v122, v.Category)
+				end)
+			end
+		end
+
+		IconFrame.Buttons.OddsFrame.Visible = p1.Pool and true or false
+	end
+
+	Information.Visible = p1
+	Buttons.Visible = p1
+	UpdateIconFrameState()
+end
+
+PreviewCosmetic()
+
+local function SwitchTab(p1, p2, p3) --[[ SwitchTab | Line: 233 | Upvalues: Sounds (copy), TweenService (copy) ]]
+	Sounds.Swing.PlaybackSpeed = math.random(11, 13) / 10
+	Sounds.Swing:Play()
+	Sounds.Click:Play()
+
+	for k, v in pairs(p2:GetChildren()) do
+		if v:IsA("TextButton") then
+			local v1 = TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
+
+			if v.Name == p3.Name then
+				TweenService:Create(v, v1, {
+					BackgroundTransparency = 0
+				}):Play()
+
+				continue
+			end
+
+			TweenService:Create(v, v1, {
+				BackgroundTransparency = 0.5
+			}):Play()
+		end
+	end
+
+	p1:JumpTo(p3)
+end
+
+for k, v in pairs(TabButtons:GetChildren()) do
+	if v:IsA("TextButton") then
+		local v12 = Tabs:WaitForChild("Items"):Clone()
+
+		v12.Parent = Tabs
+		v12.Name = v.Name
+		v.MouseButton1Click:Connect(function() --[[ Line: 267 | Upvalues: ListFrame (copy), t (copy), v (copy), v11 (copy), SwitchTab (copy), Tabs (copy), TabButtons (copy), v12 (copy) ]]
+			ListFrame.RegionLocked.Visible = table.find(t, v.Name) and v11.ArePaidRandomItemsRestricted
+			SwitchTab(Tabs.Page, TabButtons, v12)
 		end)
 	end
 end
 
-for k, v in pairs(Players:GetPlayers()) do
-	AddPlayer(v)
-end
+Tabs:WaitForChild("Items"):Destroy()
 
-Players.PlayerAdded:Connect(AddPlayer)
-Players.PlayerRemoving:Connect(function(p1) --[[ Line: 295 | Upvalues: ClearButtons (copy), PlayerList (copy) ]]
-	ClearButtons(PlayerList, p1.Name)
-end)
-LocalPlayer.AttributeChanged:Connect(function(p1) --[[ Line: 300 | Upvalues: UpdateGiftTarget (copy) ]]
-	if p1 ~= "GiftTarget" then
+local function UpdateButtonStyle(p1, p2, p3) --[[ UpdateButtonStyle | Line: 279 | Upvalues: Sounds (copy), TweenService (copy) ]]
+	if p2 then
+		p1.RarityText.TextColor3 = p2.Color
+		p1.UIStroke.Color = p2.Color
+		p1.TitleText.TextColor3 = p2.Color
+		p1.TypeText.TextColor3 = p2.Color
+		p1.Shine.ImageColor3 = p2.Color
+		p1.LayoutOrder = p2.Order
+	end
+
+	if p1:GetAttribute("ConnectionsSet") then
 		return
 	end
 
-	UpdateGiftTarget()
-end)
+	p1:SetAttribute("ConnectionsSet", true)
+	p1.Button.MouseEnter:Connect(function() --[[ Line: 298 | Upvalues: Sounds (ref), p3 (copy), TweenService (ref), p1 (copy) ]]
+		local v3 = Sounds[if p3 then "CategoryHover" else "Hover"]:Clone()
 
-local function PromptPurchase(p1, p2) --[[ PromptPurchase | Line: 307 | Upvalues: v4 (ref), FindAmountNeeded (copy), LocalPlayer (copy), t (ref), CanPurchase (copy), Purchase (copy), MarketplaceService (copy), PurchaseProcessing (copy), v3 (ref) ]]
-	v4 = true
-	task.delay(0.25, function() --[[ Line: 310 | Upvalues: v4 (ref) ]]
-		v4 = false
+		v3.PlaybackSpeed = v3.PlaybackSpeed * (math.random(90, 110) / 100)
+		v3.Parent = script
+		v3:Play()
+		game.Debris:AddItem(v3, 1)
+		TweenService:Create(p1.UIStroke, TweenInfo.new(0.25), {
+			Transparency = 0,
+			Thickness = 2
+		}):Play()
+		TweenService:Create(p1.Canvas, TweenInfo.new(0.25), {
+			Size = UDim2.new(0.65, 0, 1.3, 0)
+		}):Play()
 	end)
+	p1.Button.MouseLeave:Connect(function() --[[ Line: 312 | Upvalues: TweenService (ref), p1 (copy) ]]
+		TweenService:Create(p1.UIStroke, TweenInfo.new(0.25), {
+			Transparency = 0.75,
+			Thickness = 1
+		}):Play()
+		TweenService:Create(p1.Canvas, TweenInfo.new(0.25), {
+			Size = UDim2.new(0.6, 0, 1.25, 0)
+		}):Play()
+	end)
+	p1.Button.MouseButton1Click:Connect(function() --[[ Line: 317 | Upvalues: Sounds (ref) ]]
+		Sounds.Click:Play()
+	end)
+end
 
-	if not p1 then
-		p1 = FindAmountNeeded(p2)
+local function DisplayCategory(p1, p2, p3) --[[ DisplayCategory | Line: 323 | Upvalues: TweenService (copy), v2 (copy), Sounds (copy) ]]
+	TweenService:Create(v2.ListFrame.CooldownFrame, TweenInfo.new(0.1), {
+		BackgroundTransparency = 0,
+		Visible = true
+	}):Play()
+	task.wait(0.1)
+	TweenService:Create(v2.ListFrame.CooldownFrame, TweenInfo.new(0.25), {
+		BackgroundTransparency = 1,
+		Visible = false
+	}):Play()
+
+	for k, v in pairs(p1) do
+		v.Button.Visible = v.Type == p3
 	end
 
-	LocalPlayer:GetAttribute("GiftTarget")
+	if p3 then
+		Sounds.CategoryOpen:Play()
+	else
+		Sounds.CategoryClose:Play()
+	end
 
-	local v2 = p1
-	local v32
+	for k, v in pairs(p2) do
+		v.Button.Visible = not p3
 
-	do
-		local __inline_returned = false
+		if not v.Type then
+			v.Button.Visible = p3 and true or false
 
-		for k, v in pairs(t) do
-			if v[v2] then
-				v32 = v[v2]
-				__inline_returned = true
-
-				break
+			if p3 then
+				v.Button.CategoryText.Text = "VIEWING " .. p3:upper()
 			end
 		end
-
-		if not __inline_returned then
-			v32 = nil
-		end
-	end
-
-	if not v32 then
-		warn("Purchase information not found")
-
-		return
-	end
-
-	if not CanPurchase(p1) then
-		return
-	end
-
-	if v32.Tokens > 0 then
-		Purchase.UseToken:FireServer(v32.ID)
-	else
-		MarketplaceService:PromptProductPurchase(LocalPlayer, v32.ID)
-		PurchaseProcessing.Visible = true
-		v3 = true
 	end
 end
 
-ReplicatedStorage:WaitForChild("PromptPurchase").Event:Connect(PromptPurchase)
-Buttons:WaitForChild("PurchaseButton").MouseButton1Click:Connect(function() --[[ Line: 342 | Upvalues: v3 (ref), v2 (ref), v4 (ref), Sounds (copy), PromptPurchase (copy) ]]
-	if v3 then
+local function UpdateShop() --[[ UpdateShop | Line: 359 | Upvalues: t2 (ref), Tabs (copy), CosmeticDatabase (copy), Shared (copy), t3 (ref), Frames (copy), LoadCosmeticPreview (copy), UpdateButtonStyle (copy), Rarity (copy), PreviewCosmetic (copy), DisplayCategory (copy), v6 (ref), v5 (ref), v4 (ref), v7 (ref) ]]
+	for k, v in pairs(t2) do
+		local v1 = Tabs:WaitForChild(k)
+
+		if v1 then
+			local tbl = {}
+			local tbl2 = {}
+			local t = {}
+
+			for k2, v2 in pairs(v) do
+				for k3, v3 in pairs(v2) do
+					for k4, v8 in pairs(v3) do
+						local v22, v32, v42
+						local v52 = CosmeticDatabase[k2][v8]
+						local v62, v72 = Shared.GetPrice(v52, k2)
+						local v82 = t3[k2] and table.find(t3[k2], v8)
+						local v9 = v1:FindFirstChild(k2 .. v8)
+						local v10 = if v9 then v9 else Frames:WaitForChild("Item"):Clone()
+
+						if not v9 then
+							LoadCosmeticPreview(v10.Canvas, v52, k2, 0)
+						end
+
+						table.insert(tbl, {
+							Button = v10,
+							Type = k2,
+							CosmeticData = v52
+						})
+						UpdateButtonStyle(v10, Rarity[v52.Type])
+						v10.Name = k2 .. v8
+						v10.Parent = v1
+						v10.Visible = false
+						v10.TitleText.Text = v52.Title:upper()
+						v10.RarityText.Text = v52.Type:upper()
+
+						if v82 then
+							v22 = "OWNED"
+						else
+							if v72 then
+								v32 = " <font transparency=\'0.5\'><s>" .. v72 .. " V\198\182</s></font>"
+								v42 = v62
+							else
+								v42 = v62
+								v32 = ""
+							end
+
+							v22 = v42 .. " V\198\182" .. v32
+						end
+
+						v10.PriceText.Text = v22
+
+						local v12 = v52.Weapon and v52.Weapon:upper() .. " " or ""
+
+						v10.TypeText.Text = v12 .. k2:upper()
+						v10.Button.MouseButton1Click:Connect(function() --[[ Line: 416 | Upvalues: PreviewCosmetic (ref), v52 (copy), k2 (copy), v8 (copy), k (copy) ]]
+							PreviewCosmetic(v52, k2, v8, k)
+						end)
+					end
+				end
+			end
+
+			for k2, v2 in pairs(v1:GetChildren()) do
+				if v2:IsA("ImageLabel") then
+					local v13 = false
+
+					for k3, v3 in pairs(tbl) do
+						if v3.Button == v2 then
+							v13 = true
+
+							break
+						end
+					end
+
+					if not v13 then
+						v2:Destroy()
+					end
+				end
+			end
+
+			for k2, v2 in pairs(tbl) do
+				local v14 = nil
+
+				for k3, v3 in pairs(tbl2) do
+					if v3.Type == v2.Type then
+						v14 = v3
+
+						break
+					end
+				end
+
+				if v14 then
+					v14.Count = v14.Count + 1
+				end
+
+				if v14 then
+					if Rarity[v14.HighestRarity.Type].Order > Rarity[v2.CosmeticData.Type].Order then
+						v14.HighestRarity = v2.CosmeticData
+					end
+
+					continue
+				end
+
+				table.insert(tbl2, {
+					Count = 1,
+					Type = v2.Type,
+					HighestRarity = v2.CosmeticData
+				})
+			end
+
+			for k2, v2 in pairs(tbl2) do
+				local v15 = Frames:WaitForChild("Item"):Clone()
+
+				LoadCosmeticPreview(v15.Canvas, v2.HighestRarity, v2.Type, 0)
+				v15.Parent = v1
+				v15.BackgroundTransparency = 0.9
+				v15.TitleText.Text = v2.Type:upper()
+				v15.RarityText.Text = v2.Count .. " ITEM(S)"
+				v15.TypeText.Text = "CATEGORY"
+				v15.PriceText.Text = ">"
+				UpdateButtonStyle(v15, Rarity[v2.HighestRarity.Type], true)
+				table.insert(t, {
+					Button = v15,
+					Type = v2.Type,
+					CategoryData = v2
+				})
+				v15.Button.MouseButton1Click:Connect(function() --[[ Line: 497 | Upvalues: DisplayCategory (ref), tbl (copy), t (copy), v2 (copy) ]]
+					DisplayCategory(tbl, t, v2.Type)
+				end)
+			end
+
+			local v16 = Frames:WaitForChild("BackButton"):Clone()
+
+			v16.Parent = v1
+			UpdateButtonStyle(v16, nil, true)
+			v1.BackButton.Button.MouseButton1Click:Connect(function() --[[ Line: 510 | Upvalues: DisplayCategory (ref), tbl (copy), t (copy) ]]
+				DisplayCategory(tbl, t, nil)
+			end)
+			table.insert(t, {
+				Button = v1:WaitForChild("BackButton")
+			})
+			PreviewCosmetic(v6, v5, v4, v7)
+
+			continue
+		end
+
+		warn("[COSMETIC SHOP]: Tab not found!", k)
+	end
+end
+
+Cosmetics:WaitForChild("UpdateShop").OnClientEvent:Connect(function(p1) --[[ Line: 521 | Upvalues: t2 (ref), UpdateShop (copy) ]]
+	t2 = p1
+	UpdateShop()
+end)
+Cosmetics.UpdateShop:FireServer()
+
+local v13 = false
+
+Buttons:WaitForChild("ActionButton").MouseButton1Click:Connect(function() --[[ Line: 529 | Upvalues: Sounds (copy), v8 (ref), Shared (copy), v6 (ref), v5 (ref), v4 (ref), v9 (ref), v10 (ref), ReplicatedStorage (copy), Cosmetics (copy), v7 (ref), v13 (ref), v1 (copy), SwitchTab (copy), Tabs2 (copy), TabButtons2 (copy) ]]
+	Sounds.Click:Play()
+
+	if v8 then
 		return
 	end
 
-	if not v2 then
-		return
+	v8 = true
+
+	local v12 = Shared.GetPrice(v6, v5)
+
+	if v5 and (v4 and (not v9 and v10)) then
+		if ReplicatedStorage.Prompt:Invoke("ARE YOU SURE?", ("You are about to <b>PURCHASE</b> <b>%s</b> for <b>%s V\198\182</b>"):format(v6.Title:upper(), v12), { "No", "Yes" }) ~= "Yes" then
+			v8 = false
+
+			return
+		end
+
+		Sounds.Purchase:Play()
+		Cosmetics.Buy:FireServer(v7, v6.Type, v5, v4)
+	else
+		if not v5 or (not v4 or (v9 or (v10 or v13))) then
+			v8 = false
+
+			return
+		end
+
+		v13 = true
+		task.delay(1, function() --[[ Line: 560 | Upvalues: v13 (ref) ]]
+			v13 = false
+		end)
+
+		local v2 = v12 - v1:GetAttribute("Credits")
+
+		ReplicatedStorage:WaitForChild("PromptPurchase"):Fire(nil, v2)
+		SwitchTab(Tabs2:WaitForChild("Page"), TabButtons2, Tabs2:WaitForChild("Products"))
 	end
 
-	if not v4 then
-		Sounds.Click:Play()
-		PromptPurchase(v2.Name)
-	end
+	v8 = false
 end)
-Buttons:WaitForChild("CancelButton").MouseButton1Click:Connect(function() --[[ Line: 358 | Upvalues: v3 (ref), Sounds (copy), Purchase (copy) ]]
-	if not v3 then
-		Sounds.Click:Play()
-		Purchase.GiftTarget:FireServer()
-	end
+Cosmetics:WaitForChild("UpdateLocker").OnClientEvent:Connect(function(p1, p2) --[[ Line: 578 | Upvalues: t3 (ref), UpdateShop (copy) ]]
+	t3 = p1
+	UpdateShop()
 end)
-MarketplaceService.PromptProductPurchaseFinished:Connect(function() --[[ Line: 366 | Upvalues: v2 (ref), PurchaseProcessing (copy), v3 (ref), Purchase (copy), UpdateButtons (copy) ]]
-	v2 = nil
-	PurchaseProcessing.Visible = false
-	v3 = false
-	Purchase.GiftTarget:FireServer()
-	UpdateButtons()
+IconFrame:WaitForChild("Buttons"):WaitForChild("DescriptionFrame").MouseButton1Click:Connect(function() --[[ Line: 584 | Upvalues: Sounds (copy), UpdateIconFrameState (copy), TextLabel (copy), ScrollingFrame (copy) ]]
+	Sounds.Click:Play()
+	UpdateIconFrameState("DescriptionFrame")
+	task.defer(function() --[[ Line: 592 | Upvalues: TextLabel (ref), ScrollingFrame (ref) ]]
+		TextLabel.TextSize = ScrollingFrame.AbsoluteSize.Y * 0.11
+	end)
+	TextLabel.Position = UDim2.new(0.5, 0, 0, TextLabel.TextSize / 4)
 end)
-Purchase:WaitForChild("Update").OnClientEvent:Connect(function() --[[ Line: 377 | Upvalues: v2 (ref), Purchase (copy), UpdateButtons (copy) ]]
-	v2 = nil
-	Purchase.GiftTarget:FireServer()
-	UpdateButtons()
+IconFrame:WaitForChild("Buttons"):WaitForChild("OddsFrame").MouseButton1Click:Connect(function() --[[ Line: 599 | Upvalues: Sounds (copy), UpdateIconFrameState (copy) ]]
+	Sounds.Click:Play()
+	UpdateIconFrameState("OddsFrame")
 end)
 
 -- Players.Noriko_Ellen.PlayerGui.Store.CosmeticRoll
@@ -40894,667 +43553,693 @@ while task.wait(0.1) do
 	UpdateDynamicModels()
 end
 
--- Players.Noriko_Ellen.PlayerGui.DeathGui.DeathLogic
+-- StarterGui.ClimbDebug.ParkourCore
 --
-local t = {
-	"You can press your <b>crouch button</b> while hanging on a ledge to <b>instantly drop down</b>.",
-	"You can press your <b>crouch button</b> to <b>quickly drop from ziplines</b>.",
-	"<b>The Golden RPG is real</b>.",
-	"Base vault rates scale off of how many opposing faction players there are in the server.",
-	"You can throw utilities at glass to break them.",
-	"Faction merchants can sell exclusive items.",
-	"NPCs can react to sound, and can be snuck upon with crouch.",
-	"Explosives can pierce through small walls!",
-	"Your faction NPC members can revive you!",
-	"You can use smoke grenades to extinguish fire on yourself or the environment.",
-	"<b>Purple Crates</b> have a slight chance to drop <b>Green Keycards</b>.",
-	"You can quickly exit most UI by pressing <b>Q</b>.",
-	"The <b>three stars</b> on the leaderboard show the <b>current loot scaling</b> of the server.",
-	"<b>Influence</b> can be spent at your factions base with the <b>Contractors</b>.",
-	"<b>JET</b> decreases cooldowns for melee attacks.",
-	"<b>Proximity mines</b> can be shot to <b>explode</b> quicker",
-	"Breaking fire hydrants spews out a bolt of water you can use to traverse the map. Not safe for drinking."
-}
-local TweenService = game:GetService("TweenService")
-local TextChatService = game:GetService("TextChatService")
-local ReplicatedStorage = game.ReplicatedStorage
-local Players = game.Players
-local Events = ReplicatedStorage:WaitForChild("Events")
-local Mods = ReplicatedStorage:WaitForChild("Mods")
-local ChatWindowConfiguration = TextChatService:WaitForChild("ChatWindowConfiguration")
-local Sounds = script:WaitForChild("Sounds")
-local v1 = script.Parent
-local SoundService = game.SoundService
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+
+repeat
+	task.wait(0.1)
+until _G.Settings
+
+local LocalPlayer = game.Players.LocalPlayer
+local v1 = LocalPlayer:WaitForChild(game.Players:GetAttribute("PLAYER_STORAGE"))
+local Character = LocalPlayer.Character
 local CurrentCamera = workspace.CurrentCamera
-local LocalPlayer = Players.LocalPlayer
-local v2 = nil
-local FormatText = require(Mods:WaitForChild("FormatText"))
-local ItemDatabase = require(Mods:WaitForChild("ItemDatabase"))
-local DeathFlash = v1:WaitForChild("DeathFlash")
-local MainFrame = v1:WaitForChild("MainFrame")
-local RespawnButton = MainFrame:WaitForChild("RespawnButton")
-local SaveButton = MainFrame:WaitForChild("SaveButton")
-local SpectateFrame = v1:WaitForChild("SpectateFrame")
-local AttachmentReport = MainFrame:WaitForChild("AttachmentReport")
-local DamageReport = MainFrame:WaitForChild("DamageReport")
-local LimbReport = MainFrame:WaitForChild("LimbReport")
-local WeaponReport = MainFrame:WaitForChild("WeaponReport")
-local v3 = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-local v4 = TweenInfo.new(0.25, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-local v5 = TweenInfo.new(5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out)
-local v6 = TweenInfo.new(2.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out)
-local v7 = TweenInfo.new(5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 1.5)
-local v8 = TweenInfo.new(0.75, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
+local HeadPart = Character:WaitForChild("HeadPart")
 
-TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+Character:WaitForChild("Head")
 
-local v9 = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-local v10 = TweenInfo.new(0.001)
+local Torso = Character:WaitForChild("Torso")
+local v2 = Torso:WaitForChild("Left Hip", 1)
+local v3 = Torso:WaitForChild("Right Hip", 1)
+local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+local Humanoid = Character:WaitForChild("Humanoid")
+local Parkour = game.ReplicatedStorage:WaitForChild("Events"):WaitForChild("Player"):WaitForChild("Parkour")
+
+Torso.CustomPhysicalProperties = PhysicalProperties.new(1.4, 0.3, 0.5, 1, 1)
+
+local t = { workspace.Terrain, workspace:WaitForChild("Debris") }
+local v4 = Instance.new("NumberValue")
+local TweenService = game:GetService("TweenService")
+local v5 = TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+local Raycast = require(game.ReplicatedStorage:WaitForChild("Mods"):WaitForChild("Raycast"))
+local InputHandler = require(game.ReplicatedStorage:WaitForChild("Mods"):WaitForChild("InputHandler"))
+local v6 = RaycastParams.new()
+
+v6.CollisionGroup = "RayCasts"
+v6.FilterType = Enum.RaycastFilterType.Exclude
+v6.FilterDescendantsInstances = t
+
+local BP = script.BP
+local t2 = {}
+local v7 = false
+local t3 = {}
+local v8 = nil
+
+for k, v in pairs({
+	idle = "rbxassetid://8826774259",
+	swing = "rbxassetid://8827429880",
+	right = "rbxassetid://8830028201",
+	left = "rbxassetid://8829996607",
+	up = "rbxassetid://8997767468",
+	down = "rbxassetid://8998279064",
+	jump = "rbxassetid://8999386188",
+	start = "rbxassetid://8999439300",
+	vault = "rbxassetid://127358344583046"
+}) do
+	local Animation = Instance.new("Animation")
+
+	Animation.AnimationId = v
+	t2[k] = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation)
+end
+
+local t4 = {
+	right = 0.95,
+	left = 0.95,
+	up = 1.4,
+	down = 1.35
+}
+local v9 = false
+local v10 = false
 local v11 = false
 local v12 = false
 local v13 = false
 local v14 = false
 local v15 = false
+local v16 = false
+local v17 = false
+local v18 = nil
+local v19 = nil
+local v20 = false
+local v21 = false
+local v22 = false
+local Air = Enum.Material.Air
+local v23 = CFrame.new()
 
-v1.Parent = LocalPlayer:WaitForChild("PlayerGui")
-RespawnButton.MouseEnter:Connect(function() --[[ Line: 79 | Upvalues: v11 (ref), Sounds (copy), TweenService (copy), RespawnButton (copy), v9 (copy) ]]
-	if v11 then
-		Sounds.DeathHover:Play()
-		TweenService:Create(RespawnButton.Edge, v9, {
-			Size = UDim2.new(0.5, 0, 1.025, 0)
-		}):Play()
-		TweenService:Create(RespawnButton.Edge2, v9, {
-			Size = UDim2.new(0.5, 0, 1.025, 0)
-		}):Play()
-	end
-end)
-RespawnButton.MouseLeave:Connect(function() --[[ Line: 88 | Upvalues: TweenService (copy), RespawnButton (copy), v9 (copy) ]]
-	TweenService:Create(RespawnButton.Edge, v9, {
-		Size = UDim2.new(0.065, 0, 1.025, 0)
-	}):Play()
-	TweenService:Create(RespawnButton.Edge2, v9, {
-		Size = UDim2.new(0.065, 0, 1.025, 0)
-	}):Play()
-end)
-SaveButton.MouseEnter:Connect(function() --[[ Line: 93 | Upvalues: v11 (ref), Sounds (copy), TweenService (copy), SaveButton (copy), v9 (copy) ]]
-	if v11 then
-		Sounds.DeathHover:Play()
-		TweenService:Create(SaveButton.Edge, v9, {
-			Size = UDim2.new(0.5, 0, 1.025, 0)
-		}):Play()
-		TweenService:Create(SaveButton.Edge2, v9, {
-			Size = UDim2.new(0.5, 0, 1.025, 0)
-		}):Play()
-	end
-end)
-SaveButton.MouseLeave:Connect(function() --[[ Line: 102 | Upvalues: TweenService (copy), SaveButton (copy), v9 (copy) ]]
-	TweenService:Create(SaveButton.Edge, v9, {
-		Size = UDim2.new(0.05, 0, 1.025, 0)
-	}):Play()
-	TweenService:Create(SaveButton.Edge2, v9, {
-		Size = UDim2.new(0.05, 0, 1.025, 0)
-	}):Play()
-end)
-Events:WaitForChild("Player"):WaitForChild("DeathInfo").OnClientEvent:Connect(function(p1) --[[ Line: 108 | Upvalues: MainFrame (copy), v15 (ref), DamageReport (copy), LimbReport (copy), WeaponReport (copy), ItemDatabase (copy), AttachmentReport (copy) ]]
-	MainFrame.AssistInfo.Text = ("ASSISTED BY <b>%s</b>"):format(p1.AssistCount or "0")
-	MainFrame.KillInfo.Text = ("KILLED BY <b>%s</b>"):format((p1.Killer or "???"):upper())
-
-	if not p1.ExtraInfo then
+HumanoidRootPart.ChildAdded:Connect(function(p1) --[[ Line: 97 ]]
+	if p1.Name ~= "ParkourSound" then
 		return
 	end
 
-	v15 = true
-
-	local t = {}
-	local tbl = {}
-
-	for k, v in pairs(p1.ExtraInfo) do
-		local v1 = v.Limb or "Unknown"
-
-		if v1 == "HumanoidRootPart" then
-			v1 = "Root"
-		end
-
-		t[v1] = (t[v1] or 0) + 1
-
-		local v2 = if v.Limb == "Head" then true else false
-		local v3 = v.Name or "Unknown"
-		local v4 = v.Weapon or "Unknown"
-		local v5 = script:WaitForChild("ReportEntry"):Clone()
-
-		v5.TopLeftText.Text = v3
-		v5.TopRightText.Text = ("%d DMG"):format(v.Damage or 0)
-		v5.BottomLeftText.Text = ("%s (%dm)"):format(v4, (math.floor(v.Distance or 0)))
-		v5.BottomRightText.Text = v1
-		v5.Parent = DamageReport.ScrollingFrame
-
-		local v7 = v3 .. "_" .. v4
-		local v8 = false
-
-		for k2, v9 in pairs(tbl) do
-			if v9.Key == v7 then
-				local v92 = tbl[k2]
-
-				v92.Damage = v92.Damage + (v.Damage or 0)
-
-				local v10 = tbl[k2]
-
-				v10.HeadshotHits = v10.HeadshotHits + (if v2 then 1 else 0)
-
-				local v12 = tbl[k2]
-
-				v12.Hits = v12.Hits + 1
-				v8 = true
-
-				break
-			end
-		end
-
-		if not v8 then
-			local t2 = {
-				Hits = 1,
-				Key = v7,
-				Weapon = v4,
-				Name = v3
-			}
-
-			t2.HeadshotHits = if v2 then 1 else 0
-			t2.Damage = v.Damage or 0
-			t2.Attachments = v.Attachments
-			table.insert(tbl, t2)
-		end
-	end
-
-	table.sort(tbl, function(p1, p2) --[[ Line: 179 ]]
-		return p1.Damage > p2.Damage
+	task.defer(function() --[[ Line: 99 | Upvalues: p1 (copy) ]]
+		p1:Destroy()
 	end)
-
-	local v14 = tbl[1]
-
-	for k, v in pairs(LimbReport.LimbStatus:GetChildren()) do
-		if v:IsA("Frame") then
-			v.HitCount.Text = t[v.Name] or "0"
-			v.BackgroundTransparency = if t[v.Name] then 0.25 else 0.6
-			v.HitCount.TextTransparency = if t[v.Name] then 0 else 0.6
-		end
-	end
-
-	if not v14 then
-		return
-	end
-
-	local v18 = math.ceil(v14.HeadshotHits / v14.Hits * 100)
-	local v20 = v14.Weapon or "Unknown"
-	local v21 = false
-
-	WeaponReport.WeaponName.Text = v20:upper()
-
-	local v22 = script:WaitForChild("ReportEntry"):Clone()
-
-	v22.CenterLeftText.Text = (v14.Name or "Unknown"):upper()
-	v22.CenterRightText.Text = ("%d DMG"):format(v14.Damage or 0)
-	v22.Parent = WeaponReport.ScrollingFrame
-
-	local v23 = script:WaitForChild("ReportEntry"):Clone()
-
-	v23.CenterLeftText.Text = "HEADSHOT RATE"
-	v23.CenterRightText.Text = ("%d%%"):format(v18)
-	v23.Parent = WeaponReport.ScrollingFrame
-
-	local v24 = script:WaitForChild("ReportEntry"):Clone()
-
-	v24.CenterLeftText.Text = "HITS"
-	v24.CenterRightText.Text = ("%d"):format(v14.Hits)
-	v24.Parent = WeaponReport.ScrollingFrame
-
-	local v25 = ItemDatabase[v20]
-
-	WeaponReport.IconImage.Image = if v25 then v25.Icon or "" else ""
-
-	local v27 = script:WaitForChild("ReportEntry"):Clone()
-
-	v27.CenterText.Text = "ATTACHMENTS"
-	v27.Parent = AttachmentReport.ScrollingFrame
-
-	for v30, v31 in pairs(v14.Attachments or {}) do
-		local v32 = script:WaitForChild("ReportEntry"):Clone()
-
-		v32.TopLeftText.Text = v31:upper()
-		v32.BottomLeftText.Text = v30:upper()
-		v32.Parent = AttachmentReport.ScrollingFrame
-		v21 = true
-	end
-
-	AttachmentReport.Visible = v21
 end)
 
-local function Died() --[[ Died | Line: 255 | Upvalues: v11 (ref), Sounds (copy), SoundService (copy), MainFrame (copy), t (copy), ReplicatedStorage (copy), v14 (ref), SaveButton (copy), RespawnButton (copy), v2 (ref), FormatText (copy), TweenService (copy), v8 (copy), v1 (copy), v10 (copy), DeathFlash (copy), v7 (copy), LimbReport (copy), DamageReport (copy), WeaponReport (copy), AttachmentReport (copy), v5 (copy), v15 (ref), v6 (copy), v4 (copy), v9 (copy), v12 (ref), Events (copy) ]]
-	if v11 then
+local function GetWalkspeed() --[[ GetWalkspeed | Line: 103 | Upvalues: Humanoid (copy) ]]
+	return math.clamp(Humanoid.WalkSpeed, 0.25, 50)
+end
+
+local function playLoopAnim(p1, p2) --[[ playLoopAnim | Line: 108 | Upvalues: t2 (copy) ]]
+	if not t2[p1] then
 		return
 	end
 
-	v11 = true
-	Sounds.Flatline:Play()
-	Sounds.Death:Play()
-	SoundService.GeneralSoundGroup.Volume = 0
-	MainFrame.TipText.Text = t[math.random(#t)]
-	ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("DeathMenu", true)
-	v14 = false
-	SaveButton.Visible = true
-	RespawnButton.Visible = true
-	MainFrame.SnapshotID.Text = ""
-	MainFrame.SnapshotTime.Text = ""
-	SaveButton.TextLabel.Text = "SAVE DEATH SNAPSHOT"
+	if p2 then
+		if t2[p1].IsPlaying == true then
+			t2[p1]:Stop(0.25)
+		end
+	else
+		if t2[p1].IsPlaying ~= false then
+			return
+		end
 
-	if v2:GetAttribute("NoRespawn") then
-		RespawnButton.Visible = false
-		SaveButton.Visible = false
-		MainFrame.Title.Text = "YOU DIED?"
-		task.spawn(function() --[[ Line: 292 | Upvalues: MainFrame (ref), FormatText (ref), v11 (ref) ]]
-			repeat
-				MainFrame.TipText.Text = FormatText.DistortText("------- ------- ------- ------- ------- -------", 3)
-				MainFrame.AssistInfo.Text = FormatText.DistortText("ASSISTED BY ???", 3)
-				MainFrame.KillInfo.Text = FormatText.DistortText("KILLED BY ???", 3)
-				task.wait(0.01)
-			until not v11
-		end)
-	end
-
-	task.spawn(function() --[[ Line: 304 | Upvalues: SaveButton (ref), TweenService (ref), v8 (ref), v11 (ref) ]]
-		repeat
-			task.wait(0.5)
-			SaveButton.Flash.BackgroundTransparency = 0.4
-			SaveButton.Flash.Size = UDim2.fromScale(1, 1)
-			TweenService:Create(SaveButton.Flash, v8, {
-				BackgroundTransparency = 1,
-				Size = UDim2.fromScale(1.5, 1)
-			}):Play()
-			task.wait(v8.Time)
-		until not v11
-	end)
-	TweenService:Create(v1, v10, {
-		Enabled = true
-	}):Play()
-	TweenService:Create(DeathFlash, v10, {
-		BackgroundTransparency = 0,
-		BackgroundColor3 = Color3.fromRGB(150, 0, 0)
-	}):Play()
-	TweenService:Create(RespawnButton.Bar, v10, {
-		Size = UDim2.new(0, 0, 1, 0)
-	}):Play()
-	TweenService:Create(RespawnButton.TextLabel, v10, {
-		TextTransparency = 0.75
-	}):Play()
-	TweenService:Create(RespawnButton.Glow, v10, {
-		ImageTransparency = 1
-	}):Play()
-	TweenService:Create(SaveButton.Bar, v10, {
-		Size = UDim2.new(0, 0, 1, 0)
-	}):Play()
-	TweenService:Create(MainFrame.RestoreInfo, v10, {
-		TextTransparency = 1
-	}):Play()
-	TweenService:Create(MainFrame, v7, {
-		GroupTransparency = 0,
-		Visible = true
-	}):Play()
-	TweenService:Create(LimbReport, v10, {
-		Position = UDim2.new(-1, 0, 0.5, 0)
-	}):Play()
-	TweenService:Create(DamageReport, v10, {
-		Position = UDim2.new(-1, 0, 0.51, 0)
-	}):Play()
-	TweenService:Create(WeaponReport, v10, {
-		Position = UDim2.new(2, 0, 0.5, 0)
-	}):Play()
-	TweenService:Create(AttachmentReport, v10, {
-		Position = UDim2.new(2, 0, 0.51, 0)
-	}):Play()
-	task.wait(0.5)
-	TweenService:Create(v1.DeathFlash, v5, {
-		BackgroundColor3 = Color3.new()
-	}):Play()
-	task.wait(1)
-	TweenService:Create(MainFrame.Corners, v5, {
-		Size = UDim2.new(1, -25, 1, -25)
-	}):Play()
-
-	if v15 then
-		TweenService:Create(LimbReport, v6, {
-			Position = UDim2.new(0.005, 0, 0.5, 0)
-		}):Play()
-		TweenService:Create(DamageReport, v6, {
-			Position = UDim2.new(0.005, 0, 0.51, 0)
-		}):Play()
-		TweenService:Create(WeaponReport, v6, {
-			Position = UDim2.new(0.995, 0, 0.5, 0)
-		}):Play()
-		TweenService:Create(AttachmentReport, v6, {
-			Position = UDim2.new(0.995, 0, 0.51, 0)
-		}):Play()
-	end
-
-	task.wait(2)
-	TweenService:Create(RespawnButton.Bar, v4, {
-		Size = UDim2.new(1, 0, 1, 0)
-	}):Play()
-	task.wait(v4.Time)
-	TweenService:Create(RespawnButton.TextLabel, v9, {
-		TextTransparency = 0
-	}):Play()
-	TweenService:Create(RespawnButton.Glow, v9, {
-		ImageTransparency = 0.8
-	}):Play()
-
-	if v11 then
-		v12 = true
-		RespawnButton.MouseButton1Click:Once(function() --[[ Line: 361 | Upvalues: ReplicatedStorage (ref), Sounds (ref), TweenService (ref), RespawnButton (ref), v9 (ref), MainFrame (ref), v6 (ref), v5 (ref), Events (ref) ]]
-			ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("DeathMenu", false)
-			Sounds.Bass:Play()
-			TweenService:Create(RespawnButton.Edge, v9, {
-				Size = UDim2.new(0.065, 0, 1.025, 0)
-			}):Play()
-			TweenService:Create(RespawnButton.Edge2, v9, {
-				Size = UDim2.new(0.065, 0, 1.025, 0)
-			}):Play()
-			TweenService:Create(RespawnButton, v9, {
-				Size = UDim2.new(0.8, 0, 0.07, 0)
-			}):Play()
-			TweenService:Create(MainFrame, v6, {
-				GroupTransparency = 1,
-				Visible = false
-			}):Play()
-			TweenService:Create(MainFrame.Corners, v5, {
-				Size = UDim2.new(1, 25, 1, 25)
-			}):Play()
-			task.wait(3)
-			Events.Player.Respawn:FireServer()
-		end)
+		t2[p1]:Play(0.25)
 	end
 end
 
-SaveButton.MouseButton1Click:Connect(function() --[[ Line: 379 | Upvalues: v13 (ref), SaveButton (copy), Sounds (copy), v14 (ref), TweenService (copy), v3 (copy), MainFrame (copy), v9 (copy), Events (copy) ]]
-	if v13 and SaveButton.Visible then
+local function getRandom(p1) --[[ getRandom | Line: 122 ]]
+	local v1 = p1:GetChildren()
+
+	return v1[math.random(#v1)]
+end
+
+local function playSound(p1) --[[ playSound | Line: 127 | Upvalues: HumanoidRootPart (copy) ]]
+	if not script.Sounds:FindFirstChild(p1 or "") then
 		return
 	end
 
-	v13 = true
-	Sounds.Click:Play()
+	local v1 = script.Sounds[p1]:GetChildren()
+	local v2 = v1[math.random(#v1)]:Clone()
+	local v3 = v2:GetAttribute("Range")
 
-	if not v14 then
-		v14 = true
-		SaveButton.Edge.ImageTransparency = 0.25
-		SaveButton.Edge2.ImageTransparency = 0.25
-		TweenService:Create(SaveButton.Bar, v3, {
-			Size = UDim2.new(1, 0, 1, 0)
-		}):Play()
-		TweenService:Create(MainFrame.RestoreInfo, v9, {
-			TextTransparency = 0
-		}):Play()
-		SaveButton.TextLabel.Text = "..."
-		task.wait(2)
-		SaveButton.Edge.ImageTransparency = 0.5
-		SaveButton.Edge2.ImageTransparency = 0.5
-		SaveButton.TextLabel.Text = "SAVE SNAPSHOT ANYWAY"
-		v13 = false
-
-		return
+	if v3 then
+		v2.PlaybackSpeed = math.random(v3.Min * 10, v3.Max * 10) / 10
 	end
 
-	TweenService:Create(MainFrame.RestoreInfo, v9, {
-		TextTransparency = 1
-	}):Play()
-	TweenService:Create(SaveButton.Edge, v9, {
-		Size = UDim2.new(0.05, 0, 1.025, 0)
-	}):Play()
-	TweenService:Create(SaveButton.Edge2, v9, {
-		Size = UDim2.new(0.05, 0, 1.025, 0)
-	}):Play()
-	SaveButton.Visible = false
+	v2.Parent = HumanoidRootPart
+	v2:Play()
+	task.delay(5, function() --[[ Line: 136 | Upvalues: v2 (copy) ]]
+		v2:Destroy()
+	end)
+end
 
-	local v1, v2 = Events.Player.SaveDS:InvokeServer()
+local t5 = { "right", "left", "up", "down" }
 
-	if v1 and v2 then
-		local v32 = DateTime.fromUnixTimestamp(v2)
+local function MovementAnimation(p1, p2, p3) --[[ MovementAnimation | Line: 144 | Upvalues: t5 (copy), t4 (copy), Humanoid (copy), t2 (copy) ]]
+	for k, v in pairs(t5) do
+		local v1
 
-		MainFrame.SnapshotID.Text = v1
-		MainFrame.SnapshotTime.Text = v32:FormatLocalTime("lll", "en-us"):upper() .. " [UTC]"
+		if p3 then
+			v1 = if t4[v] then t4[v] * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16) else 1 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
+			t2[v]:AdjustSpeed(v1)
+
+			continue
+		end
+
+		if v == p1 then
+			if t2[v] and t2[v].IsPlaying == false then
+				t2[v]:Play(0.25)
+			end
+
+			continue
+		end
+
+		if t2[v] and t2[v].IsPlaying == true then
+			t2[v]:Stop(0.25)
+		end
+	end
+end
+
+local function v24(p1, p2) --[[ CastRay | Line: 162 | Upvalues: v6 (copy), t (copy), v24 (copy) ]]
+	local v1 = workspace:Raycast(p1, p2, v6)
+
+	if v1 and (not v1.Instance:GetAttribute("ParkourPart") and (v1.Instance.Anchored == false or (v1.Instance.CanCollide == false or v1.Instance.Transparency == 1))) then
+		table.insert(t, v1.Instance)
+		v6.FilterDescendantsInstances = t
+
+		return v24(p1, p2)
+	end
+
+	return v1
+end
+
+local function MakeDebugAt(p1, p2) --[[ MakeDebugAt | Line: 175 ]] end
+
+local function ActivateBodyM(p1, p2, p3, p4) --[[ ActivateBodyM | Line: 195 | Upvalues: v11 (ref), t2 (copy), Humanoid (copy), Character (copy), v10 (ref), BP (copy), HumanoidRootPart (copy), HeadPart (copy) ]]
+	if v11 == false and p1 then
+		if not p2 then
+			t2.idle:Play(nil, nil, 1 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16))
+		end
+
+		if not p3 then
+			Character:SetAttribute("NT", true)
+		end
+
+		if not p4 then
+			Character:SetAttribute("Parkour", true)
+		end
+
+		v11 = true
+		v10 = true
+		BP.Parent = HumanoidRootPart
+		HeadPart.CanCollide = false
 	else
-		SaveButton.Visible = true
+		if v11 ~= true or p1 then
+			return
+		end
+
+		t2.idle:Stop()
+		t2.start:Stop()
+		Character:SetAttribute("NT", false)
+		Character:SetAttribute("Parkour", false)
+		v11 = false
+		task.delay(0.1, function() --[[ Line: 217 | Upvalues: v10 (ref) ]]
+			v10 = false
+		end)
+		BP.Parent = script
+		Character:SetAttribute("FpLockPos", nil)
+		Character:SetAttribute("LookAtLock", nil)
+		HeadPart.CanCollide = true
+	end
+end
+
+local function UpdateBodyPosition(p1) --[[ UpdateBodyPosition | Line: 225 | Upvalues: HumanoidRootPart (copy), BP (copy), v11 (ref), Character (copy) ]]
+	HumanoidRootPart.AssemblyLinearVelocity = Vector3.new()
+	HumanoidRootPart.AssemblyAngularVelocity = Vector3.new()
+	BP.Position = (p1 * CFrame.new(0, -2.1, 0.75)).Position
+
+	if not v11 then
+		return
 	end
 
+	Character:SetAttribute("FpLockPos", p1.Position)
+	Character:SetAttribute("LookAtLock", (p1 * CFrame.new(0, 0, -25)).Position)
+end
+
+local function CheckRay(p1) --[[ CheckRay | Line: 237 ]]
+	return if p1 then p1.Instance:GetAttribute("ParkourPart") else p1
+end
+
+local function MoveRayChecks(p1, p2) --[[ MoveRayChecks | Line: 241 | Upvalues: HumanoidRootPart (copy), v24 (copy), v14 (ref), Humanoid (copy) ]]
+	local sum = HumanoidRootPart.Position + Vector3.new(0, 2.5, 0)
+	local v1 = v24(sum + p1, HumanoidRootPart.CFrame.LookVector * 2.5)
+	local v2 = v24(sum + p1 * 2, HumanoidRootPart.CFrame.LookVector * 2.5)
+
+	Color3.new(255/255, 0/255, 0/255)
+	Color3.new(255/255, 255/255, 0/255)
+
+	local v3 = if v1 then v1.Instance:GetAttribute("ParkourPart") else v1
+
+	if v3 and (if v2 then v2.Instance:GetAttribute("ParkourPart") else v2) then
+		return v1
+	end
+
+	if not p2 then
+		return
+	end
+
+	for i = 2, 1, -1 do
+		sum = sum + p1
+		Color3.new(255/255, 255/255, 255/255)
+
+		local v5 = v24(sum, HumanoidRootPart.CFrame.LookVector * 2.5)
+
+		if if v5 then v5.Instance:GetAttribute("ParkourPart") else v5 then
+			v14 = true
+
+			local v7 = task.delay
+
+			v7(0.35 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)), function() --[[ Line: 281 | Upvalues: v14 (ref) ]]
+				v14 = false
+			end)
+
+			return v5
+		end
+	end
+end
+
+local function MoveBody(p1, p2, p3, p4, p5) --[[ MoveBody | Line: 290 | Upvalues: v11 (ref), v12 (ref), v14 (ref), Character (copy), v7 (ref), t2 (copy), BP (copy), Humanoid (copy), MoveRayChecks (copy), v21 (ref), t5 (copy), Parkour (copy), v19 (ref), playSound (copy), v18 (ref), UpdateBodyPosition (copy), MovementAnimation (copy), t3 (copy) ]]
+	if not v11 or (v12 or v14) then
+		return
+	end
+
+	v12 = true
+	Character:SetAttribute("FpLockPosCooldown", true)
+
+	if p5 then
+		v7 = true
+	end
+
+	t2.start:Stop(0.1)
+	BP.P = 15000 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
+
+	local v2 = MoveRayChecks(p1, p2)
+
+	if v2 and v2.Instance:GetAttribute("ParkourLedge") then
+		v21 = true
+
+		for k, v in pairs(t5) do
+			if v == p3 then
+				if t2[v] and t2[v].IsPlaying == false then
+					t2[v]:Play(0.25)
+				end
+
+				continue
+			end
+
+			if t2[v] and t2[v].IsPlaying == true then
+				t2[v]:Stop(0.25)
+			end
+		end
+
+		Parkour:FireServer("Move", v19)
+		playSound("Move")
+		playSound(v18)
+		task.wait(p4)
+
+		local v3 = Vector3.new(v2.Position.X, v2.Instance.Position.Y, v2.Position.Z)
+		local v4 = CFrame.new(v3, v3 - v2.Normal)
+		local Position = v2.Position
+
+		Color3.new(0/255, 0/255, 255/255)
+		UpdateBodyPosition(v4)
+		v21 = false
+	else
+		MovementAnimation()
+		v21 = false
+		table.remove(t3, #t3)
+	end
+
+	if p2 then
+		local v5 = task.wait
+
+		v5(0.4 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
+	else
+		local v6 = task.wait
+
+		v6(0.35 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
+	end
+
+	v7 = false
+	v12 = false
+	Character:SetAttribute("FpLockPosCooldown", nil)
+end
+
+InputHandler.RegisterKeybind(nil, "Parkour_controls", { "Crouch", "Jump" }, true, { "Began" }, function(p1, p2) --[[ Line: 338 | Upvalues: v11 (ref), v17 (ref), v15 (ref), ActivateBodyM (copy), Parkour (copy), v19 (ref), playSound (copy), v8 (ref), Humanoid (copy), v16 (ref), v12 (ref), t2 (copy), HumanoidRootPart (copy), v13 (ref) ]]
+	if not v11 or v17 then
+		return
+	end
+
+	if p2 == "Crouch" then
+		v15 = true
+		ActivateBodyM(false)
+		Parkour:FireServer("LetGo", v19)
+		playSound("LetGo")
+		v8 = nil
+
+		local v1 = task.wait
+
+		v1(0.15 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
+		v15 = false
+
+		return
+	end
+
+	if p2 ~= "Jump" or v16 then
+		return
+	end
+
+	v16 = true
+	v12 = true
+	v15 = true
+	t2.jump:Play(nil, nil, 1.25 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16))
+	game.ReplicatedStorage.SH:Fire(Vector3.new(0, -2.5, 0), 1, 4, 0.25)
+	Parkour:FireServer("Jump", v19)
+	playSound("Jump")
+	v8 = nil
+	task.wait(0.2 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
+	ActivateBodyM(false)
+	HumanoidRootPart:ApplyImpulse((Vector3.new(0, 55 * HumanoidRootPart.AssemblyMass, 0)))
+	task.wait(0.125 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
+	t2.jump:Stop(0.25 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
+	v15 = false
+	v12 = false
+	v16 = false
 	v13 = false
 end)
-
-local function Spectate() --[[ Spectate | Line: 449 | Upvalues: v11 (ref), ChatWindowConfiguration (copy), Sounds (copy), SoundService (copy), TweenService (copy), v1 (copy), v10 (copy), DeathFlash (copy), v5 (copy), SpectateFrame (copy), ReplicatedStorage (copy), v9 (copy), Events (copy), CurrentCamera (copy) ]]
-	if v11 then
+InputHandler.RegisterKeybind(nil, "Parkour_vault", { "Jump" }, true, { "Began" }, function() --[[ Line: 375 | Upvalues: v11 (ref), v9 (ref), v10 (ref), HumanoidRootPart (copy), Raycast (copy), playSound (copy), v15 (ref), v12 (ref), v17 (ref), BP (copy), Humanoid (copy), Character (copy), t2 (copy), ActivateBodyM (copy), UpdateBodyPosition (copy) ]]
+	if not _G.Settings.Gameplay.Parkour_vaulting or (v11 or (v9 or (v10 or (not _G.CharacterStates.Sprinting or (_G.CharacterStates.Swinging or (_G.CharacterStates.PreparingSwing or _G.CharacterStates.Reloading)))))) then
 		return
 	end
 
-	v11 = true
+	local v1 = HumanoidRootPart
+	local LookVector = v1.CFrame.LookVector
+	local v2 = Raycast.CastSphere(v1.Position + Vector3.new(0, -0.5, 0), LookVector * 5, 1, {
+		Anchored = false,
+		CanCollide = false
+	})
 
-	local tbl = {}
-	local t = {}
-	local v12 = 1
-	local Enabled = ChatWindowConfiguration.Enabled
-	local DeathSound = game.ReplicatedFirst:FindFirstChild("DeathSound")
-
-	if DeathSound then
-		DeathSound:Play()
-	else
-		Sounds.Flatline:Play()
-		Sounds.Death:Play()
-	end
-
-	SoundService.GeneralSoundGroup.Volume = 0
-	TweenService:Create(v1, v10, {
-		Enabled = true
-	}):Play()
-	TweenService:Create(DeathFlash, v10, {
-		BackgroundTransparency = 0,
-		BackgroundColor3 = Color3.fromRGB(150, 0, 0)
-	}):Play()
-	task.wait(0.5)
-	TweenService:Create(v1.DeathFlash, v5, {
-		BackgroundTransparency = 1,
-		BackgroundColor3 = Color3.new()
-	}):Play()
-	TweenService:Create(SoundService.GeneralSoundGroup, v5, {
-		Volume = 1
-	}):Play()
-	SpectateFrame.Visible = true
-	ChatWindowConfiguration.Enabled = true
-	ReplicatedStorage.CinematicMode:Fire(false, true, true)
-
-	local function f2() --[[ Line: 496 | Upvalues: Sounds (ref), t (copy), v12 (ref), TweenService (ref), DeathFlash (ref), v10 (ref), v1 (ref), v9 (ref) ]]
-		Sounds.Click:Play()
-
-		if not (v12 < #t) then
-			return
-		end
-
-		TweenService:Create(DeathFlash, v10, {
-			BackgroundTransparency = 0
-		}):Play()
-		task.wait()
-		TweenService:Create(v1.DeathFlash, v9, {
-			BackgroundTransparency = 1
-		}):Play()
-		v12 = v12 + 1
-	end
-
-	table.insert(tbl, SpectateFrame.Controls.Next.Button.MouseButton1Click:Connect(f2))
-
-	local function f3() --[[ Line: 515 | Upvalues: Sounds (ref), v12 (ref), TweenService (ref), DeathFlash (ref), v10 (ref), v1 (ref), v9 (ref) ]]
-		Sounds.Click:Play()
-
-		if not (v12 > 1) then
-			return
-		end
-
-		TweenService:Create(DeathFlash, v10, {
-			BackgroundTransparency = 0
-		}):Play()
-		task.wait()
-		TweenService:Create(v1.DeathFlash, v9, {
-			BackgroundTransparency = 1
-		}):Play()
-		v12 = v12 - 1
-	end
-
-	table.insert(tbl, SpectateFrame.Controls.Previous.Button.MouseButton1Click:Connect(f3))
-
-	local v4 = ReplicatedStorage:GetAttribute("ReturnText")
-
-	if v4 then
-		local function f5() --[[ Line: 537 | Upvalues: Sounds (ref), Events (ref) ]]
-			Sounds.Click:Play()
-			Events.Player.SpectateReturn:FireServer()
-		end
-
-		table.insert(tbl, SpectateFrame.Return.Button.MouseButton1Click:Connect(f5))
-		SpectateFrame.Return.BottomText.Text = v4
-	end
-
-	while v11 do
-		SpectateFrame.Controls.Information.Text = ReplicatedStorage:GetAttribute("SpectateText") or ""
-		table.clear(t)
-
-		for k, v in pairs(workspace.Chars:GetChildren()) do
-			local Humanoid = v:FindFirstChild("Humanoid")
-			local Torso = v:FindFirstChild("Torso")
-
-			if Humanoid and (Torso and not Humanoid:GetAttribute("Died")) or not v:GetAttribute("Died") then
-				table.insert(t, Torso)
-			end
-		end
-
-		local v6 = if #t <= 0 then true else false
-
-		SpectateFrame.NoTargets.Visible = v6
-		SpectateFrame.Controls.Visible = not v6
-
-		local v7 = t[v12]
-
-		if v6 or not (v7 and v7.Parent) then
-			v12 = 1
-		elseif CurrentCamera.CameraSubject ~= v7 then
-			SpectateFrame.Controls.TargetFrame.TargetNameText.Text = v7.Parent.Name
-			CurrentCamera.CameraSubject = v7
-		end
-
-		task.wait()
-	end
-
-	ChatWindowConfiguration.Enabled = Enabled
-
-	for k, v in pairs(tbl) do
-		v:Disconnect()
-	end
-end
-
-local function TriggerDeath() --[[ TriggerDeath | Line: 603 | Upvalues: CurrentCamera (copy), ReplicatedStorage (copy), Spectate (copy), Died (copy) ]]
-	CurrentCamera.CameraType = Enum.CameraType.Custom
-	CurrentCamera.FieldOfView = 70
-
-	if ReplicatedStorage:GetAttribute("CustomRespawn") then
-		Spectate()
-	else
-		Died()
-	end
-end
-
-local function UpdateCharacter(p1) --[[ UpdateCharacter | Line: 617 | Upvalues: v2 (ref), v12 (ref), v11 (ref), v15 (ref), MainFrame (copy), DamageReport (copy), AttachmentReport (copy), WeaponReport (copy), CurrentCamera (copy), ReplicatedStorage (copy), Spectate (copy), Died (copy), Sounds (copy), SpectateFrame (copy), v1 (copy), DeathFlash (copy), TweenService (copy), v5 (copy), v6 (copy) ]]
-	if not p1 then
+	if not v2 or Raycast.CastSphere(v1.Position + Vector3.new(0, 2, 0), LookVector * 10, 1, {
+		Anchored = false,
+		CanCollide = false
+	}) then
 		return
 	end
 
-	v2 = p1
-	v12 = false
-	v11 = false
+	local v3 = v2.Position + LookVector / 100
+	local v5 = Raycast.CastRay(Vector3.new(v3.X, v1.Position.Y + 5, v3.Z), Vector3.new(-0, -15, -0), {
+		Anchored = false,
+		CanCollide = false
+	})
+
+	if not v5 then
+		return
+	end
+
+	v9 = true
+	game.ReplicatedStorage.TSH:Fire(1, 2, 0.1)
+
+	local Position = v5.Position
+
+	Color3.fromRGB(100, 0, 255)
+	playSound("Heavy")
+	v15 = true
+	v12 = true
+	v17 = true
+	BP.P = 25000 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
+	Character:SetAttribute("Vaulting", true)
+	t2.vault:Play(0.25, nil, 0.66 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16))
+	ActivateBodyM(true, true, true, true)
+
+	local v8 = CFrame.new
+
+	UpdateBodyPosition(v8(v2.Position, (Vector3.new(v1.Position.X, v2.Position.Y, v1.Position.Z))) * CFrame.new(0, 1.5, 2) * CFrame.Angles(math.pi, 0, 0))
+	task.wait(0.085 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
+	ActivateBodyM(false)
+	Character:SetAttribute("Vaulting", nil)
+	BP.P = 15000 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
 	v15 = false
-	MainFrame.AssistInfo.Text = ""
-	MainFrame.KillInfo.Text = ""
-
-	for k, v in pairs({ DamageReport, AttachmentReport, WeaponReport }) do
-		for k2, v3 in pairs(v.ScrollingFrame:GetChildren()) do
-			if v3:IsA("Frame") then
-				v3:Destroy()
-			end
+	v12 = false
+	v17 = false
+	v9 = false
+end)
+UserInputService.InputBegan:Connect(function(p1, p2) --[[ Line: 420 | Upvalues: t3 (copy), v22 (ref), v20 (ref) ]]
+	if not p2 or _G.CurrentInputType == "Gamepad" then
+		if p1.KeyCode == Enum.KeyCode.D then
+			table.insert(t3, "D")
+		elseif p1.KeyCode == Enum.KeyCode.A then
+			table.insert(t3, "A")
+		elseif p1.KeyCode == Enum.KeyCode.W then
+			table.insert(t3, "W")
+		elseif p1.KeyCode == Enum.KeyCode.S then
+			table.insert(t3, "S")
 		end
 	end
 
-	p1.AttributeChanged:Connect(function(p1) --[[ Line: 642 | Upvalues: CurrentCamera (ref), ReplicatedStorage (ref), Spectate (ref), Died (ref) ]]
-		if p1 ~= "Died" then
-			return
-		end
+	if p2 or (not v22 or (p1.KeyCode ~= Enum.KeyCode.Space or v20)) then
+		return
+	end
 
-		CurrentCamera.CameraType = Enum.CameraType.Custom
-		CurrentCamera.FieldOfView = 70
-
-		if ReplicatedStorage:GetAttribute("CustomRespawn") then
-			Spectate()
-
-			return
-		end
-
-		Died()
+	v20 = true
+	task.delay(0.5, function() --[[ Line: 439 | Upvalues: v20 (ref) ]]
+		v20 = false
 	end)
-	Sounds.Flatline:Stop()
-	Sounds.Death:Stop()
-	SpectateFrame.Visible = false
-	v1.Enabled = true
-	DeathFlash.BackgroundColor3 = Color3.new()
-	DeathFlash.BackgroundTransparency = 0
-	TweenService:Create(DeathFlash, v5, {
-		BackgroundTransparency = 1
-	}):Play()
-	TweenService:Create(v1, v5, {
-		Enabled = false
-	}):Play()
-	TweenService:Create(MainFrame, v6, {
-		GroupTransparency = 1,
-		Visible = false
-	}):Play()
-	TweenService:Create(MainFrame.Corners, v5, {
-		Size = UDim2.new(1, 25, 1, 25)
-	}):Play()
-	MainFrame.Title.Text = "YOU DIED"
-	MainFrame.AssistInfo.Text = ""
-	MainFrame.KillInfo.Text = ""
-	ReplicatedStorage.CinematicMode:Fire(true, true, false)
+end)
+UserInputService.InputEnded:Connect(function(p1, p2) --[[ Line: 444 | Upvalues: t3 (copy) ]]
+	if p1.KeyCode == Enum.KeyCode.D then
+		table.remove(t3, table.find(t3, "D"))
+
+		return
+	end
+
+	if p1.KeyCode == Enum.KeyCode.A then
+		table.remove(t3, table.find(t3, "A"))
+
+		return
+	end
+
+	if p1.KeyCode == Enum.KeyCode.W then
+		table.remove(t3, table.find(t3, "W"))
+
+		return
+	end
+
+	if p1.KeyCode ~= Enum.KeyCode.S then
+		return
+	end
+
+	table.remove(t3, table.find(t3, "S"))
+end)
+function lerp(p1, p2, p3) --[[ lerp | Line: 459 ]]
+	return p1 + (p2 - p1) * p3
 end
 
-LocalPlayer.CharacterAdded:Connect(UpdateCharacter)
-UpdateCharacter(LocalPlayer.Character)
-LocalPlayer.AttributeChanged:Connect(function(p1) --[[ Line: 676 | Upvalues: CurrentCamera (copy), ReplicatedStorage (copy), Spectate (copy), Died (copy) ]]
-	if p1 ~= "Died" then
+local v25 = false
+local v26 = false
+local Climbing = Enum.HumanoidStateType.Climbing
+
+local function CheckForLegde(p1) --[[ CheckForLegde | Line: 468 | Upvalues: v26 (ref) ]]
+	if not p1 or v26 then
 		return
 	end
 
-	CurrentCamera.CameraType = Enum.CameraType.Custom
-	CurrentCamera.FieldOfView = 70
+	local v1 = p1.Instance
+	local v2 = Vector3.new(p1.Position.X, v1.Position.Y, p1.Position.Z)
+	local Position = p1.Position
 
-	if ReplicatedStorage:GetAttribute("CustomRespawn") then
-		Spectate()
-
+	if CFrame.new(v2, v2 - p1.Normal).LookVector.Y ~= 0 then
 		return
 	end
 
-	Died()
+	if v1:GetAttribute("ParkourPart") then
+		return v1
+	end
+end
+
+RunService.Stepped:Connect(function(p1) --[[ Line: 485 | Upvalues: v11 (ref), t2 (copy), v22 (ref), Humanoid (copy), Air (copy), Character (copy), v1 (copy), v26 (ref), ActivateBodyM (copy), Torso (copy), v24 (copy), HumanoidRootPart (copy), v25 (ref), TweenService (copy), v4 (copy), v5 (copy), v2 (copy), v23 (copy), v3 (copy), v20 (ref), v15 (ref), v14 (ref), v7 (ref), v8 (ref), CheckForLegde (copy), v18 (ref), v19 (ref), UpdateBodyPosition (copy), Parkour (copy), playSound (copy), v13 (ref), v12 (ref), v17 (ref), BP (copy), MovementAnimation (copy), t3 (copy), MoveBody (copy), v21 (ref) ]]
+	if not v11 and t2.idle.IsPlaying then
+		t2.idle:Stop()
+		t2.start:Stop()
+	end
+
+	v22 = Humanoid.FloorMaterial == Air
+
+	local v16 = Character:FindFirstChild("Right Arm") and not Character["Right Arm"]:GetAttribute("Disconnected") and not Character["Right Arm"]:GetAttribute("BrokenBone")
+	local v27 = Character:FindFirstChild("Left Arm") and (not Character["Left Arm"]:GetAttribute("Disconnected") and not Character["Left Arm"]:GetAttribute("BrokenBone"))
+
+	if v1:GetAttribute("Stamina") < 2 or not (v16 or v27) or (_G.CharacterStates.ZL or (_G.CharacterStates.Ragdolled or (_G.CharacterStates.Carrying or (_G.CharacterStates.Downed or (_G.CharacterStates.PreparingSwing or (_G.CharacterStates.Reloading or _G.CharacterStates.Aiming)))))) then
+		v26 = true
+		ActivateBodyM(false)
+	else
+		v26 = false
+	end
+
+	if v11 and Torso then
+		if v24(HumanoidRootPart.Position - Vector3.new(0, 2.85, 0), HumanoidRootPart.CFrame.LookVector * 1.45) then
+			if v25 == true then
+				v25 = false
+				TweenService:Create(v4, v5, {
+					Value = 0
+				}):Play()
+			end
+		elseif v25 == false then
+			v25 = true
+			TweenService:Create(v4, v5, {
+				Value = 0.75
+			}):Play()
+		end
+
+		if v2 then
+			v2.Transform = v2.Transform:Lerp(v23, v4.Value)
+		end
+
+		if v3 then
+			v3.Transform = v3.Transform:Lerp(v23, v4.Value)
+		end
+	end
+
+	if (_G.Settings.Gameplay.Auto_parkour or v20) and (not v15 and (not v14 and (not v7 and (v22 or v11)))) then
+		local v32 = HumanoidRootPart.CFrame.LookVector * 4
+		local v42 = Vector3.new(0, 2.35, 0) - HumanoidRootPart.CFrame.LookVector * 0.5
+		local v52 = v24(HumanoidRootPart.Position + v42, v32)
+
+		if v8 and not (v26 or CheckForLegde(v52)) then
+			local Magnitude = (v8 - HumanoidRootPart.Position).Magnitude
+
+			if Magnitude > 0.75 and Magnitude < 10 then
+				for i = 0, Magnitude do
+					local v6 = v24((HumanoidRootPart.Position + Vector3.new(0, 2.35, 0)):Lerp(v8, i / Magnitude) + v42, v32)
+
+					if CheckForLegde(v6) then
+						v52 = v6
+					end
+				end
+			end
+		end
+
+		v8 = HumanoidRootPart.Position
+
+		if v52 and not v26 then
+			local v72 = v52.Instance
+			local v82 = Vector3.new(v52.Position.X, v72.Position.Y, v52.Position.Z)
+			local v9 = CFrame.new(v82, v82 - v52.Normal)
+			local Position = v52.Position
+
+			if v9.LookVector.Y ~= 0 then
+				return
+			end
+
+			if v72:GetAttribute("ParkourLedge") then
+				if v11 == false then
+					game.ReplicatedStorage.SH:Fire(Vector3.new(0, -2.5, 0), 1, 4, 0.25)
+					v18 = v72:GetAttribute("SoundType")
+					v19 = v72
+					ActivateBodyM(true, nil)
+					UpdateBodyPosition(v9)
+					Parkour:FireServer("Grab", v72)
+					playSound("Grab")
+					playSound(v18)
+					t2.start:Play(0.15, nil, 0.6 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16))
+					Character:SetAttribute("FpLockPos", v82)
+					v13 = true
+					task.wait(1.5)
+					v13 = false
+				end
+			else
+				v18 = v72:GetAttribute("SoundType")
+				v19 = v72
+
+				if v72:GetAttribute("ParkourSwing") and not v72:GetAttribute("Cooldown") then
+					v72:SetAttribute("Cooldown", true)
+					task.delay(0.5, function() --[[ Line: 582 | Upvalues: v72 (copy) ]]
+						v72:SetAttribute("Cooldown", false)
+					end)
+					v15 = true
+					v12 = true
+					v17 = true
+					BP.P = 40000 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
+					t2.swing:Play(0.1, nil, 1.25 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16))
+					v72.CanCollide = false
+					Parkour:FireServer("MetalSwing", v72)
+					playSound("MetalSwing")
+					ActivateBodyM(true, true)
+					UpdateBodyPosition(v9 * CFrame.new(0, 0.2, 0.25))
+					task.wait(0.1 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
+					UpdateBodyPosition(v9 * CFrame.new(0, -0.85, -2))
+					task.wait(0.1 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
+					ActivateBodyM(false)
+					HumanoidRootPart:ApplyImpulse(Vector3.new(0, 50 * HumanoidRootPart.AssemblyMass, 0) + v9.LookVector * 50 * HumanoidRootPart.AssemblyMass)
+					task.wait(0.1 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
+					BP.P = 15000 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
+					v15 = false
+					v12 = false
+					v17 = false
+					v72.CanCollide = true
+				elseif not v13 then
+					ActivateBodyM(false)
+				end
+			end
+		elseif not v13 then
+			ActivateBodyM(false)
+		end
+	elseif v15 or not v11 then
+		MovementAnimation()
+	end
+
+	if v11 and _G.CharacterStates.CanParkourMove then
+		MovementAnimation(nil, nil, true)
+
+		if #t3 > 0 and not (v12 or v14) then
+			local v172 = t3[#t3]
+
+			if v172 == "D" then
+				MoveBody(HumanoidRootPart.CFrame.RightVector * 1.5, nil, "right", 0.05)
+
+				return
+			end
+
+			if v172 == "A" then
+				MoveBody(-(HumanoidRootPart.CFrame.RightVector * 1.5), nil, "left", 0.05)
+
+				return
+			end
+
+			if v172 == "W" then
+				MoveBody(HumanoidRootPart.CFrame.UpVector, true, "up", 0.15, true)
+
+				return
+			end
+
+			if v172 == "S" then
+				MoveBody(-(HumanoidRootPart.CFrame.UpVector * 1.25), true, "down", 0.15, true)
+			end
+		elseif #t3 <= 0 and not (v12 or v21) then
+			MovementAnimation()
+		end
+	else
+		if _G.CharacterStates.FpLockPosCooldown then
+			return
+		end
+
+		MovementAnimation()
+	end
 end)
 
-if not LocalPlayer:GetAttribute("Died") then
-	return
-end
-
-CurrentCamera.CameraType = Enum.CameraType.Custom
-CurrentCamera.FieldOfView = 70
-
-if ReplicatedStorage:GetAttribute("CustomRespawn") then
-	Spectate()
-else
-	Died()
+local function _() --[[ Unreferenced function | Upvalues: v1 (ref), v2 (ref), v3 (ref) ]]
+	v1 = false
+	v2.P = 15000 * (math.clamp(v3.WalkSpeed, 0.25, 50) / 16)
 end
 
 -- StarterGui.MainGui.Minimap.MinimapCore
@@ -43287,1010 +45972,6 @@ game:GetService("RunService").Heartbeat:Connect(function(p1) --[[ Line: 1702 | U
 	end
 end)
 
--- Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Store.RotatingShopCore
---
-local t = { "LootBoxes" }
-
-repeat
-	task.wait(0.1)
-until game.ReplicatedFirst:GetAttribute("GameLoaded")
-
-local TweenService = game:GetService("TweenService")
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local PolicyService = game:GetService("PolicyService")
-local Mods = ReplicatedStorage:WaitForChild("Mods")
-local Cosmetics = ReplicatedStorage:WaitForChild("Events"):WaitForChild("Cosmetics")
-local LocalPlayer = Players.LocalPlayer
-local v1 = LocalPlayer:WaitForChild(Players:GetAttribute("PLAYER_STORAGE"))
-local Sounds = script:WaitForChild("Sounds")
-local Frames = script:WaitForChild("Frames")
-
-require(Mods:WaitForChild("ItemDatabase"))
-
-local FormatNumber = require(Mods:WaitForChild("FormatNumber"))
-
-require(Mods.ItemDatabase:WaitForChild("Shared"))
-require(Mods.ItemDatabase:WaitForChild("Preview"))
-
-local CosmeticDatabase = require(Mods:WaitForChild("CosmeticDatabase"))
-local Shared = require(Mods.CosmeticDatabase:WaitForChild("Shared"))
-local Rarity = require(Mods.CosmeticDatabase:WaitForChild("Rarity"))
-local v2 = script.Parent
-local PreviewFrame = v2:WaitForChild("PreviewFrame")
-local IconFrame = PreviewFrame:WaitForChild("IconFrame")
-local Canvas = IconFrame:WaitForChild("Canvas")
-local Information = PreviewFrame:WaitForChild("Information")
-local Buttons = PreviewFrame:WaitForChild("Buttons")
-local ScrollingFrame = IconFrame:WaitForChild("DescriptionFrame"):WaitForChild("Canvas"):WaitForChild("ScrollingFrame")
-local TextLabel = ScrollingFrame:WaitForChild("TextLabel")
-local OddsFrame = IconFrame:WaitForChild("OddsFrame")
-local ListFrame = v2:WaitForChild("ListFrame")
-local TabButtons = ListFrame:WaitForChild("TabButtons")
-local Tabs = ListFrame:WaitForChild("Tabs")
-local v3 = v2.Parent.Parent
-local Tabs2 = v3:WaitForChild("Tabs")
-local TabButtons2 = v3:WaitForChild("TopBar"):WaitForChild("TabButtons")
-local t2 = {}
-local t3 = {}
-local v4 = nil
-local v5 = nil
-local v6 = nil
-local v7 = nil
-local v8 = false
-local v9 = false
-local v10 = false
-local t4 = { IconFrame:WaitForChild("OddsFrame"), IconFrame:WaitForChild("DescriptionFrame") }
-local v11 = PolicyService:GetPolicyInfoForPlayerAsync(LocalPlayer)
-
-local function LoadCosmeticPreview(p1, p2, p3, p4) --[[ LoadCosmeticPreview | Line: 65 | Upvalues: Shared (copy) ]]
-	for k, v in pairs(p1:GetChildren()) do
-		v:Destroy()
-	end
-
-	local v1 = Shared.PreviewCosmetic(p2, p3, p4 or 0.5, true)
-
-	v1.Parent = p1
-
-	return v1
-end
-
-local function UpdateIconFrameState(p1) --[[ UpdateIconFrameState | Line: 79 | Upvalues: t4 (copy), IconFrame (copy) ]]
-	for k, v in pairs(t4) do
-		local v1 = if p1 == v.Name then not v.Visible else false
-
-		v.Visible = v1
-		v.BackgroundTransparency = if v1 then 0.25 else 1
-		IconFrame.Buttons[v.Name].BackgroundTransparency = if v1 then 0.5 else 0
-	end
-end
-
-local function PreviewCosmetic(p1, p2, p3, p4) --[[ PreviewCosmetic | Line: 89 | Upvalues: t3 (ref), Shared (copy), v1 (copy), v5 (ref), v4 (ref), v6 (ref), v7 (ref), v9 (ref), v10 (ref), Canvas (copy), LoadCosmeticPreview (copy), Information (copy), Rarity (copy), Buttons (copy), TextLabel (copy), ScrollingFrame (copy), IconFrame (copy), CosmeticDatabase (copy), OddsFrame (copy), Frames (copy), FormatNumber (copy), ReplicatedStorage (copy), UpdateIconFrameState (copy) ]]
-	local v12 = t3[p2] and table.find(t3[p2], p3)
-	local v2 = if p1 then Shared.GetPrice(p1, p2) else p1
-	local v3 = if p1 then if v2 <= v1:GetAttribute("Credits") then true else false else p1
-
-	v5 = p2
-	v4 = p3
-	v6 = p1
-	v7 = p4
-	v9 = v12
-	v10 = v3
-
-	for k, v in pairs(Canvas:GetChildren()) do
-		v:Destroy()
-	end
-
-	if p1 then
-		LoadCosmeticPreview(Canvas, p1, p2, 0)
-		Information.TitleText.Text = p1.Title:upper()
-
-		local v42 = p1.Weapon and p1.Weapon:upper() .. " " or ""
-
-		Information.TypeText.Text = v42 .. p2:upper()
-		Information.RarityText.Text = p1.Type:upper()
-		Information.RarityText.TextColor3 = Rarity[p1.Type].Color
-		Buttons.ActionButton.OnlyTitle.Text = if v12 then "OWNED" elseif v3 then "BUY" else "PURCHASE V\198\182"
-		Buttons.ActionButton.BackgroundTransparency = if v12 then 0.25 else 0
-		Buttons.EquippedButton.Visible = false
-		Buttons.SelectedFrame.NameText.Text = "PRICE"
-		Buttons.SelectedFrame.PriceText.Text = v2 .. " V\198\182"
-
-		if p1.Description then
-			TextLabel.Text = p1.Description
-			task.defer(function() --[[ Line: 136 | Upvalues: TextLabel (ref), ScrollingFrame (ref) ]]
-				TextLabel.TextSize = ScrollingFrame.AbsoluteSize.Y * 0.11
-			end)
-			TextLabel.Position = UDim2.new(0.5, 0, 0, TextLabel.TextSize / 4)
-		end
-
-		IconFrame.Buttons.DescriptionFrame.Visible = p1.Description and true or false
-
-		if p1.Pool then
-			local sum = 0
-			local tbl = {}
-			local t = {}
-
-			for k, v in pairs(p1.Pool) do
-				for i, v8 in ipairs(v) do
-					local v82 = CosmeticDatabase[k] and CosmeticDatabase[k][v8]
-					local v92 = if v82 then v82.Type else v82
-					local v102 = v92 and Rarity[v92].Weight or 0
-
-					if v82 then
-						table.insert(tbl, {
-							Category = k,
-							Name = v8,
-							Title = v82.Title,
-							Weight = v102
-						})
-						sum = sum + v102
-
-						continue
-					end
-
-					warn("[COSMETIC ROLL]: Missing cosmetic data for: " .. v8 .. " in category: " .. k)
-				end
-			end
-
-			for k, v in pairs(OddsFrame.Canvas:GetChildren()) do
-				if v:IsA("TextLabel") or v:IsA("TextButton") then
-					v:Destroy()
-				end
-			end
-
-			for k, v in pairs(tbl) do
-				local v11 = table.find(t, v.Category)
-				local v122 = CosmeticDatabase[v.Category][v.Name]
-
-				if not v11 then
-					table.insert(t, v.Category)
-					v11 = #t
-
-					local v13 = Frames:WaitForChild("OddCategoryText"):Clone()
-
-					v13.Text = v.Category:upper()
-					v13.LayoutOrder = v11 * 100
-					v13.Parent = OddsFrame.Canvas
-				end
-
-				local v14 = Frames:WaitForChild("OddText"):Clone()
-
-				v14.Text = v.Title:upper() .. " " .. FormatNumber.Round(v.Weight / sum * 100, 2) .. "%"
-				v14.BackgroundColor3 = Rarity[v122.Type].Color
-				v14.LayoutOrder = v11 * 100 + v.Weight
-				v14.Parent = OddsFrame.Canvas
-				v14.MouseButton1Click:Connect(function() --[[ Line: 216 | Upvalues: ReplicatedStorage (ref), v122 (copy), v (copy) ]]
-					ReplicatedStorage:WaitForChild("PreviewCosmetic"):Fire(v122, v.Category)
-				end)
-			end
-		end
-
-		IconFrame.Buttons.OddsFrame.Visible = p1.Pool and true or false
-	end
-
-	Information.Visible = p1
-	Buttons.Visible = p1
-	UpdateIconFrameState()
-end
-
-PreviewCosmetic()
-
-local function SwitchTab(p1, p2, p3) --[[ SwitchTab | Line: 233 | Upvalues: Sounds (copy), TweenService (copy) ]]
-	Sounds.Swing.PlaybackSpeed = math.random(11, 13) / 10
-	Sounds.Swing:Play()
-	Sounds.Click:Play()
-
-	for k, v in pairs(p2:GetChildren()) do
-		if v:IsA("TextButton") then
-			local v1 = TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
-
-			if v.Name == p3.Name then
-				TweenService:Create(v, v1, {
-					BackgroundTransparency = 0
-				}):Play()
-
-				continue
-			end
-
-			TweenService:Create(v, v1, {
-				BackgroundTransparency = 0.5
-			}):Play()
-		end
-	end
-
-	p1:JumpTo(p3)
-end
-
-for k, v in pairs(TabButtons:GetChildren()) do
-	if v:IsA("TextButton") then
-		local v12 = Tabs:WaitForChild("Items"):Clone()
-
-		v12.Parent = Tabs
-		v12.Name = v.Name
-		v.MouseButton1Click:Connect(function() --[[ Line: 267 | Upvalues: ListFrame (copy), t (copy), v (copy), v11 (copy), SwitchTab (copy), Tabs (copy), TabButtons (copy), v12 (copy) ]]
-			ListFrame.RegionLocked.Visible = table.find(t, v.Name) and v11.ArePaidRandomItemsRestricted
-			SwitchTab(Tabs.Page, TabButtons, v12)
-		end)
-	end
-end
-
-Tabs:WaitForChild("Items"):Destroy()
-
-local function UpdateButtonStyle(p1, p2, p3) --[[ UpdateButtonStyle | Line: 279 | Upvalues: Sounds (copy), TweenService (copy) ]]
-	if p2 then
-		p1.RarityText.TextColor3 = p2.Color
-		p1.UIStroke.Color = p2.Color
-		p1.TitleText.TextColor3 = p2.Color
-		p1.TypeText.TextColor3 = p2.Color
-		p1.Shine.ImageColor3 = p2.Color
-		p1.LayoutOrder = p2.Order
-	end
-
-	if p1:GetAttribute("ConnectionsSet") then
-		return
-	end
-
-	p1:SetAttribute("ConnectionsSet", true)
-	p1.Button.MouseEnter:Connect(function() --[[ Line: 298 | Upvalues: Sounds (ref), p3 (copy), TweenService (ref), p1 (copy) ]]
-		local v3 = Sounds[if p3 then "CategoryHover" else "Hover"]:Clone()
-
-		v3.PlaybackSpeed = v3.PlaybackSpeed * (math.random(90, 110) / 100)
-		v3.Parent = script
-		v3:Play()
-		game.Debris:AddItem(v3, 1)
-		TweenService:Create(p1.UIStroke, TweenInfo.new(0.25), {
-			Transparency = 0,
-			Thickness = 2
-		}):Play()
-		TweenService:Create(p1.Canvas, TweenInfo.new(0.25), {
-			Size = UDim2.new(0.65, 0, 1.3, 0)
-		}):Play()
-	end)
-	p1.Button.MouseLeave:Connect(function() --[[ Line: 312 | Upvalues: TweenService (ref), p1 (copy) ]]
-		TweenService:Create(p1.UIStroke, TweenInfo.new(0.25), {
-			Transparency = 0.75,
-			Thickness = 1
-		}):Play()
-		TweenService:Create(p1.Canvas, TweenInfo.new(0.25), {
-			Size = UDim2.new(0.6, 0, 1.25, 0)
-		}):Play()
-	end)
-	p1.Button.MouseButton1Click:Connect(function() --[[ Line: 317 | Upvalues: Sounds (ref) ]]
-		Sounds.Click:Play()
-	end)
-end
-
-local function DisplayCategory(p1, p2, p3) --[[ DisplayCategory | Line: 323 | Upvalues: TweenService (copy), v2 (copy), Sounds (copy) ]]
-	TweenService:Create(v2.ListFrame.CooldownFrame, TweenInfo.new(0.1), {
-		BackgroundTransparency = 0,
-		Visible = true
-	}):Play()
-	task.wait(0.1)
-	TweenService:Create(v2.ListFrame.CooldownFrame, TweenInfo.new(0.25), {
-		BackgroundTransparency = 1,
-		Visible = false
-	}):Play()
-
-	for k, v in pairs(p1) do
-		v.Button.Visible = v.Type == p3
-	end
-
-	if p3 then
-		Sounds.CategoryOpen:Play()
-	else
-		Sounds.CategoryClose:Play()
-	end
-
-	for k, v in pairs(p2) do
-		v.Button.Visible = not p3
-
-		if not v.Type then
-			v.Button.Visible = p3 and true or false
-
-			if p3 then
-				v.Button.CategoryText.Text = "VIEWING " .. p3:upper()
-			end
-		end
-	end
-end
-
-local function UpdateShop() --[[ UpdateShop | Line: 359 | Upvalues: t2 (ref), Tabs (copy), CosmeticDatabase (copy), Shared (copy), t3 (ref), Frames (copy), LoadCosmeticPreview (copy), UpdateButtonStyle (copy), Rarity (copy), PreviewCosmetic (copy), DisplayCategory (copy), v6 (ref), v5 (ref), v4 (ref), v7 (ref) ]]
-	for k, v in pairs(t2) do
-		local v1 = Tabs:WaitForChild(k)
-
-		if v1 then
-			local tbl = {}
-			local tbl2 = {}
-			local t = {}
-
-			for k2, v2 in pairs(v) do
-				for k3, v3 in pairs(v2) do
-					for k4, v8 in pairs(v3) do
-						local v22, v32, v42
-						local v52 = CosmeticDatabase[k2][v8]
-						local v62, v72 = Shared.GetPrice(v52, k2)
-						local v82 = t3[k2] and table.find(t3[k2], v8)
-						local v9 = v1:FindFirstChild(k2 .. v8)
-						local v10 = if v9 then v9 else Frames:WaitForChild("Item"):Clone()
-
-						if not v9 then
-							LoadCosmeticPreview(v10.Canvas, v52, k2, 0)
-						end
-
-						table.insert(tbl, {
-							Button = v10,
-							Type = k2,
-							CosmeticData = v52
-						})
-						UpdateButtonStyle(v10, Rarity[v52.Type])
-						v10.Name = k2 .. v8
-						v10.Parent = v1
-						v10.Visible = false
-						v10.TitleText.Text = v52.Title:upper()
-						v10.RarityText.Text = v52.Type:upper()
-
-						if v82 then
-							v22 = "OWNED"
-						else
-							if v72 then
-								v32 = " <font transparency=\'0.5\'><s>" .. v72 .. " V\198\182</s></font>"
-								v42 = v62
-							else
-								v42 = v62
-								v32 = ""
-							end
-
-							v22 = v42 .. " V\198\182" .. v32
-						end
-
-						v10.PriceText.Text = v22
-
-						local v12 = v52.Weapon and v52.Weapon:upper() .. " " or ""
-
-						v10.TypeText.Text = v12 .. k2:upper()
-						v10.Button.MouseButton1Click:Connect(function() --[[ Line: 416 | Upvalues: PreviewCosmetic (ref), v52 (copy), k2 (copy), v8 (copy), k (copy) ]]
-							PreviewCosmetic(v52, k2, v8, k)
-						end)
-					end
-				end
-			end
-
-			for k2, v2 in pairs(v1:GetChildren()) do
-				if v2:IsA("ImageLabel") then
-					local v13 = false
-
-					for k3, v3 in pairs(tbl) do
-						if v3.Button == v2 then
-							v13 = true
-
-							break
-						end
-					end
-
-					if not v13 then
-						v2:Destroy()
-					end
-				end
-			end
-
-			for k2, v2 in pairs(tbl) do
-				local v14 = nil
-
-				for k3, v3 in pairs(tbl2) do
-					if v3.Type == v2.Type then
-						v14 = v3
-
-						break
-					end
-				end
-
-				if v14 then
-					v14.Count = v14.Count + 1
-				end
-
-				if v14 then
-					if Rarity[v14.HighestRarity.Type].Order > Rarity[v2.CosmeticData.Type].Order then
-						v14.HighestRarity = v2.CosmeticData
-					end
-
-					continue
-				end
-
-				table.insert(tbl2, {
-					Count = 1,
-					Type = v2.Type,
-					HighestRarity = v2.CosmeticData
-				})
-			end
-
-			for k2, v2 in pairs(tbl2) do
-				local v15 = Frames:WaitForChild("Item"):Clone()
-
-				LoadCosmeticPreview(v15.Canvas, v2.HighestRarity, v2.Type, 0)
-				v15.Parent = v1
-				v15.BackgroundTransparency = 0.9
-				v15.TitleText.Text = v2.Type:upper()
-				v15.RarityText.Text = v2.Count .. " ITEM(S)"
-				v15.TypeText.Text = "CATEGORY"
-				v15.PriceText.Text = ">"
-				UpdateButtonStyle(v15, Rarity[v2.HighestRarity.Type], true)
-				table.insert(t, {
-					Button = v15,
-					Type = v2.Type,
-					CategoryData = v2
-				})
-				v15.Button.MouseButton1Click:Connect(function() --[[ Line: 497 | Upvalues: DisplayCategory (ref), tbl (copy), t (copy), v2 (copy) ]]
-					DisplayCategory(tbl, t, v2.Type)
-				end)
-			end
-
-			local v16 = Frames:WaitForChild("BackButton"):Clone()
-
-			v16.Parent = v1
-			UpdateButtonStyle(v16, nil, true)
-			v1.BackButton.Button.MouseButton1Click:Connect(function() --[[ Line: 510 | Upvalues: DisplayCategory (ref), tbl (copy), t (copy) ]]
-				DisplayCategory(tbl, t, nil)
-			end)
-			table.insert(t, {
-				Button = v1:WaitForChild("BackButton")
-			})
-			PreviewCosmetic(v6, v5, v4, v7)
-
-			continue
-		end
-
-		warn("[COSMETIC SHOP]: Tab not found!", k)
-	end
-end
-
-Cosmetics:WaitForChild("UpdateShop").OnClientEvent:Connect(function(p1) --[[ Line: 521 | Upvalues: t2 (ref), UpdateShop (copy) ]]
-	t2 = p1
-	UpdateShop()
-end)
-Cosmetics.UpdateShop:FireServer()
-
-local v13 = false
-
-Buttons:WaitForChild("ActionButton").MouseButton1Click:Connect(function() --[[ Line: 529 | Upvalues: Sounds (copy), v8 (ref), Shared (copy), v6 (ref), v5 (ref), v4 (ref), v9 (ref), v10 (ref), ReplicatedStorage (copy), Cosmetics (copy), v7 (ref), v13 (ref), v1 (copy), SwitchTab (copy), Tabs2 (copy), TabButtons2 (copy) ]]
-	Sounds.Click:Play()
-
-	if v8 then
-		return
-	end
-
-	v8 = true
-
-	local v12 = Shared.GetPrice(v6, v5)
-
-	if v5 and (v4 and (not v9 and v10)) then
-		if ReplicatedStorage.Prompt:Invoke("ARE YOU SURE?", ("You are about to <b>PURCHASE</b> <b>%s</b> for <b>%s V\198\182</b>"):format(v6.Title:upper(), v12), { "No", "Yes" }) ~= "Yes" then
-			v8 = false
-
-			return
-		end
-
-		Sounds.Purchase:Play()
-		Cosmetics.Buy:FireServer(v7, v6.Type, v5, v4)
-	else
-		if not v5 or (not v4 or (v9 or (v10 or v13))) then
-			v8 = false
-
-			return
-		end
-
-		v13 = true
-		task.delay(1, function() --[[ Line: 560 | Upvalues: v13 (ref) ]]
-			v13 = false
-		end)
-
-		local v2 = v12 - v1:GetAttribute("Credits")
-
-		ReplicatedStorage:WaitForChild("PromptPurchase"):Fire(nil, v2)
-		SwitchTab(Tabs2:WaitForChild("Page"), TabButtons2, Tabs2:WaitForChild("Products"))
-	end
-
-	v8 = false
-end)
-Cosmetics:WaitForChild("UpdateLocker").OnClientEvent:Connect(function(p1, p2) --[[ Line: 578 | Upvalues: t3 (ref), UpdateShop (copy) ]]
-	t3 = p1
-	UpdateShop()
-end)
-IconFrame:WaitForChild("Buttons"):WaitForChild("DescriptionFrame").MouseButton1Click:Connect(function() --[[ Line: 584 | Upvalues: Sounds (copy), UpdateIconFrameState (copy), TextLabel (copy), ScrollingFrame (copy) ]]
-	Sounds.Click:Play()
-	UpdateIconFrameState("DescriptionFrame")
-	task.defer(function() --[[ Line: 592 | Upvalues: TextLabel (ref), ScrollingFrame (ref) ]]
-		TextLabel.TextSize = ScrollingFrame.AbsoluteSize.Y * 0.11
-	end)
-	TextLabel.Position = UDim2.new(0.5, 0, 0, TextLabel.TextSize / 4)
-end)
-IconFrame:WaitForChild("Buttons"):WaitForChild("OddsFrame").MouseButton1Click:Connect(function() --[[ Line: 599 | Upvalues: Sounds (copy), UpdateIconFrameState (copy) ]]
-	Sounds.Click:Play()
-	UpdateIconFrameState("OddsFrame")
-end)
-
--- ReplicatedStorage.Mods.ItemDatabase.Shared.CanSell
---
-return {}
-
--- Workspace.Chars.Noriko_Ellen.Bash
---
-local RunService = game:GetService("RunService")
-local ReplicatedStorage = game.ReplicatedStorage
-local Events = ReplicatedStorage:WaitForChild("Events")
-local LocalPlayer = game.Players.LocalPlayer
-local v1 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-local HumanoidRootPart = v1:WaitForChild("HumanoidRootPart")
-local Animator = v1:WaitForChild("Humanoid"):WaitForChild("Animator")
-local Raycast = require(ReplicatedStorage:WaitForChild("Mods"):WaitForChild("Raycast"))
-local v2 = false
-local Animation = Instance.new("Animation")
-
-Animation.AnimationId = "rbxassetid://13752492869"
-
-local v3 = Animator:LoadAnimation(Animation)
-
-RunService.Heartbeat:Connect(function() --[[ Line: 35 | Upvalues: HumanoidRootPart (copy), v2 (ref), Raycast (copy), ReplicatedStorage (copy), Events (copy), v3 (copy) ]]
-	if not _G.CharacterStates.Sprinting or (not (HumanoidRootPart.AssemblyLinearVelocity.Magnitude >= 15) or v2) then
-		return
-	end
-
-	local v1 = Raycast.CastRay(HumanoidRootPart.Position, HumanoidRootPart.CFrame.LookVector * 2, {
-		CanCollide = false
-	})
-
-	if not v1 then
-		return
-	end
-
-	local v22 = v1.Instance:FindFirstAncestorWhichIsA("Model")
-	local v32 = if v22 then v22.PrimaryPart else v22
-
-	if not v22:HasTag("Doors") or (not v22:GetAttribute("Locked") or v22:GetAttribute("Broken")) then
-		return
-	end
-
-	local v4 = v32.CFrame.RightVector:Dot((HumanoidRootPart.Position - v32.Position).Unit) > 0
-
-	v2 = true
-	script.Sound:Play()
-	ReplicatedStorage.SH:Fire(Vector3.new(0, 2.5, 0), 3, 1, 1, 1)
-	Events.Player.Bash:FireServer(v22, v4)
-	v3:Play(0.25)
-	task.wait(1)
-	v2 = false
-end)
-
--- StarterPlayer.StarterPlayerScripts.ZoneFX
---
-local CollectionService = game:GetService("CollectionService")
-local RunService = game:GetService("RunService")
-local Lighting = game:GetService("Lighting")
-local CurrentCamera = workspace.CurrentCamera
-local ZoneCC = Lighting:WaitForChild("ZoneCC")
-local Sound = script:WaitForChild("Sound")
-local v1 = false
-local v2 = CollectionService:GetTagged("ZoneCenter")[1]
-local v3 = CollectionService:GetTagged("SphereZone")
-local v4 = Color3.fromRGB(255, 204, 181)
-
-CollectionService:GetInstanceAddedSignal("ZoneCenter"):Connect(function(p1) --[[ Line: 20 | Upvalues: v2 (ref) ]]
-	v2 = p1
-end)
-CollectionService:GetInstanceRemovedSignal("ZoneCenter"):Connect(function(p1) --[[ Line: 24 | Upvalues: v2 (ref) ]]
-	if v2 ~= p1 then
-		return
-	end
-
-	v2 = nil
-end)
-CollectionService:GetInstanceAddedSignal("SphereZone"):Connect(function(p1) --[[ Line: 30 | Upvalues: v3 (copy) ]]
-	if table.find(v3, p1) then
-		return
-	end
-
-	table.insert(v3, p1)
-end)
-CollectionService:GetInstanceRemovedSignal("SphereZone"):Connect(function(p1) --[[ Line: 36 | Upvalues: v3 (copy) ]]
-	table.remove(v3, table.find(v3, p1))
-end)
-RunService.Heartbeat:Connect(function() --[[ Line: 42 | Upvalues: CurrentCamera (copy), v4 (copy), v3 (copy), v2 (ref), ZoneCC (copy), v1 (ref), Sound (copy) ]]
-	local Position = CurrentCamera.CFrame.Position
-	local v12 = v4
-	local v22 = false
-
-	for k, v in pairs(v3) do
-		if v.Size.Z / 2 >= (Position - v.Position).Magnitude - 0.25 then
-			v22 = true
-			v12 = v:GetAttribute("ZoneColor") or v4
-		end
-	end
-
-	if v2 and v2.Size.Z / 2 <= (CurrentCamera.CFrame.Position * Vector3.new(1, 0, 1) - v2.Position * Vector3.new(1, 0, 1)).Magnitude + 0.25 then
-		v12 = v4
-		v22 = true
-	end
-
-	if v22 and ZoneCC.TintColor ~= v12 then
-		ZoneCC.TintColor = v12
-	end
-
-	if not v22 and v1 then
-		v1 = false
-		ZoneCC.Enabled = false
-		Sound:Stop()
-
-		return
-	end
-
-	if not v22 or v1 then
-		return
-	end
-
-	v1 = true
-	ZoneCC.Enabled = true
-	Sound:Play()
-end)
-
--- Players.Noriko_Ellen.PlayerGui.OverlayGui.Settings.SettingsCore.Mods.KeyMapping
---
-local t = {
-	[Enum.KeyCode.Backspace] = "rbxasset://textures/ui/Controls/backspace.png",
-	[Enum.KeyCode.Return] = "rbxasset://textures/ui/Controls/return.png",
-	[Enum.KeyCode.LeftShift] = "rbxasset://textures/ui/Controls/shift.png",
-	[Enum.KeyCode.RightShift] = "rbxasset://textures/ui/Controls/shift.png",
-	[Enum.KeyCode.Tab] = "rbxasset://textures/ui/Controls/tab.png",
-	[Enum.KeyCode.Quote] = "rbxasset://textures/ui/Controls/apostrophe.png",
-	[Enum.KeyCode.Comma] = "rbxasset://textures/ui/Controls/comma.png",
-	[Enum.KeyCode.Backquote] = "rbxasset://textures/ui/Controls/graveaccent.png",
-	[Enum.KeyCode.Period] = "rbxasset://textures/ui/Controls/period.png",
-	[Enum.KeyCode.Space] = "rbxasset://textures/ui/Controls/spacebar.png"
-}
-local t2 = {
-	[Enum.KeyCode.LeftControl] = "CTRL",
-	[Enum.KeyCode.RightControl] = "CTRL",
-	[Enum.KeyCode.LeftAlt] = "ALT",
-	[Enum.KeyCode.RightAlt] = "ALT",
-	[Enum.KeyCode.CapsLock] = "CAPS",
-	[Enum.KeyCode.Zero] = "0",
-	[Enum.KeyCode.One] = "1",
-	[Enum.KeyCode.Two] = "2",
-	[Enum.KeyCode.Three] = "3",
-	[Enum.KeyCode.Four] = "4",
-	[Enum.KeyCode.Five] = "5",
-	[Enum.KeyCode.Six] = "6",
-	[Enum.KeyCode.Seven] = "7",
-	[Enum.KeyCode.Eight] = "8",
-	[Enum.KeyCode.Nine] = "9"
-}
-
-return function(p1) --[[ Line: 34 | Upvalues: t (copy), t2 (copy) ]]
-	return t[p1] or (t2[p1] or p1.Name), if t[p1] == nil then false else true
-end
-
--- StarterPlayer.StarterCharacterScripts.RagdollClient
---
-local tbl = { "Head", "Torso", "Right Arm", "Left Arm", "Right Leg", "Left Leg" }
-local v1 = false
-local v2 = false
-local v3 = false
-local Players = game:GetService("Players")
-local Debris = game:GetService("Debris")
-
-game:GetService("PhysicsService")
-
-local Events = game:GetService("ReplicatedStorage"):WaitForChild("Events")
-local Character = Players.LocalPlayer.Character
-local Torso = Character:WaitForChild("Torso")
-local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
-local RootJoint = HumanoidRootPart:WaitForChild("RootJoint")
-local Humanoid = Character:WaitForChild("Humanoid")
-
-Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown, false)
-
-local Head = Character:WaitForChild("Head", 5)
-local Wind = script:WaitForChild("Sounds"):WaitForChild("Wind")
-local v4 = OverlapParams.new()
-
-v4.FilterType = Enum.RaycastFilterType.Include
-v4.FilterDescendantsInstances = { workspace:WaitForChild("LandingPads") }
-
-local Animation = Instance.new("Animation")
-
-Animation.AnimationId = "rbxassetid://9688318661"
-
-local v5 = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation)
-local Animation2 = Instance.new("Animation")
-
-Animation2.AnimationId = "rbxassetid://9297684873"
-
-local v6 = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation2)
-local BodyForce = Instance.new("BodyForce")
-
-BodyForce.Force = Vector3.new(0, -300, 0)
-
-local TorsoWeld = Instance.new("Weld")
-
-TorsoWeld.Name = "TorsoWeld"
-TorsoWeld.Part1 = Torso
-TorsoWeld.Part0 = HumanoidRootPart
-TorsoWeld.Enabled = false
-TorsoWeld.Parent = HumanoidRootPart
-
-local clamp = math.clamp
-local HumanoidStateType = Enum.HumanoidStateType
-
-local function CheckForVelocityObjects(p1) --[[ CheckForVelocityObjects | Line: 71 | Upvalues: Debris (copy) ]]
-	if p1.Name ~= "KnockbackVelocity" then
-		return
-	end
-
-	Debris:AddItem(p1, p1:GetAttribute("RemoveDelay"))
-end
-
-local function Lerp(p1, p2, p3) --[[ Lerp | Line: 77 ]]
-	return p1 + (p2 - p1) * p3
-end
-
-local function ScaleRagdollDamage(p1, p2, p3, p4) --[[ ScaleRagdollDamage | Line: 81 ]]
-	local v1 = math.clamp((p1 - p2).Magnitude, p3.Min, p3.Max)
-	local Min2 = p4.Min
-
-	return Min2 + (p4.Max - Min2) * ((v1 - p3.Min) / (p3.Max - p3.Min))
-end
-
-local function v7() --[[ CalculateLimbDamage | Line: 92 | Upvalues: v3 (ref), tbl (copy), Character (copy), Events (copy), HumanoidRootPart (copy), v7 (copy) ]]
-	if v3 then
-		return
-	end
-
-	v3 = true
-
-	local t = {}
-	local v1 = false
-	local v2 = false
-	local v32 = 0
-	local v4 = 0
-	local v5 = 0
-	local t2 = {}
-	local v6 = 0
-
-	for k, v in pairs(tbl) do
-		local v72 = Character:FindFirstChild(v)
-
-		if v72 then
-			t2[v] = 0
-			t[v] = false
-			task.spawn(function() --[[ Line: 117 | Upvalues: v72 (copy), Character (ref), Events (ref), v3 (ref), v1 (ref), HumanoidRootPart (ref), v2 (ref), t2 (copy), v (copy), v32 (ref), t (copy), v4 (ref), v5 (ref) ]]
-				local v12 = v72.Touched:Connect(function(p1) --[[ Line: 118 | Upvalues: Character (ref), Events (ref), v3 (ref), v1 (ref), HumanoidRootPart (ref), v2 (ref), t2 (ref), v (ref), v32 (ref), t (ref) ]]
-					if p1:IsDescendantOf(Character) then
-						return
-					end
-
-					if p1:HasTag("FallNegate") and not p1:GetAttribute("Disabled") then
-						Events.Player.Negate:FireServer(p1)
-						v3 = false
-						v1 = false
-						HumanoidRootPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-						HumanoidRootPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-
-						return
-					end
-
-					if p1:HasTag("FallMultiplier") then
-						v2 = true
-						t2[v] = 1000
-						v32 = 1000
-
-						return
-					end
-
-					t[v] = true
-					task.defer(function() --[[ Line: 144 | Upvalues: v1 (ref), t2 (ref), t (ref), v (ref) ]]
-						if v1 then
-							return
-						end
-
-						v1 = true
-
-						for k, v2 in pairs(t2) do
-							if t[k] then
-								if k == v then
-									local v12 = t2
-
-									v12[k] = v12[k] / 2
-								end
-
-								continue
-							end
-
-							t2[k] = 0
-						end
-					end)
-				end)
-
-				while v3 and not v1 do
-					local v22 = v72.AssemblyLinearVelocity.Magnitude / 2
-					local v33 = HumanoidRootPart.AssemblyLinearVelocity.Magnitude / 4.5
-
-					if t2[v] < v22 then
-						t2[v] = v22
-					elseif v22 < t2[v] / 10 and not v2 then
-						t2[v] = 0
-					end
-
-					if v32 < v33 then
-						v32 = v33
-						v4 = HumanoidRootPart.AssemblyLinearVelocity
-					end
-
-					v5 = HumanoidRootPart.AssemblyLinearVelocity
-					task.wait()
-				end
-
-				v3 = false
-				v12:Disconnect()
-			end)
-		end
-	end
-
-	task.spawn(function() --[[ Line: 196 | Upvalues: v6 (ref), HumanoidRootPart (ref), Events (ref), v3 (ref), v1 (ref), v4 (ref), v5 (ref), t2 (copy), v32 (ref), v7 (ref) ]]
-		repeat
-			v6 = v6 + task.wait()
-
-			if not (v6 > 0.1 and HumanoidRootPart.AssemblyLinearVelocity.Magnitude > 15) then
-				continue
-			end
-
-			v6 = 0
-			Events.Player.Ragdoll:FireServer()
-		until not v3
-
-		if v1 then
-			local v33 = NumberRange.new(25, 75)
-			local v42 = NumberRange.new(0.2, 1)
-			local v52 = math.clamp((v4 - v5).Magnitude, v33.Min, v33.Max)
-			local Min2 = v42.Min
-			local v62 = Min2 + (v42.Max - Min2) * ((v52 - v33.Min) / (v33.Max - v33.Min))
-
-			for k, v in pairs(t2) do
-				local v72 = t2
-
-				v72[k] = v72[k] * v62
-			end
-
-			Events.Player.Damage:FireServer(v32 * v62, t2)
-		end
-
-		task.wait(0.1)
-
-		if not (HumanoidRootPart.AssemblyLinearVelocity.Magnitude > 20) then
-			return
-		end
-
-		v7()
-	end)
-end
-
-local function KickstartRagdoll() --[[ KickstartRagdoll | Line: 224 | Upvalues: v7 (copy), v1 (ref), Events (copy) ]]
-	v7()
-
-	if not v1 then
-		Events.Player.Ragdoll:FireServer()
-	end
-end
-
-local function ToggleRagdoll(p1) --[[ ToggleRagdoll | Line: 234 | Upvalues: v1 (ref), BodyForce (copy), HumanoidRootPart (copy), Character (copy), Humanoid (copy), v7 (copy), v3 (ref) ]]
-	if p1 then
-		v1 = true
-		BodyForce.Parent = HumanoidRootPart
-		Character:SetAttribute("AutoRotate", false)
-		Character:SetAttribute("InPhysics", true)
-		Humanoid:ChangeState(Enum.HumanoidStateType.Physics)
-		v7()
-
-		return
-	end
-
-	if not (Humanoid.Health > 0) then
-		return
-	end
-
-	v1 = false
-	BodyForce.Parent = nil
-	v3 = false
-	Character:SetAttribute("AutoRotate", true)
-	Character:SetAttribute("InPhysics", false)
-	Humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
-end
-
-for k, v in pairs(tbl) do
-	local v8 = Character:FindFirstChild(v)
-
-	if v8 then
-		v8.ChildAdded:Connect(CheckForVelocityObjects)
-	end
-end
-
-Humanoid.StateChanged:Connect(function(p1, p2) --[[ Line: 271 | Upvalues: HumanoidStateType (copy), v2 (ref), HumanoidRootPart (copy), v4 (copy), v7 (copy), v1 (ref), Events (copy), Character (copy), v6 (copy) ]]
-	if p1 == HumanoidStateType.Freefall and p2 == HumanoidStateType.Landed then
-		if not v2 then
-			return
-		end
-
-		v2 = false
-
-		local v22 = math.abs(HumanoidRootPart.AssemblyLinearVelocity.Y / 10)
-
-		if v22 > 10 then
-			if #workspace:GetPartBoundsInRadius(HumanoidRootPart.Position, 4, v4) > 0 then
-				v7()
-
-				if not v1 then
-					Events.Player.Ragdoll:FireServer()
-				end
-
-				return
-			end
-
-			Events.Player.Damage:FireServer(v22, {
-				["Right Leg"] = v22 * math.random(5, 15) / 15,
-				["Left Leg"] = v22 * math.random(5, 15) / 15
-			}, true)
-			Character:SetAttribute("CS", true)
-			task.delay(math.clamp(v22 / 15, 0, 0.75) / 2, function() --[[ Line: 293 | Upvalues: Character (ref) ]]
-				Character:SetAttribute("CS", false)
-			end)
-		end
-
-		local v3 = math.max(0.5 / (v22 / 4), 0.2)
-
-		v6:Play(v3)
-		task.wait(0.15)
-		v6:Stop(v3 * 2)
-	else
-		v2 = p2 == HumanoidStateType.Freefall
-	end
-end)
-Events:WaitForChild("Player"):WaitForChild("Ragdoll").OnClientEvent:Connect(ToggleRagdoll)
-RootJoint.Changed:Connect(function() --[[ Line: 321 | Upvalues: TorsoWeld (copy), RootJoint (copy) ]]
-	TorsoWeld.Enabled = not RootJoint.Enabled
-end)
-
-while task.wait(0.025) do
-	if HumanoidRootPart then
-		local AssemblyLinearVelocity = HumanoidRootPart.AssemblyLinearVelocity
-		local Magnitude = AssemblyLinearVelocity.Magnitude
-
-		if not Wind.Playing then
-			Wind.Playing = true
-		end
-
-		Wind.Volume = clamp((Magnitude / 25 - 1) / 1.5, 0, 5)
-		Wind.PlaybackSpeed = clamp((Magnitude / 25 - 1) / 2, 1, 2.5)
-
-		if not Character:FindFirstChild("CarryObject") and (AssemblyLinearVelocity.Y < -125 or (_G.CharacterStates.Downed or v1) and AssemblyLinearVelocity.Y < -40) then
-			v7()
-
-			if not v1 then
-				Events.Player.Ragdoll:FireServer()
-			end
-		end
-
-		if _G.CharacterStates.Ragdolled then
-			if v5.IsPlaying then
-				v5:Play()
-			end
-		elseif v5.IsPlaying then
-			v5:Stop()
-		end
-	end
-
-	if Head then
-		Head.CanCollide = v1
-	end
-end
-
 -- Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Items.LockerCore
 --
 repeat
@@ -44902,105 +46583,1160 @@ DescriptionFrame:WaitForChild("Button").MouseButton1Click:Connect(function() --[
 	TextLabel.Position = UDim2.new(0.5, 0, 0, TextLabel.TextSize / 4)
 end)
 
--- ReplicatedStorage.Mods.ProductShared
+-- ReplicatedStorage.Mods.ItemDatabase.Shared.CanSell
 --
-return {
-	NB_SelfRevive = function(p1) --[[ Line: 2 ]]
-		local Character = p1.Character
-		local v1 = false
+return {}
 
-		for k, v in pairs(workspace.Chars:GetChildren()) do
-			local Humanoid = v:FindFirstChild("Humanoid")
+-- Workspace.Chars.Noriko_Ellen.Bash
+--
+local RunService = game:GetService("RunService")
+local ReplicatedStorage = game.ReplicatedStorage
+local Events = ReplicatedStorage:WaitForChild("Events")
+local LocalPlayer = game.Players.LocalPlayer
+local v1 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local HumanoidRootPart = v1:WaitForChild("HumanoidRootPart")
+local Animator = v1:WaitForChild("Humanoid"):WaitForChild("Animator")
+local Raycast = require(ReplicatedStorage:WaitForChild("Mods"):WaitForChild("Raycast"))
+local v2 = false
+local Animation = Instance.new("Animation")
 
-			if Humanoid and (v:FindFirstChild("Torso") and not Humanoid:GetAttribute("Died")) or not v:GetAttribute("Died") then
-				v1 = true
+Animation.AnimationId = "rbxassetid://13752492869"
+
+local v3 = Animator:LoadAnimation(Animation)
+
+RunService.Heartbeat:Connect(function() --[[ Line: 35 | Upvalues: HumanoidRootPart (copy), v2 (ref), Raycast (copy), ReplicatedStorage (copy), Events (copy), v3 (copy) ]]
+	if not _G.CharacterStates.Sprinting or (not (HumanoidRootPart.AssemblyLinearVelocity.Magnitude >= 15) or v2) then
+		return
+	end
+
+	local v1 = Raycast.CastRay(HumanoidRootPart.Position, HumanoidRootPart.CFrame.LookVector * 2, {
+		CanCollide = false
+	})
+
+	if not v1 then
+		return
+	end
+
+	local v22 = v1.Instance:FindFirstAncestorWhichIsA("Model")
+	local v32 = if v22 then v22.PrimaryPart else v22
+
+	if not v22:HasTag("Doors") or (not v22:GetAttribute("Locked") or v22:GetAttribute("Broken")) then
+		return
+	end
+
+	local v4 = v32.CFrame.RightVector:Dot((HumanoidRootPart.Position - v32.Position).Unit) > 0
+
+	v2 = true
+	script.Sound:Play()
+	ReplicatedStorage.SH:Fire(Vector3.new(0, 2.5, 0), 3, 1, 1, 1)
+	Events.Player.Bash:FireServer(v22, v4)
+	v3:Play(0.25)
+	task.wait(1)
+	v2 = false
+end)
+
+-- StarterPlayer.StarterPlayerScripts.ZoneFX
+--
+local CollectionService = game:GetService("CollectionService")
+local RunService = game:GetService("RunService")
+local Lighting = game:GetService("Lighting")
+local CurrentCamera = workspace.CurrentCamera
+local ZoneCC = Lighting:WaitForChild("ZoneCC")
+local Sound = script:WaitForChild("Sound")
+local v1 = false
+local v2 = CollectionService:GetTagged("ZoneCenter")[1]
+local v3 = CollectionService:GetTagged("SphereZone")
+local v4 = Color3.fromRGB(255, 204, 181)
+
+CollectionService:GetInstanceAddedSignal("ZoneCenter"):Connect(function(p1) --[[ Line: 20 | Upvalues: v2 (ref) ]]
+	v2 = p1
+end)
+CollectionService:GetInstanceRemovedSignal("ZoneCenter"):Connect(function(p1) --[[ Line: 24 | Upvalues: v2 (ref) ]]
+	if v2 ~= p1 then
+		return
+	end
+
+	v2 = nil
+end)
+CollectionService:GetInstanceAddedSignal("SphereZone"):Connect(function(p1) --[[ Line: 30 | Upvalues: v3 (copy) ]]
+	if table.find(v3, p1) then
+		return
+	end
+
+	table.insert(v3, p1)
+end)
+CollectionService:GetInstanceRemovedSignal("SphereZone"):Connect(function(p1) --[[ Line: 36 | Upvalues: v3 (copy) ]]
+	table.remove(v3, table.find(v3, p1))
+end)
+RunService.Heartbeat:Connect(function() --[[ Line: 42 | Upvalues: CurrentCamera (copy), v4 (copy), v3 (copy), v2 (ref), ZoneCC (copy), v1 (ref), Sound (copy) ]]
+	local Position = CurrentCamera.CFrame.Position
+	local v12 = v4
+	local v22 = false
+
+	for k, v in pairs(v3) do
+		if v.Size.Z / 2 >= (Position - v.Position).Magnitude - 0.25 then
+			v22 = true
+			v12 = v:GetAttribute("ZoneColor") or v4
+		end
+	end
+
+	if v2 and v2.Size.Z / 2 <= (CurrentCamera.CFrame.Position * Vector3.new(1, 0, 1) - v2.Position * Vector3.new(1, 0, 1)).Magnitude + 0.25 then
+		v12 = v4
+		v22 = true
+	end
+
+	if v22 and ZoneCC.TintColor ~= v12 then
+		ZoneCC.TintColor = v12
+	end
+
+	if not v22 and v1 then
+		v1 = false
+		ZoneCC.Enabled = false
+		Sound:Stop()
+
+		return
+	end
+
+	if not v22 or v1 then
+		return
+	end
+
+	v1 = true
+	ZoneCC.Enabled = true
+	Sound:Play()
+end)
+
+-- Players.Noriko_Ellen.PlayerGui.DeathGui.DeathLogic
+--
+local t = {
+	"You can press your <b>crouch button</b> while hanging on a ledge to <b>instantly drop down</b>.",
+	"You can press your <b>crouch button</b> to <b>quickly drop from ziplines</b>.",
+	"<b>The Golden RPG is real</b>.",
+	"Base vault rates scale off of how many opposing faction players there are in the server.",
+	"You can throw utilities at glass to break them.",
+	"Faction merchants can sell exclusive items.",
+	"NPCs can react to sound, and can be snuck upon with crouch.",
+	"Explosives can pierce through small walls!",
+	"Your faction NPC members can revive you!",
+	"You can use smoke grenades to extinguish fire on yourself or the environment.",
+	"<b>Purple Crates</b> have a slight chance to drop <b>Green Keycards</b>.",
+	"You can quickly exit most UI by pressing <b>Q</b>.",
+	"The <b>three stars</b> on the leaderboard show the <b>current loot scaling</b> of the server.",
+	"<b>Influence</b> can be spent at your factions base with the <b>Contractors</b>.",
+	"<b>JET</b> decreases cooldowns for melee attacks.",
+	"<b>Proximity mines</b> can be shot to <b>explode</b> quicker",
+	"Breaking fire hydrants spews out a bolt of water you can use to traverse the map. Not safe for drinking."
+}
+local TweenService = game:GetService("TweenService")
+local TextChatService = game:GetService("TextChatService")
+local ReplicatedStorage = game.ReplicatedStorage
+local Players = game.Players
+local Events = ReplicatedStorage:WaitForChild("Events")
+local Mods = ReplicatedStorage:WaitForChild("Mods")
+local ChatWindowConfiguration = TextChatService:WaitForChild("ChatWindowConfiguration")
+local Sounds = script:WaitForChild("Sounds")
+local v1 = script.Parent
+local SoundService = game.SoundService
+local CurrentCamera = workspace.CurrentCamera
+local LocalPlayer = Players.LocalPlayer
+local v2 = nil
+local FormatText = require(Mods:WaitForChild("FormatText"))
+local ItemDatabase = require(Mods:WaitForChild("ItemDatabase"))
+local DeathFlash = v1:WaitForChild("DeathFlash")
+local MainFrame = v1:WaitForChild("MainFrame")
+local RespawnButton = MainFrame:WaitForChild("RespawnButton")
+local SaveButton = MainFrame:WaitForChild("SaveButton")
+local SpectateFrame = v1:WaitForChild("SpectateFrame")
+local AttachmentReport = MainFrame:WaitForChild("AttachmentReport")
+local DamageReport = MainFrame:WaitForChild("DamageReport")
+local LimbReport = MainFrame:WaitForChild("LimbReport")
+local WeaponReport = MainFrame:WaitForChild("WeaponReport")
+local v3 = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+local v4 = TweenInfo.new(0.25, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+local v5 = TweenInfo.new(5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out)
+local v6 = TweenInfo.new(2.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out)
+local v7 = TweenInfo.new(5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 1.5)
+local v8 = TweenInfo.new(0.75, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
+
+TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+
+local v9 = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+local v10 = TweenInfo.new(0.001)
+local v11 = false
+local v12 = false
+local v13 = false
+local v14 = false
+local v15 = false
+
+v1.Parent = LocalPlayer:WaitForChild("PlayerGui")
+RespawnButton.MouseEnter:Connect(function() --[[ Line: 79 | Upvalues: v11 (ref), Sounds (copy), TweenService (copy), RespawnButton (copy), v9 (copy) ]]
+	if v11 then
+		Sounds.DeathHover:Play()
+		TweenService:Create(RespawnButton.Edge, v9, {
+			Size = UDim2.new(0.5, 0, 1.025, 0)
+		}):Play()
+		TweenService:Create(RespawnButton.Edge2, v9, {
+			Size = UDim2.new(0.5, 0, 1.025, 0)
+		}):Play()
+	end
+end)
+RespawnButton.MouseLeave:Connect(function() --[[ Line: 88 | Upvalues: TweenService (copy), RespawnButton (copy), v9 (copy) ]]
+	TweenService:Create(RespawnButton.Edge, v9, {
+		Size = UDim2.new(0.065, 0, 1.025, 0)
+	}):Play()
+	TweenService:Create(RespawnButton.Edge2, v9, {
+		Size = UDim2.new(0.065, 0, 1.025, 0)
+	}):Play()
+end)
+SaveButton.MouseEnter:Connect(function() --[[ Line: 93 | Upvalues: v11 (ref), Sounds (copy), TweenService (copy), SaveButton (copy), v9 (copy) ]]
+	if v11 then
+		Sounds.DeathHover:Play()
+		TweenService:Create(SaveButton.Edge, v9, {
+			Size = UDim2.new(0.5, 0, 1.025, 0)
+		}):Play()
+		TweenService:Create(SaveButton.Edge2, v9, {
+			Size = UDim2.new(0.5, 0, 1.025, 0)
+		}):Play()
+	end
+end)
+SaveButton.MouseLeave:Connect(function() --[[ Line: 102 | Upvalues: TweenService (copy), SaveButton (copy), v9 (copy) ]]
+	TweenService:Create(SaveButton.Edge, v9, {
+		Size = UDim2.new(0.05, 0, 1.025, 0)
+	}):Play()
+	TweenService:Create(SaveButton.Edge2, v9, {
+		Size = UDim2.new(0.05, 0, 1.025, 0)
+	}):Play()
+end)
+Events:WaitForChild("Player"):WaitForChild("DeathInfo").OnClientEvent:Connect(function(p1) --[[ Line: 108 | Upvalues: MainFrame (copy), v15 (ref), DamageReport (copy), LimbReport (copy), WeaponReport (copy), ItemDatabase (copy), AttachmentReport (copy) ]]
+	MainFrame.AssistInfo.Text = ("ASSISTED BY <b>%s</b>"):format(p1.AssistCount or "0")
+	MainFrame.KillInfo.Text = ("KILLED BY <b>%s</b>"):format((p1.Killer or "???"):upper())
+
+	if not p1.ExtraInfo then
+		return
+	end
+
+	v15 = true
+
+	local t = {}
+	local tbl = {}
+
+	for k, v in pairs(p1.ExtraInfo) do
+		local v1 = v.Limb or "Unknown"
+
+		if v1 == "HumanoidRootPart" then
+			v1 = "Root"
+		end
+
+		t[v1] = (t[v1] or 0) + 1
+
+		local v2 = if v.Limb == "Head" then true else false
+		local v3 = v.Name or "Unknown"
+		local v4 = v.Weapon or "Unknown"
+		local v5 = script:WaitForChild("ReportEntry"):Clone()
+
+		v5.TopLeftText.Text = v3
+		v5.TopRightText.Text = ("%d DMG"):format(v.Damage or 0)
+		v5.BottomLeftText.Text = ("%s (%dm)"):format(v4, (math.floor(v.Distance or 0)))
+		v5.BottomRightText.Text = v1
+		v5.Parent = DamageReport.ScrollingFrame
+
+		local v7 = v3 .. "_" .. v4
+		local v8 = false
+
+		for k2, v9 in pairs(tbl) do
+			if v9.Key == v7 then
+				local v92 = tbl[k2]
+
+				v92.Damage = v92.Damage + (v.Damage or 0)
+
+				local v10 = tbl[k2]
+
+				v10.HeadshotHits = v10.HeadshotHits + (if v2 then 1 else 0)
+
+				local v12 = tbl[k2]
+
+				v12.Hits = v12.Hits + 1
+				v8 = true
 
 				break
 			end
 		end
 
-		return if v1 then if Character then Character:GetAttribute("Died") and not p1:GetAttribute("ReviveBlocked") else Character else v1
-	end,
-	NB_ContinueRun = function(p1) --[[ Line: 24 ]]
-		return not game.ReplicatedStorage:GetAttribute("ContinueBlocked") and not game.ReplicatedStorage:GetAttribute("Ending"), true
+		if not v8 then
+			local t2 = {
+				Hits = 1,
+				Key = v7,
+				Weapon = v4,
+				Name = v3
+			}
+
+			t2.HeadshotHits = if v2 then 1 else 0
+			t2.Damage = v.Damage or 0
+			t2.Attachments = v.Attachments
+			table.insert(tbl, t2)
+		end
 	end
-}
 
--- StarterPlayer.StarterPlayerScripts.NpcStare
---
-local CollectionService = game:GetService("CollectionService")
-local LocalPlayer = game.Players.LocalPlayer
-local v1 = nil
-local v2 = nil
+	table.sort(tbl, function(p1, p2) --[[ Line: 179 ]]
+		return p1.Damage > p2.Damage
+	end)
 
-workspace:WaitForChild("NPCs"):WaitForChild("Other")
+	local v14 = tbl[1]
 
-local t = {}
+	for k, v in pairs(LimbReport.LimbStatus:GetChildren()) do
+		if v:IsA("Frame") then
+			v.HitCount.Text = t[v.Name] or "0"
+			v.BackgroundTransparency = if t[v.Name] then 0.25 else 0.6
+			v.HitCount.TextTransparency = if t[v.Name] then 0 else 0.6
+		end
+	end
 
-local function AddNPC(p1) --[[ AddNPC | Line: 19 | Upvalues: t (copy) ]]
-	if not p1:WaitForChild("Torso", 3) then
+	if not v14 then
 		return
 	end
 
-	if p1.Torso:WaitForChild("Neck", 3) then
-		t[p1] = {
-			Neck = p1.Torso.Neck,
-			Torso = p1.Torso,
-			Threshold = p1:GetAttribute("StareThreshold") or 0.25,
-			LastTransform = CFrame.new()
-		}
+	local v18 = math.ceil(v14.HeadshotHits / v14.Hits * 100)
+	local v20 = v14.Weapon or "Unknown"
+	local v21 = false
+
+	WeaponReport.WeaponName.Text = v20:upper()
+
+	local v22 = script:WaitForChild("ReportEntry"):Clone()
+
+	v22.CenterLeftText.Text = (v14.Name or "Unknown"):upper()
+	v22.CenterRightText.Text = ("%d DMG"):format(v14.Damage or 0)
+	v22.Parent = WeaponReport.ScrollingFrame
+
+	local v23 = script:WaitForChild("ReportEntry"):Clone()
+
+	v23.CenterLeftText.Text = "HEADSHOT RATE"
+	v23.CenterRightText.Text = ("%d%%"):format(v18)
+	v23.Parent = WeaponReport.ScrollingFrame
+
+	local v24 = script:WaitForChild("ReportEntry"):Clone()
+
+	v24.CenterLeftText.Text = "HITS"
+	v24.CenterRightText.Text = ("%d"):format(v14.Hits)
+	v24.Parent = WeaponReport.ScrollingFrame
+
+	local v25 = ItemDatabase[v20]
+
+	WeaponReport.IconImage.Image = if v25 then v25.Icon or "" else ""
+
+	local v27 = script:WaitForChild("ReportEntry"):Clone()
+
+	v27.CenterText.Text = "ATTACHMENTS"
+	v27.Parent = AttachmentReport.ScrollingFrame
+
+	for v30, v31 in pairs(v14.Attachments or {}) do
+		local v32 = script:WaitForChild("ReportEntry"):Clone()
+
+		v32.TopLeftText.Text = v31:upper()
+		v32.BottomLeftText.Text = v30:upper()
+		v32.Parent = AttachmentReport.ScrollingFrame
+		v21 = true
+	end
+
+	AttachmentReport.Visible = v21
+end)
+
+local function Died() --[[ Died | Line: 255 | Upvalues: v11 (ref), Sounds (copy), SoundService (copy), MainFrame (copy), t (copy), ReplicatedStorage (copy), v14 (ref), SaveButton (copy), RespawnButton (copy), v2 (ref), FormatText (copy), TweenService (copy), v8 (copy), v1 (copy), v10 (copy), DeathFlash (copy), v7 (copy), LimbReport (copy), DamageReport (copy), WeaponReport (copy), AttachmentReport (copy), v5 (copy), v15 (ref), v6 (copy), v4 (copy), v9 (copy), v12 (ref), Events (copy) ]]
+	if v11 then
+		return
+	end
+
+	v11 = true
+	Sounds.Flatline:Play()
+	Sounds.Death:Play()
+	SoundService.GeneralSoundGroup.Volume = 0
+	MainFrame.TipText.Text = t[math.random(#t)]
+	ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("DeathMenu", true)
+	v14 = false
+	SaveButton.Visible = true
+	RespawnButton.Visible = true
+	MainFrame.SnapshotID.Text = ""
+	MainFrame.SnapshotTime.Text = ""
+	SaveButton.TextLabel.Text = "SAVE DEATH SNAPSHOT"
+
+	if v2:GetAttribute("NoRespawn") then
+		RespawnButton.Visible = false
+		SaveButton.Visible = false
+		MainFrame.Title.Text = "YOU DIED?"
+		task.spawn(function() --[[ Line: 292 | Upvalues: MainFrame (ref), FormatText (ref), v11 (ref) ]]
+			repeat
+				MainFrame.TipText.Text = FormatText.DistortText("------- ------- ------- ------- ------- -------", 3)
+				MainFrame.AssistInfo.Text = FormatText.DistortText("ASSISTED BY ???", 3)
+				MainFrame.KillInfo.Text = FormatText.DistortText("KILLED BY ???", 3)
+				task.wait(0.01)
+			until not v11
+		end)
+	end
+
+	task.spawn(function() --[[ Line: 304 | Upvalues: SaveButton (ref), TweenService (ref), v8 (ref), v11 (ref) ]]
+		repeat
+			task.wait(0.5)
+			SaveButton.Flash.BackgroundTransparency = 0.4
+			SaveButton.Flash.Size = UDim2.fromScale(1, 1)
+			TweenService:Create(SaveButton.Flash, v8, {
+				BackgroundTransparency = 1,
+				Size = UDim2.fromScale(1.5, 1)
+			}):Play()
+			task.wait(v8.Time)
+		until not v11
+	end)
+	TweenService:Create(v1, v10, {
+		Enabled = true
+	}):Play()
+	TweenService:Create(DeathFlash, v10, {
+		BackgroundTransparency = 0,
+		BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+	}):Play()
+	TweenService:Create(RespawnButton.Bar, v10, {
+		Size = UDim2.new(0, 0, 1, 0)
+	}):Play()
+	TweenService:Create(RespawnButton.TextLabel, v10, {
+		TextTransparency = 0.75
+	}):Play()
+	TweenService:Create(RespawnButton.Glow, v10, {
+		ImageTransparency = 1
+	}):Play()
+	TweenService:Create(SaveButton.Bar, v10, {
+		Size = UDim2.new(0, 0, 1, 0)
+	}):Play()
+	TweenService:Create(MainFrame.RestoreInfo, v10, {
+		TextTransparency = 1
+	}):Play()
+	TweenService:Create(MainFrame, v7, {
+		GroupTransparency = 0,
+		Visible = true
+	}):Play()
+	TweenService:Create(LimbReport, v10, {
+		Position = UDim2.new(-1, 0, 0.5, 0)
+	}):Play()
+	TweenService:Create(DamageReport, v10, {
+		Position = UDim2.new(-1, 0, 0.51, 0)
+	}):Play()
+	TweenService:Create(WeaponReport, v10, {
+		Position = UDim2.new(2, 0, 0.5, 0)
+	}):Play()
+	TweenService:Create(AttachmentReport, v10, {
+		Position = UDim2.new(2, 0, 0.51, 0)
+	}):Play()
+	task.wait(0.5)
+	TweenService:Create(v1.DeathFlash, v5, {
+		BackgroundColor3 = Color3.new()
+	}):Play()
+	task.wait(1)
+	TweenService:Create(MainFrame.Corners, v5, {
+		Size = UDim2.new(1, -25, 1, -25)
+	}):Play()
+
+	if v15 then
+		TweenService:Create(LimbReport, v6, {
+			Position = UDim2.new(0.005, 0, 0.5, 0)
+		}):Play()
+		TweenService:Create(DamageReport, v6, {
+			Position = UDim2.new(0.005, 0, 0.51, 0)
+		}):Play()
+		TweenService:Create(WeaponReport, v6, {
+			Position = UDim2.new(0.995, 0, 0.5, 0)
+		}):Play()
+		TweenService:Create(AttachmentReport, v6, {
+			Position = UDim2.new(0.995, 0, 0.51, 0)
+		}):Play()
+	end
+
+	task.wait(2)
+	TweenService:Create(RespawnButton.Bar, v4, {
+		Size = UDim2.new(1, 0, 1, 0)
+	}):Play()
+	task.wait(v4.Time)
+	TweenService:Create(RespawnButton.TextLabel, v9, {
+		TextTransparency = 0
+	}):Play()
+	TweenService:Create(RespawnButton.Glow, v9, {
+		ImageTransparency = 0.8
+	}):Play()
+
+	if v11 then
+		v12 = true
+		RespawnButton.MouseButton1Click:Once(function() --[[ Line: 361 | Upvalues: ReplicatedStorage (ref), Sounds (ref), TweenService (ref), RespawnButton (ref), v9 (ref), MainFrame (ref), v6 (ref), v5 (ref), Events (ref) ]]
+			ReplicatedStorage:WaitForChild("ToggledMenu"):Fire("DeathMenu", false)
+			Sounds.Bass:Play()
+			TweenService:Create(RespawnButton.Edge, v9, {
+				Size = UDim2.new(0.065, 0, 1.025, 0)
+			}):Play()
+			TweenService:Create(RespawnButton.Edge2, v9, {
+				Size = UDim2.new(0.065, 0, 1.025, 0)
+			}):Play()
+			TweenService:Create(RespawnButton, v9, {
+				Size = UDim2.new(0.8, 0, 0.07, 0)
+			}):Play()
+			TweenService:Create(MainFrame, v6, {
+				GroupTransparency = 1,
+				Visible = false
+			}):Play()
+			TweenService:Create(MainFrame.Corners, v5, {
+				Size = UDim2.new(1, 25, 1, 25)
+			}):Play()
+			task.wait(3)
+			Events.Player.Respawn:FireServer()
+		end)
 	end
 end
 
-local function RemoveNPC(p1) --[[ RemoveNPC | Line: 25 | Upvalues: t (copy) ]]
-	if t[p1] then
-		t[p1] = nil
+SaveButton.MouseButton1Click:Connect(function() --[[ Line: 379 | Upvalues: v13 (ref), SaveButton (copy), Sounds (copy), v14 (ref), TweenService (copy), v3 (copy), MainFrame (copy), v9 (copy), Events (copy) ]]
+	if v13 and SaveButton.Visible then
+		return
+	end
+
+	v13 = true
+	Sounds.Click:Play()
+
+	if not v14 then
+		v14 = true
+		SaveButton.Edge.ImageTransparency = 0.25
+		SaveButton.Edge2.ImageTransparency = 0.25
+		TweenService:Create(SaveButton.Bar, v3, {
+			Size = UDim2.new(1, 0, 1, 0)
+		}):Play()
+		TweenService:Create(MainFrame.RestoreInfo, v9, {
+			TextTransparency = 0
+		}):Play()
+		SaveButton.TextLabel.Text = "..."
+		task.wait(2)
+		SaveButton.Edge.ImageTransparency = 0.5
+		SaveButton.Edge2.ImageTransparency = 0.5
+		SaveButton.TextLabel.Text = "SAVE SNAPSHOT ANYWAY"
+		v13 = false
+
+		return
+	end
+
+	TweenService:Create(MainFrame.RestoreInfo, v9, {
+		TextTransparency = 1
+	}):Play()
+	TweenService:Create(SaveButton.Edge, v9, {
+		Size = UDim2.new(0.05, 0, 1.025, 0)
+	}):Play()
+	TweenService:Create(SaveButton.Edge2, v9, {
+		Size = UDim2.new(0.05, 0, 1.025, 0)
+	}):Play()
+	SaveButton.Visible = false
+
+	local v1, v2 = Events.Player.SaveDS:InvokeServer()
+
+	if v1 and v2 then
+		local v32 = DateTime.fromUnixTimestamp(v2)
+
+		MainFrame.SnapshotID.Text = v1
+		MainFrame.SnapshotTime.Text = v32:FormatLocalTime("lll", "en-us"):upper() .. " [UTC]"
+	else
+		SaveButton.Visible = true
+	end
+
+	v13 = false
+end)
+
+local function Spectate() --[[ Spectate | Line: 449 | Upvalues: v11 (ref), ChatWindowConfiguration (copy), Sounds (copy), SoundService (copy), TweenService (copy), v1 (copy), v10 (copy), DeathFlash (copy), v5 (copy), SpectateFrame (copy), ReplicatedStorage (copy), v9 (copy), Events (copy), CurrentCamera (copy) ]]
+	if v11 then
+		return
+	end
+
+	v11 = true
+
+	local tbl = {}
+	local t = {}
+	local v12 = 1
+	local Enabled = ChatWindowConfiguration.Enabled
+	local DeathSound = game.ReplicatedFirst:FindFirstChild("DeathSound")
+
+	if DeathSound then
+		DeathSound:Play()
+	else
+		Sounds.Flatline:Play()
+		Sounds.Death:Play()
+	end
+
+	SoundService.GeneralSoundGroup.Volume = 0
+	TweenService:Create(v1, v10, {
+		Enabled = true
+	}):Play()
+	TweenService:Create(DeathFlash, v10, {
+		BackgroundTransparency = 0,
+		BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+	}):Play()
+	task.wait(0.5)
+	TweenService:Create(v1.DeathFlash, v5, {
+		BackgroundTransparency = 1,
+		BackgroundColor3 = Color3.new()
+	}):Play()
+	TweenService:Create(SoundService.GeneralSoundGroup, v5, {
+		Volume = 1
+	}):Play()
+	SpectateFrame.Visible = true
+	ChatWindowConfiguration.Enabled = true
+	ReplicatedStorage.CinematicMode:Fire(false, true, true)
+
+	local function f2() --[[ Line: 496 | Upvalues: Sounds (ref), t (copy), v12 (ref), TweenService (ref), DeathFlash (ref), v10 (ref), v1 (ref), v9 (ref) ]]
+		Sounds.Click:Play()
+
+		if not (v12 < #t) then
+			return
+		end
+
+		TweenService:Create(DeathFlash, v10, {
+			BackgroundTransparency = 0
+		}):Play()
+		task.wait()
+		TweenService:Create(v1.DeathFlash, v9, {
+			BackgroundTransparency = 1
+		}):Play()
+		v12 = v12 + 1
+	end
+
+	table.insert(tbl, SpectateFrame.Controls.Next.Button.MouseButton1Click:Connect(f2))
+
+	local function f3() --[[ Line: 515 | Upvalues: Sounds (ref), v12 (ref), TweenService (ref), DeathFlash (ref), v10 (ref), v1 (ref), v9 (ref) ]]
+		Sounds.Click:Play()
+
+		if not (v12 > 1) then
+			return
+		end
+
+		TweenService:Create(DeathFlash, v10, {
+			BackgroundTransparency = 0
+		}):Play()
+		task.wait()
+		TweenService:Create(v1.DeathFlash, v9, {
+			BackgroundTransparency = 1
+		}):Play()
+		v12 = v12 - 1
+	end
+
+	table.insert(tbl, SpectateFrame.Controls.Previous.Button.MouseButton1Click:Connect(f3))
+
+	local v4 = ReplicatedStorage:GetAttribute("ReturnText")
+
+	if v4 then
+		local function f5() --[[ Line: 537 | Upvalues: Sounds (ref), Events (ref) ]]
+			Sounds.Click:Play()
+			Events.Player.SpectateReturn:FireServer()
+		end
+
+		table.insert(tbl, SpectateFrame.Return.Button.MouseButton1Click:Connect(f5))
+		SpectateFrame.Return.BottomText.Text = v4
+	end
+
+	while v11 do
+		SpectateFrame.Controls.Information.Text = ReplicatedStorage:GetAttribute("SpectateText") or ""
+		table.clear(t)
+
+		for k, v in pairs(workspace.Chars:GetChildren()) do
+			local Humanoid = v:FindFirstChild("Humanoid")
+			local Torso = v:FindFirstChild("Torso")
+
+			if Humanoid and (Torso and not Humanoid:GetAttribute("Died")) or not v:GetAttribute("Died") then
+				table.insert(t, Torso)
+			end
+		end
+
+		local v6 = if #t <= 0 then true else false
+
+		SpectateFrame.NoTargets.Visible = v6
+		SpectateFrame.Controls.Visible = not v6
+
+		local v7 = t[v12]
+
+		if v6 or not (v7 and v7.Parent) then
+			v12 = 1
+		elseif CurrentCamera.CameraSubject ~= v7 then
+			SpectateFrame.Controls.TargetFrame.TargetNameText.Text = v7.Parent.Name
+			CurrentCamera.CameraSubject = v7
+		end
+
+		task.wait()
+	end
+
+	ChatWindowConfiguration.Enabled = Enabled
+
+	for k, v in pairs(tbl) do
+		v:Disconnect()
 	end
 end
 
-local function UpdateCharacter(p1) --[[ UpdateCharacter | Line: 33 | Upvalues: v1 (ref), v2 (ref) ]]
-	if p1 then
-		v1 = p1
-		v2 = p1:WaitForChild("HumanoidRootPart", 3)
+local function TriggerDeath() --[[ TriggerDeath | Line: 603 | Upvalues: CurrentCamera (copy), ReplicatedStorage (copy), Spectate (copy), Died (copy) ]]
+	CurrentCamera.CameraType = Enum.CameraType.Custom
+	CurrentCamera.FieldOfView = 70
+
+	if ReplicatedStorage:GetAttribute("CustomRespawn") then
+		Spectate()
+	else
+		Died()
 	end
 end
 
-local Character = LocalPlayer.Character
+local function UpdateCharacter(p1) --[[ UpdateCharacter | Line: 617 | Upvalues: v2 (ref), v12 (ref), v11 (ref), v15 (ref), MainFrame (copy), DamageReport (copy), AttachmentReport (copy), WeaponReport (copy), CurrentCamera (copy), ReplicatedStorage (copy), Spectate (copy), Died (copy), Sounds (copy), SpectateFrame (copy), v1 (copy), DeathFlash (copy), TweenService (copy), v5 (copy), v6 (copy) ]]
+	if not p1 then
+		return
+	end
 
-if Character then
-	v1 = Character
-	v2 = Character:WaitForChild("HumanoidRootPart", 3)
+	v2 = p1
+	v12 = false
+	v11 = false
+	v15 = false
+	MainFrame.AssistInfo.Text = ""
+	MainFrame.KillInfo.Text = ""
+
+	for k, v in pairs({ DamageReport, AttachmentReport, WeaponReport }) do
+		for k2, v3 in pairs(v.ScrollingFrame:GetChildren()) do
+			if v3:IsA("Frame") then
+				v3:Destroy()
+			end
+		end
+	end
+
+	p1.AttributeChanged:Connect(function(p1) --[[ Line: 642 | Upvalues: CurrentCamera (ref), ReplicatedStorage (ref), Spectate (ref), Died (ref) ]]
+		if p1 ~= "Died" then
+			return
+		end
+
+		CurrentCamera.CameraType = Enum.CameraType.Custom
+		CurrentCamera.FieldOfView = 70
+
+		if ReplicatedStorage:GetAttribute("CustomRespawn") then
+			Spectate()
+
+			return
+		end
+
+		Died()
+	end)
+	Sounds.Flatline:Stop()
+	Sounds.Death:Stop()
+	SpectateFrame.Visible = false
+	v1.Enabled = true
+	DeathFlash.BackgroundColor3 = Color3.new()
+	DeathFlash.BackgroundTransparency = 0
+	TweenService:Create(DeathFlash, v5, {
+		BackgroundTransparency = 1
+	}):Play()
+	TweenService:Create(v1, v5, {
+		Enabled = false
+	}):Play()
+	TweenService:Create(MainFrame, v6, {
+		GroupTransparency = 1,
+		Visible = false
+	}):Play()
+	TweenService:Create(MainFrame.Corners, v5, {
+		Size = UDim2.new(1, 25, 1, 25)
+	}):Play()
+	MainFrame.Title.Text = "YOU DIED"
+	MainFrame.AssistInfo.Text = ""
+	MainFrame.KillInfo.Text = ""
+	ReplicatedStorage.CinematicMode:Fire(true, true, false)
 end
 
 LocalPlayer.CharacterAdded:Connect(UpdateCharacter)
+UpdateCharacter(LocalPlayer.Character)
+LocalPlayer.AttributeChanged:Connect(function(p1) --[[ Line: 676 | Upvalues: CurrentCamera (copy), ReplicatedStorage (copy), Spectate (copy), Died (copy) ]]
+	if p1 ~= "Died" then
+		return
+	end
 
-for k, v in pairs(CollectionService:GetTagged("CharacterStare")) do
-	AddNPC(v)
+	CurrentCamera.CameraType = Enum.CameraType.Custom
+	CurrentCamera.FieldOfView = 70
+
+	if ReplicatedStorage:GetAttribute("CustomRespawn") then
+		Spectate()
+
+		return
+	end
+
+	Died()
+end)
+
+if not LocalPlayer:GetAttribute("Died") then
+	return
 end
 
-CollectionService:GetInstanceAddedSignal("CharacterStare"):Connect(AddNPC)
-CollectionService:GetInstanceRemovedSignal("CharacterStare"):Connect(RemoveNPC)
-game:GetService("RunService").Stepped:Connect(function() --[[ Line: 49 | Upvalues: v2 (ref), t (copy) ]]
+CurrentCamera.CameraType = Enum.CameraType.Custom
+CurrentCamera.FieldOfView = 70
+
+if ReplicatedStorage:GetAttribute("CustomRespawn") then
+	Spectate()
+else
+	Died()
+end
+
+-- Players.Noriko_Ellen.PlayerGui.Store.Locker.Tabs.Products.ProductsCore
+--
+repeat
+	task.wait(0.1)
+until game.ReplicatedFirst:GetAttribute("GameLoaded")
+
+local MarketplaceService = game:GetService("MarketplaceService")
+
+game:GetService("Players")
+
+local Players = game.Players
+local ReplicatedStorage = game.ReplicatedStorage
+local Mods = ReplicatedStorage:WaitForChild("Mods")
+local Purchase = ReplicatedStorage:WaitForChild("Events"):WaitForChild("Purchase")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+LocalPlayer:WaitForChild(Players:GetAttribute("PLAYER_STORAGE"))
+
+local Sounds = script:WaitForChild("Sounds")
+local Frames = script:WaitForChild("Frames")
+local v1 = script.Parent
+local List = v1:WaitForChild("Passes"):WaitForChild("List")
+local List2 = v1:WaitForChild("Products"):WaitForChild("List")
+local PurchaseFrame = v1:WaitForChild("PurchaseFrame")
+local PlayerList = PurchaseFrame:WaitForChild("PlayerList")
+local Buttons = PurchaseFrame:WaitForChild("Buttons")
+local SelectedFrame = Buttons:WaitForChild("SelectedFrame")
+local PurchaseProcessing = PlayerGui:WaitForChild("ExtraUI", 9000000000):WaitForChild("PurchaseProcessing")
+local v2 = nil
+local v3 = false
+local v4 = false
+local t = {
+	Products = {},
+	Passes = {}
+}
+local FormatNumber = require(Mods:WaitForChild("FormatNumber"))
+local ProductShared = require(Mods:WaitForChild("ProductShared"))
+
+local function GetProductInformation(p1) --[[ GetProductInformation | Line: 54 | Upvalues: t (ref) ]]
+	for k, v in pairs(t) do
+		if v[p1] then
+			return v[p1]
+		end
+	end
+end
+
+ReplicatedStorage:WaitForChild("GetPurchaseInformation").OnInvoke = GetProductInformation
+
+local function CanPurchase(p1, p2) --[[ CanPurchase | Line: 65 | Upvalues: LocalPlayer (copy), t (ref), ProductShared (copy), ReplicatedStorage (copy), Purchase (copy) ]]
+	local v1 = LocalPlayer:GetAttribute("GiftTarget")
+	local v2
+
+	do
+		local __inline_returned = false
+
+		for k, v in pairs(t) do
+			if v[p1] then
+				v2 = v[p1]
+				__inline_returned = true
+
+				break
+			end
+		end
+
+		if not __inline_returned then
+			v2 = nil
+		end
+	end
+
+	if not v2 then
+		warn("Purchase information not found")
+
+		return
+	end
+
+	if ProductShared[v2.Context] then
+		local ok, result = pcall(ProductShared[v2.Context], LocalPlayer)
+
+		if not ok then
+			warn("[CONTEXT PRODUCT ERROR]:", result)
+
+			return
+		end
+
+		if not result then
+			return
+		end
+	end
+
+	if v2.Owned and not v1 then
+		if p2 then
+			return
+		end
+
+		ReplicatedStorage.Notify:Fire("ALREADY OWNED", "Warning")
+	else
+		if Purchase.CanPurchase:InvokeServer(p1) then
+			return true
+		end
+
+		if p2 then
+			return
+		end
+
+		ReplicatedStorage.Notify:Fire("THAT PASS IS ALREADY OWNED BY THE RECIPIENT", "Warning")
+	end
+end
+
+ReplicatedStorage:WaitForChild("CanPurchase").OnInvoke = CanPurchase
+
+local function SelectOption(p1, p2, p3, p4) --[[ SelectOption | Line: 107 | Upvalues: v3 (ref), v2 (ref), SelectedFrame (copy), Buttons (copy), FormatNumber (copy) ]]
+	if v3 then
+		return
+	end
+
+	if v2 and v2.Button.Parent then
+		v2.Button.SelectedFrame.Visible = false
+	end
+
+	local v1 = if p3 == nil then false else true
+
+	v2 = if v1 then {
+	Name = p2,
+	Info = p3,
+	ProductInfo = p4,
+	Button = p1
+} else v1
+	SelectedFrame.Visible = v1
+	Buttons.PurchaseButton.Visible = v1
+
+	if not v1 then
+		return
+	end
+
+	p1.SelectedFrame.Visible = true
+	SelectedFrame.NameText.Text = p4.Name
+	SelectedFrame.PriceText.Text = if p3.Tokens > 0 then "FREE" else FormatNumber.Separate(p4.PriceInRobux) .. " R$"
+end
+
+local function CreateButton(p1, p2, p3, p4) --[[ CreateButton | Line: 133 | Upvalues: MarketplaceService (copy), Frames (copy), FormatNumber (copy), Sounds (copy), SelectOption (copy) ]]
+	if p2.Context then
+		return
+	end
+
+	local ok, result = pcall(MarketplaceService.GetProductInfo, MarketplaceService, p2.ID, p3)
+
+	if not ok then
+		warn("UNABLE TO GET PRODUCT DATA!")
+
+		return
+	end
+
+	local v1 = Frames:WaitForChild("ProductButton"):Clone()
+
+	v1.IconFrame.Title.Text = result.Name
+	v1.IconFrame.Description.Text = result.Description or "NO DESCRIPTION"
+	v1.IconFrame.Icon.Image = "rbxassetid://" .. (result.IconImageAssetId ~= 0 and result.IconImageAssetId or 8681682276)
+	v1.Price.Text = p2.Tokens > 0 and p2.Tokens .. " TOKEN(s)" or FormatNumber.Separate(result.PriceInRobux) .. " R$"
+	v1.Info.Text = if p2.Owned then "OWNED" else "BUY"
+	v1.LayoutOrder = p2.Order or result.PriceInRobux
+
+	if p2.Color then
+		v1.BackgroundColor3 = p2.Color
+		v1.IconFrame.Icon.ImageColor3 = p2.Color
+		v1.IconFrame.Title.TextColor3 = p2.Color
+		v1.IconFrame.Description.TextColor3 = p2.Color
+		v1.SelectedFrame.BackgroundColor3 = p2.Color
+		v1.SelectedFrame.Title.TextColor3 = p2.Color
+		v1.SelectedFrame.UIStroke.Color = p2.Color
+	end
+
+	v1.Parent = p4
+	v1.MouseButton1Click:Connect(function() --[[ Line: 174 | Upvalues: Sounds (ref), SelectOption (ref), v1 (copy), p1 (copy), p2 (copy), result (copy) ]]
+		Sounds.Select:Play()
+		SelectOption(v1, p1, p2, result)
+	end)
+end
+
+local function ClearButtons(p1, p2) --[[ ClearButtons | Line: 180 ]]
+	for k, v in pairs(p1:GetChildren()) do
+		if v:IsA("TextButton") and (not p2 or v.Name == p2) then
+			v:Destroy()
+		end
+	end
+end
+
+local function UpdateButtons() --[[ UpdateButtons | Line: 188 | Upvalues: t (ref), Purchase (copy), v2 (ref), SelectOption (copy), ClearButtons (copy), List (copy), CreateButton (copy), List2 (copy) ]]
+	t = Purchase:WaitForChild("GetAvailable"):InvokeServer()
+	v2 = nil
+	SelectOption()
+	ClearButtons(List)
+
+	for k, v in pairs(t.Passes) do
+		CreateButton(k, v, Enum.InfoType.Product, List)
+	end
+
+	ClearButtons(List2)
+
+	for k, v in pairs(t.Products) do
+		CreateButton(k, v, Enum.InfoType.Product, List2)
+	end
+end
+
+UpdateButtons()
+
+local function UpdateGiftTarget() --[[ UpdateGiftTarget | Line: 210 | Upvalues: LocalPlayer (copy), Buttons (copy), PurchaseProcessing (copy), PlayerList (copy) ]]
+	local v1 = LocalPlayer:GetAttribute("GiftTarget")
+
+	Buttons.PurchaseButton.Subtext.Text = "FOR " .. (v1 and v1:upper() or "YOURSELF")
+	Buttons.CancelButton.Visible = v1 and true or false
+	PurchaseProcessing.IsGift.Visible = v1 and true or false
+
+	for k, v in pairs(PlayerList:GetChildren()) do
+		if v:IsA("TextButton") then
+			v.BackgroundTransparency = if v.Name == v1 then 0 else 0.25
+		end
+	end
+
+	if not v1 then
+		return
+	end
+
+	PurchaseProcessing.IsGift.TextLabel.Text = ("<font size=\"20\"><b>WARNING!</b>\n</font>You are currently buying this as a gift for %s!"):format(v1)
+end
+
+UpdateGiftTarget()
+
+local function FindAmountNeeded(p1) --[[ FindAmountNeeded | Line: 236 | Upvalues: t (ref) ]]
+	if not p1 then
+		return
+	end
+
+	local v1 = nil
+	local v2 = pairs
+
+	for v4, v5 in v2(t.Products or {}) do
+		if v5.Credits and (not (v5.Credits < p1) and (not v1 or v5.Credits < v1.Credits)) then
+			v1 = {
+				Name = v4,
+				Credits = v5.Credits
+			}
+		end
+	end
+
+	return if v1 then v1.Name or nil else nil
+end
+
+local function AddPlayer(p1) --[[ AddPlayer | Line: 259 | Upvalues: LocalPlayer (copy), Frames (copy), Players (copy), PlayerList (copy), v3 (ref), Sounds (copy), Purchase (copy) ]]
+	if p1 ~= LocalPlayer then
+		local v1 = Frames:WaitForChild("PlayerButton"):Clone()
+		local ok, result = pcall(LocalPlayer.IsFriendsWith, LocalPlayer, p1.UserId)
+		local v2 = Players:GetUserThumbnailAsync(p1.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+
+		v1.Name = p1.Name
+		v1.DisplayName.Text = p1.DisplayName
+		v1.Username.Text = p1.Name
+		v1.IconFrame.ImageLabel.Image = v2
+		v1.IsFriends.Visible = ok and result
+		v1.Parent = PlayerList
+		v1.MouseButton1Click:Connect(function() --[[ Line: 281 | Upvalues: v3 (ref), Sounds (ref), Purchase (ref), p1 (copy) ]]
+			if not v3 then
+				Sounds.Click:Play()
+				Purchase.GiftTarget:FireServer(p1)
+			end
+		end)
+	end
+end
+
+for k, v in pairs(Players:GetPlayers()) do
+	AddPlayer(v)
+end
+
+Players.PlayerAdded:Connect(AddPlayer)
+Players.PlayerRemoving:Connect(function(p1) --[[ Line: 295 | Upvalues: ClearButtons (copy), PlayerList (copy) ]]
+	ClearButtons(PlayerList, p1.Name)
+end)
+LocalPlayer.AttributeChanged:Connect(function(p1) --[[ Line: 300 | Upvalues: UpdateGiftTarget (copy) ]]
+	if p1 ~= "GiftTarget" then
+		return
+	end
+
+	UpdateGiftTarget()
+end)
+
+local function PromptPurchase(p1, p2) --[[ PromptPurchase | Line: 307 | Upvalues: v4 (ref), FindAmountNeeded (copy), LocalPlayer (copy), t (ref), CanPurchase (copy), Purchase (copy), MarketplaceService (copy), PurchaseProcessing (copy), v3 (ref) ]]
+	v4 = true
+	task.delay(0.25, function() --[[ Line: 310 | Upvalues: v4 (ref) ]]
+		v4 = false
+	end)
+
+	if not p1 then
+		p1 = FindAmountNeeded(p2)
+	end
+
+	LocalPlayer:GetAttribute("GiftTarget")
+
+	local v2 = p1
+	local v32
+
+	do
+		local __inline_returned = false
+
+		for k, v in pairs(t) do
+			if v[v2] then
+				v32 = v[v2]
+				__inline_returned = true
+
+				break
+			end
+		end
+
+		if not __inline_returned then
+			v32 = nil
+		end
+	end
+
+	if not v32 then
+		warn("Purchase information not found")
+
+		return
+	end
+
+	if not CanPurchase(p1) then
+		return
+	end
+
+	if v32.Tokens > 0 then
+		Purchase.UseToken:FireServer(v32.ID)
+	else
+		MarketplaceService:PromptProductPurchase(LocalPlayer, v32.ID)
+		PurchaseProcessing.Visible = true
+		v3 = true
+	end
+end
+
+ReplicatedStorage:WaitForChild("PromptPurchase").Event:Connect(PromptPurchase)
+Buttons:WaitForChild("PurchaseButton").MouseButton1Click:Connect(function() --[[ Line: 342 | Upvalues: v3 (ref), v2 (ref), v4 (ref), Sounds (copy), PromptPurchase (copy) ]]
+	if v3 then
+		return
+	end
+
 	if not v2 then
 		return
 	end
 
-	for k, v in pairs(t) do
-		if not (k and k.Parent) then
-			t[k] = nil
-		end
-
-		local v1 = v.Torso.CFrame
-		local Magnitude = (v2.Position - v1.Position).Magnitude
-
-		if not (Magnitude > 75) then
-			local v5 = CFrame.new((if Magnitude < 25 then if v1.LookVector:Dot((v2.Position - v1.Position).Unit) > v.Threshold then true else false else false) and v2.Position or v1.Position + v1.LookVector, v1.Position):ToObjectSpace(v1).LookVector * Vector3.new(1, -1, 1)
-			local v6 = CFrame.Angles(0, 0, -math.asin(v5.x))
-
-			v.LastTransform = v.LastTransform:Lerp(v6 * CFrame.Angles(-math.asin(v5.y), 0, 0), 0.025)
-			v.Neck.Transform = v.LastTransform
-		end
+	if not v4 then
+		Sounds.Click:Play()
+		PromptPurchase(v2.Name)
 	end
+end)
+Buttons:WaitForChild("CancelButton").MouseButton1Click:Connect(function() --[[ Line: 358 | Upvalues: v3 (ref), Sounds (copy), Purchase (copy) ]]
+	if not v3 then
+		Sounds.Click:Play()
+		Purchase.GiftTarget:FireServer()
+	end
+end)
+MarketplaceService.PromptProductPurchaseFinished:Connect(function() --[[ Line: 366 | Upvalues: v2 (ref), PurchaseProcessing (copy), v3 (ref), Purchase (copy), UpdateButtons (copy) ]]
+	v2 = nil
+	PurchaseProcessing.Visible = false
+	v3 = false
+	Purchase.GiftTarget:FireServer()
+	UpdateButtons()
+end)
+Purchase:WaitForChild("Update").OnClientEvent:Connect(function() --[[ Line: 377 | Upvalues: v2 (ref), Purchase (copy), UpdateButtons (copy) ]]
+	v2 = nil
+	Purchase.GiftTarget:FireServer()
+	UpdateButtons()
 end)
 
 -- Players.Noriko_Ellen.PlayerGui.TeleportGui.TeleportCore
@@ -45125,18 +47861,238 @@ Teleport:WaitForChild("Teleporting").OnClientEvent:Connect(function(p1) --[[ Lin
 end)
 TeleportService:SetTeleportGui(ReplicatedStorage:WaitForChild("TeleportGui"))
 
--- Players.Noriko_Ellen.PlayerScripts.WorldAnimations
+-- ReplicatedStorage.Mods.ProductShared
 --
-local World = game.ReplicatedStorage:WaitForChild("Events"):WaitForChild("World")
-local Animations = require(script:WaitForChild("Animations"))
+return {
+	NB_SelfRevive = function(p1) --[[ Line: 2 ]]
+		local Character = p1.Character
+		local v1 = false
 
-World:WaitForChild("Animation").OnClientEvent:Connect(function(p1, ...) --[[ Line: 10 | Upvalues: Animations (copy) ]]
-	if Animations[p1] then
-		Animations[p1](...)
-	else
-		warn("[WORLD ANIMATIONS]: Animation type not found:", p1)
+		for k, v in pairs(workspace.Chars:GetChildren()) do
+			local Humanoid = v:FindFirstChild("Humanoid")
+
+			if Humanoid and (v:FindFirstChild("Torso") and not Humanoid:GetAttribute("Died")) or not v:GetAttribute("Died") then
+				v1 = true
+
+				break
+			end
+		end
+
+		return if v1 then if Character then Character:GetAttribute("Died") and not p1:GetAttribute("ReviveBlocked") else Character else v1
+	end,
+	NB_ContinueRun = function(p1) --[[ Line: 24 ]]
+		return not game.ReplicatedStorage:GetAttribute("ContinueBlocked") and not game.ReplicatedStorage:GetAttribute("Ending"), true
+	end
+}
+
+-- StarterPlayer.StarterPlayerScripts.NpcStare
+--
+local CollectionService = game:GetService("CollectionService")
+local LocalPlayer = game.Players.LocalPlayer
+local v1 = nil
+local v2 = nil
+
+workspace:WaitForChild("NPCs"):WaitForChild("Other")
+
+local t = {}
+
+local function AddNPC(p1) --[[ AddNPC | Line: 19 | Upvalues: t (copy) ]]
+	if not p1:WaitForChild("Torso", 3) then
+		return
+	end
+
+	if p1.Torso:WaitForChild("Neck", 3) then
+		t[p1] = {
+			Neck = p1.Torso.Neck,
+			Torso = p1.Torso,
+			Threshold = p1:GetAttribute("StareThreshold") or 0.25,
+			LastTransform = CFrame.new()
+		}
+	end
+end
+
+local function RemoveNPC(p1) --[[ RemoveNPC | Line: 25 | Upvalues: t (copy) ]]
+	if t[p1] then
+		t[p1] = nil
+	end
+end
+
+local function UpdateCharacter(p1) --[[ UpdateCharacter | Line: 33 | Upvalues: v1 (ref), v2 (ref) ]]
+	if p1 then
+		v1 = p1
+		v2 = p1:WaitForChild("HumanoidRootPart", 3)
+	end
+end
+
+local Character = LocalPlayer.Character
+
+if Character then
+	v1 = Character
+	v2 = Character:WaitForChild("HumanoidRootPart", 3)
+end
+
+LocalPlayer.CharacterAdded:Connect(UpdateCharacter)
+
+for k, v in pairs(CollectionService:GetTagged("CharacterStare")) do
+	AddNPC(v)
+end
+
+CollectionService:GetInstanceAddedSignal("CharacterStare"):Connect(AddNPC)
+CollectionService:GetInstanceRemovedSignal("CharacterStare"):Connect(RemoveNPC)
+game:GetService("RunService").Stepped:Connect(function() --[[ Line: 49 | Upvalues: v2 (ref), t (copy) ]]
+	if not v2 then
+		return
+	end
+
+	for k, v in pairs(t) do
+		if not (k and k.Parent) then
+			t[k] = nil
+		end
+
+		local v1 = v.Torso.CFrame
+		local Magnitude = (v2.Position - v1.Position).Magnitude
+
+		if not (Magnitude > 75) then
+			local v5 = CFrame.new((if Magnitude < 25 then if v1.LookVector:Dot((v2.Position - v1.Position).Unit) > v.Threshold then true else false else false) and v2.Position or v1.Position + v1.LookVector, v1.Position):ToObjectSpace(v1).LookVector * Vector3.new(1, -1, 1)
+			local v6 = CFrame.Angles(0, 0, -math.asin(v5.x))
+
+			v.LastTransform = v.LastTransform:Lerp(v6 * CFrame.Angles(-math.asin(v5.y), 0, 0), 0.025)
+			v.Neck.Transform = v.LastTransform
+		end
 	end
 end)
+
+-- Players.Noriko_Ellen.PlayerScripts.DamageNumbers
+--
+NumberRange.new(1, 100)
+
+local t = {
+	Min = Color3.fromRGB(255, 140, 0),
+	Max = Color3.fromRGB(255, 0, 0)
+}
+local TweenService = game:GetService("TweenService")
+local ReplicatedStorage = game.ReplicatedStorage
+local Terrain = workspace.Terrain
+local Mods = ReplicatedStorage:WaitForChild("Mods")
+local DamageGui = script:WaitForChild("DamageGui")
+local FormatNumber = require(Mods:WaitForChild("FormatNumber"))
+local v1 = TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+local v2 = TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+local v3 = TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+local t2 = {}
+local t3 = {}
+
+local function DisplayDamageNumber(p1, p2) --[[ DisplayDamageNumber | Line: 31 | Upvalues: t2 (copy), t3 (copy), v1 (copy), DamageGui (copy), FormatNumber (copy), t (copy), Terrain (copy), TweenService (copy), v3 (copy), v2 (copy) ]]
+	for k, v in pairs(t2) do
+		if (k - p2).Magnitude <= 1 then
+			local v12 = t2
+
+			v12[k] = v12[k] + p1
+
+			return
+		end
+	end
+
+	t2[p2] = p1
+	task.wait(0.1)
+
+	local v22 = t2[p2]
+
+	t2[p2] = nil
+
+	local v32 = math.random(999)
+	local v4 = nil
+	local v5 = nil
+	local v6 = nil
+	local v7 = nil
+
+	for k, v in pairs(t3) do
+		if (v.Position - p2).Magnitude <= 3 then
+			v4 = v.Attachment
+			v5 = v.DamageGui
+			v6 = v.DamageTextLabel
+			v.Damage = v.Damage + v22
+			v22 = v.Damage
+			v.Stack = v.Stack + 1
+			v.Position = p2
+			v.Tick = tick()
+			v.LifeTime = v1.Time + math.clamp(v22 / 200, 0, 2)
+			v7 = true
+			v32 = k
+
+			break
+		end
+	end
+
+	local v8 = v22 / 100
+
+	if not v4 then
+		local Attachment = Instance.new("Attachment")
+		local v9 = DamageGui:Clone()
+		local DamageText = v9:WaitForChild("DamageText")
+
+		v4 = Attachment
+		v5 = v9
+		v6 = DamageText
+	end
+
+	local v11 = math.min(math.floor(v22 / 50), 3)
+	local v12 = string.rep("[", v11) .. math.floor(v22) .. string.rep("]", v11)
+
+	v6.Text = v12
+	v6.TextSize = math.clamp(FormatNumber.Lerp(25, 30, v8), 25, 30)
+	v6.TextColor3 = t.Min:Lerp(t.Max, v8)
+
+	if v8 >= 1 then
+		v6.Text = "<b>" .. v12 .. "</b>"
+	end
+
+	if v7 then
+		v6.Text = v6.Text .. "<i><font size=\'" .. math.floor(v6.TextSize / 1.35) .. "\'>x" .. t3[v32].Stack .. "</font></i>"
+		v4.WorldCFrame = CFrame.new(p2) * t3[v32].DamageOffset * CFrame.new(0, -0.5, 0)
+		TweenService:Create(v4, v3, {
+			WorldCFrame = CFrame.new(p2) * t3[v32].DamageOffset
+		}):Play()
+
+		return
+	end
+
+	t3[v32] = {
+		Stack = 1,
+		Position = p2,
+		Attachment = v4,
+		DamageGui = v5,
+		DamageTextLabel = v6,
+		Damage = v22,
+		DamageOffset = CFrame.new(math.random(-1, 1), math.random(1, 2), math.random(-1, 1)),
+		Tick = tick(),
+		LifeTime = v1.Time + math.clamp(v22 / 200, 0, 2)
+	}
+	v5.Parent = v4
+	v4.Parent = Terrain
+	v4.WorldCFrame = CFrame.new(p2)
+	TweenService:Create(v4, v1, {
+		CFrame = v4.CFrame * t3[v32].DamageOffset
+	}):Play()
+
+	repeat
+		task.wait()
+	until not t3[v32] or tick() - t3[v32].Tick > t3[v32].LifeTime
+
+	TweenService:Create(v6, v2, {
+		TextTransparency = 1,
+		TextStrokeTransparency = 1
+	}):Play()
+	task.wait(v2.Time)
+	t3[v32] = nil
+	v4:Destroy()
+end
+
+ReplicatedStorage:WaitForChild("DamageNumber").Event:Connect(DisplayDamageNumber)
+
+-- Players.Noriko_Ellen.PlayerScripts.PlayerScriptsLoader
+--
+require(script.Parent:WaitForChild("PlayerModule"))
 
 -- Players.Noriko_Ellen.PlayerScripts.WindShake
 --
@@ -45161,9 +48117,35 @@ ReplicatedStorage:WaitForChild("WindShake").Event:Connect(function(p1) --[[ Line
 	WindShake:Pause()
 end)
 
--- Players.Noriko_Ellen.PlayerScripts.PlayerScriptsLoader
+-- Players.Noriko_Ellen.PlayerScripts.BoltHandler
 --
-require(script.Parent:WaitForChild("PlayerModule"))
+local CollectionService = game:GetService("CollectionService")
+local LightningBolt = require(script:WaitForChild("LightningBolt"))
+local t = {}
+
+local function StartBolt(p1) --[[ StartBolt | Line: 13 | Upvalues: t (copy), LightningBolt (copy) ]]
+	if t[p1] then
+		return
+	end
+
+	local v1 = LightningBolt.new(p1.Attachment0, p1.Attachment1, p1.Segments)
+
+	for k, v in pairs(p1:GetAttributes()) do
+		if v1[k] then
+			v1[k] = v
+		end
+	end
+
+	t[p1] = v1
+end
+
+CollectionService:GetInstanceAddedSignal("CustomBolt"):Connect(StartBolt)
+CollectionService:GetInstanceRemovedSignal("CustomBolt"):Connect(function(p1) --[[ Line: 32 | Upvalues: t (copy) ]]
+	if t[p1] then
+		t[p1]:DestroyDissipate()
+		t[p1] = nil
+	end
+end)
 
 -- ReplicatedStorage.AnimationPacks.Default
 --
@@ -45287,35 +48269,57 @@ return {
 	}
 }
 
--- Players.Noriko_Ellen.PlayerScripts.BoltHandler
+-- ReplicatedStorage.MeleeStorage.Mods.Hitbox
 --
 local CollectionService = game:GetService("CollectionService")
-local LightningBolt = require(script:WaitForChild("LightningBolt"))
+local HitboxCaster = require(script.HitboxCaster)
+local GoodSignal = require(script.GoodSignal)
 local t = {}
 
-local function StartBolt(p1) --[[ StartBolt | Line: 13 | Upvalues: t (copy), LightningBolt (copy) ]]
-	if t[p1] then
-		return
+t.__index = t
+t.__type = "RaycastHitboxModule"
+t.DetectionMode = {
+	Default = 1,
+	PartMode = 2,
+	Bypass = 3
+}
+t.SignalType = {
+	Default = 1,
+	Single = 2
+}
+function t.new(p1) --[[ new | Line: 194 | Upvalues: CollectionService (copy), HitboxCaster (copy), t (copy), GoodSignal (copy) ]]
+	if p1 and CollectionService:HasTag(p1, "_RaycastHitboxV4Managed") then
+		return HitboxCaster:_FindHitbox(p1)
 	end
 
-	local v1 = LightningBolt.new(p1.Attachment0, p1.Attachment1, p1.Segments)
+	local v2 = setmetatable({
+		RaycastParams = nil,
+		HitboxPendingRemoval = false,
+		HitboxStopTime = 0,
+		HitboxActive = false,
+		Visualizer = true,
+		DebugLog = false,
+		Tag = "_RaycastHitboxV4Managed",
+		DetectionMode = t.DetectionMode.Default,
+		HitboxRaycastPoints = {},
+		HitboxObject = p1,
+		HitboxHitList = {},
+		SignalType = t.SignalType.Single,
+		OnUpdate = GoodSignal.new(t.SignalType.Single),
+		OnHit = GoodSignal.new(t.SignalType.Single)
+	}, HitboxCaster)
 
-	for k, v in pairs(p1:GetAttributes()) do
-		if v1[k] then
-			v1[k] = v
-		end
+	v2:_Init()
+
+	return v2
+end
+function t.GetHitbox(p1, p2) --[[ GetHitbox | Line: 225 | Upvalues: HitboxCaster (copy) ]]
+	if p2 then
+		return HitboxCaster:_FindHitbox(p2)
 	end
-
-	t[p1] = v1
 end
 
-CollectionService:GetInstanceAddedSignal("CustomBolt"):Connect(StartBolt)
-CollectionService:GetInstanceRemovedSignal("CustomBolt"):Connect(function(p1) --[[ Line: 32 | Upvalues: t (copy) ]]
-	if t[p1] then
-		t[p1]:DestroyDissipate()
-		t[p1] = nil
-	end
-end)
+return t
 
 -- ReplicatedStorage.GunStorage.Mods.BulletHandler
 --
@@ -45989,133 +48993,18 @@ for k, v in pairs(CollectionService:GetTagged("BloodVFX")) do
 	Recolor(v)
 end
 
--- Players.Noriko_Ellen.PlayerScripts.DamageNumbers
+-- Players.Noriko_Ellen.PlayerScripts.WorldAnimations
 --
-NumberRange.new(1, 100)
+local World = game.ReplicatedStorage:WaitForChild("Events"):WaitForChild("World")
+local Animations = require(script:WaitForChild("Animations"))
 
-local t = {
-	Min = Color3.fromRGB(255, 140, 0),
-	Max = Color3.fromRGB(255, 0, 0)
-}
-local TweenService = game:GetService("TweenService")
-local ReplicatedStorage = game.ReplicatedStorage
-local Terrain = workspace.Terrain
-local Mods = ReplicatedStorage:WaitForChild("Mods")
-local DamageGui = script:WaitForChild("DamageGui")
-local FormatNumber = require(Mods:WaitForChild("FormatNumber"))
-local v1 = TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
-local v2 = TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-local v3 = TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
-local t2 = {}
-local t3 = {}
-
-local function DisplayDamageNumber(p1, p2) --[[ DisplayDamageNumber | Line: 31 | Upvalues: t2 (copy), t3 (copy), v1 (copy), DamageGui (copy), FormatNumber (copy), t (copy), Terrain (copy), TweenService (copy), v3 (copy), v2 (copy) ]]
-	for k, v in pairs(t2) do
-		if (k - p2).Magnitude <= 1 then
-			local v12 = t2
-
-			v12[k] = v12[k] + p1
-
-			return
-		end
+World:WaitForChild("Animation").OnClientEvent:Connect(function(p1, ...) --[[ Line: 10 | Upvalues: Animations (copy) ]]
+	if Animations[p1] then
+		Animations[p1](...)
+	else
+		warn("[WORLD ANIMATIONS]: Animation type not found:", p1)
 	end
-
-	t2[p2] = p1
-	task.wait(0.1)
-
-	local v22 = t2[p2]
-
-	t2[p2] = nil
-
-	local v32 = math.random(999)
-	local v4 = nil
-	local v5 = nil
-	local v6 = nil
-	local v7 = nil
-
-	for k, v in pairs(t3) do
-		if (v.Position - p2).Magnitude <= 3 then
-			v4 = v.Attachment
-			v5 = v.DamageGui
-			v6 = v.DamageTextLabel
-			v.Damage = v.Damage + v22
-			v22 = v.Damage
-			v.Stack = v.Stack + 1
-			v.Position = p2
-			v.Tick = tick()
-			v.LifeTime = v1.Time + math.clamp(v22 / 200, 0, 2)
-			v7 = true
-			v32 = k
-
-			break
-		end
-	end
-
-	local v8 = v22 / 100
-
-	if not v4 then
-		local Attachment = Instance.new("Attachment")
-		local v9 = DamageGui:Clone()
-		local DamageText = v9:WaitForChild("DamageText")
-
-		v4 = Attachment
-		v5 = v9
-		v6 = DamageText
-	end
-
-	local v11 = math.min(math.floor(v22 / 50), 3)
-	local v12 = string.rep("[", v11) .. math.floor(v22) .. string.rep("]", v11)
-
-	v6.Text = v12
-	v6.TextSize = math.clamp(FormatNumber.Lerp(25, 30, v8), 25, 30)
-	v6.TextColor3 = t.Min:Lerp(t.Max, v8)
-
-	if v8 >= 1 then
-		v6.Text = "<b>" .. v12 .. "</b>"
-	end
-
-	if v7 then
-		v6.Text = v6.Text .. "<i><font size=\'" .. math.floor(v6.TextSize / 1.35) .. "\'>x" .. t3[v32].Stack .. "</font></i>"
-		v4.WorldCFrame = CFrame.new(p2) * t3[v32].DamageOffset * CFrame.new(0, -0.5, 0)
-		TweenService:Create(v4, v3, {
-			WorldCFrame = CFrame.new(p2) * t3[v32].DamageOffset
-		}):Play()
-
-		return
-	end
-
-	t3[v32] = {
-		Stack = 1,
-		Position = p2,
-		Attachment = v4,
-		DamageGui = v5,
-		DamageTextLabel = v6,
-		Damage = v22,
-		DamageOffset = CFrame.new(math.random(-1, 1), math.random(1, 2), math.random(-1, 1)),
-		Tick = tick(),
-		LifeTime = v1.Time + math.clamp(v22 / 200, 0, 2)
-	}
-	v5.Parent = v4
-	v4.Parent = Terrain
-	v4.WorldCFrame = CFrame.new(p2)
-	TweenService:Create(v4, v1, {
-		CFrame = v4.CFrame * t3[v32].DamageOffset
-	}):Play()
-
-	repeat
-		task.wait()
-	until not t3[v32] or tick() - t3[v32].Tick > t3[v32].LifeTime
-
-	TweenService:Create(v6, v2, {
-		TextTransparency = 1,
-		TextStrokeTransparency = 1
-	}):Play()
-	task.wait(v2.Time)
-	t3[v32] = nil
-	v4:Destroy()
-end
-
-ReplicatedStorage:WaitForChild("DamageNumber").Event:Connect(DisplayDamageNumber)
+end)
 
 -- Players.Noriko_Ellen.PlayerScripts.ZoneVisualHandler
 --
@@ -47871,140 +50760,6 @@ while task.wait(0.1) do
 	end)
 end
 
--- StarterGui.Utility.UtilityCore
---
-game:GetService("TweenService")
-
-local Players = game:GetService("Players")
-local CollectionService = game:GetService("CollectionService")
-local CurrentCamera = workspace.CurrentCamera
-local LocalPlayer = Players.LocalPlayer
-local v1 = LocalPlayer:WaitForChild(game.Players:GetAttribute("PLAYER_STORAGE"))
-local HumanoidRootPart = (LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()):WaitForChild("HumanoidRootPart")
-local EquippedGear = v1:WaitForChild("EquippedGear")
-local v3 = script.Parent
-local Visor = v3:WaitForChild("Visor")
-local v4 = v3:WaitForChild("VisorCracks"):GetChildren()
-local Sounds = script:WaitForChild("Sounds")
-local NightVision = script:WaitForChild("Effects"):WaitForChild("NightVision")
-local ColorCorrection = NightVision:WaitForChild("ColorCorrection")
-local PointLight = NightVision:WaitForChild("PointLight")
-
-local function ToggleNV(p1) --[[ ToggleNV | Line: 31 | Upvalues: CollectionService (copy), ColorCorrection (copy), CurrentCamera (copy), PointLight (copy), HumanoidRootPart (copy), Visor (copy), NightVision (copy) ]]
-	for k, v in pairs(CollectionService:GetTagged("NightVisionEffect")) do
-		v.Enabled = p1
-	end
-
-	if p1 then
-		ColorCorrection.Parent = CurrentCamera
-		PointLight.Parent = HumanoidRootPart
-		Visor.Visible = true
-	else
-		ColorCorrection.Parent = NightVision
-		PointLight.Parent = NightVision
-		Visor.Visible = false
-	end
-end
-
-for k, v in pairs(CollectionService:GetTagged("NightVisionEffect")) do
-	v.Enabled = false
-end
-
-ColorCorrection.Parent = NightVision
-PointLight.Parent = NightVision
-Visor.Visible = false
-
-local function UpdateEffects(p1) --[[ UpdateEffects | Line: 52 | Upvalues: HumanoidRootPart (copy), CollectionService (copy), ColorCorrection (copy), CurrentCamera (copy), PointLight (copy), Visor (copy), NightVision (copy), Sounds (copy) ]]
-	local v1 = HumanoidRootPart:GetAttribute(p1)
-
-	if p1 == "NightVision" then
-		for k, v in pairs(CollectionService:GetTagged("NightVisionEffect")) do
-			v.Enabled = v1
-		end
-
-		if v1 then
-			ColorCorrection.Parent = CurrentCamera
-			PointLight.Parent = HumanoidRootPart
-			Visor.Visible = true
-		else
-			ColorCorrection.Parent = NightVision
-			PointLight.Parent = NightVision
-			Visor.Visible = false
-		end
-	else
-		if p1 == "AntiFlash" then
-			Visor.Visible = v1
-
-			return
-		end
-
-		if p1 ~= "RespiratoryProtection" then
-			return
-		end
-
-		Visor.Visible = v1
-
-		if v1 then
-			Sounds.Mask:Play()
-
-			return
-		end
-
-		Sounds.Mask:Stop()
-	end
-end
-
-HumanoidRootPart.AttributeChanged:Connect(UpdateEffects)
-
-for k, v in pairs(HumanoidRootPart:GetAttributes()) do
-	UpdateEffects(k)
-end
-
-local function GetGear(p1) --[[ GetGear | Line: 75 | Upvalues: EquippedGear (copy) ]]
-	for k, v in pairs(EquippedGear:GetChildren()) do
-		if v:GetAttribute("Type") == p1 then
-			return v
-		end
-	end
-end
-
-local v5 = 0
-local v6 = nil
-
-while task.wait(0.1) do
-	local v7 = Visor.Visible and GetGear("Face")
-	local v9 = #v4
-	local v10 = v9 - math.floor((v7 and v7:GetAttribute("Durability") or 100) / (100 / v9))
-
-	if v5 < v10 and v6 == v7 then
-		Sounds.VisorCrack:Play()
-	end
-
-	v5, v6 = v10, v7
-
-	for k, v in pairs(v4) do
-		v.Visible = k <= v10
-	end
-end
-
--- StarterPlayer.StarterCharacterScripts.MovementHandler
---
-local Humanoid = script.Parent:WaitForChild("Humanoid")
-local v1 = Vector3.new(0, 0, 0)
-local TweenService = game:GetService("TweenService")
-
-game:GetService("RunService").RenderStepped:Connect(function(p1) --[[ Line: 7 | Upvalues: Humanoid (copy), v1 (ref), TweenService (copy) ]]
-	v1 = v1:Lerp(Humanoid.MoveDirection, 9 * p1)
-
-	local v12 = v1.Unit * TweenService:GetValue(v1.Magnitude, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
-
-	if v12 ~= v12 or not (v12.Magnitude > 0) then
-		return
-	end
-
-	Humanoid:Move(v12)
-end)
-
 -- StarterPlayer.StarterCharacterScripts.Animate
 --
 local v1 = script.Parent
@@ -48262,6 +51017,347 @@ playAnimation("idle", 0.25, Humanoid)
 while v1.Parent ~= nil do
 	move(task.wait(0.1))
 end
+
+-- StarterPlayer.StarterCharacterScripts.RagdollClient
+--
+local tbl = { "Head", "Torso", "Right Arm", "Left Arm", "Right Leg", "Left Leg" }
+local v1 = false
+local v2 = false
+local v3 = false
+local Players = game:GetService("Players")
+local Debris = game:GetService("Debris")
+
+game:GetService("PhysicsService")
+
+local Events = game:GetService("ReplicatedStorage"):WaitForChild("Events")
+local Character = Players.LocalPlayer.Character
+local Torso = Character:WaitForChild("Torso")
+local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+local RootJoint = HumanoidRootPart:WaitForChild("RootJoint")
+local Humanoid = Character:WaitForChild("Humanoid")
+
+Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown, false)
+
+local Head = Character:WaitForChild("Head", 5)
+local Wind = script:WaitForChild("Sounds"):WaitForChild("Wind")
+local v4 = OverlapParams.new()
+
+v4.FilterType = Enum.RaycastFilterType.Include
+v4.FilterDescendantsInstances = { workspace:WaitForChild("LandingPads") }
+
+local Animation = Instance.new("Animation")
+
+Animation.AnimationId = "rbxassetid://9688318661"
+
+local v5 = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation)
+local Animation2 = Instance.new("Animation")
+
+Animation2.AnimationId = "rbxassetid://9297684873"
+
+local v6 = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation2)
+local BodyForce = Instance.new("BodyForce")
+
+BodyForce.Force = Vector3.new(0, -300, 0)
+
+local TorsoWeld = Instance.new("Weld")
+
+TorsoWeld.Name = "TorsoWeld"
+TorsoWeld.Part1 = Torso
+TorsoWeld.Part0 = HumanoidRootPart
+TorsoWeld.Enabled = false
+TorsoWeld.Parent = HumanoidRootPart
+
+local clamp = math.clamp
+local HumanoidStateType = Enum.HumanoidStateType
+
+local function CheckForVelocityObjects(p1) --[[ CheckForVelocityObjects | Line: 71 | Upvalues: Debris (copy) ]]
+	if p1.Name ~= "KnockbackVelocity" then
+		return
+	end
+
+	Debris:AddItem(p1, p1:GetAttribute("RemoveDelay"))
+end
+
+local function Lerp(p1, p2, p3) --[[ Lerp | Line: 77 ]]
+	return p1 + (p2 - p1) * p3
+end
+
+local function ScaleRagdollDamage(p1, p2, p3, p4) --[[ ScaleRagdollDamage | Line: 81 ]]
+	local v1 = math.clamp((p1 - p2).Magnitude, p3.Min, p3.Max)
+	local Min2 = p4.Min
+
+	return Min2 + (p4.Max - Min2) * ((v1 - p3.Min) / (p3.Max - p3.Min))
+end
+
+local function v7() --[[ CalculateLimbDamage | Line: 92 | Upvalues: v3 (ref), tbl (copy), Character (copy), Events (copy), HumanoidRootPart (copy), v7 (copy) ]]
+	if v3 then
+		return
+	end
+
+	v3 = true
+
+	local t = {}
+	local v1 = false
+	local v2 = false
+	local v32 = 0
+	local v4 = 0
+	local v5 = 0
+	local t2 = {}
+	local v6 = 0
+
+	for k, v in pairs(tbl) do
+		local v72 = Character:FindFirstChild(v)
+
+		if v72 then
+			t2[v] = 0
+			t[v] = false
+			task.spawn(function() --[[ Line: 117 | Upvalues: v72 (copy), Character (ref), Events (ref), v3 (ref), v1 (ref), HumanoidRootPart (ref), v2 (ref), t2 (copy), v (copy), v32 (ref), t (copy), v4 (ref), v5 (ref) ]]
+				local v12 = v72.Touched:Connect(function(p1) --[[ Line: 118 | Upvalues: Character (ref), Events (ref), v3 (ref), v1 (ref), HumanoidRootPart (ref), v2 (ref), t2 (ref), v (ref), v32 (ref), t (ref) ]]
+					if p1:IsDescendantOf(Character) then
+						return
+					end
+
+					if p1:HasTag("FallNegate") and not p1:GetAttribute("Disabled") then
+						Events.Player.Negate:FireServer(p1)
+						v3 = false
+						v1 = false
+						HumanoidRootPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+						HumanoidRootPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
+
+						return
+					end
+
+					if p1:HasTag("FallMultiplier") then
+						v2 = true
+						t2[v] = 1000
+						v32 = 1000
+
+						return
+					end
+
+					t[v] = true
+					task.defer(function() --[[ Line: 144 | Upvalues: v1 (ref), t2 (ref), t (ref), v (ref) ]]
+						if v1 then
+							return
+						end
+
+						v1 = true
+
+						for k, v2 in pairs(t2) do
+							if t[k] then
+								if k == v then
+									local v12 = t2
+
+									v12[k] = v12[k] / 2
+								end
+
+								continue
+							end
+
+							t2[k] = 0
+						end
+					end)
+				end)
+
+				while v3 and not v1 do
+					local v22 = v72.AssemblyLinearVelocity.Magnitude / 2
+					local v33 = HumanoidRootPart.AssemblyLinearVelocity.Magnitude / 4.5
+
+					if t2[v] < v22 then
+						t2[v] = v22
+					elseif v22 < t2[v] / 10 and not v2 then
+						t2[v] = 0
+					end
+
+					if v32 < v33 then
+						v32 = v33
+						v4 = HumanoidRootPart.AssemblyLinearVelocity
+					end
+
+					v5 = HumanoidRootPart.AssemblyLinearVelocity
+					task.wait()
+				end
+
+				v3 = false
+				v12:Disconnect()
+			end)
+		end
+	end
+
+	task.spawn(function() --[[ Line: 196 | Upvalues: v6 (ref), HumanoidRootPart (ref), Events (ref), v3 (ref), v1 (ref), v4 (ref), v5 (ref), t2 (copy), v32 (ref), v7 (ref) ]]
+		repeat
+			v6 = v6 + task.wait()
+
+			if not (v6 > 0.1 and HumanoidRootPart.AssemblyLinearVelocity.Magnitude > 15) then
+				continue
+			end
+
+			v6 = 0
+			Events.Player.Ragdoll:FireServer()
+		until not v3
+
+		if v1 then
+			local v33 = NumberRange.new(25, 75)
+			local v42 = NumberRange.new(0.2, 1)
+			local v52 = math.clamp((v4 - v5).Magnitude, v33.Min, v33.Max)
+			local Min2 = v42.Min
+			local v62 = Min2 + (v42.Max - Min2) * ((v52 - v33.Min) / (v33.Max - v33.Min))
+
+			for k, v in pairs(t2) do
+				local v72 = t2
+
+				v72[k] = v72[k] * v62
+			end
+
+			Events.Player.Damage:FireServer(v32 * v62, t2)
+		end
+
+		task.wait(0.1)
+
+		if not (HumanoidRootPart.AssemblyLinearVelocity.Magnitude > 20) then
+			return
+		end
+
+		v7()
+	end)
+end
+
+local function KickstartRagdoll() --[[ KickstartRagdoll | Line: 224 | Upvalues: v7 (copy), v1 (ref), Events (copy) ]]
+	v7()
+
+	if not v1 then
+		Events.Player.Ragdoll:FireServer()
+	end
+end
+
+local function ToggleRagdoll(p1) --[[ ToggleRagdoll | Line: 234 | Upvalues: v1 (ref), BodyForce (copy), HumanoidRootPart (copy), Character (copy), Humanoid (copy), v7 (copy), v3 (ref) ]]
+	if p1 then
+		v1 = true
+		BodyForce.Parent = HumanoidRootPart
+		Character:SetAttribute("AutoRotate", false)
+		Character:SetAttribute("InPhysics", true)
+		Humanoid:ChangeState(Enum.HumanoidStateType.Physics)
+		v7()
+
+		return
+	end
+
+	if not (Humanoid.Health > 0) then
+		return
+	end
+
+	v1 = false
+	BodyForce.Parent = nil
+	v3 = false
+	Character:SetAttribute("AutoRotate", true)
+	Character:SetAttribute("InPhysics", false)
+	Humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+end
+
+for k, v in pairs(tbl) do
+	local v8 = Character:FindFirstChild(v)
+
+	if v8 then
+		v8.ChildAdded:Connect(CheckForVelocityObjects)
+	end
+end
+
+Humanoid.StateChanged:Connect(function(p1, p2) --[[ Line: 271 | Upvalues: HumanoidStateType (copy), v2 (ref), HumanoidRootPart (copy), v4 (copy), v7 (copy), v1 (ref), Events (copy), Character (copy), v6 (copy) ]]
+	if p1 == HumanoidStateType.Freefall and p2 == HumanoidStateType.Landed then
+		if not v2 then
+			return
+		end
+
+		v2 = false
+
+		local v22 = math.abs(HumanoidRootPart.AssemblyLinearVelocity.Y / 10)
+
+		if v22 > 10 then
+			if #workspace:GetPartBoundsInRadius(HumanoidRootPart.Position, 4, v4) > 0 then
+				v7()
+
+				if not v1 then
+					Events.Player.Ragdoll:FireServer()
+				end
+
+				return
+			end
+
+			Events.Player.Damage:FireServer(v22, {
+				["Right Leg"] = v22 * math.random(5, 15) / 15,
+				["Left Leg"] = v22 * math.random(5, 15) / 15
+			}, true)
+			Character:SetAttribute("CS", true)
+			task.delay(math.clamp(v22 / 15, 0, 0.75) / 2, function() --[[ Line: 293 | Upvalues: Character (ref) ]]
+				Character:SetAttribute("CS", false)
+			end)
+		end
+
+		local v3 = math.max(0.5 / (v22 / 4), 0.2)
+
+		v6:Play(v3)
+		task.wait(0.15)
+		v6:Stop(v3 * 2)
+	else
+		v2 = p2 == HumanoidStateType.Freefall
+	end
+end)
+Events:WaitForChild("Player"):WaitForChild("Ragdoll").OnClientEvent:Connect(ToggleRagdoll)
+RootJoint.Changed:Connect(function() --[[ Line: 321 | Upvalues: TorsoWeld (copy), RootJoint (copy) ]]
+	TorsoWeld.Enabled = not RootJoint.Enabled
+end)
+
+while task.wait(0.025) do
+	if HumanoidRootPart then
+		local AssemblyLinearVelocity = HumanoidRootPart.AssemblyLinearVelocity
+		local Magnitude = AssemblyLinearVelocity.Magnitude
+
+		if not Wind.Playing then
+			Wind.Playing = true
+		end
+
+		Wind.Volume = clamp((Magnitude / 25 - 1) / 1.5, 0, 5)
+		Wind.PlaybackSpeed = clamp((Magnitude / 25 - 1) / 2, 1, 2.5)
+
+		if not Character:FindFirstChild("CarryObject") and (AssemblyLinearVelocity.Y < -125 or (_G.CharacterStates.Downed or v1) and AssemblyLinearVelocity.Y < -40) then
+			v7()
+
+			if not v1 then
+				Events.Player.Ragdoll:FireServer()
+			end
+		end
+
+		if _G.CharacterStates.Ragdolled then
+			if v5.IsPlaying then
+				v5:Play()
+			end
+		elseif v5.IsPlaying then
+			v5:Stop()
+		end
+	end
+
+	if Head then
+		Head.CanCollide = v1
+	end
+end
+
+-- StarterPlayer.StarterCharacterScripts.MovementHandler
+--
+local Humanoid = script.Parent:WaitForChild("Humanoid")
+local v1 = Vector3.new(0, 0, 0)
+local TweenService = game:GetService("TweenService")
+
+game:GetService("RunService").RenderStepped:Connect(function(p1) --[[ Line: 7 | Upvalues: Humanoid (copy), v1 (ref), TweenService (copy) ]]
+	v1 = v1:Lerp(Humanoid.MoveDirection, 9 * p1)
+
+	local v12 = v1.Unit * TweenService:GetValue(v1.Magnitude, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+
+	if v12 ~= v12 or not (v12.Magnitude > 0) then
+		return
+	end
+
+	Humanoid:Move(v12)
+end)
 
 -- StarterPlayer.StarterCharacterScripts.AimAssist
 --
@@ -49223,268 +52319,1901 @@ Leaderboard:WaitForChild("GetLeaderboard").OnClientEvent:Connect(function(p1, p2
 end)
 Leaderboard:WaitForChild("GetLeaderboard"):FireServer("Donation_Leaderboard", true)
 
--- ReplicatedStorage.Mods.GuiSlider
+-- StarterGui.HeatVision.HeatVisionCore
 --
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+
+game:GetService("TweenService")
+
+local CollectionService = game:GetService("CollectionService")
+local RunService = game:GetService("RunService")
+local CurrentCamera = workspace.CurrentCamera
+local LocalPlayer = Players.LocalPlayer
+
+if not LocalPlayer.Character then
+	LocalPlayer.CharacterAdded:Wait()
+end
+
+local Mods = ReplicatedStorage:WaitForChild("Mods")
+local GlowRig = script:WaitForChild("GlowRig")
+local v1 = script.Parent
+local ViewportFrame = v1:WaitForChild("ViewportFrame")
+local Overlay = v1:WaitForChild("Overlay")
+local Raycast = require(Mods:WaitForChild("Raycast"))
 local t = {}
+local Camera = Instance.new("Camera")
 
-t.__index = t
+Camera.FieldOfView = 5
+Camera.Parent = script.Parent
+ViewportFrame.CurrentCamera = Camera
 
-local UserInputService = game:GetService("UserInputService")
-local Mods = game.ReplicatedStorage:WaitForChild("Mods")
-local v1 = game.Players.LocalPlayer:GetMouse()
-local FormatNumber = require(Mods:WaitForChild("FormatNumber"))
+local function AddTarget(p1) --[[ AddTarget | Line: 40 | Upvalues: LocalPlayer (copy), GlowRig (copy), ViewportFrame (copy), t (copy) ]]
+	local HumanoidRootPart = p1:WaitForChild("HumanoidRootPart", 2)
+	local Humanoid = p1:WaitForChild("Humanoid", 2)
 
-function t.New(p1, p2, p3, p4, p5, p6, p7, p8) --[[ New | Line: 24 | Upvalues: t (copy) ]]
+	if not (HumanoidRootPart and Humanoid) then
+		return
+	end
+
+	if LocalPlayer.Character == p1 then
+		return
+	end
+
+	if p1:GetAttribute("ProtectFromPlayers") then
+		return
+	end
+
+	if Humanoid:GetAttribute("Died") then
+		return
+	end
+
 	local t2 = {}
 
-	setmetatable(t2, t)
-	t2.Value = p3 or p4
-	t2.MinValue = p4
-	t2.MaxValue = p5
-	t2.MaxDecimals = p6
-	t2.FillDirection = p7
-	t2.Enabled = true
-	t2.EventFunctions = if p8 then p8 else {}
-	t2.SliderFrame = p2
-	t2.DisabledFrame = p2:FindFirstChild("Disabled")
-	t2.ValueText = p2:FindFirstChild("Value")
-	t2.MinText = p2:FindFirstChild("Min")
-	t2.MaxText = p2:FindFirstChild("Max")
-	t2.Bar = p2:FindFirstChild("Bar")
-	t2.Connections = {}
-	table.insert(t2.Connections, p2.MouseButton1Down:Connect(function() --[[ Line: 54 | Upvalues: t2 (copy) ]]
-		t2:StartSliding()
-	end))
-	t2:Update()
+	for k, v in pairs(GlowRig:GetChildren()) do
+		local v1 = p1:FindFirstChild(v.Name)
 
-	return t2
-end
-function t.Update(p1) --[[ Update | Line: 66 ]]
-	local v2 = ((p1.RawValue or p1.Value) - p1.MinValue) / (p1.MaxValue - p1.MinValue)
+		if v1 then
+			local v2 = v:Clone()
 
-	if p1.Bar then
-		p1.Bar.Size = p1.FillDirection == "Y" and UDim2.new(1, 0, v2, 0) or UDim2.new(v2, 0, 1, 0)
-	end
-
-	if p1.ValueText then
-		p1.ValueText.Text = p1.Value
-	end
-
-	if p1.MinText then
-		p1.MinText.Text = p1.MinText
-	end
-
-	if p1.MaxText then
-		p1.MaxText.Text = p1.MaxText
-	end
-
-	if not p1.EventFunctions.AfterUpdate then
-		return
-	end
-
-	p1.EventFunctions.AfterUpdate(p1)
-end
-function t.SetValue(p1, p2) --[[ SetValue | Line: 85 | Upvalues: FormatNumber (copy) ]]
-	p1.Sliding = false
-	p1.Value = FormatNumber.Round(math.clamp(p2, p1.MinValue, p1.MaxValue), p1.MaxDecimals)
-	p1:Update()
-end
-function t.ToggleEnabled(p1, p2) --[[ ToggleEnabled | Line: 97 ]]
-	p1.Enabled = p2
-	p1.Sliding = false
-
-	if not p1.DisabledFrame then
-		return
-	end
-
-	p1.DisabledFrame.Visible = not p2
-end
-function t.StartSliding(p1) --[[ StartSliding | Line: 110 | Upvalues: UserInputService (copy), v1 (copy), FormatNumber (copy) ]]
-	if p1.Sliding then
-		return
-	end
-
-	if not p1.Enabled then
-		return
-	end
-
-	p1.Sliding = true
-
-	while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsGamepadButtonDown(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonA) do
-		if not p1.Sliding then
-			break
+			v2.Transparency = 1
+			v2.Parent = ViewportFrame
+			table.insert(t2, {
+				Hidden = true,
+				Limb = v2,
+				TargetLimb = v1
+			})
 		end
-
-		local count = math.clamp((v1[p1.FillDirection] - p1.SliderFrame.AbsolutePosition[p1.FillDirection]) / p1.SliderFrame.AbsoluteSize[p1.FillDirection], 0, 1)
-
-		if p1.FillDirection == "Y" then
-			count = 1 - count
-		end
-
-		p1.RawValue = FormatNumber.Lerp(p1.MinValue, p1.MaxValue, count)
-		p1.Value = FormatNumber.Round(p1.RawValue, p1.MaxDecimals)
-		p1:Update()
-		task.wait()
 	end
 
-	task.delay(0.25, function() --[[ Line: 135 | Upvalues: p1 (copy) ]]
-		p1.Sliding = false
-	end)
-	p1.RawValue = nil
-	p1:Update()
+	t[p1] = {
+		Humanoid = Humanoid,
+		RootPart = HumanoidRootPart,
+		LimbsToReplicate = t2
+	}
+end
 
-	if not p1.EventFunctions.AfterSlide then
+local v2 = false
+local v3 = nil
+
+for k, v in pairs(CollectionService:GetTagged("Hitbox")) do
+	AddTarget(v)
+end
+
+CollectionService:GetInstanceAddedSignal("Hitbox"):Connect(AddTarget)
+
+local function RemoveTarget(p1) --[[ RemoveTarget | Line: 85 | Upvalues: t (copy) ]]
+	if not t[p1] then
 		return
 	end
 
-	p1.EventFunctions.AfterSlide(p1)
-end
-function t.CleanUp(p1) --[[ CleanUp | Line: 143 ]]
-	for k, v in pairs(p1.Connections) do
-		v:Disconnect()
+	for k, v in pairs(t[p1].LimbsToReplicate) do
+		v.Limb:Destroy()
 	end
+
+	t[p1] = nil
 end
 
-return t
+CollectionService:GetInstanceRemovedSignal("Hitbox"):Connect(RemoveTarget)
+CurrentCamera.ChildAdded:Connect(function(p1) --[[ Line: 97 | Upvalues: v1 (copy), v3 (ref), Camera (copy), Overlay (copy), ViewportFrame (copy) ]]
+	local WeaponRootPart = p1:FindFirstChild("WeaponRootPart")
 
--- ReplicatedStorage.Mods.FastCast.Signal
+	if not WeaponRootPart then
+		return
+	end
+
+	if not WeaponRootPart:GetAttribute("HeatVisionEnabled") then
+		return
+	end
+
+	local SightScreens = p1:FindFirstChild("SightScreens")
+
+	if not SightScreens then
+		return
+	end
+
+	for k, v in pairs(SightScreens:GetChildren()) do
+		if v:GetAttribute("HeatVision") then
+			v1.Adornee = v
+			v3 = p1
+			Camera.FieldOfView = v:GetAttribute("VisionFOV") or 5
+			Overlay.BackgroundColor3 = v:GetAttribute("VisionColor") or Color3.new(255/255, 0/255, 0/255)
+			ViewportFrame.ImageColor3 = v:GetAttribute("VisionColor") or Color3.new(255/255, 0/255, 0/255)
+			Overlay.UICorner.CornerRadius = v:GetAttribute("VisionCornerRadius") or UDim.new(0, 0)
+			ViewportFrame.UICorner.CornerRadius = v:GetAttribute("VisionCornerRadius") or UDim.new(0, 0)
+
+			return
+		end
+	end
+end)
+CurrentCamera.ChildRemoved:Connect(function(p1) --[[ Line: 133 | Upvalues: v3 (ref) ]]
+	if v3 ~= p1 then
+		return
+	end
+
+	v3 = false
+end)
+RunService.Heartbeat:Connect(function() --[[ Line: 141 | Upvalues: v2 (ref), v1 (copy), v3 (ref), CurrentCamera (copy), Camera (copy), t (copy), Raycast (copy) ]]
+	if _G.CharacterStates.Aiming and not v2 then
+		v2 = true
+		v1.Enabled = true
+	elseif not _G.CharacterStates.Aiming and v2 then
+		v2 = false
+		v1.Enabled = false
+	end
+
+	if not (v2 and v3) then
+		return
+	end
+
+	local v12 = CurrentCamera.CFrame
+	local Position = CurrentCamera.CFrame.Position
+
+	Camera.CFrame = v12
+
+	for k, v in pairs(t) do
+		local v22 = if (Position - v.RootPart.Position).Magnitude < 200 then true else false
+		local v4 = v22 and (if v12.LookVector:Dot((v.RootPart.Position - Position).Unit) >= 0.9 then true else false)
+
+		for k2, v5 in pairs(v.LimbsToReplicate) do
+			if (if v4 then Raycast.CastRay(Position, v5.TargetLimb.Position - Position, {
+	Transparency = 1,
+	Custom = function(p1) --[[ Custom | Line: 177 ]]
+		return p1.Transparency >= 0.2
+	end
+}, {
+	CurrentCamera,
+	k,
+	workspace.NPCs,
+	workspace.Chars
+}) else v4) or not v4 then
+				if not v5.Hidden then
+					v5.Hidden = true
+					v5.Limb.Transparency = 1
+				end
+
+				continue
+			end
+
+			if v5.Hidden then
+				v5.Hidden = false
+				v5.Limb.Transparency = 0
+			end
+
+			v5.Limb.CFrame = v5.TargetLimb.CFrame
+		end
+	end
+end)
+
+-- ReplicatedStorage.Mods.CosmeticDatabase.Skins
 --
-require(script.Parent.TypeDefinitions)
+return {
+	Katana_Potassium = {
+		Title = "Potassium",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "Katana",
+		Target = "Katana_Potassium",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Bat_JadeStone = {
+		Title = "Jade Stone",
+		Description = nil,
+		Type = "Common",
+		Weapon = "Bat",
+		Target = "Bat_JadeStone",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Bat_Bat = {
+		Title = "Bat Bat",
+		Description = nil,
+		Type = "Exotic",
+		Weapon = "Bat",
+		Target = "Bat_Bat",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Rendbreaker_Crushspire = {
+		Title = "Crushspire",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "Rendbreaker",
+		Target = "Rendbreaker_Crushspire",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Sledgehammer_VoidLily = {
+		Title = "Void Lily",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "Sledgehammer",
+		Target = "Sledgehammer_VoidLily",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Sledgehammer_Faultline = {
+		Title = "Faultline",
+		Description = nil,
+		Type = "Common",
+		Weapon = "Sledgehammer",
+		Target = "Sledgehammer_Faultline",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Rendbreaker_EclipsisUltima = {
+		Title = "Eclipsis Ultima",
+		Description = nil,
+		Type = "Exotic",
+		Weapon = "Rendbreaker",
+		Target = "Rendbreaker_EclipsisUltima",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Greataxe_Fallsplitter = {
+		Title = "Fallsplitter",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "Greataxe",
+		Target = "Greataxe_Fallsplitter",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Greataxe_Rimecutter = {
+		Title = "Rimecutter",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "Greataxe",
+		Target = "Greataxe_Rimecutter",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Bat_EchoShard = {
+		Title = "Echo Shard",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "Bat",
+		Target = "Bat_EchoShard",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Bat_Bloodroot = {
+		Title = "Bloodroot",
+		Description = nil,
+		Type = "Common",
+		Weapon = "Bat",
+		Target = "Bat_Bloodroot",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Spear_Gravedancer = {
+		Title = "Gravedancer",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "Spear",
+		Target = "Spear_Gravedancer",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Spear_Atlantic = {
+		Title = "Atlantic",
+		Description = nil,
+		Type = "Exotic",
+		Weapon = "Spear",
+		Target = "Spear_Atlantic",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	TacticalKnife_Nocturnal = {
+		Title = "Nocturnal",
+		Description = nil,
+		Type = "Common",
+		Weapon = "Tactical Knife",
+		Target = "TacticalKnife_Nocturnal",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Tomahawk_Starbreaker = {
+		Title = "Starbreaker",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "Tomahawk",
+		Target = "Tomahawk_Starbreaker",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Tomahawk_Magma = {
+		Title = "Magma",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "Tomahawk",
+		Target = "Tomahawk_Magma",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Tomahawk_ObsidianCrown = {
+		Title = "Obsidian Crown",
+		Description = nil,
+		Type = "Legendary",
+		Weapon = "Tomahawk",
+		Target = "Tomahawk_ObsidianCrown",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	TacticalKnife_Stormblade = {
+		Title = "Stormblade",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "Tactical Knife",
+		Target = "TacticalKnife_Stormblade",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Katana_Kagutsuchi = {
+		Title = "Kagutsuchi",
+		Description = nil,
+		Type = "Legendary",
+		Weapon = "Katana",
+		Target = "Katana_Kagutsuchi",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Katana_Inazuma = {
+		Title = "Inazuma",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "Katana",
+		Target = "Katana_Kurohama",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Katana_BloodSurge = {
+		Title = "Blood Surge",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "Katana",
+		Target = "Katana_BloodSurge",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Spear_Nebula = {
+		Title = "Nebula",
+		Description = nil,
+		Type = "Common",
+		Weapon = "Spear",
+		Target = "Spear_Nebula",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Greataxe_Noble = {
+		Title = "Noble",
+		Description = nil,
+		Type = "Common",
+		Weapon = "Greataxe",
+		Target = "Greataxe_Noble",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35,
+			ModelOffset = CFrame.Angles(math.pi, 0, 0)
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["PK-500_SovereignBloom"] = {
+		Title = "Sovereign Bloom",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "PK-500",
+		Target = "PK-500_SovereignBloom",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	RPK_GildedTimber = {
+		Title = "Gilded Timber",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "RPK",
+		Target = "RPK_GildedTimber",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	RPK_Peppermint = {
+		Title = "Peppermint",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "RPK",
+		Target = "RPK_Peppermint",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["MAC-11_Gridlock"] = {
+		Title = "Gridlock",
+		Description = nil,
+		Type = "Common",
+		Weapon = "MAC-11",
+		Target = "MAC-11_Gridlock",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["MAC-11_Mikagami"] = {
+		Title = "Mikagami",
+		Description = "Art commissioned from: @omusu6i on Roblox",
+		Type = "Rare",
+		Weapon = "MAC-11",
+		Target = "MAC-11_Mikagami",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	JUDGE_DrownedEmber = {
+		Title = "Drowned Ember",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "JUDGE",
+		Target = "JUDGE_DrownedEmber",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	JUDGE_Winner = {
+		Title = "WINNER",
+		Description = nil,
+		Type = "Legendary",
+		Weapon = "JUDGE",
+		Target = "JUDGE_Winner",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	G18_ForestCamo = {
+		Title = "Forest Camo",
+		Description = nil,
+		Type = "Common",
+		Weapon = "G18",
+		Target = "G18_ForestCamo",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	G18_SemiAuto = {
+		Title = "Semi-Auto",
+		Description = nil,
+		Type = "Legendary",
+		Weapon = "G18",
+		Target = "G18_SemiAuto",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Deagle_CandyApple = {
+		Title = "Candy Apple",
+		Description = nil,
+		Type = "Common",
+		Weapon = "Deagle",
+		Target = "Deagle_CandyApple",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	AK47_ColdSteel = {
+		Title = "Cold Steel",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "AK-47",
+		Target = "AK47_ColdSteel",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["SCAR-17_Ghostwire"] = {
+		Title = "Ghostwire",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "SCAR-17",
+		Target = "SCAR-17_Ghostwire",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["SCAR-20_Ghostwire"] = {
+		Title = "Ghostwire",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "SCAR-20",
+		Target = "SCAR-20_Ghostwire",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	G18_Noir = {
+		Title = "Noir",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "G18",
+		Target = "G18_Noir",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["AR-BT3_GrayCamo"] = {
+		Title = "Gray Camo",
+		Description = nil,
+		Type = "Common",
+		Weapon = "AR-BT3",
+		Target = "AR-BT3_GrayCamo",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["SRG-1_CandyCorn"] = {
+		Title = "Candy Corn",
+		Description = nil,
+		Type = "Exotic",
+		Weapon = "SRG-1",
+		Target = "SRG-1_CandyCorn",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	AK47_Greed = {
+		Title = "Greed",
+		Description = nil,
+		Type = "Legendary",
+		Weapon = "AK-47",
+		Target = "AK47_Greed",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	AK47_Photonic = {
+		Title = "Photonic",
+		Description = nil,
+		Type = "Exotic",
+		Weapon = "AK-47",
+		Target = "AK47_Photonic",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	MP5_Camoflora = {
+		Title = "Camoflora",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "MP5",
+		Target = "MP5_Camoflora",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	M1911_Judgment = {
+		Title = "Judgment",
+		Description = nil,
+		Type = "Legendary",
+		Weapon = "M1911",
+		Target = "M1911_Judgment",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["GL-06_ScorchedEarth"] = {
+		Title = "Scorched Earth",
+		Description = nil,
+		Type = "Legendary",
+		Weapon = "GL-06",
+		Target = "GL-06_ScorchedEarth",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Deagle_Moire = {
+		Title = "MOIR\195\137",
+		Description = nil,
+		Type = "Common",
+		Weapon = "Deagle",
+		Target = "Deagle_Moire",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["PK-500_Clouds"] = {
+		Title = "Clouds",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "PK-500",
+		Target = "PK-500_Clouds",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Crossbow_ZeroEmber = {
+		Title = "Zero Ember",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "Crossbow",
+		Target = "Crossbow_ZeroEmber",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Crossbow_Masquerade = {
+		Title = "Masquerade",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "Crossbow",
+		Target = "Crossbow_Masquerade",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	UZI_Beehive = {
+		Title = "Beehive",
+		Description = nil,
+		Type = "Common",
+		Weapon = "UZI",
+		Target = "UZI_Beehive",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	G17_Warfade = {
+		Title = "Warfade",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "G17",
+		Target = "G17_Warfade",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["SCAR-20_LightTide"] = {
+		Title = "Light Tide",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "SCAR-20",
+		Target = "SCAR-20_LightTide",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["SCAR-17_DarkTide"] = {
+		Title = "Dark Tide",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "SCAR-17",
+		Target = "SCAR-17_DarkTide",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["UMP-45_Sunset"] = {
+		Title = "Sunset",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "UMP-45",
+		Target = "UMP-45_Sunset",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	JUDGE_Poison = {
+		Title = "Poison",
+		Description = nil,
+		Type = "Common",
+		Weapon = "JUDGE",
+		Target = "JUDGE_Poison",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	G3_PolarMatrix = {
+		Title = "Polar Matrix",
+		Description = nil,
+		Type = "Common",
+		Weapon = "G3",
+		Target = "G3_PolarMatrix",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	G3_RedSpace = {
+		Title = "Red Space",
+		Description = nil,
+		Type = "Common",
+		Weapon = "G3",
+		Target = "G3_RedSpace",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["SPAS-12_Ravage"] = {
+		Title = "Ravage",
+		Description = nil,
+		Type = "Common",
+		Weapon = "SPAS-12",
+		Target = "SPAS-12_Ravage",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["RPG-7_Aqueous"] = {
+		Title = "Aqueous",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "RPG-7",
+		Target = "RPG-7_Aqueous",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["RPG-7_Cobrocket"] = {
+		Title = "Cobrocket",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "RPG-7",
+		Target = "RPG-7_Cobrocket",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["SCAR-20_DarkTide"] = {
+		Title = "Dark Tide",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "SCAR-20",
+		Target = "SCAR-20_DarkTide",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["SCAR-17_LightTide"] = {
+		Title = "Light Tide",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "SCAR-17",
+		Target = "SCAR-17_LightTide",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	M79_DangerZone = {
+		Title = "Danger Zone",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "M79",
+		Target = "M79_DangerZone",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	M79_ToxicTube = {
+		Title = "Toxic Tube",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "M79",
+		Target = "M79_ToxicTube",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	UZI_Meltdown = {
+		Title = "Meltdown",
+		Description = nil,
+		Type = "Common",
+		Weapon = "UZI",
+		Target = "UZI_Meltdown",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Famas_Gearlock = {
+		Title = "Gearlock",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "FAMAS",
+		Target = "Famas_Gearlock",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["TAC-14_CrimsonReaper"] = {
+		Title = "Crimson Reaper",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "TAC-14",
+		Target = "TAC-14_CrimsonReaper",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["PK-500_Drowned"] = {
+		Title = "Drowned",
+		Description = nil,
+		Type = "Common",
+		Weapon = "PK-500",
+		Target = "PK-500_Drowned",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	AWM_ElderScale = {
+		Title = "Elder Scale",
+		Description = nil,
+		Type = "Legendary",
+		Weapon = "AWM",
+		Target = "AWM_ElderScale",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	AWM_PurpleFlame = {
+		Title = "Purple Flame",
+		Description = nil,
+		Type = "Exotic",
+		Weapon = "AWM",
+		Target = "AWM_PurpleFlame",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	M1911_Monochrome = {
+		Title = "Monochrome",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "M1911",
+		Target = "M1911_Monochrome",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["ZX-65_Mist"] = {
+		Title = "Mist",
+		Description = nil,
+		Type = "Common",
+		Weapon = "ZX-65",
+		Target = "ZX-65_Mist",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["ZX-65_Donut"] = {
+		Title = "Donut",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "ZX-65",
+		Target = "ZX-65_Donut",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["UMP-45_ForestCamo"] = {
+		Title = "Forest Camo",
+		Description = nil,
+		Type = "Common",
+		Weapon = "UMP-45",
+		Target = "UMP-45_ForestCamo",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	M4A1_TidalWave = {
+		Title = "Tidal Wave",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "M4A1",
+		Target = "M4A1_TidalWave",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	M4A1_DesertBreeze = {
+		Title = "Desert Breeze",
+		Description = nil,
+		Type = "Common",
+		Weapon = "M4A1",
+		Target = "M4A1_DesertBreeze",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	M4A1_Hydroline = {
+		Title = "Hydroline",
+		Description = nil,
+		Type = "Exotic",
+		Weapon = "M4A1",
+		Target = "M4A1_Hydroline",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Deagle_Patriot = {
+		Title = "Patriot",
+		Description = nil,
+		Type = "Exotic",
+		Weapon = "Deagle",
+		Target = "Deagle_Patriot",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	MP5_Voidflame = {
+		Title = "Voidflame",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "MP5",
+		Target = "MP5_Voidflame",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	M24_RedCherry = {
+		Title = "Red Cherry",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "M24",
+		Target = "M24_RedCherry",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	G17_Slideback = {
+		Title = "Slideback",
+		Description = nil,
+		Type = "Common",
+		Weapon = "G17",
+		Target = "G17_Slideback",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	AK47_Obsidian = {
+		Title = "Obsidian",
+		Description = nil,
+		Type = "Common",
+		Weapon = "AK-47",
+		Target = "AK47_Obsidian",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	Famas_BloodSurge = {
+		Title = "Blood Surge",
+		Description = nil,
+		Type = "Rare",
+		Weapon = "FAMAS",
+		Target = "Famas_BloodSurge",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	GalilAce11_ShadowIvy = {
+		Title = "Shadow Ivy",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "GALIL ACE 11",
+		Target = "GalilAce11_ShadowIvy",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["725_Hotrod"] = {
+		Title = "Hotrod",
+		Description = nil,
+		Type = "Exotic",
+		Weapon = "725",
+		Target = "725_Hotrod",
+		Skin = {
+			Shell1 = {
+				Type = "MeshPart",
+				TextureID = "",
+				Material = Enum.Material.Neon,
+				Color = Color3.fromRGB(181, 57, 0)
+			},
+			Shell2 = {
+				Type = "MeshPart",
+				TextureID = "",
+				Material = Enum.Material.Neon,
+				Color = Color3.fromRGB(181, 57, 0)
+			}
+		},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["725_WhiteCamo"] = {
+		Title = "White Camo",
+		Description = nil,
+		Type = "Common",
+		Weapon = "725",
+		Target = "725_WhiteCamo",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	},
+	["725_Sleighshot"] = {
+		Title = "Sleighshot",
+		Description = nil,
+		Type = "Uncommon",
+		Weapon = "725",
+		Target = "725_Sleighshot",
+		Skin = {},
+		Settings = {
+			FieldOfView = 35
+		},
+		Price = {},
+		Events = {},
+		Animations = {},
+		Items = {},
+		Rigs = {}
+	}
+}
 
-local TestService = game:GetService("TestService")
-local Table = require(script.Parent.Table)
+-- StarterPlayer.StarterPlayerScripts.RbxCharacterSounds.AtomicBinding
+--
+local function parsePath(p1) --[[ parsePath | Line: 4 ]]
+	local v1 = string.split(p1, "/")
+
+	for i = #v1, 1, -1 do
+		if v1[i] == "" then
+			table.remove(v1, i)
+		end
+	end
+
+	return v1
+end
+
+local function isManifestResolved(p1, p2) --[[ isManifestResolved | Line: 14 ]]
+	local count = 0
+
+	for k in pairs(p1) do
+		count = count + 1
+	end
+
+	assert(count <= p2, count)
+
+	return count == p2
+end
+
+local function v1(p1, p2) --[[ unbindNodeDescend | Line: 24 | Upvalues: v1 (copy) ]]
+	if p1.instance == nil then
+		return
+	end
+
+	p1.instance = nil
+
+	local connections = p1.connections
+
+	if connections then
+		for i, v in ipairs(connections) do
+			v:Disconnect()
+		end
+
+		table.clear(connections)
+	end
+
+	if p2 and p1.alias then
+		p2[p1.alias] = nil
+	end
+
+	local children = p1.children
+
+	if not children then
+		return
+	end
+
+	for k, v in pairs(children) do
+		v1(v, p2)
+	end
+end
+
 local t = {}
 
 t.__index = t
-t.__type = "Signal"
+function t.new(p1, p2) --[[ new | Line: 54 | Upvalues: parsePath (copy), t (copy) ]]
+	local t2 = {}
+	local count = 1
 
-local t2 = {}
+	for k, v in pairs(p1) do
+		t2[k] = parsePath(v)
+		count = count + 1
+	end
 
-t2.__index = t2
-t2.__type = "SignalConnection"
-function t.new(p1) --[[ new | Line: 44 | Upvalues: t (copy) ]]
 	return setmetatable({
-		Name = p1,
-		Connections = {},
-		YieldingThreads = {}
+		_boundFn = p2,
+		_parsedManifest = t2,
+		_manifestSizeTarget = count,
+		_dtorMap = {},
+		_connections = {},
+		_rootInstToRootNode = {},
+		_rootInstToManifest = {}
 	}, t)
 end
+function t._startBoundFn(p1, p2, p3) --[[ _startBoundFn | Line: 80 ]]
+	local _dtorMap = p1._dtorMap
+	local v1 = _dtorMap[p2]
 
-local function NewConnection(p1, p2) --[[ NewConnection | Line: 53 | Upvalues: t2 (copy) ]]
-	return setmetatable({
-		Index = -1,
-		Signal = p1,
-		Delegate = p2
-	}, t2)
-end
+	if v1 then
+		v1()
+		_dtorMap[p2] = nil
+	end
 
-local function ThreadAndReportError(p1, p2, p3) --[[ ThreadAndReportError | Line: 62 | Upvalues: TestService (copy) ]]
-	local v1 = coroutine.create(function() --[[ Line: 63 | Upvalues: p1 (copy), p2 (copy) ]]
-		p1(unpack(p2))
-	end)
-	local v2, v3 = coroutine.resume(v1)
+	local v2 = p1._boundFn(p3)
 
-	if v2 then
+	if not v2 then
 		return
 	end
 
-	TestService:Error(string.format("Exception thrown in your %s event handler: %s", p3, v3))
-	TestService:Checkpoint(debug.traceback(v1))
+	_dtorMap[p2] = v2
 end
+function t._stopBoundFn(p1, p2) --[[ _stopBoundFn | Line: 96 ]]
+	local _dtorMap = p1._dtorMap
+	local v1 = _dtorMap[p2]
 
-function t.Connect(p1, p2) --[[ Connect | Line: 75 | Upvalues: t (copy), t2 (copy), Table (copy) ]]
-	assert(if getmetatable(p1) == t then true else false, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("Connect", "Signal.new()"))
+	if not v1 then
+		return
+	end
 
-	local v3 = setmetatable({
-		Index = -1,
-		Signal = p1,
-		Delegate = p2
-	}, t2)
-
-	v3.Index = #p1.Connections + 1
-	Table.insert(p1.Connections, v3.Index, v3)
-
-	return v3
+	v1()
+	_dtorMap[p2] = nil
 end
-function t.Fire(p1, ...) --[[ Fire | Line: 83 | Upvalues: t (copy), Table (copy), ThreadAndReportError (copy) ]]
-	assert(getmetatable(p1) == t, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("Fire", "Signal.new()"))
+function t.bindRoot(p1, p2) --[[ bindRoot | Line: 106 | Upvalues: v1 (copy) ]]
+	debug.profilebegin("AtomicBinding:BindRoot")
 
-	local v2 = Table.pack(...)
-	local Connections = p1.Connections
-	local YieldingThreads = p1.YieldingThreads
+	local _parsedManifest = p1._parsedManifest
+	local _rootInstToManifest = p1._rootInstToManifest
+	local _manifestSizeTarget = p1._manifestSizeTarget
 
-	for i = 1, #Connections do
-		local v3 = Connections[i]
+	assert(_rootInstToManifest[p2] == nil)
 
-		if v3.Delegate ~= nil then
-			ThreadAndReportError(v3.Delegate, v2, v3.Signal.Name)
+	local t = {}
+
+	_rootInstToManifest[p2] = t
+	debug.profilebegin("BuildTree")
+
+	local t2 = {
+		alias = "root",
+		instance = p2
+	}
+
+	if next(_parsedManifest) then
+		t2.children = {}
+		t2.connections = {}
+	end
+
+	p1._rootInstToRootNode[p2] = t2
+
+	for k, v in pairs(_parsedManifest) do
+		local v2 = t2
+
+		for i, v3 in ipairs(v) do
+			local v4 = v2.children[v3] or {}
+
+			if if i == #v then true else false then
+				if v4.alias ~= nil then
+					error("Multiple aliases assigned to one instance")
+				end
+
+				v4.alias = k
+			else
+				v4.children = v4.children or {}
+				v4.connections = v4.connections or {}
+			end
+
+			v2.children[v3] = v4
+			v2 = v4
 		end
 	end
 
-	for j = 1, #YieldingThreads do
-		local v4 = YieldingThreads[j]
+	debug.profileend()
 
-		if v4 ~= nil then
-			coroutine.resume(v4, ...)
+	local function v7(p12) --[[ processNode | Line: 160 | Upvalues: t (copy), v7 (copy), p1 (copy), p2 (copy), v1 (ref), _manifestSizeTarget (copy) ]]
+		local v12 = assert(p12.instance)
+		local children = p12.children
+		local alias = p12.alias
+		local v2 = not children
+
+		if alias then
+			t[alias] = v12
 		end
-	end
-end
-function t.FireSync(p1, ...) --[[ FireSync | Line: 103 | Upvalues: t (copy), Table (copy) ]]
-	assert(getmetatable(p1) == t, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("FireSync", "Signal.new()"))
 
-	local v2 = Table.pack(...)
-	local Connections = p1.Connections
-	local YieldingThreads = p1.YieldingThreads
+		if not v2 then
+			local function processAddChild(p1) --[[ processAddChild | Line: 172 | Upvalues: children (copy), v7 (ref) ]]
+				local v1 = children[p1.Name]
 
-	for i = 1, #Connections do
-		local v3 = Connections[i]
+				if v1 and v1.instance == nil then
+					v1.instance = p1
+					v7(v1)
+				end
+			end
 
-		if v3.Delegate ~= nil then
-			v3.Delegate(unpack(v2))
+			local function processDeleteChild(p12) --[[ processDeleteChild | Line: 183 | Upvalues: children (copy), p1 (ref), p2 (ref), v1 (ref), t (ref), v12 (copy), v7 (ref) ]]
+				local v13 = p12.Name
+				local v2 = children[v13]
+
+				if not v2 then
+					return
+				end
+
+				if v2.instance ~= p12 then
+					return
+				end
+
+				p1:_stopBoundFn(p2)
+				v1(v2, t)
+				assert(v2.instance == nil)
+
+				local v3 = v12:FindFirstChild(v13)
+
+				if not v3 then
+					return
+				end
+
+				local v4 = children[v3.Name]
+
+				if not v4 then
+					return
+				end
+
+				if v4.instance ~= nil then
+					return
+				end
+
+				v4.instance = v3
+				v7(v4)
+			end
+
+			for i, v in ipairs(v12:GetChildren()) do
+				local v3 = children[v.Name]
+
+				if v3 and v3.instance == nil then
+					v3.instance = v
+					v7(v3)
+				end
+			end
+
+			table.insert(p12.connections, v12.ChildAdded:Connect(processAddChild))
+			table.insert(p12.connections, v12.ChildRemoved:Connect(processDeleteChild))
 		end
-	end
 
-	for j = 1, #YieldingThreads do
-		local v4 = YieldingThreads[j]
-
-		if v4 ~= nil then
-			coroutine.resume(v4, ...)
+		if not v2 then
+			return
 		end
-	end
-end
-function t.Wait(p1) --[[ Wait | Line: 123 | Upvalues: t (copy), Table (copy) ]]
-	assert(getmetatable(p1) == t, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("Wait", "Signal.new()"))
 
-	local v2 = coroutine.running()
+		local v4 = t
+		local v5 = _manifestSizeTarget
+		local count = 0
 
-	Table.insert(p1.YieldingThreads, v2)
+		for k in pairs(v4) do
+			count = count + 1
+		end
 
-	local t2 = { coroutine.yield() }
+		assert(count <= v5, count)
 
-	Table.removeObject(p1.YieldingThreads, v2)
+		if not (count == v5) then
+			return
+		end
 
-	return unpack(t2)
-end
-function t.Dispose(p1) --[[ Dispose | Line: 133 | Upvalues: t (copy) ]]
-	assert(getmetatable(p1) == t, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("Dispose", "Signal.new()"))
-
-	local Connections = p1.Connections
-
-	for i = 1, #Connections do
-		Connections[i]:Disconnect()
+		p1:_startBoundFn(p2, t)
 	end
 
-	p1.Connections = {}
-	setmetatable(p1, nil)
+	debug.profilebegin("ResolveTree")
+	v7(t2)
+	debug.profileend()
+	debug.profileend()
 end
-function t2.Disconnect(p1) --[[ Disconnect | Line: 143 | Upvalues: t2 (copy), Table (copy) ]]
-	assert(getmetatable(p1) == t2, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("Disconnect", "private function NewConnection()"))
-	Table.remove(p1.Signal.Connections, p1.Index)
-	p1.SignalStatic = nil
-	p1.Delegate = nil
-	p1.YieldingThreads = {}
-	p1.Index = -1
-	setmetatable(p1, nil)
+function t.unbindRoot(p1, p2) --[[ unbindRoot | Line: 236 | Upvalues: v1 (copy) ]]
+	local _rootInstToRootNode = p1._rootInstToRootNode
+	local _rootInstToManifest = p1._rootInstToManifest
+
+	p1:_stopBoundFn(p2)
+
+	local v12 = _rootInstToRootNode[p2]
+
+	if v12 then
+		v1(v12, (assert(_rootInstToManifest[p2])))
+		_rootInstToRootNode[p2] = nil
+	end
+
+	_rootInstToManifest[p2] = nil
+end
+function t.destroy(p1) --[[ destroy | Line: 252 | Upvalues: v1 (copy) ]]
+	debug.profilebegin("AtomicBinding:destroy")
+
+	for k, v in pairs(p1._dtorMap) do
+		v:destroy()
+	end
+
+	table.clear(p1._dtorMap)
+
+	for i, v in ipairs(p1._connections) do
+		v:Disconnect()
+	end
+
+	table.clear(p1._connections)
+
+	local _rootInstToManifest = p1._rootInstToManifest
+
+	for k, v in pairs(p1._rootInstToRootNode) do
+		v1(v, (assert(_rootInstToManifest[k])))
+	end
+
+	table.clear(p1._rootInstToManifest)
+	table.clear(p1._rootInstToRootNode)
+	debug.profileend()
 end
 
 return t
@@ -49492,695 +54221,6 @@ return t
 -- StarterPlayer.StarterPlayerScripts.PlayerScriptsLoader
 --
 require(script.Parent:WaitForChild("PlayerModule"))
-
--- StarterGui.ClimbDebug.ParkourCore
---
-local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
-
-repeat
-	task.wait(0.1)
-until _G.Settings
-
-local LocalPlayer = game.Players.LocalPlayer
-local v1 = LocalPlayer:WaitForChild(game.Players:GetAttribute("PLAYER_STORAGE"))
-local Character = LocalPlayer.Character
-local CurrentCamera = workspace.CurrentCamera
-local HeadPart = Character:WaitForChild("HeadPart")
-
-Character:WaitForChild("Head")
-
-local Torso = Character:WaitForChild("Torso")
-local v2 = Torso:WaitForChild("Left Hip", 1)
-local v3 = Torso:WaitForChild("Right Hip", 1)
-local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
-local Humanoid = Character:WaitForChild("Humanoid")
-local Parkour = game.ReplicatedStorage:WaitForChild("Events"):WaitForChild("Player"):WaitForChild("Parkour")
-
-Torso.CustomPhysicalProperties = PhysicalProperties.new(1.4, 0.3, 0.5, 1, 1)
-
-local t = { workspace.Terrain, workspace:WaitForChild("Debris") }
-local v4 = Instance.new("NumberValue")
-local TweenService = game:GetService("TweenService")
-local v5 = TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
-local Raycast = require(game.ReplicatedStorage:WaitForChild("Mods"):WaitForChild("Raycast"))
-local InputHandler = require(game.ReplicatedStorage:WaitForChild("Mods"):WaitForChild("InputHandler"))
-local v6 = RaycastParams.new()
-
-v6.CollisionGroup = "RayCasts"
-v6.FilterType = Enum.RaycastFilterType.Exclude
-v6.FilterDescendantsInstances = t
-
-local BP = script.BP
-local t2 = {}
-local v7 = false
-local t3 = {}
-local v8 = nil
-
-for k, v in pairs({
-	idle = "rbxassetid://8826774259",
-	swing = "rbxassetid://8827429880",
-	right = "rbxassetid://8830028201",
-	left = "rbxassetid://8829996607",
-	up = "rbxassetid://8997767468",
-	down = "rbxassetid://8998279064",
-	jump = "rbxassetid://8999386188",
-	start = "rbxassetid://8999439300",
-	vault = "rbxassetid://127358344583046"
-}) do
-	local Animation = Instance.new("Animation")
-
-	Animation.AnimationId = v
-	t2[k] = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation)
-end
-
-local t4 = {
-	right = 0.95,
-	left = 0.95,
-	up = 1.4,
-	down = 1.35
-}
-local v9 = false
-local v10 = false
-local v11 = false
-local v12 = false
-local v13 = false
-local v14 = false
-local v15 = false
-local v16 = false
-local v17 = false
-local v18 = nil
-local v19 = nil
-local v20 = false
-local v21 = false
-local v22 = false
-local Air = Enum.Material.Air
-local v23 = CFrame.new()
-
-HumanoidRootPart.ChildAdded:Connect(function(p1) --[[ Line: 97 ]]
-	if p1.Name ~= "ParkourSound" then
-		return
-	end
-
-	task.defer(function() --[[ Line: 99 | Upvalues: p1 (copy) ]]
-		p1:Destroy()
-	end)
-end)
-
-local function GetWalkspeed() --[[ GetWalkspeed | Line: 103 | Upvalues: Humanoid (copy) ]]
-	return math.clamp(Humanoid.WalkSpeed, 0.25, 50)
-end
-
-local function playLoopAnim(p1, p2) --[[ playLoopAnim | Line: 108 | Upvalues: t2 (copy) ]]
-	if not t2[p1] then
-		return
-	end
-
-	if p2 then
-		if t2[p1].IsPlaying == true then
-			t2[p1]:Stop(0.25)
-		end
-	else
-		if t2[p1].IsPlaying ~= false then
-			return
-		end
-
-		t2[p1]:Play(0.25)
-	end
-end
-
-local function getRandom(p1) --[[ getRandom | Line: 122 ]]
-	local v1 = p1:GetChildren()
-
-	return v1[math.random(#v1)]
-end
-
-local function playSound(p1) --[[ playSound | Line: 127 | Upvalues: HumanoidRootPart (copy) ]]
-	if not script.Sounds:FindFirstChild(p1 or "") then
-		return
-	end
-
-	local v1 = script.Sounds[p1]:GetChildren()
-	local v2 = v1[math.random(#v1)]:Clone()
-	local v3 = v2:GetAttribute("Range")
-
-	if v3 then
-		v2.PlaybackSpeed = math.random(v3.Min * 10, v3.Max * 10) / 10
-	end
-
-	v2.Parent = HumanoidRootPart
-	v2:Play()
-	task.delay(5, function() --[[ Line: 136 | Upvalues: v2 (copy) ]]
-		v2:Destroy()
-	end)
-end
-
-local t5 = { "right", "left", "up", "down" }
-
-local function MovementAnimation(p1, p2, p3) --[[ MovementAnimation | Line: 144 | Upvalues: t5 (copy), t4 (copy), Humanoid (copy), t2 (copy) ]]
-	for k, v in pairs(t5) do
-		local v1
-
-		if p3 then
-			v1 = if t4[v] then t4[v] * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16) else 1 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
-			t2[v]:AdjustSpeed(v1)
-
-			continue
-		end
-
-		if v == p1 then
-			if t2[v] and t2[v].IsPlaying == false then
-				t2[v]:Play(0.25)
-			end
-
-			continue
-		end
-
-		if t2[v] and t2[v].IsPlaying == true then
-			t2[v]:Stop(0.25)
-		end
-	end
-end
-
-local function v24(p1, p2) --[[ CastRay | Line: 162 | Upvalues: v6 (copy), t (copy), v24 (copy) ]]
-	local v1 = workspace:Raycast(p1, p2, v6)
-
-	if v1 and (not v1.Instance:GetAttribute("ParkourPart") and (v1.Instance.Anchored == false or (v1.Instance.CanCollide == false or v1.Instance.Transparency == 1))) then
-		table.insert(t, v1.Instance)
-		v6.FilterDescendantsInstances = t
-
-		return v24(p1, p2)
-	end
-
-	return v1
-end
-
-local function MakeDebugAt(p1, p2) --[[ MakeDebugAt | Line: 175 ]] end
-
-local function ActivateBodyM(p1, p2, p3, p4) --[[ ActivateBodyM | Line: 195 | Upvalues: v11 (ref), t2 (copy), Humanoid (copy), Character (copy), v10 (ref), BP (copy), HumanoidRootPart (copy), HeadPart (copy) ]]
-	if v11 == false and p1 then
-		if not p2 then
-			t2.idle:Play(nil, nil, 1 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16))
-		end
-
-		if not p3 then
-			Character:SetAttribute("NT", true)
-		end
-
-		if not p4 then
-			Character:SetAttribute("Parkour", true)
-		end
-
-		v11 = true
-		v10 = true
-		BP.Parent = HumanoidRootPart
-		HeadPart.CanCollide = false
-	else
-		if v11 ~= true or p1 then
-			return
-		end
-
-		t2.idle:Stop()
-		t2.start:Stop()
-		Character:SetAttribute("NT", false)
-		Character:SetAttribute("Parkour", false)
-		v11 = false
-		task.delay(0.1, function() --[[ Line: 217 | Upvalues: v10 (ref) ]]
-			v10 = false
-		end)
-		BP.Parent = script
-		Character:SetAttribute("FpLockPos", nil)
-		Character:SetAttribute("LookAtLock", nil)
-		HeadPart.CanCollide = true
-	end
-end
-
-local function UpdateBodyPosition(p1) --[[ UpdateBodyPosition | Line: 225 | Upvalues: HumanoidRootPart (copy), BP (copy), v11 (ref), Character (copy) ]]
-	HumanoidRootPart.AssemblyLinearVelocity = Vector3.new()
-	HumanoidRootPart.AssemblyAngularVelocity = Vector3.new()
-	BP.Position = (p1 * CFrame.new(0, -2.1, 0.75)).Position
-
-	if not v11 then
-		return
-	end
-
-	Character:SetAttribute("FpLockPos", p1.Position)
-	Character:SetAttribute("LookAtLock", (p1 * CFrame.new(0, 0, -25)).Position)
-end
-
-local function CheckRay(p1) --[[ CheckRay | Line: 237 ]]
-	return if p1 then p1.Instance:GetAttribute("ParkourPart") else p1
-end
-
-local function MoveRayChecks(p1, p2) --[[ MoveRayChecks | Line: 241 | Upvalues: HumanoidRootPart (copy), v24 (copy), v14 (ref), Humanoid (copy) ]]
-	local sum = HumanoidRootPart.Position + Vector3.new(0, 2.5, 0)
-	local v1 = v24(sum + p1, HumanoidRootPart.CFrame.LookVector * 2.5)
-	local v2 = v24(sum + p1 * 2, HumanoidRootPart.CFrame.LookVector * 2.5)
-
-	Color3.new(255/255, 0/255, 0/255)
-	Color3.new(255/255, 255/255, 0/255)
-
-	local v3 = if v1 then v1.Instance:GetAttribute("ParkourPart") else v1
-
-	if v3 and (if v2 then v2.Instance:GetAttribute("ParkourPart") else v2) then
-		return v1
-	end
-
-	if not p2 then
-		return
-	end
-
-	for i = 2, 1, -1 do
-		sum = sum + p1
-		Color3.new(255/255, 255/255, 255/255)
-
-		local v5 = v24(sum, HumanoidRootPart.CFrame.LookVector * 2.5)
-
-		if if v5 then v5.Instance:GetAttribute("ParkourPart") else v5 then
-			v14 = true
-
-			local v7 = task.delay
-
-			v7(0.35 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)), function() --[[ Line: 281 | Upvalues: v14 (ref) ]]
-				v14 = false
-			end)
-
-			return v5
-		end
-	end
-end
-
-local function MoveBody(p1, p2, p3, p4, p5) --[[ MoveBody | Line: 290 | Upvalues: v11 (ref), v12 (ref), v14 (ref), Character (copy), v7 (ref), t2 (copy), BP (copy), Humanoid (copy), MoveRayChecks (copy), v21 (ref), t5 (copy), Parkour (copy), v19 (ref), playSound (copy), v18 (ref), UpdateBodyPosition (copy), MovementAnimation (copy), t3 (copy) ]]
-	if not v11 or (v12 or v14) then
-		return
-	end
-
-	v12 = true
-	Character:SetAttribute("FpLockPosCooldown", true)
-
-	if p5 then
-		v7 = true
-	end
-
-	t2.start:Stop(0.1)
-	BP.P = 15000 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
-
-	local v2 = MoveRayChecks(p1, p2)
-
-	if v2 and v2.Instance:GetAttribute("ParkourLedge") then
-		v21 = true
-
-		for k, v in pairs(t5) do
-			if v == p3 then
-				if t2[v] and t2[v].IsPlaying == false then
-					t2[v]:Play(0.25)
-				end
-
-				continue
-			end
-
-			if t2[v] and t2[v].IsPlaying == true then
-				t2[v]:Stop(0.25)
-			end
-		end
-
-		Parkour:FireServer("Move", v19)
-		playSound("Move")
-		playSound(v18)
-		task.wait(p4)
-
-		local v3 = Vector3.new(v2.Position.X, v2.Instance.Position.Y, v2.Position.Z)
-		local v4 = CFrame.new(v3, v3 - v2.Normal)
-		local Position = v2.Position
-
-		Color3.new(0/255, 0/255, 255/255)
-		UpdateBodyPosition(v4)
-		v21 = false
-	else
-		MovementAnimation()
-		v21 = false
-		table.remove(t3, #t3)
-	end
-
-	if p2 then
-		local v5 = task.wait
-
-		v5(0.4 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
-	else
-		local v6 = task.wait
-
-		v6(0.35 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
-	end
-
-	v7 = false
-	v12 = false
-	Character:SetAttribute("FpLockPosCooldown", nil)
-end
-
-InputHandler.RegisterKeybind(nil, "Parkour_controls", { "Crouch", "Jump" }, true, { "Began" }, function(p1, p2) --[[ Line: 338 | Upvalues: v11 (ref), v17 (ref), v15 (ref), ActivateBodyM (copy), Parkour (copy), v19 (ref), playSound (copy), v8 (ref), Humanoid (copy), v16 (ref), v12 (ref), t2 (copy), HumanoidRootPart (copy), v13 (ref) ]]
-	if not v11 or v17 then
-		return
-	end
-
-	if p2 == "Crouch" then
-		v15 = true
-		ActivateBodyM(false)
-		Parkour:FireServer("LetGo", v19)
-		playSound("LetGo")
-		v8 = nil
-
-		local v1 = task.wait
-
-		v1(0.15 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
-		v15 = false
-
-		return
-	end
-
-	if p2 ~= "Jump" or v16 then
-		return
-	end
-
-	v16 = true
-	v12 = true
-	v15 = true
-	t2.jump:Play(nil, nil, 1.25 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16))
-	game.ReplicatedStorage.SH:Fire(Vector3.new(0, -2.5, 0), 1, 4, 0.25)
-	Parkour:FireServer("Jump", v19)
-	playSound("Jump")
-	v8 = nil
-	task.wait(0.2 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
-	ActivateBodyM(false)
-	HumanoidRootPart:ApplyImpulse((Vector3.new(0, 55 * HumanoidRootPart.AssemblyMass, 0)))
-	task.wait(0.125 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
-	t2.jump:Stop(0.25 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
-	v15 = false
-	v12 = false
-	v16 = false
-	v13 = false
-end)
-InputHandler.RegisterKeybind(nil, "Parkour_vault", { "Jump" }, true, { "Began" }, function() --[[ Line: 375 | Upvalues: v11 (ref), v9 (ref), v10 (ref), HumanoidRootPart (copy), Raycast (copy), playSound (copy), v15 (ref), v12 (ref), v17 (ref), BP (copy), Humanoid (copy), Character (copy), t2 (copy), ActivateBodyM (copy), UpdateBodyPosition (copy) ]]
-	if not _G.Settings.Gameplay.Parkour_vaulting or (v11 or (v9 or (v10 or (not _G.CharacterStates.Sprinting or (_G.CharacterStates.Swinging or (_G.CharacterStates.PreparingSwing or _G.CharacterStates.Reloading)))))) then
-		return
-	end
-
-	local v1 = HumanoidRootPart
-	local LookVector = v1.CFrame.LookVector
-	local v2 = Raycast.CastSphere(v1.Position + Vector3.new(0, -0.5, 0), LookVector * 5, 1, {
-		Anchored = false,
-		CanCollide = false
-	})
-
-	if not v2 or Raycast.CastSphere(v1.Position + Vector3.new(0, 2, 0), LookVector * 10, 1, {
-		Anchored = false,
-		CanCollide = false
-	}) then
-		return
-	end
-
-	local v3 = v2.Position + LookVector / 100
-	local v5 = Raycast.CastRay(Vector3.new(v3.X, v1.Position.Y + 5, v3.Z), Vector3.new(-0, -15, -0), {
-		Anchored = false,
-		CanCollide = false
-	})
-
-	if not v5 then
-		return
-	end
-
-	v9 = true
-	game.ReplicatedStorage.TSH:Fire(1, 2, 0.1)
-
-	local Position = v5.Position
-
-	Color3.fromRGB(100, 0, 255)
-	playSound("Heavy")
-	v15 = true
-	v12 = true
-	v17 = true
-	BP.P = 25000 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
-	Character:SetAttribute("Vaulting", true)
-	t2.vault:Play(0.25, nil, 0.66 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16))
-	ActivateBodyM(true, true, true, true)
-
-	local v8 = CFrame.new
-
-	UpdateBodyPosition(v8(v2.Position, (Vector3.new(v1.Position.X, v2.Position.Y, v1.Position.Z))) * CFrame.new(0, 1.5, 2) * CFrame.Angles(math.pi, 0, 0))
-	task.wait(0.085 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
-	ActivateBodyM(false)
-	Character:SetAttribute("Vaulting", nil)
-	BP.P = 15000 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
-	v15 = false
-	v12 = false
-	v17 = false
-	v9 = false
-end)
-UserInputService.InputBegan:Connect(function(p1, p2) --[[ Line: 420 | Upvalues: t3 (copy), v22 (ref), v20 (ref) ]]
-	if not p2 or _G.CurrentInputType == "Gamepad" then
-		if p1.KeyCode == Enum.KeyCode.D then
-			table.insert(t3, "D")
-		elseif p1.KeyCode == Enum.KeyCode.A then
-			table.insert(t3, "A")
-		elseif p1.KeyCode == Enum.KeyCode.W then
-			table.insert(t3, "W")
-		elseif p1.KeyCode == Enum.KeyCode.S then
-			table.insert(t3, "S")
-		end
-	end
-
-	if p2 or (not v22 or (p1.KeyCode ~= Enum.KeyCode.Space or v20)) then
-		return
-	end
-
-	v20 = true
-	task.delay(0.5, function() --[[ Line: 439 | Upvalues: v20 (ref) ]]
-		v20 = false
-	end)
-end)
-UserInputService.InputEnded:Connect(function(p1, p2) --[[ Line: 444 | Upvalues: t3 (copy) ]]
-	if p1.KeyCode == Enum.KeyCode.D then
-		table.remove(t3, table.find(t3, "D"))
-
-		return
-	end
-
-	if p1.KeyCode == Enum.KeyCode.A then
-		table.remove(t3, table.find(t3, "A"))
-
-		return
-	end
-
-	if p1.KeyCode == Enum.KeyCode.W then
-		table.remove(t3, table.find(t3, "W"))
-
-		return
-	end
-
-	if p1.KeyCode ~= Enum.KeyCode.S then
-		return
-	end
-
-	table.remove(t3, table.find(t3, "S"))
-end)
-function lerp(p1, p2, p3) --[[ lerp | Line: 459 ]]
-	return p1 + (p2 - p1) * p3
-end
-
-local v25 = false
-local v26 = false
-local Climbing = Enum.HumanoidStateType.Climbing
-
-local function CheckForLegde(p1) --[[ CheckForLegde | Line: 468 | Upvalues: v26 (ref) ]]
-	if not p1 or v26 then
-		return
-	end
-
-	local v1 = p1.Instance
-	local v2 = Vector3.new(p1.Position.X, v1.Position.Y, p1.Position.Z)
-	local Position = p1.Position
-
-	if CFrame.new(v2, v2 - p1.Normal).LookVector.Y ~= 0 then
-		return
-	end
-
-	if v1:GetAttribute("ParkourPart") then
-		return v1
-	end
-end
-
-RunService.Stepped:Connect(function(p1) --[[ Line: 485 | Upvalues: v11 (ref), t2 (copy), v22 (ref), Humanoid (copy), Air (copy), Character (copy), v1 (copy), v26 (ref), ActivateBodyM (copy), Torso (copy), v24 (copy), HumanoidRootPart (copy), v25 (ref), TweenService (copy), v4 (copy), v5 (copy), v2 (copy), v23 (copy), v3 (copy), v20 (ref), v15 (ref), v14 (ref), v7 (ref), v8 (ref), CheckForLegde (copy), v18 (ref), v19 (ref), UpdateBodyPosition (copy), Parkour (copy), playSound (copy), v13 (ref), v12 (ref), v17 (ref), BP (copy), MovementAnimation (copy), t3 (copy), MoveBody (copy), v21 (ref) ]]
-	if not v11 and t2.idle.IsPlaying then
-		t2.idle:Stop()
-		t2.start:Stop()
-	end
-
-	v22 = Humanoid.FloorMaterial == Air
-
-	local v16 = Character:FindFirstChild("Right Arm") and not Character["Right Arm"]:GetAttribute("Disconnected") and not Character["Right Arm"]:GetAttribute("BrokenBone")
-	local v27 = Character:FindFirstChild("Left Arm") and (not Character["Left Arm"]:GetAttribute("Disconnected") and not Character["Left Arm"]:GetAttribute("BrokenBone"))
-
-	if v1:GetAttribute("Stamina") < 2 or not (v16 or v27) or (_G.CharacterStates.ZL or (_G.CharacterStates.Ragdolled or (_G.CharacterStates.Carrying or (_G.CharacterStates.Downed or (_G.CharacterStates.PreparingSwing or (_G.CharacterStates.Reloading or _G.CharacterStates.Aiming)))))) then
-		v26 = true
-		ActivateBodyM(false)
-	else
-		v26 = false
-	end
-
-	if v11 and Torso then
-		if v24(HumanoidRootPart.Position - Vector3.new(0, 2.85, 0), HumanoidRootPart.CFrame.LookVector * 1.45) then
-			if v25 == true then
-				v25 = false
-				TweenService:Create(v4, v5, {
-					Value = 0
-				}):Play()
-			end
-		elseif v25 == false then
-			v25 = true
-			TweenService:Create(v4, v5, {
-				Value = 0.75
-			}):Play()
-		end
-
-		if v2 then
-			v2.Transform = v2.Transform:Lerp(v23, v4.Value)
-		end
-
-		if v3 then
-			v3.Transform = v3.Transform:Lerp(v23, v4.Value)
-		end
-	end
-
-	if (_G.Settings.Gameplay.Auto_parkour or v20) and (not v15 and (not v14 and (not v7 and (v22 or v11)))) then
-		local v32 = HumanoidRootPart.CFrame.LookVector * 4
-		local v42 = Vector3.new(0, 2.35, 0) - HumanoidRootPart.CFrame.LookVector * 0.5
-		local v52 = v24(HumanoidRootPart.Position + v42, v32)
-
-		if v8 and not (v26 or CheckForLegde(v52)) then
-			local Magnitude = (v8 - HumanoidRootPart.Position).Magnitude
-
-			if Magnitude > 0.75 and Magnitude < 10 then
-				for i = 0, Magnitude do
-					local v6 = v24((HumanoidRootPart.Position + Vector3.new(0, 2.35, 0)):Lerp(v8, i / Magnitude) + v42, v32)
-
-					if CheckForLegde(v6) then
-						v52 = v6
-					end
-				end
-			end
-		end
-
-		v8 = HumanoidRootPart.Position
-
-		if v52 and not v26 then
-			local v72 = v52.Instance
-			local v82 = Vector3.new(v52.Position.X, v72.Position.Y, v52.Position.Z)
-			local v9 = CFrame.new(v82, v82 - v52.Normal)
-			local Position = v52.Position
-
-			if v9.LookVector.Y ~= 0 then
-				return
-			end
-
-			if v72:GetAttribute("ParkourLedge") then
-				if v11 == false then
-					game.ReplicatedStorage.SH:Fire(Vector3.new(0, -2.5, 0), 1, 4, 0.25)
-					v18 = v72:GetAttribute("SoundType")
-					v19 = v72
-					ActivateBodyM(true, nil)
-					UpdateBodyPosition(v9)
-					Parkour:FireServer("Grab", v72)
-					playSound("Grab")
-					playSound(v18)
-					t2.start:Play(0.15, nil, 0.6 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16))
-					Character:SetAttribute("FpLockPos", v82)
-					v13 = true
-					task.wait(1.5)
-					v13 = false
-				end
-			else
-				v18 = v72:GetAttribute("SoundType")
-				v19 = v72
-
-				if v72:GetAttribute("ParkourSwing") and not v72:GetAttribute("Cooldown") then
-					v72:SetAttribute("Cooldown", true)
-					task.delay(0.5, function() --[[ Line: 582 | Upvalues: v72 (copy) ]]
-						v72:SetAttribute("Cooldown", false)
-					end)
-					v15 = true
-					v12 = true
-					v17 = true
-					BP.P = 40000 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
-					t2.swing:Play(0.1, nil, 1.25 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16))
-					v72.CanCollide = false
-					Parkour:FireServer("MetalSwing", v72)
-					playSound("MetalSwing")
-					ActivateBodyM(true, true)
-					UpdateBodyPosition(v9 * CFrame.new(0, 0.2, 0.25))
-					task.wait(0.1 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
-					UpdateBodyPosition(v9 * CFrame.new(0, -0.85, -2))
-					task.wait(0.1 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
-					ActivateBodyM(false)
-					HumanoidRootPart:ApplyImpulse(Vector3.new(0, 50 * HumanoidRootPart.AssemblyMass, 0) + v9.LookVector * 50 * HumanoidRootPart.AssemblyMass)
-					task.wait(0.1 * (16 / math.clamp(Humanoid.WalkSpeed, 0.25, 50)))
-					BP.P = 15000 * (math.clamp(Humanoid.WalkSpeed, 0.25, 50) / 16)
-					v15 = false
-					v12 = false
-					v17 = false
-					v72.CanCollide = true
-				elseif not v13 then
-					ActivateBodyM(false)
-				end
-			end
-		elseif not v13 then
-			ActivateBodyM(false)
-		end
-	elseif v15 or not v11 then
-		MovementAnimation()
-	end
-
-	if v11 and _G.CharacterStates.CanParkourMove then
-		MovementAnimation(nil, nil, true)
-
-		if #t3 > 0 and not (v12 or v14) then
-			local v172 = t3[#t3]
-
-			if v172 == "D" then
-				MoveBody(HumanoidRootPart.CFrame.RightVector * 1.5, nil, "right", 0.05)
-
-				return
-			end
-
-			if v172 == "A" then
-				MoveBody(-(HumanoidRootPart.CFrame.RightVector * 1.5), nil, "left", 0.05)
-
-				return
-			end
-
-			if v172 == "W" then
-				MoveBody(HumanoidRootPart.CFrame.UpVector, true, "up", 0.15, true)
-
-				return
-			end
-
-			if v172 == "S" then
-				MoveBody(-(HumanoidRootPart.CFrame.UpVector * 1.25), true, "down", 0.15, true)
-			end
-		elseif #t3 <= 0 and not (v12 or v21) then
-			MovementAnimation()
-		end
-	else
-		if _G.CharacterStates.FpLockPosCooldown then
-			return
-		end
-
-		MovementAnimation()
-	end
-end)
-
-local function _() --[[ Unreferenced function | Upvalues: v1 (ref), v2 (ref), v3 (ref) ]]
-	v1 = false
-	v2.P = 15000 * (math.clamp(v3.WalkSpeed, 0.25, 50) / 16)
-end
 
 -- StarterPlayer.StarterPlayerScripts.BoltHandler.LightningBolt.Table
 --
@@ -50941,509 +54981,6 @@ return {
 	}
 }
 
--- StarterPlayer.StarterPlayerScripts.WeatherHandler
---
-repeat
-	task.wait(0.1)
-until game.ReplicatedFirst:GetAttribute("GameLoaded")
-
-local ReplicatedStorage = game.ReplicatedStorage
-local Spawners = script:WaitForChild("Spawners")
-local Wind = ReplicatedStorage:WaitForChild("Wind")
-local TweenService = game:GetService("TweenService")
-local v1 = TweenInfo.new(5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-local v2 = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-local v3 = TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.In)
-local v4 = TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-local v5 = TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-local LocalPlayer = game.Players.LocalPlayer
-local v6 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-local HumanoidRootPart = v6:WaitForChild("HumanoidRootPart")
-local Weather = workspace:FindFirstChild("Debris"):WaitForChild("Weather")
-local Lighting = game.Lighting
-local Clouds = workspace:WaitForChild("Terrain"):WaitForChild("Clouds")
-local Atmosphere = Lighting:WaitForChild("Atmosphere")
-local _ = task.wait
-local _2 = task.delay
-local t = { workspace:WaitForChild("Debris"), workspace:WaitForChild("Chars") }
-local v7 = RaycastParams.new()
-
-v7.FilterType = Enum.RaycastFilterType.Exclude
-v7.FilterDescendantsInstances = t
-
-local CollectionService = game:GetService("CollectionService")
-local t2 = {
-	Show = {},
-	Disapear = {}
-}
-local t3 = {
-	Rain = Vector3.new(0, 150, 0),
-	Snow = Vector3.new(0, 150, 0),
-	StrongWind = Vector3.new(0, 0, 250)
-}
-
-for k, v in pairs(CollectionService:GetTagged("Snow")) do
-	table.insert(t2.Show, TweenService:Create(v, v5, {
-		CanCollide = true,
-		Transparency = v:GetAttribute("Transparency") or 0
-	}))
-	table.insert(t2.Disapear, TweenService:Create(v, v5, {
-		Transparency = 1,
-		CanCollide = false
-	}))
-end
-
-for k, v in pairs(CollectionService:GetTagged("SnowHide")) do
-	table.insert(t2.Show, TweenService:Create(v, v5, {
-		Transparency = 1
-	}))
-	table.insert(t2.Disapear, TweenService:Create(v, v5, {
-		Transparency = 0
-	}))
-end
-
-local function MakeSound(p1, p2, p3, p4) --[[ MakeSound | Line: 72 ]]
-	local Sound = Instance.new("Sound")
-
-	Sound.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-	Sound.SoundId = p1
-	Sound.Volume = p4 or 0.5
-	Sound.Looped = p2
-	Sound.Parent = script
-
-	if p3 then
-		local EqualizerSoundEffect = Instance.new("EqualizerSoundEffect")
-
-		for k, v in pairs(p3) do
-			EqualizerSoundEffect[k] = v
-		end
-
-		EqualizerSoundEffect.Parent = Sound
-	end
-
-	return Sound
-end
-
-local v8 = "Sunny"
-local v9 = nil
-local t4 = {}
-local t5 = {
-	ShowSnow = false,
-	Spawner = Spawners:WaitForChild("Rain")
-}
-local t6 = {
-	Indoors = MakeSound("rbxassetid://8617785833", true, {
-		HighGain = -5,
-		MidGain = -5,
-		LowGain = -5
-	}, 0)
-}
-local Sound = Instance.new("Sound")
-
-Sound.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound.SoundId = "rbxassetid://6767210981"
-Sound.Volume = 0
-Sound.Looped = true
-Sound.Parent = script
-t6.Outdoors = Sound
-
-local t7 = {}
-local Sound2 = Instance.new("Sound")
-
-Sound2.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound2.SoundId = "rbxassetid://7446196948"
-Sound2.Volume = 0.5
-Sound2.Looped = nil
-Sound2.Parent = script
-
-local Sound3 = Instance.new("Sound")
-
-Sound3.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound3.SoundId = "rbxassetid://7446196827"
-Sound3.Volume = 0.5
-Sound3.Looped = nil
-Sound3.Parent = script
-
-local Sound4 = Instance.new("Sound")
-
-Sound4.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound4.SoundId = "rbxassetid://7446197037"
-Sound4.Volume = 0.5
-Sound4.Looped = nil
-Sound4.Parent = script
-
-local Sound5 = Instance.new("Sound")
-
-Sound5.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound5.SoundId = "rbxassetid://966677670"
-Sound5.Volume = 0.5
-Sound5.Looped = nil
-Sound5.Parent = script
-
-local Sound6 = Instance.new("Sound")
-
-Sound6.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound6.SoundId = "rbxassetid://236328715"
-Sound6.Volume = 0.5
-Sound6.Looped = nil
-Sound6.Parent = script
-
-local Sound7 = Instance.new("Sound")
-
-Sound7.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound7.SoundId = "rbxassetid://7768747890"
-Sound7.Volume = 0.5
-Sound7.Looped = nil
-Sound7.Parent = script
-t7[1] = Sound2
-t7[2] = Sound3
-t7[3] = Sound4
-t7[4] = Sound5
-t7[5] = Sound6
-t7[6] = Sound7
-t6.IndoorsThunders = t7
-
-local t8 = {}
-local Sound8 = Instance.new("Sound")
-
-Sound8.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound8.SoundId = "rbxassetid://7390847491"
-Sound8.Volume = 0.5
-Sound8.Looped = nil
-Sound8.Parent = script
-
-local Sound9 = Instance.new("Sound")
-
-Sound9.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound9.SoundId = "rbxassetid://7390847077"
-Sound9.Volume = 0.5
-Sound9.Looped = nil
-Sound9.Parent = script
-
-local Sound10 = Instance.new("Sound")
-
-Sound10.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound10.SoundId = "rbxassetid://7390846882"
-Sound10.Volume = 0.5
-Sound10.Looped = nil
-Sound10.Parent = script
-
-local Sound11 = Instance.new("Sound")
-
-Sound11.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound11.SoundId = "rbxassetid://4961240438"
-Sound11.Volume = 0.5
-Sound11.Looped = nil
-Sound11.Parent = script
-
-local Sound12 = Instance.new("Sound")
-
-Sound12.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
-Sound12.SoundId = "rbxassetid://5246104843"
-Sound12.Volume = 0.5
-Sound12.Looped = nil
-Sound12.Parent = script
-t8[1] = Sound8
-t8[2] = Sound9
-t8[3] = Sound10
-t8[4] = Sound11
-t8[5] = Sound12
-t6.OutdoorsThunders = t8
-t5.Sounds = t6
-t5.Anims = { TweenService:Create(Atmosphere, v1, {
-		Glare = 0,
-		Haze = 10,
-		Density = 0.4,
-		Color = Color3.fromRGB(185, 185, 185),
-		Decay = Color3.new(255/255, 255/255, 255/255)
-	}), TweenService:Create(Clouds, v1, {
-		Cover = 1
-	}) }
-t4.Rainy = t5
-t4.Snowy = {
-	ShowSnow = true,
-	Spawner = Spawners:WaitForChild("Snow"),
-	Anims = { TweenService:Create(Atmosphere, v1, {
-			Glare = 0.45,
-			Haze = 10,
-			Density = 0.4,
-			Color = Color3.fromRGB(185, 185, 185),
-			Decay = Color3.new(255/255, 255/255, 255/255)
-		}), TweenService:Create(Clouds, v1, {
-			Cover = 0.85
-		}) }
-}
-t4.PartlySnowy = {
-	ShowSnow = true,
-	Anims = { TweenService:Create(Atmosphere, v1, {
-			Glare = 0.3,
-			Haze = 0,
-			Density = 0.4,
-			Color = Color3.fromRGB(185, 185, 185),
-			Decay = Color3.new(255/255, 255/255, 255/255)
-		}), TweenService:Create(Clouds, v1, {
-			Cover = 0.65
-		}) }
-}
-t4.Foggy = {
-	ShowSnow = false,
-	Anims = { TweenService:Create(Atmosphere, v1, {
-			Glare = 0.3,
-			Haze = 10,
-			Density = 0.5,
-			Color = Color3.fromRGB(185, 185, 185),
-			Decay = Color3.new(255/255, 255/255, 255/255)
-		}), TweenService:Create(Clouds, v1, {
-			Cover = 0.7
-		}) }
-}
-t4.Sunny = {
-	ShowSnow = false,
-	Anims = { TweenService:Create(Atmosphere, v1, {
-			Glare = 0,
-			Haze = 0,
-			Density = 0.325,
-			Color = Color3.fromRGB(185, 185, 185),
-			Decay = Color3.new(255/255, 255/255, 255/255)
-		}), TweenService:Create(Clouds, v1, {
-			Cover = 0.65
-		}) }
-}
-t4.Tunnel = {
-	ShowSnow = false,
-	Anims = { TweenService:Create(Atmosphere, v1, {
-			Glare = 0,
-			Haze = 10,
-			Density = 0.6,
-			Color = Color3.new(),
-			Decay = Color3.new()
-		}), TweenService:Create(Clouds, v1, {
-			Cover = 0.85
-		}) }
-}
-t4.Aftermath = {
-	Anims = { TweenService:Create(Atmosphere, v1, {
-			Glare = 0.25,
-			Haze = 10,
-			Density = 0.5,
-			Color = Color3.fromRGB(212, 134, 97),
-			Decay = Color3.fromRGB(158, 113, 92)
-		}), TweenService:Create(Clouds, v1, {
-			Cover = 0.25
-		}) }
-}
-t4.StrongWind = {
-	Wind = 1,
-	Spawner = Spawners:WaitForChild("StrongWind"),
-	Anims = { TweenService:Create(Atmosphere, v1, {
-			Glare = 0.3,
-			Haze = 10,
-			Density = 0.45
-		}) }
-}
-
-local function IndoorCheck() --[[ IndoorCheck | Line: 184 | Upvalues: HumanoidRootPart (ref), v7 (copy), t (copy) ]]
-	if not HumanoidRootPart then
-		return
-	end
-
-	local v1 = workspace:Raycast(HumanoidRootPart.Position, Vector3.new(0, 150, 0), v7)
-
-	if not v1 then
-		return
-	end
-
-	if v1.Instance.CanCollide ~= false and (v1.Instance.Anchored ~= false and v1.Instance.Transparency ~= 1) then
-		return true
-	end
-
-	table.insert(t, v1.Instance)
-	v7.FilterDescendantsInstances = t
-
-	return true
-end
-
-local v10 = ""
-
-local function SoundTransition(p1, p2) --[[ SoundTransition | Line: 200 | Upvalues: v10 (ref), TweenService (copy), v2 (copy) ]]
-	if v10 == p2 then
-		return
-	end
-
-	v10 = p2
-
-	for k, v in pairs(p1) do
-		if typeof(v) ~= "table" then
-			if k == p2 then
-				TweenService:Create(v, v2, {
-					Volume = 0.75,
-					Playing = true
-				}):Play()
-
-				continue
-			end
-
-			TweenService:Create(v, v2, {
-				Volume = 0,
-				Playing = false
-			}):Play()
-		end
-	end
-end
-
-local function Thunder(p1) --[[ Thunder | Line: 216 | Upvalues: Atmosphere (copy), TweenService (copy), v3 (copy), v4 (copy) ]]
-	if Atmosphere.Glare ~= 0 then
-		return
-	end
-
-	p1[math.random(#p1)]:Play()
-	TweenService:Create(Atmosphere, v3, {
-		Glare = 0.5
-	}):Play()
-	task.delay(v3.Time, function() --[[ Line: 220 | Upvalues: TweenService (ref), Atmosphere (ref), v4 (ref) ]]
-		TweenService:Create(Atmosphere, v4, {
-			Glare = 0
-		}):Play()
-	end)
-end
-
-local v11 = nil
-
-local function SnowPartAnimations(p1) --[[ SnowPartAnimations | Line: 226 | Upvalues: v11 (ref), t2 (copy) ]]
-	if p1 == v11 then
-		return
-	end
-
-	v11 = p1
-
-	local v1 = pairs
-
-	for v3, v4 in v1(p1 and t2.Show or t2.Disapear) do
-		v4:Play()
-	end
-end
-
-local function ToggleSpawner(p1, p2) --[[ ToggleSpawner | Line: 235 | Upvalues: v9 (ref) ]]
-	if not p1 then
-		return
-	end
-
-	for k, v in pairs(v9:GetChildren()) do
-		v.Enabled = p2
-	end
-end
-
-game:GetService("RunService").Heartbeat:Connect(function(p1) --[[ Line: 244 | Upvalues: LocalPlayer (copy), v6 (ref), HumanoidRootPart (ref), Lighting (copy), t4 (copy), v9 (ref), Weather (copy), t3 (copy), v8 (ref), v7 (copy), t (copy), SoundTransition (copy), Thunder (copy), v11 (ref), t2 (copy), Wind (copy) ]]
-	if LocalPlayer.Character ~= v6 or not HumanoidRootPart then
-		v6 = LocalPlayer.Character
-
-		if not v6 then
-			return
-		end
-
-		HumanoidRootPart = v6:FindFirstChild("HumanoidRootPart")
-
-		if not HumanoidRootPart then
-			return
-		end
-	end
-
-	Lighting:GetAttribute("Season")
-
-	local v1 = Lighting:GetAttribute("LocalWeather") or Lighting:GetAttribute("ForceWeather") or Lighting:GetAttribute("Weather")
-
-	if not t4[v1] then
-		return
-	end
-
-	if v9 then
-		v9.Parent = Weather
-		v9.Position = HumanoidRootPart.Position + (t3[v9.Name] or Vector3.new(0, 0, 0))
-	end
-
-	local Sounds = t4[v8].Sounds
-
-	if Sounds then
-		local Indoors = Sounds.Indoors
-
-		if Indoors and HumanoidRootPart then
-			local v2 = workspace:Raycast(HumanoidRootPart.Position, Vector3.new(0, 150, 0), v7)
-
-			if v2 then
-				if v2.Instance.CanCollide == false or (v2.Instance.Anchored == false or v2.Instance.Transparency == 1) then
-					table.insert(t, v2.Instance)
-					v7.FilterDescendantsInstances = t
-				end
-
-				Indoors = true
-			else
-				Indoors = nil
-			end
-		elseif Indoors then
-			Indoors = nil
-		end
-
-		SoundTransition(Sounds, if Indoors then "Indoors" else "Outdoors")
-
-		local v72 = not Indoors
-
-		if v9 then
-			for k, v in pairs(v9:GetChildren()) do
-				v.Enabled = v72
-			end
-		end
-
-		if Sounds.OutdoorsThunders and math.random(1, 1000) > 999 then
-			Thunder(Indoors and Sounds.IndoorsThunders and Sounds.IndoorsThunders or Sounds.OutdoorsThunders)
-		end
-	end
-
-	if t4[v8].ShowSnow ~= nil and _G.Settings then
-		local v10 = t4[v8].ShowSnow and _G.Settings.Video.Snow
-
-		if v10 ~= v11 then
-			v11 = v10
-
-			local v112 = pairs
-
-			for v13, v14 in v112(v10 and t2.Show or t2.Disapear) do
-				v14:Play()
-			end
-		end
-	end
-
-	if v8 == v1 then
-		return
-	end
-
-	if t4[v8].Sounds then
-		SoundTransition(t4[v8].Sounds, "")
-	end
-
-	if v9 then
-		for k, v in pairs(v9:GetChildren()) do
-			v.Enabled = false
-		end
-	end
-
-	v8 = v1
-	v9 = t4[v1].Spawner
-
-	if v9 then
-		for k, v in pairs(v9:GetChildren()) do
-			v.Enabled = true
-		end
-	end
-
-	Wind:Fire(t4[v1].Wind or 0)
-
-	local v15 = pairs
-
-	for v17, v18 in v15(t4[v1] and t4[v1].Anims or t4.Sunny.Anims) do
-		v18:Play()
-	end
-end)
-
 -- StarterPlayer.StarterPlayerScripts.BoltHandler
 --
 local CollectionService = game:GetService("CollectionService")
@@ -51471,6 +55008,19 @@ CollectionService:GetInstanceRemovedSignal("CustomBolt"):Connect(function(p1) --
 	if t[p1] then
 		t[p1]:DestroyDissipate()
 		t[p1] = nil
+	end
+end)
+
+-- StarterPlayer.StarterPlayerScripts.WorldAnimations
+--
+local World = game.ReplicatedStorage:WaitForChild("Events"):WaitForChild("World")
+local Animations = require(script:WaitForChild("Animations"))
+
+World:WaitForChild("Animation").OnClientEvent:Connect(function(p1, ...) --[[ Line: 10 | Upvalues: Animations (copy) ]]
+	if Animations[p1] then
+		Animations[p1](...)
+	else
+		warn("[WORLD ANIMATIONS]: Animation type not found:", p1)
 	end
 end)
 
@@ -51726,19 +55276,6 @@ end
 
 return t
 
--- StarterPlayer.StarterPlayerScripts.WorldAnimations
---
-local World = game.ReplicatedStorage:WaitForChild("Events"):WaitForChild("World")
-local Animations = require(script:WaitForChild("Animations"))
-
-World:WaitForChild("Animation").OnClientEvent:Connect(function(p1, ...) --[[ Line: 10 | Upvalues: Animations (copy) ]]
-	if Animations[p1] then
-		Animations[p1](...)
-	else
-		warn("[WORLD ANIMATIONS]: Animation type not found:", p1)
-	end
-end)
-
 -- StarterPlayer.StarterPlayerScripts.ZoneVisualHandler
 --
 local CollectionService = game:GetService("CollectionService")
@@ -51929,6 +55466,215 @@ CollectionService:GetInstanceRemovedSignal("CustomZone"):Connect(function(p1) --
 		t[p1] = nil
 	end
 end)
+
+-- StarterPlayer.StarterPlayerScripts.WindShake.WindShake.VectorMap
+--
+local t = {}
+
+t.__index = t
+function t.new(p1) --[[ new | Line: 6 | Upvalues: t (copy) ]]
+	return setmetatable({
+		_voxelSize = p1 or 50,
+		_voxels = {}
+	}, t)
+end
+function t._debugDrawVoxel(p1, p2) --[[ _debugDrawVoxel | Line: 13 ]]
+	local Part = Instance.new("Part")
+
+	Part.Name = tostring(p2)
+	Part.Anchored = true
+	Part.CanCollide = false
+	Part.Transparency = 1
+	Part.Size = Vector3.new(1, 1, 1) * p1._voxelSize
+	Part.Position = p2 * p1._voxelSize + Vector3.new(1, 1, 1) * (p1._voxelSize / 2)
+	Part.Parent = workspace
+
+	local SelectionBox = Instance.new("SelectionBox")
+
+	SelectionBox.Color3 = Color3.new(0/255, 0/255, 255/255)
+	SelectionBox.Adornee = Part
+	SelectionBox.Parent = Part
+	task.delay(0.03333333333333333, Part.Destroy, Part)
+end
+function t.AddObject(p1, p2, p3) --[[ AddObject | Line: 31 ]]
+	local ClassName = p3.ClassName
+	local _voxelSize = p1._voxelSize
+	local v7 = Vector3.new(math.floor(p2.X / _voxelSize), math.floor(p2.Y / _voxelSize), (math.floor(p2.Z / _voxelSize)))
+	local v8 = p1._voxels[v7]
+
+	if v8 == nil then
+		p1._voxels[v7] = {
+			[ClassName] = { p3 }
+		}
+
+		return v7
+	end
+
+	if v8[ClassName] == nil then
+		v8[ClassName] = { p3 }
+	else
+		table.insert(v8[ClassName], p3)
+	end
+
+	return v7
+end
+function t.RemoveObject(p1, p2, p3) --[[ RemoveObject | Line: 56 ]]
+	local v1 = p1._voxels[p2]
+
+	if v1 == nil then
+		return
+	end
+
+	local ClassName = p3.ClassName
+
+	if v1[ClassName] == nil then
+		return
+	end
+
+	local v2 = v1[ClassName]
+
+	for v3, v4 in v2 do
+		if v4 == p3 then
+			local v5 = #v2
+
+			v2[v3] = v2[v5]
+			v2[v5] = nil
+
+			break
+		end
+	end
+
+	if #v2 ~= 0 then
+		return
+	end
+
+	v1[ClassName] = nil
+
+	if next(v1) ~= nil then
+		return
+	end
+
+	p1._voxels[p2] = nil
+end
+function t.GetVoxel(p1, p2) --[[ GetVoxel | Line: 90 ]]
+	return p1._voxels[p2]
+end
+function t.ForEachObjectInRegion(p1, p2, p3, p4) --[[ ForEachObjectInRegion | Line: 94 ]]
+	local _voxelSize = p1._voxelSize
+	local v1 = math.min(p3.X, p2.X)
+	local v2 = math.min(p3.Y, p2.Y)
+	local v3 = math.min(p3.Z, p2.Z)
+	local v4 = math.max(p3.X, p2.X)
+	local v5 = math.max(p3.Y, p2.Y)
+	local v6 = math.max(p3.Z, p2.Z)
+	local v7, v8 = v2, v5
+
+	for i = math.floor(v1 / _voxelSize), math.floor(v4 / _voxelSize) do
+		for j = math.floor(v3 / _voxelSize), math.floor(v6 / _voxelSize) do
+			for k = math.floor(v7 / _voxelSize), math.floor(v8 / _voxelSize) do
+				local v9 = p1._voxels[Vector3.new(i, k, j)]
+
+				if v9 then
+					for v10, v11 in v9 do
+						for v12, v13 in v11 do
+							p4(v10, v13)
+						end
+					end
+				end
+			end
+		end
+	end
+end
+function t.ForEachObjectInView(p1, p2, p3, p4) --[[ ForEachObjectInView | Line: 117 ]]
+	local _voxelSize = p1._voxelSize
+	local v1 = p2.CFrame
+	local Position = v1.Position
+	local RightVector = v1.RightVector
+	local UpVector = v1.UpVector
+	local v2 = p3 / 2
+	local v5 = math.tan((math.rad((p2.FieldOfView + 5) / 2))) * p3
+	local v6 = v5 * (p2.ViewportSize.X / p2.ViewportSize.Y)
+	local v7 = v1 * CFrame.new(0, 0, -p3)
+	local v8 = v7 * Vector3.new(-v6, v5, 0)
+	local v9 = v7 * Vector3.new(v6, v5, 0)
+	local v10 = v7 * Vector3.new(-v6, -v5, 0)
+	local v11 = v7 * Vector3.new(v6, -v5, 0)
+	local v12 = (v1 * CFrame.new(0, 0, -v2)):Inverse()
+	local Unit = UpVector:Cross(v11 - Position).Unit
+	local Unit2 = UpVector:Cross(v10 - Position).Unit
+	local Unit3 = RightVector:Cross(Position - v9).Unit
+	local Unit4 = RightVector:Cross(Position - v11).Unit
+	local v13 = Position:Min(v8):Min(v9):Min(v10):Min(v11)
+	local v14 = Position:Max(v8):Max(v9):Max(v10):Max(v11)
+	local v21 = Vector3.new(math.floor(v13.X / _voxelSize), math.floor(v13.Y / _voxelSize), (math.floor(v13.Z / _voxelSize)))
+	local v28 = Vector3.new(math.floor(v14.X / _voxelSize), math.floor(v14.Y / _voxelSize), (math.floor(v14.Z / _voxelSize)))
+
+	local function isPointInView(p1) --[[ isPointInView | Line: 155 | Upvalues: v12 (copy), v6 (copy), v5 (copy), v2 (copy), Position (copy), Unit (copy), Unit2 (copy), Unit3 (copy), Unit4 (copy) ]]
+		local v1 = v12 * p1
+
+		if v6 < v1.X or (v1.X < -v6 or (v5 < v1.Y or (v1.Y < -v5 or (v2 < v1.Z or v1.Z < -v2)))) then
+			return false
+		end
+
+		local v22 = p1 - Position
+
+		return not (Unit:Dot(v22) < 0 or (Unit2:Dot(v22) > 0 or (Unit3:Dot(v22) < 0 or Unit4:Dot(v22) > 0)))
+	end
+
+	local v29, v30 = v21, v28
+
+	for i = v21.X, v28.X do
+		local v31 = i * _voxelSize
+		local v32 = math.clamp(v7.X, v31, v31 + _voxelSize)
+
+		for j = v29.Y, v30.Y do
+			local v33 = j * _voxelSize
+			local v34 = math.clamp(v7.Y, v33, v33 + _voxelSize)
+
+			for k = v29.Z, v30.Z do
+				local v35 = k * _voxelSize
+
+				if isPointInView((Vector3.new(v32, v34, (math.clamp(v7.Z, v35, v35 + _voxelSize))))) then
+					local v37 = v29.Z - 1
+					local Z2 = v30.Z
+
+					v38 = k
+					v39 = k
+
+					while v38 <= Z2 do
+						local v40 = math.floor((v38 + Z2) / 2)
+
+						if isPointInView((Vector3.new(v32, v34, (math.clamp(v7.Z, v40 * _voxelSize, v40 * _voxelSize + _voxelSize))))) then
+							v38 = v40 + 1
+							v37 = v40
+						else
+							Z2 = v40 - 1
+						end
+					end
+
+					for n = v39, v37 do
+						local v42 = p1._voxels[Vector3.new(i, j, n)]
+
+						if v42 then
+							for v43, v44 in v42 do
+								for v45, v46 in v44 do
+									p4(v43, v46)
+								end
+							end
+						end
+					end
+
+					break
+				end
+			end
+		end
+	end
+end
+function t.ClearAll(p1) --[[ ClearAll | Line: 238 ]]
+	p1._voxels = {}
+end
+
+return t
 
 -- Players.Noriko_Ellen.PlayerGui.OverlayGui.CharacterTeleport.CharacterTeleportCore
 --
@@ -52576,13 +56322,13 @@ _G.UpdatePromptVisuals = require(script:WaitForChild("Mods"):WaitForChild("Promp
 
 local t = {}
 local t2 = {}
-local t3 = {}
+local t3 = { "Toggle_Aim", "Toggle_crouch", "Toggle_sprint" }
+local v2 = false
 local t4 = {}
 local t5 = {}
 local t6 = {}
 local t7 = {}
-local v2 = false
-local t8 = { "Toggle_Aim", "Toggle_crouch", "Toggle_sprint" }
+local t8 = {}
 
 repeat
 	task.wait(0.1)
@@ -52614,7 +56360,7 @@ local function UpdateCrosshair(p1) --[[ UpdateCrosshair | Line: 70 | Upvalues: v
 	p1.Dot.Visible = Crosshair.Display_dot
 end
 
-local function UpdateSettings() --[[ UpdateSettings | Line: 97 | Upvalues: PlayerGui (copy), v1 (copy), UpdateCrosshair (copy), v3 (copy), UserInputService (copy), Clouds (copy), ReplicatedStorage (copy), t4 (copy), CollectionService (copy) ]]
+local function UpdateSettings() --[[ UpdateSettings | Line: 97 | Upvalues: PlayerGui (copy), v1 (copy), UpdateCrosshair (copy), v3 (copy), UserInputService (copy), Clouds (copy), ReplicatedStorage (copy), t (copy), CollectionService (copy) ]]
 	local FollowMouse = PlayerGui:WaitForChild("GunGui", 999):WaitForChild("FollowMouse")
 	local ClientInfo = v1.Parent:WaitForChild("TopBar"):WaitForChild("ClientInfo")
 	local Crosshair = FollowMouse:WaitForChild("Crosshair")
@@ -52656,16 +56402,16 @@ local function UpdateSettings() --[[ UpdateSettings | Line: 97 | Upvalues: Playe
 	end
 
 	if v3.Video.Extra_map_details and _G.CurrentInputType ~= "Mobile" then
-		for k, v in pairs(t4) do
+		for k, v in pairs(t) do
 			if v and v.Parent then
 				k.Parent = v
-				t4[k] = nil
+				t[k] = nil
 			end
 		end
 	else
 		for k, v in pairs(CollectionService:GetTagged("ExtraMapDetails")) do
-			if not t4[v] then
-				t4[v] = v.Parent
+			if not t[v] then
+				t[v] = v.Parent
 				v.Parent = ReplicatedStorage
 			end
 		end
@@ -52674,8 +56420,8 @@ end
 
 UpdateSettings()
 
-local function UpdateSettingsUI() --[[ UpdateSettingsUI | Line: 189 | Upvalues: t6 (copy), UpdateSettings (copy) ]]
-	for k, v in pairs(t6) do
+local function UpdateSettingsUI() --[[ UpdateSettingsUI | Line: 189 | Upvalues: t4 (copy), UpdateSettings (copy) ]]
+	for k, v in pairs(t4) do
 		v()
 	end
 
@@ -52684,14 +56430,14 @@ end
 
 ReplicatedStorage:WaitForChild("UpdatedInputType").Event:Connect(UpdateSettingsUI)
 
-local function ToggleCooldown(p1) --[[ ToggleCooldown | Line: 202 | Upvalues: v2 (ref), t (copy), t2 (copy), t3 (copy), t5 (copy) ]]
+local function ToggleCooldown(p1) --[[ ToggleCooldown | Line: 202 | Upvalues: v2 (ref), t6 (copy), t7 (copy), t8 (copy), t5 (copy) ]]
 	v2 = p1
 
-	for k, v in pairs(t) do
+	for k, v in pairs(t6) do
 		v:ToggleEnabled(not p1)
 	end
 
-	for k, v in pairs(t2) do
+	for k, v in pairs(t7) do
 		local Disabled = v:FindFirstChild("Disabled")
 
 		if Disabled then
@@ -52699,7 +56445,7 @@ local function ToggleCooldown(p1) --[[ ToggleCooldown | Line: 202 | Upvalues: v2
 		end
 	end
 
-	for k, v in pairs(t3) do
+	for k, v in pairs(t8) do
 		local Disabled = v:FindFirstChild("Disabled")
 
 		if Disabled then
@@ -52716,7 +56462,7 @@ local function ToggleCooldown(p1) --[[ ToggleCooldown | Line: 202 | Upvalues: v2
 	end
 end
 
-local function HandleSlider(p1, p2, p3) --[[ HandleSlider | Line: 231 | Upvalues: v4 (copy), v3 (copy), t6 (copy), v2 (ref), ToggleCooldown (copy), Settings (copy), UpdateSettings (copy), GuiSlider (copy), t (copy) ]]
+local function HandleSlider(p1, p2, p3) --[[ HandleSlider | Line: 231 | Upvalues: v4 (copy), v3 (copy), t4 (copy), v2 (ref), ToggleCooldown (copy), Settings (copy), UpdateSettings (copy), GuiSlider (copy), t6 (copy) ]]
 	local v1 = v4[p3]
 	local v22 = v3[p2][p3]
 	local v32 = nil
@@ -52727,7 +56473,7 @@ local function HandleSlider(p1, p2, p3) --[[ HandleSlider | Line: 231 | Upvalues
 		v32:SetValue(v3[p2][p3])
 	end
 
-	table.insert(t6, Update)
+	table.insert(t4, Update)
 
 	local function AfterSlide(p1) --[[ AfterSlide | Line: 248 | Upvalues: v2 (ref), ToggleCooldown (ref), Settings (ref), p2 (copy), p3 (copy), v3 (ref), UpdateSettings (ref), v32 (ref) ]]
 		if v2 then
@@ -52756,17 +56502,17 @@ local function HandleSlider(p1, p2, p3) --[[ HandleSlider | Line: 231 | Upvalues
 
 	local v8 = v32
 
-	table.insert(t, v8)
+	table.insert(t6, v8)
 end
 
-local function HandleCheckbox(p1, p2, p3) --[[ HandleCheckbox | Line: 274 | Upvalues: v3 (copy), t8 (copy), t6 (copy), Sounds (copy), v2 (ref), ToggleCooldown (copy), Settings (copy), UpdateSettings (copy), t2 (copy) ]]
-	local function Update() --[[ Update | Line: 277 | Upvalues: v3 (ref), p2 (copy), p3 (copy), p1 (copy), t8 (ref) ]]
+local function HandleCheckbox(p1, p2, p3) --[[ HandleCheckbox | Line: 274 | Upvalues: v3 (copy), t3 (copy), t4 (copy), Sounds (copy), v2 (ref), ToggleCooldown (copy), Settings (copy), UpdateSettings (copy), t7 (copy) ]]
+	local function Update() --[[ Update | Line: 277 | Upvalues: v3 (ref), p2 (copy), p3 (copy), p1 (copy), t3 (ref) ]]
 		local v1 = v3[p2][p3] == true
 
 		p1.IsChecked.Visible = v1
 		p1.TypeText.Text = if v1 then "ON" else "OFF"
 
-		if not table.find(t8, (p3:gsub("Mobile_", ""))) then
+		if not table.find(t3, (p3:gsub("Mobile_", ""))) then
 			return
 		end
 
@@ -52774,7 +56520,7 @@ local function HandleCheckbox(p1, p2, p3) --[[ HandleCheckbox | Line: 274 | Upva
 	end
 
 	Update()
-	table.insert(t6, Update)
+	table.insert(t4, Update)
 	p1.MouseButton1Click:Connect(function() --[[ Line: 297 | Upvalues: Sounds (ref), v2 (ref), ToggleCooldown (ref), v3 (ref), p2 (copy), p3 (copy), Settings (ref), UpdateSettings (ref), Update (copy) ]]
 		Sounds.Click:Play()
 
@@ -52795,10 +56541,10 @@ local function HandleCheckbox(p1, p2, p3) --[[ HandleCheckbox | Line: 274 | Upva
 		task.wait(0.25)
 		ToggleCooldown(false)
 	end)
-	table.insert(t2, p1)
+	table.insert(t7, p1)
 end
 
-local function HandleColorbox(p1, p2, p3) --[[ HandleColorbox | Line: 323 | Upvalues: v3 (copy), t6 (copy), Sounds (copy), v2 (ref), ToggleCooldown (copy), ReplicatedStorage (copy), Settings (copy), UpdateSettings (copy), t3 (copy) ]]
+local function HandleColorbox(p1, p2, p3) --[[ HandleColorbox | Line: 323 | Upvalues: v3 (copy), t4 (copy), Sounds (copy), v2 (ref), ToggleCooldown (copy), ReplicatedStorage (copy), Settings (copy), UpdateSettings (copy), t8 (copy) ]]
 	local function Update() --[[ Update | Line: 326 | Upvalues: v3 (ref), p2 (copy), p3 (copy), p1 (copy) ]]
 		local v1 = v3[p2][p3]
 
@@ -52810,7 +56556,7 @@ local function HandleColorbox(p1, p2, p3) --[[ HandleColorbox | Line: 323 | Upva
 
 	p1.BackgroundColor3 = v1
 	p1.TypeText.Text = "#" .. v1:ToHex()
-	table.insert(t6, Update)
+	table.insert(t4, Update)
 	p1.MouseButton1Click:Connect(function() --[[ Line: 339 | Upvalues: Sounds (ref), v2 (ref), ToggleCooldown (ref), v3 (ref), p2 (copy), p3 (copy), ReplicatedStorage (ref), Settings (ref), UpdateSettings (ref), p1 (copy) ]]
 		Sounds.Click:Play()
 
@@ -52838,10 +56584,10 @@ local function HandleColorbox(p1, p2, p3) --[[ HandleColorbox | Line: 323 | Upva
 		task.wait(0.25)
 		ToggleCooldown(false)
 	end)
-	table.insert(t3, p1)
+	table.insert(t8, p1)
 end
 
-local function HandleKeybinds(p1, p2, p3) --[[ HandleKeybinds | Line: 368 | Upvalues: KeyMapping (copy), v3 (copy), t6 (copy), Sounds (copy), v2 (ref), ToggleCooldown (copy), UserInputService (copy), Settings (copy), UpdateSettings (copy), t5 (copy) ]]
+local function HandleKeybinds(p1, p2, p3) --[[ HandleKeybinds | Line: 368 | Upvalues: KeyMapping (copy), v3 (copy), t4 (copy), Sounds (copy), v2 (ref), ToggleCooldown (copy), UserInputService (copy), Settings (copy), UpdateSettings (copy), t5 (copy) ]]
 	local function Update() --[[ Update | Line: 371 | Upvalues: KeyMapping (ref), v3 (ref), p2 (copy), p3 (copy), p1 (copy) ]]
 		local v1, v2 = KeyMapping(v3[p2][p3])
 
@@ -52857,7 +56603,7 @@ local function HandleKeybinds(p1, p2, p3) --[[ HandleKeybinds | Line: 368 | Upva
 	end
 
 	Update()
-	table.insert(t6, Update)
+	table.insert(t4, Update)
 	p1.MouseButton1Click:Connect(function() --[[ Line: 392 | Upvalues: Sounds (ref), v2 (ref), ToggleCooldown (ref), p1 (copy), UserInputService (ref), KeyMapping (ref), Settings (ref), p2 (copy), p3 (copy), v3 (ref), UpdateSettings (ref), Update (copy) ]]
 		Sounds.Click:Play()
 
@@ -52982,7 +56728,7 @@ for k, v in pairs(v1:GetChildren()) do
 	if v:IsA("ImageLabel") and (v ~= MainFrame and v3[v.Name]) then
 		local v13 = v.Name
 
-		v:WaitForChild("TopBar"):WaitForChild("ResetSettings").MouseButton1Click:Connect(function() --[[ Line: 525 | Upvalues: Sounds (copy), v2 (ref), ToggleCooldown (copy), Settings (copy), v13 (copy), v3 (copy), t6 (copy), UpdateSettings (copy) ]]
+		v:WaitForChild("TopBar"):WaitForChild("ResetSettings").MouseButton1Click:Connect(function() --[[ Line: 525 | Upvalues: Sounds (copy), v2 (ref), ToggleCooldown (copy), Settings (copy), v13 (copy), v3 (copy), t4 (copy), UpdateSettings (copy) ]]
 			Sounds.Click:Play()
 
 			if v2 then
@@ -52996,7 +56742,7 @@ for k, v in pairs(v1:GetChildren()) do
 			if v1 ~= nil then
 				v3[v13] = v1
 
-				for k, v in pairs(t6) do
+				for k, v in pairs(t4) do
 					v()
 				end
 
@@ -53039,19 +56785,19 @@ local function ToggleSettingsUI(p1) --[[ ToggleSettingsUI | Line: 552 | Upvalues
 	end
 end
 
-ReplicatedStorage:WaitForChild("ToggledMenu").Event:Connect(function(p1, p2) --[[ Line: 579 | Upvalues: PlayerGui (copy), t7 (ref), ReplicatedStorage (copy) ]]
+ReplicatedStorage:WaitForChild("ToggledMenu").Event:Connect(function(p1, p2) --[[ Line: 579 | Upvalues: PlayerGui (copy), t2 (ref), ReplicatedStorage (copy) ]]
 	local FollowMouse = PlayerGui:FindFirstChild("GunGui"):FindFirstChild("FollowMouse")
 	local v1 = if _G.CurrentInputType == "Gamepad" then true else false
 
 	if p1 then
-		t7[p1] = p2
+		t2[p1] = p2
 	else
-		t7 = {}
+		t2 = {}
 	end
 
 	local v2 = true
 
-	for k, v in pairs(t7) do
+	for k, v in pairs(t2) do
 		if v then
 			v2 = false
 
@@ -53197,318 +56943,462 @@ return function(p1, p2, p3, p4) --[[ Line: 42 | Upvalues: UserInputService (copy
 	end
 end
 
--- StarterPlayer.StarterPlayerScripts.WindShake.WindShake
+-- StarterPlayer.StarterPlayerScripts.ProximityPrompts
 --
-local CollectionService = game:GetService("CollectionService")
-local RunService = game:GetService("RunService")
-local Settings = require(script.Settings)
-local VectorMap = require(script.VectorMap)
-local v1 = Instance.new("BindableEvent")
-local v2 = Instance.new("BindableEvent")
-local v3 = Instance.new("BindableEvent")
-local v4 = Instance.new("BindableEvent")
-local v5 = Instance.new("BindableEvent")
+game:GetService("UserInputService")
 
-return {
-	RenderDistance = 150,
-	MaxRefreshRate = 1 / 60,
-	Handled = 0,
-	Active = 0,
-	SharedSettings = Settings.new(script),
-	ObjectMetadata = {},
-	VectorMap = VectorMap.new(),
-	_partList = table.create(500),
-	_cframeList = table.create(500),
-	ObjectShakeAdded = v1.Event,
-	ObjectShakeRemoved = v2.Event,
-	ObjectShakeUpdated = v3.Event,
-	Paused = v4.Event,
-	Resumed = v5.Event,
-	Connect = function(p1, p2, p3) --[[ Connect | Line: 62 ]]
-		local v1 = p1[p2]
+local ProximityPromptService = game:GetService("ProximityPromptService")
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local v1 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+local Prompt = script:WaitForChild("Prompt")
 
-		assert(if typeof(v1) == "function" then true else false, "Unknown function: " .. p2)
+task.wait()
 
-		return p3:Connect(function(...) --[[ Line: 66 | Upvalues: v1 (copy), p1 (copy) ]]
-			return v1(p1, ...)
-		end)
-	end,
-	AddObjectShake = function(p1, p2, p3) --[[ AddObjectShake | Line: 71 | Upvalues: Settings (copy), v1 (copy) ]]
-		if typeof(p2) ~= "Instance" then
-			return
-		end
+local v2 = v1:WaitForChild("Humanoid"):WaitForChild("Animator"):LoadAnimation(script:WaitForChild("Anims"):WaitForChild("Use"))
+local v3 = v1.Humanoid:WaitForChild("Animator"):LoadAnimation(script.Anims:WaitForChild("PickingUp"))
+local v4 = v1.Humanoid:WaitForChild("Animator"):LoadAnimation(script.Anims:WaitForChild("PickUp"))
 
-		if not (p2:IsA("BasePart") or p2:IsA("Bone")) then
-			return
-		end
+LocalPlayer.CharacterAdded:Connect(function(p1) --[[ Line: 18 | Upvalues: v1 (ref), v2 (ref), v3 (ref), v4 (ref) ]]
+	v1 = p1
+	task.delay(0.15, function() --[[ Line: 20 | Upvalues: v2 (ref), v1 (ref), v3 (ref), v4 (ref) ]]
+		v2 = v1:WaitForChild("Humanoid"):WaitForChild("Animator"):LoadAnimation(script:WaitForChild("Anims"):WaitForChild("Use"))
+		v3 = v1.Humanoid:WaitForChild("Animator"):LoadAnimation(script.Anims:WaitForChild("PickingUp"))
+		v4 = v1.Humanoid:WaitForChild("Animator"):LoadAnimation(script.Anims:WaitForChild("PickUp"))
+	end)
+end)
 
-		local ObjectMetadata = p1.ObjectMetadata
+local tbl = {}
+local t = { workspace.Terrain, workspace.Debris, workspace.CurrentCamera }
+local v5 = RaycastParams.new()
 
-		if ObjectMetadata[p2] then
-			return
-		end
+v5.FilterType = Enum.RaycastFilterType.Exclude
+v5.CollisionGroup = "RayCasts"
+v5.FilterDescendantsInstances = t
 
-		p1.Handled = p1.Handled + 1
+local function v6(p1, p2) --[[ CastRay | Line: 35 | Upvalues: v5 (copy), t (copy), v6 (copy) ]]
+	local v1 = workspace:Raycast(p1, p2, v5)
 
-		local t = {}
-
-		t.ChunkKey = p1.VectorMap:AddObject(if p2:IsA("Bone") then p2.WorldPosition else p2.Position, p2)
-		t.Settings = Settings.new(p2)
-		t.Seed = math.random(5000) * 0.32
-		t.Origin = if p2:IsA("Bone") then p2.WorldCFrame else p2.CFrame
-		t.LastUpdate = os.clock()
-		ObjectMetadata[p2] = t
-
-		if p3 then
-			p1:UpdateObjectSettings(p2, p3)
-		end
-
-		v1:Fire(p2)
-	end,
-	RemoveObjectShake = function(p1, p2) --[[ RemoveObjectShake | Line: 107 | Upvalues: v2 (copy) ]]
-		if typeof(p2) ~= "Instance" then
-			return
-		end
-
-		local ObjectMetadata = p1.ObjectMetadata
-		local v1 = ObjectMetadata[p2]
-
-		if v1 then
-			p1.Handled = p1.Handled - 1
-			ObjectMetadata[p2] = nil
-			v1.Settings:Destroy()
-			p1.VectorMap:RemoveObject(v1.ChunkKey, p2)
-
-			if p2:IsA("BasePart") then
-				p2.CFrame = v1.Origin
-			elseif p2:IsA("Bone") then
-				p2.WorldCFrame = v1.Origin
-			end
-		end
-
-		v2:Fire(p2)
-	end,
-	Update = function(p1, p2) --[[ Update | Line: 131 ]]
-		debug.profilebegin("WindShake")
-
-		local v1 = 0
-
-		debug.profilebegin("Update")
-
-		local v2 = os.clock()
-		local v3 = p2 * 3
-		local v4 = math.min(1, p2 * 5)
-		local v5 = 0
-		local _partList = p1._partList
-		local _cframeList = p1._cframeList
-
-		table.clear(_partList)
-		table.clear(_cframeList)
-
-		local ObjectMetadata = p1.ObjectMetadata
-		local CurrentCamera = workspace.CurrentCamera
-		local Position = CurrentCamera.CFrame.Position
-		local RenderDistance = p1.RenderDistance
-		local MaxRefreshRate = p1.MaxRefreshRate
-		local SharedSettings = p1.SharedSettings
-		local WindPower = SharedSettings.WindPower
-		local WindSpeed = SharedSettings.WindSpeed
-		local WindDirection = SharedSettings.WindDirection
-
-		p1.VectorMap:ForEachObjectInView(CurrentCamera, RenderDistance, function(p1, p2) --[[ Line: 161 | Upvalues: ObjectMetadata (copy), Position (copy), RenderDistance (copy), v3 (copy), MaxRefreshRate (copy), v2 (copy), v1 (ref), WindDirection (copy), WindPower (copy), WindSpeed (copy), v4 (copy), v5 (ref), _partList (copy), _cframeList (copy) ]]
-			local v12 = ObjectMetadata[p2]
-			local v32 = p1 == "Bone"
-			local v42 = if v32 then p2.WorldCFrame else p2.CFrame
-			local v52 = (Position - v42.Position).Magnitude / RenderDistance
-			local v6 = v52 * v52
-
-			if v3 * v6 + MaxRefreshRate >= v2 - (v12.LastUpdate or 0) + 1 / math.random(60, 120) then
-				return
-			end
-
-			v12.LastUpdate = v2
-			v1 = v1 + 1
-
-			local Settings = v12.Settings
-			local v7 = Settings.WindDirection or WindDirection
-
-			if v7.Magnitude < 0.00001 then
-				return
-			end
-
-			local v9 = (Settings.WindPower or WindPower) * 0.2
-
-			if v9 < 0.00001 then
-				return
-			end
-
-			local v122 = v2 * ((Settings.WindSpeed or WindSpeed) * 0.08)
-
-			if v122 < 0.00001 then
-				return
-			end
-
-			local Seed = v12.Seed
-			local v13 = (math.noise(v122, 0, Seed) + 0.4) * v9
-			local v15 = math.clamp(v4 + v6, 0.1, 0.5)
-			local v16 = v9 / 3
-			local v18 = v12.Origin * (Settings.PivotOffset or CFrame.identity)
-			local v19 = v18:VectorToObjectSpace(v7)
-
-			if v32 then
-				p2.Transform = p2.Transform:Lerp(CFrame.fromAxisAngle(v19:Cross(Vector3.new(0, 1, 0)), -v13) * CFrame.Angles(math.noise(Seed, 0, v122) * v16, math.noise(Seed, v122, 0) * v16, math.noise(v122, Seed, 0) * v16) + v19 * v13 * v9, v15)
-
-				return
-			end
-
-			v5 = v5 + 1
-			_partList[v5] = p2
-			_cframeList[v5] = v42:Lerp(v18 * CFrame.fromAxisAngle(v19:Cross(Vector3.new(0, 1, 0)), -v13) * CFrame.Angles(math.noise(Seed, 0, v122) * v16, math.noise(Seed, v122, 0) * v16, math.noise(v122, Seed, 0) * v16) * (Settings.PivotOffsetInverse or CFrame.identity) + v7 * v13 * (v9 * 2), v15)
-		end)
-		p1.Active = v1
-		debug.profileend()
-		workspace:BulkMoveTo(_partList, _cframeList, Enum.BulkMoveMode.FireCFrameChanged)
-		debug.profileend()
-	end,
-	Pause = function(p1) --[[ Pause | Line: 247 | Upvalues: v4 (copy) ]]
-		if p1.UpdateConnection then
-			p1.UpdateConnection:Disconnect()
-			p1.UpdateConnection = nil
-		end
-
-		p1.Active = 0
-		p1.Running = false
-		v4:Fire()
-	end,
-	Resume = function(p1) --[[ Resume | Line: 259 | Upvalues: RunService (copy), v5 (copy) ]]
-		if not p1.Running then
-			p1.Running = true
-			p1.UpdateConnection = p1:Connect("Update", RunService.Heartbeat)
-			v5:Fire()
-		end
-	end,
-	Init = function(p1, p2) --[[ Init | Line: 272 | Upvalues: CollectionService (copy) ]]
-		if p1.Initialized then
-			return
-		end
-
-		local v1 = script:GetAttribute("WindPower")
-		local v2 = script:GetAttribute("WindSpeed")
-		local v3 = script:GetAttribute("WindDirection")
-
-		if typeof(v1) ~= "number" then
-			script:SetAttribute("WindPower", 0.5)
-		end
-
-		if typeof(v2) ~= "number" then
-			script:SetAttribute("WindSpeed", 20)
-		end
-
-		if typeof(v3) ~= "Vector3" then
-			script:SetAttribute("WindDirection", Vector3.new(0.5, 0, 0.5))
-		end
-
-		p1:Cleanup()
-		p1.Initialized = true
-		p1.AddedConnection = p1:Connect("AddObjectShake", (CollectionService:GetInstanceAddedSignal("WindShake")))
-		p1.RemovedConnection = p1:Connect("RemoveObjectShake", (CollectionService:GetInstanceRemovedSignal("WindShake")))
-
-		for v4, v5 in CollectionService:GetTagged("WindShake") do
-			p1:AddObjectShake(v5)
-		end
-
-		if p2 and p2.MatchWorkspaceWind then
-			p1:MatchWorkspaceWind()
-			p1.WorkspaceWindConnection = workspace:GetPropertyChangedSignal("GlobalWind"):Connect(function() --[[ Line: 312 | Upvalues: p1 (copy) ]]
-				p1:MatchWorkspaceWind()
-			end)
-		end
-
-		p1:Resume()
-	end,
-	Cleanup = function(p1) --[[ Cleanup | Line: 321 ]]
-		if not p1.Initialized then
-			return
-		end
-
-		p1:Pause()
-
-		if p1.AddedConnection then
-			p1.AddedConnection:Disconnect()
-			p1.AddedConnection = nil
-		end
-
-		if p1.RemovedConnection then
-			p1.RemovedConnection:Disconnect()
-			p1.RemovedConnection = nil
-		end
-
-		if p1.WorkspaceWindConnection then
-			p1.WorkspaceWindConnection:Disconnect()
-			p1.WorkspaceWindConnection = nil
-		end
-
-		table.clear(p1.ObjectMetadata)
-		p1.VectorMap:ClearAll()
-		p1.Handled = 0
-		p1.Active = 0
-		p1.Initialized = false
-	end,
-	UpdateObjectSettings = function(p1, p2, p3) --[[ UpdateObjectSettings | Line: 351 | Upvalues: v3 (copy) ]]
-		if typeof(p2) ~= "Instance" then
-			return
-		end
-
-		if typeof(p3) ~= "table" then
-			return
-		end
-
-		if not p1.ObjectMetadata[p2] and p2 ~= script then
-			return
-		end
-
-		for v1, v2 in p3 do
-			p2:SetAttribute(v1, v2)
-		end
-
-		v3:Fire(p2)
-	end,
-	UpdateAllObjectSettings = function(p1, p2) --[[ UpdateAllObjectSettings | Line: 371 | Upvalues: v3 (copy) ]]
-		if typeof(p2) ~= "table" then
-			return
-		end
-
-		for v1, v2 in p1.ObjectMetadata do
-			for v32, v4 in p2 do
-				v1:SetAttribute(v32, v4)
-			end
-
-			v3:Fire(v1)
-		end
-	end,
-	SetDefaultSettings = function(p1, p2) --[[ SetDefaultSettings | Line: 384 ]]
-		p1:UpdateObjectSettings(script, p2)
-	end,
-	MatchWorkspaceWind = function(p1) --[[ MatchWorkspaceWind | Line: 388 ]]
-		local GlobalWind = workspace.GlobalWind
-		local Magnitude = GlobalWind.Magnitude
-		local v1, v2
-
-		if Magnitude > 0 then
-			v1 = if Magnitude > 1 then math.log10(Magnitude) + 0.2 else 0.3
-			v2 = if Magnitude < 100 then Magnitude * 1.2 + 5 else 125
-		else
-			v2 = 0
-			v1 = 0
-		end
-
-		p1:SetDefaultSettings({
-			WindDirection = GlobalWind.Unit,
-			WindSpeed = v2,
-			WindPower = v1
-		})
+	if not v1 then
+		return nil
 	end
+
+	local v2 = v1.Instance
+
+	if v2.CanCollide ~= false and not v2.Parent:FindFirstChild("Humanoid") then
+		return v1
+	end
+
+	table.insert(t, v2)
+	v5.FilterDescendantsInstances = t
+
+	return v6(p1, p2)
+end
+
+local function GetPosition(p1) --[[ GetPosition | Line: 54 | Upvalues: tbl (copy) ]]
+	if p1 and p1.Parent then
+		if p1.Parent:IsA("BasePart") then
+			return p1.Parent.Position
+		end
+
+		if p1.Parent:IsA("Attachment") then
+			return p1.Parent.WorldPosition
+		end
+	else
+		for k, v in pairs(tbl) do
+			if v == p1 then
+				table.remove(tbl, k)
+			end
+		end
+	end
+end
+
+local function CustomUpdate(p1, p2) --[[ CustomUpdate | Line: 72 ]]
+	local Frame = p2:WaitForChild("Frame")
+	local IsHold = Frame:WaitForChild("IsHold")
+	local ActionText = Frame:WaitForChild("ActionText")
+	local KeyText = Frame:WaitForChild("KeyText")
+	local KeyImage = Frame:WaitForChild("KeyImage")
+	local Bar = Frame:WaitForChild("Bar")
+	local Shine = Frame:WaitForChild("Shine")
+	local Highlight = p2:WaitForChild("Highlight")
+	local Edge = Frame:WaitForChild("Edge")
+	local Edge2 = Frame:WaitForChild("Edge2")
+
+	if p1.Name == "LockDoor" and p1.Parent.Parent.Parent:GetAttribute("Locked") then
+		KeyText.TextColor3 = Color3.fromRGB(255, 195, 74)
+		IsHold.TextColor3 = Color3.fromRGB(255, 195, 74)
+		ActionText.TextColor3 = Color3.fromRGB(255, 195, 74)
+		Bar.BackgroundColor3 = Color3.fromRGB(170, 113, 32)
+		Shine.ImageColor3 = Color3.fromRGB(255, 184, 16)
+		Edge.ImageColor3 = Color3.fromRGB(255, 195, 74)
+		Edge2.ImageColor3 = Color3.fromRGB(255, 195, 74)
+		KeyImage.ImageColor3 = Color3.fromRGB(255, 195, 74)
+		Highlight.FillColor = Color3.fromRGB(255, 195, 74)
+		Highlight.OutlineColor = Color3.fromRGB(255, 195, 74)
+
+		return
+	end
+
+	if p1.Name ~= "LockDoor" then
+		return
+	end
+
+	KeyText.TextColor3 = Color3.fromRGB(101, 255, 84)
+	IsHold.TextColor3 = Color3.fromRGB(101, 255, 84)
+	ActionText.TextColor3 = Color3.fromRGB(101, 255, 84)
+	Bar.BackgroundColor3 = Color3.fromRGB(63, 158, 50)
+	Shine.ImageColor3 = Color3.fromRGB(75, 255, 44)
+	Edge.ImageColor3 = Color3.fromRGB(101, 255, 84)
+	Edge2.ImageColor3 = Color3.fromRGB(101, 255, 84)
+	KeyImage.ImageColor3 = Color3.fromRGB(101, 255, 84)
+	Highlight.FillColor = Color3.fromRGB(101, 255, 84)
+	Highlight.OutlineColor = Color3.fromRGB(101, 255, 84)
+end
+
+local function getScreenGui() --[[ getScreenGui | Line: 115 | Upvalues: PlayerGui (copy) ]]
+	local ProximityPrompts = PlayerGui:FindFirstChild("ProximityPrompts")
+
+	if ProximityPrompts == nil then
+		local ProximityPrompts2 = Instance.new("ScreenGui")
+
+		ProximityPrompts2.Name = "ProximityPrompts"
+		ProximityPrompts2.ResetOnSpawn = false
+		ProximityPrompts2.Parent = PlayerGui
+		ProximityPrompts = ProximityPrompts2
+	end
+
+	return ProximityPrompts
+end
+
+local t2 = {
+	OpenDoor = true,
+	OpenShop = true,
+	OpenAtm = true,
+	OpenFloorLoot = true,
+	PickUpMoney = true,
+	OpenAttachments = true,
+	AirdropSupply = true
 }
+
+local function handleKeyBinds(p1) --[[ handleKeyBinds | Line: 128 | Upvalues: t2 (copy) ]]
+	if t2[p1.Name] then
+		p1.KeyboardKeyCode = _G.Settings.Keybinds.Interact
+
+		return
+	end
+
+	if p1.Name ~= "LockDoor" then
+		return
+	end
+
+	p1.KeyboardKeyCode = _G.Settings.Keybinds.Lock_door
+end
+
+local function createPrompt(p1, p2, p3) --[[ createPrompt | Line: 137 | Upvalues: t2 (copy), Prompt (copy), TweenService (copy), CustomUpdate (copy), v3 (ref), v4 (ref), v2 (ref), v1 (ref), tbl (copy), GetPosition (copy), v6 (copy) ]]
+	if t2[p1.Name] then
+		p1.KeyboardKeyCode = _G.Settings.Keybinds.Interact
+	elseif p1.Name == "LockDoor" then
+		p1.KeyboardKeyCode = _G.Settings.Keybinds.Lock_door
+	end
+
+	local v12 = Prompt:Clone()
+	local Frame = v12:WaitForChild("Frame")
+	local IsHold = Frame:WaitForChild("IsHold")
+	local ActionText = Frame:WaitForChild("ActionText")
+	local KeyText = Frame:WaitForChild("KeyText")
+	local KeyImage = Frame:WaitForChild("KeyImage")
+	local Bar = Frame:WaitForChild("Bar")
+
+	Frame:WaitForChild("Shine")
+
+	local Highlight = Instance.new("Highlight")
+
+	Highlight.FillColor = Color3.fromRGB(101, 255, 84)
+	Highlight.OutlineColor = Color3.fromRGB(101, 255, 84)
+	Highlight.FillTransparency = 1
+	Highlight.OutlineTransparency = 1
+	Highlight.Parent = v12
+
+	local Edge = Frame:WaitForChild("Edge")
+	local Edge2 = Frame:WaitForChild("Edge2")
+	local v22 = nil
+
+	if p1.Parent:IsA("Attachment") then
+		v22 = p1.Parent.WorldPosition
+		Highlight.Adornee = p1.Parent.Parent
+	elseif p1.Parent:IsA("BasePart") then
+		v22 = p1.Parent.Position
+		Highlight.Adornee = p1.Parent
+	end
+
+	_G.UpdatePromptVisuals(Frame, p1.KeyboardKeyCode, p1.GamepadKeyCode, p1.ActionText)
+
+	local v32 = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+	local v42 = TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.In)
+	local v5 = TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.In)
+	local v62 = TweenInfo.new(p1.HoldDuration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+	local v7 = TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+	local t = {}
+	local list2 = {}
+	local t3 = {}
+	local t4 = {}
+
+	for i, v in ipairs({ KeyText, ActionText, IsHold }) do
+		table.insert(t, TweenService:Create(v, v42, {
+			TextTransparency = 1
+		}))
+		table.insert(list2, TweenService:Create(v, v5, {
+			TextTransparency = 0
+		}))
+	end
+
+	table.insert(t, TweenService:Create(KeyImage, v42, {
+		ImageTransparency = 1,
+		Visible = false
+	}))
+	table.insert(list2, TweenService:Create(KeyImage, v32, {
+		ImageTransparency = 0,
+		Visible = true
+	}))
+	table.insert(t, TweenService:Create(Frame, v42, {
+		BackgroundTransparency = 1,
+		Visible = false,
+		Size = UDim2.fromScale(0, 0)
+	}))
+	table.insert(list2, TweenService:Create(Frame, v42, {
+		BackgroundTransparency = 0.5,
+		Visible = true,
+		Size = UDim2.fromScale(0.8, 0.8)
+	}))
+	table.insert(list2, TweenService:Create(Highlight, v5, {
+		OutlineTransparency = 0.6,
+		FillTransparency = 0.825
+	}))
+	table.insert(t, TweenService:Create(Highlight, v5, {
+		OutlineTransparency = 1,
+		FillTransparency = 1
+	}))
+	table.insert(t, TweenService:Create(Edge, v42, {
+		ImageTransparency = 1,
+		Visible = false
+	}))
+	table.insert(list2, TweenService:Create(Edge, v32, {
+		ImageTransparency = 0.15,
+		Visible = true
+	}))
+	table.insert(t, TweenService:Create(Edge2, v42, {
+		ImageTransparency = 1,
+		Visible = false
+	}))
+	table.insert(list2, TweenService:Create(Edge2, v32, {
+		ImageTransparency = 0.15,
+		Visible = true
+	}))
+
+	if p2 == Enum.ProximityPromptInputType.Touch or _G.Settings.Gameplay.ClickablePrompts then
+		local v20 = false
+
+		v12.Active = true
+		Frame.InputBegan:Connect(function(p12) --[[ Line: 219 | Upvalues: p1 (copy), v20 (ref) ]]
+			if p12.UserInputType ~= Enum.UserInputType.Touch and p12.UserInputType ~= Enum.UserInputType.MouseButton1 then
+				return
+			end
+
+			if p12.UserInputState == Enum.UserInputState.Change then
+				return
+			end
+
+			p1:InputHoldBegin()
+			v20 = true
+		end)
+		Frame.InputEnded:Connect(function(p12) --[[ Line: 226 | Upvalues: v20 (ref), p1 (copy) ]]
+			if p12.UserInputType ~= Enum.UserInputType.Touch and p12.UserInputType ~= Enum.UserInputType.MouseButton1 or not v20 then
+				return
+			end
+
+			v20 = false
+			p1:InputHoldEnd()
+		end)
+		v12.Active = true
+	end
+
+	CustomUpdate(p1, v12)
+
+	local v21 = p1.Triggered:Connect(function() --[[ Line: 247 | Upvalues: t (copy), v3 (ref), p1 (copy), v4 (ref), v2 (ref), CustomUpdate (ref), v12 (copy) ]]
+		for i, v in ipairs(t) do
+			v:Play()
+		end
+
+		v3:Stop()
+
+		if _G.CharacterStates.Downed then
+			task.wait(0.1)
+			CustomUpdate(p1, v12)
+
+			return
+		end
+
+		if p1:GetAttribute("PickUpAnim") then
+			v4:Play(0.1, 1, 1.5)
+		else
+			v2:Play()
+		end
+
+		task.wait(0.1)
+		CustomUpdate(p1, v12)
+	end)
+	local v222 = p1.TriggerEnded:Connect(function() --[[ Line: 265 | Upvalues: CustomUpdate (ref), p1 (copy), v12 (copy), list2 (copy), v3 (ref) ]]
+		CustomUpdate(p1, v12)
+
+		for i, v in ipairs(list2) do
+			v:Play()
+		end
+
+		v3:Stop()
+	end)
+
+	if p1.HoldDuration > 0 then
+		IsHold.Visible = true
+		table.insert(t3, TweenService:Create(Bar, v62, {
+			Size = UDim2.fromScale(1, 1)
+		}))
+		table.insert(t4, TweenService:Create(Bar, v7, {
+			Size = UDim2.fromScale(1, 0)
+		}))
+		table.insert(t3, TweenService:Create(Frame, v7, {
+			Size = UDim2.fromScale(0.7, 0.7)
+		}))
+		table.insert(t4, TweenService:Create(Frame, v7, {
+			Size = UDim2.fromScale(0.8, 0.8)
+		}))
+		p1.PromptButtonHoldBegan:Connect(function() --[[ Line: 282 | Upvalues: t3 (copy), v3 (ref), v1 (ref), v22 (ref) ]]
+			for i, v in ipairs(t3) do
+				v:Play()
+			end
+
+			if not _G.CharacterStates.Downed then
+				v3:Play()
+			end
+
+			v1:SetAttribute("Interacting", true)
+
+			if not v22 then
+				return
+			end
+
+			v1:SetAttribute("LookAtPosition", v22)
+		end)
+		p1.PromptButtonHoldEnded:Connect(function() --[[ Line: 294 | Upvalues: t4 (copy), v3 (ref), v1 (ref) ]]
+			for i, v in ipairs(t4) do
+				v:Play()
+			end
+
+			v3:Stop()
+			v1:SetAttribute("Interacting", nil)
+			v1:SetAttribute("LookAtPosition", nil)
+		end)
+	end
+
+	if not table.find(tbl, p1) then
+		table.insert(tbl, p1)
+
+		local v28 = GetPosition(p1)
+
+		if v28 and (v1:FindFirstChild("Torso") and (v1.Torso.Position - v28).Magnitude < 15) then
+			if v6(v28, v1.Torso.Position - v28) then
+				p1.Enabled = false
+			else
+				p1.Enabled = true
+			end
+		end
+	end
+
+	v12.Adornee = p1.Parent
+	v12.Parent = p3
+
+	for i, v in ipairs(list2) do
+		v:Play()
+	end
+
+	return function() --[[ cleanupFunction | Line: 327 | Upvalues: v21 (ref), v222 (ref), t (copy), v3 (ref), v1 (ref), v12 (copy) ]]
+		v21:Disconnect()
+		v222:Disconnect()
+
+		for i, v in ipairs(t) do
+			v:Play()
+		end
+
+		v3:Stop()
+		v1:SetAttribute("Interacting", nil)
+		v1:SetAttribute("LookAtPosition", nil)
+		task.wait(0.2)
+		v12:Destroy()
+	end
+end
+
+ProximityPromptService.PromptShown:Connect(function(p1, p2) --[[ Line: 347 | Upvalues: PlayerGui (copy), createPrompt (copy) ]]
+	if p1.Style == Enum.ProximityPromptStyle.Default then
+		return
+	end
+
+	local v1 = false
+	local tbl = { p1.PromptHidden:Once(function() --[[ Line: 355 | Upvalues: v1 (ref) ]]
+			v1 = true
+		end), p1.Destroying:Once(function() --[[ Line: 356 | Upvalues: v1 (ref) ]]
+			v1 = true
+		end) }
+	local ProximityPrompts = PlayerGui:FindFirstChild("ProximityPrompts")
+
+	if ProximityPrompts == nil then
+		local ProximityPrompts2 = Instance.new("ScreenGui")
+
+		ProximityPrompts2.Name = "ProximityPrompts"
+		ProximityPrompts2.ResetOnSpawn = false
+		ProximityPrompts2.Parent = PlayerGui
+		ProximityPrompts = ProximityPrompts2
+	end
+
+	local v2 = createPrompt(p1, p2, ProximityPrompts)
+
+	repeat
+		task.wait()
+	until v1
+
+	for k, v in pairs(tbl) do
+		v:Disconnect()
+	end
+
+	v2()
+end)
+
+local t3 = {}
+
+while task.wait(0.025) do
+	for k, v in pairs(tbl) do
+		local _ = not t3[v]
+		local v7 = GetPosition(v)
+
+		if v7 and v1:FindFirstChild("Torso") then
+			local Magnitude = (v1.Torso.Position - v7).Magnitude
+
+			if Magnitude < 15 then
+				local v8 = v6(v7, v1.Torso.Position - v7)
+
+				if _G.CharacterStates.DP or (v8 or (_G.CharacterStates.Downed or (_G.CharacterStates.Died or v:GetAttribute("Disabled")))) then
+					v.Enabled = false
+				else
+					v.Enabled = true
+				end
+			else
+				v.Enabled = false
+			end
+
+			local _ = Magnitude < v.MaxActivationDistance or not (Magnitude > 25)
+		end
+	end
+end
 
 -- StarterPlayer.StarterPlayerScripts.BoltHandler.LightningBolt.PartCache
 --
@@ -53674,6 +57564,166 @@ end
 
 return t
 
+-- ReplicatedStorage.AnimationPacks.Nightbound
+--
+return {
+	idle = {
+		{
+			id = "rbxassetid://116136537494315",
+			weight = 10
+		}
+	},
+	hurtIdle = {
+		{
+			id = "rbxassetid://116136537494315",
+			weight = 10
+		}
+	},
+	walk = {
+		{
+			id = "rbxassetid://116584806196974",
+			weight = 10
+		}
+	},
+	walkRight = {
+		{
+			id = "rbxassetid://116584806196974",
+			weight = 10
+		}
+	},
+	walkLeft = {
+		{
+			id = "rbxassetid://116584806196974",
+			weight = 10
+		}
+	},
+	walkBackLeft = {
+		{
+			id = "rbxassetid://116584806196974",
+			weight = 10
+		}
+	},
+	walkBackRight = {
+		{
+			id = "rbxassetid://116584806196974",
+			weight = 10
+		}
+	},
+	hurtWalk = {
+		{
+			id = "rbxassetid://116584806196974",
+			weight = 10
+		}
+	},
+	downedWalk = {
+		{
+			id = "rbxassetid://9926697043",
+			weight = 10
+		}
+	},
+	downedIdle = {
+		{
+			id = "rbxassetid://9926686454",
+			weight = 10
+		}
+	},
+	crouchIdle = {
+		{
+			id = "rbxassetid://7893249719",
+			weight = 10
+		}
+	},
+	crouchWalk = {
+		{
+			id = "rbxassetid://7893257456",
+			weight = 10
+		}
+	},
+	sprint = {
+		{
+			id = "rbxassetid://109549484850921",
+			weight = 10,
+			speedModifier = 25
+		}
+	},
+	hurtSprint = {
+		{
+			id = "rbxassetid://109549484850921",
+			weight = 10,
+			speedModifier = 25
+		}
+	},
+	run = {
+		{
+			id = "rbxassetid://109549484850921",
+			weight = 10,
+			speedModifier = 25
+		}
+	},
+	jump = {
+		{
+			id = "rbxassetid://7335941064",
+			weight = 10
+		}
+	},
+	fall = {
+		{
+			id = "rbxassetid://9297638145",
+			weight = 10
+		}
+	},
+	climb = {
+		{
+			id = "rbxassetid://180436334",
+			weight = 10
+		}
+	},
+	sit = {
+		{
+			id = "rbxassetid://178130996",
+			weight = 10
+		}
+	}
+}
+
+-- ReplicatedStorage.MeleeStorage.Mods.Hitbox.Solvers.Vector3
+--
+local t = {}
+local v1 = Vector3.new()
+
+function t.Solve(p1, p2) --[[ Solve | Line: 11 | Upvalues: v1 (copy) ]]
+	local v12 = p2.Instances[1]
+	local v3 = v12.Position + v12.CFrame:VectorToWorldSpace(p2.Instances[2])
+
+	if not p2.LastPosition then
+		p2.LastPosition = v3
+	end
+
+	local LastPosition = p2.LastPosition
+	local v4 = p2.LastPosition or v1
+
+	p2.WorldSpace = v3
+
+	return LastPosition, v3 - v4
+end
+function t.UpdateToNextPosition(p1, p2) --[[ UpdateToNextPosition | Line: 30 ]]
+	return p2.WorldSpace
+end
+function t.Visualize(p1, p2) --[[ Visualize | Line: 34 ]]
+	return CFrame.lookAt(p2.WorldSpace, p2.LastPosition)
+end
+
+return t
+
+-- ReplicatedStorage.Mods.StatusEffectDatabase.NegatingEffects
+--
+return {
+	RespiratoryProtection = {
+		DamageGear = { "Face" },
+		Negate = { "Toxic" }
+	}
+}
+
 -- StarterPlayer.StarterPlayerScripts.KeycardReaderDisplayHandler
 --
 local CollectionService = game:GetService("CollectionService")
@@ -53717,142 +57767,6 @@ while task.wait(1) do
 			v.Bar1.Size = UDim2.new(0.1, 0, v4, 0)
 			v.Bar2.Size = UDim2.new(0.1, 0, v4, 0)
 		end
-	end
-end
-
--- ReplicatedStorage.MeleeStorage.Mods.Hitbox.Solvers.Vector3
---
-local t = {}
-local v1 = Vector3.new()
-
-function t.Solve(p1, p2) --[[ Solve | Line: 11 | Upvalues: v1 (copy) ]]
-	local v12 = p2.Instances[1]
-	local v3 = v12.Position + v12.CFrame:VectorToWorldSpace(p2.Instances[2])
-
-	if not p2.LastPosition then
-		p2.LastPosition = v3
-	end
-
-	local LastPosition = p2.LastPosition
-	local v4 = p2.LastPosition or v1
-
-	p2.WorldSpace = v3
-
-	return LastPosition, v3 - v4
-end
-function t.UpdateToNextPosition(p1, p2) --[[ UpdateToNextPosition | Line: 30 ]]
-	return p2.WorldSpace
-end
-function t.Visualize(p1, p2) --[[ Visualize | Line: 34 ]]
-	return CFrame.lookAt(p2.WorldSpace, p2.LastPosition)
-end
-
-return t
-
--- ReplicatedStorage.Mods.StatusEffectDatabase.NegatingEffects
---
-return {
-	RespiratoryProtection = {
-		DamageGear = { "Face" },
-		Negate = { "Toxic" }
-	}
-}
-
--- StarterPlayer.StarterPlayerScripts.RegionCulling
---
-workspace:WaitForChild("Map")
-task.wait(5)
-
-local LocalPlayer = game.Players.LocalPlayer
-local ReplicatedStorage = game.ReplicatedStorage
-local Camera = workspace.Camera
-local StreamingInformation = require(ReplicatedStorage:WaitForChild("StreamingInformation", 9000000000))
-local v1 = 500
-
-for k, v in pairs(game.CollectionService:GetTagged("DynamicModels")) do
-	if v:IsA("Model") then
-		table.insert(StreamingInformation, {
-			Shown = true,
-			Targets = { v },
-			Objects = table.create(1),
-			Position = v:GetBoundingBox().Position,
-			LoadDistance = v:GetAttribute("Distance") or 150,
-			Areas = {}
-		})
-	end
-end
-
-for k, v in pairs(StreamingInformation) do
-	for k2, v2 in pairs(v.Targets) do
-		for k3, v3 in pairs(v2:GetDescendants()) do
-			if (v3:IsA("BasePart") or (v3:IsA("Decal") or v3:IsA("Texture"))) and not v3:HasTag("DynamicIgnore") then
-				table.insert(v.Objects, v3)
-			end
-		end
-	end
-end
-
-local function ToggleVisiblity(p1, p2) --[[ ToggleVisiblity | Line: 47 | Upvalues: v1 (ref) ]]
-	local count = 0
-
-	for k, v in pairs(p1) do
-		if v1 <= count then
-			task.wait()
-			count = 0
-		end
-
-		count = count + 1
-		v.LocalTransparencyModifier = if p2 then 0 else 1
-	end
-end
-
-while task.wait(0.25) do
-	local Position = Camera.CFrame.Position
-	local ok, result = pcall(function() --[[ Line: 72 | Upvalues: ReplicatedStorage (copy), Position (copy) ]]
-		return ReplicatedStorage.GetArea:Invoke(Position)
-	end)
-
-	if ok then
-		local v2 = if result then result.Name else result
-
-		for k, v in pairs(StreamingInformation) do
-			local v3 = table.find(v.Areas, v2)
-
-			if v.Position and (Position - v.Position).Magnitude <= v.LoadDistance then
-				v3 = true
-			end
-
-			if _G.Settings.Video.EXPERIMENTAL_Region_Culling and (LocalPlayer.Character and not LocalPlayer.Character:GetAttribute("Died")) then
-				_ = 500
-			else
-				v3 = not v.Reverse
-				_ = 2000
-			end
-
-			if (not v.Reverse or v3) and (v.Reverse or not v3) then
-				if v.Shown ~= false then
-					v.Shown = false
-					ToggleVisiblity(v.Objects, false)
-				end
-
-				continue
-			end
-
-			if v.Shown ~= true then
-				v.Shown = true
-				ToggleVisiblity(v.Objects, true)
-
-				if v.Reset then
-					for k2, v4 in pairs(StreamingInformation) do
-						if not v4.Reset then
-							v4.Shown = nil
-						end
-					end
-				end
-			end
-		end
-
-		continue
 	end
 end
 
@@ -56702,106 +60616,508 @@ return {
 	}
 }
 
--- ReplicatedStorage.Mods.RecolorUI
+-- StarterPlayer.StarterPlayerScripts.WeatherHandler
 --
-local t = {}
+repeat
+	task.wait(0.1)
+until game.ReplicatedFirst:GetAttribute("GameLoaded")
+
+local ReplicatedStorage = game.ReplicatedStorage
+local Spawners = script:WaitForChild("Spawners")
+local Wind = ReplicatedStorage:WaitForChild("Wind")
 local TweenService = game:GetService("TweenService")
-local v1 = TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+local v1 = TweenInfo.new(5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+local v2 = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+local v3 = TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.In)
+local v4 = TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+local v5 = TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+local LocalPlayer = game.Players.LocalPlayer
+local v6 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local HumanoidRootPart = v6:WaitForChild("HumanoidRootPart")
+local Weather = workspace:FindFirstChild("Debris"):WaitForChild("Weather")
+local Lighting = game.Lighting
+local Clouds = workspace:WaitForChild("Terrain"):WaitForChild("Clouds")
+local Atmosphere = Lighting:WaitForChild("Atmosphere")
+local _ = task.wait
+local _2 = task.delay
+local t = { workspace:WaitForChild("Debris"), workspace:WaitForChild("Chars") }
+local v7 = RaycastParams.new()
 
-local function ShiftHue(p1, p2) --[[ ShiftHue | Line: 7 ]]
-	local _, v1, v2 = p1:ToHSV()
+v7.FilterType = Enum.RaycastFilterType.Exclude
+v7.FilterDescendantsInstances = t
 
-	return Color3.fromHSV(p2, v1, v2)
+local CollectionService = game:GetService("CollectionService")
+local t2 = {
+	Show = {},
+	Disapear = {}
+}
+local t3 = {
+	Rain = Vector3.new(0, 150, 0),
+	Snow = Vector3.new(0, 150, 0),
+	StrongWind = Vector3.new(0, 0, 250)
+}
+
+for k, v in pairs(CollectionService:GetTagged("Snow")) do
+	table.insert(t2.Show, TweenService:Create(v, v5, {
+		CanCollide = true,
+		Transparency = v:GetAttribute("Transparency") or 0
+	}))
+	table.insert(t2.Disapear, TweenService:Create(v, v5, {
+		Transparency = 1,
+		CanCollide = false
+	}))
 end
 
-local function v2(p1, p2) --[[ CollectColorTargets | Line: 13 | Upvalues: v2 (copy) ]]
-	for k, v in pairs(p1:GetChildren()) do
-		local t = {}
+for k, v in pairs(CollectionService:GetTagged("SnowHide")) do
+	table.insert(t2.Show, TweenService:Create(v, v5, {
+		Transparency = 1
+	}))
+	table.insert(t2.Disapear, TweenService:Create(v, v5, {
+		Transparency = 0
+	}))
+end
 
-		if v:IsA("GuiObject") and v.BackgroundTransparency < 1 then
-			t.BackgroundColor3 = v.BackgroundColor3
+local function MakeSound(p1, p2, p3, p4) --[[ MakeSound | Line: 72 ]]
+	local Sound = Instance.new("Sound")
+
+	Sound.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+	Sound.SoundId = p1
+	Sound.Volume = p4 or 0.5
+	Sound.Looped = p2
+	Sound.Parent = script
+
+	if p3 then
+		local EqualizerSoundEffect = Instance.new("EqualizerSoundEffect")
+
+		for k, v in pairs(p3) do
+			EqualizerSoundEffect[k] = v
 		end
 
-		if v:IsA("ScrollingFrame") then
-			t.ScrollBarImageColor3 = v.ScrollBarImageColor3
+		EqualizerSoundEffect.Parent = Sound
+	end
+
+	return Sound
+end
+
+local v8 = "Sunny"
+local v9 = nil
+local t4 = {}
+local t5 = {
+	ShowSnow = false,
+	Spawner = Spawners:WaitForChild("Rain")
+}
+local t6 = {
+	Indoors = MakeSound("rbxassetid://8617785833", true, {
+		HighGain = -5,
+		MidGain = -5,
+		LowGain = -5
+	}, 0)
+}
+local Sound = Instance.new("Sound")
+
+Sound.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound.SoundId = "rbxassetid://6767210981"
+Sound.Volume = 0
+Sound.Looped = true
+Sound.Parent = script
+t6.Outdoors = Sound
+
+local t7 = {}
+local Sound2 = Instance.new("Sound")
+
+Sound2.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound2.SoundId = "rbxassetid://7446196948"
+Sound2.Volume = 0.5
+Sound2.Looped = nil
+Sound2.Parent = script
+
+local Sound3 = Instance.new("Sound")
+
+Sound3.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound3.SoundId = "rbxassetid://7446196827"
+Sound3.Volume = 0.5
+Sound3.Looped = nil
+Sound3.Parent = script
+
+local Sound4 = Instance.new("Sound")
+
+Sound4.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound4.SoundId = "rbxassetid://7446197037"
+Sound4.Volume = 0.5
+Sound4.Looped = nil
+Sound4.Parent = script
+
+local Sound5 = Instance.new("Sound")
+
+Sound5.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound5.SoundId = "rbxassetid://966677670"
+Sound5.Volume = 0.5
+Sound5.Looped = nil
+Sound5.Parent = script
+
+local Sound6 = Instance.new("Sound")
+
+Sound6.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound6.SoundId = "rbxassetid://236328715"
+Sound6.Volume = 0.5
+Sound6.Looped = nil
+Sound6.Parent = script
+
+local Sound7 = Instance.new("Sound")
+
+Sound7.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound7.SoundId = "rbxassetid://7768747890"
+Sound7.Volume = 0.5
+Sound7.Looped = nil
+Sound7.Parent = script
+t7[1] = Sound2
+t7[2] = Sound3
+t7[3] = Sound4
+t7[4] = Sound5
+t7[5] = Sound6
+t7[6] = Sound7
+t6.IndoorsThunders = t7
+
+local t8 = {}
+local Sound8 = Instance.new("Sound")
+
+Sound8.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound8.SoundId = "rbxassetid://7390847491"
+Sound8.Volume = 0.5
+Sound8.Looped = nil
+Sound8.Parent = script
+
+local Sound9 = Instance.new("Sound")
+
+Sound9.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound9.SoundId = "rbxassetid://7390847077"
+Sound9.Volume = 0.5
+Sound9.Looped = nil
+Sound9.Parent = script
+
+local Sound10 = Instance.new("Sound")
+
+Sound10.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound10.SoundId = "rbxassetid://7390846882"
+Sound10.Volume = 0.5
+Sound10.Looped = nil
+Sound10.Parent = script
+
+local Sound11 = Instance.new("Sound")
+
+Sound11.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound11.SoundId = "rbxassetid://4961240438"
+Sound11.Volume = 0.5
+Sound11.Looped = nil
+Sound11.Parent = script
+
+local Sound12 = Instance.new("Sound")
+
+Sound12.SoundGroup = game.SoundService:WaitForChild("GeneralSoundGroup"):WaitForChild("Weather")
+Sound12.SoundId = "rbxassetid://5246104843"
+Sound12.Volume = 0.5
+Sound12.Looped = nil
+Sound12.Parent = script
+t8[1] = Sound8
+t8[2] = Sound9
+t8[3] = Sound10
+t8[4] = Sound11
+t8[5] = Sound12
+t6.OutdoorsThunders = t8
+t5.Sounds = t6
+t5.Anims = { TweenService:Create(Atmosphere, v1, {
+		Glare = 0,
+		Haze = 10,
+		Density = 0.4,
+		Color = Color3.fromRGB(185, 185, 185),
+		Decay = Color3.new(255/255, 255/255, 255/255)
+	}), TweenService:Create(Clouds, v1, {
+		Cover = 1
+	}) }
+t4.Rainy = t5
+t4.Snowy = {
+	ShowSnow = true,
+	Spawner = Spawners:WaitForChild("Snow"),
+	Anims = { TweenService:Create(Atmosphere, v1, {
+			Glare = 0.45,
+			Haze = 10,
+			Density = 0.4,
+			Color = Color3.fromRGB(185, 185, 185),
+			Decay = Color3.new(255/255, 255/255, 255/255)
+		}), TweenService:Create(Clouds, v1, {
+			Cover = 0.85
+		}) }
+}
+t4.PartlySnowy = {
+	ShowSnow = true,
+	Anims = { TweenService:Create(Atmosphere, v1, {
+			Glare = 0.3,
+			Haze = 0,
+			Density = 0.4,
+			Color = Color3.fromRGB(185, 185, 185),
+			Decay = Color3.new(255/255, 255/255, 255/255)
+		}), TweenService:Create(Clouds, v1, {
+			Cover = 0.65
+		}) }
+}
+t4.Foggy = {
+	ShowSnow = false,
+	Anims = { TweenService:Create(Atmosphere, v1, {
+			Glare = 0.3,
+			Haze = 10,
+			Density = 0.5,
+			Color = Color3.fromRGB(185, 185, 185),
+			Decay = Color3.new(255/255, 255/255, 255/255)
+		}), TweenService:Create(Clouds, v1, {
+			Cover = 0.7
+		}) }
+}
+t4.Sunny = {
+	ShowSnow = false,
+	Anims = { TweenService:Create(Atmosphere, v1, {
+			Glare = 0,
+			Haze = 0,
+			Density = 0.325,
+			Color = Color3.fromRGB(185, 185, 185),
+			Decay = Color3.new(255/255, 255/255, 255/255)
+		}), TweenService:Create(Clouds, v1, {
+			Cover = 0.65
+		}) }
+}
+t4.Tunnel = {
+	ShowSnow = false,
+	Anims = { TweenService:Create(Atmosphere, v1, {
+			Glare = 0,
+			Haze = 10,
+			Density = 0.6,
+			Color = Color3.new(),
+			Decay = Color3.new()
+		}), TweenService:Create(Clouds, v1, {
+			Cover = 0.85
+		}) }
+}
+t4.Aftermath = {
+	Anims = { TweenService:Create(Atmosphere, v1, {
+			Glare = 0.25,
+			Haze = 10,
+			Density = 0.5,
+			Color = Color3.fromRGB(212, 134, 97),
+			Decay = Color3.fromRGB(158, 113, 92)
+		}), TweenService:Create(Clouds, v1, {
+			Cover = 0.25
+		}) }
+}
+t4.StrongWind = {
+	Wind = 1,
+	Spawner = Spawners:WaitForChild("StrongWind"),
+	Anims = { TweenService:Create(Atmosphere, v1, {
+			Glare = 0.3,
+			Haze = 10,
+			Density = 0.45
+		}) }
+}
+
+local function IndoorCheck() --[[ IndoorCheck | Line: 184 | Upvalues: HumanoidRootPart (ref), v7 (copy), t (copy) ]]
+	if not HumanoidRootPart then
+		return
+	end
+
+	local v1 = workspace:Raycast(HumanoidRootPart.Position, Vector3.new(0, 150, 0), v7)
+
+	if not v1 then
+		return
+	end
+
+	if v1.Instance.CanCollide ~= false and (v1.Instance.Anchored ~= false and v1.Instance.Transparency ~= 1) then
+		return true
+	end
+
+	table.insert(t, v1.Instance)
+	v7.FilterDescendantsInstances = t
+
+	return true
+end
+
+local v10 = ""
+
+local function SoundTransition(p1, p2) --[[ SoundTransition | Line: 200 | Upvalues: v10 (ref), TweenService (copy), v2 (copy) ]]
+	if v10 == p2 then
+		return
+	end
+
+	v10 = p2
+
+	for k, v in pairs(p1) do
+		if typeof(v) ~= "table" then
+			if k == p2 then
+				TweenService:Create(v, v2, {
+					Volume = 0.75,
+					Playing = true
+				}):Play()
+
+				continue
+			end
+
+			TweenService:Create(v, v2, {
+				Volume = 0,
+				Playing = false
+			}):Play()
 		end
-
-		if v:IsA("TextLabel") or v:IsA("TextButton") then
-			t.TextColor3 = v.TextColor3
-		end
-
-		if v:IsA("ImageLabel") or v:IsA("ImageButton") then
-			t.ImageColor3 = v.ImageColor3
-		end
-
-		local UIStroke = v:FindFirstChildOfClass("UIStroke")
-
-		if UIStroke then
-			t.UIStroke = UIStroke.Color
-			t.UIStrokeRef = UIStroke
-		end
-
-		if next(t) then
-			p2[v] = t
-		end
-
-		v2(v, p2)
 	end
 end
 
-return function(p1, p2, p3) --[[ Line: 55 | Upvalues: t (copy), v2 (copy), v1 (copy), TweenService (copy) ]]
-	table.clear(t)
+local function Thunder(p1) --[[ Thunder | Line: 216 | Upvalues: Atmosphere (copy), TweenService (copy), v3 (copy), v4 (copy) ]]
+	if Atmosphere.Glare ~= 0 then
+		return
+	end
 
-	local v12, _, _2 = p2:ToHSV()
+	p1[math.random(#p1)]:Play()
+	TweenService:Create(Atmosphere, v3, {
+		Glare = 0.5
+	}):Play()
+	task.delay(v3.Time, function() --[[ Line: 220 | Upvalues: TweenService (ref), Atmosphere (ref), v4 (ref) ]]
+		TweenService:Create(Atmosphere, v4, {
+			Glare = 0
+		}):Play()
+	end)
+end
 
-	v2(p1, t)
+local v11 = nil
 
-	local v22 = p3 and TweenInfo.new(p3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut) or v1
+local function SnowPartAnimations(p1) --[[ SnowPartAnimations | Line: 226 | Upvalues: v11 (ref), t2 (copy) ]]
+	if p1 == v11 then
+		return
+	end
 
-	for k, v in pairs(t) do
-		if k.Parent then
-			if v.BackgroundColor3 then
-				local _3, v3, v4 = v.BackgroundColor3:ToHSV()
+	v11 = p1
 
-				TweenService:Create(k, v22, {
-					BackgroundColor3 = Color3.fromHSV(v12, v3, v4)
-				}):Play()
+	local v1 = pairs
+
+	for v3, v4 in v1(p1 and t2.Show or t2.Disapear) do
+		v4:Play()
+	end
+end
+
+local function ToggleSpawner(p1, p2) --[[ ToggleSpawner | Line: 235 | Upvalues: v9 (ref) ]]
+	if not p1 then
+		return
+	end
+
+	for k, v in pairs(v9:GetChildren()) do
+		v.Enabled = p2
+	end
+end
+
+game:GetService("RunService").Heartbeat:Connect(function(p1) --[[ Line: 244 | Upvalues: LocalPlayer (copy), v6 (ref), HumanoidRootPart (ref), Lighting (copy), t4 (copy), v9 (ref), Weather (copy), t3 (copy), v8 (ref), v7 (copy), t (copy), SoundTransition (copy), Thunder (copy), v11 (ref), t2 (copy), Wind (copy) ]]
+	if LocalPlayer.Character ~= v6 or not HumanoidRootPart then
+		v6 = LocalPlayer.Character
+
+		if not v6 then
+			return
+		end
+
+		HumanoidRootPart = v6:FindFirstChild("HumanoidRootPart")
+
+		if not HumanoidRootPart then
+			return
+		end
+	end
+
+	Lighting:GetAttribute("Season")
+
+	local v1 = Lighting:GetAttribute("LocalWeather") or Lighting:GetAttribute("ForceWeather") or Lighting:GetAttribute("Weather")
+
+	if not t4[v1] then
+		return
+	end
+
+	if v9 then
+		v9.Parent = Weather
+		v9.Position = HumanoidRootPart.Position + (t3[v9.Name] or Vector3.new(0, 0, 0))
+	end
+
+	local Sounds = t4[v8].Sounds
+
+	if Sounds then
+		local Indoors = Sounds.Indoors
+
+		if Indoors and HumanoidRootPart then
+			local v2 = workspace:Raycast(HumanoidRootPart.Position, Vector3.new(0, 150, 0), v7)
+
+			if v2 then
+				if v2.Instance.CanCollide == false or (v2.Instance.Anchored == false or v2.Instance.Transparency == 1) then
+					table.insert(t, v2.Instance)
+					v7.FilterDescendantsInstances = t
+				end
+
+				Indoors = true
+			else
+				Indoors = nil
 			end
+		elseif Indoors then
+			Indoors = nil
+		end
 
-			if v.ScrollBarImageColor3 then
-				local _3, v5, v6 = v.ScrollBarImageColor3:ToHSV()
+		SoundTransition(Sounds, if Indoors then "Indoors" else "Outdoors")
 
-				TweenService:Create(k, v22, {
-					ScrollBarImageColor3 = Color3.fromHSV(v12, v5, v6)
-				}):Play()
+		local v72 = not Indoors
+
+		if v9 then
+			for k, v in pairs(v9:GetChildren()) do
+				v.Enabled = v72
 			end
+		end
 
-			if v.TextColor3 then
-				local _3, v7, v8 = v.TextColor3:ToHSV()
+		if Sounds.OutdoorsThunders and math.random(1, 1000) > 999 then
+			Thunder(Indoors and Sounds.IndoorsThunders and Sounds.IndoorsThunders or Sounds.OutdoorsThunders)
+		end
+	end
 
-				TweenService:Create(k, v22, {
-					TextColor3 = Color3.fromHSV(v12, v7, v8)
-				}):Play()
-			end
+	if t4[v8].ShowSnow ~= nil and _G.Settings then
+		local v10 = t4[v8].ShowSnow and _G.Settings.Video.Snow
 
-			if v.ImageColor3 then
-				local _3, v9, v10 = v.ImageColor3:ToHSV()
+		if v10 ~= v11 then
+			v11 = v10
 
-				TweenService:Create(k, v22, {
-					ImageColor3 = Color3.fromHSV(v12, v9, v10)
-				}):Play()
-			end
+			local v112 = pairs
 
-			if v.UIStroke and v.UIStrokeRef then
-				local _3, v11, v122 = v.UIStroke:ToHSV()
-
-				TweenService:Create(v.UIStrokeRef, v22, {
-					Color = Color3.fromHSV(v12, v11, v122)
-				}):Play()
+			for v13, v14 in v112(v10 and t2.Show or t2.Disapear) do
+				v14:Play()
 			end
 		end
 	end
-end
+
+	if v8 == v1 then
+		return
+	end
+
+	if t4[v8].Sounds then
+		SoundTransition(t4[v8].Sounds, "")
+	end
+
+	if v9 then
+		for k, v in pairs(v9:GetChildren()) do
+			v.Enabled = false
+		end
+	end
+
+	v8 = v1
+	v9 = t4[v1].Spawner
+
+	if v9 then
+		for k, v in pairs(v9:GetChildren()) do
+			v.Enabled = true
+		end
+	end
+
+	Wind:Fire(t4[v1].Wind or 0)
+
+	local v15 = pairs
+
+	for v17, v18 in v15(t4[v1] and t4[v1].Anims or t4.Sunny.Anims) do
+		v18:Play()
+	end
+end)
 
 -- StarterGui.MainGui.Station.ShopCore
 --
@@ -57416,298 +61732,144 @@ Stations:WaitForChild("ToggleShop").OnClientEvent:Connect(function(p1, p2, p3) -
 	RefreshSellTab()
 end)
 
--- StarterPlayer.StarterPlayerScripts.RbxCharacterSounds.AtomicBinding
+-- ReplicatedStorage.Mods.FastCast.Signal
 --
-local function parsePath(p1) --[[ parsePath | Line: 4 ]]
-	local v1 = string.split(p1, "/")
+require(script.Parent.TypeDefinitions)
 
-	for i = #v1, 1, -1 do
-		if v1[i] == "" then
-			table.remove(v1, i)
-		end
-	end
-
-	return v1
-end
-
-local function isManifestResolved(p1, p2) --[[ isManifestResolved | Line: 14 ]]
-	local count = 0
-
-	for k in pairs(p1) do
-		count = count + 1
-	end
-
-	assert(count <= p2, count)
-
-	return count == p2
-end
-
-local function v1(p1, p2) --[[ unbindNodeDescend | Line: 24 | Upvalues: v1 (copy) ]]
-	if p1.instance == nil then
-		return
-	end
-
-	p1.instance = nil
-
-	local connections = p1.connections
-
-	if connections then
-		for i, v in ipairs(connections) do
-			v:Disconnect()
-		end
-
-		table.clear(connections)
-	end
-
-	if p2 and p1.alias then
-		p2[p1.alias] = nil
-	end
-
-	local children = p1.children
-
-	if not children then
-		return
-	end
-
-	for k, v in pairs(children) do
-		v1(v, p2)
-	end
-end
-
+local TestService = game:GetService("TestService")
+local Table = require(script.Parent.Table)
 local t = {}
 
 t.__index = t
-function t.new(p1, p2) --[[ new | Line: 54 | Upvalues: parsePath (copy), t (copy) ]]
-	local t2 = {}
-	local count = 1
+t.__type = "Signal"
 
-	for k, v in pairs(p1) do
-		t2[k] = parsePath(v)
-		count = count + 1
-	end
+local t2 = {}
 
+t2.__index = t2
+t2.__type = "SignalConnection"
+function t.new(p1) --[[ new | Line: 44 | Upvalues: t (copy) ]]
 	return setmetatable({
-		_boundFn = p2,
-		_parsedManifest = t2,
-		_manifestSizeTarget = count,
-		_dtorMap = {},
-		_connections = {},
-		_rootInstToRootNode = {},
-		_rootInstToManifest = {}
+		Name = p1,
+		Connections = {},
+		YieldingThreads = {}
 	}, t)
 end
-function t._startBoundFn(p1, p2, p3) --[[ _startBoundFn | Line: 80 ]]
-	local _dtorMap = p1._dtorMap
-	local v1 = _dtorMap[p2]
 
-	if v1 then
-		v1()
-		_dtorMap[p2] = nil
-	end
+local function NewConnection(p1, p2) --[[ NewConnection | Line: 53 | Upvalues: t2 (copy) ]]
+	return setmetatable({
+		Index = -1,
+		Signal = p1,
+		Delegate = p2
+	}, t2)
+end
 
-	local v2 = p1._boundFn(p3)
+local function ThreadAndReportError(p1, p2, p3) --[[ ThreadAndReportError | Line: 62 | Upvalues: TestService (copy) ]]
+	local v1 = coroutine.create(function() --[[ Line: 63 | Upvalues: p1 (copy), p2 (copy) ]]
+		p1(unpack(p2))
+	end)
+	local v2, v3 = coroutine.resume(v1)
 
-	if not v2 then
+	if v2 then
 		return
 	end
 
-	_dtorMap[p2] = v2
+	TestService:Error(string.format("Exception thrown in your %s event handler: %s", p3, v3))
+	TestService:Checkpoint(debug.traceback(v1))
 end
-function t._stopBoundFn(p1, p2) --[[ _stopBoundFn | Line: 96 ]]
-	local _dtorMap = p1._dtorMap
-	local v1 = _dtorMap[p2]
 
-	if not v1 then
-		return
-	end
+function t.Connect(p1, p2) --[[ Connect | Line: 75 | Upvalues: t (copy), t2 (copy), Table (copy) ]]
+	assert(if getmetatable(p1) == t then true else false, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("Connect", "Signal.new()"))
 
-	v1()
-	_dtorMap[p2] = nil
+	local v3 = setmetatable({
+		Index = -1,
+		Signal = p1,
+		Delegate = p2
+	}, t2)
+
+	v3.Index = #p1.Connections + 1
+	Table.insert(p1.Connections, v3.Index, v3)
+
+	return v3
 end
-function t.bindRoot(p1, p2) --[[ bindRoot | Line: 106 | Upvalues: v1 (copy) ]]
-	debug.profilebegin("AtomicBinding:BindRoot")
+function t.Fire(p1, ...) --[[ Fire | Line: 83 | Upvalues: t (copy), Table (copy), ThreadAndReportError (copy) ]]
+	assert(getmetatable(p1) == t, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("Fire", "Signal.new()"))
 
-	local _parsedManifest = p1._parsedManifest
-	local _rootInstToManifest = p1._rootInstToManifest
-	local _manifestSizeTarget = p1._manifestSizeTarget
+	local v2 = Table.pack(...)
+	local Connections = p1.Connections
+	local YieldingThreads = p1.YieldingThreads
 
-	assert(_rootInstToManifest[p2] == nil)
+	for i = 1, #Connections do
+		local v3 = Connections[i]
 
-	local t = {}
-
-	_rootInstToManifest[p2] = t
-	debug.profilebegin("BuildTree")
-
-	local t2 = {
-		alias = "root",
-		instance = p2
-	}
-
-	if next(_parsedManifest) then
-		t2.children = {}
-		t2.connections = {}
-	end
-
-	p1._rootInstToRootNode[p2] = t2
-
-	for k, v in pairs(_parsedManifest) do
-		local v2 = t2
-
-		for i, v3 in ipairs(v) do
-			local v4 = v2.children[v3] or {}
-
-			if if i == #v then true else false then
-				if v4.alias ~= nil then
-					error("Multiple aliases assigned to one instance")
-				end
-
-				v4.alias = k
-			else
-				v4.children = v4.children or {}
-				v4.connections = v4.connections or {}
-			end
-
-			v2.children[v3] = v4
-			v2 = v4
+		if v3.Delegate ~= nil then
+			ThreadAndReportError(v3.Delegate, v2, v3.Signal.Name)
 		end
 	end
 
-	debug.profileend()
+	for j = 1, #YieldingThreads do
+		local v4 = YieldingThreads[j]
 
-	local function v7(p12) --[[ processNode | Line: 160 | Upvalues: t (copy), v7 (copy), p1 (copy), p2 (copy), v1 (ref), _manifestSizeTarget (copy) ]]
-		local v12 = assert(p12.instance)
-		local children = p12.children
-		local alias = p12.alias
-		local v2 = not children
-
-		if alias then
-			t[alias] = v12
+		if v4 ~= nil then
+			coroutine.resume(v4, ...)
 		end
-
-		if not v2 then
-			local function processAddChild(p1) --[[ processAddChild | Line: 172 | Upvalues: children (copy), v7 (ref) ]]
-				local v1 = children[p1.Name]
-
-				if v1 and v1.instance == nil then
-					v1.instance = p1
-					v7(v1)
-				end
-			end
-
-			local function processDeleteChild(p12) --[[ processDeleteChild | Line: 183 | Upvalues: children (copy), p1 (ref), p2 (ref), v1 (ref), t (ref), v12 (copy), v7 (ref) ]]
-				local v13 = p12.Name
-				local v2 = children[v13]
-
-				if not v2 then
-					return
-				end
-
-				if v2.instance ~= p12 then
-					return
-				end
-
-				p1:_stopBoundFn(p2)
-				v1(v2, t)
-				assert(v2.instance == nil)
-
-				local v3 = v12:FindFirstChild(v13)
-
-				if not v3 then
-					return
-				end
-
-				local v4 = children[v3.Name]
-
-				if not v4 then
-					return
-				end
-
-				if v4.instance ~= nil then
-					return
-				end
-
-				v4.instance = v3
-				v7(v4)
-			end
-
-			for i, v in ipairs(v12:GetChildren()) do
-				local v3 = children[v.Name]
-
-				if v3 and v3.instance == nil then
-					v3.instance = v
-					v7(v3)
-				end
-			end
-
-			table.insert(p12.connections, v12.ChildAdded:Connect(processAddChild))
-			table.insert(p12.connections, v12.ChildRemoved:Connect(processDeleteChild))
-		end
-
-		if not v2 then
-			return
-		end
-
-		local v4 = t
-		local v5 = _manifestSizeTarget
-		local count = 0
-
-		for k in pairs(v4) do
-			count = count + 1
-		end
-
-		assert(count <= v5, count)
-
-		if not (count == v5) then
-			return
-		end
-
-		p1:_startBoundFn(p2, t)
 	end
-
-	debug.profilebegin("ResolveTree")
-	v7(t2)
-	debug.profileend()
-	debug.profileend()
 end
-function t.unbindRoot(p1, p2) --[[ unbindRoot | Line: 236 | Upvalues: v1 (copy) ]]
-	local _rootInstToRootNode = p1._rootInstToRootNode
-	local _rootInstToManifest = p1._rootInstToManifest
+function t.FireSync(p1, ...) --[[ FireSync | Line: 103 | Upvalues: t (copy), Table (copy) ]]
+	assert(getmetatable(p1) == t, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("FireSync", "Signal.new()"))
 
-	p1:_stopBoundFn(p2)
+	local v2 = Table.pack(...)
+	local Connections = p1.Connections
+	local YieldingThreads = p1.YieldingThreads
 
-	local v12 = _rootInstToRootNode[p2]
+	for i = 1, #Connections do
+		local v3 = Connections[i]
 
-	if v12 then
-		v1(v12, (assert(_rootInstToManifest[p2])))
-		_rootInstToRootNode[p2] = nil
+		if v3.Delegate ~= nil then
+			v3.Delegate(unpack(v2))
+		end
 	end
 
-	_rootInstToManifest[p2] = nil
+	for j = 1, #YieldingThreads do
+		local v4 = YieldingThreads[j]
+
+		if v4 ~= nil then
+			coroutine.resume(v4, ...)
+		end
+	end
 end
-function t.destroy(p1) --[[ destroy | Line: 252 | Upvalues: v1 (copy) ]]
-	debug.profilebegin("AtomicBinding:destroy")
+function t.Wait(p1) --[[ Wait | Line: 123 | Upvalues: t (copy), Table (copy) ]]
+	assert(getmetatable(p1) == t, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("Wait", "Signal.new()"))
 
-	for k, v in pairs(p1._dtorMap) do
-		v:destroy()
+	local v2 = coroutine.running()
+
+	Table.insert(p1.YieldingThreads, v2)
+
+	local t2 = { coroutine.yield() }
+
+	Table.removeObject(p1.YieldingThreads, v2)
+
+	return unpack(t2)
+end
+function t.Dispose(p1) --[[ Dispose | Line: 133 | Upvalues: t (copy) ]]
+	assert(getmetatable(p1) == t, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("Dispose", "Signal.new()"))
+
+	local Connections = p1.Connections
+
+	for i = 1, #Connections do
+		Connections[i]:Disconnect()
 	end
 
-	table.clear(p1._dtorMap)
-
-	for i, v in ipairs(p1._connections) do
-		v:Disconnect()
-	end
-
-	table.clear(p1._connections)
-
-	local _rootInstToManifest = p1._rootInstToManifest
-
-	for k, v in pairs(p1._rootInstToRootNode) do
-		v1(v, (assert(_rootInstToManifest[k])))
-	end
-
-	table.clear(p1._rootInstToManifest)
-	table.clear(p1._rootInstToRootNode)
-	debug.profileend()
+	p1.Connections = {}
+	setmetatable(p1, nil)
+end
+function t2.Disconnect(p1) --[[ Disconnect | Line: 143 | Upvalues: t2 (copy), Table (copy) ]]
+	assert(getmetatable(p1) == t2, ("Cannot statically invoke method \'%s\' - It is an instance method. Call it on an instance of this class created via %s"):format("Disconnect", "private function NewConnection()"))
+	Table.remove(p1.Signal.Connections, p1.Index)
+	p1.SignalStatic = nil
+	p1.Delegate = nil
+	p1.YieldingThreads = {}
+	p1.Index = -1
+	setmetatable(p1, nil)
 end
 
 return t
@@ -57742,14 +61904,14 @@ local v7 = TweenInfo.new(0.4666666666666666, Enum.EasingStyle.Quart, Enum.Easing
 local v8 = TweenInfo.new(0.3333333333333333, Enum.EasingStyle.Sine)
 local v9 = Vector3.new(0, 0, 0)
 local v10 = nil
-local v11 = nil
-local v12 = nil
-local v13 = nil
+local v11 = false
 local tbl2 = {}
-local v14 = false
+local v12 = false
+local v13 = false
+local v14 = nil
 local v15 = nil
-local v16 = false
-local v17 = false
+local v16 = nil
+local v17 = nil
 
 for k, v in pairs(CurrentCamera:GetChildren()) do
 	if v.Name == "GeneralViewModel" then
@@ -57828,12 +61990,12 @@ local function GetLimbFromName(p1) --[[ GetLimbFromName | Line: 138 | Upvalues: 
 	end
 end
 
-local function UpdateLimbTransparency(p1, p2) --[[ UpdateLimbTransparency | Line: 148 | Upvalues: tbl2 (copy), v16 (ref) ]]
+local function UpdateLimbTransparency(p1, p2) --[[ UpdateLimbTransparency | Line: 148 | Upvalues: tbl2 (copy), v11 (ref) ]]
 	for k, v in pairs(tbl2) do
 		if not p2 or v.Limb.Name == p2 then
 			if v.Limb.LocalTransparencyModifier ~= p1 then
 				v.Limb.LocalTransparencyModifier = p1
-				v.Limb.CastShadow = not v16
+				v.Limb.CastShadow = not v11
 			end
 
 			for k2, v2 in pairs(v.Gear) do
@@ -57853,12 +62015,12 @@ local function UpdateLimbTransparency(p1, p2) --[[ UpdateLimbTransparency | Line
 	end
 end
 
-local function UpdateLimbs(p1) --[[ UpdateLimbs | Line: 170 | Upvalues: tbl2 (copy), v17 (ref) ]]
+local function UpdateLimbs(p1) --[[ UpdateLimbs | Line: 170 | Upvalues: tbl2 (copy), v12 (ref) ]]
 	local InPhysics = _G.CharacterStates.InPhysics
 
 	for k, v in pairs(tbl2) do
 		local v1
-		local v2 = v17 and v17.Torso:FindFirstChild(v.Motor.Name)
+		local v2 = v12 and v12.Torso:FindFirstChild(v.Motor.Name)
 
 		v1 = if v.Limb:FindFirstChild("RagdollBallSocket") then "Neither" elseif p1 and not (v.Limb:GetAttribute("Disconnected") or InPhysics) then "Fake" else "Real"
 
@@ -57893,13 +62055,13 @@ local function UpdateLimbs(p1) --[[ UpdateLimbs | Line: 170 | Upvalues: tbl2 (co
 	end
 end
 
-local function EnableViewModel() --[[ EnableViewModel | Line: 220 | Upvalues: v16 (ref), GeneralViewModel (copy) ]]
-	v16 = true
+local function EnableViewModel() --[[ EnableViewModel | Line: 220 | Upvalues: v11 (ref), GeneralViewModel (copy) ]]
+	v11 = true
 	GeneralViewModel.Parent = workspace.CurrentCamera
 end
 
-local function DisableViewmodel() --[[ DisableViewmodel | Line: 227 | Upvalues: v16 (ref), GeneralViewModel (copy) ]]
-	v16 = false
+local function DisableViewmodel() --[[ DisableViewmodel | Line: 227 | Upvalues: v11 (ref), GeneralViewModel (copy) ]]
+	v11 = false
 	GeneralViewModel.Parent = nil
 end
 
@@ -57907,37 +62069,37 @@ local function EnableChecks() --[[ EnableChecks | Line: 234 | Upvalues: Humanoid
 	return not (Humanoid.Health <= 0 or (v1:FindFirstChild("CarryingPlr") or _G.CharacterStates.Ragdolled))
 end
 
-local function UpdateViewmodelState() --[[ UpdateViewmodelState | Line: 244 | Upvalues: v17 (ref), CurrentCamera (copy), v14 (ref), v1 (copy), Humanoid (copy), v16 (ref), GeneralViewModel (copy) ]]
-	v17 = CurrentCamera:FindFirstChild("ViewModel")
-	v14 = v1 and _G.CharacterStates.InFirstPerson
+local function UpdateViewmodelState() --[[ UpdateViewmodelState | Line: 244 | Upvalues: v12 (ref), CurrentCamera (copy), v13 (ref), v1 (copy), Humanoid (copy), v11 (ref), GeneralViewModel (copy) ]]
+	v12 = CurrentCamera:FindFirstChild("ViewModel")
+	v13 = v1 and _G.CharacterStates.InFirstPerson
 
 	local v2 = not (Humanoid.Health <= 0 or (v1:FindFirstChild("CarryingPlr") or _G.CharacterStates.Ragdolled))
 
-	if v14 and (not v16 and v2) then
-		v16 = true
+	if v13 and (not v11 and v2) then
+		v11 = true
 		GeneralViewModel.Parent = workspace.CurrentCamera
 
 		return
 	end
 
-	if v14 and v2 or not v16 then
+	if v13 and v2 or not v11 then
 		return
 	end
 
-	v16 = false
+	v11 = false
 	GeneralViewModel.Parent = nil
 end
 
-local function UpdateCustomMotors() --[[ UpdateCustomMotors | Line: 263 | Upvalues: v1 (copy), v14 (ref), Torso2 (copy), Torso (copy) ]]
+local function UpdateCustomMotors() --[[ UpdateCustomMotors | Line: 263 | Upvalues: v1 (copy), v13 (ref), Torso2 (copy), Torso (copy) ]]
 	for k, v in pairs(v1:GetDescendants()) do
 		if v:IsA("Motor6D") and v:GetAttribute("TargetLimb") == "Torso" then
-			if v14 and v.Part0 ~= Torso2 then
+			if v13 and v.Part0 ~= Torso2 then
 				v.Part0 = Torso2
 
 				continue
 			end
 
-			if not v14 and v.Part0 ~= Torso then
+			if not v13 and v.Part0 ~= Torso then
 				v.Part0 = Torso
 			end
 		end
@@ -57972,8 +62134,8 @@ v21.Completed:Connect(function() --[[ Line: 311 | Upvalues: TweenService (copy),
 		Value = CFrame.new(0, 0, 0)
 	}):Play()
 end)
-Humanoid.StateChanged:Connect(function(p1, p2) --[[ Line: 324 | Upvalues: v14 (ref), CFrameValue2 (copy), v20 (copy), v21 (copy), TweenService (copy), CFrameValue (copy), v8 (copy) ]]
-	if not v14 then
+Humanoid.StateChanged:Connect(function(p1, p2) --[[ Line: 324 | Upvalues: v13 (ref), CFrameValue2 (copy), v20 (copy), v21 (copy), TweenService (copy), CFrameValue (copy), v8 (copy) ]]
+	if not v13 then
 		return
 	end
 
@@ -57996,7 +62158,7 @@ end)
 
 local v22 = nil
 
-v22 = game:GetService("RunService").RenderStepped:connect(function() --[[ Line: 343 | Upvalues: Humanoid (copy), GeneralViewModel (copy), v22 (ref), v17 (ref), CurrentCamera (copy), v14 (ref), v1 (copy), v16 (ref), UpdateLimbs (copy), UpdateLimbTransparency (copy), CFrameValue2 (copy), UserInputService (copy), v9 (ref), tbl2 (copy), TweenService (copy), v3 (copy), Torso (copy), v19 (copy), v18 (copy), CFrameValue (copy), HumanoidRootPart (copy), v15 (ref), v10 (ref), v11 (ref), v12 (ref), v13 (ref), v2 (ref), HumanoidRootPart2 (copy) ]]
+v22 = game:GetService("RunService").RenderStepped:connect(function() --[[ Line: 343 | Upvalues: Humanoid (copy), GeneralViewModel (copy), v22 (ref), v12 (ref), CurrentCamera (copy), v13 (ref), v1 (copy), v11 (ref), UpdateLimbs (copy), UpdateLimbTransparency (copy), CFrameValue2 (copy), UserInputService (copy), v9 (ref), tbl2 (copy), TweenService (copy), v3 (copy), Torso (copy), v19 (copy), v18 (copy), CFrameValue (copy), HumanoidRootPart (copy), v10 (ref), v14 (ref), v15 (ref), v16 (ref), v17 (ref), v2 (ref), HumanoidRootPart2 (copy) ]]
 	if not Humanoid or (not Humanoid.Parent or Humanoid.Health <= 0) then
 		GeneralViewModel:Destroy()
 		v22:Disconnect()
@@ -58004,23 +62166,23 @@ v22 = game:GetService("RunService").RenderStepped:connect(function() --[[ Line: 
 		return
 	end
 
-	v17 = CurrentCamera:FindFirstChild("ViewModel")
-	v14 = v1 and _G.CharacterStates.InFirstPerson
+	v12 = CurrentCamera:FindFirstChild("ViewModel")
+	v13 = v1 and _G.CharacterStates.InFirstPerson
 
 	local v23 = not (Humanoid.Health <= 0 or (v1:FindFirstChild("CarryingPlr") or _G.CharacterStates.Ragdolled))
 
-	if v14 and (not v16 and v23) then
-		v16 = true
+	if v13 and (not v11 and v23) then
+		v11 = true
 		GeneralViewModel.Parent = workspace.CurrentCamera
-	elseif not (v14 and v23) and v16 then
-		v16 = false
+	elseif not (v13 and v23) and v11 then
+		v11 = false
 		GeneralViewModel.Parent = nil
 	end
 
-	UpdateLimbs(v16)
+	UpdateLimbs(v11)
 	UpdateLimbTransparency(0)
 
-	if v14 then
+	if v13 then
 		local v32 = CurrentCamera
 
 		v32.CFrame = v32.CFrame * CFrameValue2.Value
@@ -58029,7 +62191,7 @@ v22 = game:GetService("RunService").RenderStepped:connect(function() --[[ Line: 
 			UpdateLimbTransparency(1, "Left Arm")
 		end
 
-		if not v16 then
+		if not v11 then
 			return
 		end
 
@@ -58121,26 +62283,26 @@ v22 = game:GetService("RunService").RenderStepped:connect(function() --[[ Line: 
 
 		local v21 = v1.CamPart.CFrame:ToObjectSpace(v1.CamRoot.CFrame)
 
-		if v15 and not v17 then
+		if v10 and not v12 then
 			local _, _2, v222 = v21:ToOrientation()
-			local v232, v24, _3 = v21:ToObjectSpace(v15):ToEulerAnglesXYZ()
+			local v232, v24, _3 = v21:ToObjectSpace(v10):ToEulerAnglesXYZ()
 
 			CurrentCamera.CFrame = CurrentCamera.CFrame:Lerp(CurrentCamera.CFrame * CFrame.Angles(v232, v24, -v222), _G.Settings.Gameplay.Camera_animations)
 		end
 
-		v15 = v21
-		v10 = HumanoidRootPart.AssemblyLinearVelocity * Vector3.new(1, 0, 1)
+		v10 = v21
+		v14 = HumanoidRootPart.AssemblyLinearVelocity * Vector3.new(1, 0, 1)
 
-		if v10.Magnitude > 2 and not FpLockPos then
-			v11 = v10.Unit
-			v12 = HumanoidRootPart.CFrame.RightVector:Dot(v11)
-			v13 = HumanoidRootPart.CFrame.LookVector:Dot(v11)
+		if v14.Magnitude > 2 and not FpLockPos then
+			v15 = v14.Unit
+			v16 = HumanoidRootPart.CFrame.RightVector:Dot(v15)
+			v17 = HumanoidRootPart.CFrame.LookVector:Dot(v15)
 		else
-			v12 = 0
-			v13 = 0
+			v16 = 0
+			v17 = 0
 		end
 
-		v2 = v2:Lerp(CFrame.Angles(math.rad(v13 * 3.5), math.rad(-v12 * 3.5), 0), 0.1)
+		v2 = v2:Lerp(CFrame.Angles(math.rad(v17 * 3.5), math.rad(-v16 * 3.5), 0), 0.1)
 		HumanoidRootPart2.CFrame = v172 * v21.Rotation * v2
 	else
 		local v27 = v1
@@ -58201,191 +62363,135 @@ while task.wait(0.1) and v22 do
 	end
 end
 
--- StarterGui.HeatVision.HeatVisionCore
+-- StarterGui.Hint.HintScript
 --
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
+game:GetService("Players")
 
-game:GetService("TweenService")
-
-local CollectionService = game:GetService("CollectionService")
-local RunService = game:GetService("RunService")
-local CurrentCamera = workspace.CurrentCamera
-local LocalPlayer = Players.LocalPlayer
-
-if not LocalPlayer.Character then
-	LocalPlayer.CharacterAdded:Wait()
-end
-
-local Mods = ReplicatedStorage:WaitForChild("Mods")
-local GlowRig = script:WaitForChild("GlowRig")
-local v1 = script.Parent
-local ViewportFrame = v1:WaitForChild("ViewportFrame")
-local Overlay = v1:WaitForChild("Overlay")
-local Raycast = require(Mods:WaitForChild("Raycast"))
+local TweenService = game:GetService("TweenService")
+local HintFrame = script.Parent:WaitForChild("HintFrame")
+local v1 = TweenInfo.new(0.2, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
+local Hints = require(script:WaitForChild("Hints"))
+local v2 = false
 local t = {}
-local Camera = Instance.new("Camera")
+local v3 = nil
 
-Camera.FieldOfView = 5
-Camera.Parent = script.Parent
-ViewportFrame.CurrentCamera = Camera
+repeat
+	task.wait(0.1)
+until _G.Settings
 
-local function AddTarget(p1) --[[ AddTarget | Line: 40 | Upvalues: LocalPlayer (copy), GlowRig (copy), ViewportFrame (copy), t (copy) ]]
-	local HumanoidRootPart = p1:WaitForChild("HumanoidRootPart", 2)
-	local Humanoid = p1:WaitForChild("Humanoid", 2)
-
-	if not (HumanoidRootPart and Humanoid) then
+local function ToggleHint(p1) --[[ ToggleHint | Line: 24 | Upvalues: v2 (ref), HintFrame (copy), TweenService (copy) ]]
+	if v2 == p1 then
 		return
 	end
 
-	if LocalPlayer.Character == p1 then
-		return
+	v2 = p1
+
+	local v1 = TweenInfo.new(1)
+
+	for k, v in pairs(HintFrame:GetChildren()) do
+		if v.Name ~= "Center" and (v.Name ~= "Shade" and v:IsA("Frame")) then
+			local t = {}
+
+			t.BackgroundTransparency = if p1 then 0.25 else 1
+			TweenService:Create(v, v1, t):Play()
+		end
 	end
 
-	if p1:GetAttribute("ProtectFromPlayers") then
-		return
-	end
+	TweenService:Create(HintFrame, v1, {
+		Visible = p1
+	}):Play()
 
-	if Humanoid:GetAttribute("Died") then
-		return
-	end
+	local t = {}
+
+	t.Transparency = if p1 then 0.8 else 1
+	TweenService:Create(HintFrame.Shade.UIStroke, v1, t):Play()
 
 	local t2 = {}
 
-	for k, v in pairs(GlowRig:GetChildren()) do
-		local v1 = p1:FindFirstChild(v.Name)
+	t2.Transparency = if p1 then 0 else 1
+	TweenService:Create(HintFrame.Center.UIStroke, v1, t2):Play()
 
-		if v1 then
-			local v2 = v:Clone()
+	local t3 = {}
 
-			v2.Transparency = 1
-			v2.Parent = ViewportFrame
-			table.insert(t2, {
-				Hidden = true,
-				Limb = v2,
-				TargetLimb = v1
-			})
-		end
-	end
+	t3.TextTransparency = if p1 then 0 else 1
+	TweenService:Create(HintFrame.Title, v1, t3):Play()
 
-	t[p1] = {
-		Humanoid = Humanoid,
-		RootPart = HumanoidRootPart,
-		LimbsToReplicate = t2
-	}
+	local t4 = {}
+
+	t4.TextTransparency = if p1 then 0 else 1
+	TweenService:Create(HintFrame.Description, v1, t4):Play()
 end
 
-local v2 = false
-local v3 = nil
+local function ShowHint(p1, p2, p3) --[[ ShowHint | Line: 45 | Upvalues: ToggleHint (copy), HintFrame (copy), TweenService (copy), v1 (copy) ]]
+	if not p1 then
+		ToggleHint(false)
 
-for k, v in pairs(CollectionService:GetTagged("Hitbox")) do
-	AddTarget(v)
+		return
+	end
+
+	ToggleHint(true)
+
+	local v12 = p1.AbsolutePosition + Vector2.new(-5, -5)
+	local v2 = p1.AbsoluteSize + Vector2.new(10, 10)
+
+	HintFrame.Title.Text = p2 or ""
+	HintFrame.Description.Text = p3 or ""
+	print(v12.X)
+
+	if v12.X <= 250 then
+		HintFrame.Title.AnchorPoint = Vector2.new(0, 1)
+		HintFrame.Description.AnchorPoint = Vector2.new(0, 0)
+		HintFrame.Title.Position = UDim2.new(1, 15, 0.5, 0)
+		HintFrame.Description.Position = UDim2.new(1, 15, 0.5, 0)
+		HintFrame.Title.TextXAlignment = Enum.TextXAlignment.Left
+		HintFrame.Description.TextXAlignment = Enum.TextXAlignment.Left
+	else
+		HintFrame.Title.AnchorPoint = Vector2.new(1, 1)
+		HintFrame.Description.AnchorPoint = Vector2.new(1, 0)
+		HintFrame.Title.Position = UDim2.new(0, -15, 0.5, 0)
+		HintFrame.Description.Position = UDim2.new(0, -15, 0.5, 0)
+		HintFrame.Title.TextXAlignment = Enum.TextXAlignment.Right
+		HintFrame.Description.TextXAlignment = Enum.TextXAlignment.Right
+	end
+
+	TweenService:Create(HintFrame, v1, {
+		Position = UDim2.new(0, v12.X, 0, v12.Y),
+		Size = UDim2.new(0, v2.X, 0, v2.Y)
+	}):Play()
 end
 
-CollectionService:GetInstanceAddedSignal("Hitbox"):Connect(AddTarget)
+while task.wait(0.25) do
+	if _G.Settings.Gameplay.Hints then
+		local v4 = false
 
-local function RemoveTarget(p1) --[[ RemoveTarget | Line: 85 | Upvalues: t (copy) ]]
-	if not t[p1] then
-		return
-	end
+		for k, v in pairs(Hints) do
+			if not t[k] then
+				local v5, v6, v7 = v()
 
-	for k, v in pairs(t[p1].LimbsToReplicate) do
-		v.Limb:Destroy()
-	end
+				if v5 then
+					ShowHint(v5, v6, v7)
+					v4 = true
+					v3 = k
 
-	t[p1] = nil
-end
-
-CollectionService:GetInstanceRemovedSignal("Hitbox"):Connect(RemoveTarget)
-CurrentCamera.ChildAdded:Connect(function(p1) --[[ Line: 97 | Upvalues: v1 (copy), v3 (ref), Camera (copy), Overlay (copy), ViewportFrame (copy) ]]
-	local WeaponRootPart = p1:FindFirstChild("WeaponRootPart")
-
-	if not WeaponRootPart then
-		return
-	end
-
-	if not WeaponRootPart:GetAttribute("HeatVisionEnabled") then
-		return
-	end
-
-	local SightScreens = p1:FindFirstChild("SightScreens")
-
-	if not SightScreens then
-		return
-	end
-
-	for k, v in pairs(SightScreens:GetChildren()) do
-		if v:GetAttribute("HeatVision") then
-			v1.Adornee = v
-			v3 = p1
-			Camera.FieldOfView = v:GetAttribute("VisionFOV") or 5
-			Overlay.BackgroundColor3 = v:GetAttribute("VisionColor") or Color3.new(255/255, 0/255, 0/255)
-			ViewportFrame.ImageColor3 = v:GetAttribute("VisionColor") or Color3.new(255/255, 0/255, 0/255)
-			Overlay.UICorner.CornerRadius = v:GetAttribute("VisionCornerRadius") or UDim.new(0, 0)
-			ViewportFrame.UICorner.CornerRadius = v:GetAttribute("VisionCornerRadius") or UDim.new(0, 0)
-
-			return
-		end
-	end
-end)
-CurrentCamera.ChildRemoved:Connect(function(p1) --[[ Line: 133 | Upvalues: v3 (ref) ]]
-	if v3 ~= p1 then
-		return
-	end
-
-	v3 = false
-end)
-RunService.Heartbeat:Connect(function() --[[ Line: 141 | Upvalues: v2 (ref), v1 (copy), v3 (ref), CurrentCamera (copy), Camera (copy), t (copy), Raycast (copy) ]]
-	if _G.CharacterStates.Aiming and not v2 then
-		v2 = true
-		v1.Enabled = true
-	elseif not _G.CharacterStates.Aiming and v2 then
-		v2 = false
-		v1.Enabled = false
-	end
-
-	if not (v2 and v3) then
-		return
-	end
-
-	local v12 = CurrentCamera.CFrame
-	local Position = CurrentCamera.CFrame.Position
-
-	Camera.CFrame = v12
-
-	for k, v in pairs(t) do
-		local v22 = if (Position - v.RootPart.Position).Magnitude < 200 then true else false
-		local v4 = v22 and (if v12.LookVector:Dot((v.RootPart.Position - Position).Unit) >= 0.9 then true else false)
-
-		for k2, v5 in pairs(v.LimbsToReplicate) do
-			if (if v4 then Raycast.CastRay(Position, v5.TargetLimb.Position - Position, {
-	Transparency = 1,
-	Custom = function(p1) --[[ Custom | Line: 177 ]]
-		return p1.Transparency >= 0.2
-	end
-}, {
-	CurrentCamera,
-	k,
-	workspace.NPCs,
-	workspace.Chars
-}) else v4) or not v4 then
-				if not v5.Hidden then
-					v5.Hidden = true
-					v5.Limb.Transparency = 1
+					break
 				end
-
-				continue
 			end
-
-			if v5.Hidden then
-				v5.Hidden = false
-				v5.Limb.Transparency = 0
-			end
-
-			v5.Limb.CFrame = v5.TargetLimb.CFrame
 		end
+
+		if v4 then
+			continue
+		end
+
+		if v3 then
+			t[v3] = true
+			task.delay(60, function() --[[ Line: 122 | Upvalues: t (copy), v3 (ref) ]]
+				t[v3] = false
+			end)
+		end
+
+		ShowHint()
 	end
-end)
+end
 
 -- Players.Noriko_Ellen.PlayerGui.OverlayGui.Journal.JournalCore
 --
@@ -60560,2610 +64666,121 @@ return setmetatable({}, {
 	end
 })
 
--- StarterGui.MainGui.MainGuiCore
+-- StarterGui.Utility.UtilityCore
 --
-local Players, Lighting, UserInputService, CollectionService, ReplicatedStorage, CurrentCamera, Sounds, LocalPlayer, v6, v7, Humanoid, HumanoidRootPart, Torso, Events, Highlight, random, InputHandler, FormatNumber, v8, v9, v13, v14, v15, v16, v17, v18, v21, v22, OverlayGui, Background, Stamina, v23, UnderScreenEffects, TweenService, v24, v25, v33, t2, ShakeCamera, PlayAnimation, v39, ToggleCinematicMode, UpdateDowned, Shared, v40, v44, v45, v46, JumpCooldown, v49, v50, Slide, tbl, UpdateCurrency, UpdateLevel, LevelUp2, Hunger, Thirst, UpdateNourishment, v66, MakeBlood, t8, t9, GiveHurtFeedback, v67, v70, UpdateCamPartState, UpdateStamina
+game:GetService("TweenService")
 
-do
-	local v1 = game.Players:GetAttribute("MAX_LEVEL")
-	local v2 = game.Players:GetAttribute("XP_MODIFIER")
-	local v3 = game.Players:GetAttribute("LEVEL_UP_CASH_MODIFIER")
-	local v4 = game.Players:GetAttribute("START_XP")
+local Players = game:GetService("Players")
+local CollectionService = game:GetService("CollectionService")
+local CurrentCamera = workspace.CurrentCamera
+local LocalPlayer = Players.LocalPlayer
+local v1 = LocalPlayer:WaitForChild(game.Players:GetAttribute("PLAYER_STORAGE"))
+local HumanoidRootPart = (LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()):WaitForChild("HumanoidRootPart")
+local EquippedGear = v1:WaitForChild("EquippedGear")
+local v3 = script.Parent
+local Visor = v3:WaitForChild("Visor")
+local v4 = v3:WaitForChild("VisorCracks"):GetChildren()
+local Sounds = script:WaitForChild("Sounds")
+local NightVision = script:WaitForChild("Effects"):WaitForChild("NightVision")
+local ColorCorrection = NightVision:WaitForChild("ColorCorrection")
+local PointLight = NightVision:WaitForChild("PointLight")
 
-	game.Players:GetAttribute("MAX_BOUNTY")
-
-	local v5 = NumberRange.new(10, 50)
-
-	Players = game:GetService("Players")
-	Lighting = game:GetService("Lighting")
-
-	local RunService = game:GetService("RunService")
-	local SoundService = game:GetService("SoundService")
-	local Debris = game:GetService("Debris")
-
-	UserInputService = game:GetService("UserInputService")
-	CollectionService = game:GetService("CollectionService")
-	ReplicatedStorage = game.ReplicatedStorage
-	CurrentCamera = workspace.CurrentCamera
-	Sounds = script:WaitForChild("Sounds")
-	LocalPlayer = Players.LocalPlayer
-	v6 = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-	v7 = LocalPlayer:WaitForChild(Players:GetAttribute("PLAYER_STORAGE"))
-	Humanoid = v6:WaitForChild("Humanoid")
-	HumanoidRootPart = v6:WaitForChild("HumanoidRootPart")
-	Torso = v6:WaitForChild("Torso")
-	Events = ReplicatedStorage:WaitForChild("Events")
-
-	local Mods = ReplicatedStorage:WaitForChild("Mods")
-	local SI = ReplicatedStorage:WaitForChild("SI")
-
-	Highlight = Instance.new("Highlight")
-	Highlight.FillTransparency = 1
-	Highlight.OutlineTransparency = 0.8
-	Highlight.OutlineColor = Color3.new(255/255, 255/255, 255/255)
-
-	local clamp = math.clamp
-	local abs = math.abs
-	local floor = math.floor
-
-	random = math.random
-
-	local ceil = math.ceil
-	local MedalClipper = require(Mods:WaitForChild("MedalClipper"))
-
-	InputHandler = require(Mods:WaitForChild("InputHandler"))
-
-	local ItemDatabase = require(Mods:WaitForChild("ItemDatabase"))
-
-	FormatNumber = require(Mods:WaitForChild("FormatNumber"))
-
-	local Raycast = require(Mods:WaitForChild("Raycast"))
-	local Spring = require(Mods:WaitForChild("Spring"))
-	local WorldToGui = require(Mods:WaitForChild("WorldToGui"))
-
-	v8 = nil
-	v9 = false
-
-	local v10 = 100
-	local v11 = 0
-	local v12 = 0
-
-	v13 = false
-	v14 = false
-	v15 = false
-	v16 = false
-	v17 = false
-	v18 = false
-
-	local v19 = false
-	local v20 = false
-
-	v21 = nil
-
-	local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
-
-	v22 = script.Parent
-
-	local MainStaticGui = PlayerGui:WaitForChild("MainStaticGui")
-
-	OverlayGui = PlayerGui:WaitForChild("OverlayGui")
-
-	local PlayerStatus = v22:WaitForChild("PlayerStatus")
-
-	Background = PlayerStatus:WaitForChild("Background")
-
-	local Health = Background:WaitForChild("Health"):WaitForChild("Health")
-
-	Stamina = Background:WaitForChild("Stamina"):WaitForChild("Stamina")
-
-	local LimbStatus = PlayerStatus:WaitForChild("LimbStatus")
-
-	v23 = LimbStatus:GetChildren()
-
-	local ProgressBars = v22:WaitForChild("ProgressBars")
-	local DownedFrame = v22:WaitForChild("DownedFrame")
-
-	UnderScreenEffects = v22:WaitForChild("UnderScreenEffects")
-
-	local OverScreenEffects = v22:WaitForChild("OverScreenEffects")
-	local Hurt = UnderScreenEffects:WaitForChild("Hurt")
-	local HurtEdges = UnderScreenEffects:WaitForChild("HurtEdges")
-	local StatModifiers = v22:WaitForChild("StatModifiers")
-
-	TweenService = game:GetService("TweenService")
-	v24 = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-	v25 = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
-	local v26 = TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-	local v27 = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-	local v28 = TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-	local v29 = TweenInfo.new(2, Enum.EasingStyle.Cubic, Enum.EasingDirection.InOut)
-	local v30 = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
-
-	TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
-
-	local v31 = TweenInfo.new(10, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
-	local v32 = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
-
-	_G.CharacterStates = {}
-	ReplicatedStorage:WaitForChild("ToggledMenu"):Fire(nil)
-	SI:Fire(true)
-	Highlight.Parent = v6
-	v6:SetAttribute("AutoRotate", true)
-	Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing, false)
-	Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming, false)
-	LocalPlayer:GetMouse().Icon = "rbxassetid://8990979480"
-	CurrentCamera.CameraSubject = Humanoid
-	CurrentCamera.CameraType = Enum.CameraType.Custom
-	SoundService.RolloffScale = 1
-	v33 = ReplicatedStorage:WaitForChild("Particles"):WaitForChild("ColdSmoke"):Clone()
-	v33.Parent = v6:WaitForChild("Head", 1)
-	TweenService:Create(CurrentCamera, v28, {
-		CFrame = HumanoidRootPart.CFrame
-	}):Play()
-	TweenService:Create(Lighting.CC2, v24, {
-		Saturation = 0,
-		Contrast = 0,
-		TintColor = Color3.new(255/255, 255/255, 255/255)
-	}):Play()
-	TweenService:Create(Lighting.ShopBlur, v24, {
-		Size = 0
-	}):Play()
-	TweenService:Create(Lighting.Blur, v24, {
-		Size = 0
-	}):Play()
-	TweenService:Create(Lighting.CC, v24, {
-		Saturation = -0.3,
-		Contrast = 0,
-		Brightness = 0,
-		TintColor = Color3.fromRGB(255, 236, 226)
-	}):Play()
-	TweenService:Create(Lighting.DoF, v24, {
-		FarIntensity = 0
-	}):Play()
-	TweenService:Create(Lighting.LowHealthCC, v24, {
-		Saturation = 0,
-		Contrast = 0,
-		Brightness = 0,
-		Enabled = false,
-		TintColor = Color3.new(255/255, 255/255, 255/255)
-	}):Play()
-	TweenService:Create(SoundService.GeneralSoundGroup.DownedEq, v24, {
-		HighGain = 0,
-		MidGain = 0,
-		LowGain = 0,
-		Enabled = false
-	}):Play()
-	TweenService:Create(SoundService.GeneralSoundGroup.LowHealthEq, v24, {
-		HighGain = 0,
-		MidGain = 0,
-		LowGain = 0,
-		Enabled = false
-	}):Play()
-	TweenService:Create(SoundService.GeneralSoundGroup.Eq, v24, {
-		HighGain = 0,
-		MidGain = 0,
-		LowGain = 0,
-		Enabled = false
-	}):Play()
-	TweenService:Create(SoundService.GeneralSoundGroup, v24, {
-		Volume = 1
-	}):Play()
-
-	local function UpdateSettings() --[[ UpdateSettings | Line: 158 | Upvalues: Health (copy), Stamina (copy), StatModifiers (copy) ]]
-		Health.Parent.GroupTransparency = _G.Settings.Interface.Status_transparency
-		Stamina.Parent.GroupTransparency = _G.Settings.Interface.Status_transparency
-		Health.Amount.Visible = _G.Settings.Interface.Display_health_percentage
-		Stamina.Amount.Visible = _G.Settings.Interface.Display_stamina_percentage
-		StatModifiers.Visible = _G.Settings.Interface.Display_stat_modifiers
+local function ToggleNV(p1) --[[ ToggleNV | Line: 31 | Upvalues: CollectionService (copy), ColorCorrection (copy), CurrentCamera (copy), PointLight (copy), HumanoidRootPart (copy), Visor (copy), NightVision (copy) ]]
+	for k, v in pairs(CollectionService:GetTagged("NightVisionEffect")) do
+		v.Enabled = p1
 	end
 
-	ReplicatedStorage:WaitForChild("UpdatedSettings").Event:Connect(UpdateSettings)
-	UpdateSettings()
-
-	local t = {
-		{
-			Tilt = Spring.new(),
-			Offset = Spring.new(Vector3.new(0, 0, 0))
-		},
-		{
-			Tilt = Spring.new(),
-			Offset = Spring.new(Vector3.new(0, 0, 0))
-		}
-	}
-
-	t2 = {}
-	ShakeCamera = function(p1, p2, p3, p4, p5, p6, p7) --[[ ShakeCamera | Line: 181 | Upvalues: t (copy), CurrentCamera (copy), OverScreenEffects (copy), TweenService (copy), Lighting (copy), SoundService (copy) ]]
-		local v1 = t[p7 or 1]
-
-		if not v1 then
-			warn("[CAMERA SHAKE]: Target spring not found!")
-
-			return
-		end
-
-		v1.Tilt.Damper = 0.1 * p3
-		v1.Tilt.Speed = 50 * p4
-		v1.Offset.Damper = 0.1 * p3
-		v1.Offset.Speed = 25 * p4
-
-		if typeof(p1) == "Vector3" then
-			v1.Tilt:Impulse(p2)
-			v1.Offset:Impulse(p1)
-
-			return
-		end
-
-		local v2 = CurrentCamera.CFrame.Position - p1.Position
-		local v4 = math.clamp((v2.Magnitude - p1.Min) / (p1.Max - p1.Min), 0, 1)
-		local v5 = (1 - v4) * p2
-
-		if p6 then
-			v1.Tilt:Impulse(v5 / 2)
-			v1.Offset:Impulse(v2.Unit * v5)
-
-			return
-		end
-
-		local v6 = TweenInfo.new(p5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
-		OverScreenEffects.Flash.BackgroundTransparency = v4 * 1.5
-		TweenService:Create(OverScreenEffects.Flash, v6, {
-			BackgroundTransparency = 1
-		}):Play()
-		Lighting.Blur2.Size = (1 - v4) * 30
-		TweenService:Create(Lighting.Blur2, v6, {
-			Size = 0
-		}):Play()
-		SoundService.GeneralSoundGroup.Eq.Enabled = true
-		SoundService.GeneralSoundGroup.Eq.HighGain = (1 - v4) * -50
-		SoundService.GeneralSoundGroup.Eq.MidGain = (1 - v4) * -25
-		SoundService.GeneralSoundGroup.Eq.LowGain = 0
-		TweenService:Create(SoundService.GeneralSoundGroup.Eq, v6, {
-			HighGain = 0,
-			MidGain = 0,
-			LowGain = 0,
-			Enabled = false
-		}):Play()
-		v1.Tilt:Impulse(v5 / 2)
-		v1.Offset:Impulse(v2.Unit * v5)
-	end
-	ReplicatedStorage:WaitForChild("SH").Event:Connect(ShakeCamera)
-	Events:WaitForChild("Player"):WaitForChild("CamShake").OnClientEvent:Connect(ShakeCamera)
-
-	local function TiltShakeCamera(p1, p2, p3, p4) --[[ TiltShakeCamera | Line: 230 | Upvalues: t (copy) ]]
-		local v1 = t[p4 or 1]
-
-		if v1 then
-			v1.Tilt.Damper = 0.25 * p2
-			v1.Tilt.Speed = 50 * p3
-			v1.Tilt:Impulse(p1)
-		else
-			warn("[CAMERA SHAKE]: Target spring not found!")
-		end
-	end
-
-	ReplicatedStorage:WaitForChild("TSH").Event:Connect(TiltShakeCamera)
-	CollectionService:GetInstanceAddedSignal("ShakeOrigin"):Connect(function(p1) --[[ Line: 244 | Upvalues: t2 (copy) ]]
-		table.insert(t2, p1)
-	end)
-	CollectionService:GetInstanceRemovedSignal("ShakeOrigin"):Connect(function(p1) --[[ Line: 248 | Upvalues: t2 (copy) ]]
-		table.remove(t2, table.find(t2, p1))
-	end)
-
-	local t3 = {}
-	local t4 = { "downedIdle", "downedWalk", "crouchIdle", "crouchWalk", "sprint", "hurtSprint" }
-	local v34 = v6:GetAttribute("AnimationPack") or ""
-
-	for k, v in pairs((require(ReplicatedStorage:WaitForChild("AnimationPacks"):FindFirstChild(v34) or ReplicatedStorage.AnimationPacks.Default))) do
-		if table.find(t4, k) then
-			local v38 = v[1]
-			local Animation = Instance.new("Animation")
-
-			Animation.AnimationId = v38.id
-			t3[k] = {
-				Animation = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation),
-				Speed = v38.speedModifier
-			}
-			t3[k].Animation.Priority = Enum.AnimationPriority.Idle
-		end
-	end
-
-	PlayAnimation = function(p1, p2, p3, p4) --[[ PlayAnimation | Line: 277 | Upvalues: t3 (copy), v9 (ref) ]]
-		for k, v in pairs(t3) do
-			local v1 = v.Speed or (if p3 then p3 else 16)
-
-			if k == p1 then
-				if p2 then
-					v.Animation:AdjustSpeed(p2 / v1)
-				end
-
-				if v.Animation.IsPlaying == false then
-					v.Animation:Play(p4 or 0.15)
-				end
-
-				continue
-			end
-
-			if v.Animation.IsPlaying == true then
-				if k == "hurtSprint" or k == "sprint" then
-					v.Animation:Stop(0.35)
-
-					continue
-				end
-
-				if k == "crouchWalk" or k == "crouchIdle" then
-					v.Animation:Stop(0.25)
-
-					continue
-				end
-
-				if k == "downedIdle" and v9 == false then
-					v.Animation:Stop(0.05)
-
-					continue
-				end
-
-				v.Animation:Stop(p4 or 0.75)
-			end
-		end
-	end
-	v39 = 0
-
-	local function DisableBackpack(p1, p2) --[[ DisableBackpack | Line: 316 | Upvalues: v39 (ref) ]]
-		if p2 then
-			v39 = p1
-
-			return
-		end
-
-		if not (v39 < p1) then
-			return
-		end
-
-		v39 = p1
-	end
-
-	ReplicatedStorage:WaitForChild("SIT").Event:Connect(DisableBackpack)
-
-	local function LerpNumber(p1, p2, p3) --[[ LerpNumber | Line: 325 ]]
-		return p1 + (p2 - p1) * p3
-	end
-
-	local function UpdateSprinting(p1) --[[ UpdateSprinting | Line: 330 | Upvalues: v17 (ref), v6 (copy) ]]
-		if p1 == true then
-			if v17 == false then
-				v17 = true
-				v6:SetAttribute("Sprinting", v17)
-			end
-		else
-			if p1 ~= false or v17 ~= true then
-				return
-			end
-
-			v17 = false
-			v6:SetAttribute("Sprinting", v17)
-		end
-	end
-
-	ToggleCinematicMode = function(p1, p2, p3) --[[ ToggleCinematicMode | Line: 345 | Upvalues: v19 (ref), v20 (ref), ReplicatedStorage (copy), PlayerGui (copy), MainStaticGui (copy), v22 (copy), PlayerStatus (copy) ]]
-		if v19 and p1 then
-			return
-		end
-
-		if v20 and not p3 then
-			return
-		end
-
-		local v1 = ReplicatedStorage:GetAttribute("DisableUI")
-
-		v20 = p3
-
-		if v1 then
-			p1 = false
-		end
-
-		PlayerGui:FindFirstChild("GunGui")
-
-		local InventoryGui = PlayerGui:FindFirstChild("InventoryGui")
-
-		if not (p1 or (p2 or v1)) then
-			ReplicatedStorage.Notify:Fire("CINEMATIC MODE ENABLED | PRESS J TO DISABLE")
-		end
-
-		if InventoryGui then
-			InventoryGui.Enabled = p1
-		end
-
-		MainStaticGui.Enabled = p1
-		v22.Enabled = p1
-
-		if not ReplicatedStorage:GetAttribute("HideNonEssentialUI") then
-			return
-		end
-
-		v22.Minimap.Visible = false
-		v22.LevelFrame.Visible = false
-		PlayerStatus.Position = UDim2.new(3, 0, 3, 0)
-	end
-	ToggleCinematicMode(true)
-	ReplicatedStorage:WaitForChild("CinematicMode").Event:Connect(ToggleCinematicMode)
-	UpdateDowned = function(p1) --[[ UpdateDowned | Line: 384 | Upvalues: v9 (ref), TweenService (copy), Lighting (copy), v24 (copy), DownedFrame (copy), SoundService (copy), v29 (copy), Sounds (copy), v31 (copy), Background (copy) ]]
-		if p1 and not v9 then
-			v9 = true
-			TweenService:Create(Lighting.CC, v24, {
-				Saturation = -0.85,
-				Contrast = 0.035,
-				Brightness = -0.1,
-				TintColor = Color3.fromRGB(255, 100, 100)
-			}):Play()
-			TweenService:Create(Lighting.DoF, v24, {
-				FarIntensity = 0.5
-			}):Play()
-			DownedFrame.Visible = true
-			TweenService:Create(SoundService.GeneralSoundGroup.DownedEq, v29, {
-				Enabled = true,
-				HighGain = -80,
-				MidGain = -80,
-				LowGain = 0
-			}):Play()
-			Sounds.Downed:Play()
-			Sounds.HeartbeatFast:Play()
-			Sounds.HeartbeatFast.Volume = 0.75
-			TweenService:Create(Sounds.HeartbeatFast, v31, {
-				Volume = 0,
-				Playing = false
-			}):Play()
-			TweenService:Create(Background.Health, v24, {
-				GroupColor3 = Color3.fromRGB(255, 0, 0)
-			}):Play()
-			Background.Health.TopBar.HealthTitle.TextLabel.Text = "DOWNED"
-
-			return
-		end
-
-		if p1 or not v9 then
-			return
-		end
-
-		v9 = false
-		Sounds.Downed:Stop()
-		Sounds.HeartbeatFast:Stop()
-		TweenService:Create(Lighting.CC, v24, {
-			Saturation = -0.3,
-			Contrast = 0.025,
-			Brightness = 0,
-			TintColor = Color3.fromRGB(255, 236, 226)
-		}):Play()
-		TweenService:Create(Lighting.DoF, v24, {
-			FarIntensity = 0
-		}):Play()
-		DownedFrame.Visible = false
-		TweenService:Create(SoundService.GeneralSoundGroup.DownedEq, v29, {
-			HighGain = 0,
-			MidGain = 0,
-			LowGain = 0,
-			Enabled = false
-		}):Play()
-		TweenService:Create(Background.Health, v24, {
-			GroupColor3 = Color3.fromRGB(101, 255, 84)
-		}):Play()
-		Background.Health.TopBar.HealthTitle.TextLabel.Text = "HEALTH"
-	end
-
-	local function UpdateHealth(p1) --[[ UpdateHealth | Line: 428 | Upvalues: v15 (ref), v5 (copy), TweenService (copy), UnderScreenEffects (copy), v29 (copy), Lighting (copy), v24 (copy), SoundService (copy), v9 (ref), Sounds (copy), v10 (ref), HurtEdges (copy), Hurt (copy), Humanoid (copy), clamp (copy), Health (copy), v30 (copy), ceil (copy) ]]
-		v15 = p1 <= 25
-
-		local v3 = 1 - math.clamp((p1 - v5.Min) / (v5.Max - v5.Min), 0, 1)
-
-		if not _G.CharacterStates.Died then
-			TweenService:Create(UnderScreenEffects.LowHealth, v29, {
-				ImageTransparency = 1 - v3
-			}):Play()
-
-			local t = {
-				Contrast = 0,
-				Brightness = 0,
-				TintColor = Color3.new(255/255, 255/255, 255/255):Lerp(Color3.new(1, 0.5, 0.5), v3),
-				Saturation = 0 + -0.5 * v3
-			}
-
-			t.Enabled = v3 > 0
-			TweenService:Create(Lighting.LowHealthCC, v24, t):Play()
-
-			local t2 = {
-				MidGain = 0,
-				HighGain = 0 + -15 * v3,
-				LowGain = 0 + 5 * v3
-			}
-
-			t2.Enabled = if v3 > 0 then true else false
-			TweenService:Create(SoundService.GeneralSoundGroup.LowHealthEq, v24, t2):Play()
-		end
-
-		local v102 = if v15 then not _G.CharacterStates.Died else v9 and not _G.CharacterStates.Died
-
-		if v102 and not Sounds.LowHealth.Playing then
-			Sounds.LowHealth:Play()
-		elseif not v102 and Sounds.LowHealth.Playing then
-			Sounds.LowHealth:Stop()
-		end
-
-		if p1 < v10 then
-			local v12 = math.min(v10 - p1, 20) / 20
-
-			HurtEdges.ImageTransparency = 1 - v12
-			HurtEdges.BackgroundTransparency = math.max(1 - v12, 0.5)
-			TweenService:Create(HurtEdges, TweenInfo.new(math.clamp(v12, 0.5, 1), Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-				ImageTransparency = 1,
-				BackgroundTransparency = 1
-			}):Play()
-			Hurt.ImageTransparency = 1 - v12
-			Hurt.BackgroundTransparency = math.max(1 - v12, 0.75)
-			TweenService:Create(Hurt, TweenInfo.new(math.clamp(v12, 0.5, 1), Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-				ImageTransparency = 1,
-				BackgroundTransparency = 1
-			}):Play()
-		end
-
-		v10 = p1
-
-		local v13 = UDim2.new(clamp(p1 / Humanoid.MaxHealth, 0, 1), 0, 1, 0)
-
-		TweenService:Create(Health.Bar, v24, {
-			Size = v13
-		}):Play()
-		TweenService:Create(Health.Bar2, v30, {
-			Size = v13
-		}):Play()
-		TweenService:Create(Health.Amount.Bar, v24, {
-			Offset = Vector2.new(v13.X.Scale, 0)
-		}):Play()
-		Health.Amount.Text = ceil(p1) .. "%"
-
-		if not (Humanoid.MaxHealth >= 1000000000) then
-			return
-		end
-
-		Health.Amount.Text = "INF"
-	end
-
-	Humanoid.HealthChanged:Connect(UpdateHealth)
-	UpdateHealth(Humanoid.Health)
-
-	local function LoadAnimation(p1) --[[ LoadAnimation | Line: 510 | Upvalues: Humanoid (copy) ]]
-		local Animation = Instance.new("Animation")
-
-		Animation.AnimationId = p1
-
-		return Humanoid:WaitForChild("Animator"):LoadAnimation(Animation)
-	end
-
-	local EffectStatuses = v22:WaitForChild("EffectStatuses")
-	local StatusEffectDatabase = require(Mods:WaitForChild("StatusEffectDatabase"))
-
-	Shared = require(Mods:WaitForChild("StatusEffectDatabase"):WaitForChild("Shared"))
-
-	local ClientEffects = require(Mods.StatusEffectDatabase:WaitForChild("ClientEffects"))
-	local Themes = require(Mods.StatusEffectDatabase:WaitForChild("Themes"))
-	local t5 = {}
-
-	v40 = true
-
-	for k, v in pairs(StatusEffectDatabase) do
-		local v41 = Themes[v.Theme]
-
-		if v41 then
-			local v42 = script.Frames.Effect:Clone()
-
-			v42.Name = k
-			v42.Visible = false
-
-			if v.Icon then
-				v42.Icon.Image = v.Icon
-			else
-				v42.Icon.Visible = false
-				v42.NoIcon.Visible = true
-			end
-
-			if v.Description then
-				v42.Info.Title.Text = v.Title
-				v42.Info.Desc.Text = v.Description
-			else
-				v42.Info.OnlyTitle.Text = v.Title
-				v42.Info.OnlyTitle.Visible = true
-				v42.Info.Title.Visible = false
-				v42.Info.Desc.Visible = false
-			end
-
-			v42.Edge.ImageColor3 = v41.BackgroundColor
-			v42.Edge2.ImageColor3 = v41.BackgroundColor
-			v42.Shine.ImageColor3 = v41.BackgroundColor
-			v42.Bar.BackgroundColor3 = v41.BackgroundColor
-			v42.Bar.Extend.BackgroundColor3 = v41.BackgroundColor
-			v42.Info.Shine.ImageColor3 = v41.BackgroundColor
-			v42.Info.OnlyTitle.TextColor3 = v41.IconColor
-			v42.Info.Title.TextColor3 = v41.IconColor
-			v42.Info.Desc.TextColor3 = v41.IconColor
-			v42.NoIcon.TextColor3 = v41.IconColor
-			v42.Icon.ImageColor3 = v41.IconColor
-			v42.ValueText.TextColor3 = v41.IconColor
-			v42.MouseEnter:Connect(function() --[[ Line: 576 | Upvalues: TweenService (copy), v42 (copy), v28 (copy), Sounds (copy) ]]
-				TweenService:Create(v42, v28, {
-					BackgroundTransparency = 0,
-					ZIndex = 25
-				}):Play()
-				TweenService:Create(v42.Info, v28, {
-					BackgroundTransparency = 0,
-					Visible = true,
-					Size = UDim2.new(2.5, 0, 1, 0)
-				}):Play()
-				TweenService:Create(v42.Edge2, v28, {
-					Position = UDim2.new(3.5, 1, 0.5, 0)
-				}):Play()
-				TweenService:Create(v42.Bar.Extend, v28, {
-					Size = UDim2.new(2.5, 0, 1, 0)
-				}):Play()
-				Sounds.Hover:Play()
-			end)
-			v42.MouseLeave:Connect(function() --[[ Line: 584 | Upvalues: TweenService (copy), v42 (copy), v28 (copy) ]]
-				TweenService:Create(v42, v28, {
-					BackgroundTransparency = 0.7,
-					ZIndex = 1
-				}):Play()
-				TweenService:Create(v42.Info, v28, {
-					BackgroundTransparency = 0.7,
-					Visible = false,
-					Size = UDim2.new(0, 0, 1, 0)
-				}):Play()
-				TweenService:Create(v42.Edge2, v28, {
-					Position = UDim2.new(1, 1, 0.5, 0)
-				}):Play()
-				TweenService:Create(v42.Bar.Extend, v28, {
-					Size = UDim2.new(0, 0, 1, 0)
-				}):Play()
-			end)
-
-			local v43 = TweenService:Create(v42.Icon.Gradient, v24, {
-				Offset = Vector2.new(0, -1)
-			})
-
-			v43:Play()
-			v43.Completed:Connect(function() --[[ Line: 595 | Upvalues: v42 (copy), v43 (copy) ]]
-				v42.Icon.Gradient.Offset = Vector2.new(0, 1)
-				v43:Play()
-			end)
-			t5[k] = {
-				Highest = 0,
-				Value = 0,
-				Icon = v42,
-				Animations = {},
-				Stats = v.Stats,
-				Settings = v.Settings,
-				Priority = v.Priority,
-				CustomEffects = ClientEffects[k]
-			}
-
-			for k2, v38 in pairs(v.Animations) do
-				local Animation = Instance.new("Animation")
-
-				Animation.AnimationId = v38
-				t5[k].Animations[k2] = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation)
-			end
-
-			if t5[k].CustomEffects then
-				t5[k].CustomEffects(nil, t5[k], true)
-			end
-
-			v42.Parent = EffectStatuses
-
-			continue
-		end
-
-		warn("[STATUS EFFECTS]: Effect theme is not found!", v.Theme)
-	end
-
-	v6.AttributeChanged:Connect(function(p1) --[[ Line: 627 | Upvalues: t5 (copy), v6 (copy), FormatNumber (copy) ]]
-		local v1 = t5[p1]
-
-		if not v1 then
-			return
-		end
-
-		local v2 = v6:GetAttribute(p1)
-
-		if v2 then
-			if v1.Animations.Idle and not v1.Animations.Idle.IsPlaying then
-				v1.Animations.Idle:Play()
-			end
-
-			v1.Active = true
-			v1.Icon.Visible = not v1.Settings.Hidden
-			v1.Icon.ValueText.Text = v1.MaxValue and FormatNumber.Round(v2.Y / v1.MaxValue * 100) .. "%" or FormatNumber.Round(v2.Y, 2)
-
-			if typeof(v2) ~= "Vector2" then
-				return
-			end
-
-			if v1.Highest < v2.X then
-				v1.Highest = v2.X
-			end
-
-			v1.Value = v2.Y
-			v1.Icon.Bar.Size = UDim2.new(1, 0, v2.X / v1.Highest, 0)
-
-			if v1.CustomEffects then
-				v1.CustomEffects(v2, v1)
-			end
-		else
-			v1.Active = false
-			v1.Icon.Visible = false
-			v1.Highest = 0
-			v1.Value = 0
-
-			if v1.CustomEffects then
-				v1.CustomEffects(nil, v1, true)
-			end
-
-			if not (v1.Animations.Idle and v1.Animations.Idle.IsPlaying) then
-				return
-			end
-
-			v1.Animations.Idle:Stop()
-		end
-	end)
-	v44 = true
-	v45 = false
-	v46 = false
-
-	local v47 = nil
-
-	JumpCooldown = LimbStatus:WaitForChild("Extra"):WaitForChild("JumpCooldown")
-
-	local v48 = 0.35
-
-	v49 = tick()
-	v50 = 0
-
-	local function StartJumpCooldown() --[[ StartJumpCooldown | Line: 691 | Upvalues: v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), Humanoid (copy), JumpCooldown (copy), TweenService (copy) ]]
-		task.spawn(function() --[[ Line: 692 | Upvalues: v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), Humanoid (ref), JumpCooldown (ref), TweenService (ref) ]]
-			v44 = false
-			v21 = nil
-			v45 = false
-			task.delay(0.1, function() --[[ Line: 696 | Upvalues: v45 (ref) ]]
-				v45 = true
-			end)
-
-			local v1 = math.random(999)
-
-			v47 = v1
-			v48 = if tick() - v49 < 2 then v48 + 0.35 or 0.35 else 0.35
-			v49 = tick()
-			Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
-			JumpCooldown.Bar.Offset = Vector2.new(0, 1)
-			TweenService:Create(JumpCooldown.Bar, TweenInfo.new(v48, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
-				Offset = Vector2.new(0, 0)
-			}):Play()
-			task.wait(v48)
-
-			if v1 == v1 then
-				Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
-				v44 = true
-			end
-		end)
-	end
-
-	Humanoid.Jumping:Connect(function(p1) --[[ Line: 724 | Upvalues: v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), Humanoid (copy), JumpCooldown (copy), TweenService (copy), v17 (ref), HumanoidRootPart (copy), Events (copy) ]]
-		if not (v44 and p1) then
-			return
-		end
-
-		task.spawn(function() --[[ Line: 692 | Upvalues: v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), Humanoid (ref), JumpCooldown (ref), TweenService (ref) ]]
-			v44 = false
-			v21 = nil
-			v45 = false
-			task.delay(0.1, function() --[[ Line: 696 | Upvalues: v45 (ref) ]]
-				v45 = true
-			end)
-
-			local v1 = math.random(999)
-
-			v47 = v1
-			v48 = if tick() - v49 < 2 then v48 + 0.35 or 0.35 else 0.35
-			v49 = tick()
-			Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
-			JumpCooldown.Bar.Offset = Vector2.new(0, 1)
-			TweenService:Create(JumpCooldown.Bar, TweenInfo.new(v48, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
-				Offset = Vector2.new(0, 0)
-			}):Play()
-			task.wait(v48)
-
-			if v1 == v1 then
-				Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
-				v44 = true
-			end
-		end)
-
-		if v17 then
-			HumanoidRootPart:ApplyImpulse(Humanoid.MoveDirection * 75)
-		end
-
-		Events.Player.Stamina:FireServer(5)
-	end)
-
-	local Animation = Instance.new("Animation")
-
-	Animation.AnimationId = "rbxassetid://14498993498"
-
-	local v51 = Humanoid:WaitForChild("Animator"):LoadAnimation(Animation)
-	local v52 = Sounds.Slide:GetChildren()
-	local v53 = nil
-	local v54 = false
-	local v55 = false
-
-	local function ClampMagnitude(p1, p2) --[[ ClampMagnitude | Line: 750 ]]
-		if p1.magnitude == 0 then
-			return Vector3.new(0, 0, 0)
-		end
-
-		return p1.Unit * math.min(p1.Magnitude, p2)
-	end
-
-	Slide = function() --[[ Slide | Line: 755 | Upvalues: v54 (ref), v13 (ref), v17 (ref), v18 (ref), v6 (copy), Sounds (copy), Events (copy), v55 (ref), ReplicatedStorage (copy), HumanoidRootPart (copy), Humanoid (copy), v51 (copy), v52 (copy), v53 (ref), Raycast (copy), Debris (copy), v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), JumpCooldown (copy), TweenService (copy) ]]
-		if v54 then
-			return
-		end
-
-		if _G.CharacterStates.NoSlide then
-			return
-		end
-
-		if v13 ~= false or (v17 ~= true or (not v18 or (_G.CharacterStates.PreparingSwing or (_G.CharacterStates.Falling or (not _G.CharacterStates.AutoRotate or (_G.CharacterStates.Reloading or (v6:FindFirstChild("CarryWeld") or (v6:FindFirstChild("CarryingPlr") or (_G.CharacterStates.Finishing or _G.CharacterStates.Ragdolled))))))))) then
-			return
-		end
-
-		v54 = true
-		v13 = true
-		v6:SetAttribute("Sliding", true)
-
-		local v1 = _G.CharacterStates.PowerSlide and not _G.CharacterStates.PowerSlideCD
-		local v2 = if v1 then 0.995 else 0.97
-
-		if v1 then
-			Sounds.Booster:Play()
-			Events.Player.GearAbility:FireServer("Slide", true)
-		end
-
-		v55 = true
-		Events.Player.Stamina:FireServer(5)
-
-		local v4 = ReplicatedStorage.Particles.Slide:Clone()
-
-		v4.Parent = HumanoidRootPart
-
-		local ActionVelocity = Instance.new("BodyVelocity")
-
-		ActionVelocity.Name = "ActionVelocity"
-		ActionVelocity.MaxForce = Vector3.new(15000, 0, 15000)
-
-		local v5 = Humanoid.MoveDirection * (20 + (if v1 then 25 else 4))
-		local v62 = Humanoid.WalkSpeed / 25
-
-		ActionVelocity.Velocity = v5 * math.clamp(v62, 1, 2)
-		ActionVelocity.Parent = HumanoidRootPart
-		v51:Play(0.25)
-		Sounds.SlideLoop:Play()
-
-		local v7 = nil
-
-		for i = 1, 10 do
-			v7 = v52[math.random(#v52)]
-
-			if v7.Name ~= v53 then
-				break
-			end
-		end
-
-		v53 = v7.Name
-		v7:Play()
-
-		local Position = HumanoidRootPart.Position
-		local Position2 = HumanoidRootPart.Position
-
-		while task.wait(0.025) do
-			local v8
-
-			ActionVelocity.Velocity = ActionVelocity.Velocity * v2
-
-			if v1 then
-				v8 = true
-			else
-				v8 = if Humanoid.FloorMaterial == Enum.Material.Air then Raycast.CastRay(HumanoidRootPart.Position, Vector3.new(0, -4, 0), {
-	CanCollide = false
-}) else true
-
-				if Position2.Y + 1 < HumanoidRootPart.Position.Y then
-					break
-				end
-			end
-
-			if ActionVelocity.Velocity.Magnitude < 3 or (not v8 or (v13 == false or (not _G.CharacterStates.AutoRotate or ((Position - HumanoidRootPart.Position).Magnitude < 0.25 or _G.CharacterStates.NoSlide)))) then
-				break
-			end
-
-			if Position.Y - HumanoidRootPart.Position.Y > 0.25 then
-				local v11 = ActionVelocity.Velocity * ((Position.Y - HumanoidRootPart.Position.Y) * 15)
-				local v12 = v11.Unit * math.min(v11.Magnitude, 20)
-
-				if ActionVelocity.Velocity.Magnitude < v12.Magnitude then
-					ActionVelocity.Velocity = v12
-				end
-			end
-
-			Position = HumanoidRootPart.Position
-		end
-
-		v7:Stop()
-		Sounds.SlideLoop:Stop()
-		v4.Smoke.Enabled = false
-		Debris:AddItem(v4, 2)
-		v51:Stop(0.25)
-		ActionVelocity:Destroy()
-
-		if v1 then
-			Events.Player.GearAbility:FireServer("Slide", false)
-		end
-
-		task.spawn(function() --[[ Line: 692 | Upvalues: v44 (ref), v21 (ref), v45 (ref), v47 (ref), v48 (ref), v49 (ref), Humanoid (ref), JumpCooldown (ref), TweenService (ref) ]]
-			v44 = false
-			v21 = nil
-			v45 = false
-			task.delay(0.1, function() --[[ Line: 696 | Upvalues: v45 (ref) ]]
-				v45 = true
-			end)
-
-			local v1 = math.random(999)
-
-			v47 = v1
-			v48 = if tick() - v49 < 2 then v48 + 0.35 or 0.35 else 0.35
-			v49 = tick()
-			Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
-			JumpCooldown.Bar.Offset = Vector2.new(0, 1)
-			TweenService:Create(JumpCooldown.Bar, TweenInfo.new(v48, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
-				Offset = Vector2.new(0, 0)
-			}):Play()
-			task.wait(v48)
-
-			if v1 == v1 then
-				Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
-				v44 = true
-			end
-		end)
-		v6:SetAttribute("Sliding", false)
-		v13 = false
-		task.delay(0.5, function() --[[ Line: 865 | Upvalues: v54 (ref), v55 (ref) ]]
-			v54 = false
-			task.wait(1)
-			v55 = false
-		end)
-	end
-	tbl = { "Cash", "Bank", "Valuables", "Bounty" }
-
-	local Stats = v22:WaitForChild("Minimap"):WaitForChild("Stats")
-
-	UpdateCurrency = function(p1, p2) --[[ UpdateCurrency | Line: 880 | Upvalues: Stats (copy), TweenService (copy), v24 (copy), v28 (copy), FormatNumber (copy) ]]
-		if not (p1 and p2) then
-			return
-		end
-
-		local v1 = Stats:FindFirstChild(p1)
-
-		if not v1 then
-			return
-		end
-
-		local v2 = v1:GetAttribute("LastValue") or 0
-		local v3 = math.abs(p2 - v2)
-
-		if v1:GetAttribute("LastValue") and (v1:FindFirstChild("AddedText") and (v2 < p2 or p2 < v2)) then
-			TweenService:Create(v1.AddedText, v24, {
-				TextTransparency = 0
-			}):Play()
-			TweenService:Create(v1.ValueText, v28, {
-				TextTransparency = 1
-			}):Play()
-			TweenService:Create(v1.FullValueText, v28, {
-				TextTransparency = 1
-			}):Play()
-
-			if not v1.AddedText:GetAttribute("DefaultColor") then
-				v1.AddedText:SetAttribute("DefaultColor", v1.AddedText.TextColor3)
-			end
-
-			if v2 < p2 then
-				v1.AddedText.TextColor3 = v1.AddedText:GetAttribute("DefaultColor")
-				v1.AddedText.Text = "+$" .. FormatNumber.Separate(v3)
-			elseif p2 < v2 then
-				v1.AddedText.TextColor3 = Color3.fromRGB(255, 155, 155)
-				v1.AddedText.Text = "-$" .. FormatNumber.Separate(v3)
-			end
-
-			task.delay(1, function() --[[ Line: 912 | Upvalues: TweenService (ref), v1 (copy), v24 (ref), v28 (ref) ]]
-				TweenService:Create(v1.AddedText, v24, {
-					TextTransparency = 1
-				}):Play()
-				TweenService:Create(v1.ValueText, v28, {
-					TextTransparency = 0
-				}):Play()
-				TweenService:Create(v1.FullValueText, v28, {
-					TextTransparency = 1
-				}):Play()
-			end)
-		end
-
-		v1.FullValueText.Text = "$" .. FormatNumber.Separate(p2)
-		v1.ValueText.Text = "$" .. FormatNumber.Abbreviate(p2)
-		v1:SetAttribute("LastValue", p2)
-	end
-
-	for k, v in pairs(tbl) do
-		UpdateCurrency(v, v7:GetAttribute(v))
-
-		local v56 = Stats:FindFirstChild(v)
-
-		if v56 then
-			v56.MouseEnter:Connect(function() --[[ Line: 934 | Upvalues: TweenService (copy), v56 (copy), v28 (copy) ]]
-				TweenService:Create(v56.ValueText, v28, {
-					TextTransparency = 1
-				}):Play()
-				TweenService:Create(v56.FullValueText, v28, {
-					TextTransparency = 0
-				}):Play()
-
-				if not v56:FindFirstChild("AddedText") then
-					return
-				end
-
-				TweenService:Create(v56.AddedText, v28, {
-					TextTransparency = 1
-				}):Play()
-			end)
-			v56.MouseLeave:Connect(function() --[[ Line: 940 | Upvalues: TweenService (copy), v56 (copy), v28 (copy) ]]
-				TweenService:Create(v56.ValueText, v28, {
-					TextTransparency = 0
-				}):Play()
-				TweenService:Create(v56.FullValueText, v28, {
-					TextTransparency = 1
-				}):Play()
-
-				if not v56:FindFirstChild("AddedText") then
-					return
-				end
-
-				TweenService:Create(v56.AddedText, v28, {
-					TextTransparency = 1
-				}):Play()
-			end)
-		end
-	end
-
-	Stats:WaitForChild("Cash"):WaitForChild("DropCash").MouseButton1Click:Connect(function() --[[ Line: 951 | Upvalues: Players (copy), v7 (copy), ReplicatedStorage (copy), Events (copy) ]]
-		local v1 = Players:GetAttribute("CASH_DROP_RANGE")
-
-		if v7:GetAttribute("Cash") < 1 then
-			ReplicatedStorage.Notify:Fire("Not enough cash to drop", "Warning")
-
-			return
-		end
-
-		local v4 = ReplicatedStorage.Prompt:Invoke("DROPPING CASH", "How much cash would you like to drop?", NumberRange.new(v1.Min, (math.clamp(v7:GetAttribute("Cash"), v1.Min, v1.Max))))
-
-		if not v4 then
-			return
-		end
-
-		Events.Player.DropMoney:FireServer(v4)
-	end)
-
-	local LevelFrame = v22:WaitForChild("LevelFrame")
-	local Level = LevelFrame:WaitForChild("Level")
-	local LevelUp = LevelFrame:WaitForChild("LevelUp")
-	local MaxLevel = LevelFrame:WaitForChild("MaxLevel")
-	local XpFrame = LevelFrame:WaitForChild("XpFrame")
-	local v57 = TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-	local v58 = TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.In)
-	local v59 = TweenInfo.new(0.6, Enum.EasingStyle.Sine, Enum.EasingDirection.In)
-	local v60 = true
-	local v61 = 0
-	local v62 = 0
-	local v63 = false
-	local v64 = false
-	local v65 = 0
-	local t6 = require(script.t)
-
-	script.t:Destroy()
-	UpdateLevel = function(p1, p2, p3) --[[ UpdateLevel | Line: 989 | Upvalues: v4 (copy), v2 (copy), Level (copy), TweenService (copy), v57 (copy), v62 (ref), v61 (ref), v63 (ref), v64 (ref), v60 (ref), Sounds (copy), v7 (copy), v59 (copy), v58 (copy), v1 (copy), MaxLevel (copy) ]]
-		local v22 = math.floor(v4 * v2 ^ p1)
-		local v3 = math.floor(p2)
-
-		Level.LevelBox.LevelText.Text = p1
-		Level.XpBar.XpText.Text = v3 .. "/" .. v22 .. " XP"
-		TweenService:Create(Level.XpBar.CountingBar, v57, {
-			Size = UDim2.new(v3 / v22, 0, 1, 0)
-		}):Play()
-		v62 = p1
-
-		if v61 < v3 then
-			v61 = v3
-
-			if not v63 then
-				v63 = true
-
-				local sum = 1
-
-				repeat
-					if not task.wait(0.1) then
-						break
-					end
-
-					if v3 < v61 then
-						v3 = v61
-						sum = 1
-					end
-
-					if p1 ~= p1 then
-						break
-					end
-
-					sum = sum - 0.1
-				until sum <= 0 and not v64
-
-				if v60 then
-					v60 = false
-				else
-					Sounds.XpAdd:Play()
-					Sounds.XpCount:Play()
-				end
-
-				local v5 = math.floor(v4 * v2 ^ v7:GetAttribute("Level"))
-
-				v61 = v7:GetAttribute("Xp")
-				TweenService:Create(Level.XpBar.Bar, v59, {
-					Size = UDim2.new(v61 / v5, 0, 1, 0)
-				}):Play()
-				TweenService:Create(Level.XpBar.XpText.Bar, v59, {
-					Offset = Vector2.new(v61 / v5, 0)
-				}):Play()
-				v63 = false
-				v22 = v5
-			end
-		else
-			v61 = v3
-		end
-
-		if p3 then
-			TweenService:Create(Level.XpBar.Bar, v58, {
-				Size = UDim2.new(v61 / v22, 0, 1, 0)
-			}):Play()
-			TweenService:Create(Level.XpBar.XpText.Bar, v58, {
-				Offset = Vector2.new(v61 / v22, 0)
-			}):Play()
-		end
-
-		if not (v1 <= p1) then
-			return
-		end
-
-		Level.Visible = false
-		MaxLevel.Visible = true
-	end
-	UpdateLevel(v7:GetAttribute("Level"), v7:GetAttribute("Xp"), true)
-	MaxLevel.LevelBox.TextLabel.Text = v1
-
-	local function AddXpFrame(p1, p2, p3) --[[ AddXpFrame | Line: 1058 | Upvalues: XpFrame (copy), TweenService (copy), v57 (copy) ]]
-		local v1 = XpFrame.XpList:GetChildren()
-
-		if #v1 > 4 then
-			for k, v in pairs(v1) do
-				if v.Name == "Xp" then
-					table.remove(v1, k)
-					v:Destroy()
-				end
-
-				if #v1 <= 4 then
-					break
-				end
-			end
-		end
-
-		local v2 = script.Frames.Xp:Clone()
-
-		v2.Title.Text = p2
-		v2.Amount.Text = "+" .. p1 .. " XP"
-
-		if p3 then
-			v2.Shine.ImageColor3 = p3
-			v2.Title.TextColor3 = p3
-			v2.Amount.TextColor3 = p3
-		end
-
-		v2.Parent = XpFrame.XpList
-		TweenService:Create(v2.Shine, v57, {
-			ImageTransparency = 0
-		}):Play()
-		TweenService:Create(v2.Title, v57, {
-			TextTransparency = 0.15
-		}):Play()
-		TweenService:Create(v2.Amount, v57, {
-			TextTransparency = 0.15
-		}):Play()
-		task.delay(0.1, function() --[[ Line: 1090 | Upvalues: v2 (copy), TweenService (ref), v57 (ref) ]]
-			if not (v2 and v2:FindFirstChild("Shine")) then
-				return
-			end
-
-			TweenService:Create(v2.Shine, v57, {
-				ImageTransparency = 0.9
-			}):Play()
-		end)
-	end
-
-	local function CleanupXpFrames() --[[ CleanupXpFrames | Line: 1096 | Upvalues: XpFrame (copy), TweenService (copy), v57 (copy) ]]
-		for k, v in pairs(XpFrame.XpList:GetChildren()) do
-			if v.Name == "Xp" then
-				TweenService:Create(v, v57, {
-					Size = UDim2.new(1, 0, 0, 0)
-				}):Play()
-				TweenService:Create(v.Shine, v57, {
-					ImageTransparency = 1
-				}):Play()
-				TweenService:Create(v.Title, v57, {
-					TextTransparency = 1
-				}):Play()
-				TweenService:Create(v.Amount, v57, {
-					TextTransparency = 1
-				}):Play()
-				task.delay(0.5, function() --[[ Line: 1105 | Upvalues: v (copy) ]]
-					v:Destroy()
-				end)
-			end
-		end
-	end
-
-	LevelUp2 = function(p1, p2) --[[ LevelUp | Line: 1112 | Upvalues: UpdateLevel (copy), Sounds (copy), LevelUp (copy), FormatNumber (copy), v3 (copy), ItemDatabase (copy), ReplicatedStorage (copy), t6 (copy), Level (copy), MaxLevel (copy), XpFrame (copy) ]]
-		UpdateLevel(p1, p2, true)
-		Sounds.Level:Play()
-		LevelUp.LevelLabel.Text = p1
-		LevelUp.MoneyLabel.Text = "+$" .. FormatNumber.Separate(p1 * v3)
-
-		for k, v in pairs(LevelUp.UnlockedFrame:GetChildren()) do
-			if v:IsA("Frame") then
-				v:Destroy()
-			end
-		end
-
-		local v1 = false
-
-		for k, v in pairs(ItemDatabase) do
-			if v.Requirements.Level == p1 and v.Price.Buy then
-				v1 = true
-
-				local v2 = script.Frames.UnlockedItem:Clone()
-
-				v2.TextLabel.Text = k:upper()
-				v2.ItemIcon.Image = v.Icon or ItemDatabase.Default.Icon
-				v2.Parent = LevelUp.UnlockedFrame
-			end
-		end
-
-		if ReplicatedStorage:GetAttribute("NoLevelUpRewards") then
-			LevelUp.TextLabel.Position = UDim2.new(0.667, 0, 0.3, 0)
-			LevelUp.MoneyLabel.Text = ""
-			v1 = false
-		else
-			LevelUp.TextLabel.Position = UDim2.new(0.667, 0, 0.086, 0)
-		end
-
-		t6.Level(LevelUp, Level, MaxLevel, XpFrame, v1)
-	end
-	Events.Player.Xp.OnClientEvent:Connect(function(p1, p2, p3, p4) --[[ Line: 1153 | Upvalues: AddXpFrame (copy), Sounds (copy), MedalClipper (copy), v64 (ref), TweenService (copy), XpFrame (copy), v57 (copy), v65 (ref), CleanupXpFrames (copy) ]]
-		AddXpFrame(p2, p1, p3)
-		Sounds.Xp:Play()
-
-		if p4 == "PlayerKill" then
-			MedalClipper:TriggerClip("KZ_player_kill", "Recorded kill in Killzone", {
-				duration = 30,
-				captureDelayMs = 5000
-			})
-		elseif p4 == "PlayerAssist" then
-			MedalClipper:TriggerClip("KZ_player_assist", "Recorded assist in Killzone", {
-				duration = 30,
-				captureDelayMs = 5000
-			})
-		end
-
-		if p3 == Color3.fromRGB(255, 55, 55) then
-			Sounds.KillFeed.Kill:Play()
-			Sounds.KillFeed.Kill2:Play()
-			Sounds.KillFeed.Killed:Play()
-		elseif p3 == Color3.fromRGB(255, 174, 61) then
-			Sounds.KillFeed.Kill:Play()
-			Sounds.KillFeed.Kill2:Play()
-			Sounds.KillFeed.Assisted:Play()
-		end
-
-		if v64 then
-			v65 = v65 + p2
-
-			return
-		end
-
-		v64 = true
-		TweenService:Create(XpFrame.Total.Shine, v57, {
-			ImageTransparency = 0
-		}):Play()
-		TweenService:Create(XpFrame.Total.Title, v57, {
-			TextTransparency = 0
-		}):Play()
-		TweenService:Create(XpFrame.Total.XpText, v57, {
-			TextTransparency = 0
-		}):Play()
-		task.delay(0.1, function() --[[ Line: 1188 | Upvalues: TweenService (ref), XpFrame (ref), v57 (ref) ]]
-			TweenService:Create(XpFrame.Total.Shine, v57, {
-				ImageTransparency = 0.9
-			}):Play()
-		end)
-		v65 = p2
-		XpFrame.Total.XpText.Text = "+" .. p2 .. " XP"
-
-		local v1 = p2
-		local sum = 3
-
-		repeat
-			if not task.wait(0.1) then
-				break
-			end
-
-			XpFrame.Total.XpText.Text = "+" .. p2 .. " XP"
-
-			if v1 < p2 then
-				v1 = p2
-				sum = 3
-			end
-
-			sum = sum - 0.1
-		until sum <= 0
-
-		TweenService:Create(XpFrame.Total.Shine, v57, {
-			ImageTransparency = 1
-		}):Play()
-		TweenService:Create(XpFrame.Total.Title, v57, {
-			TextTransparency = 1
-		}):Play()
-		TweenService:Create(XpFrame.Total.XpText, v57, {
-			TextTransparency = 1
-		}):Play()
-		CleanupXpFrames()
-		v64 = false
-	end)
-	Hunger = LimbStatus:WaitForChild("Extra"):WaitForChild("Hunger")
-	Thirst = LimbStatus:WaitForChild("Extra"):WaitForChild("Thirst")
-
-	local _ = {
-		Hunger = Color3.fromRGB(255, 174, 61),
-		Thirst = Color3.fromRGB(71, 145, 255),
-		Critical = Color3.fromRGB(255, 55, 55)
-	}
-
-	UpdateNourishment = function(p1, p2) --[[ UpdateNourishment | Line: 1239 | Upvalues: clamp (copy), TweenService (copy), Hunger (copy), v24 (copy), Thirst (copy) ]]
-		TweenService:Create(Hunger.Bar, v24, {
-			Size = UDim2.new(1, 0, clamp(p1 / 100, 0, 1), 0)
-		}):Play()
-		TweenService:Create(Thirst.Bar, v24, {
-			Size = UDim2.new(1, 0, clamp(p2 / 100, 0, 1), 0)
-		}):Play()
-	end
-	UpdateNourishment(v7:GetAttribute("Hunger"), v7:GetAttribute("Thirst"))
-	v66 = 0
-
-	local function TweenHipHeight(p1) --[[ TweenHipHeight | Line: 1255 | Upvalues: v66 (ref), TweenService (copy), Humanoid (copy), v25 (copy) ]]
-		if v66 == p1 then
-			return
-		end
-
-		v66 = p1
-		TweenService:Create(Humanoid, v25, {
-			HipHeight = p1
-		}):Play()
-	end
-
-	TweenInfo.new(0.75, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
-
-	local Blood = workspace:WaitForChild("Debris"):WaitForChild("Blood")
-
-	Blood:ClearAllChildren()
-
-	local t7 = {
-		"rbxassetid://10545730058",
-		"rbxassetid://10545730466",
-		"rbxassetid://10545729090",
-		"rbxassetid://10545729411",
-		"rbxassetid://10545643017",
-		"rbxassetid://10545741009",
-		"rbxassetid://10545729090",
-		"rbxassetid://10545729411",
-		"rbxassetid://10545643017",
-		"rbxassetid://10545741009"
-	}
-
-	MakeBlood = function(p1, p2, p3, p4) --[[ MakeBlood | Line: 1270 | Upvalues: ReplicatedStorage (copy), Debris (copy), Raycast (copy), WorldToGui (copy), t7 (copy), Blood (copy) ]]
-		if _G.Settings and _G.Settings.Video.Max_blood <= 0 then
-			return
-		end
-
-		if not p3 then
-			p3 = 1
-		end
-
-		local v1 = if p4 then p4 else "LookVector"
-		local v2 = ReplicatedStorage.BloodStuff.BloodDrop:Clone()
-
-		v2.CollisionGroup = "DontCollideWithPlayers"
-		v2.Position = p1.Position
-		Debris:AddItem(v2, 5)
-		v2.Touched:Connect(function(p12) --[[ Line: 1284 | Upvalues: v2 (copy), Raycast (ref), p1 (copy), v1 (ref), WorldToGui (ref), t7 (ref) ]]
-			if v2.Anchored ~= false or (p12.CanCollide ~= true or (p12.Anchored ~= true or (p12.Transparency == 1 or not p12:IsA("Part")))) then
-				return
-			end
-
-			local v12 = Raycast.CastRay(v2.Position, v2.AssemblyLinearVelocity.Unit * 2, {
-				CanCollide = false
-			})
-
-			if not v12 then
-				local v22 = Raycast.CastRay(v2.Position, p1[v1] / 2, {
-					CanCollide = false
-				})
-
-				v12 = v22 or Raycast.CastRay(v2.Position, Vector3.new(0, -5, 0), {
-					CanCollide = false
-				})
-			end
-
-			if v12 and v12.Instance.Anchored then
-				local v4 = math.random(200, 225)
-				local v5 = math.random(130, 150)
-
-				WorldToGui:MakeGui(v12.Instance, v12.Position, t7[math.random(#t7)], Color3.fromRGB(v4, v4, v4), math.random(50, 80) / 10, math.random(50, 80) / 10, true, Color3.fromRGB(v5, v5, v5))
-			end
-
-			if v2.Parent then
-				v2.PE:Emit(5)
-				v2.Trail.Enabled = false
-				v2.Anchored = true
-				v2.Transparency = 1
-				task.wait(0.5)
-			end
-
-			v2:Destroy()
-		end)
-		v2.Parent = Blood
-
-		if p2 then
-			local v3 = math.random(-10, 10) / 100
-			local v4 = math.random(50, 150) / 1000
-
-			v2:ApplyImpulse(Vector3.new(v3, v4, math.random(-10, 10) / 100) * p3)
-		else
-			local v6 = p1[v1] * math.random(15, 35) / 100
-			local v7 = math.random(-10, 10) / 100
-			local v8 = math.random(-20, 20) / 100
-
-			v2:ApplyImpulse(v6 + Vector3.new(v7, v8, math.random(-10, 10) / 100) * p3)
-		end
-	end
-	t8 = {}
-	t9 = {}
-	GiveHurtFeedback = function(p1) --[[ GiveHurtFeedback | Line: 1325 | Upvalues: UnderScreenEffects (copy), TweenService (copy), v24 (copy), Sounds (copy), Lighting (copy), SoundService (copy), v27 (copy), v26 (copy), v32 (copy) ]]
-		if p1 == "BrokenBone" then
-			UnderScreenEffects.LostLimb.BackgroundTransparency = 0
-			TweenService:Create(UnderScreenEffects.LostLimb, v24, {
-				ImageTransparency = 0.25,
-				BackgroundTransparency = 1
-			}):Play()
-			Sounds.BoneBreak:Play()
-			Lighting.Blur.Size = 54
-			TweenService:Create(Lighting.Blur, v24, {
-				Size = 0
-			}):Play()
-			SoundService.GeneralSoundGroup.Eq.Enabled = true
-			SoundService.GeneralSoundGroup.Eq.HighGain = -30
-			SoundService.GeneralSoundGroup.Eq.MidGain = -5
-			TweenService:Create(SoundService.GeneralSoundGroup.Eq, v27, {
-				HighGain = 0,
-				MidGain = 0,
-				LowGain = 0,
-				Enabled = false
-			}):Play()
-			Sounds.HeartbeatFast:Play()
-			Sounds.HeartbeatFast.Volume = 0.75
-			Lighting.CC2.TintColor = Color3.new(1, 0.5, 0.5)
-			Lighting.CC2.Contrast = 0.5
-			TweenService:Create(Lighting.CC2, v26, {
-				Contrast = 0,
-				TintColor = Color3.new(255/255, 255/255, 255/255)
-			}):Play()
-			TweenService:Create(Sounds.HeartbeatFast, v27, {
-				Volume = 0,
-				Playing = false
-			}):Play()
-			task.delay(0.5, function() --[[ Line: 1350 | Upvalues: TweenService (ref), UnderScreenEffects (ref), v27 (ref) ]]
-				TweenService:Create(UnderScreenEffects.LostLimb, v27, {
-					ImageTransparency = 1
-				}):Play()
-			end)
-
-			return
-		end
-
-		if p1 ~= "LimbMissing" then
-			return
-		end
-
-		UnderScreenEffects.LostLimb.BackgroundTransparency = 0
-		TweenService:Create(UnderScreenEffects.LostLimb, v32, {
-			ImageTransparency = 0,
-			BackgroundTransparency = 1
-		}):Play()
-		Sounds.BoneBreak:Play()
-		Sounds.Dismember:Play()
-		Lighting.Blur.Size = 54
-		TweenService:Create(Lighting.Blur, v32, {
-			Size = 0
-		}):Play()
-		SoundService.GeneralSoundGroup.Eq.Enabled = true
-		SoundService.GeneralSoundGroup.Eq.HighGain = -30
-		SoundService.GeneralSoundGroup.Eq.MidGain = -5
-		TweenService:Create(SoundService.GeneralSoundGroup.Eq, v27, {
-			HighGain = 0,
-			MidGain = 0,
-			LowGain = 0,
-			Enabled = false
-		}):Play()
-		Sounds.HeartbeatFast:Play()
-		Sounds.HeartbeatFast.Volume = 1.25
-		Lighting.CC2.TintColor = Color3.new(1, 0.35, 0.35)
-		Lighting.CC2.Contrast = 0.5
-		TweenService:Create(Lighting.CC2, v26, {
-			Contrast = 0,
-			TintColor = Color3.new(255/255, 255/255, 255/255)
-		}):Play()
-		TweenService:Create(Sounds.HeartbeatFast, v27, {
-			Volume = 0,
-			Playing = false
-		}):Play()
-		task.delay(0.5, function() --[[ Line: 1378 | Upvalues: TweenService (ref), UnderScreenEffects (ref), v27 (ref) ]]
-			TweenService:Create(UnderScreenEffects.LostLimb, v27, {
-				ImageTransparency = 1
-			}):Play()
-		end)
-	end
-	v67 = nil
-	Humanoid.Running:Connect(function(p1) --[[ Line: 1390 | Upvalues: v67 (ref) ]]
-		v67 = p1
-	end)
-
-	local t10 = {}
-
-	task.spawn(function() --[[ Line: 1399 | Upvalues: t10 (copy), Events (copy) ]]
-		while task.wait(10) do
-			for k, v in pairs(game.Players:GetPlayers()) do
-				if v.Character and v.Character:FindFirstChild("Head") then
-					if t10[v.Name] and not (t10[v.Name][1] and (t10[v.Name][2] and t10[v.Name][1].Parent)) then
-						t10[v.Name][2]:Disconnect()
-						t10[v.Name] = nil
-					end
-
-					if not t10[v.Name] then
-						t10[v.Name] = { v.Character.Head, v.Character.Head:GetPropertyChangedSignal("Size"):Connect(function() --[[ Line: 1408 | Upvalues: Events (ref) ]]
-								Events.Player.WalkSpeed:FireServer(20)
-							end) }
-					end
-				end
-			end
-
-			for k, v in pairs(t10) do
-				if not game.Players:FindFirstChild(k) then
-					v[2]:Disconnect()
-					t10[k] = nil
-				end
-			end
-		end
-	end)
-
-	local v68 = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
-	local v69 = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
-
-	v70 = nil
-
-	local CutscenePart = v6:WaitForChild("CutscenePart")
-	local v71 = Instance.new("NumberValue")
-	local v72 = nil
-	local v73 = RaycastParams.new()
-
-	v73.FilterType = Enum.RaycastFilterType.Exclude
-	v73.FilterDescendantsInstances = { workspace.Terrain, workspace.Chars, workspace.NPCs }
-	v73.CollisionGroup = "DontCollideWithPlayers"
-	RunService.RenderStepped:Connect(function() --[[ Line: 1443 | Upvalues: v70 (ref), CutscenePart (copy), v72 (ref), CurrentCamera (copy), v71 (copy), v19 (ref), Torso (copy), v73 (copy), v11 (ref), v12 (ref), t (copy) ]]
-		local v1 = v70 and v70.CFrame or CutscenePart.CFrame
-
-		if v72 then
-			CurrentCamera.CFrame = v72:Lerp(v1, v71.Value)
-		else
-			CurrentCamera.CFrame = CurrentCamera.CFrame:Lerp(v1, v71.Value)
-		end
-
-		if v19 and not v70 then
-			local v2 = workspace:Blockcast(CFrame.new(Torso.Position, CurrentCamera.CFrame.Position) * CFrame.new(0, 0, 3), Vector3.new(5, 3, 0), CurrentCamera.CFrame.Position - Torso.Position, v73)
-
-			if v2 and v2.Instance:IsA("BasePart") then
-				v2.Instance.LocalTransparencyModifier = 0.8
-
-				local FilterDescendantsInstances = v73.FilterDescendantsInstances
-
-				table.insert(FilterDescendantsInstances, v2.Instance)
-				v73.FilterDescendantsInstances = FilterDescendantsInstances
-			end
-		end
-
-		if v11 >= 0.01 then
-			local v4 = tick() * 1.25
-			local v5 = math.sin(v4)
-			local v6 = math.cos(v4)
-			local v7 = math.sin(v4)
-			local v8 = CFrame.new(v5 / 8, v6 / 6, v7 / 8) * CFrame.Angles(0, 0, v7 / 35)
-			local v9 = tick() * 10
-			local v10 = math.sin(v9)
-			local v112 = math.cos(v9)
-			local v122 = math.sin(v9)
-			local v13 = v8 * (CFrame.new(v10 / 24, v112 / 28, v122 / 24) * CFrame.Angles(0, 0, v122 / 100))
-			local v14 = CurrentCamera
-
-			v14.CFrame = v14.CFrame * CFrame.new():Lerp(v13, v11)
-		end
-
-		local v15 = v11
-
-		v11 = v15 + (v12 - v15) * 0.01
-
-		for k, v in pairs(t) do
-			local v16 = CurrentCamera.CFrame * CFrame.Angles(0, 0, v.Tilt.Position) * CFrame.Angles(0, 0, v.Offset.Position.X / 5) * CFrame.new(v.Offset.Position)
-
-			if v16 == v16 then
-				CurrentCamera.CFrame = v16
-			end
-		end
-	end)
-	UpdateCamPartState = function(p1) --[[ UpdateCamPartState | Line: 1490 | Upvalues: v19 (ref), v72 (ref), CurrentCamera (copy), TweenService (copy), v71 (copy), v68 (copy), ToggleCinematicMode (copy), v22 (copy), v69 (copy), v73 (copy) ]]
-		if p1 and not v19 then
-			v19 = true
-			v72 = CurrentCamera.CFrame
-			TweenService:Create(v71, v68, {
-				Value = 1
-			}):Play()
-			ToggleCinematicMode(false, true)
-			v22.Parent.Cutscene.Enabled = true
-
-			return
-		end
-
-		if p1 or not v19 then
-			return
-		end
-
-		v19 = false
-		ToggleCinematicMode(true, true)
-		v22.Parent.Cutscene.Enabled = false
-		v72 = nil
-		TweenService:Create(v71, v69, {
-			Value = 0
-		}):Play()
-
-		for k, v in pairs(v73.FilterDescendantsInstances) do
-			if v and v:IsA("BasePart") then
-				v.LocalTransparencyModifier = 0
-			end
-		end
-
-		v73.FilterDescendantsInstances = { workspace.Terrain }
-	end
-	Events:WaitForChild("Player"):WaitForChild("SetCutscenePart").OnClientEvent:Connect(function(p1) --[[ Line: 1521 | Upvalues: v70 (ref), v19 (ref), v72 (ref), CurrentCamera (copy), TweenService (copy), v71 (copy), v68 (copy), ToggleCinematicMode (copy), v22 (copy) ]]
-		v70 = p1
-
-		if p1 and not v19 then
-			v19 = true
-			v72 = CurrentCamera.CFrame
-			TweenService:Create(v71, v68, {
-				Value = 1
-			}):Play()
-			ToggleCinematicMode(false, true)
-			v22.Parent.Cutscene.Enabled = true
-		end
-	end)
-	ReplicatedStorage:WaitForChild("Wind").Event:Connect(function(p1) --[[ Line: 1531 | Upvalues: v12 (ref) ]]
-		v12 = p1
-	end)
-	UpdateStamina = function(p1) --[[ UpdateStamina | Line: 1536 | Upvalues: TweenService (copy), Stamina (copy), v24 (copy), v30 (copy), ceil (copy) ]]
-		TweenService:Create(Stamina.Bar, v24, {
-			Size = UDim2.new(p1 / 100, 0, 1, 0)
-		}):Play()
-		TweenService:Create(Stamina.Bar2, v30, {
-			Size = UDim2.new(p1 / 100, 0, 1, 0)
-		}):Play()
-		TweenService:Create(Stamina.Amount.Bar, v24, {
-			Offset = Vector2.new(p1 / 100, 0)
-		}):Play()
-		Stamina.Amount.Text = ceil(p1) .. "%"
-	end
-	UpdateStamina(100)
-	Events.Player.KB.OnClientEvent:Connect(function(p1, p2) --[[ Line: 1544 | Upvalues: v6 (copy) ]]
-		if not (p1 and (p1:IsDescendantOf(v6) and p2)) then
-			return
-		end
-
-		v6.HumanoidRootPart:ApplyImpulse((p2 + Vector3.new(0, 1, 0)) * 25 * 0.25 * v6.HumanoidRootPart.AssemblyMass)
-	end)
-
-	local t11 = {}
-
-	local function RemoveProgressBar(p1, p2) --[[ RemoveProgressBar | Line: 1553 | Upvalues: TweenService (copy), v28 (copy), v25 (copy) ]]
-		if p2 then
-			p1.Flash.BackgroundColor3 = Color3.new(204/255, 51/255, 51/255)
-			p1.TitleText.TextColor3 = Color3.new(204/255, 51/255, 51/255)
-			TweenService:Create(p1.Bar, v28, {
-				Size = p1.Bar.Size
-			}):Play()
-		end
-
-		TweenService:Create(p1.TitleText, v25, {
-			TextTransparency = 1,
-			Position = UDim2.new(0, 0, 0.75, 0)
-		}):Play()
-		TweenService:Create(p1.Flash, v25, {
-			BackgroundTransparency = 0
-		}):Play()
-		task.wait(0.15)
-		TweenService:Create(p1, v25, {
-			Size = UDim2.new(0, 0, 0.17, 0)
-		}):Play()
-		task.wait(0.25)
-		p1:Destroy()
-	end
-
-	local function MakeProgressBar(p1, p2) --[[ MakeProgressBar | Line: 1571 | Upvalues: t11 (copy), RemoveProgressBar (copy), ProgressBars (copy), TweenService (copy), v25 (copy) ]]
-		if not p2 then
-			return
-		end
-
-		if p1 then
-			if t11[p2] then
-				task.spawn(RemoveProgressBar, t11[p2])
-			end
-
-			local v1 = script.Frames.ProgressBar:Clone()
-
-			v1.TitleText.Text = p2:upper()
-			v1.Parent = ProgressBars
-			t11[p2] = v1
-			TweenService:Create(v1, v25, {
-				Size = UDim2.new(0.99, 0, 0.17, 0)
-			}):Play()
-			task.delay(0.15, function() --[[ Line: 1593 | Upvalues: t11 (ref), p2 (copy), RemoveProgressBar (ref), v1 (copy), TweenService (ref), v25 (ref) ]]
-				if t11[p2] then
-					TweenService:Create(v1.TitleText, v25, {
-						TextTransparency = 0.15,
-						Position = UDim2.new(0, 0, -0.1, 0)
-					}):Play()
-					TweenService:Create(v1.Flash, v25, {
-						BackgroundTransparency = 1
-					}):Play()
-				else
-					task.spawn(RemoveProgressBar, v1, true)
-				end
-			end)
-			TweenService:Create(v1.Bar, TweenInfo.new(p1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
-				Size = UDim2.new(1, 0, 1, 0)
-			}):Play()
-			task.wait(p1)
-
-			if v1 and v1.Parent then
-				t11[p2] = nil
-				RemoveProgressBar(v1)
-			end
-		else
-			if not t11[p2] then
-				return
-			end
-
-			task.spawn(RemoveProgressBar, t11[p2], true)
-			t11[p2] = nil
-		end
-	end
-
-	ReplicatedStorage:WaitForChild("Bar").Event:Connect(MakeProgressBar)
-	Events.Player.ProgressGui.OnClientEvent:Connect(MakeProgressBar)
-end
-
-local v74 = nil
-local Popup = v22:WaitForChild("Popup")
-local v75 = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-local v76 = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
-Events.Player.Popup.OnClientEvent:Connect(function(p1, p2, p3) --[[ Line: 1630 | Upvalues: random (copy), v74 (ref), Popup (copy), TweenService (copy), v76 (copy), v75 (copy) ]]
 	if p1 then
-		local v1 = random(100, 999)
-
-		v74 = v1
-		Popup.Title.Text = p1:upper()
-		Popup.Size = UDim2.new(0, 0, 0.047, 0)
-		Popup.Flash.BackgroundTransparency = 0
-
-		if not p3 then
-			p3 = Color3.fromRGB(101, 255, 84)
-		end
-
-		Popup.Flash.BackgroundColor3 = p3
-		Popup.Edge.ImageColor3 = p3
-		Popup.Edge2.ImageColor3 = p3
-		Popup.Shine.ImageColor3 = p3
-		Popup.Title.TextColor3 = p3
-		TweenService:Create(Popup, v76, {
-			Visible = true,
-			Size = UDim2.new(0.25, 0, 0.047, 0)
-		}):Play()
-		TweenService:Create(Popup.Flash, v75, {
-			BackgroundTransparency = 1
-		}):Play()
-
-		if not p2 then
-			return
-		end
-
-		task.wait(p2)
-
-		if v1 == v1 or v1 == nil then
-			TweenService:Create(Popup, v76, {
-				Visible = false,
-				Size = UDim2.new(0, 0, 0.047, 0)
-			}):Play()
-			TweenService:Create(Popup.Flash, v76, {
-				BackgroundTransparency = 0
-			}):Play()
-		end
+		ColorCorrection.Parent = CurrentCamera
+		PointLight.Parent = HumanoidRootPart
+		Visor.Visible = true
 	else
-		TweenService:Create(Popup, v76, {
-			Visible = false,
-			Size = UDim2.new(0, 0, 0.047, 0)
-		}):Play()
-		TweenService:Create(Popup.Flash, v76, {
-			BackgroundTransparency = 0
-		}):Play()
-	end
-end)
-Humanoid.StateChanged:Connect(function(p1, p2) --[[ Line: 1664 | Upvalues: v6 (copy), v14 (ref), v50 (ref), HumanoidRootPart (copy), v21 (ref) ]]
-	if p2 == Enum.HumanoidStateType.Freefall or p2 == Enum.HumanoidStateType.Jumping then
-		v6:SetAttribute("Falling", true)
-		v14 = false
-		v50 = HumanoidRootPart.Position.Y
-	elseif p2 == Enum.HumanoidStateType.Landed then
-		local _ = math.abs(HumanoidRootPart.Position.Y - v50) >= 1
-
-		v6:SetAttribute("Falling", false)
-		v14 = false
-	elseif p2 == Enum.HumanoidStateType.Climbing then
-		v6:SetAttribute("Falling", false)
-		v14 = true
-	else
-		v6:SetAttribute("Falling", false)
-		v14 = false
-	end
-
-	if p1 == Enum.HumanoidStateType.Jumping or p2 ~= Enum.HumanoidStateType.Freefall then
-		return
-	end
-
-	v21 = tick()
-end)
-Events.Player.StaminaNeeded.OnClientEvent:Connect(function(p1) --[[ Line: 1696 | Upvalues: Stamina (copy), TweenService (copy), v25 (copy) ]]
-	local v1 = Stamina.StaminaNeeded:Clone()
-
-	v1.Parent = Stamina
-	v1.Size = UDim2.new(p1 / 100, 0, 1, 0)
-	TweenService:Create(v1, v25, {
-		BackgroundTransparency = 0.5
-	}):Play()
-	task.wait(0.25)
-	TweenService:Create(v1, v25, {
-		BackgroundTransparency = 1
-	}):Play()
-	task.wait(0.25)
-	v1:Destroy()
-end)
-ReplicatedStorage:WaitForChild("UI").Event:Connect(function(p1) --[[ Line: 1708 ]] end)
-ReplicatedStorage:WaitForChild("Blood").Event:Connect(function(p1, p2, p3, p4) --[[ Line: 1714 | Upvalues: MakeBlood (copy) ]]
-	for i = 1, p3 or 1 do
-		MakeBlood(p1, p2, p4)
-	end
-end)
-InputHandler.RegisterKeybind(nil, "Core_quick_exit", { "Quick_Exit" }, false, { "Began" }, function() --[[ Line: 1722 | Upvalues: ReplicatedStorage (copy) ]]
-	ReplicatedStorage.DA:Fire()
-end)
-InputHandler.RegisterKeybind(nil, "Core_controls_began", { "Sprint", "Crouch" }, false, { "Began" }, function(p1, p2) --[[ Line: 1723 | Upvalues: v18 (ref), v6 (copy), v16 (ref), v13 (ref), v17 (ref), Slide (copy) ]]
-	if p2 == "Sprint" then
-		v18 = if v18 == true and _G.ToggleSprint then false else true
-		v6:SetAttribute("RotateChar", false)
-	else
-		if p2 ~= "Crouch" then
-			return
-		end
-
-		if v16 == true and _G.ToggleCrouch then
-			v16 = false
-			v13 = false
-
-			return
-		end
-
-		if _G.CharacterStates.NoCrouch then
-			return
-		end
-
-		v16 = true
-
-		if v17 ~= true then
-			return
-		end
-
-		Slide()
-	end
-end)
-InputHandler.RegisterKeybind(nil, "Core_controls_ended", { "Sprint", "Crouch" }, true, { "Ended" }, function(p1, p2) --[[ Line: 1745 | Upvalues: v18 (ref), v9 (ref), v16 (ref), v13 (ref) ]]
-	if p2 == "Sprint" and not _G.ToggleSprint then
-		v18 = false
-
-		return
-	end
-
-	if p2 ~= "Crouch" or (v9 ~= false or _G.ToggleCrouch) then
-		return
-	end
-
-	v16 = false
-	v13 = false
-end)
-UserInputService.InputBegan:Connect(function(p1, p2) --[[ Line: 1756 | Upvalues: ToggleCinematicMode (copy), v22 (copy) ]]
-	if p2 or p1.KeyCode ~= Enum.KeyCode.J then
-		return
-	end
-
-	ToggleCinematicMode(not v22.Enabled)
-end)
-Events:WaitForChild("Player"):WaitForChild("DisableActions").OnClientEvent:Connect(function(...) --[[ Line: 1762 | Upvalues: ReplicatedStorage (copy) ]]
-	ReplicatedStorage.DA:Fire(...)
-end)
-
-local v77 = false
-
-local function JumpRequest() --[[ JumpRequest | Line: 1767 | Upvalues: Humanoid (copy), v45 (ref), v46 (ref), Events (copy), ShakeCamera (copy), Sounds (copy), v21 (ref), v44 (ref), v17 (ref), v49 (ref), HumanoidRootPart (copy), v77 (ref) ]]
-	if Humanoid:GetState() == Enum.HumanoidStateType.Freefall and (v45 and (not v46 and (not _G.CharacterStates.Parkour and (_G.CharacterStates.DoubleJump and not _G.CharacterStates.DoubleJumpCD)))) then
-		v45 = false
-		v46 = true
-		task.delay(2, function() --[[ Line: 1771 | Upvalues: v46 (ref) ]]
-			v46 = false
-		end)
-		Events.Player.GearAbility:FireServer("DoubleJump")
-		Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-		ShakeCamera(Vector3.new(0, -10, 5), 2, 3, 0.25)
-		Sounds.Booster:Play()
-	end
-
-	if not v21 then
-		return
-	end
-
-	if Humanoid:GetState() ~= Enum.HumanoidStateType.Freefall or (not (tick() - v21 <= 0.05) or (not v44 or _G.CharacterStates.Parkour)) then
-		return
-	end
-
-	if v17 and _G.CharacterStates.OverWeightCapacity <= 0 then
-		v21 = nil
-		v49 = 0
-		HumanoidRootPart:ApplyImpulse((Humanoid.MoveDirection + Vector3.new(0, 0.25, 0)) * 50)
-		ShakeCamera(Vector3.new(0, -5, 5), 1.5, 2, 0.25)
-		Sounds.CoyoteLeap:Play()
-		v77 = true
-		task.delay(0.5, function() --[[ Line: 1803 | Upvalues: v77 (ref) ]]
-			v77 = false
-		end)
-	end
-
-	Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-	v21 = nil
-end
-
-UserInputService.JumpRequest:Connect(JumpRequest)
-ReplicatedStorage:WaitForChild("RequestJump").Event:Connect(JumpRequest)
-v7.AttributeChanged:Connect(function(p1) --[[ Line: 1815 | Upvalues: LevelUp2 (copy), v7 (copy), UpdateLevel (copy), UpdateNourishment (copy), UpdateStamina (copy), Background (copy), FormatNumber (copy), tbl (copy), UpdateCurrency (copy) ]]
-	if p1 == "Level" then
-		LevelUp2(v7:GetAttribute("Level"), v7:GetAttribute("Xp"))
-
-		return
-	end
-
-	if p1 == "Xp" then
-		UpdateLevel(v7:GetAttribute("Level"), v7:GetAttribute("Xp"))
-
-		return
-	end
-
-	if p1 == "Hunger" or p1 == "Thirst" then
-		UpdateNourishment(v7:GetAttribute("Hunger"), v7:GetAttribute("Thirst"))
-
-		return
-	end
-
-	if p1 == "Stamina" then
-		UpdateStamina(v7:GetAttribute("Stamina"))
-
-		return
-	end
-
-	if p1 == "CombatTimer" or p1 == "InDanger" then
-		local v1 = v7:GetAttribute("CombatTimer")
-
-		if not (v1 > 0) then
-			Background.Combat.Visible = false
-
-			return
-		end
-
-		Background.Combat.Visible = true
-		Background.Combat.TextLabel.Text = if v7:GetAttribute("InDanger") then "DANGER" else FormatNumber.Time(v1)
-	else
-		if not table.find(tbl, p1) then
-			return
-		end
-
-		UpdateCurrency(p1, v7:GetAttribute(p1))
-	end
-end)
-
-local v78 = CollectionService:GetTagged("OneWayBarrier")
-
-local function UpdateBarriers() --[[ UpdateBarriers | Line: 1854 | Upvalues: v78 (copy), HumanoidRootPart (copy) ]]
-	for k, v in pairs(v78) do
-		local Position = (v.CFrame * CFrame.new(v.Size.X / 2, 0, 0)).Position
-
-		v.CanCollide = v.CFrame.RightVector:Dot((HumanoidRootPart.Position - Position).Unit) > 0
+		ColorCorrection.Parent = NightVision
+		PointLight.Parent = NightVision
+		Visor.Visible = false
 	end
 end
 
-ReplicatedStorage:WaitForChild("ToggledInventory").Event:Connect(function(p1) --[[ Line: 1866 | Upvalues: Background (copy), Hunger (copy), Thirst (copy), Stamina (copy) ]]
-	Background.Position = p1 and UDim2.new(0.5, 0, 1, -515) or UDim2.new(0.5, 0, 1, -70)
-	Hunger.TitleText.Visible = p1
-	Thirst.TitleText.Visible = p1
-	Stamina.TitleText.Visible = p1
-end)
-
-local v79 = 0
-local v80 = nil
-local ok, result = pcall(function() --[[ Line: 1882 | Upvalues: UpdateBarriers (copy), t2 (copy), ShakeCamera (copy), v6 (copy), v39 (ref), v40 (ref), ReplicatedStorage (copy), v80 (ref), Torso (copy), Events (copy), v7 (copy), HumanoidRootPart (copy), Highlight (copy), v79 (ref), Lighting (copy), v33 (copy), Background (copy), FormatNumber (copy), v8 (ref), UpdateDowned (copy), Shared (copy), v16 (ref), v21 (ref), v49 (ref), v77 (ref), UpdateCamPartState (copy), v70 (ref), OverlayGui (copy), v13 (ref), TweenService (copy), CurrentCamera (copy), v24 (copy), Humanoid (copy), UnderScreenEffects (copy), Sounds (copy), v18 (ref), v17 (ref), v9 (ref), JumpCooldown (copy), v66 (ref), v25 (copy), PlayAnimation (copy), v67 (ref), v15 (ref), v14 (ref), v23 (copy), t9 (copy), t8 (copy), GiveHurtFeedback (copy), Players (copy), MakeBlood (copy) ]]
-	while task.wait(0.1) do
-		UpdateBarriers()
-
-		for k, v in pairs(t2) do
-			local v1 = v:GetAttribute("Range") or NumberRange.new(10, 25)
-			local v2 = v:GetAttribute("Intensity") or 5
-			local v3 = v:GetAttribute("Scale")
-
-			pcall(ShakeCamera, {
-				Position = v.Position,
-				Min = v1.Min,
-				Max = v1.Max
-			}, v2, v3, v3, nil, true, 2)
-		end
-
-		local v4 = v6:FindFirstChildWhichIsA("RayValue")
-		local ForceEquip = _G.CharacterStates.ForceEquip
-
-		if _G.CharacterStates.DisableInventory then
-			v39 = 1
-		end
-
-		if v39 > 0 then
-			v39 = v39 - 0.1
-
-			if v40 == true then
-				ReplicatedStorage.SI:Fire(false, _G.CharacterStates.DisableInventory)
-				v40 = false
-			end
-		elseif v40 == false then
-			ReplicatedStorage.SI:Fire(true)
-			v40 = true
-
-			if v80 and (v80.Parent and not Torso:FindFirstChild("ForceField")) then
-				_G.FastEquipping = v80
-				Events.Items.Equip:FireServer(v80, true)
-				v80 = nil
-			end
-		end
-
-		if ForceEquip and (not v4 or v4.Name ~= ForceEquip) then
-			local v5 = v7.Backpack:FindFirstChild(ForceEquip)
-
-			if v5 then
-				Events.Items.Equip:FireServer(v5, true)
-			end
-		end
-
-		if not v6:FindFirstChild("Right Arm") then
-			v39 = 0.25
-
-			if v4 then
-				Events.Items.Unequip:FireServer()
-			end
-		end
-
-		if _G.CharacterStates.PlayingActionCutscene or (_G.CharacterStates.Ragdolled or (_G.CharacterStates.Downed or (_G.CharacterStates.NT or (_G.CharacterStates.E or (_G.CharacterStates.Carrying or HumanoidRootPart and HumanoidRootPart.Anchored))))) then
-			v39 = 0.25
-
-			if v4 then
-				v80 = v4
-				Events.Items.Unequip:FireServer()
-			end
-		end
-
-		if _G.CharacterStates.InFirstPerson then
-			Highlight.Enabled = false
-		else
-			Highlight.Enabled = true
-		end
-
-		v79 = v79 + 0.1
-
-		if v79 >= 2 then
-			v79 = 0
-
-			if Lighting:GetAttribute("Season") == "Winter" and not _G.CharacterStates.Aiming then
-				v33.Smoke.Enabled = true
-				task.delay(0.5, function() --[[ Line: 1966 | Upvalues: v33 (ref) ]]
-					v33.Smoke.Enabled = false
-				end)
-			end
-		end
-
-		local ForceField = Torso:FindFirstChild("ForceField")
-		local v62 = if ForceField then ForceField:GetAttribute("Duration") else ForceField
-
-		if ForceField then
-			Background.Protection.Visible = true
-			Background.Protection.TextLabel.Text = v62 and FormatNumber.Time(v62) or "\226\136\158"
-		else
-			Background.Protection.Visible = false
-		end
-
-		v8 = _G.CharacterStates.Crippled and _G.CharacterStates.Crippled.Y or (_G.CharacterStates.Endlag or _G.CharacterStates.DashSpeed)
-
-		local v92 = v6:FindFirstChild("Left Leg")
-		local v10 = v6:FindFirstChild("Right Leg")
-		local v11 = not v92 or v92:GetAttribute("BrokenBone")
-		local v12 = not v10 or v10:GetAttribute("BrokenBone")
-
-		UpdateDowned(_G.CharacterStates.Downed and not _G.CharacterStates.Died)
-
-		local sum = 16
-		local v162 = 50
-		local sum2 = 0
-		local v172 = false
-		local v182 = false
-		local v19 = nil
-		local v20 = Shared.GetScaledStats(_G.CharacterStates)
-
-		if v20.Walkspeed then
-			sum = sum * v20.Walkspeed
-		end
-
-		if v20.Jumppower then
-			v162 = v162 * v20.Jumppower
-		end
-
-		if v20.FieldOfView then
-			sum2 = sum2 * v20.FieldOfView
-		end
-
-		if v4 and v4:GetAttribute("Walkspeed") then
-			sum = sum + v4:GetAttribute("Walkspeed")
-		end
-
-		local OverWeightCapacity = _G.CharacterStates.OverWeightCapacity
-
-		if OverWeightCapacity then
-			sum = sum - math.abs(OverWeightCapacity)
-		end
-
-		if _G.CharacterStates.Reviving then
-			v16 = false
-		end
-
-		if _G.CharacterStates.Parkour then
-			v21 = nil
-			v49 = 0
-		end
-
-		if (v12 or v11) and sum > 11 then
-			sum = 11
-		end
-
-		if v11 and v12 then
-			v162 = 40
-			sum = 5
-			v16 = false
-			v182 = true
-		end
-
-		if v4 and (v4:GetAttribute("Armed") and (not v4:GetAttribute("NS") and sum > 11)) then
-			sum = 11
-			v182 = true
-		end
-
-		if _G.CharacterStates.Swinging then
-			v182 = true
-		end
-
-		if _G.CharacterStates.AimingMovementSpeed then
-			sum = sum * _G.CharacterStates.AimingMovementSpeed
-			v182 = true
-			v162 = 30
-		end
-
-		if _G.CharacterStates.ReloadingMovementSpeed then
-			if not _G.CharacterStates.CanSprintReload then
-				v182 = true
-			end
-
-			sum = sum * (_G.CharacterStates.OverrideReloadingMovementSpeed or _G.CharacterStates.ReloadingMovementSpeed)
-		end
-
-		if _G.CharacterStates.GunPreparing then
-			v172 = true
-			v182 = true
-		end
-
-		if _G.CharacterStates.Blocking or (_G.CharacterStates.ServerBlocking or _G.CharacterStates.UsingItem) then
-			v172 = true
-			v182 = true
-
-			if sum > 7 then
-				sum = 7
-			end
-		end
-
-		if _G.CharacterStates.Reloading or (_G.CharacterStates.UsingItem or (_G.CharacterStates.Blocking or _G.CharacterStates.Parkour)) then
-			v162 = 0
-		end
-
-		if _G.CharacterStates.ES and _G.CharacterStates.ES < sum then
-			sum = _G.CharacterStates.ES
-		end
-
-		if _G.CharacterStates.E then
-			v172 = true
-
-			if sum > 5 then
-				sum = 5
-			end
-		end
-
-		if _G.CharacterStates.RestrictedMovement then
-			sum = 0
-			v19 = true
-			v162 = 0
-		end
-
-		if _G.CharacterStates.ZL then
-			sum2 = 20
-		end
-
-		if v77 then
-			sum2 = sum2 + 25
-		end
-
-		local PlayingCameraAnim = _G.CharacterStates.PlayingCameraAnim
-
-		UpdateCamPartState(if PlayingCameraAnim then PlayingCameraAnim else v70)
-
-		if not _G.CharacterStates.Aiming and OverlayGui.Enabled then
-			if v13 then
-				sum2 = sum2 + 25
-			end
-
-			if _G.Settings.Gameplay.Walkspeed_affects_FOV and not PlayingCameraAnim then
-				TweenService:Create(CurrentCamera, v24, {
-					FieldOfView = sum2 + _G.Settings.Gameplay.FOV + (Humanoid.WalkSpeed - 16) / 1.5
-				}):Play()
-			else
-				TweenService:Create(CurrentCamera, v24, {
-					FieldOfView = sum2 + _G.Settings.Gameplay.FOV
-				}):Play()
-			end
-		end
-
-		if _G.CharacterStates.CutsceneFieldOfView then
-			TweenService:Create(CurrentCamera, v24, {
-				FieldOfView = _G.CharacterStates.CutsceneFieldOfView
-			}):Play()
-		end
-
-		local v242 = v7:GetAttribute("Stamina")
-
-		if v242 < 35 then
-			local v252 = 1 - v242 / 2 / 35
-
-			TweenService:Create(UnderScreenEffects.Stamina, v24, {
-				ImageTransparency = 1 - v252
-			}):Play()
-			TweenService:Create(Sounds.OutOfStamina, v24, {
-				Volume = v252 / 4
-			}):Play()
-		elseif UnderScreenEffects.Stamina.ImageTransparency ~= 1 then
-			TweenService:Create(UnderScreenEffects.Stamina, v24, {
-				ImageTransparency = 1
-			}):Play()
-			TweenService:Create(Sounds.OutOfStamina, v24, {
-				Volume = 0
-			}):Play()
-		end
-
-		if (v18 and (not v182 and (HumanoidRootPart.Anchored == false and (v16 == false and (v13 == false and not (_G.CharacterStates.CS or (_G.CharacterStates.ZL or _G.CharacterStates.Aiming)))))) or v8 and v8 >= 20) and ((Humanoid.MoveDirection:Dot(HumanoidRootPart.CFrame.LookVector) > 0.5 or _G.CharacterStates.Parkour) and not v8 or (Humanoid.MoveDirection:Dot(HumanoidRootPart.CFrame.LookVector) > 0.5 or _G.CharacterStates.Parkour) and (v8 > 16 and (v16 == false and v13 == false))) then
-			if v17 == false then
-				v17 = true
-				v6:SetAttribute("Sprinting", v17)
-			end
-		elseif v17 == true then
-			v17 = false
-			v6:SetAttribute("Sprinting", v17)
-		end
-
-		if v9 then
-			if v8 and not (v8 > 3) then
-				Humanoid.WalkSpeed = v8
-			elseif sum - 14 > 2 then
-				Humanoid.WalkSpeed = sum - 14
-			else
-				Humanoid.WalkSpeed = 1.5
-			end
-
-			JumpCooldown.BackgroundColor3 = Color3.new(255/255, 0/255, 0/255)
-			Humanoid.JumpPower = 0
-
-			if v66 ~= -1.75 then
-				v66 = -1.75
-				TweenService:Create(Humanoid, v25, {
-					HipHeight = -1.75
-				}):Play()
-			end
-
-			if v17 == true then
-				v17 = false
-				v6:SetAttribute("Sprinting", v17)
-			end
-
-			v16 = false
-
-			if v6:FindFirstChild("CarryWeld") then
-				PlayAnimation("")
-			elseif Humanoid.MoveDirection == Vector3.new(0, 0, 0) then
-				PlayAnimation("downedIdle", nil, nil, 0.5)
-			else
-				PlayAnimation("downedWalk", v67, 2.5, 0.5)
-			end
-		elseif v16 == true and HumanoidRootPart.Anchored == false or v19 then
-			if v17 == true then
-				v17 = false
-				v6:SetAttribute("Sprinting", v17)
-			end
-
-			if v13 == false then
-				if Humanoid.MoveDirection == Vector3.new(0, 0, 0) then
-					PlayAnimation("crouchIdle", nil, nil, 0.25)
-				else
-					PlayAnimation("crouchWalk", v67, 6, 0.15)
-				end
-
-				if v242 < 10 then
-					JumpCooldown.BackgroundColor3 = Color3.new(255/255, 0/255, 0/255)
-					Humanoid.JumpPower = 0
-				else
-					JumpCooldown.BackgroundColor3 = Color3.new(255/255, 255/255, 255/255)
-					Humanoid.JumpPower = v162
-				end
-
-				if v66 ~= -1.35 then
-					v66 = -1.35
-					TweenService:Create(Humanoid, v25, {
-						HipHeight = -1.35
-					}):Play()
-				end
-			else
-				JumpCooldown.BackgroundColor3 = Color3.new(255/255, 0/255, 0/255)
-				Humanoid.JumpPower = 0
-
-				if v66 ~= -1.75 then
-					v66 = -1.75
-					TweenService:Create(Humanoid, v25, {
-						HipHeight = -1.75
-					}):Play()
-				end
-			end
-
-			if v8 and not (v8 > 6) then
-				Humanoid.WalkSpeed = v8
-			elseif sum - 10 > 5 then
-				Humanoid.WalkSpeed = sum - 10
-			elseif sum > 6 then
-				Humanoid.WalkSpeed = 5
-			else
-				Humanoid.WalkSpeed = sum
-			end
-		else
-			if v66 ~= 0.1 then
-				v66 = 0.1
-				TweenService:Create(Humanoid, v25, {
-					HipHeight = 0.1
-				}):Play()
-			end
-
-			if v242 < 10 then
-				JumpCooldown.BackgroundColor3 = Color3.new(255/255, 0/255, 0/255)
-				Humanoid.JumpPower = 0
-			else
-				JumpCooldown.BackgroundColor3 = Color3.new(255/255, 255/255, 255/255)
-				Humanoid.JumpPower = v162
-			end
-
-			if v17 == true and (v242 > 0 and (Humanoid.MoveDirection ~= Vector3.new(0, 0, 0) and not v172)) then
-				if not _G.CharacterStates.Falling then
-					if v15 then
-						PlayAnimation("hurtSprint", v67, 17, 0.35)
-					else
-						PlayAnimation("sprint", v67, 17, 0.35)
-					end
-				end
-
-				if v8 then
-					v16 = false
-					Humanoid.WalkSpeed = v8
-				else
-					Humanoid.WalkSpeed = sum + 9
-				end
-			else
-				if v17 == true then
-					v17 = false
-					v6:SetAttribute("Sprinting", v17)
-				end
-
-				if v8 and v8 < 16 then
-					Humanoid.WalkSpeed = v8
-				else
-					Humanoid.WalkSpeed = sum
-				end
-			end
-		end
-
-		if not (v17 or (v9 or v16)) or (v14 or _G.CharacterStates.Falling) then
-			PlayAnimation("")
-
-			if v14 then
-				v16 = false
-			end
-		end
-
-		if _G.CharacterStates.Crouching ~= v16 then
-			v6:SetAttribute("Crouching", v16)
-		end
-
-		for k, v in pairs(v23) do
-			if v:IsA("Frame") and v.Name ~= "Extra" then
-				if v6:FindFirstChild(v.Name) and (v6[v.Name]:GetAttribute("Health") and not v6[v.Name]:GetAttribute("Disconnected")) then
-					local v26 = v6[v.Name]:GetAttribute("Health")
-					local v27 = table.find(t9, v.Name)
-
-					if v27 then
-						table.remove(t9, v27)
-					end
-
-					if v6[v.Name]:GetAttribute("BrokenBone") and v:FindFirstChild("Broken") then
-						v.Broken.Visible = true
-						v.Broken.Bar.Offset = Vector2.new(0, -(v26 / 100))
-
-						if not table.find(t8, v.Name) then
-							table.insert(t8, v.Name)
-							GiveHurtFeedback("BrokenBone")
-						end
-
-						continue
-					end
-
-					if v:FindFirstChild("Broken") then
-						v.Broken.Visible = false
-					end
-
-					local v30 = table.find(t8, v.Name)
-
-					if v30 then
-						table.remove(t8, v30)
-					end
-
-					v.BackgroundColor3 = Color3.fromRGB(255, 55, 55):Lerp(Color3.fromRGB(101, 255, 84), v26 / 100)
-
-					continue
-				end
-
-				if not v6:FindFirstChild(v.Name) or v6[v.Name]:GetAttribute("Disconnected") then
-					if v:FindFirstChild("Broken") then
-						v.Broken.Visible = false
-					end
-
-					if not table.find(t9, v.Name) then
-						table.insert(t9, v.Name)
-						GiveHurtFeedback("LimbMissing")
-					end
-
-					v.BackgroundColor3 = Color3.new(0.25, 0.25, 0.25)
-				end
-			end
-		end
-
-		if _G.Settings.Video.Blood == false then
-			for k, v in pairs(Players:GetPlayers()) do
-				if v.Character and v.Character:FindFirstChild("Torso") then
-					for k2, v2 in pairs(v.Character.Torso:GetChildren()) do
-						if v2.Name == "Blood" then
-							v2:Destroy()
-						end
-					end
-				end
-			end
-
-			workspace.Debris.Blood:ClearAllChildren()
-
-			continue
-		end
-
-		for k, v in pairs(workspace.Chars:GetChildren()) do
-			if v and (v:FindFirstChild("Torso") and (HumanoidRootPart and (HumanoidRootPart.Position - v.Torso.Position).Magnitude <= 30)) then
-				for k2, v2 in pairs(v.Torso:GetChildren()) do
-					if v2.Name == "Blood" and (v2:FindFirstChild("At") and (v2.At:FindFirstChild("PE") and v2.At.PE.Enabled)) then
-						MakeBlood(v2.CFrame, nil, nil, "UpVector")
-					end
-				end
-
-				local v332 = v:GetAttribute("Bleeding")
-
-				if v332 and math.random(0, 5) < v332.Y then
-					MakeBlood(v.Torso.CFrame, true)
-				end
-			end
-		end
-	end
-end)
-
-if ok or not (result and (script and script.Parent)) then
-	return
+for k, v in pairs(CollectionService:GetTagged("NightVisionEffect")) do
+	v.Enabled = false
 end
 
-LocalPlayer:Kick(result .. " Code: 140")
-error(result)
+ColorCorrection.Parent = NightVision
+PointLight.Parent = NightVision
+Visor.Visible = false
+
+local function UpdateEffects(p1) --[[ UpdateEffects | Line: 52 | Upvalues: HumanoidRootPart (copy), CollectionService (copy), ColorCorrection (copy), CurrentCamera (copy), PointLight (copy), Visor (copy), NightVision (copy), Sounds (copy) ]]
+	local v1 = HumanoidRootPart:GetAttribute(p1)
+
+	if p1 == "NightVision" then
+		for k, v in pairs(CollectionService:GetTagged("NightVisionEffect")) do
+			v.Enabled = v1
+		end
+
+		if v1 then
+			ColorCorrection.Parent = CurrentCamera
+			PointLight.Parent = HumanoidRootPart
+			Visor.Visible = true
+		else
+			ColorCorrection.Parent = NightVision
+			PointLight.Parent = NightVision
+			Visor.Visible = false
+		end
+	else
+		if p1 == "AntiFlash" then
+			Visor.Visible = v1
+
+			return
+		end
+
+		if p1 ~= "RespiratoryProtection" then
+			return
+		end
+
+		Visor.Visible = v1
+
+		if v1 then
+			Sounds.Mask:Play()
+
+			return
+		end
+
+		Sounds.Mask:Stop()
+	end
+end
+
+HumanoidRootPart.AttributeChanged:Connect(UpdateEffects)
+
+for k, v in pairs(HumanoidRootPart:GetAttributes()) do
+	UpdateEffects(k)
+end
+
+local function GetGear(p1) --[[ GetGear | Line: 75 | Upvalues: EquippedGear (copy) ]]
+	for k, v in pairs(EquippedGear:GetChildren()) do
+		if v:GetAttribute("Type") == p1 then
+			return v
+		end
+	end
+end
+
+local v5 = 0
+local v6 = nil
+
+while task.wait(0.1) do
+	local v7 = Visor.Visible and GetGear("Face")
+	local v9 = #v4
+	local v10 = v9 - math.floor((v7 and v7:GetAttribute("Durability") or 100) / (100 / v9))
+
+	if v5 < v10 and v6 == v7 then
+		Sounds.VisorCrack:Play()
+	end
+
+	v5, v6 = v10, v7
+
+	for k, v in pairs(v4) do
+		v.Visible = k <= v10
+	end
+end
 
 -- ReplicatedStorage.Mods.StatusEffectDatabase.Themes
 --
@@ -63408,8 +65025,8 @@ local v10 = true
 local v11 = false
 local v12 = false
 local v13 = false
-local v14 = false
-local v15 = true
+local v14 = true
+local v15 = false
 
 repeat
 	task.wait(0.1)
@@ -63424,11 +65041,11 @@ local ToolTip = require(script:WaitForChild("ToolTip"))
 v1.Parent = LocalPlayer:WaitForChild("PlayerGui")
 UserInputService.MouseIconEnabled = false
 
-local function ToggleCrosshair(p1) --[[ ToggleCrosshair | Line: 74 | Upvalues: v11 (ref), Crosshair (copy), TweenService (copy), v7 (copy), Crosshair2 (copy) ]]
+local function ToggleCrosshair(p1) --[[ ToggleCrosshair | Line: 74 | Upvalues: v15 (ref), Crosshair (copy), TweenService (copy), v7 (copy), Crosshair2 (copy) ]]
 	local v1 = if p1 then 0 else 1
 	local v2 = p1 and _G.Settings.Crosshair.Transparency or 1
 
-	if v11 and p1 then
+	if v15 and p1 then
 		v1 = 0.8
 		v2 = 0.8
 	end
@@ -63451,10 +65068,10 @@ local function ToggleCrosshair(p1) --[[ ToggleCrosshair | Line: 74 | Upvalues: v
 	Crosshair2.Gap.Value = 0
 end
 
-local function ToggleReloading(p1) --[[ ToggleReloading | Line: 102 | Upvalues: v12 (ref), TweenService (copy), Reload (copy), v3 (copy) ]]
+local function ToggleReloading(p1) --[[ ToggleReloading | Line: 102 | Upvalues: v11 (ref), TweenService (copy), Reload (copy), v3 (copy) ]]
 	local v1 = if p1 then 0 else 1
 
-	if p1 and v12 then
+	if p1 and v11 then
 		v1 = 0.5
 	end
 
@@ -63469,13 +65086,13 @@ local function ToggleReloading(p1) --[[ ToggleReloading | Line: 102 | Upvalues: 
 	}):Play()
 end
 
-local function UpdateMouse() --[[ UpdateMouse | Line: 113 | Upvalues: v13 (ref), v14 (ref), ToggleReloading (copy), ToggleCrosshair (copy), v15 (ref), TweenService (copy), Cursor (copy), v7 (copy), v9 (ref) ]]
-	local v1 = v13 and v14
-	local v2 = v13 and not v1
+local function UpdateMouse() --[[ UpdateMouse | Line: 113 | Upvalues: v12 (ref), v13 (ref), ToggleReloading (copy), ToggleCrosshair (copy), v14 (ref), TweenService (copy), Cursor (copy), v7 (copy), v9 (ref) ]]
+	local v1 = v12 and v13
+	local v2 = v12 and not v1
 	local v3 = not v2 and not v1
 
 	ToggleReloading(v1)
-	ToggleCrosshair(if v2 then v15 else v2)
+	ToggleCrosshair(if v2 then v14 else v2)
 
 	local t = {}
 
@@ -63488,16 +65105,16 @@ General:WaitForChild("Cursor").Changed:Connect(function(p1) --[[ Line: 127 | Upv
 	v10 = p1
 	UpdateMouse()
 end)
-Crosshair2:WaitForChild("Active").Changed:Connect(function(p1) --[[ Line: 133 | Upvalues: v13 (ref), UpdateMouse (copy) ]]
-	v13 = p1
+Crosshair2:WaitForChild("Active").Changed:Connect(function(p1) --[[ Line: 133 | Upvalues: v12 (ref), UpdateMouse (copy) ]]
+	v12 = p1
 	UpdateMouse()
 end)
-Crosshair2:WaitForChild("Disabled").Changed:Connect(function(p1) --[[ Line: 139 | Upvalues: v11 (ref), UpdateMouse (copy) ]]
-	v11 = p1
-	UpdateMouse()
-end)
-Crosshair2:WaitForChild("Visible").Changed:Connect(function(p1) --[[ Line: 145 | Upvalues: v15 (ref), UpdateMouse (copy) ]]
+Crosshair2:WaitForChild("Disabled").Changed:Connect(function(p1) --[[ Line: 139 | Upvalues: v15 (ref), UpdateMouse (copy) ]]
 	v15 = p1
+	UpdateMouse()
+end)
+Crosshair2:WaitForChild("Visible").Changed:Connect(function(p1) --[[ Line: 145 | Upvalues: v14 (ref), UpdateMouse (copy) ]]
+	v14 = p1
 	UpdateMouse()
 end)
 Crosshair2:WaitForChild("Gap").Changed:Connect(function(p1) --[[ Line: 151 | Upvalues: TweenService (copy), Crosshair (copy), v6 (copy) ]]
@@ -63511,12 +65128,12 @@ Crosshair2:WaitForChild("Gap").Changed:Connect(function(p1) --[[ Line: 151 | Upv
 		Size = UDim2.new(0, v1, 0, v1)
 	}):Play()
 end)
-Reloading:WaitForChild("Active").Changed:Connect(function(p1) --[[ Line: 160 | Upvalues: v14 (ref), UpdateMouse (copy) ]]
-	v14 = p1
+Reloading:WaitForChild("Active").Changed:Connect(function(p1) --[[ Line: 160 | Upvalues: v13 (ref), UpdateMouse (copy) ]]
+	v13 = p1
 	UpdateMouse()
 end)
-Reloading:WaitForChild("Cancelled").Changed:Connect(function(p1) --[[ Line: 166 | Upvalues: v12 (ref), UpdateMouse (copy) ]]
-	v12 = p1
+Reloading:WaitForChild("Cancelled").Changed:Connect(function(p1) --[[ Line: 166 | Upvalues: v11 (ref), UpdateMouse (copy) ]]
+	v11 = p1
 	UpdateMouse()
 end)
 Reloading:WaitForChild("Progress").Changed:Connect(function(p1) --[[ Line: 172 | Upvalues: Reload (copy) ]]
@@ -64926,103 +66543,15 @@ end
 Players.PlayerAdded:Connect(playerAdded)
 Players.PlayerRemoving:Connect(playerRemoving)
 
--- ReplicatedFirst.GunHandler
+-- ReplicatedStorage.Mods.ReportPlayer
 --
-game:GetService("ReplicatedFirst")
-
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-game:GetService("UserInputService")
-
-local RunService = game:GetService("RunService")
-local LocalPlayer = game:GetService("Players").LocalPlayer
-
-LocalPlayer:GetMouse()
-
-local Mods = ReplicatedStorage:WaitForChild("GunStorage"):WaitForChild("Mods")
-local InputHandler = require(ReplicatedStorage:WaitForChild("Mods"):WaitForChild("InputHandler"))
-local Main = require(Mods:WaitForChild("Main"))
-
-Mods.Main:Destroy()
-
-repeat
-	task.wait(0.1)
-until _G.Settings
-
-local function Equipped(p1) --[[ Equipped | Line: 27 | Upvalues: Main (copy) ]]
-	if not (p1:GetAttribute("Tool") and p1:FindFirstChild("GunStatus")) then
-		return
-	end
-
-	Main.Equip(p1)
-end
-
-local function Unequipped(p1) --[[ Unequipped | Line: 33 | Upvalues: Main (copy) ]]
-	if not (p1:GetAttribute("Tool") and p1:FindFirstChild("GunStatus")) then
-		return
-	end
-
-	Main.Unequip()
-end
-
-InputHandler.RegisterKeybind(nil, "Gun_reload", { "Reload" }, false, { "Began" }, function() --[[ Line: 42 | Upvalues: Main (copy) ]]
-	Main.Reload(true)
-end)
-InputHandler.RegisterKeybind(nil, "Gun_inspect", { "Inspect" }, false, { "Began" }, function() --[[ Line: 43 | Upvalues: Main (copy) ]]
-	Main.Inspect(true)
-end)
-InputHandler.RegisterKeybind(nil, "Gun_switch_sight", { "Switch_sight" }, false, { "Began" }, function() --[[ Line: 44 | Upvalues: Main (copy) ]]
-	Main.ChangeSight()
-end)
-InputHandler.RegisterKeybind(nil, "Gun_change_alt_firing_mode", { "Change_alt_firing_mode" }, false, { "Began" }, function() --[[ Line: 45 | Upvalues: Main (copy) ]]
-	Main.ChangeProjectileMode()
-end)
-InputHandler.RegisterKeybind(nil, "Gun_change_firing_mode", { "Change_firing_mode" }, false, { "Began" }, function() --[[ Line: 46 | Upvalues: Main (copy) ]]
-	Main.ChangeMode()
-end)
-InputHandler.RegisterKeybind(nil, "Gun_fire_start", { "M1" }, false, { "Began" }, function() --[[ Line: 48 | Upvalues: Main (copy) ]]
-	Main.Fire(true)
-end)
-InputHandler.RegisterKeybind(nil, "Gun_fire_stop", { "M1" }, true, { "Ended" }, function() --[[ Line: 49 | Upvalues: Main (copy) ]]
-	Main.Fire(false)
-end)
-InputHandler.RegisterKeybind(nil, "Gun_aim_stop", { "M2", "Aim" }, true, { "Ended" }, function() --[[ Line: 51 | Upvalues: Main (copy) ]]
-	if _G.ToggleAim then
-		return
-	end
-
-	Main.Aim(false, false)
-end)
-InputHandler.RegisterKeybind(nil, "Gun_aim_start", { "M2", "Aim" }, false, { "Began" }, function() --[[ Line: 52 | Upvalues: Main (copy) ]]
-	local ToggleAim = _G.ToggleAim
-
-	if ToggleAim and not (Main.Equipped or Main.HoldingAim) then
-		return
-	end
-
-	local v1 = if ToggleAim then not Main.HoldingAim else true
-
-	Main.Aim(v1, v1)
-end)
-
-local function CharacterAdded(p1) --[[ CharacterAdded | Line: 70 | Upvalues: Equipped (copy), Unequipped (copy) ]]
-	if p1 then
-		p1.ChildAdded:Connect(Equipped)
-		p1.ChildRemoved:Connect(Unequipped)
-	end
-end
-
-LocalPlayer.CharacterAdded:Connect(CharacterAdded)
-
-local Character = LocalPlayer.Character
-
-if Character then
-	Character.ChildAdded:Connect(Equipped)
-	Character.ChildRemoved:Connect(Unequipped)
-end
-
-RunService.RenderStepped:Connect(Main.RenderSteppedUpdate)
-RunService.Stepped:Connect(Main.SteppedUpdate)
+return {
+	Enabled = true,
+	Cooldown = 900,
+	CharacterLimit = 30,
+	LevelRequirement = 3,
+	Subjects = { "Suspicious Aim", "Suspicious Movement", "Cheater Association", "Mass Teaming", "Other (Specify)" }
+}
 
 -- StarterGui.ExtraUI.ContextProducts.ContextProductsCore
 --
@@ -65157,57 +66686,106 @@ while task.wait(0.5) do
 	end
 end
 
--- ReplicatedStorage.MeleeStorage.Mods.Hitbox
+-- ReplicatedStorage.Mods.RecolorUI
 --
-local CollectionService = game:GetService("CollectionService")
-local HitboxCaster = require(script.HitboxCaster)
-local GoodSignal = require(script.GoodSignal)
 local t = {}
+local TweenService = game:GetService("TweenService")
+local v1 = TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
 
-t.__index = t
-t.__type = "RaycastHitboxModule"
-t.DetectionMode = {
-	Default = 1,
-	PartMode = 2,
-	Bypass = 3
-}
-t.SignalType = {
-	Default = 1,
-	Single = 2
-}
-function t.new(p1) --[[ new | Line: 194 | Upvalues: CollectionService (copy), HitboxCaster (copy), t (copy), GoodSignal (copy) ]]
-	if p1 and CollectionService:HasTag(p1, "_RaycastHitboxV4Managed") then
-		return HitboxCaster:_FindHitbox(p1)
-	end
+local function ShiftHue(p1, p2) --[[ ShiftHue | Line: 7 ]]
+	local _, v1, v2 = p1:ToHSV()
 
-	local v2 = setmetatable({
-		RaycastParams = nil,
-		HitboxPendingRemoval = false,
-		HitboxStopTime = 0,
-		HitboxActive = false,
-		Visualizer = true,
-		DebugLog = false,
-		Tag = "_RaycastHitboxV4Managed",
-		DetectionMode = t.DetectionMode.Default,
-		HitboxRaycastPoints = {},
-		HitboxObject = p1,
-		HitboxHitList = {},
-		SignalType = t.SignalType.Single,
-		OnUpdate = GoodSignal.new(t.SignalType.Single),
-		OnHit = GoodSignal.new(t.SignalType.Single)
-	}, HitboxCaster)
-
-	v2:_Init()
-
-	return v2
-end
-function t.GetHitbox(p1, p2) --[[ GetHitbox | Line: 225 | Upvalues: HitboxCaster (copy) ]]
-	if p2 then
-		return HitboxCaster:_FindHitbox(p2)
-	end
+	return Color3.fromHSV(p2, v1, v2)
 end
 
-return t
+local function v2(p1, p2) --[[ CollectColorTargets | Line: 13 | Upvalues: v2 (copy) ]]
+	for k, v in pairs(p1:GetChildren()) do
+		local t = {}
+
+		if v:IsA("GuiObject") and v.BackgroundTransparency < 1 then
+			t.BackgroundColor3 = v.BackgroundColor3
+		end
+
+		if v:IsA("ScrollingFrame") then
+			t.ScrollBarImageColor3 = v.ScrollBarImageColor3
+		end
+
+		if v:IsA("TextLabel") or v:IsA("TextButton") then
+			t.TextColor3 = v.TextColor3
+		end
+
+		if v:IsA("ImageLabel") or v:IsA("ImageButton") then
+			t.ImageColor3 = v.ImageColor3
+		end
+
+		local UIStroke = v:FindFirstChildOfClass("UIStroke")
+
+		if UIStroke then
+			t.UIStroke = UIStroke.Color
+			t.UIStrokeRef = UIStroke
+		end
+
+		if next(t) then
+			p2[v] = t
+		end
+
+		v2(v, p2)
+	end
+end
+
+return function(p1, p2, p3) --[[ Line: 55 | Upvalues: t (copy), v2 (copy), v1 (copy), TweenService (copy) ]]
+	table.clear(t)
+
+	local v12, _, _2 = p2:ToHSV()
+
+	v2(p1, t)
+
+	local v22 = p3 and TweenInfo.new(p3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut) or v1
+
+	for k, v in pairs(t) do
+		if k.Parent then
+			if v.BackgroundColor3 then
+				local _3, v3, v4 = v.BackgroundColor3:ToHSV()
+
+				TweenService:Create(k, v22, {
+					BackgroundColor3 = Color3.fromHSV(v12, v3, v4)
+				}):Play()
+			end
+
+			if v.ScrollBarImageColor3 then
+				local _3, v5, v6 = v.ScrollBarImageColor3:ToHSV()
+
+				TweenService:Create(k, v22, {
+					ScrollBarImageColor3 = Color3.fromHSV(v12, v5, v6)
+				}):Play()
+			end
+
+			if v.TextColor3 then
+				local _3, v7, v8 = v.TextColor3:ToHSV()
+
+				TweenService:Create(k, v22, {
+					TextColor3 = Color3.fromHSV(v12, v7, v8)
+				}):Play()
+			end
+
+			if v.ImageColor3 then
+				local _3, v9, v10 = v.ImageColor3:ToHSV()
+
+				TweenService:Create(k, v22, {
+					ImageColor3 = Color3.fromHSV(v12, v9, v10)
+				}):Play()
+			end
+
+			if v.UIStroke and v.UIStrokeRef then
+				local _3, v11, v122 = v.UIStroke:ToHSV()
+
+				TweenService:Create(v.UIStrokeRef, v22, {
+					Color = Color3.fromHSV(v12, v11, v122)
+				}):Play()
+			end
+		end
+	end
+end
 
 -- ReplicatedStorage.Mods.CosmeticDatabase.Poses
 --
@@ -66069,1422 +67647,129 @@ return {
 --
 return {}
 
--- ReplicatedStorage.Mods.CosmeticDatabase.Skins
+-- ReplicatedStorage.Mods.GuiSlider
 --
-return {
-	Katana_Potassium = {
-		Title = "Potassium",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "Katana",
-		Target = "Katana_Potassium",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Bat_JadeStone = {
-		Title = "Jade Stone",
-		Description = nil,
-		Type = "Common",
-		Weapon = "Bat",
-		Target = "Bat_JadeStone",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Bat_Bat = {
-		Title = "Bat Bat",
-		Description = nil,
-		Type = "Exotic",
-		Weapon = "Bat",
-		Target = "Bat_Bat",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Rendbreaker_Crushspire = {
-		Title = "Crushspire",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "Rendbreaker",
-		Target = "Rendbreaker_Crushspire",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Sledgehammer_VoidLily = {
-		Title = "Void Lily",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "Sledgehammer",
-		Target = "Sledgehammer_VoidLily",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Sledgehammer_Faultline = {
-		Title = "Faultline",
-		Description = nil,
-		Type = "Common",
-		Weapon = "Sledgehammer",
-		Target = "Sledgehammer_Faultline",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Rendbreaker_EclipsisUltima = {
-		Title = "Eclipsis Ultima",
-		Description = nil,
-		Type = "Exotic",
-		Weapon = "Rendbreaker",
-		Target = "Rendbreaker_EclipsisUltima",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Greataxe_Fallsplitter = {
-		Title = "Fallsplitter",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "Greataxe",
-		Target = "Greataxe_Fallsplitter",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Greataxe_Rimecutter = {
-		Title = "Rimecutter",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "Greataxe",
-		Target = "Greataxe_Rimecutter",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Bat_EchoShard = {
-		Title = "Echo Shard",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "Bat",
-		Target = "Bat_EchoShard",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Bat_Bloodroot = {
-		Title = "Bloodroot",
-		Description = nil,
-		Type = "Common",
-		Weapon = "Bat",
-		Target = "Bat_Bloodroot",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Spear_Gravedancer = {
-		Title = "Gravedancer",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "Spear",
-		Target = "Spear_Gravedancer",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Spear_Atlantic = {
-		Title = "Atlantic",
-		Description = nil,
-		Type = "Exotic",
-		Weapon = "Spear",
-		Target = "Spear_Atlantic",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	TacticalKnife_Nocturnal = {
-		Title = "Nocturnal",
-		Description = nil,
-		Type = "Common",
-		Weapon = "Tactical Knife",
-		Target = "TacticalKnife_Nocturnal",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Tomahawk_Starbreaker = {
-		Title = "Starbreaker",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "Tomahawk",
-		Target = "Tomahawk_Starbreaker",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Tomahawk_Magma = {
-		Title = "Magma",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "Tomahawk",
-		Target = "Tomahawk_Magma",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Tomahawk_ObsidianCrown = {
-		Title = "Obsidian Crown",
-		Description = nil,
-		Type = "Legendary",
-		Weapon = "Tomahawk",
-		Target = "Tomahawk_ObsidianCrown",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	TacticalKnife_Stormblade = {
-		Title = "Stormblade",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "Tactical Knife",
-		Target = "TacticalKnife_Stormblade",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Katana_Kagutsuchi = {
-		Title = "Kagutsuchi",
-		Description = nil,
-		Type = "Legendary",
-		Weapon = "Katana",
-		Target = "Katana_Kagutsuchi",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Katana_Inazuma = {
-		Title = "Inazuma",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "Katana",
-		Target = "Katana_Kurohama",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Katana_BloodSurge = {
-		Title = "Blood Surge",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "Katana",
-		Target = "Katana_BloodSurge",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Spear_Nebula = {
-		Title = "Nebula",
-		Description = nil,
-		Type = "Common",
-		Weapon = "Spear",
-		Target = "Spear_Nebula",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Greataxe_Noble = {
-		Title = "Noble",
-		Description = nil,
-		Type = "Common",
-		Weapon = "Greataxe",
-		Target = "Greataxe_Noble",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35,
-			ModelOffset = CFrame.Angles(math.pi, 0, 0)
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["PK-500_SovereignBloom"] = {
-		Title = "Sovereign Bloom",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "PK-500",
-		Target = "PK-500_SovereignBloom",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	RPK_GildedTimber = {
-		Title = "Gilded Timber",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "RPK",
-		Target = "RPK_GildedTimber",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	RPK_Peppermint = {
-		Title = "Peppermint",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "RPK",
-		Target = "RPK_Peppermint",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["MAC-11_Gridlock"] = {
-		Title = "Gridlock",
-		Description = nil,
-		Type = "Common",
-		Weapon = "MAC-11",
-		Target = "MAC-11_Gridlock",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["MAC-11_Mikagami"] = {
-		Title = "Mikagami",
-		Description = "Art commissioned from: @omusu6i on Roblox",
-		Type = "Rare",
-		Weapon = "MAC-11",
-		Target = "MAC-11_Mikagami",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	JUDGE_DrownedEmber = {
-		Title = "Drowned Ember",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "JUDGE",
-		Target = "JUDGE_DrownedEmber",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	JUDGE_Winner = {
-		Title = "WINNER",
-		Description = nil,
-		Type = "Legendary",
-		Weapon = "JUDGE",
-		Target = "JUDGE_Winner",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	G18_ForestCamo = {
-		Title = "Forest Camo",
-		Description = nil,
-		Type = "Common",
-		Weapon = "G18",
-		Target = "G18_ForestCamo",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	G18_SemiAuto = {
-		Title = "Semi-Auto",
-		Description = nil,
-		Type = "Legendary",
-		Weapon = "G18",
-		Target = "G18_SemiAuto",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Deagle_CandyApple = {
-		Title = "Candy Apple",
-		Description = nil,
-		Type = "Common",
-		Weapon = "Deagle",
-		Target = "Deagle_CandyApple",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	AK47_ColdSteel = {
-		Title = "Cold Steel",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "AK-47",
-		Target = "AK47_ColdSteel",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["SCAR-17_Ghostwire"] = {
-		Title = "Ghostwire",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "SCAR-17",
-		Target = "SCAR-17_Ghostwire",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["SCAR-20_Ghostwire"] = {
-		Title = "Ghostwire",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "SCAR-20",
-		Target = "SCAR-20_Ghostwire",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	G18_Noir = {
-		Title = "Noir",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "G18",
-		Target = "G18_Noir",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["AR-BT3_GrayCamo"] = {
-		Title = "Gray Camo",
-		Description = nil,
-		Type = "Common",
-		Weapon = "AR-BT3",
-		Target = "AR-BT3_GrayCamo",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["SRG-1_CandyCorn"] = {
-		Title = "Candy Corn",
-		Description = nil,
-		Type = "Exotic",
-		Weapon = "SRG-1",
-		Target = "SRG-1_CandyCorn",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	AK47_Greed = {
-		Title = "Greed",
-		Description = nil,
-		Type = "Legendary",
-		Weapon = "AK-47",
-		Target = "AK47_Greed",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	AK47_Photonic = {
-		Title = "Photonic",
-		Description = nil,
-		Type = "Exotic",
-		Weapon = "AK-47",
-		Target = "AK47_Photonic",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	MP5_Camoflora = {
-		Title = "Camoflora",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "MP5",
-		Target = "MP5_Camoflora",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	M1911_Judgment = {
-		Title = "Judgment",
-		Description = nil,
-		Type = "Legendary",
-		Weapon = "M1911",
-		Target = "M1911_Judgment",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["GL-06_ScorchedEarth"] = {
-		Title = "Scorched Earth",
-		Description = nil,
-		Type = "Legendary",
-		Weapon = "GL-06",
-		Target = "GL-06_ScorchedEarth",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Deagle_Moire = {
-		Title = "MOIR\195\137",
-		Description = nil,
-		Type = "Common",
-		Weapon = "Deagle",
-		Target = "Deagle_Moire",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["PK-500_Clouds"] = {
-		Title = "Clouds",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "PK-500",
-		Target = "PK-500_Clouds",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Crossbow_ZeroEmber = {
-		Title = "Zero Ember",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "Crossbow",
-		Target = "Crossbow_ZeroEmber",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Crossbow_Masquerade = {
-		Title = "Masquerade",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "Crossbow",
-		Target = "Crossbow_Masquerade",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	UZI_Beehive = {
-		Title = "Beehive",
-		Description = nil,
-		Type = "Common",
-		Weapon = "UZI",
-		Target = "UZI_Beehive",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	G17_Warfade = {
-		Title = "Warfade",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "G17",
-		Target = "G17_Warfade",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["SCAR-20_LightTide"] = {
-		Title = "Light Tide",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "SCAR-20",
-		Target = "SCAR-20_LightTide",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["SCAR-17_DarkTide"] = {
-		Title = "Dark Tide",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "SCAR-17",
-		Target = "SCAR-17_DarkTide",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["UMP-45_Sunset"] = {
-		Title = "Sunset",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "UMP-45",
-		Target = "UMP-45_Sunset",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	JUDGE_Poison = {
-		Title = "Poison",
-		Description = nil,
-		Type = "Common",
-		Weapon = "JUDGE",
-		Target = "JUDGE_Poison",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	G3_PolarMatrix = {
-		Title = "Polar Matrix",
-		Description = nil,
-		Type = "Common",
-		Weapon = "G3",
-		Target = "G3_PolarMatrix",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	G3_RedSpace = {
-		Title = "Red Space",
-		Description = nil,
-		Type = "Common",
-		Weapon = "G3",
-		Target = "G3_RedSpace",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["SPAS-12_Ravage"] = {
-		Title = "Ravage",
-		Description = nil,
-		Type = "Common",
-		Weapon = "SPAS-12",
-		Target = "SPAS-12_Ravage",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["RPG-7_Aqueous"] = {
-		Title = "Aqueous",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "RPG-7",
-		Target = "RPG-7_Aqueous",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["RPG-7_Cobrocket"] = {
-		Title = "Cobrocket",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "RPG-7",
-		Target = "RPG-7_Cobrocket",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["SCAR-20_DarkTide"] = {
-		Title = "Dark Tide",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "SCAR-20",
-		Target = "SCAR-20_DarkTide",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["SCAR-17_LightTide"] = {
-		Title = "Light Tide",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "SCAR-17",
-		Target = "SCAR-17_LightTide",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	M79_DangerZone = {
-		Title = "Danger Zone",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "M79",
-		Target = "M79_DangerZone",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	M79_ToxicTube = {
-		Title = "Toxic Tube",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "M79",
-		Target = "M79_ToxicTube",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	UZI_Meltdown = {
-		Title = "Meltdown",
-		Description = nil,
-		Type = "Common",
-		Weapon = "UZI",
-		Target = "UZI_Meltdown",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Famas_Gearlock = {
-		Title = "Gearlock",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "FAMAS",
-		Target = "Famas_Gearlock",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["TAC-14_CrimsonReaper"] = {
-		Title = "Crimson Reaper",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "TAC-14",
-		Target = "TAC-14_CrimsonReaper",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["PK-500_Drowned"] = {
-		Title = "Drowned",
-		Description = nil,
-		Type = "Common",
-		Weapon = "PK-500",
-		Target = "PK-500_Drowned",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	AWM_ElderScale = {
-		Title = "Elder Scale",
-		Description = nil,
-		Type = "Legendary",
-		Weapon = "AWM",
-		Target = "AWM_ElderScale",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	AWM_PurpleFlame = {
-		Title = "Purple Flame",
-		Description = nil,
-		Type = "Exotic",
-		Weapon = "AWM",
-		Target = "AWM_PurpleFlame",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	M1911_Monochrome = {
-		Title = "Monochrome",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "M1911",
-		Target = "M1911_Monochrome",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["ZX-65_Mist"] = {
-		Title = "Mist",
-		Description = nil,
-		Type = "Common",
-		Weapon = "ZX-65",
-		Target = "ZX-65_Mist",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["ZX-65_Donut"] = {
-		Title = "Donut",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "ZX-65",
-		Target = "ZX-65_Donut",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["UMP-45_ForestCamo"] = {
-		Title = "Forest Camo",
-		Description = nil,
-		Type = "Common",
-		Weapon = "UMP-45",
-		Target = "UMP-45_ForestCamo",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	M4A1_TidalWave = {
-		Title = "Tidal Wave",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "M4A1",
-		Target = "M4A1_TidalWave",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	M4A1_DesertBreeze = {
-		Title = "Desert Breeze",
-		Description = nil,
-		Type = "Common",
-		Weapon = "M4A1",
-		Target = "M4A1_DesertBreeze",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	M4A1_Hydroline = {
-		Title = "Hydroline",
-		Description = nil,
-		Type = "Exotic",
-		Weapon = "M4A1",
-		Target = "M4A1_Hydroline",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Deagle_Patriot = {
-		Title = "Patriot",
-		Description = nil,
-		Type = "Exotic",
-		Weapon = "Deagle",
-		Target = "Deagle_Patriot",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	MP5_Voidflame = {
-		Title = "Voidflame",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "MP5",
-		Target = "MP5_Voidflame",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	M24_RedCherry = {
-		Title = "Red Cherry",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "M24",
-		Target = "M24_RedCherry",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	G17_Slideback = {
-		Title = "Slideback",
-		Description = nil,
-		Type = "Common",
-		Weapon = "G17",
-		Target = "G17_Slideback",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	AK47_Obsidian = {
-		Title = "Obsidian",
-		Description = nil,
-		Type = "Common",
-		Weapon = "AK-47",
-		Target = "AK47_Obsidian",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	Famas_BloodSurge = {
-		Title = "Blood Surge",
-		Description = nil,
-		Type = "Rare",
-		Weapon = "FAMAS",
-		Target = "Famas_BloodSurge",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	GalilAce11_ShadowIvy = {
-		Title = "Shadow Ivy",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "GALIL ACE 11",
-		Target = "GalilAce11_ShadowIvy",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["725_Hotrod"] = {
-		Title = "Hotrod",
-		Description = nil,
-		Type = "Exotic",
-		Weapon = "725",
-		Target = "725_Hotrod",
-		Skin = {
-			Shell1 = {
-				Type = "MeshPart",
-				TextureID = "",
-				Material = Enum.Material.Neon,
-				Color = Color3.fromRGB(181, 57, 0)
-			},
-			Shell2 = {
-				Type = "MeshPart",
-				TextureID = "",
-				Material = Enum.Material.Neon,
-				Color = Color3.fromRGB(181, 57, 0)
-			}
-		},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["725_WhiteCamo"] = {
-		Title = "White Camo",
-		Description = nil,
-		Type = "Common",
-		Weapon = "725",
-		Target = "725_WhiteCamo",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	},
-	["725_Sleighshot"] = {
-		Title = "Sleighshot",
-		Description = nil,
-		Type = "Uncommon",
-		Weapon = "725",
-		Target = "725_Sleighshot",
-		Skin = {},
-		Settings = {
-			FieldOfView = 35
-		},
-		Price = {},
-		Events = {},
-		Animations = {},
-		Items = {},
-		Rigs = {}
-	}
-}
+local t = {}
+
+t.__index = t
+
+local UserInputService = game:GetService("UserInputService")
+local Mods = game.ReplicatedStorage:WaitForChild("Mods")
+local v1 = game.Players.LocalPlayer:GetMouse()
+local FormatNumber = require(Mods:WaitForChild("FormatNumber"))
+
+function t.New(p1, p2, p3, p4, p5, p6, p7, p8) --[[ New | Line: 24 | Upvalues: t (copy) ]]
+	local t2 = {}
+
+	setmetatable(t2, t)
+	t2.Value = p3 or p4
+	t2.MinValue = p4
+	t2.MaxValue = p5
+	t2.MaxDecimals = p6
+	t2.FillDirection = p7
+	t2.Enabled = true
+	t2.EventFunctions = if p8 then p8 else {}
+	t2.SliderFrame = p2
+	t2.DisabledFrame = p2:FindFirstChild("Disabled")
+	t2.ValueText = p2:FindFirstChild("Value")
+	t2.MinText = p2:FindFirstChild("Min")
+	t2.MaxText = p2:FindFirstChild("Max")
+	t2.Bar = p2:FindFirstChild("Bar")
+	t2.Connections = {}
+	table.insert(t2.Connections, p2.MouseButton1Down:Connect(function() --[[ Line: 54 | Upvalues: t2 (copy) ]]
+		t2:StartSliding()
+	end))
+	t2:Update()
+
+	return t2
+end
+function t.Update(p1) --[[ Update | Line: 66 ]]
+	local v2 = ((p1.RawValue or p1.Value) - p1.MinValue) / (p1.MaxValue - p1.MinValue)
+
+	if p1.Bar then
+		p1.Bar.Size = p1.FillDirection == "Y" and UDim2.new(1, 0, v2, 0) or UDim2.new(v2, 0, 1, 0)
+	end
+
+	if p1.ValueText then
+		p1.ValueText.Text = p1.Value
+	end
+
+	if p1.MinText then
+		p1.MinText.Text = p1.MinText
+	end
+
+	if p1.MaxText then
+		p1.MaxText.Text = p1.MaxText
+	end
+
+	if not p1.EventFunctions.AfterUpdate then
+		return
+	end
+
+	p1.EventFunctions.AfterUpdate(p1)
+end
+function t.SetValue(p1, p2) --[[ SetValue | Line: 85 | Upvalues: FormatNumber (copy) ]]
+	p1.Sliding = false
+	p1.Value = FormatNumber.Round(math.clamp(p2, p1.MinValue, p1.MaxValue), p1.MaxDecimals)
+	p1:Update()
+end
+function t.ToggleEnabled(p1, p2) --[[ ToggleEnabled | Line: 97 ]]
+	p1.Enabled = p2
+	p1.Sliding = false
+
+	if not p1.DisabledFrame then
+		return
+	end
+
+	p1.DisabledFrame.Visible = not p2
+end
+function t.StartSliding(p1) --[[ StartSliding | Line: 110 | Upvalues: UserInputService (copy), v1 (copy), FormatNumber (copy) ]]
+	if p1.Sliding then
+		return
+	end
+
+	if not p1.Enabled then
+		return
+	end
+
+	p1.Sliding = true
+
+	while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsGamepadButtonDown(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonA) do
+		if not p1.Sliding then
+			break
+		end
+
+		local count = math.clamp((v1[p1.FillDirection] - p1.SliderFrame.AbsolutePosition[p1.FillDirection]) / p1.SliderFrame.AbsoluteSize[p1.FillDirection], 0, 1)
+
+		if p1.FillDirection == "Y" then
+			count = 1 - count
+		end
+
+		p1.RawValue = FormatNumber.Lerp(p1.MinValue, p1.MaxValue, count)
+		p1.Value = FormatNumber.Round(p1.RawValue, p1.MaxDecimals)
+		p1:Update()
+		task.wait()
+	end
+
+	task.delay(0.25, function() --[[ Line: 135 | Upvalues: p1 (copy) ]]
+		p1.Sliding = false
+	end)
+	p1.RawValue = nil
+	p1:Update()
+
+	if not p1.EventFunctions.AfterSlide then
+		return
+	end
+
+	p1.EventFunctions.AfterSlide(p1)
+end
+function t.CleanUp(p1) --[[ CleanUp | Line: 143 ]]
+	for k, v in pairs(p1.Connections) do
+		v:Disconnect()
+	end
+end
+
+return t
 
 -- ReplicatedStorage.GunStorage.Mods.Shared
 --
