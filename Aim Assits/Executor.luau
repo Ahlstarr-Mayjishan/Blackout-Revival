@@ -51,6 +51,43 @@ local function isAlive(character)
     return humanoid and humanoid.Health > 0
 end
 
+local function normalizeName(name)
+    return string.lower(tostring(name or "")):gsub("%s+", " ")
+end
+
+local function isIgnoredTarget(character)
+    if not character then
+        return true
+    end
+
+    local ignored = _G.AimAssistStates and _G.AimAssistStates.IgnoredTargetNames
+    local normalizedName = normalizeName(character.Name)
+
+    if type(ignored) == "table" then
+        for name, enabled in pairs(ignored) do
+            if enabled and normalizedName == normalizeName(name) then
+                return true
+            end
+        end
+    end
+
+    return normalizedName == "drone" or normalizedName == "military guard"
+end
+
+local function addTargetModels(folder, targets)
+    if not folder then
+        return
+    end
+
+    for _, child in ipairs(folder:GetChildren()) do
+        if child:IsA("Model") then
+            table.insert(targets, child)
+        elseif child:IsA("Folder") then
+            addTargetModels(child, targets)
+        end
+    end
+end
+
 -- Helper: Visibility (wall) check using camera viewport raycasting
 local function checkWallVisibility(targetPos, character)
     local Camera = Workspace.CurrentCamera
@@ -101,18 +138,7 @@ local function getClosestTarget()
     if aimType == "Zombie (Nightbounds)" then
         local npcs = Workspace:FindFirstChild("NPCs")
         if npcs then
-            -- Efficiently scan folders/models under NPCs without fetching all descendants
-            for _, group in ipairs(npcs:GetChildren()) do
-                if group:IsA("Model") then
-                    table.insert(targetsToScan, group)
-                elseif group:IsA("Folder") then
-                    for _, npc in ipairs(group:GetChildren()) do
-                        if npc:IsA("Model") then
-                            table.insert(targetsToScan, npc)
-                        end
-                    end
-                end
-            end
+            addTargetModels(npcs, targetsToScan)
         end
     else -- "Player"
         local chars = Workspace:FindFirstChild("Chars")
@@ -126,7 +152,7 @@ local function getClosestTarget()
     end
     
     for _, child in ipairs(targetsToScan) do
-        if child ~= LocalPlayer.Character and isAlive(child) then
+        if child ~= LocalPlayer.Character and isAlive(child) and not isIgnoredTarget(child) then
             -- Team check bypass (only relevant for players)
             local isAlly = false
             if _G.AimAssistStates.TeamCheck then

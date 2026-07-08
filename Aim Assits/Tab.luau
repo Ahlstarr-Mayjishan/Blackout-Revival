@@ -18,7 +18,16 @@ _G.AimAssistStates = _G.AimAssistStates or {
     ShowFOV = false,
     Smoothing = 5, -- 1 = instant, higher = slower/smoother
     TeamCheck = true,
-    WallCheck = true
+    WallCheck = true,
+    IgnoredTargetNames = {
+        ["Drone"] = true,
+        ["Military Guard"] = true,
+    },
+}
+
+_G.AimAssistStates.IgnoredTargetNames = _G.AimAssistStates.IgnoredTargetNames or {
+    ["Drone"] = true,
+    ["Military Guard"] = true,
 }
 
 -- Connections register for GC cleanup

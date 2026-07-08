@@ -18,6 +18,8 @@ local LocalPlayer = Players.LocalPlayer
 local tableUnpack = table.unpack or unpack
 local BULLET_HANDLER_HOOK_KEY = "HomingBullets_BulletHandler_Fire"
 local FASTCAST_HOOK_KEY = "HomingBullets_FastCast_Fire"
+local ENABLE_FASTCAST_FALLBACK_HOOK = false
+local ENABLE_CURVE_PROXY = false
 
 local HomingBullets = {}
 HomingBullets.Name = "Homing Bullets"
@@ -44,6 +46,43 @@ end
 local function isAlive(character)
     local humanoid = character and character:FindFirstChildOfClass("Humanoid")
     return humanoid and humanoid.Health > 0
+end
+
+local function normalizeName(name)
+    return string.lower(tostring(name or "")):gsub("%s+", " ")
+end
+
+local function isIgnoredTarget(character)
+    if not character then
+        return true
+    end
+
+    local ignored = _G.AimAssistStates and _G.AimAssistStates.IgnoredTargetNames
+    local normalizedName = normalizeName(character.Name)
+
+    if type(ignored) == "table" then
+        for name, enabled in pairs(ignored) do
+            if enabled and normalizedName == normalizeName(name) then
+                return true
+            end
+        end
+    end
+
+    return normalizedName == "drone" or normalizedName == "military guard"
+end
+
+local function addTargetModels(folder, targets)
+    if not folder then
+        return
+    end
+
+    for _, child in ipairs(folder:GetChildren()) do
+        if child:IsA("Model") then
+            table.insert(targets, child)
+        elseif child:IsA("Folder") then
+            addTargetModels(child, targets)
+        end
+    end
 end
 
 local function hasClearLine(fromPos, toPos, targetCharacter)
@@ -136,27 +175,13 @@ local function getClosestTarget3D()
     
     local targets = {}
     if aimType == "Zombie (Nightbounds)" and npcs then
-        for _, group in ipairs(npcs:GetChildren()) do
-            if group:IsA("Model") then
-                table.insert(targets, group)
-            elseif group:IsA("Folder") then
-                for _, npc in ipairs(group:GetChildren()) do
-                    if npc:IsA("Model") then
-                        table.insert(targets, npc)
-                    end
-                end
-            end
-        end
+        addTargetModels(npcs, targets)
     elseif aimType == "Player" and chars then
-        for _, char in ipairs(chars:GetChildren()) do
-            if char:IsA("Model") then
-                table.insert(targets, char)
-            end
-        end
+        addTargetModels(chars, targets)
     end
     
     for _, child in ipairs(targets) do
-        if child ~= localChar and isAlive(child) then
+        if child ~= localChar and isAlive(child) and not isIgnoredTarget(child) then
             local targetRoot = child:FindFirstChild("HumanoidRootPart") or child.PrimaryPart
             if targetRoot then
                 local dist = (targetRoot.Position - localPos).Magnitude
@@ -299,6 +324,10 @@ local function pickCurvePath(origin, targetBone, targetCharacter)
 end
 
 local function createCurveProxy(origin, targetBone, targetCharacter)
+    if not ENABLE_CURVE_PROXY then
+        return nil
+    end
+
     local path = pickCurvePath(origin, targetBone, targetCharacter)
     if not path or not path[1] then
         return nil
@@ -343,6 +372,9 @@ local function buildTargetInformation(origin)
     -- 1. Try to fetch standard screen FOV target first
     if _G.GetClosestAimTarget then
         targetCharacter = _G.GetClosestAimTarget()
+        if isIgnoredTarget(targetCharacter) then
+            targetCharacter = nil
+        end
     end
     
     -- 2. Fallback: Fetch closest target in 3D space (allows sky-shot homing)
@@ -363,7 +395,10 @@ local function buildTargetInformation(origin)
         -- 3. Memory Fallback: Reuse last target if within 0.3 seconds and target is still alive and nearby
         if lastTargetChar and lastTargetBone and (os.clock() - lastTargetTime < 0.3) then
             local localChar = LocalPlayer.Character
-            if lastTargetChar.Parent and lastTargetChar:FindFirstChild("Humanoid") and lastTargetChar.Humanoid.Health > 0 then
+            if lastTargetChar.Parent
+                and not isIgnoredTarget(lastTargetChar)
+                and lastTargetChar:FindFirstChild("Humanoid")
+                and lastTargetChar.Humanoid.Health > 0 then
                 if localChar and localChar:FindFirstChild("HumanoidRootPart") and lastTargetChar:FindFirstChild("HumanoidRootPart") then
                     local dist = (lastTargetChar.HumanoidRootPart.Position - localChar.HumanoidRootPart.Position).Magnitude
                     if dist <= 300 then
@@ -585,6 +620,26 @@ end
 
 -- Hook FastCast.Fire function
 local function setupFastCastHook()
+    if not ENABLE_FASTCAST_FALLBACK_HOOK then
+        if _G.AimAssistOriginals and _G.AimAssistOriginals[FASTCAST_HOOK_KEY] then
+            local modsFolder = ReplicatedStorage:FindFirstChild("Mods")
+            local fastCastModule = modsFolder and modsFolder:FindFirstChild("FastCast")
+
+            if fastCastModule then
+                local success, fastCastTable = pcall(require, fastCastModule)
+                if success and type(fastCastTable) == "table" then
+                    fastCastTable.Fire = _G.AimAssistOriginals[FASTCAST_HOOK_KEY]
+                    _G.AimAssistOriginals[FASTCAST_HOOK_KEY] = nil
+                    log("Restored old FastCast fallback hook; using BulletHandler native TargetInformation only.")
+                    return
+                end
+            end
+        end
+
+        log("FastCast fallback hook disabled; using BulletHandler native TargetInformation only.")
+        return
+    end
+
     _G.AimAssistOriginals = _G.AimAssistOriginals or {}
 
     local modsFolder = ReplicatedStorage:WaitForChild("Mods", 5)
@@ -630,7 +685,10 @@ local function setupFastCastHook()
             if isHomingEnabled() then
                 injectTargetInformation(activeCast)
                 task.defer(injectTargetInformation, activeCast)
-                task.defer(attachCurveController, casterInstance, activeCast)
+
+                if ENABLE_CURVE_PROXY then
+                    task.defer(attachCurveController, casterInstance, activeCast)
+                end
             end
             
             return activeCast

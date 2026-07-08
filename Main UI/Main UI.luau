@@ -39,6 +39,144 @@
 
 local HttpService = game:GetService("HttpService")
 
+local function disconnectItems(items)
+    if type(items) ~= "table" then
+        return
+    end
+
+    for _, item in ipairs(items) do
+        pcall(function()
+            if typeof(item) == "RBXScriptConnection" then
+                if item.Connected then
+                    item:Disconnect()
+                end
+            elseif typeof(item) == "thread" then
+                task.cancel(item)
+            elseif type(item) == "table" and type(item.Remove) == "function" then
+                item:Remove()
+            elseif type(item) == "table" and type(item.Destroy) == "function" then
+                item:Destroy()
+            end
+        end)
+    end
+
+    table.clear(items)
+end
+
+local function loadLocalGc(path)
+    if type(readfile) ~= "function" or type(isfile) ~= "function" or not isfile(path) then
+        return nil
+    end
+
+    local ok, result = pcall(function()
+        return loadstring(readfile(path))()
+    end)
+
+    if ok and type(result) == "table" and type(result.cleanup) == "function" then
+        return result
+    end
+
+    return nil
+end
+
+local function destroyRayfieldGui()
+    local candidates = {}
+
+    pcall(function()
+        if type(gethui) == "function" then
+            table.insert(candidates, gethui())
+        end
+    end)
+
+    pcall(function()
+        table.insert(candidates, game:GetService("CoreGui"))
+    end)
+
+    pcall(function()
+        local coreGui = game:GetService("CoreGui")
+        if coreGui:FindFirstChild("RobloxGui") then
+            table.insert(candidates, coreGui.RobloxGui)
+        end
+    end)
+
+    pcall(function()
+        local playerGui = game:GetService("Players").LocalPlayer:FindFirstChildOfClass("PlayerGui")
+        if playerGui then
+            table.insert(candidates, playerGui)
+        end
+    end)
+
+    for _, parent in ipairs(candidates) do
+        local rayfieldGui = parent and parent:FindFirstChild("Rayfield")
+        if rayfieldGui then
+            rayfieldGui:Destroy()
+        end
+    end
+end
+
+local function stopBlackoutUI()
+    print("[Blackout UI] Emergency cleanup started.")
+
+    pcall(function()
+        if _G.ModifierStates then
+            for key in pairs(_G.ModifierStates) do
+                _G.ModifierStates[key] = false
+            end
+        end
+
+        if _G.AimAssistStates then
+            for key in pairs(_G.AimAssistStates) do
+                _G.AimAssistStates[key] = false
+            end
+        end
+
+        _G.AutoParryActive = false
+        _G.AttackProbeActive = false
+        _G.AttackTargetProbeActive = false
+    end)
+
+    local playerGc = loadLocalGc("Player Modifier/GC.luau")
+    if playerGc then
+        pcall(playerGc.cleanup)
+    else
+        disconnectItems(_G.ModifierConnections)
+        _G.ModifierStates = nil
+        _G.ModifierConnections = nil
+        _G.ModifierRuntime = nil
+        _G.OriginalFunctions = nil
+    end
+
+    local aimGc = loadLocalGc("Aim Assits/GC.luau")
+    if aimGc then
+        pcall(aimGc.cleanup)
+    else
+        disconnectItems(_G.AimAssistConnections)
+        _G.AimAssistStates = nil
+        _G.AimAssistConnections = nil
+        _G.AimAssistOriginals = nil
+        _G.GetClosestAimTarget = nil
+    end
+
+    pcall(function()
+        if type(_G.StopAutoParry) == "function" then
+            _G.StopAutoParry()
+        end
+        if type(_G.StopAttackProbe) == "function" then
+            _G.StopAttackProbe()
+        end
+        if type(_G.StopAttackTargetProbe) == "function" then
+            _G.StopAttackTargetProbe()
+        end
+    end)
+
+    destroyRayfieldGui()
+    print("[Blackout UI] Emergency cleanup finished.")
+end
+
+_G.StopBlackoutUI = stopBlackoutUI
+_G.StopPlayerModifierUI = stopBlackoutUI
+_G.UnloadBlackoutUI = stopBlackoutUI
+
 -- 1. Load Rayfield UI Library
 local Rayfield = nil
 local success, loadedRayfieldOrErr = pcall(function()
@@ -101,6 +239,25 @@ local Tabs = {
 }
 
 local Tab = Tabs.Status
+
+local function createSystemFallbackControls()
+    local ok, err = pcall(function()
+        Tabs.System:CreateSection("Emergency Controls")
+        Tabs.System:CreateButton({
+            Name = "Stop / Unload Everything",
+            Callback = function()
+                stopBlackoutUI()
+            end,
+        })
+        Tabs.System:CreateLabel("Console: _G.StopBlackoutUI()")
+    end)
+
+    if not ok then
+        warn("Main UI | Failed to create fallback System controls: " .. tostring(err))
+    end
+end
+
+createSystemFallbackControls()
 
 local function sendNotification(cfg)
     if type(Rayfield) == "table" and type(Rayfield.Notify) == "function" then
@@ -345,7 +502,7 @@ end
 -- 6. Initialize UI
 sendNotification({
     Title = "Player Modifier",
-    Content = "Main UI loaded successfully!",
+    Content = "Main UI loaded successfully! Use _G.StopBlackoutUI() to unload.",
     Duration = 5,
     Image = 4483362458,
 })

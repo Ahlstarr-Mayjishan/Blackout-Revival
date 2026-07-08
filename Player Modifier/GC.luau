@@ -119,6 +119,17 @@ local function restoreHooks()
         _G.OriginalFunctions["GetAttribute"] = nil
     end
 
+    -- Restore InfiniteStamina namecall hook
+    if _G.OriginalFunctions and _G.OriginalFunctions["InfiniteStamina_Namecall"] then
+        if hookmetamethod then
+            pcall(function()
+                hookmetamethod(game, "__namecall", _G.OriginalFunctions["InfiniteStamina_Namecall"])
+                log("Restored InfiniteStamina namecall hook successfully.")
+            end)
+        end
+        _G.OriginalFunctions["InfiniteStamina_Namecall"] = nil
+    end
+
     -- Restore Stamina FireServer hook
     if _G.OriginalFunctions and _G.OriginalFunctions["Stamina_FireServer"] then
         if hookfunction then
@@ -148,6 +159,16 @@ local function restoreHooks()
     end
 
     -- Restore Flashbang Connect hook
+    if _G.OriginalFunctions and _G.OriginalFunctions["AntiFlashbang_Namecall"] then
+        if hookmetamethod then
+            pcall(function()
+                hookmetamethod(game, "__namecall", _G.OriginalFunctions["AntiFlashbang_Namecall"])
+                log("Restored AntiFlashbang namecall hook successfully.")
+            end)
+        end
+        _G.OriginalFunctions["AntiFlashbang_Namecall"] = nil
+    end
+
     if _G.OriginalFunctions and _G.OriginalFunctions["Flashbang_Connect"] then
         if hookfunction then
             pcall(function()
@@ -202,6 +223,7 @@ function GC.cleanup()
     -- Optional: Clear tables entirely if shutting down
     _G.ModifierStates = nil
     _G.ModifierConnections = nil
+    _G.ModifierRuntime = nil
     _G.OriginalFunctions = nil
     
     log("Cleanup completed successfully.")

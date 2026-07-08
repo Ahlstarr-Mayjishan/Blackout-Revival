@@ -17,7 +17,7 @@ InfiniteStamina.Description = "Blocks stamina depletion remote events and overri
 -- Safely retrieve the PLAYER_STORAGE folder for the client
 local function getPlayerStorage()
     local storageName = Players:GetAttribute("PLAYER_STORAGE")
-    return storageName and Players:FindFirstChild(storageName)
+    return storageName and LocalPlayer:FindFirstChild(storageName)
 end
 
 -- Safely retrieve the Stamina depletion remote
@@ -31,33 +31,45 @@ function InfiniteStamina:Init(UIRef)
     _G.OriginalFunctions = _G.OriginalFunctions or {}
     _G.ModifierConnections = _G.ModifierConnections or {}
 
-    -- 1. Hook the GetAttribute function to return 100 for "Stamina"
-    local successGetAttr, errGetAttr = pcall(function()
-        if not hookfunction then return end
-        if _G.OriginalFunctions["GetAttribute"] then return end
+    -- 1. Hook namecalls used by the game for stamina reads/drain requests.
+    local successNamecall, errNamecall = pcall(function()
+        if not hookmetamethod then return end
+        if _G.OriginalFunctions["InfiniteStamina_Namecall"] then return end
 
-        local dummyInstance = Instance.new("Folder")
-        local originalGetAttribute
-        originalGetAttribute = hookfunction(dummyInstance.GetAttribute, function(self, attribute, ...)
-            if _G.ModifierStates and _G.ModifierStates.InfiniteStamina and attribute == "Stamina" then
+        local oldNamecall
+        oldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
+            local method = getnamecallmethod()
+            local args = {...}
+
+            if _G.ModifierStates and _G.ModifierStates.InfiniteStamina then
                 local storage = getPlayerStorage()
-                if storage and self == storage then
+
+                if method == "GetAttribute" and self == storage and args[1] == "Stamina" then
                     return 100
                 end
+
+                if method == "SetAttribute" and self == storage and args[1] == "Stamina" then
+                    args[2] = 100
+                    return oldNamecall(self, table.unpack(args))
+                end
+
+                if method == "FireServer" and self == getStaminaRemote() then
+                    return nil
+                end
             end
-            return originalGetAttribute(self, attribute, ...)
+
+            return oldNamecall(self, ...)
         end)
 
-        _G.OriginalFunctions["GetAttribute"] = originalGetAttribute
-        dummyInstance:Destroy()
-        print("[Player Modifier - InfiniteStamina] Successfully hooked GetAttribute.")
+        _G.OriginalFunctions["InfiniteStamina_Namecall"] = oldNamecall
+        print("[Player Modifier - InfiniteStamina] Successfully hooked stamina namecalls.")
     end)
 
-    if not successGetAttr then
-        warn("[Player Modifier - InfiniteStamina] Failed to hook GetAttribute: " .. tostring(errGetAttr))
+    if not successNamecall then
+        warn("[Player Modifier - InfiniteStamina] Failed to hook stamina namecalls: " .. tostring(errNamecall))
     end
 
-    -- 2. Hook Stamina remote FireServer call to prevent stamina drain requests
+    -- 2. Fallback hook for executors that support direct method replacement better.
     local successRemote, errRemote = pcall(function()
         if not hookfunction then return end
         if _G.OriginalFunctions["Stamina_FireServer"] then return end
