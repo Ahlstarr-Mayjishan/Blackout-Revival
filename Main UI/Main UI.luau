@@ -38,6 +38,136 @@
 ]]
 
 local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local function restoreAimWeaponHooks()
+    local originals = _G.AimAssistOriginals
+    if type(originals) ~= "table" then
+        return
+    end
+
+    pcall(function()
+        local mods = ReplicatedStorage:FindFirstChild("Mods")
+        local fastCastModule = mods and mods:FindFirstChild("FastCast")
+        if fastCastModule then
+            local fastCastTable = require(fastCastModule)
+            local originalFastCast = originals["FastCast_Fire"] or originals["HomingBullets_FastCast_Fire"]
+            if originalFastCast and type(fastCastTable) == "table" then
+                fastCastTable.Fire = originalFastCast
+            end
+        end
+    end)
+
+    pcall(function()
+        local gunStorage = ReplicatedStorage:FindFirstChild("GunStorage")
+        local bulletHandlerModule = gunStorage
+            and gunStorage:FindFirstChild("Mods")
+            and gunStorage.Mods:FindFirstChild("BulletHandler")
+
+        if bulletHandlerModule then
+            local bulletHandler = require(bulletHandlerModule)
+            local originalBulletHandler = originals["BulletHandler_Fire"] or originals["HomingBullets_BulletHandler_Fire"]
+            if originalBulletHandler and type(bulletHandler) == "table" then
+                bulletHandler.Fire = originalBulletHandler
+            end
+        end
+    end)
+
+    originals["FastCast_Fire"] = nil
+    originals["HomingBullets_FastCast_Fire"] = nil
+    originals["BulletHandler_Fire"] = nil
+    originals["HomingBullets_BulletHandler_Fire"] = nil
+end
+
+local function clearStuckWeaponStates()
+    if type(_G.AimAssistStates) == "table" then
+        _G.AimAssistStates.Enabled = false
+        _G.AimAssistStates.RecoilControlActive = false
+        _G.AimAssistStates.SilentAimActive = false
+        _G.AimAssistStates.HomingBulletsActive = false
+    end
+
+    restoreAimWeaponHooks()
+
+    local recoilOriginals = _G.AimAssistOriginals and _G.AimAssistOriginals.RecoilControlStats
+    if type(recoilOriginals) == "table" then
+        for container, values in pairs(recoilOriginals) do
+            if typeof(container) == "Instance" and container.Parent then
+                for key, value in pairs(values) do
+                    pcall(function()
+                        container:SetAttribute(key, value)
+                    end)
+                end
+            elseif type(container) == "table" then
+                for key, value in pairs(values) do
+                    pcall(function()
+                        container[key] = value
+                    end)
+                end
+            end
+        end
+
+        _G.AimAssistOriginals.RecoilControlStats = nil
+    end
+
+    local states = rawget(_G, "CharacterStates") or _G.CharacterStates
+
+    if type(states) == "table" then
+        for _, key in ipairs({
+            "Blocking",
+            "ServerBlocking",
+            "UsingItem",
+            "Reloading",
+            "GunPreparing",
+            "PreparingSwing",
+            "Swinging",
+            "Finishing",
+        }) do
+            pcall(function()
+                states[key] = false
+            end)
+        end
+
+        for _, key in ipairs({
+            "DisableInventory",
+            "ForceEquip",
+            "E",
+            "NT",
+            "Endlag",
+            "RestrictedMovement",
+        }) do
+            pcall(function()
+                states[key] = nil
+            end)
+        end
+    end
+
+    local character = Players.LocalPlayer.Character
+    local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+
+    if humanoid then
+        pcall(function()
+            local state = humanoid:GetState()
+            if state == Enum.HumanoidStateType.Physics
+                or state == Enum.HumanoidStateType.FallingDown
+                or state == Enum.HumanoidStateType.PlatformStanding then
+                humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+            end
+        end)
+    end
+
+    pcall(function()
+        local si = ReplicatedStorage:FindFirstChild("SI")
+        if si and type(si.Fire) == "function" then
+            si:Fire(true)
+        end
+    end)
+
+    print("[Blackout UI] Cleared stuck weapon/inventory states.")
+end
+
+_G.FixBlackoutWeapon = clearStuckWeaponStates
 
 local function disconnectItems(items)
     if type(items) ~= "table" then
@@ -64,12 +194,32 @@ local function disconnectItems(items)
 end
 
 local function loadLocalGc(path)
-    if type(readfile) ~= "function" or type(isfile) ~= "function" or not isfile(path) then
+    if type(readfile) ~= "function" or type(isfile) ~= "function" then
+        return nil
+    end
+
+    local candidates = {
+        path,
+        "BlackoutRevival/" .. path,
+        "BlackoutRevival\\" .. path:gsub("/", "\\"),
+        "D:/Scripting/blackout revival/" .. path,
+        "D:\\Scripting\\blackout revival\\" .. path:gsub("/", "\\"),
+    }
+
+    local sourcePath = nil
+    for _, candidate in ipairs(candidates) do
+        if isfile(candidate) then
+            sourcePath = candidate
+            break
+        end
+    end
+
+    if not sourcePath then
         return nil
     end
 
     local ok, result = pcall(function()
-        return loadstring(readfile(path))()
+        return loadstring(readfile(sourcePath))()
     end)
 
     if ok and type(result) == "table" and type(result.cleanup) == "function" then
@@ -133,6 +283,7 @@ local function stopBlackoutUI()
         _G.AutoParryActive = false
         _G.AttackProbeActive = false
         _G.AttackTargetProbeActive = false
+        clearStuckWeaponStates()
 
         if _G.PerformanceGuard and type(_G.PerformanceGuard.Cleanup) == "function" then
             _G.PerformanceGuard.Cleanup()
@@ -266,7 +417,14 @@ local function createSystemFallbackControls()
                 stopBlackoutUI()
             end,
         })
+        Tabs.System:CreateButton({
+            Name = "Fix Stuck Weapon / Inventory",
+            Callback = function()
+                clearStuckWeaponStates()
+            end,
+        })
         Tabs.System:CreateLabel("Console: _G.StopBlackoutUI()")
+        Tabs.System:CreateLabel("Console: _G.FixBlackoutWeapon()")
     end)
 
     if not ok then
@@ -299,6 +457,8 @@ local function normalizePath(path)
 end
 
 local LOCAL_MODULE_ROOTS = {
+    "BlackoutRevival/",
+    "BlackoutRevival\\",
     "",
     "D:/Scripting/blackout revival/",
     "D:\\Scripting\\blackout revival\\",

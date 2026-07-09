@@ -12,6 +12,8 @@ local Players = game:GetService("Players")
 
 local LocalPlayer = Players.LocalPlayer
 
+local MIN_SAFE_MULTIPLIER = 0.01
+
 local RecoilControl = {}
 RecoilControl.Name = "Recoil Control"
 RecoilControl.Description = "Adjusts local weapon recoil, kickback, and spread multipliers."
@@ -35,7 +37,12 @@ local function getMultiplier(stateKey)
         return 1
     end
 
-    return math.clamp(value, 0, 100) / 100
+    local multiplier = math.clamp(value, 0, 100) / 100
+    if multiplier <= 0 then
+        return MIN_SAFE_MULTIPLIER
+    end
+
+    return multiplier
 end
 
 local function rememberOriginal(container, key, value)

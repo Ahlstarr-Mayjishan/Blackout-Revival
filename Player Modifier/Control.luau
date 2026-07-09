@@ -9,10 +9,161 @@
 ]]
 
 local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Control = {}
 Control.Name = "Control & Coordination"
 Control.Description = "Main user controller that coordinates modifiers, configures states, and handles script unloading."
+
+local function restoreAimWeaponHooks()
+    local originals = _G.AimAssistOriginals
+    if type(originals) ~= "table" then
+        return
+    end
+
+    pcall(function()
+        local mods = ReplicatedStorage:FindFirstChild("Mods")
+        local fastCastModule = mods and mods:FindFirstChild("FastCast")
+        if fastCastModule then
+            local fastCastTable = require(fastCastModule)
+            local originalFastCast = originals["FastCast_Fire"] or originals["HomingBullets_FastCast_Fire"]
+            if originalFastCast and type(fastCastTable) == "table" then
+                fastCastTable.Fire = originalFastCast
+            end
+        end
+    end)
+
+    pcall(function()
+        local gunStorage = ReplicatedStorage:FindFirstChild("GunStorage")
+        local bulletHandlerModule = gunStorage
+            and gunStorage:FindFirstChild("Mods")
+            and gunStorage.Mods:FindFirstChild("BulletHandler")
+
+        if bulletHandlerModule then
+            local bulletHandler = require(bulletHandlerModule)
+            local originalBulletHandler = originals["BulletHandler_Fire"] or originals["HomingBullets_BulletHandler_Fire"]
+            if originalBulletHandler and type(bulletHandler) == "table" then
+                bulletHandler.Fire = originalBulletHandler
+            end
+        end
+    end)
+
+    originals["FastCast_Fire"] = nil
+    originals["HomingBullets_FastCast_Fire"] = nil
+    originals["BulletHandler_Fire"] = nil
+    originals["HomingBullets_BulletHandler_Fire"] = nil
+end
+
+local function readWorkspaceFile(path)
+    if type(readfile) ~= "function" or type(isfile) ~= "function" then
+        return nil
+    end
+
+    local candidates = {
+        path,
+        "BlackoutRevival/" .. path,
+        "BlackoutRevival\\" .. path:gsub("/", "\\"),
+    }
+
+    for _, candidate in ipairs(candidates) do
+        if isfile(candidate) then
+            return readfile(candidate)
+        end
+    end
+
+    return nil
+end
+
+local function clearStuckWeaponStates()
+    if type(_G.AimAssistStates) == "table" then
+        _G.AimAssistStates.Enabled = false
+        _G.AimAssistStates.RecoilControlActive = false
+        _G.AimAssistStates.SilentAimActive = false
+        _G.AimAssistStates.HomingBulletsActive = false
+    end
+
+    restoreAimWeaponHooks()
+
+    local recoilOriginals = _G.AimAssistOriginals and _G.AimAssistOriginals.RecoilControlStats
+    if type(recoilOriginals) == "table" then
+        for container, values in pairs(recoilOriginals) do
+            if typeof(container) == "Instance" and container.Parent then
+                for key, value in pairs(values) do
+                    pcall(function()
+                        container:SetAttribute(key, value)
+                    end)
+                end
+            elseif type(container) == "table" then
+                for key, value in pairs(values) do
+                    pcall(function()
+                        container[key] = value
+                    end)
+                end
+            end
+        end
+
+        _G.AimAssistOriginals.RecoilControlStats = nil
+    end
+
+    local states = rawget(_G, "CharacterStates") or _G.CharacterStates
+
+    if type(states) == "table" then
+        local falseStates = {
+            "Blocking",
+            "ServerBlocking",
+            "UsingItem",
+            "Reloading",
+            "GunPreparing",
+            "PreparingSwing",
+            "Swinging",
+            "Finishing",
+        }
+
+        for _, key in ipairs(falseStates) do
+            pcall(function()
+                states[key] = false
+            end)
+        end
+
+        local nilStates = {
+            "DisableInventory",
+            "ForceEquip",
+            "E",
+            "NT",
+            "Endlag",
+            "RestrictedMovement",
+        }
+
+        for _, key in ipairs(nilStates) do
+            pcall(function()
+                states[key] = nil
+            end)
+        end
+    end
+
+    local character = Players.LocalPlayer.Character
+    local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+
+    if humanoid then
+        pcall(function()
+            local state = humanoid:GetState()
+            if state == Enum.HumanoidStateType.Physics
+                or state == Enum.HumanoidStateType.FallingDown
+                or state == Enum.HumanoidStateType.PlatformStanding then
+                humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+            end
+        end)
+    end
+
+    pcall(function()
+        local si = ReplicatedStorage:FindFirstChild("SI")
+        if si and type(si.Fire) == "function" then
+            si:Fire(true)
+        end
+    end)
+
+    print("[Player Modifier - Control] Cleared stuck weapon/inventory states.")
+end
 
 function Control:Init(Tab)
     -- Verify states table is initialized
@@ -28,6 +179,15 @@ function Control:Init(Tab)
     -- Create Section for Admin & Script Management
     Tab:CreateSection("Script Options")
 
+    _G.FixBlackoutWeapon = clearStuckWeaponStates
+
+    Tab:CreateButton({
+        Name = "Fix Stuck Weapon / Inventory",
+        Callback = function()
+            clearStuckWeaponStates()
+        end,
+    })
+
     -- 5. Button: Unload Script
     Tab:CreateButton({
         Name = "Unload / Clean up Script",
@@ -38,8 +198,8 @@ function Control:Init(Tab)
             local gcModule = nil
             local success, err = pcall(function()
                 -- If in executor workspace environment, we read and execute GC.luau
-                if readfile and isfile("Player Modifier/GC.luau") then
-                    local content = readfile("Player Modifier/GC.luau")
+                local content = readWorkspaceFile("Player Modifier/GC.luau")
+                if content then
                     gcModule = loadstring(content)()
                 end
             end)
