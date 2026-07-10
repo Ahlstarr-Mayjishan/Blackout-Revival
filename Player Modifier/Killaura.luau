@@ -248,14 +248,14 @@ local function fireSwingRemote(holdTime)
         and ReplicatedStorage.MeleeStorage:FindFirstChild("Events")
         and ReplicatedStorage.MeleeStorage.Events:FindFirstChild("Swing")
 
-    if not swingRemote then
+    if not swingRemote or not swingRemote:IsA("RemoteFunction") then
         return false
     end
 
     local ok = pcall(function()
-        swingRemote:FireServer(true)
+        swingRemote:InvokeServer(true)
         task.wait(holdTime or 0.05)
-        swingRemote:FireServer(false)
+        swingRemote:InvokeServer(false)
     end)
 
     return ok
