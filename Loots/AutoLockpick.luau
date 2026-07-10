@@ -75,9 +75,10 @@ local function playLegitInputPattern()
     pulseControl(Enum.KeyCode.F, 0.28)
 end
 
-local function solveLockpick(minigameId)
+local function solveLockpick(minigameId, minigameKind)
     local _, minigameResult = getLootEvents()
     if not minigameResult then
+        warn("[Loots - AutoLockpick] Events.Loot.MinigameResult not found.")
         return
     end
 
@@ -97,7 +98,7 @@ local function solveLockpick(minigameId)
         minigameResult:FireServer(minigameId, true)
     end)
 
-    log("Solved lockpick using " .. mode .. " mode.")
+    log("Solved lockpick using " .. mode .. " mode. id=" .. tostring(minigameId) .. " kind=" .. tostring(minigameKind))
 end
 
 local function setupListener()
@@ -114,13 +115,13 @@ local function setupListener()
         return
     end
 
-    local connection = minigameRemote.OnClientEvent:Connect(function(minigameId)
+    local connection = minigameRemote.OnClientEvent:Connect(function(minigameId, minigameKind)
         if not _G.LootStates or not _G.LootStates.AutoLockpick then
             return
         end
 
         task.spawn(function()
-            solveLockpick(minigameId)
+            solveLockpick(minigameId, minigameKind)
         end)
     end)
 

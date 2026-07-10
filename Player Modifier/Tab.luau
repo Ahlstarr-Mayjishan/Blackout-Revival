@@ -113,6 +113,9 @@ function Tab:Init(UIRef)
             if _G.ModifierStates then
                 _G.ModifierStates.InfiniteStamina = Value
             end
+            if Value and type(_G.BlackoutLoadModule) == "function" then
+                _G.BlackoutLoadModule("Player Modifier/InfiniteStamina.luau")
+            end
             print("[Player Modifier - Tab] Infinite Stamina state: " .. tostring(Value))
         end,
     })

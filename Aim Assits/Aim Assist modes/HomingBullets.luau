@@ -944,6 +944,18 @@ local function setupFastCastHook()
 end
 
 function HomingBullets:Init(Tab)
+    local hooksInstalled = false
+
+    local function ensureHooksInstalled()
+        if hooksInstalled then
+            return
+        end
+
+        hooksInstalled = true
+        setupBulletHandlerHook()
+        setupFastCastHook()
+    end
+
     -- Initialize state
     _G.AimAssistStates.HomingBulletsActive = _G.AimAssistStates.HomingBulletsActive or false
     _G.AimAssistStates.HomingMaxRange = _G.AimAssistStates.HomingMaxRange or DEFAULT_MAX_HOMING_RANGE
@@ -964,6 +976,9 @@ function HomingBullets:Init(Tab)
         Callback = function(Value)
             if _G.AimAssistStates then
                 _G.AimAssistStates.HomingBulletsActive = Value
+            end
+            if Value then
+                ensureHooksInstalled()
             end
             print("[Aim Assist - HomingBullets] Homing Bullets active state: " .. tostring(Value))
         end,
@@ -1032,9 +1047,6 @@ function HomingBullets:Init(Tab)
         end,
     })
 
-    -- Establish native weapon hook (using BOTH layers for 100% redundancy)
-    setupBulletHandlerHook()
-    setupFastCastHook()
 end
 
 return HomingBullets

@@ -30,6 +30,19 @@ local function log(message)
     print("[Loots - AutoCollect] " .. tostring(message))
 end
 
+local function getNumericAttribute(instance, attributeName)
+    if not instance then
+        return 0
+    end
+
+    local value = instance:GetAttribute(attributeName)
+    if type(value) == "number" then
+        return value
+    end
+
+    return tonumber(value) or 0
+end
+
 local function getLootRemote()
     local events = ReplicatedStorage:FindFirstChild("Events")
     local loot = events and events:FindFirstChild("Loot")
@@ -81,11 +94,11 @@ local function lootHasSelectedCurrency(lootTable)
 
     local options = _G.LootStates.CollectLootOptions
 
-    if options.Cash and (lootTable:GetAttribute("Cash") or 0) > 0 then
+    if options.Cash and getNumericAttribute(lootTable, "Cash") > 0 then
         return true
     end
 
-    if options.Valuables and (lootTable:GetAttribute("Valuables") or 0) > 0 then
+    if options.Valuables and getNumericAttribute(lootTable, "Valuables") > 0 then
         return true
     end
 
@@ -101,11 +114,12 @@ local function isUsableLootTable(instance)
         and isLootTableInRange(instance)
 end
 
-local function rememberActiveLoot(lootTable)
+local function rememberActiveLoot(lootTable, lootContext)
     _G.LootRuntime = _G.LootRuntime or {}
 
     if lootTable and lootTable.Parent then
         _G.LootRuntime.ActiveLootObject = lootTable
+        _G.LootRuntime.ActiveLootContext = lootContext or lootTable.Parent
     end
 end
 
@@ -193,7 +207,7 @@ local function collectCurrency(lootTable, currencyName)
         return false
     end
 
-    if (lootTable:GetAttribute(currencyName) or 0) <= 0 then
+    if getNumericAttribute(lootTable, currencyName) <= 0 then
         return false
     end
 
@@ -241,8 +255,11 @@ local function setupLootListener()
         return
     end
 
-    local connection = remote.OnClientEvent:Connect(function(lootTable)
-        rememberActiveLoot(lootTable)
+    local connection = remote.OnClientEvent:Connect(function(lootTable, lootContext)
+        rememberActiveLoot(lootTable, lootContext)
+        if _G.LootStates and _G.LootStates.AutoCollectLoot then
+            task.defer(collectOnce)
+        end
     end)
 
     _G.LootRuntime.AutoCollectLootConnection = connection

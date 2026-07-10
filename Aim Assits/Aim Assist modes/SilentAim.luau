@@ -218,6 +218,18 @@ local function setupFastCastHook()
 end
 
 function SilentAim:Init(Tab)
+    local hooksInstalled = false
+
+    local function ensureHooksInstalled()
+        if hooksInstalled then
+            return
+        end
+
+        hooksInstalled = true
+        setupBulletHandlerHook()
+        setupFastCastHook()
+    end
+
     -- Add the toggle to the UI
     Tab:CreateToggle({
         Name = "Enable Silent Aim (Direct)",
@@ -227,13 +239,14 @@ function SilentAim:Init(Tab)
             if _G.AimAssistStates then
                 _G.AimAssistStates.SilentAimActive = Value
             end
+
+            if Value then
+                ensureHooksInstalled()
+            end
+
             print("[Aim Assist - SilentAim] Silent Aim active state: " .. tostring(Value))
         end,
     })
-
-    -- Hook firing methods directly (zero lag)
-    setupBulletHandlerHook()
-    setupFastCastHook()
 end
 
 return SilentAim

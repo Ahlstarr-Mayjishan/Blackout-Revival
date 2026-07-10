@@ -101,6 +101,9 @@ function Tab:Init(UIRef)
             if _G.LootStates then
                 _G.LootStates.AutoLockpick = Value
             end
+            if Value and type(_G.BlackoutLoadModule) == "function" then
+                _G.BlackoutLoadModule("Loots/AutoLockpick.luau")
+            end
             print("[Loots - Tab] Auto Lockpick: " .. tostring(Value))
         end,
     })
@@ -129,6 +132,9 @@ function Tab:Init(UIRef)
         Callback = function(Value)
             if _G.LootStates then
                 _G.LootStates.AutoCollectLoot = Value
+            end
+            if Value and type(_G.BlackoutLoadModule) == "function" then
+                _G.BlackoutLoadModule("Loots/AutoCollect.luau")
             end
             print("[Loots - Tab] Auto Collect Loot: " .. tostring(Value))
         end,

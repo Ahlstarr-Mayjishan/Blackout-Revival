@@ -40,6 +40,29 @@
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+
+local repairServerGunModel = nil
+local lastWeaponRepairLog = 0
+
+local DEFAULT_CHARACTER_STATES = {
+    Aiming = false,
+    Blocking = false,
+    ServerBlocking = false,
+    UsingItem = false,
+    Reloading = false,
+    GunPreparing = false,
+    PreparingSwing = false,
+    Swinging = false,
+    Finishing = false,
+    Sprinting = false,
+    Sliding = false,
+    Downed = false,
+    Ragdolled = false,
+    InPhysics = false,
+    AimingMovementSpeed = nil,
+    ReloadingMovementSpeed = nil,
+}
 
 local function restoreAimWeaponHooks()
     local originals = _G.AimAssistOriginals
@@ -157,6 +180,10 @@ local function clearStuckWeaponStates()
         end)
     end
 
+    if repairServerGunModel then
+        pcall(repairServerGunModel)
+    end
+
     pcall(function()
         local si = ReplicatedStorage:FindFirstChild("SI")
         if si and type(si.Fire) == "function" then
@@ -191,6 +218,202 @@ local function disconnectItems(items)
     end
 
     table.clear(items)
+end
+
+local function ensureCharacterStatesFallback()
+    if type(rawget(_G, "CharacterStates")) == "table" or type(_G.CharacterStates) == "table" then
+        return false
+    end
+
+    local character = Players.LocalPlayer.Character
+    local states = {}
+
+    if character then
+        local ok, attributes = pcall(function()
+            return character:GetAttributes()
+        end)
+
+        if ok and type(attributes) == "table" then
+            for key, value in pairs(attributes) do
+                states[key] = value
+            end
+        end
+    end
+
+    for key, value in pairs(DEFAULT_CHARACTER_STATES) do
+        if states[key] == nil then
+            states[key] = value
+        end
+    end
+
+    rawset(_G, "CharacterStates", states)
+    print("[Blackout UI] Restored fallback _G.CharacterStates snapshot.")
+    return true
+end
+
+local function getEquippedGunSettings(character)
+    if not character then
+        return nil
+    end
+
+    for _, child in ipairs(character:GetChildren()) do
+        if child:GetAttribute("Tool") and child:FindFirstChild("GunStatus") then
+            local settingsModule = child:FindFirstChild("Settings")
+            if settingsModule then
+                local ok, settings = pcall(require, settingsModule)
+                if ok and type(settings) == "table" then
+                    return settings
+                end
+            end
+        end
+    end
+
+    return nil
+end
+
+local function ensureValueChild(parent, name, value)
+    local child = parent:FindFirstChild(name)
+    local valueType = type(value)
+
+    if not child then
+        if valueType == "boolean" then
+            child = Instance.new("BoolValue")
+        elseif valueType == "number" then
+            child = Instance.new("NumberValue")
+        elseif valueType == "string" then
+            child = Instance.new("StringValue")
+        else
+            child = Instance.new("Folder")
+        end
+
+        child.Name = name
+        child.Parent = parent
+    end
+
+    pcall(function()
+        if valueType == "boolean" or valueType == "number" or valueType == "string" then
+            child.Value = value
+        end
+    end)
+
+    return child
+end
+
+local function ensureTableFolder(parent, name, values)
+    local folder = parent:FindFirstChild(name)
+    local repaired = false
+
+    if not folder then
+        folder = Instance.new("Folder")
+        folder.Name = name
+        folder.Parent = parent
+        repaired = true
+    end
+
+    if type(values) == "table" then
+        for key, value in pairs(values) do
+            if folder:FindFirstChild(key) == nil then
+                repaired = true
+            end
+            ensureValueChild(folder, key, value)
+        end
+    end
+
+    return folder, repaired
+end
+
+repairServerGunModel = function()
+    local character = Players.LocalPlayer.Character
+    if not character then
+        return false, "no character"
+    end
+
+    local serverGunModel = character:FindFirstChild("ServerGunModel")
+    if not serverGunModel then
+        return false, "no ServerGunModel"
+    end
+
+    local repaired = false
+    local settingsTable = getEquippedGunSettings(character)
+
+    if not serverGunModel:FindFirstChild("ShowCrosshair") then
+        local showCrosshair = Instance.new("BoolValue")
+        showCrosshair.Name = "ShowCrosshair"
+        showCrosshair.Value = type(settingsTable) == "table" and settingsTable.ShowCrosshair ~= nil
+            and settingsTable.ShowCrosshair
+            or true
+        showCrosshair.Parent = serverGunModel
+        repaired = true
+    end
+
+    local _, repairedUnchambered = ensureTableFolder(
+        serverGunModel,
+        "Unchambered",
+        type(settingsTable) == "table" and settingsTable.Unchambered or {
+            InvisibleMagazine = false,
+            PlayOnEquip = false,
+        }
+    )
+    repaired = repaired or repairedUnchambered
+
+    if not serverGunModel:FindFirstChild("Settings") then
+        for _, child in ipairs(character:GetChildren()) do
+            if child:GetAttribute("Tool") and child:FindFirstChild("GunStatus") then
+                local settings = child:FindFirstChild("Settings")
+                if settings then
+                    local clonedSettings = settings:Clone()
+                    clonedSettings.Parent = serverGunModel
+                    repaired = true
+                    break
+                end
+            end
+        end
+    end
+
+    if repaired and os.clock() - lastWeaponRepairLog > 1 then
+        lastWeaponRepairLog = os.clock()
+        print("[Blackout UI] Repaired missing ServerGunModel client fields.")
+    end
+
+    return repaired, "ok"
+end
+
+_G.RepairBlackoutWeaponRuntime = repairServerGunModel
+
+local function installWeaponRuntimeRepair()
+    disconnectItems(_G.BlackoutUIConnections)
+    _G.BlackoutUIConnections = {}
+
+    local function watchCharacter(character)
+        if not character then
+            return
+        end
+
+        pcall(repairServerGunModel)
+
+        table.insert(_G.BlackoutUIConnections, character.ChildAdded:Connect(function(child)
+            if child.Name == "ServerGunModel" or child:GetAttribute("Tool") then
+                task.defer(function()
+                    pcall(repairServerGunModel)
+                end)
+            end
+        end))
+    end
+
+    table.insert(_G.BlackoutUIConnections, Players.LocalPlayer.CharacterAdded:Connect(function(character)
+        task.defer(function()
+            watchCharacter(character)
+        end)
+    end))
+
+    watchCharacter(Players.LocalPlayer.Character)
+
+    local heartbeatConnection = RunService.Heartbeat:Connect(function()
+        ensureCharacterStatesFallback()
+        pcall(repairServerGunModel)
+    end)
+
+    table.insert(_G.BlackoutUIConnections, heartbeatConnection)
 end
 
 local function loadLocalGc(path)
@@ -324,6 +547,9 @@ local function stopBlackoutUI()
         _G.LootRuntime = nil
     end
 
+    disconnectItems(_G.BlackoutUIConnections)
+    _G.BlackoutUIConnections = nil
+
     pcall(function()
         if type(_G.StopAutoParry) == "function" then
             _G.StopAutoParry()
@@ -423,8 +649,15 @@ local function createSystemFallbackControls()
                 clearStuckWeaponStates()
             end,
         })
+        Tabs.System:CreateButton({
+            Name = "Repair Weapon Runtime",
+            Callback = function()
+                repairServerGunModel()
+            end,
+        })
         Tabs.System:CreateLabel("Console: _G.StopBlackoutUI()")
         Tabs.System:CreateLabel("Console: _G.FixBlackoutWeapon()")
+        Tabs.System:CreateLabel("Console: _G.RepairBlackoutWeaponRuntime()")
     end)
 
     if not ok then
@@ -534,6 +767,9 @@ end
 -- 5. Module Loading Mechanism
 -- Create header section in UI
 local ModulesSection = Tab:CreateSection("Loaded Modules")
+Tabs.Status:CreateLabel("Safe boot: automation engines are not auto-loaded.")
+Tabs.Status:CreateLabel("Use System controls first; load risky modules only after the base menu is stable.")
+local LoadedModulePaths = {}
 
 local function shouldShowModuleHeader(moduleIdentifier)
     local normalizedIdentifier = normalizePath(moduleIdentifier)
@@ -600,72 +836,154 @@ local function initModuleTable(moduleResult, moduleIdentifier, targetTab)
     end
 end
 
+local function loadModuleByPath(modulePath, targetTab)
+    local normalizedModulePath = normalizePath(modulePath)
+
+    if LoadedModulePaths[normalizedModulePath] then
+        Tabs.Status:CreateLabel("Already loaded: " .. normalizedModulePath)
+        return false
+    end
+
+    local folderPath = normalizedModulePath:match("^(.*)/[^/]+$") or ""
+    local content = nil
+    local sourcePath = nil
+    local readErr = nil
+
+    if type(readfile) == "function" then
+        content, sourcePath, readErr = readModuleFile(folderPath, normalizedModulePath)
+    end
+
+    if not content then
+        content, sourcePath, readErr = fetchRemoteModuleFile(normalizedModulePath)
+    end
+
+    if not content then
+        warn("Main UI | Failed to load module file: " .. tostring(normalizedModulePath) .. " | " .. tostring(readErr))
+        Tabs.Status:CreateLabel("Load failed: " .. normalizedModulePath)
+        return false
+    end
+
+    local func, syntaxErr = loadstring(content)
+    if not func then
+        warn("Main UI | Syntax error in module '" .. tostring(sourcePath or normalizedModulePath) .. "': " .. tostring(syntaxErr))
+        Tabs.Status:CreateLabel("Syntax error: " .. normalizedModulePath)
+        return false
+    end
+
+    local execSuccess, moduleResult = pcall(func)
+    if not execSuccess then
+        warn("Main UI | Runtime error in module '" .. tostring(sourcePath or normalizedModulePath) .. "': " .. tostring(moduleResult))
+        Tabs.Status:CreateLabel("Runtime error: " .. normalizedModulePath)
+        return false
+    end
+
+    LoadedModulePaths[normalizedModulePath] = true
+    initModuleTable(moduleResult, normalizedModulePath, targetTab)
+    return true
+end
+
+local function loadModuleGroup(groupName, modulePaths)
+    Tabs.Status:CreateLabel("Loading group: " .. groupName)
+
+    local loadedCount = 0
+    for _, modulePath in ipairs(modulePaths) do
+        if loadModuleByPath(modulePath) then
+            loadedCount = loadedCount + 1
+        end
+    end
+
+    Tabs.Status:CreateLabel("Group done: " .. groupName .. " (" .. tostring(loadedCount) .. " new)")
+end
+
+_G.BlackoutLoadModule = function(modulePath)
+    return loadModuleByPath(modulePath)
+end
+
+local function createEngineLoadControls()
+    local ok, err = pcall(function()
+        Tabs.System:CreateSection("Manual Engine Loading")
+        Tabs.System:CreateLabel("Safe Boot loads only tabs and cleanup controls. Load one group at a time.")
+
+        Tabs.System:CreateButton({
+            Name = "Load Movement Engines",
+            Callback = function()
+                loadModuleGroup("Movement Engines", {
+                    "Player Modifier/PerformanceGuard.luau",
+                    "Player Modifier/DoubleJump.luau",
+                    "Player Modifier/NoFallDamage.luau",
+                    "Player Modifier/AntiRagdoll.luau",
+                    "Player Modifier/AutoUnlock.luau",
+                    "Player Modifier/BetterMovement.luau",
+                    "Player Modifier/InfiniteStamina.luau",
+                    "Player Modifier/SpeedHack.luau",
+                })
+            end,
+        })
+
+        Tabs.System:CreateButton({
+            Name = "Load Combat Engines",
+            Callback = function()
+                loadModuleGroup("Combat Engines", {
+                    "Player Modifier/Killaura.luau",
+                    "Player Modifier/AuraActions.luau",
+                    "Player Modifier/AutoBash.luau",
+                    "Player Modifier/AntiFlashbang.luau",
+                    "Player Modifier/Executor.luau",
+                })
+            end,
+        })
+
+        Tabs.System:CreateButton({
+            Name = "Load Loot Engines",
+            Callback = function()
+                loadModuleGroup("Loot Engines", {
+                    "Loots/AutoLockpick.luau",
+                    "Loots/AutoCollect.luau",
+                    "Loots/Executor.luau",
+                })
+            end,
+        })
+
+        Tabs.System:CreateButton({
+            Name = "Load Aim Engines",
+            Callback = function()
+                loadModuleGroup("Aim Engines", {
+                    "Aim Assits/Executor.luau",
+                    "Aim Assits/Aim Assist modes/Aimbot.luau",
+                    "Aim Assits/Aim Assist modes/SilentAim.luau",
+                    "Aim Assits/Aim Assist modes/HomingBullets.luau",
+                    "Aim Assits/Aim Assist modes/RecoilControl.luau",
+                })
+            end,
+        })
+    end)
+
+    if not ok then
+        warn("Main UI | Failed to create manual engine controls: " .. tostring(err))
+    end
+end
+
+createEngineLoadControls()
+
 -- Loader: Client Executor Environment (Workspace filesystem)
 local function loadExecutorModules()
     local modulePaths = {
         "Player Modifier/Tab.luau",
-        "Player Modifier/PerformanceGuard.luau",
-        "Player Modifier/DoubleJump.luau",
-        "Player Modifier/NoFallDamage.luau",
-        "Player Modifier/AntiRagdoll.luau",
-        "Player Modifier/AutoUnlock.luau",
-        "Player Modifier/BetterMovement.luau",
-        "Player Modifier/Killaura.luau",
-        "Player Modifier/InfiniteStamina.luau",
-        "Player Modifier/SpeedHack.luau",
-        "Player Modifier/AuraActions.luau",
-        "Player Modifier/AutoBash.luau",
-        "Player Modifier/AntiFlashbang.luau",
         "Player Modifier/Control.luau",
-        "Player Modifier/Executor.luau",
         "Player Modifier/GC.luau",
         "Loots/Tab.luau",
-        "Loots/AutoLockpick.luau",
-        "Loots/AutoCollect.luau",
-        "Loots/Executor.luau",
         "Loots/Control.luau",
         "Loots/GC.luau",
         "Aim Assits/Tab.luau",
         "Aim Assits/Control.luau",
-        "Aim Assits/Executor.luau",
         "Aim Assits/GC.luau",
-        "Aim Assits/Aim Assist modes/Aimbot.luau",
-        "Aim Assits/Aim Assist modes/SilentAim.luau",
-        "Aim Assits/Aim Assist modes/HomingBullets.luau",
-        "Aim Assits/Aim Assist modes/RecoilControl.luau",
     }
 
     local modulesLoadedCount = 0
 
     for _, modulePath in ipairs(modulePaths) do
-        local folderPath = modulePath:match("^(.*)/[^/]+$") or ""
-        local content = nil
-        local sourcePath = nil
-        local readErr = nil
-
-        if type(readfile) == "function" then
-            content, sourcePath, readErr = readModuleFile(folderPath, modulePath)
-        end
-
-        if not content then
-            content, sourcePath, readErr = fetchRemoteModuleFile(modulePath)
-        end
-
-        if content then
-            local func, syntaxErr = loadstring(content)
-            if func then
-                local execSuccess, moduleResult = pcall(func)
-                if execSuccess then
-                    initModuleTable(moduleResult, modulePath)
-                    modulesLoadedCount = modulesLoadedCount + 1
-                else
-                    warn("Main UI | Runtime error in module '" .. tostring(sourcePath or modulePath) .. "': " .. tostring(moduleResult))
-                end
-            else
-                warn("Main UI | Syntax error in module '" .. tostring(sourcePath or modulePath) .. "': " .. tostring(syntaxErr))
-            end
-        else
-            warn("Main UI | Failed to load module file: " .. tostring(modulePath) .. " | " .. tostring(readErr))
+        if loadModuleByPath(modulePath) then
+            modulesLoadedCount = modulesLoadedCount + 1
         end
     end
 

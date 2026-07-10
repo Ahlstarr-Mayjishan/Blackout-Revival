@@ -212,67 +212,11 @@ local function createStatesProxy(source)
     return proxy
 end
 
--- Intercept and proxy _G.CharacterStates assignments
+-- Older builds proxied _G.CharacterStates. That is too risky for this game:
+-- inventory and weapon code expects the live table assigned by CharacterHandler.
 local function setupStatesProxy()
-    local runtime = getRuntime()
-    if runtime.ProxyInstalled then
-        return
-    end
-
-    runtime.ProxyInstalled = true
-    runtime.RawCharacterStates = rawget(_G, "CharacterStates") or {}
-    runtime.StatesProxy = createStatesProxy(runtime.RawCharacterStates)
-
-    local mt = getmetatable(_G) or {}
-    if mt.__isProxy and not mt.__betterMovementProxy then
-        -- Older BetterMovement builds installed a partial _G.__newindex proxy that
-        -- never saw CharacterStates updates once the raw key already existed.
-        mt = {}
-    end
-
-    runtime.OldGlobalMetatable = mt
-    runtime.OldGlobalIndex = mt.__index
-    runtime.OldGlobalNewIndex = mt.__newindex
-
-    mt.__isProxy = true
-    mt.__betterMovementProxy = true
-
-    local oldIndex = mt.__index
-    local oldNewIndex = mt.__newindex
-
-    mt.__index = function(t, key)
-        if key == "CharacterStates" then
-            return runtime.StatesProxy
-        end
-
-        if type(oldIndex) == "function" then
-            return oldIndex(t, key)
-        elseif type(oldIndex) == "table" then
-            return oldIndex[key]
-        end
-
-        return nil
-    end
-
-    mt.__newindex = function(t, key, val)
-        if key == "CharacterStates" and type(val) == "table" then
-            runtime.RawCharacterStates = val
-            runtime.StatesProxy = createStatesProxy(val)
-            return
-        end
-
-        if type(oldNewIndex) == "function" then
-            oldNewIndex(t, key, val)
-        elseif type(oldNewIndex) == "table" then
-            oldNewIndex[key] = val
-        else
-            rawset(t, key, val)
-        end
-    end
-
-    rawset(_G, "CharacterStates", nil)
-    setmetatable(_G, mt)
-    log("Installed live _G.CharacterStates proxy.")
+    BetterMovement.RestoreGlobalProxy()
+    log("Skipped _G.CharacterStates proxy; using sanitizer-only mode.")
 end
 
 local function setupStateSanitizer()
@@ -304,18 +248,7 @@ local function setupStateSanitizer()
 end
 
 local function restoreOldBrokenProxyIfNeeded()
-    local runtime = getRuntime()
-    local mt = getmetatable(_G)
-
-    if mt and mt.__betterMovementProxy and runtime.OldGlobalIndex == nil and runtime.OldGlobalNewIndex == nil then
-        return
-    end
-
-    -- Older versions left CharacterStates as a raw key, which prevents __newindex
-    -- from seeing the game's per-frame CharacterStates assignments.
-    if rawget(_G, "CharacterStates") ~= nil and runtime.ProxyInstalled then
-        rawset(_G, "CharacterStates", nil)
-    end
+    BetterMovement.RestoreGlobalProxy()
 end
 
 function BetterMovement.RestoreGlobalProxy()

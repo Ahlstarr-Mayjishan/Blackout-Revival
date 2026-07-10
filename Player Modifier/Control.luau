@@ -74,6 +74,132 @@ local function readWorkspaceFile(path)
     return nil
 end
 
+local function getEquippedGunSettings(character)
+    if not character then
+        return nil
+    end
+
+    for _, child in ipairs(character:GetChildren()) do
+        if child:GetAttribute("Tool") and child:FindFirstChild("GunStatus") then
+            local settingsModule = child:FindFirstChild("Settings")
+            if settingsModule then
+                local ok, settings = pcall(require, settingsModule)
+                if ok and type(settings) == "table" then
+                    return settings
+                end
+            end
+        end
+    end
+
+    return nil
+end
+
+local function ensureValueChild(parent, name, value)
+    local child = parent:FindFirstChild(name)
+    local valueType = type(value)
+
+    if not child then
+        if valueType == "boolean" then
+            child = Instance.new("BoolValue")
+        elseif valueType == "number" then
+            child = Instance.new("NumberValue")
+        elseif valueType == "string" then
+            child = Instance.new("StringValue")
+        else
+            child = Instance.new("Folder")
+        end
+
+        child.Name = name
+        child.Parent = parent
+    end
+
+    pcall(function()
+        if valueType == "boolean" or valueType == "number" or valueType == "string" then
+            child.Value = value
+        end
+    end)
+
+    return child
+end
+
+local function ensureTableFolder(parent, name, values)
+    local folder = parent:FindFirstChild(name)
+    local repaired = false
+
+    if not folder then
+        folder = Instance.new("Folder")
+        folder.Name = name
+        folder.Parent = parent
+        repaired = true
+    end
+
+    if type(values) == "table" then
+        for key, value in pairs(values) do
+            if folder:FindFirstChild(key) == nil then
+                repaired = true
+            end
+            ensureValueChild(folder, key, value)
+        end
+    end
+
+    return folder, repaired
+end
+
+local function repairServerGunModel()
+    local character = Players.LocalPlayer.Character
+    if not character then
+        return false
+    end
+
+    local serverGunModel = character:FindFirstChild("ServerGunModel")
+    if not serverGunModel then
+        return false
+    end
+
+    local repaired = false
+    local settingsTable = getEquippedGunSettings(character)
+
+    if not serverGunModel:FindFirstChild("ShowCrosshair") then
+        local showCrosshair = Instance.new("BoolValue")
+        showCrosshair.Name = "ShowCrosshair"
+        showCrosshair.Value = type(settingsTable) == "table" and settingsTable.ShowCrosshair ~= nil
+            and settingsTable.ShowCrosshair
+            or true
+        showCrosshair.Parent = serverGunModel
+        repaired = true
+    end
+
+    local _, repairedUnchambered = ensureTableFolder(
+        serverGunModel,
+        "Unchambered",
+        type(settingsTable) == "table" and settingsTable.Unchambered or {
+            InvisibleMagazine = false,
+            PlayOnEquip = false,
+        }
+    )
+    repaired = repaired or repairedUnchambered
+
+    if not serverGunModel:FindFirstChild("Settings") then
+        for _, child in ipairs(character:GetChildren()) do
+            if child:GetAttribute("Tool") and child:FindFirstChild("GunStatus") then
+                local settings = child:FindFirstChild("Settings")
+                if settings then
+                    local clonedSettings = settings:Clone()
+                    clonedSettings.Parent = serverGunModel
+                    repaired = true
+                    break
+                end
+            end
+        end
+    end
+
+    if repaired then
+        print("[Player Modifier - Control] Repaired missing ServerGunModel client fields.")
+    end
+
+    return repaired
+end
+
 local function clearStuckWeaponStates()
     if type(_G.AimAssistStates) == "table" then
         _G.AimAssistStates.Enabled = false
@@ -155,6 +281,8 @@ local function clearStuckWeaponStates()
         end)
     end
 
+    pcall(repairServerGunModel)
+
     pcall(function()
         local si = ReplicatedStorage:FindFirstChild("SI")
         if si and type(si.Fire) == "function" then
@@ -180,11 +308,19 @@ function Control:Init(Tab)
     Tab:CreateSection("Script Options")
 
     _G.FixBlackoutWeapon = clearStuckWeaponStates
+    _G.RepairBlackoutWeaponRuntime = repairServerGunModel
 
     Tab:CreateButton({
         Name = "Fix Stuck Weapon / Inventory",
         Callback = function()
             clearStuckWeaponStates()
+        end,
+    })
+
+    Tab:CreateButton({
+        Name = "Repair Weapon Runtime",
+        Callback = function()
+            repairServerGunModel()
         end,
     })
 
