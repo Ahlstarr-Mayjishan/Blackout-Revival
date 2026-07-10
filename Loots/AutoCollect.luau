@@ -18,11 +18,13 @@ local LocalPlayer = Players.LocalPlayer
 
 local AutoCollect = {}
 AutoCollect.Name = "Auto Collect Loot"
-AutoCollect.Description = "Automatically collects Cash and Valuables using Legit or Blatant mode."
+AutoCollect.Description = "Automatically collects Cash and Valuables using Legit, Blatant, or Instant mode."
 
 local MAX_LOOT_DISTANCE = 10.5
 local LEGIT_COLLECT_DELAY = 0.42
 local BLATANT_COLLECT_DELAY = 0.06
+local INSTANT_IDLE_DELAY = 0.12
+local INSTANT_RETRY_COUNT = 2
 local IDLE_DELAY = 0.35
 local RESCAN_INTERVAL = 1.25
 
@@ -172,7 +174,7 @@ local function getCurrentLootTable()
 
     _G.LootRuntime.ActiveLootObject = nil
 
-    if _G.LootStates and _G.LootStates.CollectMode == "Blatant" then
+    if _G.LootStates and (_G.LootStates.CollectMode == "Blatant" or _G.LootStates.CollectMode == "Instant") then
         local nearbyLoot = findNearbyLootTable()
         if isUsableLootTable(nearbyLoot) then
             return nearbyLoot
@@ -226,14 +228,25 @@ local function collectOnce()
 
     local mode = (_G.LootStates and _G.LootStates.CollectMode) or "Legit"
     local didCollect = false
+    local selectedCurrencies = getSelectedCurrencyOrder()
 
-    for _, currencyName in ipairs(getSelectedCurrencyOrder()) do
+    if mode == "Instant" then
+        for _ = 1, INSTANT_RETRY_COUNT do
+            for _, currencyName in ipairs(selectedCurrencies) do
+                didCollect = collectCurrency(lootTable, currencyName) or didCollect
+            end
+        end
+
+        return didCollect
+    end
+
+    for _, currencyName in ipairs(selectedCurrencies) do
         if collectCurrency(lootTable, currencyName) then
             didCollect = true
-            if mode ~= "Blatant" then
-                task.wait(LEGIT_COLLECT_DELAY + math.random(5, 20) / 100)
-            else
+            if mode == "Blatant" then
                 task.wait(BLATANT_COLLECT_DELAY)
+            else
+                task.wait(LEGIT_COLLECT_DELAY + math.random(5, 20) / 100)
             end
         end
     end
@@ -281,7 +294,9 @@ local function setupCollectLoop()
             if enabled then
                 local didCollect = collectOnce()
                 local mode = _G.LootStates.CollectMode
-                if didCollect then
+                if mode == "Instant" then
+                    task.wait(didCollect and 0.05 or INSTANT_IDLE_DELAY)
+                elseif didCollect then
                     task.wait(mode == "Blatant" and BLATANT_COLLECT_DELAY or LEGIT_COLLECT_DELAY)
                 else
                     task.wait(IDLE_DELAY)

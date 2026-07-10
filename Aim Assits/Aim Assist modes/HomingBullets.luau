@@ -26,6 +26,8 @@ local DEFAULT_MAX_HOMING_ANGLE = 28
 local DEFAULT_MEMORY_WINDOW = 0.45
 local DEFAULT_LOS_REQUIRED = true
 local DEFAULT_AUTO_WEAPON_RANGE = true
+local DEFAULT_HOMING_PROFILE = "Blatant Snap"
+local DEFAULT_REDIRECT_INITIAL_DIRECTION = true
 
 local HomingBullets = {}
 HomingBullets.Name = "Homing Bullets"
@@ -60,6 +62,15 @@ end
 local function getStateBool(key, fallback)
     local value = _G.AimAssistStates and _G.AimAssistStates[key]
     if type(value) == "boolean" then
+        return value
+    end
+
+    return fallback
+end
+
+local function getStateString(key, fallback)
+    local value = _G.AimAssistStates and _G.AimAssistStates[key]
+    if type(value) == "string" then
         return value
     end
 
@@ -498,6 +509,47 @@ local function createCurveProxy(origin, targetBone, targetCharacter)
     }
 end
 
+local function getNativeHomingProfile()
+    local profile = getStateString("HomingProfile", DEFAULT_HOMING_PROFILE)
+
+    if profile == "Native Seeker" then
+        return {
+            Distance = 50,
+            Lerp = {
+                Min = 0.9,
+                Max = 1.0,
+            },
+            Deadzone = 0.25881904510252074,
+            KeepVelocity = true,
+            TurningDrag = true,
+        }
+    end
+
+    if profile == "Balanced" then
+        return {
+            Distance = 180,
+            Lerp = {
+                Min = 0.55,
+                Max = 0.95,
+            },
+            Deadzone = 0,
+            KeepVelocity = true,
+            TurningDrag = false,
+        }
+    end
+
+    return {
+        Distance = 9999,
+        Lerp = {
+            Min = 1.0,
+            Max = 1.0,
+        },
+        Deadzone = -1,
+        KeepVelocity = true,
+        TurningDrag = false,
+    }
+end
+
 -- Build target information table for FastCast homing
 local function buildTargetInformation(origin, direction, bulletData)
     if not isHomingEnabled() then
@@ -569,17 +621,15 @@ local function buildTargetInformation(origin, direction, bulletData)
     end
 
     local curveProxyData = createCurveProxy(origin, targetBone, targetCharacter)
+    local profile = getNativeHomingProfile()
 
     return {
         Object = curveProxyData and curveProxyData.Proxy or targetBone,
-        Distance = 9999, -- Keeps native homing lerp at full strength.
-        Lerp = {
-            Min = 1.0, -- Force instant snap
-            Max = 1.0,
-        },
-        Deadzone = -1, -- Disable angle restrictions
-        KeepVelocity = true,
-        TurningDrag = false,
+        Distance = profile.Distance,
+        Lerp = profile.Lerp,
+        Deadzone = profile.Deadzone,
+        KeepVelocity = profile.KeepVelocity,
+        TurningDrag = profile.TurningDrag,
         CurveProxyData = curveProxyData,
     }, targetCharacter
 end
@@ -847,7 +897,9 @@ local function setupBulletHandlerHook()
                 local targetInformation, targetCharacter = buildTargetInformation(args[2], args[3], bulletData)
                 if bulletData and targetCharacter and targetInformation then
                     bulletData.TargetInformation = targetInformation
-                    redirectInitialDirection(args, targetInformation)
+                    if getStateBool("HomingRedirectInitialDirection", DEFAULT_REDIRECT_INITIAL_DIRECTION) then
+                        redirectInitialDirection(args, targetInformation)
+                    end
                     log("Queued native BulletHandler homing: " .. tostring(targetCharacter.Name))
                 end
             end
@@ -967,6 +1019,10 @@ function HomingBullets:Init(Tab)
     if _G.AimAssistStates.HomingRequireLineOfSight == nil then
         _G.AimAssistStates.HomingRequireLineOfSight = DEFAULT_LOS_REQUIRED
     end
+    _G.AimAssistStates.HomingProfile = _G.AimAssistStates.HomingProfile or DEFAULT_HOMING_PROFILE
+    if _G.AimAssistStates.HomingRedirectInitialDirection == nil then
+        _G.AimAssistStates.HomingRedirectInitialDirection = DEFAULT_REDIRECT_INITIAL_DIRECTION
+    end
 
     -- Add the toggle to the UI
     Tab:CreateToggle({
@@ -1005,6 +1061,33 @@ function HomingBullets:Init(Tab)
                 _G.AimAssistStates.HomingAutoWeaponRange = Value
             end
             print("[Aim Assist - HomingBullets] Auto weapon range: " .. tostring(Value))
+        end,
+    })
+
+    Tab:CreateToggle({
+        Name = "Redirect Initial Shot Vector",
+        CurrentValue = _G.AimAssistStates.HomingRedirectInitialDirection,
+        Flag = "AimAssist_HomingRedirectInitialDirection",
+        Callback = function(Value)
+            if _G.AimAssistStates then
+                _G.AimAssistStates.HomingRedirectInitialDirection = Value
+            end
+            print("[Aim Assist - HomingBullets] Redirect initial vector: " .. tostring(Value))
+        end,
+    })
+
+    Tab:CreateDropdown({
+        Name = "Homing Native Profile",
+        Options = { "Blatant Snap", "Balanced", "Native Seeker" },
+        CurrentOption = { _G.AimAssistStates.HomingProfile or DEFAULT_HOMING_PROFILE },
+        MultipleOptions = false,
+        Flag = "AimAssist_HomingProfile",
+        Callback = function(SelectedOptions)
+            local option = if type(SelectedOptions) == "table" then SelectedOptions[1] else SelectedOptions
+            if option == "Blatant Snap" or option == "Balanced" or option == "Native Seeker" then
+                _G.AimAssistStates.HomingProfile = option
+            end
+            print("[Aim Assist - HomingBullets] Native profile: " .. tostring(option))
         end,
     })
 

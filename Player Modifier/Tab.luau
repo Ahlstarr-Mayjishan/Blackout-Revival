@@ -170,6 +170,10 @@ function Tab:Init(UIRef)
             if _G.ModifierStates then
                 _G.ModifierStates.NoFallDamage = Value
             end
+            if Value and type(_G.BlackoutLoadModule) == "function" then
+                _G.BlackoutLoadModule("Player Modifier/NoFallDamage.luau")
+                _G.BlackoutLoadModule("Player Modifier/Executor.luau")
+            end
             print("[Player Modifier - Tab] No Fall Damage state: " .. tostring(Value))
         end,
     })
@@ -182,6 +186,10 @@ function Tab:Init(UIRef)
         Callback = function(Value)
             if _G.ModifierStates then
                 _G.ModifierStates.AntiRagdoll = Value
+            end
+            if Value and type(_G.BlackoutLoadModule) == "function" then
+                _G.BlackoutLoadModule("Player Modifier/AntiRagdoll.luau")
+                _G.BlackoutLoadModule("Player Modifier/Executor.luau")
             end
             print("[Player Modifier - Tab] Anti-Ragdoll state: " .. tostring(Value))
         end,

@@ -9,8 +9,9 @@ local DEFAULT_LOOT_STATES = {
     AutoLockpick = false,
     AutoLockpickMode = "Legit",
     AutoLockpickLegitDelay = 1.15,
-    AutoLockpickBlatantDelay = 0.08,
+    AutoLockpickBlatantDelay = 0,
     AutoCollectLoot = false,
+    InstantInteract = false,
     CollectLootOptions = {
         Cash = true,
         Valuables = true,
@@ -126,6 +127,21 @@ function Tab:Init(UIRef)
     UIRef:CreateSection("Collect")
 
     UIRef:CreateToggle({
+        Name = "Instant Interact",
+        CurrentValue = _G.LootStates.InstantInteract,
+        Flag = "Loots_InstantInteract",
+        Callback = function(Value)
+            if _G.LootStates then
+                _G.LootStates.InstantInteract = Value
+            end
+            if Value and type(_G.BlackoutLoadModule) == "function" then
+                _G.BlackoutLoadModule("Loots/InstantInteract.luau")
+            end
+            print("[Loots - Tab] Instant Interact: " .. tostring(Value))
+        end,
+    })
+
+    UIRef:CreateToggle({
         Name = "Auto Collect Loot",
         CurrentValue = _G.LootStates.AutoCollectLoot,
         Flag = "Loots_AutoCollectLoot",
@@ -160,13 +176,13 @@ function Tab:Init(UIRef)
 
     UIRef:CreateDropdown({
         Name = "Collect modes",
-        Options = { "Legit", "Blatant" },
+        Options = { "Legit", "Blatant", "Instant" },
         CurrentOption = { _G.LootStates.CollectMode or "Legit" },
         MultipleOptions = false,
         Flag = "Loots_CollectMode",
         Callback = function(SelectedOptions)
             local option = firstOption(SelectedOptions)
-            if _G.LootStates and (option == "Legit" or option == "Blatant") then
+            if _G.LootStates and (option == "Legit" or option == "Blatant" or option == "Instant") then
                 _G.LootStates.CollectMode = option
             end
             print("[Loots - Tab] Collect mode: " .. tostring(option))

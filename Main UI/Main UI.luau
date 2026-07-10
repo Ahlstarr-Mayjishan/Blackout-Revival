@@ -767,8 +767,7 @@ end
 -- 5. Module Loading Mechanism
 -- Create header section in UI
 local ModulesSection = Tab:CreateSection("Loaded Modules")
-Tabs.Status:CreateLabel("Safe boot: automation engines are not auto-loaded.")
-Tabs.Status:CreateLabel("Use System controls first; load risky modules only after the base menu is stable.")
+Tabs.Status:CreateLabel("Auto-load mode: all modules are loaded at startup.")
 local LoadedModulePaths = {}
 
 local function shouldShowModuleHeader(moduleIdentifier)
@@ -882,100 +881,43 @@ local function loadModuleByPath(modulePath, targetTab)
     return true
 end
 
-local function loadModuleGroup(groupName, modulePaths)
-    Tabs.Status:CreateLabel("Loading group: " .. groupName)
-
-    local loadedCount = 0
-    for _, modulePath in ipairs(modulePaths) do
-        if loadModuleByPath(modulePath) then
-            loadedCount = loadedCount + 1
-        end
-    end
-
-    Tabs.Status:CreateLabel("Group done: " .. groupName .. " (" .. tostring(loadedCount) .. " new)")
-end
-
 _G.BlackoutLoadModule = function(modulePath)
     return loadModuleByPath(modulePath)
 end
-
-local function createEngineLoadControls()
-    local ok, err = pcall(function()
-        Tabs.System:CreateSection("Manual Engine Loading")
-        Tabs.System:CreateLabel("Safe Boot loads only tabs and cleanup controls. Load one group at a time.")
-
-        Tabs.System:CreateButton({
-            Name = "Load Movement Engines",
-            Callback = function()
-                loadModuleGroup("Movement Engines", {
-                    "Player Modifier/PerformanceGuard.luau",
-                    "Player Modifier/DoubleJump.luau",
-                    "Player Modifier/NoFallDamage.luau",
-                    "Player Modifier/AntiRagdoll.luau",
-                    "Player Modifier/AutoUnlock.luau",
-                    "Player Modifier/BetterMovement.luau",
-                    "Player Modifier/InfiniteStamina.luau",
-                    "Player Modifier/SpeedHack.luau",
-                })
-            end,
-        })
-
-        Tabs.System:CreateButton({
-            Name = "Load Combat Engines",
-            Callback = function()
-                loadModuleGroup("Combat Engines", {
-                    "Player Modifier/Killaura.luau",
-                    "Player Modifier/AuraActions.luau",
-                    "Player Modifier/AutoBash.luau",
-                    "Player Modifier/AntiFlashbang.luau",
-                    "Player Modifier/Executor.luau",
-                })
-            end,
-        })
-
-        Tabs.System:CreateButton({
-            Name = "Load Loot Engines",
-            Callback = function()
-                loadModuleGroup("Loot Engines", {
-                    "Loots/AutoLockpick.luau",
-                    "Loots/AutoCollect.luau",
-                    "Loots/Executor.luau",
-                })
-            end,
-        })
-
-        Tabs.System:CreateButton({
-            Name = "Load Aim Engines",
-            Callback = function()
-                loadModuleGroup("Aim Engines", {
-                    "Aim Assits/Executor.luau",
-                    "Aim Assits/Aim Assist modes/Aimbot.luau",
-                    "Aim Assits/Aim Assist modes/SilentAim.luau",
-                    "Aim Assits/Aim Assist modes/HomingBullets.luau",
-                    "Aim Assits/Aim Assist modes/RecoilControl.luau",
-                })
-            end,
-        })
-    end)
-
-    if not ok then
-        warn("Main UI | Failed to create manual engine controls: " .. tostring(err))
-    end
-end
-
-createEngineLoadControls()
 
 -- Loader: Client Executor Environment (Workspace filesystem)
 local function loadExecutorModules()
     local modulePaths = {
         "Player Modifier/Tab.luau",
+        "Player Modifier/PerformanceGuard.luau",
+        "Player Modifier/DoubleJump.luau",
+        "Player Modifier/NoFallDamage.luau",
+        "Player Modifier/AntiRagdoll.luau",
+        "Player Modifier/AutoUnlock.luau",
+        "Player Modifier/BetterMovement.luau",
+        "Player Modifier/Killaura.luau",
+        "Player Modifier/InfiniteStamina.luau",
+        "Player Modifier/SpeedHack.luau",
+        "Player Modifier/AuraActions.luau",
+        "Player Modifier/AutoBash.luau",
+        "Player Modifier/AntiFlashbang.luau",
         "Player Modifier/Control.luau",
+        "Player Modifier/Executor.luau",
         "Player Modifier/GC.luau",
         "Loots/Tab.luau",
+        "Loots/InstantInteract.luau",
+        "Loots/AutoLockpick.luau",
+        "Loots/AutoCollect.luau",
+        "Loots/Executor.luau",
         "Loots/Control.luau",
         "Loots/GC.luau",
         "Aim Assits/Tab.luau",
         "Aim Assits/Control.luau",
+        "Aim Assits/Executor.luau",
+        "Aim Assits/Aim Assist modes/Aimbot.luau",
+        "Aim Assits/Aim Assist modes/SilentAim.luau",
+        "Aim Assits/Aim Assist modes/HomingBullets.luau",
+        "Aim Assits/Aim Assist modes/RecoilControl.luau",
         "Aim Assits/GC.luau",
     }
 
