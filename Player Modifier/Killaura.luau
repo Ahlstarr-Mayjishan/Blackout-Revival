@@ -15,6 +15,7 @@ local tableUnpack = table.unpack or unpack
 local cachedMeleeMain = nil
 local cachedInputHandler = nil
 local virtualInputManager = nil
+local lastRaycastDebugAt = 0
 
 local Killaura = {}
 Killaura.Name = "Killaura (Melee) Logic"
@@ -54,7 +55,13 @@ local function findEquippedMelee(character)
     end
 
     for _, child in ipairs(character:GetChildren()) do
-        if (child:IsA("Tool") or child:IsA("RayValue") or child:GetAttribute("Tool")) and child:FindFirstChild("MeleeStatus") then
+        if child:GetAttribute("Tool") and child:FindFirstChild("MeleeStatus") then
+            return child
+        end
+    end
+
+    for _, child in ipairs(character:GetChildren()) do
+        if (child:IsA("Tool") or child:IsA("RayValue")) and child:FindFirstChild("MeleeStatus") then
             return child
         end
     end
@@ -71,12 +78,36 @@ local function getHumanoid(model)
 end
 
 local function getTargetPart(target)
-    local targetPartName = getModifierState("KillauraHitAt", "head") == "head" and "Head" or "Torso"
+    local hitAt = string.lower(tostring(getModifierState("KillauraHitAt", "head")))
+    local targetPartName = (hitAt == "head" or hitAt == "neck") and "Head" or "Torso"
     return target:FindFirstChild(targetPartName)
         or target:FindFirstChild("UpperTorso")
         or target:FindFirstChild("LowerTorso")
         or target:FindFirstChild("HumanoidRootPart")
         or target:FindFirstChild("Head")
+end
+
+local function getTargetPoint(target)
+    local hitAt = string.lower(tostring(getModifierState("KillauraHitAt", "head")))
+    local head = target:FindFirstChild("Head")
+    local torso = target:FindFirstChild("Torso")
+        or target:FindFirstChild("UpperTorso")
+        or target:FindFirstChild("HumanoidRootPart")
+    local targetPart = getTargetPart(target)
+
+    if hitAt == "neck" and head and torso then
+        return head.Position:Lerp(torso.Position, 0.35), head
+    end
+
+    if hitAt == "head" and head then
+        return head.Position, head
+    end
+
+    if hitAt == "torso" and torso then
+        return torso.Position, torso
+    end
+
+    return targetPart and targetPart.Position, targetPart
 end
 
 local function isValidTarget(model, localChar)
@@ -214,6 +245,19 @@ local function sendInputHandlerSwing(holdTime)
     return ok
 end
 
+local function sendInputHandlerHeavySwing()
+    local inputHandler = getInputHandler()
+    if not inputHandler or type(inputHandler.HandleInput) ~= "function" then
+        return false
+    end
+
+    local ok = pcall(function()
+        inputHandler.HandleInput(nil, nil, "Ended", "Melee_heavy_attack")
+    end)
+
+    return ok
+end
+
 local function sendMouseSwing(holdTime)
     holdTime = holdTime or 0.05
 
@@ -261,9 +305,44 @@ local function fireSwingRemote(holdTime)
     return ok
 end
 
+local function fireHeavySwingRemote()
+    local swingRemote = ReplicatedStorage:FindFirstChild("MeleeStorage")
+        and ReplicatedStorage.MeleeStorage:FindFirstChild("Events")
+        and ReplicatedStorage.MeleeStorage.Events:FindFirstChild("Swing")
+
+    if not swingRemote or not swingRemote:IsA("RemoteFunction") then
+        return false
+    end
+
+    local ok = pcall(function()
+        swingRemote:InvokeServer(nil, true)
+    end)
+
+    return ok
+end
+
 local function performSwing()
-    local holdTime = math.clamp(getModifierState("KillauraSwingHold", 0.05), 0.03, 0.15)
+    local holdTime = math.clamp(getModifierState("KillauraSwingHold", 0.1), 0.03, 0.2)
+    local swingType = tostring(getModifierState("KillauraSwingType", "Normal"))
     local meleeMain = getMeleeMain()
+
+    if swingType == "Heavy" then
+        if sendInputHandlerHeavySwing() then
+            return true
+        end
+
+        if meleeMain and type(meleeMain.Swing) == "function" then
+            local ok = pcall(function()
+                meleeMain.Swing(nil, true)
+            end)
+
+            if ok then
+                return true
+            end
+        end
+
+        return fireHeavySwingRemote()
+    end
 
     if sendInputHandlerSwing(holdTime) then
         return true
@@ -293,10 +372,6 @@ local function isLikelyMeleeRaycast(origin, params)
         return false
     end
 
-    if params.CollisionGroup == "RayCasts" then
-        return false
-    end
-
     local char = LocalPlayer.Character
     local melee = findEquippedMelee(char)
     if not melee then
@@ -317,6 +392,41 @@ local function isLikelyMeleeRaycast(origin, params)
     return root and (root.Position - origin).Magnitude <= 8
 end
 
+local function shouldDebugRaycast()
+    if not getModifierState("KillauraDebug", false) then
+        return false
+    end
+
+    local now = os.clock()
+    if now - lastRaycastDebugAt < 1 then
+        return false
+    end
+
+    lastRaycastDebugAt = now
+    return true
+end
+
+local function getRedirectedDirection(origin)
+    local target = getClosestMeleeTarget()
+    if not target then
+        if shouldDebugRaycast() then
+            print("[Player Modifier - Killaura] Raycast matched melee, but no target in range.")
+        end
+        return nil
+    end
+
+    local targetPoint, targetPart = getTargetPoint(target)
+    if not targetPoint or not targetPart then
+        return nil
+    end
+
+    if shouldDebugRaycast() then
+        print("[Player Modifier - Killaura] Redirecting hitbox ray to " .. tostring(target.Name) .. "." .. tostring(targetPart.Name))
+    end
+
+    return targetPoint - origin
+end
+
 -- Establish Raycast redirection hook for Blatant Mode
 local function setupRaycastHook()
     _G.OriginalFunctions = _G.OriginalFunctions or {}
@@ -333,14 +443,10 @@ local function setupRaycastHook()
                 local params = args[3]
                 
                 if isLikelyMeleeRaycast(origin, params) then
-                    local target = getClosestMeleeTarget()
-                    if target then
-                        local targetPart = getTargetPart(target)
-                        if targetPart then
-                            -- Redirect melee ray straight to target part
-                            args[2] = (targetPart.Position - origin)
-                            return oldNamecall(self, tableUnpack(args))
-                        end
+                    local redirectedDirection = getRedirectedDirection(origin)
+                    if redirectedDirection then
+                        args[2] = redirectedDirection
+                        return oldNamecall(self, tableUnpack(args))
                     end
                 end
             end
@@ -357,12 +463,9 @@ local function setupRaycastHook()
         oldFunc = hookfunction(Workspace.Raycast, function(self, origin, direction, params)
             if _G.ModifierStates and _G.ModifierStates.Killaura and _G.ModifierStates.KillauraMode == "Blatant" and _G.ModifierStates.KillauraHitAt ~= "off" then
                 if isLikelyMeleeRaycast(origin, params) then
-                    local target = getClosestMeleeTarget()
-                    if target then
-                        local targetPart = getTargetPart(target)
-                        if targetPart then
-                            direction = (targetPart.Position - origin)
-                        end
+                    local redirectedDirection = getRedirectedDirection(origin)
+                    if redirectedDirection then
+                        direction = redirectedDirection
                     end
                 end
             end

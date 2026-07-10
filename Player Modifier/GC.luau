@@ -112,6 +112,39 @@ local function restoreHooks()
         _G.OriginalFunctions["FireServer"] = nil
         _G.OriginalFunctions["PlayerRemote_FireServer"] = nil
     end
+
+    if _G.OriginalFunctions
+        and (_G.OriginalFunctions["NoFallDamage_DamageFireServer"]
+            or _G.OriginalFunctions["NoFallDamage_RagdollFireServer"]) then
+        if hookfunction then
+            local success, err = pcall(function()
+                local ReplicatedStorage = game:GetService("ReplicatedStorage")
+                local playerEvents = ReplicatedStorage:FindFirstChild("Events")
+                    and ReplicatedStorage.Events:FindFirstChild("Player")
+
+                if playerEvents then
+                    if _G.OriginalFunctions["NoFallDamage_DamageFireServer"]
+                        and playerEvents:FindFirstChild("Damage") then
+                        hookfunction(playerEvents.Damage.FireServer, _G.OriginalFunctions["NoFallDamage_DamageFireServer"])
+                    end
+
+                    if _G.OriginalFunctions["NoFallDamage_RagdollFireServer"]
+                        and playerEvents:FindFirstChild("Ragdoll") then
+                        hookfunction(playerEvents.Ragdoll.FireServer, _G.OriginalFunctions["NoFallDamage_RagdollFireServer"])
+                    end
+                end
+            end)
+
+            if success then
+                log("Restored NoFallDamage direct FireServer hooks successfully.")
+            else
+                warn("Failed to restore NoFallDamage direct FireServer hooks: " .. tostring(err))
+            end
+        end
+
+        _G.OriginalFunctions["NoFallDamage_DamageFireServer"] = nil
+        _G.OriginalFunctions["NoFallDamage_RagdollFireServer"] = nil
+    end
     
     -- 3. Restore GetAttribute hook
     if _G.OriginalFunctions and _G.OriginalFunctions["GetAttribute"] then

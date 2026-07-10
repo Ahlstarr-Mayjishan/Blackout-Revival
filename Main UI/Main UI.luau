@@ -333,49 +333,19 @@ repairServerGunModel = function()
         return false, "no ServerGunModel"
     end
 
-    local repaired = false
-    local settingsTable = getEquippedGunSettings(character)
-
-    if not serverGunModel:FindFirstChild("ShowCrosshair") then
-        local showCrosshair = Instance.new("BoolValue")
-        showCrosshair.Name = "ShowCrosshair"
-        showCrosshair.Value = type(settingsTable) == "table" and settingsTable.ShowCrosshair ~= nil
-            and settingsTable.ShowCrosshair
-            or true
-        showCrosshair.Parent = serverGunModel
-        repaired = true
-    end
-
-    local _, repairedUnchambered = ensureTableFolder(
-        serverGunModel,
-        "Unchambered",
-        type(settingsTable) == "table" and settingsTable.Unchambered or {
-            InvisibleMagazine = false,
-            PlayOnEquip = false,
-        }
-    )
-    repaired = repaired or repairedUnchambered
-
-    if not serverGunModel:FindFirstChild("Settings") then
-        for _, child in ipairs(character:GetChildren()) do
-            if child:GetAttribute("Tool") and child:FindFirstChild("GunStatus") then
-                local settings = child:FindFirstChild("Settings")
-                if settings then
-                    local clonedSettings = settings:Clone()
-                    clonedSettings.Parent = serverGunModel
-                    repaired = true
-                    break
-                end
-            end
+    local missing = {}
+    for _, childName in ipairs({ "ShowCrosshair", "Unchambered", "Settings" }) do
+        if not serverGunModel:FindFirstChild(childName) then
+            table.insert(missing, childName)
         end
     end
 
-    if repaired and os.clock() - lastWeaponRepairLog > 1 then
+    if #missing > 0 and os.clock() - lastWeaponRepairLog > 1 then
         lastWeaponRepairLog = os.clock()
-        print("[Blackout UI] Repaired missing ServerGunModel client fields.")
+        warn("[Blackout UI] ServerGunModel missing client fields: " .. table.concat(missing, ", ") .. ". Not patching runtime model automatically.")
     end
 
-    return repaired, "ok"
+    return false, #missing == 0 and "ok" or ("missing " .. table.concat(missing, ", "))
 end
 
 _G.RepairBlackoutWeaponRuntime = repairServerGunModel
@@ -614,7 +584,7 @@ local Window = Rayfield:CreateWindow({
     LoadingSubtitle = "by Antigravity",
     Theme = "Default",
     ConfigurationSaving = {
-        Enabled = true,
+        Enabled = false,
         FolderName = "PlayerModifier",
         FileName = "Config"
     },
@@ -650,7 +620,7 @@ local function createSystemFallbackControls()
             end,
         })
         Tabs.System:CreateButton({
-            Name = "Repair Weapon Runtime",
+            Name = "Diagnose Weapon Runtime",
             Callback = function()
                 repairServerGunModel()
             end,
@@ -890,25 +860,9 @@ local function loadExecutorModules()
     local modulePaths = {
         "Player Modifier/Tab.luau",
         "Player Modifier/PerformanceGuard.luau",
-        "Player Modifier/DoubleJump.luau",
-        "Player Modifier/NoFallDamage.luau",
-        "Player Modifier/AntiRagdoll.luau",
-        "Player Modifier/AutoUnlock.luau",
-        "Player Modifier/BetterMovement.luau",
-        "Player Modifier/Killaura.luau",
-        "Player Modifier/InfiniteStamina.luau",
-        "Player Modifier/SpeedHack.luau",
-        "Player Modifier/AuraActions.luau",
-        "Player Modifier/AutoBash.luau",
-        "Player Modifier/AntiFlashbang.luau",
         "Player Modifier/Control.luau",
-        "Player Modifier/Executor.luau",
         "Player Modifier/GC.luau",
         "Loots/Tab.luau",
-        "Loots/InstantInteract.luau",
-        "Loots/AutoLockpick.luau",
-        "Loots/AutoCollect.luau",
-        "Loots/Executor.luau",
         "Loots/Control.luau",
         "Loots/GC.luau",
         "Aim Assits/Tab.luau",

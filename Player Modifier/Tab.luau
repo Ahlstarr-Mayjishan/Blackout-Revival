@@ -20,6 +20,8 @@ local DEFAULT_MODIFIER_STATES = {
     Killaura = false,
     KillauraMode = "Legit",
     KillauraHitAt = "head",
+    KillauraSwingType = "Normal",
+    KillauraSwingHold = 0.1,
     KillauraRange = 15,
     KillauraDelay = 0.2, -- attack delay in seconds
     BetterMovementOptions = {
@@ -98,6 +100,12 @@ local Tab = {}
 Tab.Name = "UI Tab Toggles"
 Tab.Description = "Exposes the main modifier toggles to the user interface."
 
+local function loadModuleWhenEnabled(enabled, modulePath)
+    if enabled and type(_G.BlackoutLoadModule) == "function" then
+        _G.BlackoutLoadModule(modulePath)
+    end
+end
+
 function Tab:Init(UIRef)
     -- UIRef is the Rayfield Tab instance passed by Main UI.luau
     
@@ -129,6 +137,7 @@ function Tab:Init(UIRef)
             if _G.ModifierStates then
                 _G.ModifierStates.SpeedHackEnabled = Value
             end
+            loadModuleWhenEnabled(Value, "Player Modifier/SpeedHack.luau")
             print("[Player Modifier - Tab] Speed Hack state: " .. tostring(Value))
         end,
     })
@@ -157,6 +166,7 @@ function Tab:Init(UIRef)
             if _G.ModifierStates then
                 _G.ModifierStates.DoubleJump = Value
             end
+            loadModuleWhenEnabled(Value, "Player Modifier/DoubleJump.luau")
             print("[Player Modifier - Tab] Infinite Double Jump state: " .. tostring(Value))
         end,
     })
@@ -223,6 +233,10 @@ function Tab:Init(UIRef)
                         _G.ModifierStates.BetterMovementOptions[option] = true
                     end
                 end
+
+                if #normalizedOptions > 0 then
+                    loadModuleWhenEnabled(true, "Player Modifier/BetterMovement.luau")
+                end
             end
             print("[Player Modifier - Tab] Better Movement selected options updated.")
         end,
@@ -240,6 +254,7 @@ function Tab:Init(UIRef)
             if _G.ModifierStates then
                 _G.ModifierStates.AutoUnlock = Value
             end
+            loadModuleWhenEnabled(Value, "Player Modifier/AutoUnlock.luau")
             print("[Player Modifier - Tab] Auto-Unlock state: " .. tostring(Value))
         end,
     })
@@ -256,6 +271,7 @@ function Tab:Init(UIRef)
             if _G.ModifierStates then
                 _G.ModifierStates.ReviveAura = Value
             end
+            loadModuleWhenEnabled(Value, "Player Modifier/AuraActions.luau")
             print("[Player Modifier - Tab] Revive Aura state: " .. tostring(Value))
         end,
     })
@@ -303,6 +319,7 @@ function Tab:Init(UIRef)
             if _G.ModifierStates then
                 _G.ModifierStates.FinisherAura = Value
             end
+            loadModuleWhenEnabled(Value, "Player Modifier/AuraActions.luau")
             print("[Player Modifier - Tab] Finisher Aura state: " .. tostring(Value))
         end,
     })
@@ -334,6 +351,7 @@ function Tab:Init(UIRef)
             if _G.ModifierStates then
                 _G.ModifierStates.AutoBash = Value
             end
+            loadModuleWhenEnabled(Value, "Player Modifier/AutoBash.luau")
             print("[Player Modifier - Tab] Auto-Bash state: " .. tostring(Value))
         end,
     })
@@ -363,6 +381,7 @@ function Tab:Init(UIRef)
             if _G.ModifierStates then
                 _G.ModifierStates.AntiFlashbang = Value
             end
+            loadModuleWhenEnabled(Value, "Player Modifier/AntiFlashbang.luau")
             print("[Player Modifier - Tab] Anti-Flashbang state: " .. tostring(Value))
         end,
     })
@@ -420,7 +439,7 @@ function Tab:Init(UIRef)
     -- 8. Dropdown: Hit at
     UIRef:CreateDropdown({
         Name = "Hit at",
-        Options = {"off", "head", "torso"},
+        Options = {"off", "head", "neck", "torso"},
         CurrentOption = {_G.ModifierStates.KillauraHitAt},
         MultipleOptions = false,
         Flag = "KillauraHitAt_Dropdown",
@@ -433,10 +452,26 @@ function Tab:Init(UIRef)
         end,
     })
 
+    -- 8.25 Dropdown: Swing type
+    UIRef:CreateDropdown({
+        Name = "Swing Type",
+        Options = {"Normal", "Heavy"},
+        CurrentOption = {_G.ModifierStates.KillauraSwingType},
+        MultipleOptions = false,
+        Flag = "KillauraSwingType_Dropdown",
+        Callback = function(SelectedOptions)
+            local option = SelectedOptions[1] or SelectedOptions
+            if _G.ModifierStates and option then
+                _G.ModifierStates.KillauraSwingType = option
+            end
+            print("[Player Modifier - Tab] Kill Aura Swing Type set to: " .. tostring(option))
+        end,
+    })
+
     -- 8.5 Slider: Kill Aura Range
     UIRef:CreateSlider({
         Name = "Kill Aura Range (Studs)",
-        Range = {5, 30},
+        Range = {5, 60},
         Increment = 1,
         CurrentValue = _G.ModifierStates.KillauraRange or 15,
         Flag = "KillauraRange_Slider",

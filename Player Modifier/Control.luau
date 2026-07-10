@@ -148,56 +148,27 @@ end
 local function repairServerGunModel()
     local character = Players.LocalPlayer.Character
     if not character then
-        return false
+        return false, "no character"
     end
 
     local serverGunModel = character:FindFirstChild("ServerGunModel")
     if not serverGunModel then
-        return false
+        return false, "no ServerGunModel"
     end
 
-    local repaired = false
-    local settingsTable = getEquippedGunSettings(character)
-
-    if not serverGunModel:FindFirstChild("ShowCrosshair") then
-        local showCrosshair = Instance.new("BoolValue")
-        showCrosshair.Name = "ShowCrosshair"
-        showCrosshair.Value = type(settingsTable) == "table" and settingsTable.ShowCrosshair ~= nil
-            and settingsTable.ShowCrosshair
-            or true
-        showCrosshair.Parent = serverGunModel
-        repaired = true
-    end
-
-    local _, repairedUnchambered = ensureTableFolder(
-        serverGunModel,
-        "Unchambered",
-        type(settingsTable) == "table" and settingsTable.Unchambered or {
-            InvisibleMagazine = false,
-            PlayOnEquip = false,
-        }
-    )
-    repaired = repaired or repairedUnchambered
-
-    if not serverGunModel:FindFirstChild("Settings") then
-        for _, child in ipairs(character:GetChildren()) do
-            if child:GetAttribute("Tool") and child:FindFirstChild("GunStatus") then
-                local settings = child:FindFirstChild("Settings")
-                if settings then
-                    local clonedSettings = settings:Clone()
-                    clonedSettings.Parent = serverGunModel
-                    repaired = true
-                    break
-                end
-            end
+    local missing = {}
+    for _, childName in ipairs({ "ShowCrosshair", "Unchambered", "Settings" }) do
+        if not serverGunModel:FindFirstChild(childName) then
+            table.insert(missing, childName)
         end
     end
 
-    if repaired then
-        print("[Player Modifier - Control] Repaired missing ServerGunModel client fields.")
+    if #missing > 0 then
+        warn("[Player Modifier - Control] ServerGunModel missing: " .. table.concat(missing, ", ") .. ". Runtime model was not patched.")
+        return false, "missing " .. table.concat(missing, ", ")
     end
 
-    return repaired
+    return false, "ok"
 end
 
 local function clearStuckWeaponStates()
@@ -281,8 +252,6 @@ local function clearStuckWeaponStates()
         end)
     end
 
-    pcall(repairServerGunModel)
-
     pcall(function()
         local si = ReplicatedStorage:FindFirstChild("SI")
         if si and type(si.Fire) == "function" then
@@ -318,7 +287,7 @@ function Control:Init(Tab)
     })
 
     Tab:CreateButton({
-        Name = "Repair Weapon Runtime",
+        Name = "Diagnose Weapon Runtime",
         Callback = function()
             repairServerGunModel()
         end,

@@ -173,13 +173,31 @@ local function playLegitInputPattern()
 end
 
 local function solveLockpick(minigameId, minigameKind)
+    if not _G.LootStates or not _G.LootStates.AutoLockpick then
+        return
+    end
+
+    _G.LootRuntime = _G.LootRuntime or {}
+    _G.LootRuntime.AutoLockpickActiveSolves = _G.LootRuntime.AutoLockpickActiveSolves or {}
+    local solveKey = tostring(minigameId)
+    if _G.LootRuntime.AutoLockpickActiveSolves[solveKey] then
+        return
+    end
+    _G.LootRuntime.AutoLockpickActiveSolves[solveKey] = true
+
     local _, minigameResult = getLootEvents()
     if not minigameResult then
+        _G.LootRuntime.AutoLockpickActiveSolves[solveKey] = nil
         warn("[Loots - AutoLockpick] Events.Loot.MinigameResult not found.")
         return
     end
 
     local mode = getMode()
+
+    if not _G.LootStates or not _G.LootStates.AutoLockpick then
+        _G.LootRuntime.AutoLockpickActiveSolves[solveKey] = nil
+        return
+    end
 
     if mode == "Legit" then
         playLegitInputPattern()
@@ -191,6 +209,7 @@ local function solveLockpick(minigameId, minigameKind)
     end
 
     if not _G.LootStates or not _G.LootStates.AutoLockpick then
+        _G.LootRuntime.AutoLockpickActiveSolves[solveKey] = nil
         return
     end
 
@@ -207,6 +226,11 @@ local function solveLockpick(minigameId, minigameKind)
     forceClientMinigameCleanup(mode)
 
     log("Solved lockpick using " .. mode .. " mode. id=" .. tostring(minigameId) .. " kind=" .. tostring(minigameKind))
+    task.delay(1, function()
+        if _G.LootRuntime and _G.LootRuntime.AutoLockpickActiveSolves then
+            _G.LootRuntime.AutoLockpickActiveSolves[solveKey] = nil
+        end
+    end)
 end
 
 local function setupListener()

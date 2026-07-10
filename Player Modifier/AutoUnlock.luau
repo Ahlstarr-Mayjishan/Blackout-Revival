@@ -21,17 +21,18 @@ function AutoUnlock:Init(UIRef)
     local resultEvent = lootFolder:WaitForChild("MinigameResult", 5)
     
     if minigameEvent and resultEvent then
-        -- Intercept start event and fire completion event
         local connection = minigameEvent.OnClientEvent:Connect(function(minigameId, ...)
             if _G.ModifierStates and _G.ModifierStates.AutoUnlock then
                 print("[Player Modifier - AutoUnlock] Auto-completing minigame: " .. tostring(minigameId))
                 task.spawn(function()
-                    for _, delayTime in ipairs({0.05, 0.2, 0.5}) do
-                        task.wait(delayTime)
-                        pcall(function()
-                            resultEvent:FireServer(minigameId, true)
-                        end)
+                    task.wait(0.2)
+                    if not (_G.ModifierStates and _G.ModifierStates.AutoUnlock) then
+                        return
                     end
+
+                    pcall(function()
+                        resultEvent:FireServer(minigameId, true)
+                    end)
                 end)
             end
         end)
