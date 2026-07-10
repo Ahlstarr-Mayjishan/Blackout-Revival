@@ -182,7 +182,6 @@ function Tab:Init(UIRef)
             end
             if Value and type(_G.BlackoutLoadModule) == "function" then
                 _G.BlackoutLoadModule("Player Modifier/NoFallDamage.luau")
-                _G.BlackoutLoadModule("Player Modifier/Executor.luau")
             end
             print("[Player Modifier - Tab] No Fall Damage state: " .. tostring(Value))
         end,

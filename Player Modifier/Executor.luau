@@ -55,9 +55,11 @@ local function isDamagePayloadBlocked(args)
         return true
     end
 
-    -- High-speed ragdoll/impact damage in RagdollClient:
+    -- Do not block high-speed ragdoll/impact damage:
     -- Damage(v32 * v62, limbDamage)
-    return type(args[1]) == "number" and type(args[2]) == "table"
+    -- Suppressing that path can leave the client in physics/ragdoll, which also
+    -- blocks inventory/equip recovery.
+    return false
 end
 
 local function shouldBlockRagdoll()

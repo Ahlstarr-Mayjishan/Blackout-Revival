@@ -145,6 +145,22 @@ local function restoreHooks()
         _G.OriginalFunctions["NoFallDamage_DamageFireServer"] = nil
         _G.OriginalFunctions["NoFallDamage_RagdollFireServer"] = nil
     end
+
+    if _G.OriginalFunctions and _G.OriginalFunctions["NoFallDamage_Namecall"] then
+        if hookmetamethod then
+            local success, err = pcall(function()
+                hookmetamethod(game, "__namecall", _G.OriginalFunctions["NoFallDamage_Namecall"])
+            end)
+
+            if success then
+                log("Restored NoFallDamage namecall hook successfully.")
+            else
+                warn("Failed to restore NoFallDamage namecall hook: " .. tostring(err))
+            end
+        end
+
+        _G.OriginalFunctions["NoFallDamage_Namecall"] = nil
+    end
     
     -- 3. Restore GetAttribute hook
     if _G.OriginalFunctions and _G.OriginalFunctions["GetAttribute"] then

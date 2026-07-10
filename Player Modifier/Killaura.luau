@@ -16,6 +16,7 @@ local cachedMeleeMain = nil
 local cachedInputHandler = nil
 local virtualInputManager = nil
 local lastRaycastDebugAt = 0
+local pendingSwingReleaseAt = 0
 
 local Killaura = {}
 Killaura.Name = "Killaura (Melee) Logic"
@@ -230,6 +231,43 @@ local function getVirtualInputManager()
     return virtualInputManager
 end
 
+local function releaseSwingInput()
+    local inputHandler = getInputHandler()
+
+    if inputHandler and type(inputHandler.HandleInput) == "function" then
+        pcall(function()
+            inputHandler.HandleInput(nil, nil, "Ended", "M1")
+        end)
+    end
+
+    if type(mouse1release) == "function" then
+        pcall(mouse1release)
+    end
+
+    local vim = getVirtualInputManager()
+    local camera = Workspace.CurrentCamera
+    if vim and camera then
+        local viewport = camera.ViewportSize
+        pcall(function()
+            vim:SendMouseButtonEvent(viewport.X * 0.5, viewport.Y * 0.5, 0, false, game, 0)
+        end)
+    end
+end
+
+local function scheduleSwingRelease(holdTime)
+    local releaseAt = os.clock() + (holdTime or 0.05)
+    pendingSwingReleaseAt = math.max(pendingSwingReleaseAt, releaseAt)
+
+    task.delay(holdTime or 0.05, function()
+        if os.clock() + 0.01 < pendingSwingReleaseAt then
+            return
+        end
+
+        pendingSwingReleaseAt = 0
+        releaseSwingInput()
+    end)
+end
+
 local function sendInputHandlerSwing(holdTime)
     local inputHandler = getInputHandler()
     if not inputHandler or type(inputHandler.HandleInput) ~= "function" then
@@ -238,8 +276,7 @@ local function sendInputHandlerSwing(holdTime)
 
     local ok = pcall(function()
         inputHandler.HandleInput(nil, nil, "Began", "M1")
-        task.wait(holdTime or 0.05)
-        inputHandler.HandleInput(nil, nil, "Ended", "M1")
+        scheduleSwingRelease(holdTime or 0.05)
     end)
 
     return ok
@@ -263,8 +300,7 @@ local function sendMouseSwing(holdTime)
 
     if type(mouse1press) == "function" and type(mouse1release) == "function" then
         mouse1press()
-        task.wait(holdTime)
-        mouse1release()
+        scheduleSwingRelease(holdTime)
         return true
     end
 
@@ -280,45 +316,18 @@ local function sendMouseSwing(holdTime)
 
     local ok = pcall(function()
         vim:SendMouseButtonEvent(x, y, 0, true, game, 0)
-        task.wait(holdTime)
-        vim:SendMouseButtonEvent(x, y, 0, false, game, 0)
+        scheduleSwingRelease(holdTime)
     end)
 
     return ok
 end
 
 local function fireSwingRemote(holdTime)
-    local swingRemote = ReplicatedStorage:FindFirstChild("MeleeStorage")
-        and ReplicatedStorage.MeleeStorage:FindFirstChild("Events")
-        and ReplicatedStorage.MeleeStorage.Events:FindFirstChild("Swing")
-
-    if not swingRemote or not swingRemote:IsA("RemoteFunction") then
-        return false
-    end
-
-    local ok = pcall(function()
-        swingRemote:InvokeServer(true)
-        task.wait(holdTime or 0.05)
-        swingRemote:InvokeServer(false)
-    end)
-
-    return ok
+    return false
 end
 
 local function fireHeavySwingRemote()
-    local swingRemote = ReplicatedStorage:FindFirstChild("MeleeStorage")
-        and ReplicatedStorage.MeleeStorage:FindFirstChild("Events")
-        and ReplicatedStorage.MeleeStorage.Events:FindFirstChild("Swing")
-
-    if not swingRemote or not swingRemote:IsA("RemoteFunction") then
-        return false
-    end
-
-    local ok = pcall(function()
-        swingRemote:InvokeServer(nil, true)
-    end)
-
-    return ok
+    return false
 end
 
 local function performSwing()
@@ -351,8 +360,11 @@ local function performSwing()
     if meleeMain and type(meleeMain.Swing) == "function" then
         local ok = pcall(function()
             meleeMain.Swing(true)
-            task.wait(holdTime)
-            meleeMain.Swing(false)
+            task.delay(holdTime, function()
+                pcall(function()
+                    meleeMain.Swing(false)
+                end)
+            end)
         end)
 
         if ok then
@@ -528,6 +540,12 @@ function Killaura:Init(Tab)
 
     _G.ModifierRuntime.KillauraThread = workerThread
     if _G.ModifierConnections then
+        table.insert(_G.ModifierConnections, {
+            Destroy = function()
+                pendingSwingReleaseAt = 0
+                releaseSwingInput()
+            end,
+        })
         table.insert(_G.ModifierConnections, workerThread)
     end
 end

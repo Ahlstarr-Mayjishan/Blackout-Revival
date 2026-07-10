@@ -6,11 +6,7 @@
     fall velocity or visible movement.
 ]]
 
-local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local RunService = game:GetService("RunService")
-
-local LocalPlayer = Players.LocalPlayer
 
 local NoFallDamage = {}
 NoFallDamage.Name = "No Fall Damage Logic"
@@ -42,19 +38,38 @@ local function isFallDamagePayload(args)
         return true
     end
 
-    -- Ragdoll/impact damage:
-    -- Damage(number, limbDamageTable)
-    return type(args[1]) == "number" and type(args[2]) == "table"
+    -- Do not block impact/ragdoll Damage(number, limbDamageTable).
+    -- That path runs after the client enters physics/ragdoll and suppressing it
+    -- can leave inventory/equip state stuck waiting for the normal recovery path.
+    return false
 end
 
 local function setupDirectRemoteHooks()
     _G.OriginalFunctions = _G.OriginalFunctions or {}
 
+    local damageRemote = getPlayerRemote("Damage")
+    if damageRemote and hookmetamethod and not _G.OriginalFunctions["NoFallDamage_Namecall"] then
+        local oldNamecall
+        local callback = function(self, ...)
+            if getnamecallmethod() == "FireServer" and self == damageRemote then
+                local args = { ... }
+                if isFallDamagePayload(args) then
+                    return nil
+                end
+            end
+
+            return oldNamecall(self, ...)
+        end
+
+        oldNamecall = hookmetamethod(game, "__namecall", newcclosure and newcclosure(callback) or callback)
+        _G.OriginalFunctions["NoFallDamage_Namecall"] = oldNamecall
+        print("[Player Modifier - NoFallDamage] Namecall Damage.FireServer hook installed.")
+    end
+
     if not hookfunction then
         return
     end
 
-    local damageRemote = getPlayerRemote("Damage")
     if damageRemote and not _G.OriginalFunctions["NoFallDamage_DamageFireServer"] then
         local originalDamage
         originalDamage = hookfunction(damageRemote.FireServer, function(self, ...)
@@ -70,68 +85,10 @@ local function setupDirectRemoteHooks()
         print("[Player Modifier - NoFallDamage] Direct Damage.FireServer hook installed.")
     end
 
-    local ragdollRemote = getPlayerRemote("Ragdoll")
-    if ragdollRemote and not _G.OriginalFunctions["NoFallDamage_RagdollFireServer"] then
-        local originalRagdoll
-        originalRagdoll = hookfunction(ragdollRemote.FireServer, function(self, ...)
-            if self == ragdollRemote and isEnabled() then
-                return nil
-            end
-
-            return originalRagdoll(self, ...)
-        end)
-
-        _G.OriginalFunctions["NoFallDamage_RagdollFireServer"] = originalRagdoll
-        print("[Player Modifier - NoFallDamage] Direct Ragdoll.FireServer hook installed.")
-    end
-end
-
-local function setupStateGuard()
-    _G.ModifierRuntime = _G.ModifierRuntime or {}
-    if _G.ModifierRuntime.NoFallDamageStateConnection
-        and _G.ModifierRuntime.NoFallDamageStateConnection.Connected then
-        return
-    end
-
-    local connection = RunService.Heartbeat:Connect(function()
-        if not isEnabled() then
-            return
-        end
-
-        local character = LocalPlayer.Character
-        local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-
-        if _G.CharacterStates then
-            _G.CharacterStates.Falling = false
-            _G.CharacterStates.Ragdolled = false
-            _G.CharacterStates.InPhysics = false
-        end
-
-        if character then
-            character:SetAttribute("Falling", false)
-            character:SetAttribute("CS", false)
-            character:SetAttribute("Ragdolled", false)
-            character:SetAttribute("InPhysics", false)
-        end
-
-        if humanoid then
-            humanoid.PlatformStand = false
-            if humanoid:GetState() == Enum.HumanoidStateType.Physics
-                or humanoid:GetState() == Enum.HumanoidStateType.FallingDown then
-                humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
-            end
-        end
-    end)
-
-    _G.ModifierRuntime.NoFallDamageStateConnection = connection
-    _G.ModifierConnections = _G.ModifierConnections or {}
-    table.insert(_G.ModifierConnections, connection)
-    print("[Player Modifier - NoFallDamage] State guard connected.")
 end
 
 function NoFallDamage:Init(UIRef)
     setupDirectRemoteHooks()
-    setupStateGuard()
     print("[Player Modifier - NoFallDamage] Runtime protection initialized.")
 end
 
