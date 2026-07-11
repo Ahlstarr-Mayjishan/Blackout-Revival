@@ -399,40 +399,19 @@ local function isLikelyMeleeRaycast(origin, params)
         return false
     end
 
-    local collisionGroup = nil
-    local filter = nil
-
-    pcall(function()
-        collisionGroup = params.CollisionGroup
-        filter = params.FilterDescendantsInstances
-    end)
-
-    if filter then
-        for _, ignored in ipairs(filter) do
-            if ignored == char then
-                return true
-            end
-        end
-    end
-
     local roots = { melee, serverMeleeModel }
     for _, rootObject in ipairs(roots) do
         if rootObject then
             for _, descendant in ipairs(rootObject:GetDescendants()) do
                 if descendant:IsA("Attachment") and descendant.Name == "DmgPoint" then
-                    if (descendant.WorldPosition - origin).Magnitude <= 16 then
+                    if (descendant.WorldPosition - origin).Magnitude <= 6 then
                         return true
                     end
-                elseif descendant:IsA("BasePart") and (descendant.Position - origin).Magnitude <= 16 then
+                elseif descendant:IsA("BasePart") and (descendant.Position - origin).Magnitude <= 6 then
                     return true
                 end
             end
         end
-    end
-
-    local root = char and char:FindFirstChild("HumanoidRootPart")
-    if root and collisionGroup == "RayCasts" and (root.Position - origin).Magnitude <= 14 then
-        return true
     end
 
     return false
