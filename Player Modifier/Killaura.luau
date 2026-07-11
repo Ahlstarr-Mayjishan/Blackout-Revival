@@ -70,6 +70,14 @@ local function findEquippedMelee(character)
     return nil
 end
 
+local function getServerMeleeModel(character)
+    if not character then
+        return nil
+    end
+
+    return character:FindFirstChild("ServerMeleeModel")
+end
+
 local function getHumanoid(model)
     if not model then
         return nil
@@ -380,28 +388,54 @@ local function performSwing()
 end
 
 local function isLikelyMeleeRaycast(origin, params)
-    if typeof(origin) ~= "Vector3" or not params or not params.FilterDescendantsInstances then
+    if typeof(origin) ~= "Vector3" or not params then
         return false
     end
 
     local char = LocalPlayer.Character
     local melee = findEquippedMelee(char)
-    if not melee then
+    local serverMeleeModel = getServerMeleeModel(char)
+    if not melee and not serverMeleeModel then
         return false
     end
 
-    for _, descendant in ipairs(melee:GetDescendants()) do
-        if descendant:IsA("Attachment") and descendant.Name == "DmgPoint" then
-            if (descendant.WorldPosition - origin).Magnitude <= 10 then
+    local collisionGroup = nil
+    local filter = nil
+
+    pcall(function()
+        collisionGroup = params.CollisionGroup
+        filter = params.FilterDescendantsInstances
+    end)
+
+    if filter then
+        for _, ignored in ipairs(filter) do
+            if ignored == char then
                 return true
             end
-        elseif descendant:IsA("BasePart") and (descendant.Position - origin).Magnitude <= 10 then
-            return true
+        end
+    end
+
+    local roots = { melee, serverMeleeModel }
+    for _, rootObject in ipairs(roots) do
+        if rootObject then
+            for _, descendant in ipairs(rootObject:GetDescendants()) do
+                if descendant:IsA("Attachment") and descendant.Name == "DmgPoint" then
+                    if (descendant.WorldPosition - origin).Magnitude <= 16 then
+                        return true
+                    end
+                elseif descendant:IsA("BasePart") and (descendant.Position - origin).Magnitude <= 16 then
+                    return true
+                end
+            end
         end
     end
 
     local root = char and char:FindFirstChild("HumanoidRootPart")
-    return root and (root.Position - origin).Magnitude <= 8
+    if root and collisionGroup == "RayCasts" and (root.Position - origin).Magnitude <= 14 then
+        return true
+    end
+
+    return false
 end
 
 local function shouldDebugRaycast()
