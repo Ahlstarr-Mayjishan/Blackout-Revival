@@ -530,6 +530,9 @@ local function stopBlackoutUI()
         if type(_G.StopAttackTargetProbe) == "function" then
             _G.StopAttackTargetProbe()
         end
+        if type(_G.StopMeleeHitProbe) == "function" then
+            _G.StopMeleeHitProbe()
+        end
     end)
 
     destroyRayfieldGui()

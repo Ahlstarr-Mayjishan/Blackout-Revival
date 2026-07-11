@@ -341,21 +341,10 @@ end
 local function performSwing()
     local holdTime = math.clamp(getModifierState("KillauraSwingHold", 0.1), 0.03, 0.2)
     local swingType = tostring(getModifierState("KillauraSwingType", "Normal"))
-    local meleeMain = getMeleeMain()
 
     if swingType == "Heavy" then
         if sendInputHandlerHeavySwing() then
             return true
-        end
-
-        if meleeMain and type(meleeMain.Swing) == "function" then
-            local ok = pcall(function()
-                meleeMain.Swing(nil, true)
-            end)
-
-            if ok then
-                return true
-            end
         end
 
         return fireHeavySwingRemote()
@@ -363,21 +352,6 @@ local function performSwing()
 
     if sendInputHandlerSwing(holdTime) then
         return true
-    end
-
-    if meleeMain and type(meleeMain.Swing) == "function" then
-        local ok = pcall(function()
-            meleeMain.Swing(true)
-            task.delay(holdTime, function()
-                pcall(function()
-                    meleeMain.Swing(false)
-                end)
-            end)
-        end)
-
-        if ok then
-            return true
-        end
     end
 
     if sendMouseSwing(holdTime) then
